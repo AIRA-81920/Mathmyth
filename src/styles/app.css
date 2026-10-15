@@ -67,7 +67,8 @@ svg { flex-shrink: 0; }
 .attachment-action { display: flex; border-radius: var(--radius-control); }
 .send-button { width: 36px; height: 36px; margin: 2px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 0; border-radius: var(--radius-full); background: var(--text); color: var(--surface); }
 .drawer-layer { position: absolute; inset: 0; z-index: 10; visibility: hidden; pointer-events: none; transition: visibility 200ms ease-out; }
-.drawer-layer.is-open { visibility: visible; pointer-events: auto; }
+.drawer-layer.is-open { visibility: visible; pointer-events: auto; touch-action: pan-y pinch-zoom; }
+.history-list { touch-action: pan-y pinch-zoom; }
 .drawer-scrim { position: absolute; inset: 0; opacity: 0; background: var(--scrim); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); transition: opacity 180ms ease-out; }
 .is-open .drawer-scrim { opacity: 1; }
 .history-drawer { position: absolute; inset: 0 auto 0 0; width: min(82%, 320px); display: flex; flex-direction: column; background: var(--surface); border-right: 1px solid var(--border); transform: translateX(-100%); padding: calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom)); transition: transform 200ms ease-out; }

@@ -3,6 +3,7 @@ import { FileText, Plus, Search, X } from 'lucide-react'
 import { useAppStore } from '../store/appStore.js'
 import MessageMenu from '../components/MessageMenu.jsx'
 import ModalFrame from '../components/ModalFrame.jsx'
+import { bindHistorySwipe } from '../core/ui/historySwipe.js'
 
 function HistoryThumbnail({ conversation, enabled }) {
   const ref = useRef(null)
@@ -84,6 +85,8 @@ export default function HistoryDrawer({ layerRef }) {
   const [matches, setMatches] = useState([])
   const [searching, setSearching] = useState(false)
   const [searchError, setSearchError] = useState('')
+  const swipeEnabled = useRef(false)
+  swipeEnabled.current = open && !menu && !dialog
   const initialized = useAppStore((state) => state.storageInitialized)
   const needle = query.trim().toLocaleLowerCase()
   const snippets = new Map(matches.map((item) => [item.id, item.snippet]))
@@ -108,6 +111,11 @@ export default function HistoryDrawer({ layerRef }) {
   useEffect(() => { drawerRef.current.inert = !open }, [open])
   useEffect(() => { if (!open) { setMenu(null); setDialog(null) } }, [open])
   useEffect(() => () => clearTimeout(pressRef.current?.timer), [])
+  useEffect(() => bindHistorySwipe(layerRef.current, {
+    enabled: () => swipeEnabled.current,
+    onClose: () => setDrawerOpen(false),
+    onGesture: () => { clearPress(); suppressRef.current = true },
+  }), [layerRef, setDrawerOpen])
 
   useEffect(() => {
     if (!open) return
