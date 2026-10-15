@@ -1,0 +1,234 @@
+{
+  "schema": "mathmyth-knowledge-relations/v1",
+  "version": 2,
+  "relations": [
+    {
+      "id": "K.limit.product_to_standard",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.product_telescoping"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.limit.0over0"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "cos(1/2)cos(1/4)…cos(1/2^n)",
+      "conditions": [
+        "先证明有限乘积恒等式",
+        "相除的正弦非零"
+      ],
+      "operation": "二倍角相消，令u=2^(-n)",
+      "output": "sin(1)/(sin(u)/u)，u趋于0",
+      "boundary": "连乘不是逐因子取极限；没有相邻恒等式时不能套用。",
+      "evidence": [
+        "candidate.bank402.30",
+        "sin(1)=2^n sin(2^(-n))∏cos(2^(-k))"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.limit.division_to_finite",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.polynomial_division"
+      },
+      "to": {
+        "kind": "method",
+        "id": "M.finite_limit_constraint"
+      },
+      "task": [
+        "determine_parameter"
+      ],
+      "inputState": "P(x)/Q(x)-ax-b在无穷远趋于给定有限值",
+      "conditions": [
+        "先完整合并整式主项",
+        "已证明真分式余项趋于零"
+      ],
+      "operation": "约束不能被余项抵消的发散项系数",
+      "output": "线性参数方程与常数极限方程",
+      "boundary": "不能在合并前逐项设系数为零；有更高阶未能相消的项时可能无解。",
+      "evidence": [
+        "库外代表题：(2x²+3x−1)/(x+1)−ax−b趋于2",
+        "本地精确除法、线性方程与原式反代检验"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.limit.combine_to_finite",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.combine_fractions"
+      },
+      "to": {
+        "kind": "method",
+        "id": "M.finite_limit_constraint"
+      },
+      "task": [
+        "determine_parameter"
+      ],
+      "inputState": "有理分式与待求一次式的差",
+      "conditions": [
+        "公共分母在讨论范围非零",
+        "目标极限有限"
+      ],
+      "operation": "保留含参系数，约束分子高于分母次数的项",
+      "output": "消去发散项后比较同次项系数",
+      "boundary": "参数可能改变分子的最高次数，不能先断定为∞/∞。",
+      "evidence": [
+        "P/Q−ax−b=[P−(ax+b)Q]/Q",
+        "本地通分路径与除法路径得到同一参数并各自反代"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.limit.rational_to_bounded",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.divide_highest_power"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.limit.bounded_times_zero"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "趋零的有理因子乘三角振荡因子",
+      "conditions": [
+        "已证明有理因子趋零",
+        "振荡因子存在与变量无关的统一上界"
+      ],
+      "operation": "对乘积取绝对值并夹逼",
+      "output": "乘积趋于零",
+      "boundary": "有理因子没有趋零时，仅有界不足以决定乘积极限。",
+      "evidence": [
+        "candidate.bank402.21",
+        "|2+cos x−sin x|≤4"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.limit.pointwise_to_jumps",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.pointwise_limit"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.limit.discontinuity_classification"
+      },
+      "task": [
+        "decide_property",
+        "classify_or_compare"
+      ],
+      "inputState": "由函数列求出的分段极限函数",
+      "conditions": [
+        "先固定x求n极限",
+        "各分支和边界函数值已经确定"
+      ],
+      "operation": "对所得函数再取分界点的左右极限",
+      "output": "左右极限、函数值与间断点类型",
+      "boundary": "不得未经证明交换n和x两个极限。",
+      "evidence": [
+        "candidate.bank402.24",
+        "|x|<1时f=x，|x|=1时f=0，|x|>1时f=−x"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.deriv.higher_to_series",
+      "type": "applies_to",
+      "from": {
+        "kind": "method",
+        "id": "M.power_series_expansion"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.deriv.higher_order"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "要求展开点处的高阶导数",
+      "conditions": [
+        "幂级数表示已成立",
+        "使用点位于收敛半径内部"
+      ],
+      "operation": "读取对应次幂的系数并乘n!",
+      "output": "展开点的第n阶导数",
+      "boundary": "仅有有限阶渐近展开不能保证任意高阶导数；收敛端点不能直接照搬。",
+      "evidence": [
+        "candidate.bank402.59",
+        "candidate.bank402.97",
+        "(1+x²)e^x的x^100系数为1/100!+1/98!，故导数为9901"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.defint.meanvalue_to_rolle",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.integral_mean_value_theorem"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.mvt.rolle_equality"
+      },
+      "task": [
+        "prove"
+      ],
+      "inputState": "由积分条件构造的连续函数F，F(1)=2∫₀^(1/2)F",
+      "conditions": [
+        "积分中值定理已适用",
+        "所得θ≤1/2，故[θ,1]长度正",
+        "F在[θ,1]连续、内部可导"
+      ],
+      "operation": "中值定理给F(θ)=F(1)，再应用罗尔",
+      "output": "某个ξ在(θ,1)内满足F′(ξ)=0",
+      "boundary": "若不能得到两个不同点的等值关系，不能直接使用罗尔。",
+      "evidence": [
+        "candidate.bank402.237",
+        "candidate.bank402.239"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.ode.to_potential",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.homogeneous_equation_first_order"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.line_surface.path_independence"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "y′=(x+y)/(x−y)，写成微分形式并除以x²+y²",
+      "conditions": [
+        "局部x≠0且x≠y",
+        "原方程与微分形式等价",
+        "反正切选连续的局部分支"
+      ],
+      "operation": "逐项偏导核对势函数arctan(y/x)−(1/2)ln(x²+y²)",
+      "output": "势函数常值给出同一局部通解",
+      "boundary": "一般齐次方程不能自动得到这个积分因子或势函数；必须重新核对。",
+      "evidence": [
+        "candidate.bank402.267#D",
+        "势函数偏导分别为−(x+y)/(x²+y²)、(x−y)/(x²+y²)"
+      ],
+      "review": "verified"
+    }
+  ]
+}

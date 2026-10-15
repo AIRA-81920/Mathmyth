@@ -1,0 +1,310 @@
+[
+  {
+    "id": "B.limit",
+    "name": "极限",
+    "aliases": [
+      "极限与连续",
+      "函数极限与连续",
+      "函数与极限"
+    ],
+    "order": 1,
+    "chapter_ref": [
+      "同济第七版 上册 第一章 函数与极限"
+    ],
+    "summary": "研究数列与函数在自变量趋近某点或趋于无穷时的变化趋势，并据此定义函数的连续性；是微积分全部概念与运算的基础语言。",
+    "prerequisites": [],
+    "scenario_ids": [
+      "S.limit.0over0",
+      "S.limit.inf_over_inf",
+      "S.limit.zero_times_inf",
+      "S.limit.inf_minus_inf",
+      "S.limit.one_to_inf",
+      "S.limit.power_indeterminate",
+      "S.limit.recurrence_sequence",
+      "S.limit.n_term_sum",
+      "S.limit.infinitesimal_order",
+      "S.limit.parametric_limit",
+      "S.limit.piecewise_continuity",
+      "S.limit.discontinuity_classification"
+    ]
+  },
+  {
+    "id": "B.deriv",
+    "name": "导数与微分",
+    "aliases": [
+      "一元函数微分学",
+      "导数与微分"
+    ],
+    "order": 2,
+    "chapter_ref": [
+      "同济第七版 上册 第二章 导数与微分"
+    ],
+    "summary": "用极限定义导数与微分，研究各种函数（复合、隐式、参数式、幂指等）的求导方法与高阶导数，是研究函数变化率与局部线性化的基本工具。",
+    "prerequisites": [
+      "B.limit"
+    ],
+    "scenario_ids": [
+      "S.deriv.composite_derivative",
+      "S.deriv.implicit_derivative",
+      "S.deriv.parametric_derivative",
+      "S.deriv.power_exponential",
+      "S.deriv.higher_order",
+      "S.deriv.piecewise_differentiability",
+      "S.deriv.abstract_function",
+      "S.deriv.differential_approx",
+      "S.deriv.tangent_normal"
+    ]
+  },
+  {
+    "id": "B.mvt",
+    "name": "微分中值定理与导数的应用",
+    "aliases": [
+      "微分中值定理及其应用",
+      "中值定理与导数应用"
+    ],
+    "order": 3,
+    "chapter_ref": [
+      "同济第七版 上册 第三章 微分中值定理与导数的应用"
+    ],
+    "summary": "以罗尔、拉格朗日、柯西中值定理和泰勒公式为核心，把导数用于证明等式与不等式，并研究函数的单调性、极值、最值、凹凸性、渐近线与曲率等性态。",
+    "prerequisites": [
+      "B.limit",
+      "B.deriv"
+    ],
+    "scenario_ids": [
+      "S.mvt.rolle_equality",
+      "S.mvt.lagrange_cauchy_equality",
+      "S.mvt.inequality_proof",
+      "S.mvt.equation_root",
+      "S.mvt.identity_proof",
+      "S.mvt.monotonicity_extremum",
+      "S.mvt.max_min_application",
+      "S.mvt.concavity_inflection",
+      "S.mvt.asymptote",
+      "S.mvt.curvature",
+      "S.mvt.function_graphing"
+    ]
+  },
+  {
+    "id": "B.indefint",
+    "name": "不定积分",
+    "aliases": [
+      "不定积分与换元积分法",
+      "原函数与不定积分"
+    ],
+    "order": 4,
+    "chapter_ref": [
+      "同济第七版 上册 第四章 不定积分"
+    ],
+    "summary": "研究求原函数（不定积分）的理论与技巧，包括换元积分法、分部积分法以及有理函数与三角有理式等各类被积函数的积分方法。",
+    "prerequisites": [
+      "B.deriv"
+    ],
+    "scenario_ids": [
+      "S.indefint.basic_formula",
+      "S.indefint.first_substitution",
+      "S.indefint.sqrt_integrand",
+      "S.indefint.trig_rational",
+      "S.indefint.rational_function",
+      "S.indefint.by_parts_product",
+      "S.indefint.by_parts_log_inverse",
+      "S.indefint.recurrence"
+    ]
+  },
+  {
+    "id": "B.defint",
+    "name": "定积分",
+    "aliases": [
+      "定积分及其应用",
+      "一元函数积分学"
+    ],
+    "order": 5,
+    "chapter_ref": [
+      "同济第七版 上册 第五章 定积分",
+      "同济第七版 上册 第六章 定积分的应用"
+    ],
+    "summary": "以黎曼和定义定积分，用牛顿-莱布尼茨公式沟通积分与导数，研究定积分的计算、反常积分以及微元法在几何与物理中的广泛应用。",
+    "prerequisites": [
+      "B.indefint"
+    ],
+    "scenario_ids": [
+      "S.defint.newton_leibniz_calc",
+      "S.defint.symmetry_interval",
+      "S.defint.variable_limit_derivative",
+      "S.defint.piecewise_absolute",
+      "S.defint.riemann_sum_limit",
+      "S.defint.improper_integral_calc",
+      "S.defint.improper_convergence",
+      "S.defint.integral_inequality",
+      "S.defint.plane_area",
+      "S.defint.solid_volume",
+      "S.defint.arc_length_surface",
+      "S.defint.physics_application"
+    ]
+  },
+  {
+    "id": "B.ode",
+    "name": "微分方程",
+    "aliases": [
+      "常微分方程",
+      "微分方程初步"
+    ],
+    "order": 6,
+    "chapter_ref": [
+      "同济第七版 上册 第七章 微分方程"
+    ],
+    "summary": "研究含有未知函数导数的方程，按方程形态给出可分离变量、齐次、一阶线性、可降阶及常系数线性等各类方程的求解方法与建模应用。",
+    "prerequisites": [
+      "B.deriv",
+      "B.indefint"
+    ],
+    "scenario_ids": [
+      "S.ode.separable",
+      "S.ode.homogeneous_first_order",
+      "S.ode.linear_first_order",
+      "S.ode.bernoulli",
+      "S.ode.reducible_higher_order",
+      "S.ode.second_order_homogeneous",
+      "S.ode.second_order_nonhomogeneous",
+      "S.ode.reverse_from_solution",
+      "S.ode.modeling"
+    ]
+  },
+  {
+    "id": "B.vecalg",
+    "name": "向量代数与空间解析几何",
+    "aliases": [
+      "空间解析几何与向量代数",
+      "向量代数与空间解析几何"
+    ],
+    "order": 7,
+    "chapter_ref": [
+      "同济第七版 下册 第八章 向量代数与空间解析几何"
+    ],
+    "summary": "用向量工具研究三维空间中的平面、直线、曲面与曲线，建立空间几何对象的方程并判定其位置关系，是多元微积分的几何基础。",
+    "prerequisites": [],
+    "scenario_ids": [
+      "S.vecalg.vector_product",
+      "S.vecalg.plane_equation",
+      "S.vecalg.line_equation",
+      "S.vecalg.position_relation",
+      "S.vecalg.distance_angle",
+      "S.vecalg.surface_of_revolution",
+      "S.vecalg.cylinder_cone",
+      "S.vecalg.curve_projection"
+    ]
+  },
+  {
+    "id": "B.multivar",
+    "name": "多元函数微分法及其应用",
+    "aliases": [
+      "多元函数微分学",
+      "多元函数微分法"
+    ],
+    "order": 8,
+    "chapter_ref": [
+      "同济第七版 下册 第九章 多元函数微分法及其应用"
+    ],
+    "summary": "研究多元函数的极限、连续、偏导数与全微分，掌握复合与隐函数求导法则，并解决方向导数、梯度、空间曲线曲面切向以及极值最值等应用问题。",
+    "prerequisites": [
+      "B.limit",
+      "B.deriv",
+      "B.vecalg"
+    ],
+    "scenario_ids": [
+      "S.multivar.binary_limit",
+      "S.multivar.continuity",
+      "S.multivar.partial_derivative",
+      "S.multivar.composite_derivative",
+      "S.multivar.implicit_derivative",
+      "S.multivar.total_differential",
+      "S.multivar.directional_gradient",
+      "S.multivar.space_curve_tangent",
+      "S.multivar.surface_tangent",
+      "S.multivar.unconditional_extremum",
+      "S.multivar.conditional_extremum",
+      "S.multivar.closed_region_extremum"
+    ]
+  },
+  {
+    "id": "B.multiint",
+    "name": "重积分",
+    "aliases": [
+      "多元函数积分学",
+      "二重积分与三重积分"
+    ],
+    "order": 9,
+    "chapter_ref": [
+      "同济第七版 下册 第十章 重积分"
+    ],
+    "summary": "把定积分推广到二维与三维区域，研究二重积分与三重积分在直角坐标、极坐标、柱坐标、球坐标下的计算及几何物理应用。",
+    "prerequisites": [
+      "B.multivar"
+    ],
+    "scenario_ids": [
+      "S.multiint.double_cartesian",
+      "S.multiint.change_order",
+      "S.multiint.polar",
+      "S.multiint.symmetry_simplify",
+      "S.multiint.triple_cartesian",
+      "S.multiint.cylindrical",
+      "S.multiint.spherical",
+      "S.multiint.geometric_application",
+      "S.multiint.physical_application"
+    ]
+  },
+  {
+    "id": "B.line_surface",
+    "name": "曲线积分与曲面积分",
+    "aliases": [
+      "曲线积分与曲面积分",
+      "场论初步"
+    ],
+    "order": 10,
+    "chapter_ref": [
+      "同济第七版 下册 第十一章 曲线积分与曲面积分"
+    ],
+    "summary": "研究函数沿曲线与曲面上的积分，掌握第一类与第二类曲线/曲面积分的计算，并用格林公式、高斯公式、斯托克斯公式沟通不同类型积分的关系。",
+    "prerequisites": [
+      "B.multivar",
+      "B.multiint"
+    ],
+    "scenario_ids": [
+      "S.line_surface.curve_integral_first_kind",
+      "S.line_surface.curve_integral_second_kind",
+      "S.line_surface.green_theorem",
+      "S.line_surface.path_independence",
+      "S.line_surface.surface_integral_first_kind",
+      "S.line_surface.surface_integral_second_kind",
+      "S.line_surface.gauss_theorem",
+      "S.line_surface.stokes_theorem",
+      "S.line_surface.divergence_curl"
+    ]
+  },
+  {
+    "id": "B.series",
+    "name": "无穷级数",
+    "aliases": [
+      "级数",
+      "无穷级数初步"
+    ],
+    "order": 11,
+    "chapter_ref": [
+      "同济第七版 下册 第十二章 无穷级数"
+    ],
+    "summary": "研究由无穷多项组成的级数的敛散性判别，掌握幂级数的收敛域、求和与函数展开以及周期函数的傅里叶级数展开。",
+    "prerequisites": [
+      "B.limit"
+    ],
+    "scenario_ids": [
+      "S.series.positive_term_test",
+      "S.series.alternating_series",
+      "S.series.absolute_conditional",
+      "S.series.power_series_radius",
+      "S.series.summation_function",
+      "S.series.power_series_expansion",
+      "S.series.termwise_operation",
+      "S.series.fourier_series"
+    ]
+  }
+]

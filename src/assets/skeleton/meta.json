@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "subject": "高等数学",
+  "scope": "同济《高等数学》第七版 上册+下册",
+  "semester_split": {
+    "上册": [
+      "B.limit",
+      "B.deriv",
+      "B.mvt",
+      "B.indefint",
+      "B.defint",
+      "B.ode"
+    ],
+    "下册": [
+      "B.vecalg",
+      "B.multivar",
+      "B.multiint",
+      "B.line_surface",
+      "B.series"
+    ]
+  },
+  "generated_at": "2026-10-07",
+  "notes": "全量产出（上册 6 板块 + 下册 5 板块，共 11 个板块）。情景与方法数据按板块拆分为 scenarios.<blockId>.json / methods.<blockId>.json，每个文件采用 {\"block_id\": \"B.xxx\", \"scenarios\"/\"methods\": [...]} 的包装结构；可用 skeleton/validate.mjs 校验（--index 由数据重建 INDEX.md）。"
+}

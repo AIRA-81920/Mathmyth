@@ -1,0 +1,1011 @@
+{
+  "block_id": "B.multivar",
+  "methods": [
+    {
+      "id": "M.multivar_chain_rule",
+      "name": "多元复合函数求导",
+      "aliases": [
+        "多元复合函数求导法",
+        "多元链式法则",
+        "树形法则",
+        "multivariable chain rule"
+      ],
+      "one_liner": "对多元复合函数，按变量依赖关系（树形图）枚举所有路径，把每条路径上各层偏导相乘再求和，得到对指定自变量的偏导。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.composite_derivative",
+        "S.multivar.directional_gradient"
+      ],
+      "triggers": [
+        "函数由外层函数与中间变量复合而成，如 z=f(u,v)，而 u、v 又是 x、y 的函数",
+        "出现“设 z=f(x+y, xy) 求 ∂z/∂x”这类中间变量为多元函数的题",
+        "变量之间的依赖关系不止一层（外层→中间变量→自变量）",
+        "外层是抽象函数 f，需用 f₁'、f₂' 记号表示"
+      ],
+      "steps": [
+        "画出变量依赖树：因变量→中间变量→自变量，标清每层依赖关系",
+        "对目标自变量，找出所有从因变量到该自变量的路径",
+        "每条路径上把各层偏导数相乘",
+        "把所有路径的结果相加，得到对目标自变量的偏导（全导数）",
+        "把中间变量回代为自变量的表达式，整理结果"
+      ],
+      "preconditions": [
+        "各层函数在相应点可偏导（外层在中间变量处可微，则复合函数可微且法则成立）"
+      ],
+      "not_applicable": [
+        "幂指函数 u(x,y)^{v(x,y)}（底与指数都含变量）不能直接套，需先取对数",
+        "一元复合函数（用一元的链式法则）",
+        "隐式方程确定的函数（应改用隐函数求导或全微分形式不变性）"
+      ],
+      "pitfalls": [
+        "漏掉某条路径（如 z=f(u,v) 中 u、v 都对 x 有依赖，只写了一条）导致漏项",
+        "分不清偏导 ∂ 与全导 d（只有一个自变量时才用全导数）",
+        "外层是抽象函数 f 时，误把 f 对中间变量的偏导写成具体表达式",
+        "求导后忘记把中间变量回代为自变量的表达式"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.chain_rule",
+          "note": "多元链式法则是将一元链式法则推广到多中间变量、多自变量的情形"
+        },
+        {
+          "type": "compose",
+          "target": "M.total_differential",
+          "note": "利用全微分形式不变性对复合式取微分，可一次求出所有一阶偏导，与树形法则互相印证"
+        },
+        {
+          "type": "compose",
+          "target": "M.directional_derivative_gradient",
+          "note": "求复合函数的梯度时，需先按树形法则逐条路径相乘相加得到各偏导"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "抽象复合函数（如 z=f(x²+y², xy)）几乎每年必考，关键是正确画依赖树、不丢路径；用 f₁'、f₂' 表示外层偏导。",
+      "example_problems": [
+        {
+          "statement": "设 z=f(x²+y², xy)，其中 f 具有连续偏导，求 ∂z/∂x、∂z/∂y。",
+          "answer_sketch": "记 u=x²+y²、v=xy，由树形法则 ∂z/∂x=f_u·2x+f_v·y，∂z/∂y=f_u·2y+f_v·x。",
+          "scenario_id": "S.multivar.composite_derivative"
+        },
+        {
+          "statement": "设 z=u²+uv+v²，u=x sin y，v=x cos y，求 ∂z/∂x。",
+          "answer_sketch": "先求 ∂z/∂u=2u+v、∂z/∂v=u+2v，再由链式法则乘上 u、v 对 x 的偏导并相加，最后回代 u、v。",
+          "scenario_id": "S.multivar.composite_derivative"
+        },
+        {
+          "statement": "设 z=f(u,v)，u=e^x，v=x+y，f 可微，求全导数 dz/dx。",
+          "answer_sketch": "dz/dx=f_u·(du/dx)+f_v·(dv/dx)=f_u·e^x+f_v·1。",
+          "scenario_id": "S.multivar.composite_derivative"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.implicit_multivar",
+      "name": "多元隐函数求导",
+      "aliases": [
+        "多元隐函数求导法",
+        "隐函数存在定理求导",
+        "公式法求隐函数偏导",
+        "implicit differentiation in several variables"
+      ],
+      "one_liner": "由方程 F(x,y,z)=0 或方程组确定隐函数，用偏导公式 ∂z/∂x=−F_x/F_z（方程组用雅可比行列式）求各偏导数。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.implicit_derivative"
+      ],
+      "triggers": [
+        "给出含三个及以上变量的方程 F(x,y,z)=0，要求 z 对 x 或 y 的偏导",
+        "出现“设 z=z(x,y) 由方程…确定”的表述",
+        "由方程组同时确定多个隐函数，要求它们的偏导",
+        "要求隐函数的全微分",
+        "方程含 e^z、ln z、z² 等关于因变量的复杂项，显式解出不便"
+      ],
+      "steps": [
+        "确认 F 在该点邻域连续可偏导，且单方程时 F_z≠0（方程组需相应雅可比行列式不为 0）",
+        "把其余变量视为常数，求出所需的一阶偏导（如 F_x、F_z）",
+        "单方程用公式 ∂z/∂x=−F_x/F_z、∂z/∂y=−F_y/F_z",
+        "方程组情形：对各方程同时关于自变量求导，联立解出各偏导，或用雅可比行列式直接写出",
+        "求某点偏导时，先由原方程（组）确定该点的其余坐标再代入"
+      ],
+      "preconditions": [
+        "F 在所求点邻域连续可偏导",
+        "单方程要求 F_z≠0；方程组要求由隐函数所对变量的偏导构成的雅可比行列式不为 0"
+      ],
+      "not_applicable": [
+        "能轻易解出显函数且显式求导更简单时",
+        "关键偏导（如 F_z）为零的关键点，此时公式失效需另行讨论",
+        "方程数少于未知函数个数、无法唯一确定隐函数时"
+      ],
+      "pitfalls": [
+        "公式中漏掉负号（∂z/∂x=−F_x/F_z 而非 F_x/F_z）",
+        "求 F_x 时误把其他变量也当自变量一起求导",
+        "方程组联立时漏解方程或雅可比行列式符号写错",
+        "求某点偏导时未先由原方程确定该点坐标"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.implicit_differentiation",
+          "note": "多元隐函数求导（公式法/雅可比行列式）是一元隐函数求导的推广"
+        },
+        {
+          "type": "compose",
+          "target": "M.total_differential",
+          "note": "用全微分形式不变性对 F=0 取微分再整理，可一次得到所有偏导，与公式法互为验证"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "抽象函数用 f₁'、f₂' 表示偏导；方程组确定隐函数必用雅可比行列式，是区分度较高的考点。",
+      "example_problems": [
+        {
+          "statement": "设 z=z(x,y) 由方程 x²+y²+z²=4z 确定，求 ∂z/∂x。",
+          "answer_sketch": "令 F=x²+y²+z²−4z，则 F_x=2x、F_z=2z−4，故 ∂z/∂x=−F_x/F_z=−x/(z−2)。",
+          "scenario_id": "S.multivar.implicit_derivative"
+        },
+        {
+          "statement": "设方程 e^z−xyz=0 确定 z=z(x,y)，求 ∂z/∂y。",
+          "answer_sketch": "F=e^z−xyz，F_y=−xz、F_z=e^z−xy，故 ∂z/∂y=−F_y/F_z=xz/(e^z−xy)。",
+          "scenario_id": "S.multivar.implicit_derivative"
+        },
+        {
+          "statement": "设 u=u(x,y)、v=v(x,y) 由方程组 x=u+v、y=u²+v² 确定，求 ∂u/∂x。",
+          "answer_sketch": "对方程组关于 x 求导得 1=u_x+v_x、0=2u·u_x+2v·v_x，联立解出 u_x=−v/(v−u)（或用雅可比行列式）。",
+          "scenario_id": "S.multivar.implicit_derivative"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.total_differential",
+      "name": "全微分",
+      "aliases": [
+        "全微分",
+        "可微性判定",
+        "全微分公式",
+        "total differential"
+      ],
+      "one_liner": "若函数可微，则 dz=(∂z/∂x)dx+(∂z/∂y)dy；全微分是函数增量的线性主部，可用于可微性判定、近似计算以及（形式不变性）求导。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.composite_derivative",
+        "S.multivar.implicit_derivative",
+        "S.multivar.total_differential"
+      ],
+      "triggers": [
+        "要求 dz 或函数在某点的全微分",
+        "判定函数在某点是否可微，或求参数使其可微",
+        "用全微分做近似计算或估计误差",
+        "复合/隐函数求偏导时想一次得到全部偏导（全微分形式不变性）"
+      ],
+      "steps": [
+        "先求出在讨论点处所有一阶偏导",
+        "写出 dz=(∂z/∂x)dx+(∂z/∂y)dy（三元则再加 ∂z/∂z 对应项）",
+        "判定可微性：验证 lim_{ρ→0}[Δz−(z_xΔx+z_yΔy)]/ρ = 0，其中 ρ=√(Δx²+Δy²)",
+        "近似计算：把 |Δx|、|Δy| 较小的小增量代入 dz 作为 Δz 的近似",
+        "求复合/隐函数偏导：利用全微分形式不变性直接对式子取微分，再比较 dx、dy 的系数"
+      ],
+      "preconditions": [
+        "断言函数可微需先验证定义式（偏导存在本身不足以保证可微）",
+        "用线性主部近似要求增量足够小"
+      ],
+      "not_applicable": [
+        "偏导不存在的点无全微分",
+        "仅偏导存在不能推可微（需验证定义式极限）",
+        "增量较大时不能把 dz 当作增量的精确值"
+      ],
+      "pitfalls": [
+        "误以为“偏导存在即函数可微”（本例正是要考察这一点）",
+        "判定可微时漏除以 ρ，或未让 Δx、Δy 同时趋于 0",
+        "用全微分形式不变性取微分后，忘记把 dx、dy 对应项系数分离回偏导",
+        "近似计算忽略 |Δx|、|Δy| 必须很小的前提"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.linear_approximation",
+          "note": "多元全微分是一元线性近似 Δy≈f'(x₀)Δx 在多元情形下的推广"
+        },
+        {
+          "type": "compose",
+          "target": "M.multivar_chain_rule",
+          "note": "对复合函数用全微分形式不变性取微分，可一次求出所有偏导"
+        },
+        {
+          "type": "compose",
+          "target": "M.implicit_multivar",
+          "note": "对 F(x,y,z)=0 取全微分再整理，是隐函数求偏导的另一种写法"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "经典考点：判断分式函数在原点是否可微，须验证定义式极限；另有“可微⟹连续、可微⟹偏导存在、偏导连续⟹可微”等关系题。",
+      "example_problems": [
+        {
+          "statement": "求 z=x²y+y³ 的全微分 dz。",
+          "answer_sketch": "z_x=2xy、z_y=x²+3y²，故 dz=2xy dx+(x²+3y²)dy。",
+          "scenario_id": "S.multivar.total_differential"
+        },
+        {
+          "statement": "设 f(x,y)=xy/√(x²+y²)（x²+y²≠0），f(0,0)=0，判断 f 在原点是否可微。",
+          "answer_sketch": "先算 f_x(0,0)=f_y(0,0)=0，再取 Δx=r cosθ、Δy=r sinθ 计算 [Δz]/ρ，其值随 θ 变化，不趋于 0，故不可微。",
+          "scenario_id": "S.multivar.total_differential"
+        },
+        {
+          "statement": "求 z=x²y 在点 (1,2) 处的全微分。",
+          "answer_sketch": "z_x=2xy、z_y=x²，在 (1,2) 处为 4 与 1，故 dz=4dx+dy。",
+          "scenario_id": "S.multivar.total_differential"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.directional_derivative_gradient",
+      "name": "方向导数与梯度",
+      "aliases": [
+        "方向导数",
+        "梯度",
+        "方向导数与梯度公式",
+        "directional derivative and gradient"
+      ],
+      "one_liner": "沿单位方向 l=(cosα,cosβ) 的方向导数 ∂f/∂l=grad f·l=f_x cosα+f_y cosβ，梯度 grad f=(f_x,f_y) 指向函数增长最快的方向。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.directional_gradient"
+      ],
+      "triggers": [
+        "求函数在某点沿给定方向的方向导数",
+        "求梯度、最大方向导数及其方向",
+        "已知某点沿某方向的方向导数，反求方向或参数",
+        "问函数在某点沿哪个方向变化最快"
+      ],
+      "steps": [
+        "求出该点处所有一阶偏导，写出梯度（或直接在方向余弦上取值）",
+        "把给定方向单位化：若给的是向量 v，则取 e_l=v/|v|",
+        "用 ∂f/∂l=grad f·e_l=f_x cosα+f_y cosβ(+f_z cosγ) 计算方向导数",
+        "求最大方向导数即 |grad f|，其方向为 grad f 的方向；最小值为 −|grad f|",
+        "反求问题：把未知方向设为 (cosα,cosβ)，用单位化条件与给定方向导数联立求解"
+      ],
+      "preconditions": [
+        "函数在该点可微（方向导数才等于梯度与单位方向的内积）"
+      ],
+      "not_applicable": [
+        "函数在该点不可微时不能直接用梯度公式（须回到方向导数的定义）",
+        "给定方向未单位化时不能直接作内积",
+        "不可微点处“最大方向导数=|grad|”的结论不成立"
+      ],
+      "pitfalls": [
+        "忘记把给定方向单位化，直接用非单位向量作内积",
+        "方向余弦写错或弄反某个分量",
+        "三元情形漏掉第三个分量",
+        "把梯度本身当作最大变化率（应取梯度的模才算最大变化率）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.total_differential",
+          "note": "梯度分量即各偏导，全微分可写成梯度与位移向量的内积"
+        },
+        {
+          "type": "compose",
+          "target": "M.multivar_chain_rule",
+          "note": "被求梯度的函数为复合结构时，需先用链式法则求出各偏导再组梯度"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "核心公式是方向导数=梯度与单位方向的内积；“沿某点变化最快”即梯度方向，最大变化率等于梯度模。",
+      "example_problems": [
+        {
+          "statement": "求 f=x²+2y² 在点 (1,1) 沿单位方向 (3/5,4/5) 的方向导数。",
+          "answer_sketch": "grad f=(2x,4y)，在 (1,1) 处为 (2,4)，方向导数为 2·(3/5)+4·(4/5)=22/5。",
+          "scenario_id": "S.multivar.directional_gradient"
+        },
+        {
+          "statement": "求 z=xe^y 在点 (1,0) 的梯度及最大方向导数。",
+          "answer_sketch": "grad z=(e^y, xe^y)，在 (1,0) 处为 (1,1)，最大方向导数为 |grad|=√2，方向为 (1,1)。",
+          "scenario_id": "S.multivar.directional_gradient"
+        },
+        {
+          "statement": "求 f=x²+y²+z² 在点 (1,−1,2) 沿方向 (1,2,−2) 的方向导数。",
+          "answer_sketch": "方向单位化为 (1/3,2/3,−2/3)，grad f=(2,−2,4)，内积为 (2−4−8)/3=−10/3。",
+          "scenario_id": "S.multivar.directional_gradient"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.lagrange_multiplier",
+      "name": "拉格朗日乘数法",
+      "aliases": [
+        "拉格朗日乘数法",
+        "拉格朗日乘子法",
+        "Lagrange multiplier method"
+      ],
+      "one_liner": "求目标函数在等式约束下的条件极值：构造 L=f+λφ，令 L 各偏导数为零，与约束方程联立求出驻点。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.conditional_extremum",
+        "S.multivar.closed_region_extremum"
+      ],
+      "triggers": [
+        "求目标函数在一组等式约束下的极值或最值",
+        "出现“在条件 φ(x,y)=0 下求 f 的极值”的表述",
+        "约束难以显式消元",
+        "有界闭域最值问题中边界曲线可用等式约束表示"
+      ],
+      "steps": [
+        "写出目标函数 f 与约束 φ(x,y)=0（多约束则列出各自方程）",
+        "构造拉格朗日函数 L(x,y,λ)=f(x,y)+λφ(x,y)（多个约束引入多个乘数）",
+        "令 L 对各变量的偏导数为零，并与约束方程一起列出方程组",
+        "解方程组（把 λ 也作为未知量）得到候选驻点",
+        "比较各候选点的函数值，或结合实际意义，确定极值/最值"
+      ],
+      "preconditions": [
+        "f、φ 连续可偏导，约束为等式",
+        "一般要求约束梯度 ∇φ≠0（约束的奇异点需单独讨论）"
+      ],
+      "not_applicable": [
+        "不等式约束问题（属非线性规划，高数范围内不作要求）",
+        "约束能方便消元时，代入法往往更简单",
+        "约束梯度为零的点不能直接套乘数法"
+      ],
+      "pitfalls": [
+        "解方程组时遗漏某些驻点",
+        "忘记把乘数 λ 作为一种未知量一并求解",
+        "求出驻点后未比较函数值（或未结合端点）就下极值结论",
+        "误认为拉格朗日求出的驻点必是极值点，忽略需进一步判断"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.constraint_elimination",
+          "note": "约束便于解出变量时可用代入消元法替代拉格朗日乘数法"
+        },
+        {
+          "type": "compose",
+          "target": "M.boundary_comparison",
+          "note": "有界闭域最值问题中，边界上的条件极值用拉格朗日乘数法求得"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "乘数法只求出驻点，条件最值还需结合约束曲线端点或实际意义判断；不等式约束不能直接使用。",
+      "example_problems": [
+        {
+          "statement": "求 u=xy 在条件 x+y=1 下的最大值。",
+          "answer_sketch": "L=xy+λ(x+y−1)，令 L_x=y+λ=0、L_y=x+λ=0，得 x=y=1/2，最大值 1/4。",
+          "scenario_id": "S.multivar.conditional_extremum"
+        },
+        {
+          "statement": "求 u=x+2y+3z 在条件 x²+y²+z²=1 下的最大值。",
+          "answer_sketch": "L=x+2y+3z+λ(x²+y²+z²−1)，得 (x,y,z) 与 (1,2,3) 成比例，代回单位约束得最大值 √14。",
+          "scenario_id": "S.multivar.conditional_extremum"
+        },
+        {
+          "statement": "求 f=x²+y² 在条件 x+y=2 下的最小值。",
+          "answer_sketch": "L=x²+y²+λ(x+y−2)，由 L_x=2x+λ=0、L_y=2y+λ=0 得 x=y，代约束得 x=y=1，最小值 2。",
+          "scenario_id": "S.multivar.conditional_extremum"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.path_approach",
+      "name": "路径法判极限不存在",
+      "aliases": [
+        "路径法",
+        "沿不同路径取极限",
+        "多路径判别",
+        "path approach"
+      ],
+      "one_liner": "对二元函数极限，沿两条不同路径趋于同一点，若极限值不同（或某条路径极限不存在），即可断定该二重极限不存在。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.binary_limit",
+        "S.multivar.continuity",
+        "S.multivar.total_differential"
+      ],
+      "triggers": [
+        "怀疑二元函数在某点的极限不存在",
+        "已沿若干条路径求出不同结果",
+        "判断函数在某点是否连续或可微时，想先排除（否定）",
+        "分式型二元函数在原点取极限，分子分母为齐次多项式"
+      ],
+      "steps": [
+        "选取过目标点、便于计算的路径：直线族 y=kx、抛物线 y=x²、坐标轴等",
+        "把路径代入函数，将二元极限化为一元极限并求出其值",
+        "若两条路径所得极限不同（或某条路径极限不存在/为 ∞），则二重极限不存在",
+        "注意：沿若干路径极限都相同只能说明“沿这些路径相同”，不能证明二重极限存在"
+      ],
+      "preconditions": [
+        "所选两条路径都在目标点的去心邻域内，且使函数有定义"
+      ],
+      "not_applicable": [
+        "想证明极限存在时不能只用路径法（需用极坐标化归或夹逼准则）",
+        "路径选取不当，使两条路径都得不到确定值"
+      ],
+      "pitfalls": [
+        "把“沿若干条特殊路径极限相同”误当作“二重极限存在”",
+        "所取路径经过函数无定义的点",
+        "只算了一条路径就下结论"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.polar_transform",
+          "note": "路径法用于否定极限存在，极坐标化归用于肯定极限存在，两者配合完成判定"
+        },
+        {
+          "type": "compose",
+          "target": "M.squeeze_theorem",
+          "note": "路径法否定存在、夹逼准则肯定存在，是判定二重极限存在性的互补工具"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "高频题型“讨论 lim_{(x,y)→(0,0)} f 是否存在”，取 y=kx 或 y=x² 得到依赖 k 的结果即可断定不存在。",
+      "example_problems": [
+        {
+          "statement": "讨论 lim_{(x,y)→(0,0)} (x²−y²)/(x²+y²) 是否存在。",
+          "answer_sketch": "沿 y=kx 代入得 (1−k²)/(1+k²)，随 k 变化，故极限不存在。",
+          "scenario_id": "S.multivar.binary_limit"
+        },
+        {
+          "statement": "讨论 lim_{(x,y)→(0,0)} xy/(x²+y²) 是否存在。",
+          "answer_sketch": "沿 y=kx 得 k/(1+k²)，随 k 变化，故极限不存在。",
+          "scenario_id": "S.multivar.binary_limit"
+        },
+        {
+          "statement": "设 f(x,y)=xy/(x²+y²)（x²+y²≠0），f(0,0)=0，判断 f 在原点是否连续。",
+          "answer_sketch": "沿不同路径极限不同，二重极限不存在，故 f 在原点不连续。",
+          "scenario_id": "S.multivar.continuity"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.partial_derivative_direct",
+      "name": "显式偏导数直接计算",
+      "aliases": [
+        "偏导数直接计算",
+        "视其余变量为常数",
+        "显式偏导法",
+        "partial derivative by holding others constant"
+      ],
+      "one_liner": "对显式给出的多元函数，求某个自变量的偏导时把其余自变量视为常数，按一元求导规则逐项求导。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.partial_derivative"
+      ],
+      "triggers": [
+        "函数以显式表达式给出，要求 ∂z/∂x、∂z/∂y 或某点偏导",
+        "需要先求出各一阶偏导作为后续步骤（求驻点、梯度、全微分）",
+        "被求导式含多个自变量，但只对其中一个求偏导"
+      ],
+      "steps": [
+        "确定对哪个自变量求偏导，把其余自变量一律当作常数",
+        "对含该自变量的项按一元求导规则求导（含复合结构时配合链式法则）",
+        "对不含该自变量的项，其偏导为 0",
+        "求某点偏导时，可先代入其余自变量的值再求导（先代后求，简化计算）",
+        "求高阶或混合偏导时，对已得的偏导表达式再逐次求偏导"
+      ],
+      "preconditions": [
+        "函数在讨论点关于相应自变量可偏导"
+      ],
+      "not_applicable": [
+        "隐函数或抽象函数不能直接套用（需隐函数求导或定义法）",
+        "分段函数分界点不能直接用公式（须用定义法）",
+        "幂指结构且底含变量的项不能当作常数幂处理"
+      ],
+      "pitfalls": [
+        "求 ∂z/∂x 时把含 y 的项误当常数或反之",
+        "对中间含复合的部分忘记使用链式法则",
+        "混合偏导的记号与求导次序混淆",
+        "在分界点直接套公式而未改用定义，得出错误结果"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.multivar_chain_rule",
+          "note": "对显式复合结构逐项求偏导时，需用链式法则处理内层"
+        },
+        {
+          "type": "compose",
+          "target": "M.def_partial_derivative",
+          "note": "常规点用直接计算，分界点或公式失效处改用偏导数定义法"
+        }
+      ],
+      "difficulty": 1,
+      "frequency": "high",
+      "exam_notes": "“先代入后求导”在处理含参点偏导时很省；混合偏导 f_xy=f_yx 在二阶偏导连续的条件下成立。",
+      "example_problems": [
+        {
+          "statement": "求 z=x²y+sin(xy) 的 ∂z/∂x。",
+          "answer_sketch": "视 y 为常数：∂z/∂x=2xy+y cos(xy)。",
+          "scenario_id": "S.multivar.partial_derivative"
+        },
+        {
+          "statement": "求 f(x,y)=arctan(y/x)（x≠0）在点 (1,1) 的 f_x。",
+          "answer_sketch": "f_x=−y/(x²+y²)，代入 (1,1) 得 −1/2。",
+          "scenario_id": "S.multivar.partial_derivative"
+        },
+        {
+          "statement": "求 z=x^y（x>0）的 ∂z/∂x 与 ∂z/∂y。",
+          "answer_sketch": "视 y 常数得 ∂z/∂x=y·x^{y−1}；视 x 常数得 ∂z/∂y=x^y·ln x。",
+          "scenario_id": "S.multivar.partial_derivative"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.def_partial_derivative",
+      "name": "偏导数定义法",
+      "aliases": [
+        "偏导数定义法",
+        "用定义求偏导",
+        "偏导数定义",
+        "partial derivative by definition"
+      ],
+      "one_liner": "在特殊点（分界点、奇点、抽象点）或公式失效处，用定义式 ∂z/∂x|(x₀,y₀)=lim_{Δx→0}[f(x₀+Δx,y₀)−f(x₀,y₀)]/Δx 求偏导。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.partial_derivative"
+      ],
+      "triggers": [
+        "分段函数在分界点处要求偏导",
+        "抽象函数只在某点给出值或条件，要求该点偏导",
+        "函数表达式在某点不适用（如分母为零、根式奇点）",
+        "需要判断某点偏导数是否存在"
+      ],
+      "steps": [
+        "确定讨论点 (x₀,y₀) 与要求偏导的自变量",
+        "写出该点关于 x 的偏导定义式，把 y 固定为 y₀",
+        "将定义式化为一元极限（通常为 0/0 型，用等价替换或洛必达求值）",
+        "若该极限存在，则偏导存在且等于其值；否则该偏导不存在",
+        "同理求关于 y 的偏导"
+      ],
+      "preconditions": [
+        "函数在讨论点及其邻域内有定义（求偏导的前提）"
+      ],
+      "not_applicable": [
+        "常规点能用公式直接计算时不必用定义（更繁）",
+        "当极限不存在时，只能得出“该偏导不存在”的结论"
+      ],
+      "pitfalls": [
+        "定义式中忘记把非目标变量固定在该点的值",
+        "误用一般点变量代替讨论点的坐标",
+        "把“偏导存在”与“连续/可微”混为一谈（多元中偏导存在不保证连续或可微）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.partial_derivative_direct",
+          "note": "二者配合使用：常规点直接计算，分界点或公式失效处改用定义法"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "分段函数分界点的偏导、以及“偏导存在但函数不连续/不可微”的反例题常用定义法。",
+      "example_problems": [
+        {
+          "statement": "设 f(x,y)=xy/√(x²+y²)（x²+y²≠0），f(0,0)=0，用定义求 f_x(0,0)。",
+          "answer_sketch": "f_x(0,0)=lim_{Δx→0}[f(Δx,0)−f(0,0)]/Δx=lim 0/Δx=0。",
+          "scenario_id": "S.multivar.partial_derivative"
+        },
+        {
+          "statement": "设 f(x,y)=√(x²+y²)，判断 f_x(0,0) 是否存在。",
+          "answer_sketch": "f_x(0,0)=lim_{Δx→0}|Δx|/Δx，左右极限不相等，故 f_x(0,0) 不存在。",
+          "scenario_id": "S.multivar.partial_derivative"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.extremum_second_test",
+      "name": "极值充分条件判别（二阶偏导判别法）",
+      "aliases": [
+        "极值的充分条件",
+        "二阶偏导判别法",
+        "AC−B²判别法",
+        "second derivative test for extrema"
+      ],
+      "one_liner": "对满足 f_x=f_y=0 的驻点，用 A=f_xx、B=f_xy、C=f_yy 及 AC−B² 的符号判别该点是否为极值点及类型。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.unconditional_extremum",
+        "S.multivar.closed_region_extremum"
+      ],
+      "triggers": [
+        "求多元函数的无条件极值",
+        "已解出驻点，需要判断其为极大、极小还是非极值点",
+        "题目出现“求函数的极值/极值点”"
+      ],
+      "steps": [
+        "解方程组 f_x=0、f_y=0 求出所有驻点",
+        "计算二阶偏导 A=f_xx、B=f_xy、C=f_yy，并在每个驻点处取值",
+        "由判别式：AC−B²>0 时为极值（A<0 为极大、A>0 为极小）；AC−B²<0 时非极值点",
+        "AC−B²=0 时判别式失效，需另用定义或高阶分析",
+        "求出各极值点的函数值"
+      ],
+      "preconditions": [
+        "f 在驻点邻域内有二阶连续偏导（此条件下判别可用，且 f_xy=f_yx）"
+      ],
+      "not_applicable": [
+        "AC−B²=0 的驻点不能由本法判别",
+        "偏导数不存在的点（非驻点）不能用此法",
+        "带约束的条件极值问题不能用此法（应用拉格朗日乘数法）"
+      ],
+      "pitfalls": [
+        "未先求出驻点就对任意点套用判别式",
+        "A、B、C 的取值点弄错（应在驻点处取值）",
+        "AC−B²=0 时错误地判定为极值点",
+        "把 A 的符号判据记反（极大对应 A<0）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.partial_derivative_direct",
+          "note": "先用偏导数直接计算求出一阶偏导并解驻点，再用本判别式"
+        },
+        {
+          "type": "compose",
+          "target": "M.boundary_comparison",
+          "note": "有界闭域最值问题中，区域内部的驻点由此判别式判断或直接比较函数值"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "判别准则：AC−B²>0 为极值（A>0 极小、A<0 极大），<0 非极值，=0 失效；选择题常考“=0 时不能判定”。",
+      "example_problems": [
+        {
+          "statement": "求 f=x³+y³−3xy 的极值。",
+          "answer_sketch": "驻点为 (0,0) 与 (1,1)；(0,0) 处 AC−B²=−9<0 非极值；(1,1) 处 AC−B²=27>0 且 A>0，为极小值 −1。",
+          "scenario_id": "S.multivar.unconditional_extremum"
+        },
+        {
+          "statement": "求 f=x²+y²−2x−4y 的极值。",
+          "answer_sketch": "驻点 (1,2)，A=2、B=0、C=2，AC−B²=4>0 且 A>0，极小值为 −5。",
+          "scenario_id": "S.multivar.unconditional_extremum"
+        },
+        {
+          "statement": "判断 f=xy 是否存在极值。",
+          "answer_sketch": "唯一驻点 (0,0)，A=0、B=1、C=0，AC−B²=−1<0，非极值点，故 f 无极值。",
+          "scenario_id": "S.multivar.unconditional_extremum"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.boundary_comparison",
+      "name": "有界闭域最值比较法",
+      "aliases": [
+        "闭域最值比较法",
+        "内部驻点与边界比较",
+        "有界闭域最值",
+        "comparison on a closed bounded region"
+      ],
+      "one_liner": "求有界闭域上连续函数的最值：分别求出区域内部驻点值与边界上的最值，比较全部候选值取最大与最小。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.closed_region_extremum"
+      ],
+      "triggers": [
+        "求函数在有界闭区域上的最大值或最小值",
+        "题目给出区域（三角形、圆盘、矩形、曲线围成的图形等）",
+        "出现“在区域 D 上求最值”的表述",
+        "区域含边界，需同时考察内部与边界"
+      ],
+      "steps": [
+        "求区域内部的驻点（解 f_x=f_y=0）并计算其函数值",
+        "求边界上的最值：把边界参数化或代入约束，化为边界曲线上的约束极值（可用拉格朗日乘数法或化一元）",
+        "求出边界端点/角点处的函数值",
+        "把所有候选值（内部驻点、边界极值、角点）统一比较，最大者为最大值、最小者为最小值"
+      ],
+      "preconditions": [
+        "区域有界且闭，函数在该闭区域上连续（保证最值存在）"
+      ],
+      "not_applicable": [
+        "无界区域不能断言最值一定存在（可能取不到）",
+        "目标函数不连续时需另行讨论"
+      ],
+      "pitfalls": [
+        "遗漏边界或角点上的取值",
+        "只比较内部驻点，忽略了边界",
+        "边界参数化后忘记考虑参数区间的端点",
+        "误用“驻点即最值点”直接下结论"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.extremum_second_test",
+          "note": "区域内部驻点用二阶判别式判断，或直接比较其函数值"
+        },
+        {
+          "type": "compose",
+          "target": "M.lagrange_multiplier",
+          "note": "边界曲线可写成等式约束时，用拉格朗日乘数法求边界上的条件极值"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "依据“有界闭域上连续函数必有最值”；解题关键是无遗漏地枚举内部驻点、边界极值与角点，最后统一比较。",
+      "example_problems": [
+        {
+          "statement": "求 f=x²+2y²−x 在圆盘 x²+y²≤1 上的最大值与最小值。",
+          "answer_sketch": "内部驻点 (1/2,0) 处 f=−1/4；边界 x²+y²=1 上 f=2−x²−x（x∈[−1,1]），取值范围 [0,2]；比较得最大值 2（在 (−1,0)），最小值 −1/4。",
+          "scenario_id": "S.multivar.closed_region_extremum"
+        },
+        {
+          "statement": "求 z=xy 在区域 D={x≥0, y≥0, x+y≤1} 上的最大值与最小值。",
+          "answer_sketch": "内部与两坐标轴上 z=0；斜边 x+y=1 上 z=x(1−x)，最大 1/4（x=1/2）；比较得最大值 1/4，最小值 0。",
+          "scenario_id": "S.multivar.closed_region_extremum"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.curve_tangent_vector",
+      "name": "空间曲线的切向量法",
+      "aliases": [
+        "空间曲线切向量",
+        "空间曲线的切线与法平面",
+        "切向量法",
+        "tangent vector of a space curve"
+      ],
+      "one_liner": "空间曲线以参数式给出时切向量为 r'(t₀)；以两曲面交线给出时切向量为两曲面法向量的叉乘，据此写切线与法平面。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.space_curve_tangent"
+      ],
+      "triggers": [
+        "要求空间曲线在某点的切线或法平面",
+        "曲线以参数式 x=x(t), y=y(t), z=z(t) 给出",
+        "曲线以两曲面交线的形式给出",
+        "出现“切向量”“法平面”等词"
+      ],
+      "steps": [
+        "若曲线为参数式，求 x'(t₀)、y'(t₀)、z'(t₀) 作为切向量",
+        "若曲线为两曲面 F=0、G=0 的交线，分别求 ∇F、∇G，作叉乘 ∇F×∇G 得切向量",
+        "写出切线方程（对称式）：(x−x₀)/x'(t₀)=(y−y₀)/y'(t₀)=(z−z₀)/z'(t₀)",
+        "写出法平面方程：x'(t₀)(x−x₀)+y'(t₀)(y−y₀)+z'(t₀)(z−z₀)=0",
+        "若切向量某分量为 0，对称式改为一般式书写，避免分母为零"
+      ],
+      "preconditions": [
+        "曲线在讨论点附近光滑（参数分量可导，或两曲面法向量不平行）"
+      ],
+      "not_applicable": [
+        "曲线在讨论点为尖点、不光滑时切向量可能不存在",
+        "两曲面法向量平行（交于奇异点）时叉乘为零，切向量需另行讨论"
+      ],
+      "pitfalls": [
+        "忘记先求出切点的坐标",
+        "两曲面交线情形误用参数求导公式",
+        "切向量某分量为 0 时仍硬写对称式导致分母为零",
+        "把切线方程与法平面方程写反"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.parametric_differentiation",
+          "note": "空间曲线切向量是平面参数曲线导数（dy/dx）在三维空间中的推广"
+        },
+        {
+          "type": "compose",
+          "target": "M.surface_normal_vector",
+          "note": "曲线为两曲面交线时，需先求两曲面法向量再作叉乘得到切向量"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "参数式曲线直接求导得切向量；两曲面交线用两法向量叉乘是常考变形；注意对称式某分量为 0 的书写。",
+      "example_problems": [
+        {
+          "statement": "求曲线 x=t, y=t², z=t³ 在 t=1 处的切线方程。",
+          "answer_sketch": "切点 (1,1,1)，切向量 r'(1)=(1,2,3)，切线为 (x−1)/1=(y−1)/2=(z−1)/3。",
+          "scenario_id": "S.multivar.space_curve_tangent"
+        },
+        {
+          "statement": "求曲线 x=cos t, y=sin t, z=t 在 t=π/2 处的法平面方程。",
+          "answer_sketch": "切点 (0,1,π/2)，切向量 (−1,0,1)，法平面为 −(x−0)+0·(y−1)+(z−π/2)=0，即 x−z+π/2=0。",
+          "scenario_id": "S.multivar.space_curve_tangent"
+        },
+        {
+          "statement": "曲线为两曲面 x²+y²+z²=6 与 x+y+z=0 的交线，求其在点 (1,−2,1) 处的切线。",
+          "answer_sketch": "∇F=(2,−4,2)、∇G=(1,1,1)，叉乘得 (−6,0,6)∝(−1,0,1)，故切线为 (x−1)/(−1)=(z−1)/1, y=−2。",
+          "scenario_id": "S.multivar.space_curve_tangent"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.surface_normal_vector",
+      "name": "曲面法向量法",
+      "aliases": [
+        "曲面法向量",
+        "曲面的切平面与法线",
+        "法向量法",
+        "normal vector of a surface"
+      ],
+      "one_liner": "曲面 F(x,y,z)=0 在点的法向量为 ∇F；曲面显式写作 z=f(x,y) 时取法向量 (−f_x,−f_y,1)，据此写出切平面与法线。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.space_curve_tangent",
+        "S.multivar.surface_tangent"
+      ],
+      "triggers": [
+        "要求曲面在某点的切平面或法线",
+        "曲面以 F(x,y,z)=0 隐式给出，或以 z=f(x,y) 显式给出",
+        "需要曲面在某点的法向量（如求交线切向量、求夹角）",
+        "出现“切平面”“法线”“法向量”等词"
+      ],
+      "steps": [
+        "确定切点坐标（必要时先由曲面方程算出）",
+        "求法向量：隐式 F=0 时算 ∇F=(F_x,F_y,F_z) 在该点的值；显式 z=f(x,y) 时算 (−f_x,−f_y,1)",
+        "写切平面：F_x(x−x₀)+F_y(y−y₀)+F_z(z−z₀)=0（显式则用 −f_x,−f_y,1）",
+        "写法线：对称式 (x−x₀)/F_x=(y−y₀)/F_y=(z−z₀)/F_z",
+        "法向量某分量为 0 时，改写成一般式，避免分母为零"
+      ],
+      "preconditions": [
+        "曲面在讨论点光滑（F 连续可偏导且 ∇F≠0）"
+      ],
+      "not_applicable": [
+        "曲面在奇点（∇F=0）处不能用此公式求法向量",
+        "讨论点不在曲面上时无切平面"
+      ],
+      "pitfalls": [
+        "显式曲面的法向量忘记把 1 作为 z 分量（误写成 (f_x,f_y,1)）",
+        "求 F_x 等偏导时漏项或把其他变量误当自变量",
+        "切平面方程漏掉含 z−z₀ 的项",
+        "法向量某分量为 0 时仍写对称式导致分母为零"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.tangent_normal_equation",
+          "note": "曲面切平面与法线是平面曲线切线、法线公式在空间曲面上的推广"
+        },
+        {
+          "type": "compose",
+          "target": "M.curve_tangent_vector",
+          "note": "求两曲面交线的切向量时，先分别求出两曲面的法向量再作叉乘"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "显式曲面用 (−f_x,−f_y,1)、隐式曲面用 ∇F，是两套必记公式；切平面方程务必带上 z−z₀ 项。",
+      "example_problems": [
+        {
+          "statement": "求曲面 z=x²+y² 在点 (1,1,2) 处的切平面方程。",
+          "answer_sketch": "法向量 (−2x,−2y,1) 在 (1,1) 处为 (−2,−2,1)，切平面为 −2(x−1)−2(y−1)+(z−2)=0。",
+          "scenario_id": "S.multivar.surface_tangent"
+        },
+        {
+          "statement": "求球面 x²+y²+z²=14 在点 (1,2,3) 处的切平面与法线方程。",
+          "answer_sketch": "∇F=(2x,2y,2z) 在 (1,2,3) 处为 (2,4,6)∝(1,2,3)，切平面为 (x−1)+2(y−2)+3(z−3)=0，法线为 (x−1)/1=(y−2)/2=(z−3)/3。",
+          "scenario_id": "S.multivar.surface_tangent"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    },
+    {
+      "id": "M.constraint_elimination",
+      "name": "约束消元代入法",
+      "aliases": [
+        "约束消元",
+        "代入消元法",
+        "代入法求条件极值",
+        "elimination by substitution"
+      ],
+      "one_liner": "当约束方程能方便地解出某个变量时，把它代入目标函数消去该变量，将条件极值问题化为一元或降维的极值问题求解。",
+      "block_ids": [
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.multivar.conditional_extremum"
+      ],
+      "triggers": [
+        "条件极值问题的约束简单，容易解出其中一个变量",
+        "约束形如 x+y=…、xy=… 等可整理的形式",
+        "想避免引入乘数 λ 与求解较大的方程组",
+        "约束只含两个变量、目标函数也可随之降为一元"
+      ],
+      "steps": [
+        "由约束方程解出其中一个变量（如 y=y(x)）",
+        "把解出的表达式代入目标函数，消去该变量，得到一元（或降维）函数",
+        "对降维后的函数求极值（求导、或用一元极值方法）",
+        "回代约束方程求出另一个变量的值",
+        "结合问题的实际取值范围确定极值/最值"
+      ],
+      "preconditions": [
+        "约束方程能显式解出某个变量，且代入后函数的定义域合理"
+      ],
+      "not_applicable": [
+        "约束复杂、难以显式解出某个变量时（应改用拉格朗日乘数法）",
+        "消元后表达式反而更复杂或定义域显著受限时",
+        "存在多个约束且无法逐一消元时"
+      ],
+      "pitfalls": [
+        "消元后使可行域发生变化（缩小或扩大），导致漏解或多解",
+        "解出变量时取错分支（如开方未考虑正负）",
+        "被消去的变量在目标函数中出现多次，代入不完整"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.lagrange_multiplier",
+          "note": "同一条件极值问题：约束便于解出变量时用代入消元法，否则用拉格朗日乘数法"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "代入法不必求乘数 λ，但可能因消元改变可行域而漏解；约束较复杂时优先考虑拉格朗日乘数法。",
+      "example_problems": [
+        {
+          "statement": "求 f=x²+y² 在条件 x+y=2 下的最小值。",
+          "answer_sketch": "由约束解出 y=2−x，代入得 f=x²+(2−x)²=2x²−4x+4，最小值 2（此时 x=y=1）。",
+          "scenario_id": "S.multivar.conditional_extremum"
+        },
+        {
+          "statement": "求 u=x+2y 在约束 x²+y²=5 下的最值。",
+          "answer_sketch": "可解出 x=±√(5−y²) 分别讨论，或直接参数化 x=√5 cos t、y=√5 sin t，化为三角函数的最值问题。",
+          "scenario_id": "S.multivar.conditional_extremum"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multivar"
+      ]
+    }
+  ]
+}

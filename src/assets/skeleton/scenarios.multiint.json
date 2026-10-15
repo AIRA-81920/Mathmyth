@@ -1,0 +1,339 @@
+{
+  "block_id": "B.multiint",
+  "scenarios": [
+    {
+      "id": "S.multiint.double_cartesian",
+      "block_id": "B.multiint",
+      "name": "二重积分（直角坐标，X 型/Y 型区域）",
+      "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+      "signals": [
+        "被求量是一个二重积分 ∬_D f(x,y)dσ",
+        "积分区域 D 由若干条直线或曲线（如 y=φ(x)、y=ψ(x) 或 x=a、x=b）围成，边界可用直角坐标方程方便地写出",
+        "区域对每个内层变量呈现单一下边界与上边界，属于 X 型（上下为 y 的函数）或 Y 型（左右为 x 的函数）",
+        "被积函数在直角坐标下形式简单，无 x²+y² 之类需要换坐标的结构",
+        "题目要求计算区域为三角形、矩形或两条曲线所围图形的二重积分"
+      ],
+      "recognition_examples": [
+        "∬_D xy dσ，D 由 y=x、y=2x、x=1 围成",
+        "∬_D x dσ，D 由抛物线 y=x² 与直线 y=x 围成",
+        "∬_D (x+y)dσ，D 为矩形 [0,1]×[0,2]"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.polar",
+          "how": "区域为圆、扇形、环形或边界含圆弧时，其边界用极坐标 r=r(θ) 描述更自然，应划归极坐标情景"
+        },
+        {
+          "scenario_id": "S.multiint.change_order",
+          "how": "X 型/Y 型区域按当前次序即可积出时属本情景；若当前次序的内层积不出（如含 sin y²），则需交换次序"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.cartesian_iterated_integral",
+          "priority": 1,
+          "when_to_prefer": "区域为 X 型或 Y 型的直角边界图形、被积函数在直角坐标下简单时，直接画图判断类型并确定积分限，是首选也是基本做法"
+        },
+        {
+          "method_id": "M.change_order",
+          "priority": 2,
+          "when_to_prefer": "按某一次序写出的内层积分无法用初等函数积出（如出现 sin y²、e^{x²}）时，改换另一次序再算"
+        },
+        {
+          "method_id": "M.partition_domain",
+          "priority": 3,
+          "when_to_prefer": "取整或分段表达式先按变化边界分区；坐标选择是后续独立决定。"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.change_order",
+      "block_id": "B.multiint",
+      "name": "交换积分次序",
+      "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+      "signals": [
+        "题目已直接给出一个累次积分（形如 ∫dx∫f dy）要求计算或明确要求交换次序",
+        "按给定次序先积的内层出现 sin(y²)、e^{x²}、1/ln y 等无法用初等函数积出的形式",
+        "两种次序都能描述区域，但换序后内层变为可积或更简单的形式",
+        "题干出现「改变积分次序」「交换积分次序」字样"
+      ],
+      "recognition_examples": [
+        "计算 ∫₀¹dx∫_x¹ sin(y²)dy",
+        "交换积分次序 ∫₀¹dx∫_x¹ f(x,y)dy",
+        "交换 ∫₀²dy∫_{y²}^{2y} f(x,y)dx 的积分次序"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.double_cartesian",
+          "how": "两者最终都化累次积分；本情景的起点已是累次积分，核心动作是由积分限还原区域再重新定限，而非从头确定区域类型"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.change_order",
+          "priority": 1,
+          "when_to_prefer": "题干直接给出累次积分、且当前内层积不出或换序后明显更简单时，由积分限还原区域并改写为相反次序"
+        },
+        {
+          "method_id": "M.cartesian_iterated_integral",
+          "priority": 2,
+          "when_to_prefer": "交换次序后需要按新次序重新确定内外层积分限、并实际算出结果时使用"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.polar",
+      "block_id": "B.multiint",
+      "name": "极坐标计算二重积分",
+      "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+      "signals": [
+        "积分区域是圆盘、圆环、扇形或由圆弧围成",
+        "区域边界可写成 r=r(θ) 或 r 为常数",
+        "被积函数含 x²+y²、√(x²+y²)、y/x 等对极坐标友好的结构",
+        "被积函数为 f(x²+y²) 形式，直角坐标下无法积出",
+        "在直角坐标下积分限含根式、难以写出"
+      ],
+      "recognition_examples": [
+        "∬_D (x²+y²)dσ，D 为圆环 1≤x²+y²≤4",
+        "∬_D e^{x²+y²}dσ，D 为圆盘 x²+y²≤1",
+        "∬_D arctan(y/x)dσ，D 为单位圆位于第一象限的部分"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.double_cartesian",
+          "how": "区域为直角边界（矩形、三角形、两条曲线夹成）时用直角坐标；区域为圆形或弧形边界时用极坐标"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.polar_transform",
+          "priority": 1,
+          "when_to_prefer": "区域为圆、环、扇形且直角坐标限难写，或函数为 f(x²+y²) 时，首选极坐标变换"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 2,
+          "when_to_prefer": "化为 ∫∫f(rcosθ,rsinθ)·r dr dθ 后，内层关于 r 的积分靠凑微分解决（如 r dr=½d(r²)、或含 r 的复合结构）"
+        },
+        {
+          "method_id": "M.partition_domain",
+          "priority": 3,
+          "when_to_prefer": "取整或分段表达式先按变化边界分区；坐标选择是后续独立决定。"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.symmetry_simplify",
+      "block_id": "B.multiint",
+      "name": "利用对称性简化",
+      "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+      "signals": [
+        "积分区域关于 x 轴、y 轴、原点（或某坐标面）对称",
+        "被积函数关于某个变量是奇函数或偶函数，或可拆成奇、偶两部分之和",
+        "被积函数中出现 x、xy、x³ 等对某变量为奇次幂的项",
+        "区域图形或函数式明显呈现对称结构"
+      ],
+      "recognition_examples": [
+        "∬_D x dσ，D 为关于 y 轴对称的区域（如圆盘 x²+y²≤1）",
+        "∬_D (x+y+1)dσ，D 为中心在原点的圆盘",
+        "∬_D x²y dσ，D 为关于 y 轴对称的半圆"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.double_cartesian",
+          "how": "对称性只是化简手段；若函数或区域不具对称结构，则回到直接化累次积分计算"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.symmetry",
+          "priority": 1,
+          "when_to_prefer": "区域关于某轴/面/原点对称、且被积函数对相应变量为奇或偶时，先用对称性把奇部判零、偶部减半，是省算的第一步"
+        },
+        {
+          "method_id": "M.cartesian_iterated_integral",
+          "priority": 2,
+          "when_to_prefer": "对称性化简后剩余的积分，仍按区域类型化累次积分算出具体数值"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.triple_cartesian",
+      "block_id": "B.multiint",
+      "name": "三重积分（直角坐标，投影法/截面法）",
+      "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+      "signals": [
+        "被求量是三重积分 ∭_Ω f dV，Ω 为空间立体",
+        "Ω 的边界由平面、柱面、抛物面等以直角坐标方程方便给出的曲面围成",
+        "在某个方向的投影区域容易写出，或某方向的截面形状与面积易于表达",
+        "被积函数只含一个变量（如只含 z）时常用截面法"
+      ],
+      "recognition_examples": [
+        "∭_Ω x dV，Ω 为平面 x=0、y=0、z=0 与 x+y+z=1 围成的四面体",
+        "∭_Ω z dV，Ω 为 z=0 与 z=1−x²−y² 所围立体",
+        "∭_Ω f(z) dV，Ω 为 x²+y²≤1、0≤z≤1 的柱体"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.cylindrical",
+          "how": "投影域为圆/环或边界含圆柱面（x²+y²）时，改用柱坐标更省算"
+        },
+        {
+          "scenario_id": "S.multiint.spherical",
+          "how": "Ω 为球体、球壳或锥面与球面围成时，改用球坐标"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.projection_method_triple",
+          "priority": 1,
+          "when_to_prefer": "Ω 可写成「上下两张曲面夹成」的形式、投影域容易写出时，用投影法（先一后二），先积一个方向再在投影域上作二重积分"
+        },
+        {
+          "method_id": "M.slice_method",
+          "priority": 2,
+          "when_to_prefer": "被积函数只含一个变量（如只含 z），或沿某方向截面形状规则、面积易写成该变量函数时，用截面法（先二后一）"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.cylindrical",
+      "block_id": "B.multiint",
+      "name": "柱坐标计算三重积分",
+      "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+      "signals": [
+        "空间立体由圆柱面（x²+y²=R²）、圆锥面或旋转抛物面与平面围成",
+        "立体在 xOy 面上的投影是圆盘或圆环",
+        "被积函数含 x²+y² 或 √(x²+y²)",
+        "相当于在圆/环区域上又叠加了一个 z 方向的范围"
+      ],
+      "recognition_examples": [
+        "∭_Ω z√(x²+y²)dV，Ω 为 x²+y²≤1、0≤z≤1",
+        "∭_Ω (x²+y²)dV，Ω 由 z=x²+y² 与 z=1 围成",
+        "∭_Ω (x²+y²)dV，Ω 为圆柱 x²+y²≤4 与锥面 z=√(x²+y²) 夹成的立体"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.triple_cartesian",
+          "how": "投影域为一般直角边界（矩形、三角形）时用直角坐标的投影法/截面法；投影为圆/环时才用柱坐标"
+        },
+        {
+          "scenario_id": "S.multiint.spherical",
+          "how": "立体含球面或以原点为中心时用球坐标；仅含圆柱面/锥面、且 z 方向界限为常数或抛物面时用柱坐标"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.cylindrical_transform",
+          "priority": 1,
+          "when_to_prefer": "立体投影为圆/环、边界含圆柱面或圆锥面、函数含 x²+y² 时，首选柱坐标（本质是极坐标叠加 z 方向）"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.spherical",
+      "block_id": "B.multiint",
+      "name": "球坐标计算三重积分",
+      "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+      "signals": [
+        "空间立体为由球面 x²+y²+z²=R² 围成的球体、球壳，或球面与圆锥面围成的形体",
+        "区域边界在以原点为中心的球坐标下可由 ρ=常数、φ=常数（锥的半角）简单刻画",
+        "被积函数只依赖 x²+y²+z²（即 ρ²）",
+        "立体关于原点或坐标面有明显对称性"
+      ],
+      "recognition_examples": [
+        "∭_Ω (x²+y²+z²)dV，Ω 为球体 x²+y²+z²≤R²",
+        "∭_Ω z dV，Ω 为上半球 x²+y²+z²≤R²、z≥0",
+        "∭_Ω dV，Ω 为半角 π/4 的圆锥面与单位球面所围立体"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.cylindrical",
+          "how": "边界含球面、或需要用空间半径 ρ 表范围时用球坐标；仅含圆柱面/锥面且可用 z 表范围时用柱坐标"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.spherical_transform",
+          "priority": 1,
+          "when_to_prefer": "立体含球面、或需要以原点为中心的 ρ 描述时，首选球坐标变换"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.geometric_application",
+      "block_id": "B.multiint",
+      "name": "几何应用（体积等）",
+      "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+      "signals": [
+        "题目求由若干曲面围成的立体的体积",
+        "出现「围成的体积」「所围立体的体积」等表述",
+        "需要把几何量表示为区域上的重积分（被积函数为 1 或上下曲面高差）",
+        "区域由曲面 z=z(x,y) 的上下两张面夹成"
+      ],
+      "recognition_examples": [
+        "求由 z=x²+y² 与 z=1 所围立体的体积",
+        "求由平面 x+y+z=1 与三个坐标面围成的四面体的体积",
+        "求柱面 x²+y²=1 与平面 z=0、z=1 围成的柱体体积"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.physical_application",
+          "how": "本情景求的是几何量（体积）；若求质量、质心、转动惯量等带密度的物理量，则归物理应用"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.element_method",
+          "priority": 1,
+          "when_to_prefer": "把体积写成 ∭_Ω dV 或 ∬_D [z₂−z₁]dσ，用微元法确定被积函数与积分区域，是几何应用的通用入口"
+        },
+        {
+          "method_id": "M.cartesian_iterated_integral",
+          "priority": 2,
+          "when_to_prefer": "投影域为直角边界（三角形、矩形等）时，化累次积分算出体积"
+        },
+        {
+          "method_id": "M.polar_transform",
+          "priority": 3,
+          "when_to_prefer": "投影域为圆或环形（被积函数含 x²+y² 或区域为圆盘）时，改用极坐标计算二重积分"
+        }
+      ]
+    },
+    {
+      "id": "S.multiint.physical_application",
+      "block_id": "B.multiint",
+      "name": "物理应用（质量/质心/转动惯量）",
+      "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+      "signals": [
+        "题目给出（或可设出）密度函数，求质量、质心、形心、转动惯量、引力等",
+        "出现「非均匀」「密度为 ρ(x,y)」「转动惯量 I_x/I_y/I_0」等表述",
+        "所求物理量对区域具有可加性",
+        "需要以 ρ·dV（或 ρ·dσ）作为质量微元"
+      ],
+      "recognition_examples": [
+        "求占据区域 D 的薄片质量，面密度 ρ(x,y)=xy",
+        "求由 x²+y²≤1、0≤z≤1 构成的物体的质心（体密度 ρ 给定）",
+        "求单位圆盘（面密度 ρ=x²+y²）绕 z 轴的转动惯量"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.geometric_application",
+          "how": "几何应用求体积等纯几何量；物理应用需引入密度并求质量、质心、转动惯量等带 ρ 的量"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.element_method",
+          "priority": 1,
+          "when_to_prefer": "先写出质量微元 dm=ρ dV（或 ρ dσ），再按质量=∭ρ dV、质心=∭xρ dV/∭ρ dV、转动惯量=∭(x²+y²)ρ dV 等公式建立重积分"
+        },
+        {
+          "method_id": "M.cartesian_iterated_integral",
+          "priority": 2,
+          "when_to_prefer": "区域为直角边界、密度函数在直角坐标下简单时，化累次积分算出各重积分"
+        }
+      ]
+    }
+  ]
+}

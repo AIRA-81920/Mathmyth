@@ -1,0 +1,315 @@
+{
+  "block_id": "B.vecalg",
+  "scenarios": [
+    {
+      "id": "S.vecalg.vector_product",
+      "block_id": "B.vecalg",
+      "name": "向量运算（数量积/向量积/混合积）",
+      "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+      "signals": [
+        "题中直接给出若干向量的坐标，或给出空间点的坐标并可用两点差构造出向量",
+        "待求的对象是一个数（点乘结果、夹角余弦、投影长度、面积、体积），而不是直线或平面的方程",
+        "出现 a·b、a×b、(a×b)·c、平行四边形面积、平行六面体（四面体）体积等运算字样",
+        "要求判定两向量是否平行/垂直，或三向量、四点是否共面"
+      ],
+      "recognition_examples": [
+        "已知 a=(1,2,-1)、b=(2,-1,1)，求 a·b、a×b 及 |a×b|",
+        "已知 |a|=2、|b|=3、a 与 b 夹角 60°，求 |a+b| 及 a 在 b 上的投影",
+        "判断四点 A、B、C、D 是否共面"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.plane_equation",
+          "how": "若最终要写出一个含 x、y、z 的一次方程（平面方程），属求平面方程情景；本情景只停留在向量的数值运算结果"
+        },
+        {
+          "scenario_id": "S.vecalg.distance_angle",
+          "how": "若目标是点到线面的距离或线线、线面、面面夹角，属距离与夹角情景；本情景是纯向量层面的运算"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.cross_product",
+          "priority": 1,
+          "when_to_prefer": "当需要'垂直于两个向量的向量'、求平行四边形/三角形面积，或判定两向量平行（叉积为零向量）时首选叉积"
+        },
+        {
+          "method_id": "M.mixed_product",
+          "priority": 2,
+          "when_to_prefer": "出现三向量共面判定、四点共面或平行六面体/四面体体积时使用混合积"
+        },
+        {
+          "method_id": "M.dot_product",
+          "priority": 3,
+          "when_to_prefer": "求两向量夹角、求投影长度，或判定两向量是否垂直（数量积是否为 0）时用数量积"
+        }
+      ]
+    },
+    {
+      "id": "S.vecalg.plane_equation",
+      "block_id": "B.vecalg",
+      "name": "求平面方程",
+      "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+      "signals": [
+        "题目明确要求'求平面方程'或'求该平面的方程'",
+        "给出平面上的一点、三个点，或平面上两条相交/平行直线",
+        "给出平面满足的位置条件：过两平面的交线、平行于某平面、垂直于某平面/直线、到原点距离给定",
+        "待求对象是含 x、y、z 的一次方程 Ax+By+Cz+D=0"
+      ],
+      "recognition_examples": [
+        "求过点 M(2,-1,3) 且以 n=(1,-2,2) 为法向量的平面方程",
+        "求过三点 A(1,0,0)、B(0,1,0)、C(0,0,1) 的平面方程",
+        "求过两已知平面交线且过一点 M 的平面方程"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.line_equation",
+          "how": "待求对象是直线（对称式或两平面联立）而非一个平面时，属求直线方程情景"
+        },
+        {
+          "scenario_id": "S.vecalg.position_relation",
+          "how": "若只需判定已知对象之间的平行垂直关系、不必写出新方程，属位置关系情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.plane_point_normal",
+          "priority": 1,
+          "when_to_prefer": "能确定平面上一点与平面法向量（法向量可由三点连线叉积得到）时首选点法式，最直接"
+        },
+        {
+          "method_id": "M.plane_pencil",
+          "priority": 2,
+          "when_to_prefer": "所求平面过两个已知平面的交线时用平面束设参数，可免去求交线上一点与法向量"
+        },
+        {
+          "method_id": "M.cross_product",
+          "priority": 3,
+          "when_to_prefer": "只给出平面上三个点或两条方向向量时，先叉积求出平面法向量再套点法式"
+        }
+      ]
+    },
+    {
+      "id": "S.vecalg.line_equation",
+      "block_id": "B.vecalg",
+      "name": "求直线方程",
+      "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+      "signals": [
+        "题目明确要求'求直线方程'或'求交线方程'",
+        "给出直线上一点与方向向量，或给出空间两点",
+        "给出直线与已知平面/直线的平行垂直关系，或直线过两平面交线",
+        "待求对象由两个平面方程联立给出，或写成 (x-x0)/m=(y-y0)/n=(z-z0)/p 形式"
+      ],
+      "recognition_examples": [
+        "求过点 M(1,-2,3)、方向向量为 s=(2,0,-1) 的直线方程",
+        "求两平面 x+y+z=1 与 x-y+z=0 的交线方程",
+        "求过点 A(1,2,3) 且与已知直线平行的直线方程"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.plane_equation",
+          "how": "待求对象是平面（一个一次方程）而不是直线时，属求平面方程情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.line_symmetric_parametric",
+          "priority": 1,
+          "when_to_prefer": "只要确定了一点与方向向量，就用对称式/参数式直接写出，是最通用的入口"
+        },
+        {
+          "method_id": "M.cross_product",
+          "priority": 2,
+          "when_to_prefer": "直线由两平面交线给出时，用两法向量的叉积求直线方向向量"
+        }
+      ]
+    },
+    {
+      "id": "S.vecalg.position_relation",
+      "block_id": "B.vecalg",
+      "name": "点、线、面位置关系判定",
+      "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+      "signals": [
+        "题目出现'平行''垂直''相交''重合''异面''在平面上'等判定性字眼",
+        "给出的是已知方程，要求的是关系结论而不是新的方程或数值",
+        "含参数的直线或平面方程，要求讨论参数取值下的位置关系",
+        "需要判断直线是否在平面内、两条直线是否共面"
+      ],
+      "recognition_examples": [
+        "判断直线 (x-1)/2=(y+1)/1=z/3 与平面 2x+y+3z=5 的位置关系",
+        "判断两平面 x+2y-3z=1 与 2x+4y-6z=5 是平行、重合还是相交",
+        "判断两直线是平行、相交还是异面"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.distance_angle",
+          "how": "要求算出具体的角度数值或距离数值时属距离与夹角情景；本情景只判断关系类型"
+        },
+        {
+          "scenario_id": "S.vecalg.plane_equation",
+          "how": "要求写出满足条件的平面方程时属求平面方程情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.normal_direction_relation",
+          "priority": 1,
+          "when_to_prefer": "一般的位置关系判定都先用它，把问题化归为法向量/方向向量之间的平行与垂直"
+        },
+        {
+          "method_id": "M.mixed_product",
+          "priority": 2,
+          "when_to_prefer": "涉及两条直线是否共面/异面，或三点、四点是否共面时，用混合积判定"
+        },
+        {
+          "method_id": "M.dot_product",
+          "priority": 3,
+          "when_to_prefer": "单独判定垂直关系（数量积是否为 0）或顺带求夹角时使用"
+        },
+        {
+          "method_id": "M.cross_product",
+          "priority": 4,
+          "when_to_prefer": "单独判定平行关系（叉积是否为零向量）或需要求交线方向时使用"
+        }
+      ]
+    },
+    {
+      "id": "S.vecalg.distance_angle",
+      "block_id": "B.vecalg",
+      "name": "距离与夹角计算",
+      "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+      "signals": [
+        "题目出现'距离''夹角''到……的距离''直线与平面所成的角''两平面的夹角'等字样",
+        "目标是求一个数值或角度值，而不是方程或关系判断",
+        "涉及点到平面、点到直线、异面直线、平行平面之间等几何量",
+        "给出的对象多以方程或方向向量/法向量形式出现"
+      ],
+      "recognition_examples": [
+        "求点 M(1,2,3) 到平面 2x-2y+z-3=0 的距离",
+        "求直线与平面所成的角",
+        "求两条异面直线之间的距离"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.position_relation",
+          "how": "只判断平行垂直关系而不要求数值时属位置关系情景"
+        },
+        {
+          "scenario_id": "S.vecalg.vector_product",
+          "how": "只做向量间的点乘叉乘计算、不涉及点线面几何量时属向量运算情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.distance_formula",
+          "priority": 1,
+          "when_to_prefer": "求点到平面/直线、异面直线或平行平面之间的距离时，直接套对应距离公式，一步到位"
+        },
+        {
+          "method_id": "M.angle_formula",
+          "priority": 2,
+          "when_to_prefer": "求线线、线面、面面夹角时按对象类型选 cos 或 sin 公式"
+        },
+        {
+          "method_id": "M.dot_product",
+          "priority": 3,
+          "when_to_prefer": "只需两个向量之间的夹角或求投影长度时用它，更基础直接"
+        }
+      ]
+    },
+    {
+      "id": "S.vecalg.surface_of_revolution",
+      "block_id": "B.vecalg",
+      "name": "旋转曲面方程",
+      "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+      "signals": [
+        "题目出现'绕……轴旋转''旋转所得曲面''旋转面'等字样",
+        "母线是 XOY、YOZ、ZOX 坐标面内的一条曲线，方程只含两个变量",
+        "要求由母线方程写出旋转曲面方程，或由曲面方程反求母线、旋转轴",
+        "所得曲面方程中常出现两个变量的平方和形式"
+      ],
+      "recognition_examples": [
+        "求 xOz 面上的曲线 x²=2z 绕 z 轴旋转所得的曲面方程",
+        "求 xOy 面上的椭圆 x²/4+y²/9=1 绕 y 轴旋转所得的曲面方程",
+        "判别曲面 z²=4(x²+y²) 是否为旋转曲面并指出其旋转轴"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.cylinder_cone",
+          "how": "若给定的曲面方程缺某个变量（柱面）或关于三个变量齐次（锥面），属柱面与锥面识别情景；本情景关注的是'绕轴旋转'这一生成过程"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.revolution_surface",
+          "priority": 1,
+          "when_to_prefer": "只要是'坐标面内母线绕坐标轴旋转'的问题，一律用'绕谁谁不变、另一个变量改平方和'的替换规律，是唯一通用手法"
+        }
+      ]
+    },
+    {
+      "id": "S.vecalg.cylinder_cone",
+      "block_id": "B.vecalg",
+      "name": "柱面与锥面的识别",
+      "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+      "signals": [
+        "曲面方程中缺少某一个变量（如方程只含 x、y）",
+        "方程关于 x、y、z 是齐次的，各项次数相同（如 x²+y²=z²）",
+        "题目要求指出曲面名称、母线方向或顶点",
+        "出现 x²+y²=R²、y²=2px、z²=a²(x²+y²) 等典型形式"
+      ],
+      "recognition_examples": [
+        "指出曲面 x²+y²=4 的名称与母线方向",
+        "判断曲面 z²=x²+y² 是柱面还是锥面",
+        "判断曲面 y²=2x 的类型"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.surface_of_revolution",
+          "how": "若题意是'曲线绕轴旋转'的生成过程题，属旋转曲面情景；本情景是由给定方程判别曲面类型"
+        },
+        {
+          "scenario_id": "S.vecalg.curve_projection",
+          "how": "求曲线在坐标面上的投影、需要消元下落时，属投影情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.cylinder_cone_recognition",
+          "priority": 1,
+          "when_to_prefer": "对方程先看缺哪个变量、再看是否关于三变量齐次，两步即可定型，是唯一判别手法"
+        }
+      ]
+    },
+    {
+      "id": "S.vecalg.curve_projection",
+      "block_id": "B.vecalg",
+      "name": "空间曲线在坐标面上的投影",
+      "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+      "signals": [
+        "题目出现'投影''投影柱面''在 xOy 面上的投影曲线'等字样",
+        "空间曲线由两个曲面方程联立给出",
+        "要求某个曲面或立体在某个坐标面上的投影区域的边界",
+        "题目提示'消去 z''求出投影柱面方程'"
+      ],
+      "recognition_examples": [
+        "求两曲面交线在 xOy 面上的投影曲线",
+        "求球面与柱面交线在 xOy 面上的投影",
+        "求某曲线在 yOz 面上的投影柱面及投影"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.vecalg.cylinder_cone",
+          "how": "只要求判别曲面类型、不涉及把曲线投影下落时，属柱面与锥面识别情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.projection_method",
+          "priority": 1,
+          "when_to_prefer": "只要目标是坐标面上的投影曲线，就先消去目标坐标面之外的变量得投影柱面，再限制在坐标面内，是固定套路"
+        }
+      ]
+    }
+  ]
+}

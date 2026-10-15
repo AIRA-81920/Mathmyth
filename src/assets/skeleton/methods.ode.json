@@ -1,0 +1,632 @@
+{
+  "block_id": "B.ode",
+  "methods": [
+    {
+      "id": "M.separation_of_variables",
+      "name": "分离变量法",
+      "aliases": [
+        "分离变量",
+        "变量分离法",
+        "separation of variables"
+      ],
+      "one_liner": "把一阶方程整理成'只含 y 的部分 dy = 只含 x 的部分 dx'，两端分别积分求通解。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.separable",
+        "S.ode.homogeneous_first_order",
+        "S.ode.linear_first_order",
+        "S.ode.modeling"
+      ],
+      "triggers": [
+        "一阶方程，dy/dx 的右端能分解为'只含 x 的函数 × 只含 y 的函数'",
+        "方程可写成 M(x)N(y)dx + P(x)Q(y)dy = 0 的形式",
+        "能整理出 g(y)dy = f(x)dx，使变量分居等号两侧",
+        "方程右端形如 f(x)g(y)，或可代入后直接分离（含 u=y/x 换元后的方程）"
+      ],
+      "steps": [
+        "把方程写成 dy/dx 的形式，并将右端分解为含 x 与含 y 两部分",
+        "通过移项与乘除，把含 y 的因子连同 dy 移到一侧、含 x 的连同 dx 移到另一侧",
+        "两端分别积分，得到含一个任意常数 C 的通解",
+        "若有初值条件，代入定出 C 得特解；必要时整理为隐式解"
+      ],
+      "preconditions": [
+        "方程能化为 g(y)dy = f(x)dx 的分离形式",
+        "f、g 在所讨论区间上连续（保证可积）"
+      ],
+      "not_applicable": [
+        "右端无法分解为 x 的函数与 y 的函数之积（如 y'=x+y，需换元或按线性方程处理）",
+        "含 y 的非线性项使变量不能分离（如伯努利方程须先换元）",
+        "二阶及以上方程（除可降阶特例外）不能直接分离"
+      ],
+      "pitfalls": [
+        "除以 g(y) 分离时丢掉使 g(y)=0 的常数解 y≡y₀",
+        "积分后对 ln 忘加绝对值，或任意常数 C 的形式处理不当",
+        "把 dy/dx 中的 dx 当作可随意搬动的符号，未做等价变形",
+        "给出隐式通解却未限制其适用区间"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.partial_fraction",
+          "note": "分离后若出现 dy/(y(1−y)) 之类有理式，需借用部分分式分解积分；该法归属 B.indefint，此处仅引用"
+        },
+        {
+          "type": "compose",
+          "target": "M.integration_by_parts",
+          "note": "两端积分遇幂×指数等乘积型时，需借用分部积分；该法归属 B.indefint，此处仅引用"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "最基础的一阶方程解法；重点在'能否分离'以及分离时丢失或增多的常数解，题目常考带初值的特解。",
+      "example_problems": [
+        {
+          "statement": "求方程 y' = x² y 的通解。",
+          "answer_sketch": "分离得 dy/y = x² dx，积分 ln|y| = x³/3 + C，通解 y = C e^{x³/3}。",
+          "scenario_id": "S.ode.separable"
+        },
+        {
+          "statement": "求 (1+y²)dx − x(1+x²)y dy = 0 满足 y(1)=1 的特解。",
+          "answer_sketch": "分离得 y dy/(1+y²) = dx/[x(1+x²)]，右端用部分分式后两端积分，再由 y(1)=1 定出常数。",
+          "scenario_id": "S.ode.separable"
+        },
+        {
+          "statement": "求方程 dy/dx = e^{x−y} 的通解。",
+          "answer_sketch": "化为 e^y dy = e^x dx，积分得 e^y = e^x + C。",
+          "scenario_id": "S.ode.separable"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    },
+    {
+      "id": "M.homogeneous_equation_first_order",
+      "name": "一阶齐次方程",
+      "aliases": [
+        "齐次方程",
+        "一阶齐次微分方程",
+        "u=y/x 换元",
+        "homogeneous equation"
+      ],
+      "one_liner": "对形如 dy/dx=φ(y/x) 的方程，令 u=y/x 化为可分离变量方程求解。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.homogeneous_first_order"
+      ],
+      "triggers": [
+        "一阶方程，dy/dx 的右端只含 y/x 的组合（是 x、y 的零次齐次式）",
+        "形如 P(x,y)dx + Q(x,y)dy = 0，其中 P、Q 是同次齐次函数",
+        "把 (x,y) 同时乘以 t 后方程形式不变",
+        "右端出现 (x+y)/x、y/x + tan(y/x) 等以 y/x 为整体的结构"
+      ],
+      "steps": [
+        "确认右端可写成 φ(y/x)；令 u=y/x，即 y=ux",
+        "对 y=ux 求导得 y' = u + x u'，代入原方程",
+        "整理为关于 u、x 的可分离变量方程，分离后两端积分",
+        "把 u 回代为 y/x，化简得通解"
+      ],
+      "preconditions": [
+        "方程右端确为 y/x 的函数（零次齐次）",
+        "换元后所得方程可分离变量"
+      ],
+      "not_applicable": [
+        "右端能直接分解为 x 的函数与 y 的函数之积（用分离变量更快）",
+        "方程是关于 y 与其导数的线性式（用常数变易法）",
+        "含 y 的非线性幂 y^n（伯努利型），或用 y/x 代换失效的非齐次方程"
+      ],
+      "pitfalls": [
+        "把齐次方程的'齐次'（零次齐次）与线性方程的'齐次'（右端为 0）混淆，误判情景",
+        "代换后忘记 y' = u + x u' 中的 u 项，只写 y' = x u'",
+        "回代 u=y/x 时化简出错，或误写成 x/y",
+        "积分含 ln 处漏写绝对值"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.separation_of_variables",
+          "note": "换元 u=y/x 后化为可分离变量方程，最后一步靠分离变量法积分"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "判断'是不是齐次'是第一步；把右端通分后若分子分母各项次数相同，即令 u=y/x。",
+      "example_problems": [
+        {
+          "statement": "求方程 dy/dx = (x+y)/x 的通解。",
+          "answer_sketch": "右端 = 1 + y/x，令 u=y/x 得 x u' = 1，故 u = x + C，回代 y = x² + Cx。",
+          "scenario_id": "S.ode.homogeneous_first_order"
+        },
+        {
+          "statement": "求 x y' = y + √(x²+y²)（x>0）的通解。",
+          "answer_sketch": "右端 = y/x + √(1+(y/x)²)，令 u=y/x 后分离积分得 arsinh u = ln x + C，回代即得通解。",
+          "scenario_id": "S.ode.homogeneous_first_order"
+        },
+        {
+          "statement": "求 dy/dx = y/x + tan(y/x)（0<x<π/2 的相应区间）的通解。",
+          "answer_sketch": "令 u=y/x，得 x u' = tan u，分离 cot u du = dx/x，积分 sin u = Cx，回代 u=y/x。",
+          "scenario_id": "S.ode.homogeneous_first_order"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    },
+    {
+      "id": "M.constant_variation",
+      "name": "常数变易法",
+      "aliases": [
+        "常数变易法",
+        "变动参数法",
+        "variation of parameters",
+        "一阶线性通解公式法"
+      ],
+      "one_liner": "先解对应齐次线性方程得 e^{−∫P dx}，把任意常数看作待定函数 C(x)，代回原方程求非齐次解，从而得通解。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.linear_first_order",
+        "S.ode.bernoulli",
+        "S.ode.modeling"
+      ],
+      "triggers": [
+        "方程关于 y 与 y' 是一次（线性）结构，形如 y'+P(x)y=Q(x)",
+        "齐次线性方程 y'+P(x)y=0 易解，但非齐次项 Q(x) 使直接分离失败",
+        "∫Q(x)e^{∫P dx}dx 可积，可求出显式特解",
+        "伯努利方程换元为线性方程后，需要求其通解"
+      ],
+      "steps": [
+        "先解齐次方程 y'+P(x)y=0，用分离变量得 y = C e^{−∫P dx}",
+        "设非齐次解为 y = C(x)e^{−∫P dx}（把常数 C 换成待定函数）",
+        "代入原方程并消去同类项，得 C'(x) = Q(x)e^{∫P dx}",
+        "积分得 C(x) 后回代，得到含一个任意常数的通解",
+        "也可直接套用通解公式 y = e^{−∫P dx}(∫Q e^{∫P dx} dx + C)"
+      ],
+      "preconditions": [
+        "方程已化为标准形 y'+P(x)y=Q(x)",
+        "P、Q 在区间上连续且相关积分可求"
+      ],
+      "not_applicable": [
+        "方程不是关于 y 的线性式（如含 y²、y y'），须先换元线化（如伯努利方程）",
+        "Q≡0 时方程本就可分离（直接用分离变量更快）",
+        "高阶非线性方程"
+      ],
+      "pitfalls": [
+        "未先化成标准形 y'+P(x)y=Q(x) 就套公式，把 y 的系数误当成 P(x)",
+        "通解公式中指数符号写错（−∫P dx 与 ∫P dx 混淆）",
+        "回代时常数变易只变一个常数却当成两个，或漏掉齐次解因子",
+        "积分 ∫Q e^{∫P dx}dx 时漏写任意常数，导致通解不完整"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.separation_of_variables",
+          "note": "先解齐次线性方程要用分离变量法"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.partial_fraction",
+          "note": "计算 ∫Q e^{∫P dx}dx 若遇有理式需用部分分式；该法归属 B.indefint，此处仅引用"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "一阶线性方程是考研高频；通解公式须记牢，但更稳妥的是写'齐次解 + 常数变易'的推导步骤以拿过程分。",
+      "example_problems": [
+        {
+          "statement": "求方程 y' + 2x y = x 的通解。",
+          "answer_sketch": "P=2x，齐次解 C e^{−x²}；常数变易得 C' = x e^{x²}，C = ½e^{x²} + C，故 y = ½ + C e^{−x²}。",
+          "scenario_id": "S.ode.linear_first_order"
+        },
+        {
+          "statement": "求方程 y' − y/x = x²（x>0）的通解。",
+          "answer_sketch": "P=−1/x，齐次解 C x；常数变易得 C' = x，C = x²/2 + C，故 y = x³/2 + C x。",
+          "scenario_id": "S.ode.linear_first_order"
+        },
+        {
+          "statement": "求 x y' + y = e^x 满足 y(1)=e 的特解。",
+          "answer_sketch": "化为 y' + y/x = e^x/x，P=1/x，齐次解 C/x；常数变易得 C' = e^x，C = e^x + C，由 y(1)=e 定 C=0，得 y = e^x/x。",
+          "scenario_id": "S.ode.linear_first_order"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    },
+    {
+      "id": "M.bernoulli_substitution",
+      "name": "伯努利代换",
+      "aliases": [
+        "伯努利方程换元",
+        "伯努利代换",
+        "Bernoulli substitution",
+        "z=y^{1−n} 代换"
+      ],
+      "one_liner": "对伯努利方程 y'+P(x)y=Q(x)y^n，令 z=y^{1−n} 化为关于 z 的一阶线性方程再求解。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.bernoulli"
+      ],
+      "triggers": [
+        "方程形如 y'+P(x)y=Q(x)y^α，且 α≠0、α≠1",
+        "右端含 y 的非一次幂（如 y²、y³、√y）",
+        "两边除以 y^n 后能凑出 z=y^{1−n} 的线性结构",
+        "方程关于 y 非线性，但换元后可平化为线性"
+      ],
+      "steps": [
+        "确认方程是伯努利型并记下指数 n（n≠0、1）",
+        "两边同时除以 y^n，把方程整理为含 y^{−n}、y^{1−n} 的形式",
+        "令 z = y^{1−n}，由 z' = (1−n)y^{−n} y' 代入，化为关于 z 的一阶线性方程",
+        "用常数变易法解出 z(x)",
+        "由 z = y^{1−n} 回代得到 y 的通解"
+      ],
+      "preconditions": [
+        "方程确为 y'+P(x)y=Q(x)y^n 且 n≠0、n≠1",
+        "P、Q 连续，换元后线性方程可解"
+      ],
+      "not_applicable": [
+        "n=0 时退化为纯线性方程 y'+Py=Q，直接用常数变易法",
+        "n=1 时方程实为可分离变量 y' = (Q−P)y",
+        "方程不是关于 y 的伯努利型（如含 y y' 或 y''）"
+      ],
+      "pitfalls": [
+        "未排除 n=0、n=1 就盲目换元",
+        "两边除以 y^n 时漏掉 y≡0 这一可能解",
+        "z = y^{1−n} 求导时漏乘因子 (1−n)，使线性方程系数出错",
+        "回代 z = y^{1−n} 时指数运算出错"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.constant_variation",
+          "note": "换元得到的线性方程用常数变易法求解"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "典型流程是'除 y^n → 令 z=y^{1−n} → 解线性 → 回代'；指数 n 的记法与 (1−n) 因子是易错点。",
+      "example_problems": [
+        {
+          "statement": "求方程 y' + y/x = x y²（x>0）的通解。",
+          "answer_sketch": "n=2，令 z=y^{−1}，化为 z' − (1/x)z = −x，用常数变易法解得 z 后再由 y=1/z 回代。",
+          "scenario_id": "S.ode.bernoulli"
+        },
+        {
+          "statement": "求 y' − y = x y³ 的通解。",
+          "answer_sketch": "n=3，令 z=y^{−2}，得 z' + 2z = −2x，解线性方程后回代 y=z^{−1/2}。",
+          "scenario_id": "S.ode.bernoulli"
+        },
+        {
+          "statement": "求 y' + (1/x)y = x √y（x>0）的通解。",
+          "answer_sketch": "n=1/2，令 z=y^{1/2}，化为 z' + (1/(2x))z = x/2，解得 z 后由 y=z² 回代。",
+          "scenario_id": "S.ode.bernoulli"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    },
+    {
+      "id": "M.reduction_of_order",
+      "name": "可降阶的高阶方程",
+      "aliases": [
+        "降阶法",
+        "可降阶的高阶方程",
+        "reduction of order",
+        "缺 y / 缺 x 型降阶"
+      ],
+      "one_liner": "对 y''=f(x)、F(x,y',y'')=0（缺 y）、F(y,y',y'')=0（缺 x）三类二阶方程，用代换把阶数降为一阶再积分。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.reducible_higher_order",
+        "S.ode.second_order_homogeneous"
+      ],
+      "triggers": [
+        "二阶及以上方程，右端只含自变量 x（y''=f(x)）",
+        "方程中不显含 y（F(x,y',y'')=0，'缺 y' 型）",
+        "方程中不显含 x（F(y,y',y'')=0，'缺 x' 型）",
+        "含 y'' 但不含 y 本身，或可通过令 p=y' 使阶数下降"
+      ],
+      "steps": [
+        "判型：y''=f(x) 型直接逐次积分；缺 y 型令 p=y'（p 为 x 的函数）；缺 x 型令 p=y' 并把 y 视为自变量",
+        "缺 y 型代入得 p' = f(x,p)，先解出一阶方程",
+        "缺 x 型利用 y'' = p dp/dy 化为关于 p、y 的一阶方程",
+        "解出一阶方程得到 y' 的表达式，再积分一次得 y",
+        "逐次积分或求解时，每步都要补一个任意常数"
+      ],
+      "preconditions": [
+        "方程是二阶及以上且可识别缺变量类型",
+        "降阶所得一阶方程可解"
+      ],
+      "not_applicable": [
+        "方程同时含 y 与 x 且系数为常数（属常系数线性方程，用特征方程法）",
+        "缺失变量不明确、无法通过代换降阶的高阶方程",
+        "本身已是一阶方程（无需降阶）"
+      ],
+      "pitfalls": [
+        "缺 x 型误用 y'' = dp/dx 而非 y'' = p dp/dy，使变量未减少",
+        "两类降阶（缺 y 与缺 x）的代换混用",
+        "每积分一次忘记补任意常数，使通解缺少独立常数",
+        "与积分题的'递推公式法'（M.reduction_formula）混淆——那是求积分，不是解微分方程"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.characteristic_equation",
+          "note": "二阶齐次方程若缺 y 项（q=0，形如 y''+py'=0）可用降阶法；一般常系数线性方程统一用特征方程法"
+        },
+        {
+          "type": "compose",
+          "target": "M.separation_of_variables",
+          "note": "降阶后的一阶方程常归结为可分离变量或一阶线性方程"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "三类可降阶方程的代换各不相同，缺 x 型的 y'' = p dp/dy 是必考易错点。",
+      "example_problems": [
+        {
+          "statement": "求方程 y'' = x + e^x 的通解。",
+          "answer_sketch": "逐次积分两次：一次得 y' = x²/2 + e^x + C₁，再一次得 y = x³/6 + e^x + C₁x + C₂。",
+          "scenario_id": "S.ode.reducible_higher_order"
+        },
+        {
+          "statement": "求方程 y'' = y' + x（缺 y 型）的通解。",
+          "answer_sketch": "令 p=y'，得 p' − p = x，一阶线性解得 p = C₁e^x − x − 1，再积分得 y = C₁e^x − x²/2 − x + C₂。",
+          "scenario_id": "S.ode.reducible_higher_order"
+        },
+        {
+          "statement": "求方程 y y'' = (y')²（缺 x 型）的通解。",
+          "answer_sketch": "令 p=y'，用 y'' = p dp/dy，得 y p dp/dy = p²，分离积分得 p = C₁y，即 y' = C₁y，故 y = C₂e^{C₁x}。",
+          "scenario_id": "S.ode.reducible_higher_order"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    },
+    {
+      "id": "M.characteristic_equation",
+      "name": "特征方程法",
+      "aliases": [
+        "特征方程法",
+        "特征根法",
+        "characteristic equation",
+        "二阶常系数齐次方程解法"
+      ],
+      "one_liner": "对 y''+py'+qy=0 写出代数特征方程 r²+pr+q=0，由两特征根（相异实根/重根/共轭复根）直接写出对应形式的通解。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.second_order_homogeneous",
+        "S.ode.second_order_nonhomogeneous",
+        "S.ode.reverse_from_solution"
+      ],
+      "triggers": [
+        "二阶常系数齐次线性方程 y''+py'+qy=0",
+        "系数 p、q 为常数且右端为 0",
+        "方程只含 y''、y'、y 的一次项且系数为常数",
+        "求非齐次方程前，需要先求其对应齐次方程的通解"
+      ],
+      "steps": [
+        "写出特征方程 r² + pr + q = 0",
+        "求特征根（可用判别式 Δ = p² − 4q 判断类型）",
+        "Δ>0 两相异实根 r₁、r₂：通解 y = C₁e^{r₁x} + C₂e^{r₂x}",
+        "Δ=0 二重根 r：通解 y = (C₁ + C₂x)e^{rx}",
+        "Δ<0 共轭复根 α±βi：通解 y = e^{αx}(C₁cos βx + C₂sin βx)"
+      ],
+      "preconditions": [
+        "方程为二阶常系数齐次线性（或已从中提取出其对应齐次方程）"
+      ],
+      "not_applicable": [
+        "变系数线性方程（系数含 x）",
+        "求非齐次方程的特解（特征方程法只给齐次通解，特解要用待定系数法）",
+        "缺 y 或缺 x 的可降阶方程（用降阶法更直接）"
+      ],
+      "pitfalls": [
+        "特征方程写成 r²+pr−q=0 或系数符号抄错",
+        "重根情形漏掉第二个解前乘以 x 的因子（应为 (C₁+C₂x)e^{rx}）",
+        "复根情形忘记提取 e^{αx}，或把 α、β 取错",
+        "把非齐次方程直接当齐次写特征方程而忽略特解"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.undetermined_coefficients",
+          "note": "解非齐次方程时，特征方程法给出齐次通解，再叠加待定系数法求得的特解"
+        },
+        {
+          "type": "alternative",
+          "target": "M.reduction_of_order",
+          "note": "缺 y 项（q=0）的二阶方程可用降阶法；一般常系数齐次方程用特征方程法"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "三种特征根对应的通解形式必须区分清楚，这是二阶线性方程的必考基础。",
+      "example_problems": [
+        {
+          "statement": "求方程 y'' − 3y' + 2y = 0 的通解。",
+          "answer_sketch": "特征方程 r²−3r+2=0，根 r=1、2，故 y = C₁e^x + C₂e^{2x}。",
+          "scenario_id": "S.ode.second_order_homogeneous"
+        },
+        {
+          "statement": "求方程 y'' + 4y' + 4y = 0 的通解。",
+          "answer_sketch": "特征方程 r²+4r+4=0 有二重根 r=−2，故 y = (C₁ + C₂x)e^{−2x}。",
+          "scenario_id": "S.ode.second_order_homogeneous"
+        },
+        {
+          "statement": "求方程 y'' + 2y' + 5y = 0 的通解。",
+          "answer_sketch": "特征根 r = −1 ± 2i（共轭复根），故 y = e^{−x}(C₁cos 2x + C₂sin 2x)。",
+          "scenario_id": "S.ode.second_order_homogeneous"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    },
+    {
+      "id": "M.undetermined_coefficients",
+      "name": "待定系数法",
+      "aliases": [
+        "待定系数法",
+        "设定特解形式",
+        "undetermined coefficients",
+        "特解形式法"
+      ],
+      "one_liner": "对二阶常系数非齐次线性方程 y''+py'+qy=f(x)，按 f(x) 的类型设定含待定系数的特解形式，代入定出系数。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.second_order_nonhomogeneous"
+      ],
+      "triggers": [
+        "二阶常系数非齐次线性方程，右端 f(x)≠0",
+        "f(x) 为多项式 P_m(x)、e^{λx} 或它们的乘积 P_m(x)e^{λx}",
+        "f(x) 为 e^{λx}(A cos ωx + B sin ωx)（指数乘三角）",
+        "系数 p、q 为常数，且已能求出对应齐次方程的通解"
+      ],
+      "steps": [
+        "先用特征方程法求出对应齐次方程的通解 y_h",
+        "若 f = P_m(x)e^{λx}，设特解 y* = x^k Q_m(x)e^{λx}，Q_m 为与 P_m 同次的待定多项式，k 为 λ 作为特征根的重数",
+        "若 f = e^{λx}(A cos ωx + B sin ωx)，设 y* = x^k e^{λx}(a cos ωx + b sin ωx)，k 取 λ±ωi 为特征根的重数",
+        "把 y* 代入原方程，比较同类项或取特殊值定出待定系数",
+        "写出通解 y = y_h + y*"
+      ],
+      "preconditions": [
+        "方程为二阶常系数线性且右端为上述特殊类型",
+        "对应齐次方程的通解已知"
+      ],
+      "not_applicable": [
+        "右端 f(x) 不是多项式/指数/三角的乘积（如 tan x、1/x、ln x），不能用此定式设特解",
+        "变系数线性方程（系数含 x）",
+        "齐次方程（右端为 0，只需特征方程法）"
+      ],
+      "pitfalls": [
+        "当 λ（或 λ±ωi）恰为特征根时忘记乘因子 x^k，导致代入后无法定系数",
+        "待定多项式次数设错（Q_m 应与 P_m 同次）",
+        "通解漏加齐次通解 y_h，只写了特解",
+        "三角型 f 中只设 cos 或只设 sin，应同时设 cos 与 sin 两项"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.characteristic_equation",
+          "note": "必须先由特征方程法求出齐次通解 y_h，再叠加特解"
+        },
+        {
+          "type": "compose",
+          "target": "M.partial_fraction",
+          "note": "待定系数法也作为有理函数部分分式分解中定系数的子步骤；该法归属 B.indefint，此处仅引用"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "特解形式的设定（尤其'重根乘 x^k'）是核心得分点；求出特解后一定要叠加齐次通解。",
+      "example_problems": [
+        {
+          "statement": "求方程 y'' − 2y' + y = e^x 的通解。",
+          "answer_sketch": "齐次通解 (C₁+C₂x)e^x；因 λ=1 是二重特征根，设 y* = A x² e^x，代入得 A=1/2，通解 = (C₁ + C₂x + ½x²)e^x。",
+          "scenario_id": "S.ode.second_order_nonhomogeneous"
+        },
+        {
+          "statement": "求方程 y'' + y = x² + 1 的通解。",
+          "answer_sketch": "齐次通解 C₁cos x + C₂sin x；设 y* = ax²+bx+c，代入比较系数得 a=1、b=0、c=−1，再叠加齐次通解。",
+          "scenario_id": "S.ode.second_order_nonhomogeneous"
+        },
+        {
+          "statement": "求方程 y'' + y = sin x 的通解。",
+          "answer_sketch": "齐次通解 C₁cos x + C₂sin x；因 ±i 是特征根，设 y* = x(a sin x + b cos x)，代入得特解 −½x cos x，再叠加齐次通解。",
+          "scenario_id": "S.ode.second_order_nonhomogeneous"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    },
+    {
+      "id": "M.eliminate_constants",
+      "name": "消去常数法",
+      "aliases": [
+        "消去任意常数",
+        "由通解反求方程",
+        "eliminate constants",
+        "反求微分方程"
+      ],
+      "one_liner": "对含 n 个独立任意常数的通解反复求导并联立，消去全部常数，得到相应的 n 阶微分方程。",
+      "block_ids": [
+        "B.ode"
+      ],
+      "applies_to_scenarios": [
+        "S.ode.reverse_from_solution"
+      ],
+      "triggers": [
+        "题目给出含一个或多个独立任意常数的通解表达式",
+        "要求'求满足该通解的微分方程'或'求相应方程'",
+        "通解中任意常数的个数等于所求方程的阶数",
+        "通解是显式 y = f(x,C₁,…,Cn) 形式"
+      ],
+      "steps": [
+        "数出通解中独立任意常数的个数 n，确定所求方程阶数为 n",
+        "对通解连续求导 n 次，得到 n+1 个含常数的关系式",
+        "从这 n+1 个式子中消去 n 个常数，得到只含 x、y 及其导数的方程",
+        "整理成标准形式，必要时验证原通解确实满足所得方程"
+      ],
+      "preconditions": [
+        "通解含有限个独立任意常数，且 y 关于 x 充分可导"
+      ],
+      "not_applicable": [
+        "题目给的是含任意函数的偏微分方程型通解（超出常微分方程范围）",
+        "正向求解题（给方程求通解，属其他情景）",
+        "通解中常数个数无法确定或常数之间不独立"
+      ],
+      "pitfalls": [
+        "常数个数与方程阶数对不上（求导次数取错）",
+        "消元时把只含一个常数的式子误当成已不含常数，漏消一个常数",
+        "隐式通解未先化为可求导形式",
+        "求导后未回代消去常数，直接把含 C 的方程当作结果"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.characteristic_equation",
+          "note": "若通解为 e^{λx}、e^{αx}cos βx 型线性组合，可先读特征根、反推特征方程，是常用的快捷路径"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "'常数的个数 = 方程阶数'是判断求导次数的依据；给出的通解常与齐次方程的特征根相对应。",
+      "example_problems": [
+        {
+          "statement": "已知通解 y = C₁e^x + C₂e^{2x}，求其所满足的微分方程。",
+          "answer_sketch": "对通解求导两次得三个关系式，消去 C₁、C₂，得 y'' − 3y' + 2y = 0。",
+          "scenario_id": "S.ode.reverse_from_solution"
+        },
+        {
+          "statement": "已知通解 y = Cx + C²，求相应的微分方程。",
+          "answer_sketch": "由 y' = C 消去 C，得 y = x y' + (y')²（克莱罗型方程）。",
+          "scenario_id": "S.ode.reverse_from_solution"
+        },
+        {
+          "statement": "已知通解 y = C₁ sin x + C₂ cos x，求相应的微分方程。",
+          "answer_sketch": "两次求导后消去 C₁、C₂，得 y'' + y = 0。",
+          "scenario_id": "S.ode.reverse_from_solution"
+        }
+      ],
+      "origin_block_ids": [
+        "B.ode"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "block_id": "B.ode",
+  "scenarios": [
+    {
+      "id": "S.ode.separable",
+      "block_id": "B.ode",
+      "name": "可分离变量方程",
+      "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+      "signals": [
+        "是一阶方程，dy/dx 的右端能分解为'只含 x 的函数'与'只含 y 的函数'之乘积",
+        "方程可写成 M(x)N(y)dx + P(x)Q(y)dy = 0 的形式",
+        "能把方程整理成 g(y)dy = f(x)dx，变量分居等号两侧",
+        "右端虽含 y，但不以 y/x 整体出现，也不是关于 y 的线性或伯努利结构"
+      ],
+      "recognition_examples": [
+        "dy/dx = x² y（右端 = x²·y，可直接分离）",
+        "dy/dx = e^{x−y}（化为 e^y dy = e^x dx）",
+        "(1+y²)dx − x(1+x²)y dy = 0"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.homogeneous_first_order",
+          "how": "若右端只能写成 y/x 的整体函数（如 (x+y)/x），须先换元 u=y/x，属齐次方程；能直接拆成 x 的函数乘 y 的函数才是可分离变量"
+        },
+        {
+          "scenario_id": "S.ode.linear_first_order",
+          "how": "若方程是关于 y 与其一阶导数的一次式（形如 y'+P(x)y=Q(x)），属一阶线性方程，用常数变易法而非直接分离"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.separation_of_variables",
+          "priority": 1,
+          "when_to_prefer": "只要 dy/dx 右端能拆成'x 的函数×y 的函数'、或方程能整理成 g(y)dy=f(x)dx，就直接分离积分，是最短路径"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.homogeneous_first_order",
+      "block_id": "B.ode",
+      "name": "一阶齐次方程",
+      "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+      "signals": [
+        "一阶方程，dy/dx 右端通分后分子、分母关于 x 与 y 的各项次数相同（零次齐次）",
+        "右端只含 y/x 的组合，如 (x+y)/x、y/x + tan(y/x)",
+        "形如 P(x,y)dx + Q(x,y)dy = 0，其中 P、Q 是同次齐次函数",
+        "把 x、y 同时乘以 t 后方程形式保持不变"
+      ],
+      "recognition_examples": [
+        "dy/dx = (x+y)/x",
+        "x y' = y + √(x²+y²)",
+        "dy/dx = y/x + tan(y/x)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.separable",
+          "how": "能直接拆成 x 的函数与 y 的函数之积（如 x y' = y 也可分离）时属可分离变量；只有右端是 y/x 的整体函数时才用 u=y/x 换元"
+        },
+        {
+          "scenario_id": "S.ode.linear_first_order",
+          "how": "这里的'齐次'指零次齐次结构，与线性方程右端为 0 的'齐次'含义不同；若方程对 y 与其导数是线性式，应归一阶线性方程"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.homogeneous_equation_first_order",
+          "priority": 1,
+          "when_to_prefer": "确认右端是 y/x 的整体函数（或 P、Q 同次齐次）时，直接令 u=y/x 换元，是标准首选"
+        },
+        {
+          "method_id": "M.separation_of_variables",
+          "priority": 2,
+          "when_to_prefer": "换元 u=y/x 后方程已是关于 u、x 的可分离变量方程，实际求解的最后一步靠它完成"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.linear_first_order",
+      "block_id": "B.ode",
+      "name": "一阶线性方程",
+      "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+      "signals": [
+        "一阶方程，且 y 与 y' 都只出现一次（不含 y²、y y'、sin y 等）",
+        "可整理成标准形 y' + P(x)y = Q(x)",
+        "y 与 y' 的系数只含 x（或为常数），不含 y",
+        "含 y 的项与含 y' 的项线性相加，右端为只含 x 的函数"
+      ],
+      "recognition_examples": [
+        "y' + 2x y = x",
+        "y' − y/x = x²（x>0）",
+        "x y' + y = e^x（可化为 y' + y/x = e^x/x）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.separable",
+          "how": "当 Q(x)≡0（齐次线性）时方程也可分离变量；一般非齐次线性方程须用常数变易法"
+        },
+        {
+          "scenario_id": "S.ode.bernoulli",
+          "how": "若右端含 y 的非一次幂（y^n，n≠0、1）则为伯努利方程，需先换元线化再按线性方程处理"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.constant_variation",
+          "priority": 1,
+          "when_to_prefer": "右端 Q(x)≠0（非齐次）时，先解齐次再常数变易得通解，是对付一阶线性方程的通法"
+        },
+        {
+          "method_id": "M.separation_of_variables",
+          "priority": 2,
+          "when_to_prefer": "当 Q(x)≡0（即齐次线性方程 y'+P(x)y=0）时，方程本身可分离变量，直接用分离变量更快"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.bernoulli",
+      "block_id": "B.ode",
+      "name": "伯努利方程",
+      "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+      "signals": [
+        "一阶方程，形如 y' + P(x)y = Q(x)y^α",
+        "右端含 y 的非一次幂（y²、y³、√y 等），即 y 的指数 α≠0、α≠1",
+        "方程关于 y 不是线性（含 y 的高次项，或出现 y^n 与 y 相加）",
+        "把两边除以 y^n 后能凑出 z=y^{1−n} 的线性结构"
+      ],
+      "recognition_examples": [
+        "y' + y/x = x y²（n=2）",
+        "y' − y = x y³（n=3）",
+        "y' + (1/x)y = x √y（n=1/2）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.linear_first_order",
+          "how": "右端 y 的幂为 0 或 1 时退化为线性方程，归一阶线性；只有 n≠0、1 才是伯努利方程"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.bernoulli_substitution",
+          "priority": 1,
+          "when_to_prefer": "确认是 y'+P(x)y=Q(x)y^n 且 n≠0、1 时，先令 z=y^{1−n} 线化，是必经步骤"
+        },
+        {
+          "method_id": "M.constant_variation",
+          "priority": 2,
+          "when_to_prefer": "换元得到关于 z 的一阶线性方程后，用常数变易法解出 z(x)，再回代求 y"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.reducible_higher_order",
+      "block_id": "B.ode",
+      "name": "可降阶的高阶方程",
+      "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+      "signals": [
+        "是二阶或更高阶的方程",
+        "右端只含自变量 x（y''=f(x) 型）",
+        "方程中不显含 y（F(x,y',y'')=0，'缺 y' 型）",
+        "方程中不显含 x（F(y,y',y'')=0，'缺 x' 型）",
+        "可通过令 p=y'（并把 y'' 表成 p 的表达式）使阶数下降"
+      ],
+      "recognition_examples": [
+        "y'' = x + e^x（只含 x，逐次积分）",
+        "y'' = y' + x（缺 y，令 p=y'）",
+        "y y'' = (y')²（缺 x，令 p=y' 且 y''=p dp/dy）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.second_order_homogeneous",
+          "how": "若方程同时显含 y、y'、y'' 且系数为常数（y''+py'+qy=0），属常系数齐次方程，用特征方程法而非降阶"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.reduction_of_order",
+          "priority": 1,
+          "when_to_prefer": "只要判定为缺 y 或缺 x（或右端只含 x），就按对应代换降阶求解，是唯一直接路径"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.second_order_homogeneous",
+      "block_id": "B.ode",
+      "name": "二阶常系数齐次线性方程",
+      "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+      "signals": [
+        "二阶方程，右端为 0（齐次）",
+        "只含 y''、y'、y 的一次项，且系数 p、q 为常数",
+        "y 及其各阶导数线性相加，无乘积项、无含 x 的系数",
+        "可写出常系数代数特征方程 r²+pr+q=0"
+      ],
+      "recognition_examples": [
+        "y'' − 3y' + 2y = 0（两相异实根）",
+        "y'' + 4y' + 4y = 0（重根）",
+        "y'' + 2y' + 5y = 0（共轭复根）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.second_order_nonhomogeneous",
+          "how": "右端不为 0（f(x)≠0）的是非齐次方程，须在齐次通解上叠加特解"
+        },
+        {
+          "scenario_id": "S.ode.reducible_higher_order",
+          "how": "若方程缺 y 项（q=0，形如 y''+py'=0）可用降阶法更快；一般齐次方程统一用特征方程法"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.characteristic_equation",
+          "priority": 1,
+          "when_to_prefer": "常系数齐次方程首选，写出特征方程按实根/重根/复根三种情形直接写通解"
+        },
+        {
+          "method_id": "M.reduction_of_order",
+          "priority": 2,
+          "when_to_prefer": "当方程不含 y 项（q=0，形如 y''+py'=0）时属缺 y 型，令 p=y' 降阶为一阶线性方程更快"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.second_order_nonhomogeneous",
+      "block_id": "B.ode",
+      "name": "二阶常系数非齐次线性方程",
+      "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+      "signals": [
+        "二阶常系数线性方程，右端 f(x)≠0",
+        "f(x) 形如多项式 P_m(x)、指数 e^{λx}，或它们的乘积 P_m(x)e^{λx}",
+        "f(x) 形如 e^{λx}(A cos ωx + B sin ωx)（指数乘三角）",
+        "系数为常数，左端是 y''、y'、y 的线性组合"
+      ],
+      "recognition_examples": [
+        "y'' − 2y' + y = e^x",
+        "y'' + y = x² + 1",
+        "y'' + y = sin x"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.second_order_homogeneous",
+          "how": "右端为 0 的是齐次方程；本题右端 f(x)≠0，须在齐次通解基础上叠加一个特解"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.undetermined_coefficients",
+          "priority": 1,
+          "when_to_prefer": "f(x) 为多项式、指数、三角及其乘积（上述两类标准型）时，按类型设特解形式并定系数，是通法"
+        },
+        {
+          "method_id": "M.characteristic_equation",
+          "priority": 2,
+          "when_to_prefer": "求解前必须先对左端的齐次方程写出特征方程、算出齐次通解 y_h，再与特解叠加"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.reverse_from_solution",
+      "block_id": "B.ode",
+      "name": "已知通解反求方程",
+      "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+      "signals": [
+        "题目给出的是通解（含 1 个或多个任意常数 C）",
+        "题干要求'求满足此通解的微分方程'或'求相应的方程'",
+        "任意常数的个数等于所求方程的阶数",
+        "通解为显式 y=f(x,C₁,…,Cn) 的形式"
+      ],
+      "recognition_examples": [
+        "已知通解 y = C₁e^x + C₂e^{2x}，求其所满足的微分方程",
+        "已知通解 y = Cx + C²，求相应的微分方程",
+        "已知通解 y = C₁ sin x + C₂ cos x，求相应的微分方程"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.separable",
+          "how": "本题给的是'解'而非'方程'，方向相反——是由解推方程，而不是由方程求解"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.eliminate_constants",
+          "priority": 1,
+          "when_to_prefer": "通解已显式给出、只需消去任意常数时，按'常数个数=阶数'连续求导消元，是通用做法"
+        },
+        {
+          "method_id": "M.characteristic_equation",
+          "priority": 2,
+          "when_to_prefer": "若通解由 e^{λx}、e^{αx}cos βx 等线性组合构成，可先读特征根、反推特征方程，快速写出对应齐次方程"
+        }
+      ]
+    },
+    {
+      "id": "S.ode.modeling",
+      "block_id": "B.ode",
+      "name": "微分方程建模应用（几何/物理）",
+      "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+      "signals": [
+        "题目是几何或物理背景的文字应用题",
+        "条件以'变化率与当前量成正比/相关'等形式给出（体现 y 与 y' 的关系）",
+        "涉及曲线的切线、法线、面积、弧长等几何量的描述",
+        "需先把文字条件翻译成微分方程（含初值条件），再选择解法求解"
+      ],
+      "recognition_examples": [
+        "曲线上任一点处切线斜率为该点横坐标的 2 倍且曲线过原点，求曲线方程",
+        "物体冷却速率与它和周围介质的温差成正比，由初始温度求温度随时间的变化",
+        "放射性物质衰变速率与现存质量成正比，求质量随时间的变化"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.ode.separable",
+          "how": "本情景的重点是'由实际条件建立方程'；方程建立后往往归结为可分离变量或一阶线性等具体情景再求解"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.separation_of_variables",
+          "priority": 1,
+          "when_to_prefer": "建模所得方程多为 dy/dt=f(t)g(y)（如衰变、冷却的齐次型），直接分离变量积分后代入初值"
+        },
+        {
+          "method_id": "M.constant_variation",
+          "priority": 2,
+          "when_to_prefer": "当模型含常数项或外源项（如牛顿冷却 dT/dt=−k(T−T_a)），方程是一阶线性非齐次，用常数变易法"
+        },
+        {
+          "method_id": "M.zero_point_theorem",
+          "priority": 3,
+          "when_to_prefer": "求出解函数后若还要求判定其零点/交点存在性（如证明曲线与某直线在区间内相交），用零点存在定理作存在性论证；该法归属 B.mvt，此处仅引用"
+        }
+      ]
+    }
+  ]
+}

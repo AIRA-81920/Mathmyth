@@ -1,0 +1,702 @@
+{
+  "block_id": "B.limit",
+  "scenarios": [
+    {
+      "id": "S.limit.0over0",
+      "block_id": "B.limit",
+      "name": "0/0 型未定式",
+      "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+      "signals": [
+        "待求极限是分式，或可整理成分式（如乘积中出现倒因子）",
+        "把趋近值直接代入后，分子与分母同时得 0",
+        "不能由常数之比直接得出确定值",
+        "式子中常出现 sin、tan、ln(1+x)、e^x−1、arcsin、根式差等标准无穷小结构"
+      ],
+      "recognition_examples": [
+        "lim_{x→0} (sin x)/x",
+        "lim_{x→0} (e^x − 1 − x)/x²",
+        "lim_{x→1} (ln x)/(x − 1)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.inf_over_inf",
+          "how": "代入后是 ∞/∞ 而非 0/0；两者的首选方法不同（0/0 先试等价替换，∞/∞ 先试抓大头）"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 1,
+          "when_to_prefer": "分子分母由 sin、tan、ln(1+x)、e^x−1、arcsin、根式差等标准无穷小以乘除方式构成时首选，可一步化简；注意不可在加减结构中直接替换整个加项"
+        },
+        {
+          "method_id": "M.factor_cancel",
+          "priority": 2,
+          "when_to_prefer": "分子分母都是多项式且能因式分解出 (x−a) 之类的公共零因子时，先约分直接消零，比求导更快"
+        },
+        {
+          "method_id": "M.rationalization",
+          "priority": 3,
+          "when_to_prefer": "出现根式差（√A − √B）且无法直接用标准等价替换时，先有理化，把差化为商"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 4,
+          "when_to_prefer": "等价替换与因式约分都不适用（含参、复合结构、加减结构），或替换后仍为 0/0 时使用"
+        },
+        {
+          "method_id": "M.taylor_expansion",
+          "priority": 5,
+          "when_to_prefer": "等价替换因加减结构失效、洛必达求导后反而更复杂，或需要精确到高阶项（分子分母需同阶抵消）时的万能兜底"
+        },
+        {
+          "method_id": "M.derivative_definition",
+          "priority": 6,
+          "when_to_prefer": "式子形如 [f(x)−f(a)]/(x−a) 或含抽象函数 f 的增量比、无法用初等等价替换时，回到导数定义处理"
+        },
+        {
+          "method_id": "M.important_limit",
+          "priority": 7,
+          "when_to_prefer": "能恒等整理为 sin(u)/u 且 u→0 时，用第一个重要极限；如 sin(3x)/x=3·sin(3x)/(3x)，须同步保留外面的常数因子"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.inf_over_inf",
+      "block_id": "B.limit",
+      "name": "∞/∞ 型未定式",
+      "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+      "signals": [
+        "极限过程为 x→∞ 或 n→∞，或分母趋近于 0 使整体趋于 ∞",
+        "代入后分子、分母同时为 ∞",
+        "分子分母通常是幂函数、指数函数、对数函数的组合",
+        "同时出现 e^x、x^n、ln x 等增长快慢不同的项（需比较主导项）"
+      ],
+      "recognition_examples": [
+        "lim_{x→∞} (3x³ − 2x + 1)/(2x³ + x²)",
+        "lim_{x→∞} (e^x + x)/(e^x − x)",
+        "lim_{x→∞} (ln x)/x"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.0over0",
+          "how": "触发信号相反：一个是 0/0，一个是 ∞/∞"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.divide_highest_power",
+          "priority": 1,
+          "when_to_prefer": "分子分母为幂函数（或可整理为幂函数）时，同除最高次幂一步定胜负，是 ∞/∞ 的首选"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 2,
+          "when_to_prefer": "含 e^x、ln x 等与幂函数混合、单纯比较次数不好用时，改用洛必达逐次降阶"
+        },
+        {
+          "method_id": "M.factor_cancel",
+          "priority": 3,
+          "when_to_prefer": "分子分母为有理式且能先约去公共因式（如通分后）以降低次数时使用"
+        },
+        {
+          "method_id": "M.finite_limit_constraint",
+          "priority": 4,
+          "when_to_prefer": "反求参数且整体目标有限时，先合并主项再约束不能被余项抵消的发散系数。"
+        },
+        {
+          "method_id": "M.squeeze_theorem",
+          "priority": 5,
+          "when_to_prefer": "同除主幂后若出现趋零因子与有界振荡因子的乘积，用统一绝对值界证明趋零。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.zero_times_inf",
+      "block_id": "B.limit",
+      "name": "0·∞ 型未定式",
+      "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+      "signals": [
+        "极限是若干因式的乘积",
+        "代入后一个因子趋于 0，另一个因子趋于 ∞",
+        "常见形如 (x→0 的无穷小) 乘以 1/x、cot x、ln x 等无穷大",
+        "结构可改写成 0/0 或 ∞/∞ 的分式"
+      ],
+      "recognition_examples": [
+        "lim_{x→0⁺} x·ln x",
+        "lim_{x→0} x·cot x",
+        "lim_{x→∞} x·sin(1/x)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.inf_minus_inf",
+          "how": "0·∞ 是乘积结构，∞−∞ 是差结构；前者化为商式、后者需通分或有理化"
+        },
+        {
+          "scenario_id": "S.limit.0over0",
+          "how": "两者都可能化为 0/0，但 0·∞ 的原始形态是乘积而非分式"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 1,
+          "when_to_prefer": "其中一个因子本身可等价替换为简单无穷小（如 sin x、ln(1+x)）时，先替换再化商，往往可直接消去"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 2,
+          "when_to_prefer": "把无穷大因子写成倒数的分母、化为 0/0 或 ∞/∞ 后，用洛必达求导（如 x·ln x 型）"
+        },
+        {
+          "method_id": "M.divide_highest_power",
+          "priority": 3,
+          "when_to_prefer": "化为商式后分子分母都是幂函数（或增长阶可比较）时，直接抓主导项，免去求导"
+        },
+        {
+          "method_id": "M.taylor_expansion",
+          "priority": 4,
+          "when_to_prefer": "化为分式后仍不好求、或需要精确保留高阶项时的兜底"
+        },
+        {
+          "method_id": "M.rewrite_as_fraction",
+          "priority": 5,
+          "when_to_prefer": "去心邻域内被取倒数的因子非零时改写成商，再检验未定式。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.inf_minus_inf",
+      "block_id": "B.limit",
+      "name": "∞−∞ 型未定式",
+      "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+      "signals": [
+        "极限是两项或多项之差",
+        "代入后各项都趋于 ∞，无法直接判断结果",
+        "常见类型：根式差（√ 减 √）、有理分式差、对数差（ln A − ln B）",
+        "可通过有理化、通分或提取公因式转化为商式"
+      ],
+      "recognition_examples": [
+        "lim_{x→+∞} (√(x²+x) − x)",
+        "lim_{x→1} (1/(x−1) − 1/ln x)",
+        "lim_{x→+∞} (ln(x+1) − ln x)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.zero_times_inf",
+          "how": "∞−∞ 是差结构，0·∞ 是乘积结构；前者先通分/有理化，后者先化商"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.rationalization",
+          "priority": 1,
+          "when_to_prefer": "出现根式差 √A − √B 时，先乘共轭有理化，把差化为商后直接求极限"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 2,
+          "when_to_prefer": "对数差可先合并为 ln(A/B)，再对 A/B 中的无穷小用等价替换（如 ln(1+u)~u）"
+        },
+        {
+          "method_id": "M.factor_cancel",
+          "priority": 3,
+          "when_to_prefer": "两个有理分式之差，先通分合并为一个分式，再看能否因式分解约分"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 4,
+          "when_to_prefer": "通分或有理化后化为 0/0、∞/∞，且不能直接约分时，用洛必达求导"
+        },
+        {
+          "method_id": "M.finite_limit_constraint",
+          "priority": 5,
+          "when_to_prefer": "反求参数且整体目标有限时，先合并主项再约束不能被余项抵消的发散系数。"
+        },
+        {
+          "method_id": "M.divide_highest_power",
+          "priority": 6,
+          "when_to_prefer": "先比较同阶增长项；只能决定主项时还要继续求相消后的余项。"
+        },
+        {
+          "method_id": "M.taylor_expansion",
+          "priority": 7,
+          "when_to_prefer": "换到展开点并证明余项阶数足够后，保留相消后决定结果的项。"
+        },
+        {
+          "method_id": "M.polynomial_division",
+          "priority": 8,
+          "when_to_prefer": "差中含假有理分式时，先拆出整式增长项和真分式余项。"
+        },
+        {
+          "method_id": "M.combine_fractions",
+          "priority": 9,
+          "when_to_prefer": "分式作差时完整通分，再重新判断商的类型。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.one_to_inf",
+      "block_id": "B.limit",
+      "name": "1^∞ 型未定式",
+      "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+      "signals": [
+        "式子是幂指结构 u(x)^{v(x)}",
+        "底数 u(x)→1，指数 v(x)→±∞",
+        "常见形如 (1 + 无穷小)^{无穷大}",
+        "直接代入得 1^∞，无法确定结果"
+      ],
+      "recognition_examples": [
+        "lim_{x→0} (1 + x)^{1/x}",
+        "lim_{x→∞} (1 + 2/x)^{3x}",
+        "lim_{x→0} (cos x)^{1/x²}"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.power_indeterminate",
+          "how": "底数极限不同：1^∞ 中底数→1，而 0^0/∞^0 中底数→0 或 →∞；两者都用取对数，但化成后的未定式类型不同"
+        },
+        {
+          "scenario_id": "S.limit.inf_over_inf",
+          "how": "1^∞ 取对数后常化为 0/0 或 ∞/∞ 的分式处理，可借用 ∞/∞ 的方法"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.log_transform",
+          "priority": 1,
+          "when_to_prefer": "把幂指式取对数化为 v(x)·ln u(x) 的乘积型，是 1^∞ 最通用的路子；随后对 ln u(x) 作等价替换"
+        },
+        {
+          "method_id": "M.important_limit",
+          "priority": 2,
+          "when_to_prefer": "能配方成 (1 + 1/t)^t 的标准形式（如 (1 + k/x)^{mx}）时，直接用第二个重要极限得 e^{km}"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 3,
+          "when_to_prefer": "取对数后 ln u = ln(1 + (u−1)) ~ u−1，把极限化成 lim v(x)·(u(x)−1)，再用等价替换快速求"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 4,
+          "when_to_prefer": "取对数后化为 0/0 或 ∞/∞ 的分式，且不能再用等价替换化简时使用"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.power_indeterminate",
+      "block_id": "B.limit",
+      "name": "0^0 / ∞^0 型未定式",
+      "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+      "signals": [
+        "式子是幂指结构 u(x)^{v(x)}",
+        "底数与指数同时趋于 0（0^0），或底数趋于 ∞、指数趋于 0（∞^0）",
+        "直接代入得不到确定值",
+        "常见形如 x^x、x^{1/x}、n^{1/n}"
+      ],
+      "recognition_examples": [
+        "lim_{x→0⁺} x^x",
+        "lim_{x→+∞} x^{1/x}",
+        "lim_{n→∞} n^{1/n}"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.one_to_inf",
+          "how": "底数极限不同：此处底数趋于 0 或 ∞，而 1^∞ 中底数趋于 1"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.log_transform",
+          "priority": 1,
+          "when_to_prefer": "幂指型无论 0^0 还是 ∞^0，先取对数把指数变成因子，是最标准的入口"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 2,
+          "when_to_prefer": "取对数后得到 0·∞ 或化为 ∞/∞ 的分式（如把 v·ln u 写成 ln u /(1/v)），用洛必达逐次化简"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 3,
+          "when_to_prefer": "取对数后含 ln(1+u) 等结构时，用等价替换直接化简（如 ln u ~ u−1）"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.recurrence_sequence",
+      "block_id": "B.limit",
+      "name": "数列递推式极限",
+      "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+      "signals": [
+        "数列由相邻项之间的递推公式给出，而非显式通项",
+        "只要求（或只能求）极限值，不要求通项公式",
+        "常需先论证数列收敛（单调、有界）才能求极限",
+        "递推式中含根号、分式等使直接计算困难"
+      ],
+      "recognition_examples": [
+        "x_1=1，x_{n+1}=√(2 + x_n)，求 lim_{n→∞} x_n",
+        "x_1=0，x_{n+1}=(x_n + 3)/2，求 lim_{n→∞} x_n",
+        "证明由递推式定义的数列收敛并求其极限"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.n_term_sum",
+          "how": "此处是相邻项之间的递推关系，后者是通项为 n 项和或 n 项积的数列"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.monotone_bounded",
+          "priority": 1,
+          "when_to_prefer": "递推式能判断出数列单调且有界（常用归纳法或作差 x_{n+1}−x_n 看符号）时的首选：先证收敛，再设极限 A 代入递推式解方程"
+        },
+        {
+          "method_id": "M.squeeze_theorem",
+          "priority": 2,
+          "when_to_prefer": "难以直接证明单调，但能把 x_n 夹在两个极限相同的数列之间时使用"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 3,
+          "when_to_prefer": "需要放缩来证明数列有界或单调（如证 x_n < 2、x_{n+1} > x_n）时，配合单调有界准则使用"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.n_term_sum",
+      "block_id": "B.limit",
+      "name": "和式与连乘的数列极限",
+      "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+      "signals": [
+        "项数随 n 增加的和式或连乘，需要控制整体而非只看单项",
+        "固定几项 a^n、b^n 等相加后开 n 次根，要先比较最大底数",
+        "连乘中指数倍增、角度减半或下标错位时，先找有限项恒等式",
+        "和式出现 k/n 与网格宽度时可考虑黎曼和；因子为 1 加小量时先核对对数与累计误差"
+      ],
+      "recognition_examples": [
+        "$\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\frac{k}{n^2+k}$",
+        "$\\lim_{n\\to\\infty}\\prod_{k=1}^{n}\\cos(2^{-k})$",
+        "$\\lim_{n\\to\\infty}(a^n+b^n+c^n)^{1/n}$，$0\\le a<b<c$"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.recurrence_sequence",
+          "how": "本情景从显式和式、乘积或幂和根式出发；递推情景则由相邻项关系定义数列。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.squeeze_theorem",
+          "priority": 1,
+          "when_to_prefer": "能对和式（或连乘式）整体作统一放缩，使两端趋于同一值时的首选"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 2,
+          "when_to_prefer": "需要构造夹逼的上下界（如把分母统一放大或缩小）时，先放缩再夹逼"
+        },
+        {
+          "method_id": "M.log_transform",
+          "priority": 3,
+          "when_to_prefer": "通项是若干因子连乘时，先取对数把乘积化为和，再用夹逼或其他方法处理"
+        },
+        {
+          "method_id": "M.product_telescoping",
+          "priority": 4,
+          "when_to_prefer": "连乘有相邻恒等式时先对有限项相消，再计算首尾极限。"
+        },
+        {
+          "method_id": "M.riemann_sum_limit",
+          "priority": 5,
+          "when_to_prefer": "能确实写成带网格宽度的黎曼和，并满足所用可积性条件时，转为定积分。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.infinitesimal_order",
+      "block_id": "B.limit",
+      "name": "无穷小阶的比较",
+      "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+      "signals": [
+        "题目问“是 x 的几阶无穷小”或“哪一个是高阶无穷小”",
+        "出现两个趋于 0 的量，要求比较它们趋于 0 的快慢",
+        "常以比值极限 lim α/β 的形式出现",
+        "等价无穷小替换表是核心工具"
+      ],
+      "recognition_examples": [
+        "当 x→0 时，判断 1 − cos x 是 x 的几阶无穷小",
+        "当 x→0 时，比较 ln(1+x) 与 sin x 的阶（是否等价）",
+        "求 a 使 tan x − sin x 与 x^a 是同阶无穷小"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.0over0",
+          "how": "本质仍要算 0/0 的比值极限，但提问目标是比较无穷小的阶，而非单纯求值"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 1,
+          "when_to_prefer": "待比较的两个无穷小都有标准等价形式时，直接替换后看比值是常数还是 0/∞，即可定阶"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 2,
+          "when_to_prefer": "不是标准无穷小（含参数或复合结构）、无法直接等价替换时，对比值 lim α/β 用洛必达"
+        },
+        {
+          "method_id": "M.taylor_expansion",
+          "priority": 3,
+          "when_to_prefer": "需要确定具体阶数（存在高阶抵消）时，把函数展开到足够阶再比较最低次项"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.parametric_limit",
+      "block_id": "B.limit",
+      "name": "含参数极限（分类讨论）",
+      "definition": "极限式中含待定参数，结果随参数取值不同而改变，需分类讨论。",
+      "signals": [
+        "式子中含有字母参数（如 a、k、λ）",
+        "参数出现在幂、指数、底数或极限式中",
+        "不同参数取值会使极限存在/不存在或取不同值",
+        "常要求“求参数使极限存在”或“讨论极限随参数的变化”"
+      ],
+      "recognition_examples": [
+        "讨论 lim_{n→∞} a^n/(1 + a^n)（a>0）",
+        "已知 lim_{x→∞} ((x + a)/(x − a))^x = 4，求 a",
+        "讨论 lim_{x→0} (a^x − 1)/x 随参数 a 的取值"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.inf_over_inf",
+          "how": "若参数使式子成为幂函数之商且无需按取值讨论，则属 ∞/∞；此处关键在按参数取值分类"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.divide_highest_power",
+          "priority": 1,
+          "when_to_prefer": "参数出现在幂中（如 a^n）时，按 a 与 1 的大小关系同除主导项，分段得出结论"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 2,
+          "when_to_prefer": "参数与自变量分离、可归结为对某个标准无穷小（如 a^x−1 ~ x·ln a）作替换时使用"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 3,
+          "when_to_prefer": "化为 0/0 或 ∞/∞ 后参数不阻碍求导时（如 (a^x − 1)/x）用洛必达"
+        },
+        {
+          "method_id": "M.factor_cancel",
+          "priority": 4,
+          "when_to_prefer": "含参有理式在代入时成为 0/0、可按参数分解出公共零因子时，先约分消零"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.piecewise_continuity",
+      "block_id": "B.limit",
+      "name": "分段函数分界点极限与连续性",
+      "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+      "signals": [
+        "函数由分段表达式给出",
+        "在分界点两侧表达式不同，需分别求左极限与右极限",
+        "题目问分界点处极限是否存在、或求参数使函数连续",
+        "常与绝对值、取整函数、含 e^{1/x} 等结构一起出现"
+      ],
+      "recognition_examples": [
+        "设 f(x)=x+1 (x<0)，f(x)=x²+a (x≥0)，求 a 使 f 在 x=0 连续",
+        "讨论 f(x)=|x|/x 在 x=0 处的极限与连续性",
+        "设 f(x)=x·sin(1/x) (x≠0)，f(0)=0，判断在 x=0 是否连续"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.discontinuity_classification",
+          "how": "此处重点在分界点的极限与连续判定，后者进一步对间断点分类"
+        },
+        {
+          "scenario_id": "S.deriv.piecewise_differentiability",
+          "how": "连续性用左右极限判定，可导性需进一步用导数定义判定，属导数板块"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.one_sided_limit",
+          "priority": 1,
+          "when_to_prefer": "分界点两侧表达式不同（或含绝对值/取整）时的必选：分别求左、右极限再比较"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 2,
+          "when_to_prefer": "单侧极限为 0/0 且含标准无穷小结构时，用等价替换化简各侧极限"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 3,
+          "when_to_prefer": "单侧极限为 0/0、∞/∞ 且无法等价替换时，对该侧的商式用洛必达"
+        },
+        {
+          "method_id": "M.important_limit",
+          "priority": 4,
+          "when_to_prefer": "分界点附近出现 sin x/x、(1+u)^{1/u} 等标准结构时，直接用两个重要极限求该侧极限"
+        },
+        {
+          "method_id": "M.counterexample_sequences",
+          "priority": 5,
+          "when_to_prefer": "怀疑极限不存在时，构造两条定义域内的趋近数列；只用于证否。"
+        },
+        {
+          "method_id": "M.continuity_rules",
+          "priority": 6,
+          "when_to_prefer": "在分支内部核对定义域，用连续函数的运算与复合性质证明连续。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.discontinuity_classification",
+      "block_id": "B.limit",
+      "name": "间断点判别与分类",
+      "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+      "signals": [
+        "题目要求找出全部间断点并分类",
+        "函数在个别点无定义，或是分段、含绝对值、取整函数",
+        "需分别考察左右极限是否存在、是否相等、是否等于函数值",
+        "答案要写成“第一类/第二类间断点”",
+        "常见含 e^{1/x}、tan x、1/(x−a) 等结构"
+      ],
+      "recognition_examples": [
+        "求 f(x)=(sin x)/x 在 x=0 处的间断点类型",
+        "求 f(x)=e^{1/x} 在 x=0 处的间断点类型",
+        "求 f(x)=x/(x²−1) 的全部间断点并分类"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.piecewise_continuity",
+          "how": "此处先定位间断点再分类，后者只需判定分界点是否连续"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.one_sided_limit",
+          "priority": 1,
+          "when_to_prefer": "判定间断点类型的直接手段：求左右极限，据此区分可去、跳跃、无穷、振荡"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 2,
+          "when_to_prefer": "某侧极限为 0/0 且含标准无穷小结构时，用等价替换求该侧极限"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 3,
+          "when_to_prefer": "某侧极限为 0/0 或 ∞/∞ 且不能用等价替换时，用洛必达"
+        },
+        {
+          "method_id": "M.important_limit",
+          "priority": 4,
+          "when_to_prefer": "间断点附近出现 sin x/x 等标准结构时，直接用两个重要极限求极限"
+        },
+        {
+          "method_id": "M.counterexample_sequences",
+          "priority": 5,
+          "when_to_prefer": "怀疑极限不存在时，构造两条定义域内的趋近数列；只用于证否。"
+        },
+        {
+          "method_id": "M.continuity_rules",
+          "priority": 6,
+          "when_to_prefer": "在分支内部核对定义域，用连续函数的运算与复合性质证明连续。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.function_sequence_limit",
+      "block_id": "B.limit",
+      "name": "函数列的点态极限",
+      "definition": "表达式同时含x和n；先固定x求n的极限，得到随x变化的新函数。",
+      "signals": [
+        "题目用n趋于无穷的极限定义f(x)",
+        "不同x的范围可能给出不同极限"
+      ],
+      "recognition_examples": [
+        "f(x)=lim_{n→∞} x(1-x^{2n})/(1+x^{2n})"
+      ],
+      "distinguish_from": [],
+      "methods": [
+        {
+          "method_id": "M.pointwise_limit",
+          "priority": 1,
+          "when_to_prefer": "先按|x|与1的关系分支，边界点单独计算。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.bounded_times_zero",
+      "block_id": "B.limit",
+      "name": "有界量乘无穷小",
+      "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+      "signals": [
+        "出现振荡的sin、cos因子",
+        "另一因子趋于零且能给出绝对值上界"
+      ],
+      "recognition_examples": [
+        "lim_{x→∞} sin x/x"
+      ],
+      "distinguish_from": [],
+      "methods": [
+        {
+          "method_id": "M.squeeze_theorem",
+          "priority": 1,
+          "when_to_prefer": "先给出振荡因子的统一上界，再由趋零因子夹住乘积。"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 2,
+          "when_to_prefer": "用绝对值不等式构造与振荡无关的上界。"
+        }
+      ]
+    },
+    {
+      "id": "S.limit.growth_balance",
+      "block_id": "B.limit",
+      "name": "无穷远增长项的相消",
+      "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+      "signals": [
+        "根式、有理式与一次式作差",
+        "相同增长阶可能抵消",
+        "给定整体有限极限，反求系数"
+      ],
+      "recognition_examples": [
+        "已知sqrt(x²+x+1)−ax−b趋于0，求a和b"
+      ],
+      "distinguish_from": [],
+      "methods": [
+        {
+          "method_id": "M.finite_limit_constraint",
+          "priority": 1,
+          "when_to_prefer": "整体目标有限且余项趋势有依据时，用合并后的增长项约束系数。"
+        },
+        {
+          "method_id": "M.divide_highest_power",
+          "priority": 2,
+          "when_to_prefer": "先缩放比较主项，只确定主项还须继续计算常数差。"
+        },
+        {
+          "method_id": "M.polynomial_division",
+          "priority": 3,
+          "when_to_prefer": "有假有理分式时先拆出整式与真分式。"
+        },
+        {
+          "method_id": "M.combine_fractions",
+          "priority": 4,
+          "when_to_prefer": "分式之差可先通分，参数保留到相消检查之后。"
+        }
+      ]
+    }
+  ]
+}

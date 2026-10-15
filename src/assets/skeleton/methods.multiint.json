@@ -1,0 +1,631 @@
+{
+  "block_id": "B.multiint",
+  "methods": [
+    {
+      "id": "M.polar_transform",
+      "name": "极坐标变换",
+      "aliases": [
+        "极坐标变换",
+        "极坐标代换",
+        "polar coordinate transformation"
+      ],
+      "one_liner": "对二重积分令 x=rcosθ、y=rsinθ，面积元 dσ=r dr dθ，把圆、环、扇形区域上的积分化为关于 r、θ 的累次积分（也可把二元极限化为 r→0 的一元极限）。",
+      "block_ids": [
+        "B.line_surface",
+        "B.multiint",
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.line_surface.green_theorem",
+        "S.multiint.polar",
+        "S.multiint.geometric_application",
+        "S.multivar.binary_limit",
+        "S.multivar.continuity"
+      ],
+      "triggers": [
+        "积分区域为圆盘、圆环、扇形或由圆弧围成，直角坐标下积分限含根式、难以写出",
+        "被积函数含 x²+y²、√(x²+y²) 或为 f(x²+y²) 形式",
+        "区域边界可写成 r=r(θ)",
+        "在二元极限问题中，需把 lim_{(x,y)→(0,0)} f 化为 (x,y)=(rcosθ,rsinθ)、r→0 的一元极限来判断极限是否存在",
+        "判定二元函数在某点是否连续时，用极坐标化归求出该点极限值再与函数值比较"
+      ],
+      "steps": [
+        "判断区域与函数是否适合极坐标（圆/环/扇形，或含 x²+y²）",
+        "令 x=rcosθ、y=rsinθ，并把面积元换成 dσ=r dr dθ（不要漏乘 r）",
+        "确定 θ 的范围（区域的张角）与对每个 θ 的 r 范围（由边界 r=r(θ) 给出）",
+        "化为 ∫∫f(rcosθ,rsinθ)·r dr dθ 的累次积分，内层常靠凑微分完成（如 r dr=½d(r²)）",
+        "二元极限令r→0时，须证明对所有允许θ一致趋于同一值；可用与θ无关且趋零的误差上界。只检查固定θ的射线不够。"
+      ],
+      "preconditions": [
+        "区域可用极坐标 r=r(θ) 方便刻画，或函数含 x²+y² 等对极坐标友好的结构",
+        "二元极限须控制所有允许方向：对θ一致趋近，不能只验证每条固定射线的极限相同。"
+      ],
+      "not_applicable": [
+        "区域为直角边界（矩形、三角形）且被积函数不依赖 x²+y² 时，用极坐标反而更繁",
+        "被积函数在极坐标下更难积分时不宜使用",
+        "二元极限中若沿不同 θ 结果不同，只能判定极限不存在，不能由此得到极限值"
+      ],
+      "pitfalls": [
+        "漏乘面积元中的 r（把面积元写成 dr dθ）",
+        "θ、r 的积分限取错：θ 范围与区域张角不符，内层 r 的上界未取边界曲线",
+        "在二元极限中用极坐标时只取某一条 θ，误当作已验证全部路径",
+        "区域本是直角边界却强行用极坐标，导致积分限复杂",
+        "各条直线的极限相同仍可能沿弯曲路径不同，如x²y/(x⁴+y²)沿射线趋0、沿y=x²趋1/2。"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.first_substitution",
+          "note": "极坐标下内层关于 r 的积分常靠凑微分完成，如 r dr=½d(r²)"
+        },
+        {
+          "type": "alternative",
+          "target": "M.change_order",
+          "note": "区域呈圆/环而直角坐标限难写时选极坐标；若直角坐标描述区域更简单、只是积分次序不佳，则用交换积分次序"
+        },
+        {
+          "type": "compose",
+          "target": "M.path_approach",
+          "note": "二元极限判定中，路径法用于否定极限存在、极坐标化归用于肯定极限存在，二者配合"
+        },
+        {
+          "type": "compose",
+          "target": "M.squeeze_theorem",
+          "note": "用极坐标得到与 θ 有关的上界后，常借夹逼准则证明极限存在"
+        },
+        {
+          "type": "compose",
+          "target": "M.symmetry",
+          "note": "极坐标下若区域与函数仍有对称性，可先用对称性化简再积分"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "二重积分极坐标化的关键是 θ、r 的定限与面积元 r dr dθ，圆/环区域几乎必用；此外极坐标化归也是判断二元极限存在与否的标准工具（跨到多元函数微分板块使用）。",
+      "example_problems": [
+        {
+          "statement": "计算 ∬_D (x²+y²)dσ，其中 D 为圆环 1≤x²+y²≤4。",
+          "answer_sketch": "极坐标下 dσ=r dr dθ，得 ∫₀^{2π}dθ∫₁² r²·r dr=2π·(r⁴/4)|₁²=15π/2。",
+          "scenario_id": "S.multiint.polar"
+        },
+        {
+          "statement": "计算 ∬_D e^{x²+y²}dσ，其中 D 为圆盘 x²+y²≤1。",
+          "answer_sketch": "化为 ∫₀^{2π}dθ∫₀¹ e^{r²}r dr=2π·½(e−1)=π(e−1)。",
+          "scenario_id": "S.multiint.polar"
+        },
+        {
+          "statement": "判断 lim_{(x,y)→(0,0)} (x³−y³)/(x²+y²) 是否存在，有则求其值。",
+          "answer_sketch": "令 x=rcosθ、y=rsinθ，函数化为 r(cos³θ−sin³θ)，被 |r(cos³θ−sin³θ)|≤2r→0 夹住、与 θ 无关，故极限为 0。",
+          "scenario_id": "S.multivar.binary_limit"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multiint",
+        "B.multivar",
+        "B.line_surface"
+      ]
+    },
+    {
+      "id": "M.change_order",
+      "name": "交换积分次序",
+      "aliases": [
+        "交换积分次序",
+        "改变积分次序",
+        "交换累次积分次序",
+        "change the order of integration"
+      ],
+      "one_liner": "根据积分区域把给定的累次积分改写成相反次序的累次积分，使内层积分变得可积或更简单。",
+      "block_ids": [
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.multiint.double_cartesian",
+        "S.multiint.change_order"
+      ],
+      "triggers": [
+        "题目给出一个累次积分，要求计算或明确要求「交换积分次序」",
+        "按原次序的内层积分出现 sin(y²)、e^{x²}、1/ln y 等积不出的形式",
+        "两种次序都可行，但换序后内层变为基本可积形式",
+        "需要由「先 x 后 y」改为「先 y 后 x」（或反之）以配合被积函数"
+      ],
+      "steps": [
+        "由原累次积分写出积分区域 D 的两种边界表达式（上下界与左右界）",
+        "画出（或想象）区域 D 的图形，确定交点与整体范围",
+        "交换内外层积分：把原来的内层变量改为外层，重新确定新外层变量的取值范围",
+        "对新外层的每个取值，写出新内层变量的上下界（来自原边界曲线的反函数）",
+        "写出交换后的累次积分，必要时继续计算"
+      ],
+      "preconditions": [
+        "原累次积分的积分限完整描述了区域 D，且区域可同时用两种次序表达"
+      ],
+      "not_applicable": [
+        "题目直接给出区域而非累次积分时，应按所选次序直接化累次积分，无所谓「交换」",
+        "区域在某种次序下必须分段才能写出上下界，换序未必更简单",
+        "换序后内层仍积不出时交换次序无益，应考虑更换坐标"
+      ],
+      "pitfalls": [
+        "交换后忘记重新确定外层变量的整体取值范围（照抄原范围）",
+        "内层上下界写成原变量的函数而未取反函数",
+        "区域需要分段时漏掉其中一段",
+        "原积分限中常数与变量的关系弄混，把上下限写反"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.cartesian_iterated_integral",
+          "note": "交换次序以把一个二重积分写成累次积分为基础，交换后须按区域重新定限"
+        },
+        {
+          "type": "alternative",
+          "target": "M.polar_transform",
+          "note": "当两种直角坐标次序都不便计算、区域为圆/环时改用极坐标；若区域为直角边界而仅次序不佳，则用交换次序"
+        },
+        {
+          "type": "compose",
+          "target": "M.symmetry",
+          "note": "交换次序后常借助区域对称性进一步化简"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "交换积分次序是考研高频题型，核心动作是「由积分限还原区域再重画定限」，常与 sin(y²)、e^{x²} 等积不出的内层结合出题。",
+      "example_problems": [
+        {
+          "statement": "交换二次积分 ∫₀¹dx∫_x¹ f(x,y)dy 的积分次序。",
+          "answer_sketch": "区域为 0≤x≤1、x≤y≤1（上三角），改写为 0≤y≤1、0≤x≤y，故交换后为 ∫₀¹dy∫₀^y f(x,y)dx。",
+          "scenario_id": "S.multiint.change_order"
+        },
+        {
+          "statement": "计算 ∫₀¹dx∫_x¹ sin(y²)dy。",
+          "answer_sketch": "内层对 y 积不出 sin(y²)，交换次序得 ∫₀¹dy∫₀^y sin(y²)dx=∫₀¹ y sin(y²)dy=½(1−cos1)。",
+          "scenario_id": "S.multiint.change_order"
+        },
+        {
+          "statement": "交换 ∫₀²dy∫_{y²}^{2y} f(x,y)dx 的积分次序。",
+          "answer_sketch": "区域为 0≤y≤2、y²≤x≤2y；等价描述为 0≤x≤4、x/2≤y≤√x，故为 ∫₀⁴dx∫_{x/2}^{√x} f(x,y)dy。",
+          "scenario_id": "S.multiint.change_order"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multiint"
+      ]
+    },
+    {
+      "id": "M.cartesian_iterated_integral",
+      "name": "化累次积分（直角坐标）",
+      "aliases": [
+        "累次积分法",
+        "二重积分化二次积分",
+        "直角坐标定限",
+        "iterated integral in Cartesian coordinates"
+      ],
+      "one_liner": "在直角坐标系下选择积分次序、按区域写出内外层积分限，把重积分化为逐次的一元定积分并计算。",
+      "block_ids": [
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.multiint.double_cartesian",
+        "S.multiint.change_order",
+        "S.multiint.symmetry_simplify",
+        "S.multiint.geometric_application",
+        "S.multiint.physical_application"
+      ],
+      "triggers": [
+        "计算区域为 X 型或 Y 型的二重积分（矩形、三角形、两条曲线围成的图形）",
+        "区域上下（左右）边界对每个内层变量是单一表达式",
+        "几何或物理应用已建立为区域上的重积分，需要实际算出数值",
+        "对称性等化简之后仍需把重积分化为定积分求解"
+      ],
+      "steps": [
+        "画出区域 D，判断它是 X 型（上下边界为 y 的函数）还是 Y 型（左右边界为 x 的函数）",
+        "选择先积哪个变量：先看内层能否积出，再选更省算的次序",
+        "确定外层变量的取值范围（区域在该方向上的整体投影区间，必须是常数端点）",
+        "对每个外层取值，写出内层变量的上下界（由边界曲线给出）",
+        "把重积分写成内外两重定积分，先算内层、再算外层，得结果"
+      ],
+      "preconditions": [
+        "区域 D 可写为 X 型或 Y 型（必要时分段），且被积函数在内层上可积"
+      ],
+      "not_applicable": [
+        "区域为圆/环/扇形，直角坐标限困难或含根式（应换极坐标）",
+        "内层积分无法用初等函数积出且换序可解（应先交换积分次序）",
+        "区域无法用有限个 X/Y 型子区域表达时需改用其他坐标或办法"
+      ],
+      "pitfalls": [
+        "外层变量范围与内层上下限的关系写错，或把内层上下界方向颠倒",
+        "X 型/Y 型判断错误，导致内层上下界取反",
+        "区域需要分段却只用一个积分区域，漏掉部分",
+        "算完内层后外层积分限忘记必须是常数"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.newton_leibniz",
+          "note": "化为逐次一元定积分后，用牛顿-莱布尼茨公式算出每一个积分"
+        },
+        {
+          "type": "compose",
+          "target": "M.symmetry",
+          "note": "定限前若区域与被积函数具对称性，可先用对称性缩小积分范围"
+        },
+        {
+          "type": "generalizes",
+          "target": "M.riemann_sum_limit",
+          "note": "二重积分本身是二维黎曼和的极限，化累次积分把它落实为可计算的一元定积分"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "确定积分限是二重积分计算的核心步骤分；X 型先对 y 后对 x、Y 型先对 x 后对 y，务必画图确认内外层端点。",
+      "example_problems": [
+        {
+          "statement": "计算 ∬_D xy dσ，其中 D 由直线 y=x、y=2x 与 x=1 围成。",
+          "answer_sketch": "D 为 X 型：0≤x≤1、x≤y≤2x，得 ∫₀¹x dx∫_x^{2x} y dy=∫₀¹(3/2)x³dx=3/8。",
+          "scenario_id": "S.multiint.double_cartesian"
+        },
+        {
+          "statement": "计算 ∬_D x dσ，其中 D 由抛物线 y=x² 与直线 y=x 围成。",
+          "answer_sketch": "交点为 x=0,1，X 型：0≤x≤1、x²≤y≤x，得 ∫₀¹x(x−x²)dx=1/12。",
+          "scenario_id": "S.multiint.double_cartesian"
+        },
+        {
+          "statement": "用二重积分求由平面 x+y+z=1 与三个坐标面围成的四面体的体积。",
+          "answer_sketch": "V=∬_D (1−x−y)dσ，D 为 0≤x≤1、0≤y≤1−x，得 ∫₀¹dx∫₀^{1−x}(1−x−y)dy=∫₀¹(1−x)²/2 dx=1/6。",
+          "scenario_id": "S.multiint.geometric_application"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multiint"
+      ]
+    },
+    {
+      "id": "M.projection_method_triple",
+      "name": "三重积分的投影法（先一后二）",
+      "aliases": [
+        "投影法",
+        "先一后二",
+        "穿针法",
+        "projection method for triple integrals"
+      ],
+      "one_liner": "把 Ω 投影到某坐标面得 D，对每个 (x,y)∈D 沿第三个方向先积一次，再在 D 上作二重积分：∭_Ω f dV=∬_D[∫_{z₁}^{z₂} f dz]dσ。",
+      "block_ids": [
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.multiint.triple_cartesian"
+      ],
+      "triggers": [
+        "三重积分的立体 Ω 在某坐标面上的投影区域 D 容易写出",
+        "沿投影方向的上下两张曲面 z=z₁(x,y)、z=z₂(x,y) 可显式给出",
+        "被积函数较简单（如 f=1、f=z），适合先积一个方向",
+        "Ω 由上下两张曲面与侧面柱面围成"
+      ],
+      "steps": [
+        "确定投影方向（通常取使上下界最易表达的方向，如把 Ω 投影到 xOy 面）",
+        "求出投影区域 D 及其边界",
+        "对每个 (x,y)∈D，写出该方向（如 z）的上下界 z₁(x,y)≤z≤z₂(x,y)",
+        "先对 z 积分得到只含 (x,y) 的表达式，再在 D 上作二重积分（化累次积分或用极坐标）",
+        "必要时先用对称性、并选择最省的投影方向"
+      ],
+      "preconditions": [
+        "Ω 可写成 {z₁(x,y)≤z≤z₂(x,y), (x,y)∈D} 的「上下两张曲面夹成」形式"
+      ],
+      "not_applicable": [
+        "投影域 D 复杂而截面更易表达时，截面法更优",
+        "Ω 不能用单张上下曲面夹成（需分段或更换投影方向）",
+        "被积函数只含 z 时，截面法往往更省算"
+      ],
+      "pitfalls": [
+        "投影方向选错，导致上下界表达复杂或需要分段",
+        "投影域 D 及其边界曲线写错",
+        "z 的上下界未代入曲面方程而想当然",
+        "先积完 z 后在 D 上作二重积分时，忘记外层积分限必须是常数"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.slice_method",
+          "note": "同一三重积分可用投影法（先一后二）或截面法（先二后一），按被积函数与区域形状择优"
+        },
+        {
+          "type": "compose",
+          "target": "M.cartesian_iterated_integral",
+          "note": "投影法先积一个变量后归结为投影域 D 上的二重积分，再化累次积分计算"
+        },
+        {
+          "type": "compose",
+          "target": "M.symmetry",
+          "note": "选择投影方向前，可先用对称性判断某些部分为零并缩小区域"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "先一后二的关键是选对投影方向与写对上下曲面；若被积函数只含一个变量，应改考虑先二后一（截面法）。",
+      "example_problems": [
+        {
+          "statement": "计算 ∭_Ω x dV，其中 Ω 为平面 x=0、y=0、z=0 与 x+y+z=1 围成的四面体。",
+          "answer_sketch": "投影 D：x≥0、y≥0、x+y≤1，z∈[0,1−x−y]，得 ∬_D x(1−x−y)dσ=∫₀¹dx∫₀^{1−x}x(1−x−y)dy=1/24。",
+          "scenario_id": "S.multiint.triple_cartesian"
+        },
+        {
+          "statement": "计算 ∭_Ω z dV，其中 Ω 由 z=0 与 z=1−x²−y²（x²+y²≤1）围成。",
+          "answer_sketch": "投影为单位圆盘，z 从 0 到 1−x²−y²，得 ∬_D ½(1−x²−y²)²dσ，用极坐标算得 π/6。",
+          "scenario_id": "S.multiint.triple_cartesian"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multiint"
+      ]
+    },
+    {
+      "id": "M.slice_method",
+      "name": "三重积分的截面法（先二后一）",
+      "aliases": [
+        "截面法",
+        "先二后一",
+        "切片法",
+        "slicing method for triple integrals"
+      ],
+      "one_liner": "沿某坐标轴（如 z）把 Ω 切成截面 D_z，先算出每个截面上对另两个变量的二重积分（常为截面积），再对第三变量积分：∭_Ω f dV=∫_{c₁}^{c₂}[∬_{D_z} f dσ]dz。",
+      "block_ids": [
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.multiint.triple_cartesian"
+      ],
+      "triggers": [
+        "被积函数只含一个变量（如只含 z），或关于另两个变量易在截面上积出",
+        "Ω 沿某轴方向的截面形状规则、面积易求（如圆、椭圆、三角形）",
+        "沿 z 方向截出的截面 D_z 的面积可写成 z 的函数 S(z)"
+      ],
+      "steps": [
+        "选择切片方向（通常选使截面形状最规则、最易求面积的方向）",
+        "确定该变量的整体范围 c₁≤z≤c₂",
+        "对每个 z，写出截面 D_z 并由曲面方程求其面积 S(z)（或用二重积分表示）",
+        "先算截面上关于另两个变量的二重积分，得到只含 z 的函数",
+        "对 z 从 c₁ 到 c₂ 作定积分，得结果"
+      ],
+      "preconditions": [
+        "沿切片方向的截面 D_z 能用该变量统一表达，且截面积（或截面上的二重积分）可求"
+      ],
+      "not_applicable": [
+        "被积函数同时依赖多个变量、截面上仍难积分时，投影法可能更好",
+        "截面形状随位置变化不规则、无法统一表达时不宜用",
+        "Ω 无法沿某方向整齐切片（有洞或需分段）时需分段处理"
+      ],
+      "pitfalls": [
+        "截面积 S(z) 写错（如圆盘半径应随 z 变化却取常数）",
+        "切片变量的范围 [c₁,c₂] 取错",
+        "被积函数只与 z 有关时误用投影法，计算量大增",
+        "把「先二后一」与「先一后二」的先后顺序写反"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.projection_method_triple",
+          "note": "同一三重积分可用截面法（先二后一）或投影法（先一后二），被积函数只含一个变量时优先截面法"
+        },
+        {
+          "type": "compose",
+          "target": "M.cartesian_iterated_integral",
+          "note": "截面上关于另两个变量的二重积分需化累次积分（或直接读作面积）算出"
+        },
+        {
+          "type": "compose",
+          "target": "M.polar_transform",
+          "note": "当截面为圆或圆环时，截面积可用极坐标求得，如圆盘面积 ∬_{D_z}dσ=πR(z)²"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "先二后一特别适合被积函数只含一个变量的三重积分；当截面为圆盘时，面积 ∬_{D_z}dσ=πR(z)² 可直接代入，是常用的省算技巧。",
+      "example_problems": [
+        {
+          "statement": "计算 ∭_Ω z dV，其中 Ω 为上半球 x²+y²+z²≤R²、z≥0。",
+          "answer_sketch": "沿 z 切片，截面为半径 √(R²−z²) 的圆盘，面积 π(R²−z²)；得 ∫₀^R π(R²−z²)z dz=πR⁴/4。",
+          "scenario_id": "S.multiint.triple_cartesian"
+        },
+        {
+          "statement": "计算 ∭_Ω (x²+y²)dV，其中 Ω 为圆柱体 x²+y²≤1、0≤z≤1。",
+          "answer_sketch": "截面对每个 z 是固定单位圆盘，∬_{D_z}(x²+y²)dσ=π/2（极坐标），故结果为 ∫₀¹ π/2 dz=π/2。",
+          "scenario_id": "S.multiint.triple_cartesian"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multiint"
+      ]
+    },
+    {
+      "id": "M.cylindrical_transform",
+      "name": "柱坐标变换",
+      "aliases": [
+        "柱坐标变换",
+        "柱面坐标变换",
+        "cylindrical coordinate transformation"
+      ],
+      "one_liner": "对三重积分令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把投影为圆/环的立体上的三重积分化为柱坐标下的累次积分。",
+      "block_ids": [
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.multiint.cylindrical"
+      ],
+      "triggers": [
+        "立体由圆柱面（x²+y²=R²）、圆锥面或旋转抛物面与平面围成",
+        "立体在 xOy 面上的投影为圆盘或圆环",
+        "被积函数含 x²+y² 或 √(x²+y²)",
+        "相当于在圆/环区域上又叠加了一个 z 方向的范围"
+      ],
+      "steps": [
+        "确认立体在 xOy 面上的投影为圆/环、边界含圆柱面等，适合柱坐标",
+        "令 x=rcosθ、y=rsinθ、z=z，并把体积元换成 dV=r dr dθ dz（勿漏 r）",
+        "确定 θ 范围、r 的范围（投影区域的极坐标描述）以及 z 的上下界 z₁(r,θ)、z₂(r,θ)",
+        "化为按 z、r、θ 的累次积分，内层常可用凑微分完成",
+        "必要时先用对称性判断某些积分为零"
+      ],
+      "preconditions": [
+        "立体在 xOy 面的投影可用极坐标简单描述，且 z 方向的上下界可用 r、θ 表达"
+      ],
+      "not_applicable": [
+        "立体边界含球面或需用以原点为中心的 ρ 描述时，应用球坐标",
+        "投影域为直角边界（矩形、三角形）时柱坐标并无优势",
+        "被积函数在柱坐标下更复杂时不宜使用"
+      ],
+      "pitfalls": [
+        "漏乘体积元中的 r（写成 dr dθ dz）",
+        "z 的上下界未写成 r、θ 的函数（如锥面 z=√(x²+y²) 应写作 z=r）",
+        "θ、r 的范围与投影域不符",
+        "把柱坐标与球坐标的体积元混淆（柱坐标不含 sinφ 因子）"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.polar_transform",
+          "note": "柱坐标变换是极坐标变换在三维的推广：xy 平面上仍是极坐标替换，另加 z 不变，体积元 r dr dθ dz"
+        },
+        {
+          "type": "compose",
+          "target": "M.projection_method_triple",
+          "note": "柱坐标下的三重积分通常按「先 z、后 r 与 θ」的次序化为累次积分，本质是先一后二"
+        },
+        {
+          "type": "compose",
+          "target": "M.first_substitution",
+          "note": "内层对 r 的积分常靠凑微分完成，如 r dr=½d(r²)"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "柱坐标适用于圆柱、圆锥、旋转抛物面与平面围成的立体；三个积分限分别来自投影的 θ 范围、r 范围与立体的 z 上下界。",
+      "example_problems": [
+        {
+          "statement": "计算 ∭_Ω z√(x²+y²)dV，其中 Ω 为 x²+y²≤1、0≤z≤1。",
+          "answer_sketch": "柱坐标下 √(x²+y²)=r，被积式化为 z·r²；∫₀^{2π}dθ∫₀¹ r²dr∫₀¹ z dz=2π·(1/3)·(1/2)=π/3。",
+          "scenario_id": "S.multiint.cylindrical"
+        },
+        {
+          "statement": "计算 ∭_Ω (x²+y²)dV，其中 Ω 由 z=x²+y² 与 z=1 围成。",
+          "answer_sketch": "柱坐标下 z 从 r² 到 1，∫₀^{2π}dθ∫₀¹ r²·r(1−r²)dr=2π(1/4−1/6)=π/6。",
+          "scenario_id": "S.multiint.cylindrical"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multiint"
+      ]
+    },
+    {
+      "id": "M.spherical_transform",
+      "name": "球坐标变换",
+      "aliases": [
+        "球坐标变换",
+        "球面坐标变换",
+        "spherical coordinate transformation"
+      ],
+      "one_liner": "对三重积分令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把球体、球壳或锥面与球面所围立体上的三重积分化为球坐标下的累次积分。",
+      "block_ids": [
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.multiint.spherical"
+      ],
+      "triggers": [
+        "立体为球体、球壳，或由球面与圆锥面围成",
+        "区域边界在以原点为中心的球坐标下可由 ρ=常数、φ=常数（锥的半角）简单刻画",
+        "被积函数只依赖 x²+y²+z²（即 ρ²）",
+        "立体关于原点或坐标面对称，且球坐标能同时简化区域与函数"
+      ],
+      "steps": [
+        "确认立体边界含球面、适合以原点为中心的球坐标",
+        "令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，并把体积元换成 dV=ρ²sinφ dρ dφ dθ（勿漏 ρ²sinφ）",
+        "确定 θ 范围（0 到 2π 或区域张角）、φ 范围（由锥面半角决定）、ρ 范围（由球面半径给出）",
+        "化为按 ρ、φ、θ 的累次积分并计算（φ 的积分常需凑微分 sinφ dφ）",
+        "必要时先用对称性简化"
+      ],
+      "preconditions": [
+        "立体可用 ρ、φ 的常数范围（或简单函数）描述，且边界含球面"
+      ],
+      "not_applicable": [
+        "立体仅含圆柱面/锥面且 z 方向界限为常数时，柱坐标更简单",
+        "被积函数在球坐标下反而复杂，或立体不以原点为中心时不宜用",
+        "区域描述在球坐标下并不简单时，球坐标优势即丧失"
+      ],
+      "pitfalls": [
+        "漏乘体积元中的 ρ²sinφ（只写 dρ dφ dθ）",
+        "φ 与 θ 的角色弄混：φ 是与 z 轴正向的夹角（0 到 π），θ 是绕 z 轴的方位角（0 到 2π）",
+        "ρ、φ 的范围未由球面半径与锥面半角正确给出",
+        "把球坐标与柱坐标的体积元写反"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.polar_transform",
+          "note": "球坐标变换把极坐标的「平面半径+方位角」扩展为「空间半径 ρ+方位角 θ+极角 φ」，是极坐标在三维的另一种推广"
+        },
+        {
+          "type": "compose",
+          "target": "M.symmetry",
+          "note": "球坐标下常先借助关于坐标面或原点的对称性判断某些积分为零，再计算"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "球坐标适用于球面（与锥面）围成的立体；三个积分限常为 0≤θ≤2π、0≤φ≤φ₀、0≤ρ≤R，体积元 ρ²sinφ dρ dφ dθ 不可漏。",
+      "example_problems": [
+        {
+          "statement": "计算 ∭_Ω (x²+y²+z²)dV，其中 Ω 为球体 x²+y²+z²≤R²。",
+          "answer_sketch": "被积函数即 ρ²，体积元为 ρ²sinφ；∫₀^{2π}dθ∫₀^π sinφ dφ∫₀^R ρ⁴ dρ=2π·2·R⁵/5=4πR⁵/5。",
+          "scenario_id": "S.multiint.spherical"
+        },
+        {
+          "statement": "计算 ∭_Ω z dV，其中 Ω 为上半球 x²+y²+z²≤R²、z≥0。",
+          "answer_sketch": "z=ρcosφ，θ∈[0,2π]、φ∈[0,π/2]、ρ∈[0,R]；∫₀^{2π}dθ∫₀^{π/2}cosφ sinφ dφ∫₀^R ρ³ dρ=2π·½·R⁴/4=πR⁴/4。",
+          "scenario_id": "S.multiint.spherical"
+        }
+      ],
+      "origin_block_ids": [
+        "B.multiint"
+      ]
+    },
+    {
+      "id": "M.partition_domain",
+      "name": "按表达式变化分区",
+      "aliases": [
+        "按表达式变化分区"
+      ],
+      "one_liner": "取整、绝对值或分段函数在不同区域有不同表达式时，先分清区域，再分别计算并相加。",
+      "definition": "取整、绝对值或分段函数在不同区域有不同表达式时，先分清区域，再分别计算并相加。",
+      "block_ids": [
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.multiint.double_cartesian",
+        "S.multiint.polar"
+      ],
+      "triggers": [
+        "取整、绝对值或分段函数在不同区域有不同表达式时，先分清区域，再分别计算并相加。"
+      ],
+      "steps": [
+        "找到表达式变化的边界",
+        "在各区域确定正确的表达式",
+        "逐块积分并相加，核对是否重叠或遗漏"
+      ],
+      "preconditions": [
+        "分区覆盖原积分域，各部分满足所用可积性条件",
+        "忽略边界须有零测度等明确依据"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "不能把某一块的取整值用于整个区域"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "取整、绝对值或分段函数在不同区域有不同表达式时，先分清区域，再分别计算并相加。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.multiint"
+      ],
+      "principle": "可积函数在不重叠的分区上的积分可以相加。先用分区确定真实表达式，才能选择坐标和计算公式。"
+    }
+  ]
+}

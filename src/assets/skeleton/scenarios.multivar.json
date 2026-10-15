@@ -1,0 +1,462 @@
+{
+  "block_id": "B.multivar",
+  "scenarios": [
+    {
+      "id": "S.multivar.binary_limit",
+      "block_id": "B.multivar",
+      "name": "二元函数极限",
+      "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+      "signals": [
+        "出现 lim_{(x,y)→(x₀,y₀)} f(x,y) 形式的二重极限",
+        "趋近点是平面上的点（如 (0,0)），逼近方式有无穷多条路径",
+        "被求函数是分式型，分子分母含多项式或 x²+y²",
+        "直接代入先检查是否有定义；若得到0/0等未定式，再考虑路径、夹逼或极坐标。",
+        "题目问“极限是否存在”或要求讨论极限"
+      ],
+      "recognition_examples": [
+        "lim_{(x,y)→(0,0)} (x²y)/(x²+y²)",
+        "lim_{(x,y)→(0,0)} xy/(x²+y²)",
+        "lim_{(x,y)→(0,0)} (sin(x²+y²))/(x²+y²)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.continuity",
+          "how": "连续性要求该点极限值等于函数值 f(x₀,y₀)；二元极限题只问极限本身是否存在、等于多少"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.path_approach",
+          "priority": 1,
+          "when_to_prefer": "怀疑极限不存在时的最快排除手段：先取 y=kx、y=x²、坐标轴等简单路径，若沿不同路径极限不同即可断定极限不存在"
+        },
+        {
+          "method_id": "M.polar_transform",
+          "priority": 2,
+          "when_to_prefer": "极坐标化归后，证明对θ一致趋于同一值；固定每个θ分别取极限不足以保证二重极限存在。"
+        },
+        {
+          "method_id": "M.squeeze_theorem",
+          "priority": 3,
+          "when_to_prefer": "无法用极坐标直接判定或需要严格书写证明时，用不等式把 |f(x,y)−A| 放大成只含 r 且趋于 0 的上界，由夹逼得出结论"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 4,
+          "when_to_prefer": "为夹逼准则构造上下界：先用放缩把分式化为与 θ 无关的 r 的函数（如 |xy|/(x²+y²) ≤ 1/2、|x²y|/(x²+y²) ≤ |y|）"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 5,
+          "when_to_prefer": "极坐标化归或沿路径化为一元极限后，若该一元极限为 0/0、∞/∞ 型，用洛必达法则求出其值"
+        },
+        {
+          "method_id": "M.continuity_rules",
+          "priority": 6,
+          "when_to_prefer": "目标点处连续且表达式有定义时，直接代入；遇到未定式须另行处理。"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.continuity",
+      "block_id": "B.multivar",
+      "name": "二元函数连续性",
+      "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+      "signals": [
+        "题目问 f(x,y) 在某点是否连续，或求参数使其在该点连续",
+        "函数在该点常有特殊定义（如分式在原点处补定义 f(0,0)=0）",
+        "需要先求出该点的二重极限再与函数值比较",
+        "函数是分式型或分段型，讨论点是分界点或奇点"
+      ],
+      "recognition_examples": [
+        "f(x,y)=xy/(x²+y²) (x²+y²≠0)，f(0,0)=0，判断 f 在原点是否连续",
+        "求 a 使 f(x,y)=（某分式结构）在原点连续",
+        "讨论 f(x,y)=(x²y)/(x²+y²) 在点 (0,0) 的连续性"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.binary_limit",
+          "how": "连续性 = 二重极限存在 且 该极限等于 f(x₀,y₀)；极限题只需算出极限，连续题还需与函数值比对"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.path_approach",
+          "priority": 1,
+          "when_to_prefer": "怀疑函数在该点不连续时：沿两条不同路径趋于该点，若极限不同则极限不存在，立即断定不连续"
+        },
+        {
+          "method_id": "M.polar_transform",
+          "priority": 2,
+          "when_to_prefer": "当各路径极限都相同、需证明连续时，令 x=r cosθ、y=r sinθ 求出该点极限值，再与 f(x₀,y₀) 比较是否相等"
+        },
+        {
+          "method_id": "M.continuity_rules",
+          "priority": 3,
+          "when_to_prefer": "目标点处连续且表达式有定义时，直接代入；遇到未定式须另行处理。"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.partial_derivative",
+      "block_id": "B.multivar",
+      "name": "显式偏导数计算",
+      "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+      "signals": [
+        "函数以显式表达式 z=f(x,y) 给出",
+        "要求 ∂z/∂x、∂z/∂y、f_x(x₀,y₀) 或高阶、混合偏导",
+        "表达式中同时含两个及以上自变量",
+        "函数含复合结构（如 sin(xy)、e^{x²+y²}）需要分层求导"
+      ],
+      "recognition_examples": [
+        "求 z=x²y+sin(xy) 的 ∂z/∂x、∂z/∂y",
+        "求 z=e^{x²+y²} 的 ∂z/∂x 及混合偏导 f_xy",
+        "求 f(x,y)=arctan(y/x) 在点 (1,1) 的偏导"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.composite_derivative",
+          "how": "本情景直接对自变量求偏导；复合函数求导中中间变量本身是多元函数，依赖关系呈多层，需按路径相乘再相加"
+        },
+        {
+          "scenario_id": "S.multivar.total_differential",
+          "how": "偏导刻画沿某一坐标方向的变化率；全微分刻画函数整体可微性与增量的线性主部"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.partial_derivative_direct",
+          "priority": 1,
+          "when_to_prefer": "常规点的首选：对一个自变量求偏导时把其余自变量视为常数，按一元求导规则逐项求导"
+        },
+        {
+          "method_id": "M.def_partial_derivative",
+          "priority": 2,
+          "when_to_prefer": "当讨论点是分段函数分界点、奇点或抽象点、公式法失效时，改用偏导数定义式求该点偏导"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.composite_derivative",
+      "block_id": "B.multivar",
+      "name": "多元复合函数求导",
+      "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+      "signals": [
+        "函数由外层函数与中间变量复合而成，如 z=f(u,v)、u=u(x,y)、v=v(x,y)",
+        "出现“设 z=f(x+y, xy)”“z=f(u,v) 且 u=…, v=…”之类表述",
+        "中间变量不止一个，且依赖关系不止一层",
+        "外层可能是抽象函数 f（未给出具体表达式）"
+      ],
+      "recognition_examples": [
+        "设 z=f(x²+y², xy)，其中 f 可微，求 ∂z/∂x、∂z/∂y",
+        "设 z=u²+uv+v², u=x sin y, v=x cos y，求 ∂z/∂x",
+        "设 z=f(u,v), u=e^x, v=x+y，求全导数 dz/dx"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.implicit_derivative",
+          "how": "复合函数的关系是显式给出的（虽含抽象 f），直接按依赖树求导；隐函数的关系由方程隐含确定"
+        },
+        {
+          "scenario_id": "S.multivar.partial_derivative",
+          "how": "显式偏导直接对自变量；复合求导要按变量依赖树枚举所有路径，每条路径各层偏导相乘后相加"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.multivar_chain_rule",
+          "priority": 1,
+          "when_to_prefer": "绝大多数多元复合求导的标准解法：画出变量依赖树，对目标自变量枚举所有路径并逐层相乘再求和"
+        },
+        {
+          "method_id": "M.total_differential",
+          "priority": 2,
+          "when_to_prefer": "需要一次求出所有一阶偏导，或外层为抽象函数、想用全微分形式不变性直接对复合式取微分时使用"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.implicit_derivative",
+      "block_id": "B.multivar",
+      "name": "隐函数求导（单方程/方程组）",
+      "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+      "signals": [
+        "函数关系由方程隐含给出，如 F(x,y,z)=0",
+        "出现“设 z=z(x,y) 由方程…确定”的表述",
+        "方程含 e^z、ln z、z² 等关于因变量的复杂项",
+        "由多个方程同时确定多个隐函数（方程组情形）"
+      ],
+      "recognition_examples": [
+        "设 z=z(x,y) 由 x²+y²+z²=4z 确定，求 ∂z/∂x",
+        "设方程 e^z−xyz=0 确定 z=z(x,y)，求 ∂z/∂y",
+        "设 u,v 由方程组 x=u+v, y=u²+v² 确定为 x,y 的函数，求 ∂u/∂x"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.composite_derivative",
+          "how": "隐函数由方程隐含确定，需求解出偏导（公式法/雅可比行列式）；复合函数的关系显式，直接按依赖树求导"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.implicit_multivar",
+          "priority": 1,
+          "when_to_prefer": "标准解法：单方程用 ∂z/∂x=−F_x/F_z 直接代公式；方程组则联立求导或用雅可比行列式解出各偏导"
+        },
+        {
+          "method_id": "M.total_differential",
+          "priority": 2,
+          "when_to_prefer": "想一次得到所有偏导，或方程含抽象函数、形式较繁时，用全微分形式不变性对 F(x,y,z)=0 两边取微分再整理"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.total_differential",
+      "block_id": "B.multivar",
+      "name": "全微分与可微性判定",
+      "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+      "signals": [
+        "要求 dz 或函数在某点的全微分",
+        "题目问函数是否可微、讨论可微性",
+        "含参数，问参数取何值使函数在某点可微",
+        "需要用全微分做近似计算或估计误差"
+      ],
+      "recognition_examples": [
+        "求 z=x²y+y³ 的全微分 dz",
+        "判定 f(x,y)=xy/√(x²+y²)（原点补 0）在原点是否可微",
+        "求 a 使分段定义的 f(x,y) 在原点可微"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.partial_derivative",
+          "how": "偏导存在是较弱的条件；可微要求更强的定义式极限 lim_{ρ→0}[Δz−(f_xΔx+f_yΔy)]/ρ = 0，两者判定目标不同"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.total_differential",
+          "priority": 1,
+          "when_to_prefer": "核心方法：可微时 dz = z_x dx + z_y dy；判定可微性时验证定义式极限是否为零；近似计算时代入小增量"
+        },
+        {
+          "method_id": "M.path_approach",
+          "priority": 2,
+          "when_to_prefer": "判定函数在某点不可微时：考察 [Δz−(f_xΔx+f_yΔy)]/ρ 沿不同路径的极限，若随路径改变（或不为 0）即不可微"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.directional_gradient",
+      "block_id": "B.multivar",
+      "name": "方向导数与梯度",
+      "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+      "signals": [
+        "出现“方向导数”“梯度”“grad”“沿方向 l”等词",
+        "要求函数在某点变化最快的方向或最大变化率",
+        "已知某点沿某方向的方向导数，反求方向或参数",
+        "方向以向量或方向余弦的形式给出"
+      ],
+      "recognition_examples": [
+        "求 f=x²+2y² 在点 (1,1) 沿方向 (3,4) 的方向导数",
+        "求 z=xe^y 在点 (1,0) 的梯度及最大方向导数",
+        "已知某点沿方向 l 的方向导数，求 l 的方向余弦"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.total_differential",
+          "how": "方向导数与梯度关注函数沿特定方向的变化率与最快方向，是全微分的应用；全微分关注增量线性主部本身"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.directional_derivative_gradient",
+          "priority": 1,
+          "when_to_prefer": "标准解法：求出该点梯度（各偏导）并把给定方向单位化，用 ∂f/∂l = grad f · e_l 计算；最大方向导数即 |grad f|"
+        },
+        {
+          "method_id": "M.multivar_chain_rule",
+          "priority": 2,
+          "when_to_prefer": "当被求梯度的函数本身是复合结构（如 grad f(x²+y²)）时，先按链式法则求出各偏导再组成梯度"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.space_curve_tangent",
+      "block_id": "B.multivar",
+      "name": "空间曲线的切线与法平面",
+      "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+      "signals": [
+        "要求空间曲线的切线或法平面",
+        "曲线以参数式 x=x(t), y=y(t), z=z(t) 给出",
+        "曲线以两曲面交线的形式给出",
+        "出现“切向量”“法平面”等词"
+      ],
+      "recognition_examples": [
+        "求曲线 x=t, y=t², z=t³ 在 t=1 处的切线",
+        "求曲线 x=cos t, y=sin t, z=t 在 t=π/2 处的法平面",
+        "由两曲面 x²+y²+z²=6 与 x+y+z=0 的交线，求其在某点的切线"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.surface_tangent",
+          "how": "曲线问题求切向量→切线/法平面；曲面问题求法向量→切平面/法线。曲线的“法平面”对应曲面的“法线”，切勿混用"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.curve_tangent_vector",
+          "priority": 1,
+          "when_to_prefer": "参数式曲线的首选：切向量即 r'(t₀)，据此写切线对称式与法平面；对称式某分量为 0 时改用一般式"
+        },
+        {
+          "method_id": "M.surface_normal_vector",
+          "priority": 2,
+          "when_to_prefer": "当曲线由两曲面交线给出时，先求两曲面的法向量 ∇F、∇G，再作叉乘得到曲线的切向量"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.surface_tangent",
+      "block_id": "B.multivar",
+      "name": "曲面的切平面与法线",
+      "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+      "signals": [
+        "要求曲面的切平面或法线",
+        "曲面以 F(x,y,z)=0 隐式给出，或以 z=f(x,y) 显式给出",
+        "出现“切平面”“法线”“法向量”等词",
+        "需要曲面在某点的法方向（如后续求交线、夹角）"
+      ],
+      "recognition_examples": [
+        "求曲面 z=x²+y² 在点 (1,1,2) 的切平面",
+        "求球面 x²+y²+z²=14 在点 (1,2,3) 的切平面与法线",
+        "求曲面 e^z−z+xy=3 在点 (1,2,0) 的切平面"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.space_curve_tangent",
+          "how": "曲面问题求法向量→切平面/法线；曲线问题求切向量→切线/法平面，二者所求对象与公式方向不同"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.surface_normal_vector",
+          "priority": 1,
+          "when_to_prefer": "标准解法：隐式曲面用法向量 ∇F，显式曲面 z=f(x,y) 用法向量 (−f_x,−f_y,1)，再套切平面与法线公式"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.unconditional_extremum",
+      "block_id": "B.multivar",
+      "name": "无条件极值",
+      "definition": "求多元函数（无附加约束）的极值点与极值。",
+      "signals": [
+        "出现“求函数的极值/极值点”且没有附加约束条件",
+        "函数以显式表达式给出，定义在整个平面或开区域上",
+        "通常需要先求驻点（一阶偏导为零）再判别",
+        "问题要求极大值或极小值"
+      ],
+      "recognition_examples": [
+        "求 f=x³+y³−3xy 的极值",
+        "求 z=x²+y²−2x−4y 的极值",
+        "求 f=e^{2x}(x+y²+2y) 的极值"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.conditional_extremum",
+          "how": "无条件极值无额外约束，直接在平面上求驻点；条件极值必须满足等式约束 φ(x,y)=0"
+        },
+        {
+          "scenario_id": "S.multivar.closed_region_extremum",
+          "how": "无条件极值在开区域上讨论极值点；有界闭域最值还需额外考察边界与角点上的取值"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.extremum_second_test",
+          "priority": 1,
+          "when_to_prefer": "核心解法：解 f_x=f_y=0 求驻点，再用 A=f_xx、B=f_xy、C=f_yy 及 AC−B² 的符号判别极值类型"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.conditional_extremum",
+      "block_id": "B.multivar",
+      "name": "条件极值",
+      "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+      "signals": [
+        "出现“在条件 φ(x,y)=0 下求 f 的极值/最值”的表述",
+        "有明确的等式约束（如 x+y=1、x²+y²=1）",
+        "目标函数与约束条件同时给出",
+        "约束不易消元，或含多个变量"
+      ],
+      "recognition_examples": [
+        "求 u=xy 在条件 x+y=1 下的极值",
+        "求 u=x+2y+3z 在条件 x²+y²+z²=1 下的最大值",
+        "求某量在约束曲线/曲面上的最值（如最短距离）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.unconditional_extremum",
+          "how": "条件极值含等式约束，需引入乘数或消元；无条件极值无约束，直接求驻点"
+        },
+        {
+          "scenario_id": "S.multivar.closed_region_extremum",
+          "how": "条件极值仅处理边界（等式约束）上的极值；闭域最值=内部驻点+边界极值+角点的综合比较"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.lagrange_multiplier",
+          "priority": 1,
+          "when_to_prefer": "约束不易消元时的通用解法：构造 L=f+λφ，令 L 各偏导为零与约束联立解驻点，再比较函数值确定极值"
+        },
+        {
+          "method_id": "M.constraint_elimination",
+          "priority": 2,
+          "when_to_prefer": "当约束方程能方便地解出其中一个变量（如 x+y=1 解出 y=1−x）时，直接代入消元化为一元/无约束问题更快"
+        }
+      ]
+    },
+    {
+      "id": "S.multivar.closed_region_extremum",
+      "block_id": "B.multivar",
+      "name": "有界闭域上的最值",
+      "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+      "signals": [
+        "题目给出平面区域 D（如三角形、圆盘、矩形、曲线围成的区域）",
+        "要求函数在 D 上的最大值或最小值",
+        "区域有界且闭（含完整边界）",
+        "需要同时考虑区域内部与边界上的取值"
+      ],
+      "recognition_examples": [
+        "求 f=x²+2y²−x 在圆盘 x²+y²≤1 上的最值",
+        "求 z=xy 在区域 x≥0, y≥0, x+y≤1 上的最值",
+        "求 f=x²−y² 在有界闭区域 D 上的最大值与最小值"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multivar.conditional_extremum",
+          "how": "条件极值只处理边界（等式约束）上的极值；闭域最值还需考察区域内部驻点与边界角点，最后统一比较"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.boundary_comparison",
+          "priority": 1,
+          "when_to_prefer": "总体框架：分别求内部驻点值、边界上的最值、边界端点/角点值，比较全部候选值取最大与最小"
+        },
+        {
+          "method_id": "M.extremum_second_test",
+          "priority": 2,
+          "when_to_prefer": "用于判断区域内部的驻点是否为极值点（或直接比较各驻点函数值），作为内部部分的判别工具"
+        },
+        {
+          "method_id": "M.lagrange_multiplier",
+          "priority": 3,
+          "when_to_prefer": "当边界曲线可写成等式约束 φ(x,y)=0 时，用拉格朗日乘数法求边界上的条件极值"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1087 @@
+{
+  "block_id": "B.limit",
+  "methods": [
+    {
+      "id": "M.equiv_infinitesimal",
+      "name": "等价无穷小替换",
+      "aliases": [
+        "等价替换",
+        "等价无穷小代换",
+        "equivalent infinitesimal replacement"
+      ],
+      "one_liner": "在乘除结构中，把趋于 0 的因子用它等价的更简单无穷小替换，从而快速化简极限。",
+      "block_ids": [
+        "B.defint",
+        "B.deriv",
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.defint.variable_limit_derivative",
+        "S.deriv.piecewise_differentiability",
+        "S.deriv.abstract_function",
+        "S.limit.0over0",
+        "S.limit.zero_times_inf",
+        "S.limit.inf_minus_inf",
+        "S.limit.one_to_inf",
+        "S.limit.power_indeterminate",
+        "S.limit.infinitesimal_order",
+        "S.limit.piecewise_continuity",
+        "S.limit.discontinuity_classification"
+      ],
+      "triggers": [
+        "极限过程中某因子趋于 0",
+        "该因子是 sin u、tan u、arcsin u、arctan u、ln(1+u)、e^u−1、1−cos u、(1+u)^α−1 等标准无穷小（u→0）",
+        "被替换的因子处于乘积或整体商的位置",
+        "需要快速得到极限值或判断无穷小的阶"
+      ],
+      "steps": [
+        "确认极限过程，并把式子整理成因子相乘或相除的形式",
+        "把每个标准无穷小因子用其等价的简单无穷小替换（如 sin u~u、1−cos u~u²/2、e^u−1~u）",
+        "对替换后的简单式子求极限",
+        "若替换后丢失信息或仍需精化，改用泰勒展开到更高阶"
+      ],
+      "preconditions": [
+        "被替换的因子在该极限过程中确实趋于 0",
+        "被替换的因子以乘积或整体商的形式出现，而非处在加减项中"
+      ],
+      "not_applicable": [
+        "加减结构中被减与被加项同阶（如 tan x − sin x），直接替换会丢掉主项",
+        "两个无穷小相减，需要保留更高阶信息",
+        "非无穷小量，或实际极限过程与所记标准等价式不匹配（如 x→∞ 误用无穷小替换）"
+      ],
+      "pitfalls": [
+        "在加减结构中直接替换整个加项（如把 tan x − sin x 换成 x − x = 0）",
+        "忘记等价替换的适用条件是 u→0，把趋于 ∞ 的量也套用无穷小替换",
+        "与“等价无穷大”混淆，误认为趋于 ∞ 的因子也能随意等价替换"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.lhopital",
+          "note": "乘除结构中先做等价替换可大幅化简，通常应优先于洛必达"
+        },
+        {
+          "type": "prefer",
+          "target": "M.taylor_expansion",
+          "note": "能用等价替换解决时无需展开到高阶，等价替换更省力"
+        },
+        {
+          "type": "alternative",
+          "target": "M.important_limit",
+          "note": "lim sin x/x 这类既可用等价替换也可用重要极限，结果一致"
+        },
+        {
+          "type": "compose",
+          "target": "M.rationalization",
+          "note": "根式差先有理化，再对所得因子作等价替换"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "必须记熟 sin/tan/arcsin/arctan/ln(1+x)/e^x−1/1−cos x/(1+x)^α−1 等标准等价式；命题人常通过加减结构设坑。",
+      "example_problems": [
+        {
+          "statement": "求 lim_{x→0} (tan x − sin x)/x³。",
+          "answer_sketch": "提出公因子 tan x·(1 − cos x)，由 1−cos x ~ x²/2、tan x ~ x，得极限 1/2。",
+          "scenario_id": "S.limit.0over0"
+        },
+        {
+          "statement": "求 lim_{x→0} x·cot x。",
+          "answer_sketch": "化为 x·cos x/sin x，由 sin x ~ x、cos x→1，得极限 1。",
+          "scenario_id": "S.limit.zero_times_inf"
+        },
+        {
+          "statement": "当 x→0 时，判断 1 − cos x 是 x 的几阶无穷小。",
+          "answer_sketch": "由 1 − cos x ~ x²/2，故为 x 的二阶无穷小。",
+          "scenario_id": "S.limit.infinitesimal_order"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.squeeze_theorem",
+      "name": "夹逼准则",
+      "aliases": [
+        "两边夹定理",
+        "夹逼定理",
+        "squeeze theorem",
+        "sandwich theorem"
+      ],
+      "one_liner": "把待求量夹在两个极限相同（或可直接求出）的量之间，由两端极限相等推出中间量的极限。",
+      "block_ids": [
+        "B.defint",
+        "B.limit",
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.defint.riemann_sum_limit",
+        "S.limit.inf_over_inf",
+        "S.limit.recurrence_sequence",
+        "S.limit.n_term_sum",
+        "S.limit.bounded_times_zero",
+        "S.multivar.binary_limit"
+      ],
+      "triggers": [
+        "待求数列或函数难以直接求极限，但能方便地找到上下界",
+        "通项是 n 项之和/积，各项可统一放大或缩小",
+        "出现有界因子（如 sin、cos）乘以趋于 0 的量",
+        "多元函数极限需用不等式把增量夹住"
+      ],
+      "steps": [
+        "为待求量构造下界 a_n 与上界 b_n，使 a_n ≤ 目标 ≤ b_n",
+        "分别求出上下界的极限",
+        "验证两端极限相等（或同为同一值）",
+        "由夹逼准则得出目标极限等于该共同值"
+      ],
+      "preconditions": [
+        "对足够大的 n（或去心邻域内的点）不等式恒成立",
+        "上下界的极限存在且相等"
+      ],
+      "not_applicable": [
+        "找不到统一且极限相等的上下界",
+        "上下界极限不相等（此时夹逼只能给出估计，不能确定极限值）"
+      ],
+      "pitfalls": [
+        "放缩方向弄反导致上下界互换",
+        "两端极限不相等却仍下“极限存在且相等”的结论",
+        "放缩过度，使两端极限不再相等"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.inequality_scaling",
+          "note": "先用放缩构造出可求极限的上下界，再由夹逼得出结论"
+        },
+        {
+          "type": "alternative",
+          "target": "M.monotone_bounded",
+          "note": "递推数列极限既可用夹逼也可用单调有界准则，视能否方便构造上下界而定"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "夹逼的关键是“放缩后两端极限相同”，常用于 n 项和数列与含 sin、cos 的数列极限。",
+      "example_problems": [
+        {
+          "statement": "求 lim_{n→∞} (1/(n²+1) + 1/(n²+2) + ⋯ + 1/(n²+n))。",
+          "answer_sketch": "每项介于 1/(n²+n) 与 1/(n²+1) 之间，和介于 n/(n²+n) 与 n/(n²+1) 之间，两端极限均为 0，故极限为 0。",
+          "scenario_id": "S.limit.n_term_sum"
+        },
+        {
+          "statement": "求 lim_{n→∞} (1/√(n²+1) + 1/√(n²+2) + ⋯ + 1/√(n²+n))。",
+          "answer_sketch": "把分母统一放大、缩小，和介于 n/√(n²+n) 与 n/√(n²+1) 之间，两端极限均为 1，故极限为 1。",
+          "scenario_id": "S.limit.n_term_sum"
+        },
+        {
+          "statement": "求 lim_{(x,y)→(0,0)} (x²y)/(x²+y²)。",
+          "answer_sketch": "由 |x²y/(x²+y²)| ≤ |y| → 0，两侧夹逼得极限为 0。",
+          "scenario_id": "S.multivar.binary_limit"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.monotone_bounded",
+      "name": "单调有界准则",
+      "aliases": [
+        "单调有界定理",
+        "单调有界收敛准则",
+        "monotone bounded criterion"
+      ],
+      "one_liner": "单调且有界的数列必收敛；据此先证收敛，再对递推式两边取极限解出极限值。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.recurrence_sequence"
+      ],
+      "triggers": [
+        "数列由递推关系 x_{n+1}=f(x_n) 定义",
+        "能判断数列单调（如 x_{n+1} ≥ x_n）且有上下界",
+        "题目只要求证明收敛或求极限值，而非求通项"
+      ],
+      "steps": [
+        "用数学归纳法或作差 x_{n+1} − x_n 判断数列的单调性",
+        "找出一个上界（或下界）并证明恒成立，从而得到有界",
+        "由单调有界准则断言极限存在，设为 A",
+        "在递推式两边令 n→∞ 取极限，解关于 A 的方程，并用范围排除不合题意的根"
+      ],
+      "preconditions": [
+        "数列确实单调且有界（需先证明，不能默认）"
+      ],
+      "not_applicable": [
+        "递推得到的极限方程有多个根，且未结合初值/界来取舍（结论不唯一）",
+        "数列不单调，或无法证明有界时",
+        "极限可能为 ∞ 的情形"
+      ],
+      "pitfalls": [
+        "未证明单调与有界就直接设极限 A 代入递推式（缺失收敛性论证，丢步骤分）",
+        "解极限方程得到多个根却未用有界范围或初值排除",
+        "单调性方向判断错误（递增/递减弄反）导致上界取错"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.squeeze_theorem",
+          "note": "同一递推数列极限，若能方便地夹逼也可不用单调有界准则"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.inequality_scaling",
+          "note": "证明数列有界或单调时常用放缩与不等式估计"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "exam_notes": "几乎每道递推数列极限题都要先写“由单调有界准则，极限存在”，这一步是给分点。",
+      "example_problems": [
+        {
+          "statement": "设 x_1=1，x_{n+1}=√(2 + x_n)，求 lim_{n→∞} x_n。",
+          "answer_sketch": "归纳证明 0<x_n<2 且 x_{n+1}>x_n（单调递增有上界），设极限为 A，由 A=√(2+A) 得 A=2。",
+          "scenario_id": "S.limit.recurrence_sequence"
+        },
+        {
+          "statement": "设 x_1=0，x_{n+1}=(x_n+3)/2，求 lim_{n→∞} x_n。",
+          "answer_sketch": "证明数列单调递增且有上界 3，设极限 A 满足 A=(A+3)/2，解得 A=3。",
+          "scenario_id": "S.limit.recurrence_sequence"
+        },
+        {
+          "statement": "设 x_1=1，x_{n+1}=1 + 1/x_n，求 lim_{n→∞} x_n。",
+          "answer_sketch": "证明数列有界（介于 1 与 2 之间）且收敛，设极限 A 满足 A=1+1/A，取正根 A=(1+√5)/2。",
+          "scenario_id": "S.limit.recurrence_sequence"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.important_limit",
+      "name": "两个重要极限",
+      "aliases": [
+        "重要极限",
+        "两个重要极限公式",
+        "two important limits"
+      ],
+      "one_liner": "直接运用 lim_{u→0}(sin u)/u = 1 与 lim_{u→∞}(1 + 1/u)^u = e（及其变形）求极限。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.0over0",
+        "S.limit.one_to_inf",
+        "S.limit.piecewise_continuity",
+        "S.limit.discontinuity_classification"
+      ],
+      "triggers": [
+        "式子中可整理出 (sin u)/u 且 u→0 的结构",
+        "式子形如 (1 + 1/u)^u 或可配方成 (1 + 无穷小)^{无穷大}",
+        "1^∞ 型幂指函数能凑成标准形式",
+        "分界点或间断点附近出现上述标准结构"
+      ],
+      "steps": [
+        "辨认式子是“正弦比”型还是“1 加无穷小取幂”型",
+        "通过换元或提取常数把结构化为标准形式 lim(sin u)/u 或 lim(1 + 1/u)^u",
+        "对变形中的常数因子单独计算（如 (1+k/x)^{mx} 的指数需相乘）",
+        "代入标准极限值 1 或 e 得到结果"
+      ],
+      "preconditions": [
+        "换元后新变量确实趋于要求的极限（u→0 或 u→∞）"
+      ],
+      "not_applicable": [
+        "无法通过换元/配方化为标准形式时",
+        "底数不趋于 1 的幂指式（属其他未定式）",
+        "正弦比中自变量不趋于 0 的情形"
+      ],
+      "pitfalls": [
+        "凑正弦比时忘记同步改正常数因子；正确恒等式是 sin(3x)/x = 3·sin(3x)/(3x)，不能漏掉外面的3",
+        "幂指式配方时指数因子漏乘或多乘（(1+k/x)^{mx} 的结果应为 e^{km}）",
+        "把第二个重要极限误记成 lim(1+1/x)^x = 1"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.equiv_infinitesimal",
+          "note": "lim sin x/x 既可用重要极限，也可用等价替换 sin x~x，两者等价"
+        },
+        {
+          "type": "compose",
+          "target": "M.log_transform",
+          "note": "1^∞ 型既可直接凑第二个重要极限，也可取对数后用其变形式 e^{lim v(u−1)}"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "(1+k/x)^{mx} → e^{km} 是高频结论，务必掌握配方法与指数相乘。",
+      "example_problems": [
+        {
+          "statement": "求 lim_{x→∞} (1 + 2/x)^{3x}。",
+          "answer_sketch": "配方为 ((1 + 2/x)^{x/2})^{6} → e^6。",
+          "scenario_id": "S.limit.one_to_inf"
+        },
+        {
+          "statement": "设 f(x)=sin x/x (x≠0)，f(0)=a，求 a 使 f 在 x=0 处连续。",
+          "answer_sketch": "由 lim_{x→0}(sin x)/x = 1，且需等于 f(0)，得 a=1。",
+          "scenario_id": "S.limit.piecewise_continuity"
+        },
+        {
+          "statement": "判断 f(x)=(sin x)/x 在 x=0 处的间断点类型。",
+          "answer_sketch": "x=0 处无定义但左右极限均为 1，故为可去间断点。",
+          "scenario_id": "S.limit.discontinuity_classification"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.rationalization",
+      "name": "有理化",
+      "aliases": [
+        "有理化",
+        "分子分母有理化",
+        "rationalization",
+        "multiplying by the conjugate"
+      ],
+      "one_liner": "对含根式差的式子，通过乘以共轭把根式差化为有理式，从而消去零因子或便于比较阶。",
+      "block_ids": [
+        "B.indefint",
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.indefint.sqrt_integrand",
+        "S.limit.0over0",
+        "S.limit.inf_minus_inf"
+      ],
+      "triggers": [
+        "式子含两根式之差（√A − √B）或一个根式与整式之差",
+        "代入后为 0/0 或 ∞−∞ 且根式无法直接约分",
+        "分母含根式、需要把分母化为有理式",
+        "积分中被积函数含根式，需先整理成可换元的形式"
+      ],
+      "steps": [
+        "找出待处理的根式差，写出其共轭因式",
+        "分子分母同乘共轭因式，利用平方差把根式差化为有理式",
+        "整理化简，消去公共零因子或得到便于比较的商式",
+        "对新式子求极限（或继续后续换元、积分）"
+      ],
+      "preconditions": [
+        "式子中的根式差可通过乘共轭整体理顺"
+      ],
+      "not_applicable": [
+        "根式之间是相加关系且不产生平方差，有理化无助于消去零因子",
+        "含三个及以上根式、乘共轭难以一次理顺（效果差）"
+      ],
+      "pitfalls": [
+        "只把分子有理化却忘记同步处理分母（或反之），导致式子不等价",
+        "乘共轭后符号写错（√A − √B 的共轭是 √A + √B）",
+        "有理化后不及时化简就求极限，遗漏可约去的零因子"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.equiv_infinitesimal",
+          "note": "有理化得到商式后，常再接等价替换快速求极限"
+        },
+        {
+          "type": "compose",
+          "target": "M.factor_cancel",
+          "note": "有理化把差化为有理式后，可因式分解约去零因子"
+        },
+        {
+          "type": "prefer",
+          "target": "M.lhopital",
+          "note": "根式差的极限先有理化通常比直接洛必达（求导更繁）更快"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "√(x²+x) − x 型（x→+∞）是经典，需先提取 x 再有理化或直接比较。",
+      "example_problems": [
+        {
+          "statement": "求 lim_{x→0} (√(1+x) − 1)/x。",
+          "answer_sketch": "分子分母同乘 √(1+x)+1，得 1/(√(1+x)+1) → 1/2。",
+          "scenario_id": "S.limit.0over0"
+        },
+        {
+          "statement": "求 lim_{x→+∞} (√(x²+x) − x)。",
+          "answer_sketch": "有理化得 x/(√(x²+x)+x)，同除 x 后极限为 1/2。",
+          "scenario_id": "S.limit.inf_minus_inf"
+        },
+        {
+          "statement": "求 ∫ dx/(1 + √x)（x>0）。",
+          "answer_sketch": "先有理化被积函数为 (1 − √x)/(1 − x)，再令 t=√x 换元积分。",
+          "scenario_id": "S.indefint.sqrt_integrand"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.factor_cancel",
+      "name": "因式分解消零",
+      "aliases": [
+        "因式分解消零",
+        "约去零因子",
+        "factoring and cancelling"
+      ],
+      "one_liner": "对 0/0 型有理式，把分子分母因式分解并约去公共的零因子，再代入求值。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.0over0",
+        "S.limit.inf_over_inf",
+        "S.limit.inf_minus_inf"
+      ],
+      "triggers": [
+        "分子分母都是多项式（或有理式）",
+        "代入趋近值后分子分母同为 0（0/0）",
+        "分子分母含有明显的公共因式 (x−a)"
+      ],
+      "steps": [
+        "把分子分母分别分解因式（提取公因式、十字相乘、平方差、立方差等）",
+        "找出并约去公共的零因子 (x−a)",
+        "对化简后的式子直接代入趋近值求极限",
+        "若约去后仍为未定式，则继续分解或改用其他方法"
+      ],
+      "preconditions": [
+        "分子分母在趋近点附近存在可约的公共零因子"
+      ],
+      "not_applicable": [
+        "非有理式或无法因式分解的式子",
+        "约去零因子后仍为未定式，且再分解不出公共因子",
+        "含参数时未讨论参数取值即约分（可能约去含参因子导致丢解）"
+      ],
+      "pitfalls": [
+        "因式分解错误或漏掉重根，导致约分不完全",
+        "越过加减项进行错误的整体约分",
+        "含参数时忽略参数可使公因子为 0 的特殊值"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.lhopital",
+          "note": "有理式 0/0 时先约去零因子，通常比直接洛必达更快、更不易出错"
+        },
+        {
+          "type": "compose",
+          "target": "M.rationalization",
+          "note": "根式差先有理化得到有理式，再因式分解约分"
+        },
+        {
+          "type": "compose",
+          "target": "M.divide_highest_power",
+          "note": "约分后若变为 ∞/∞ 或需讨论次数，可接同除最高次幂"
+        }
+      ],
+      "difficulty": 1,
+      "frequency": "high",
+      "exam_notes": "x^n − a^n = (x−a)(x^{n−1} + x^{n−2}a + ⋯ + a^{n−1}) 是常用分解式。",
+      "example_problems": [
+        {
+          "statement": "求 lim_{x→2} (x² − 4)/(x − 2)。",
+          "answer_sketch": "分子分解为 (x−2)(x+2)，约去 (x−2) 后代入得 4。",
+          "scenario_id": "S.limit.0over0"
+        },
+        {
+          "statement": "求 lim_{x→1} (x³ − 1)/(x² − 1)。",
+          "answer_sketch": "约去公因子 (x−1)，得 (x²+x+1)/(x+1) → 3/2。",
+          "scenario_id": "S.limit.0over0"
+        },
+        {
+          "statement": "求 lim_{x→a} (x^n − a^n)/(x − a)（n 为正整数）。",
+          "answer_sketch": "用 x^n − a^n 的分解式约去 (x−a)，得 n·a^{n−1}。",
+          "scenario_id": "S.limit.0over0"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.log_transform",
+      "name": "取对数法",
+      "aliases": [
+        "取对数",
+        "对数变换",
+        "logarithmic transformation",
+        "taking logarithms"
+      ],
+      "one_liner": "对幂指式 u(x)^{v(x)} 取对数化为 v(x)·ln u(x)，把幂指型未定式转化为乘积或有理分式处理。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.one_to_inf",
+        "S.limit.power_indeterminate",
+        "S.limit.n_term_sum"
+      ],
+      "triggers": [
+        "式子是幂指结构 u(x)^{v(x)}，直接代入为 1^∞、0^0 或 ∞^0",
+        "式子是多因子连乘，取对数后变成和更易处理",
+        "需要在指数位置上处理变量"
+      ],
+      "steps": [
+        "设原极限为 L（或令 y=u^v），两边取自然对数",
+        "利用 ln u^v = v·ln u 把指数化为乘积",
+        "对 ln L = lim v·ln u 求极限（常化为 0/0 或 ∞/∞，用等价替换或洛必达）",
+        "由 ln L = A 还原得原极限 L = e^A"
+      ],
+      "preconditions": [
+        "幂指式（或连乘式）恒正，使对数有意义"
+      ],
+      "not_applicable": [
+        "底数可能取负值的幂指式（对数无定义）",
+        "非幂指、非连乘的普通结构（取对数反而更复杂）"
+      ],
+      "pitfalls": [
+        "求出 ln L 后忘记取指数还原成 e^A",
+        "忽略底数必须为正的前提，对可能为负的底数取对数",
+        "连乘取对数后忘记把“和”的极限再取指数"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.lhopital",
+          "note": "幂指型先取对数化为乘积/商式，再用洛必达比直接硬凑更快"
+        },
+        {
+          "type": "compose",
+          "target": "M.equiv_infinitesimal",
+          "note": "取对数得到 ln(1+u) 后用等价替换 ln(1+u)~u 化简"
+        },
+        {
+          "type": "compose",
+          "target": "M.important_limit",
+          "note": "1^∞ 型取对数后与第二个重要极限 e^{lim v(u−1)} 等价，可互相印证"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "结论 lim u^v = e^{lim v(u−1)}（u→1）在 1^∞ 型中可直接套用，节省时间。",
+      "example_problems": [
+        {
+          "statement": "求 lim_{x→0} (cos x)^{1/x²}。",
+          "answer_sketch": "取对数得 (1/x²)·ln(cos x)；由 ln(cos x)~cos x−1~−x²/2，得 ln L→−1/2，故 L=e^{−1/2}。",
+          "scenario_id": "S.limit.one_to_inf"
+        },
+        {
+          "statement": "求 lim_{x→0⁺} x^x。",
+          "answer_sketch": "取对数得 x·ln x→0，故 L=e^0=1。",
+          "scenario_id": "S.limit.power_indeterminate"
+        },
+        {
+          "statement": "求 lim_{n→∞} n^{1/n}。",
+          "answer_sketch": "取对数得 (ln n)/n→0，故极限为 e^0=1。",
+          "scenario_id": "S.limit.power_indeterminate"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.divide_highest_power",
+      "name": "同除最高次幂",
+      "aliases": [
+        "抓大头",
+        "同除最高次幂",
+        "divide by the highest power",
+        "dominant term analysis"
+      ],
+      "one_liner": "对 ∞/∞ 型的有理式（或幂函数组合），分子分母同除最高次幂或比较主导项来确定极限。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.inf_over_inf",
+        "S.limit.zero_times_inf",
+        "S.limit.inf_minus_inf",
+        "S.limit.growth_balance"
+      ],
+      "triggers": [
+        "极限过程为 x→∞ 或 n→∞",
+        "分子分母是幂函数（或可整理为幂函数之商）",
+        "代入后为 ∞/∞",
+        "含参幂（如 a^n）需按参数大小比较主导项"
+      ],
+      "steps": [
+        "找出分子与分母中次数最高的项（主导项）",
+        "分子分母同除以该最高次幂，把低次项化为趋于 0 的项",
+        "令 n→∞（或 x→∞）取极限，只保留常数主导项之比",
+        "含参数时按参数取值分别比较 a^n 与其他项的相对大小"
+      ],
+      "preconditions": [
+        "分子分母的主导项可明确比较（幂函数次序清晰）"
+      ],
+      "not_applicable": [
+        "含振荡因子时，同除主幂只能处理有理部分；须另证振荡因子有界或继续讨论，不能直接给振荡因子代极限。",
+        "指数与幂混合、无法单纯用次数比较增长阶的情形（应改用洛必达）"
+      ],
+      "pitfalls": [
+        "最高次幂找错（如把 x·√x 当作一次）",
+        "含参数时忽略 a 与 1 的大小关系，未分类讨论",
+        "指数函数与幂函数混合时仍套用“看次数”，忽略 e^x 增长更快"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.lhopital",
+          "note": "幂函数之商的 ∞/∞ 用抓大头一步到位，通常比洛必达（逐次降阶）快"
+        },
+        {
+          "type": "compose",
+          "target": "M.factor_cancel",
+          "note": "先约去公共因子降低次数，再同除最高次幂比较主导项"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "结论：有理式 ∞/∞ 的极限由分子分母最高次项决定——次数相等取系数比、分子次数低为 0、分子次数高为 ∞。",
+      "example_problems": [
+        {
+          "statement": "求 lim_{x→∞} (3x³ − 2x + 1)/(2x³ + x²)。",
+          "answer_sketch": "分子分母同除 x³，极限为 3/2。",
+          "scenario_id": "S.limit.inf_over_inf"
+        },
+        {
+          "statement": "求 lim_{x→+∞} (√(x²+1))/(x + 1)。",
+          "answer_sketch": "分子分母同除 x（√(x²+1)=x·√(1+1/x²)），极限为 1。",
+          "scenario_id": "S.limit.inf_over_inf"
+        },
+        {
+          "statement": "讨论 lim_{n→∞} a^n/(1 + a^n)（a>0）。",
+          "answer_sketch": "分子分母同除 a^n：a>1 时为 1，a=1 时为 1/2，0<a<1 时为 0。",
+          "scenario_id": "S.limit.parametric_limit"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.one_sided_limit",
+      "name": "左右极限法",
+      "aliases": [
+        "左右极限法",
+        "单侧极限",
+        "one-sided limit method"
+      ],
+      "one_liner": "在分界点或特殊点处分别求左极限与右极限，用于判断极限是否存在、函数是否连续以及间断点的类型。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.piecewise_continuity",
+        "S.limit.discontinuity_classification"
+      ],
+      "triggers": [
+        "函数是分段函数，在分界点两侧表达式不同",
+        "式含绝对值、取整函数，或含 e^{1/x}、arctan(1/x) 等左右趋向差异明显的结构",
+        "需判断极限是否存在、是否连续、间断点属哪一类",
+        "分母在特殊点两侧变号"
+      ],
+      "steps": [
+        "确定需要考察的特殊点（分界点、无定义点、分段点）",
+        "分别在该点左侧（x→a⁻）与右侧（x→a⁺）取极限，代入对应分支或处理绝对值",
+        "比较左、右极限：相等则双侧极限存在，不等则极限不存在（跳跃）",
+        "结合函数值判定连续性，或进一步给间断点分类（可去/跳跃/无穷/振荡）"
+      ],
+      "preconditions": [
+        "该点两侧的函数表达式或趋向可分别确定"
+      ],
+      "not_applicable": [
+        "不含分界或左右差异结构、双侧极限本就相同的情形（无需分侧）",
+        "仅形式分段而两侧表达式相同的情形（可直接求双侧极限）"
+      ],
+      "pitfalls": [
+        "只求了单侧极限或漏掉其中一侧就下结论",
+        "代入分支时张冠李戴（把 x>0 的表达式用到 x<0）",
+        "含绝对值或 e^{1/x} 时忽略左、右趋向，导致一侧极限判断错误"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.equiv_infinitesimal",
+          "note": "分别求左右极限时，0/0 的一侧常用等价替换化简"
+        },
+        {
+          "type": "compose",
+          "target": "M.lhopital",
+          "note": "某侧为 0/0 或 ∞/∞ 时，用洛必达求该侧极限"
+        },
+        {
+          "type": "compose",
+          "target": "M.important_limit",
+          "note": "分界点附近出现 sin x/x 等标准结构时，直接用重要极限求该侧极限"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "间断点分类规则：左右极限都存在为第一类（相等即可去、不等即跳跃），否则为第二类（无穷或振荡）。",
+      "example_problems": [
+        {
+          "statement": "设 f(x)=x+1 (x<0)，f(x)=x²+a (x≥0)，求 a 使 f 在 x=0 连续。",
+          "answer_sketch": "左极限为 1，右极限为 a，需 a=1。",
+          "scenario_id": "S.limit.piecewise_continuity"
+        },
+        {
+          "statement": "判断 f(x)=e^{1/x} 在 x=0 处的间断点类型。",
+          "answer_sketch": "x→0⁻ 时极限为 0，x→0⁺ 时极限为 +∞，属第二类（无穷）间断点。",
+          "scenario_id": "S.limit.discontinuity_classification"
+        },
+        {
+          "statement": "设 f(x)=x·sin(1/x) (x≠0)，f(0)=0，判断 f 在 x=0 是否连续。",
+          "answer_sketch": "由 |x·sin(1/x)| ≤ |x| → 0，双侧极限为 0 且等于 f(0)，故连续。",
+          "scenario_id": "S.limit.piecewise_continuity"
+        }
+      ],
+      "origin_block_ids": [
+        "B.limit"
+      ]
+    },
+    {
+      "id": "M.counterexample_sequences",
+      "name": "用两条趋近数列反证",
+      "aliases": [
+        "用两条趋近数列反证"
+      ],
+      "one_liner": "找两列都趋于同一点、函数值却趋于不同值的数，证明极限不存在。",
+      "definition": "找两列都趋于同一点、函数值却趋于不同值的数，证明极限不存在。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.piecewise_continuity",
+        "S.limit.discontinuity_classification"
+      ],
+      "triggers": [
+        "找两列都趋于同一点、函数值却趋于不同值的数，证明极限不存在。"
+      ],
+      "steps": [
+        "构造两条定义域内的数列，检查都趋于目标点",
+        "分别算函数值的极限",
+        "两个极限不同，原函数在该点就没有极限"
+      ],
+      "preconditions": [
+        "两列须处于原函数定义域内且趋于同一目标点",
+        "只用来否定极限；两列结果相同不足以证明存在"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "有界不代表有极限",
+        "不能只检验两条路径就宣称极限存在"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "找两列都趋于同一点、函数值却趋于不同值的数，证明极限不存在。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "如果函数在该点有极限，沿任意定义域内趋近数列的函数值都须趋于同一个值。找到两列结果不同，就否定了这个必要条件。"
+    },
+    {
+      "id": "M.product_telescoping",
+      "name": "连乘递推相消",
+      "aliases": [
+        "连乘递推相消"
+      ],
+      "one_liner": "利用相邻因子的恒等式，把一长串乘积压成首尾几项，再求极限。",
+      "definition": "利用相邻因子的恒等式，把一长串乘积压成首尾几项，再求极限。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.n_term_sum"
+      ],
+      "triggers": [
+        "利用相邻因子的恒等式，把一长串乘积压成首尾几项，再求极限。"
+      ],
+      "steps": [
+        "找能连接相邻因子的恒等式",
+        "先对有限项相乘，写出首尾表达式",
+        "确认分母非零，再对闭式取极限"
+      ],
+      "preconditions": [
+        "须有确切的有限乘积恒等式",
+        "相除时分母不能为零"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "不能将每个因子的极限直接乘成无限乘积的极限",
+        "二倍角相消时不能漏掉2的幂"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "利用相邻因子的恒等式，把一长串乘积压成首尾几项，再求极限。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "先建立有限乘积的精确恒等式，再对两边取极限。相消发生在有限项上，不使用未经证明的无限乘积运算法则。"
+    },
+    {
+      "id": "M.polynomial_division",
+      "name": "多项式除法",
+      "aliases": [
+        "多项式除法"
+      ],
+      "one_liner": "把假分式拆成整式加真分式，露出增长项和余项；求极限、求导、积分都可能用到。",
+      "definition": "把假分式拆成整式加真分式，露出增长项和余项；求极限、求导、积分都可能用到。",
+      "block_ids": [
+        "B.deriv",
+        "B.indefint",
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.deriv.higher_order",
+        "S.indefint.rational_function",
+        "S.limit.inf_minus_inf",
+        "S.limit.growth_balance"
+      ],
+      "triggers": [
+        "把假分式拆成整式加真分式，露出增长项和余项；求极限、求导、积分都可能用到。"
+      ],
+      "steps": [
+        "按最高次项相除，得到商的下一项",
+        "减去该项乘分母，再继续相除",
+        "余式次数低于分母后写成商加余式除分母"
+      ],
+      "preconditions": [
+        "分子分母是多项式，分母不是零多项式",
+        "恒等式只在原分母非零处使用"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "余式不能丢掉；相消后它可能决定答案"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "把假分式拆成整式加真分式，露出增长项和余项；求极限、求导、积分都可能用到。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "多项式恒等式P=Q·商+余式保证拆分没有改变原式；在Q非零处可以除以Q。余式次数小于Q，故在无穷远它们的比值趋零。"
+    },
+    {
+      "id": "M.finite_limit_constraint",
+      "name": "用有限极限约束系数",
+      "aliases": [
+        "用有限极限约束系数"
+      ],
+      "one_liner": "题目说整体趋于有限值时，先合并所有可能相消的增长项，再令剩余发散项的系数为零。",
+      "definition": "题目说整体趋于有限值时，先合并所有可能相消的增长项，再令剩余发散项的系数为零。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.inf_over_inf",
+        "S.limit.inf_minus_inf",
+        "S.limit.growth_balance"
+      ],
+      "triggers": [
+        "题目说整体趋于有限值时，先合并所有可能相消的增长项，再令剩余发散项的系数为零。"
+      ],
+      "steps": [
+        "先完成恒等变形，合并同阶项",
+        "证明余项趋零或不足以抵消主项",
+        "由目标极限有限，列出发散项系数为零的方程",
+        "再用常数极限确定剩余参数并反代"
+      ],
+      "preconditions": [
+        "题设明确要求有限极限",
+        "已证明剩余项不能抵消被约束的发散项"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "不能在合并前把各项系数分别设为零",
+        "不能事先假定未知参数为正或非零"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "题目说整体趋于有限值时，先合并所有可能相消的增长项，再令剩余发散项的系数为零。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "合并后若仍有非零的正次数多项式项，它在无穷远不可能趋于有限值；已证明趋零的余项也不能把它抵消。因此先消去增长项，再对照常数极限。"
+    },
+    {
+      "id": "M.pointwise_limit",
+      "name": "先固定自变量求点态极限",
+      "aliases": [
+        "先固定自变量求点态极限"
+      ],
+      "one_liner": "含n的函数列先把x当成固定数，再按x的范围求n趋于无穷时的值，得到一个新函数。",
+      "definition": "含n的函数列先把x当成固定数，再按x的范围求n趋于无穷时的值，得到一个新函数。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.function_sequence_limit"
+      ],
+      "triggers": [
+        "含n的函数列先把x当成固定数，再按x的范围求n趋于无穷时的值，得到一个新函数。"
+      ],
+      "steps": [
+        "先固定x，区分影响数列趋势的x取值",
+        "分别求每个分支的n极限",
+        "拼成极限函数，再回答连续性等后续问题"
+      ],
+      "preconditions": [
+        "每个讨论点的数列极限有依据",
+        "固定x求n极限和对极限函数求x极限是两件事"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "不能未经证明交换两个极限",
+        "边界点必须单独检查"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "含n的函数列先把x当成固定数，再按x的范围求n趋于无穷时的值，得到一个新函数。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "点态极限对每个固定x分别考察一列数。得到的极限函数是新的研究对象，它的连续性不能仅由原来各项连续推出。"
+    },
+    {
+      "id": "M.continuity_rules",
+      "name": "用连续性求极限",
+      "aliases": [
+        "用连续性求极限"
+      ],
+      "one_liner": "确认表达式在目标点连续且有定义，才直接代入；也可证明一个分支内部连续。",
+      "definition": "确认表达式在目标点连续且有定义，才直接代入；也可证明一个分支内部连续。",
+      "block_ids": [
+        "B.limit",
+        "B.multivar"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.piecewise_continuity",
+        "S.limit.discontinuity_classification",
+        "S.multivar.binary_limit",
+        "S.multivar.continuity"
+      ],
+      "triggers": [
+        "确认表达式在目标点连续且有定义，才直接代入；也可证明一个分支内部连续。"
+      ],
+      "steps": [
+        "检查基本函数和复合运算的定义域",
+        "确认分母非零、对数或根式条件成立",
+        "用连续函数的运算和复合性质取极限"
+      ],
+      "preconditions": [
+        "目标点附近及目标点处的表达式满足所用连续性条件"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "直接代入遇到0/0时不能继续当作普通除法",
+        "有界性不是连续性"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "确认表达式在目标点连续且有定义，才直接代入；也可证明一个分支内部连续。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "连续性的定义就是函数值与目标点极限相同。连续函数的和、积、合法商以及复合在满足定义域条件时仍连续。"
+    },
+    {
+      "id": "M.combine_fractions",
+      "name": "通分法",
+      "aliases": [
+        "通分法"
+      ],
+      "one_liner": "把分式的差合成一个商，保留可能相消的项，再判断新的极限情景。",
+      "definition": "把分式的差合成一个商，保留可能相消的项，再判断新的极限情景。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.inf_minus_inf",
+        "S.limit.growth_balance"
+      ],
+      "triggers": [
+        "把分式的差合成一个商，保留可能相消的项，再判断新的极限情景。"
+      ],
+      "steps": [
+        "检查各分母非零",
+        "选公共分母并完整合并分子",
+        "化简后重新检查分子分母的趋势"
+      ],
+      "preconditions": [
+        "原式和变形后的公共分母在讨论范围内非零"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "减号必须作用于整个分子",
+        "通分后不一定是0/0或∞/∞"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "把分式的差合成一个商，保留可能相消的项，再判断新的极限情景。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "在原分母非零处，通分是等式变形。它让差中可相消的项集中到同一分子，不自动保证极限的某种类型。"
+    },
+    {
+      "id": "M.rewrite_as_fraction",
+      "name": "把乘积改写成商",
+      "aliases": [
+        "把乘积改写成商"
+      ],
+      "one_liner": "把趋零量与无界量的乘积改写成商，检查实际得到0/0还是∞/∞，再选择方法。",
+      "definition": "把趋零量与无界量的乘积改写成商，检查实际得到0/0还是∞/∞，再选择方法。",
+      "block_ids": [
+        "B.limit"
+      ],
+      "applies_to_scenarios": [
+        "S.limit.zero_times_inf"
+      ],
+      "triggers": [
+        "把趋零量与无界量的乘积改写成商，检查实际得到0/0还是∞/∞，再选择方法。"
+      ],
+      "steps": [
+        "选择要写成倒数的因子",
+        "检查该因子在去心邻域非零",
+        "重新判断商的类型和下一步条件"
+      ],
+      "preconditions": [
+        "取倒数的因子在所用邻域非零"
+      ],
+      "not_applicable": [],
+      "pitfalls": [
+        "不能省略符号与定义域检查"
+      ],
+      "relations": [],
+      "difficulty": 2,
+      "frequency": "medium",
+      "exam_notes": "把趋零量与无界量的乘积改写成商，检查实际得到0/0还是∞/∞，再选择方法。",
+      "example_problems": [],
+      "origin_block_ids": [
+        "B.limit"
+      ],
+      "principle": "在因子非零处，uv=u/(1/v)=v/(1/u)。这是恒等变形；新分子分母的趋势仍须分别检查。"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+.trail-page { position: relative; flex: 1; display: flex; min-height: 0; overflow: hidden; }
+.trail-page .trail-scroll { padding-bottom: calc(112px + env(safe-area-inset-bottom)); }
+.trail-page .trail-outline { overflow: visible; }
+.trail-bottom-shelf { position: absolute; bottom: 0; left: 0; right: 0; z-index: 12; }
+.trail-shelf-dock { position: relative; padding: 4px 20px calc(8px + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--border); }
+.trail-shelf-trigger { width: 100%; min-height: 44px; padding: 8px 4px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: transparent; border: 0; text-align: left; font-size: 13px; color: var(--text-muted); }
+.trail-shelf-trigger + .trail-shelf-trigger { border-top: 1px solid var(--border); }
+.trail-shelf-trigger.is-open { font-weight: 600; color: var(--text); }
+.trail-shelf-trigger.is-open > span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.trail-shelf-trigger svg { transition: transform var(--motion-duration) var(--motion-ease); }
+.trail-shelf-trigger.is-open svg { transform: rotate(180deg); }
+.trail-shelf-panel-frame { position: absolute; bottom: 100%; left: 12px; right: 12px; }
+.trail-shelf-panel { display: flex; flex-direction: column; min-height: 120px; max-height: min(65dvh, 530px); border: 1px solid var(--border); border-bottom: 0; border-radius: 12px 12px 0 0; background: var(--surface-elevated); box-shadow: 0 -6px 20px rgb(0 0 0 / 8%); animation: trail-shelf-appear var(--motion-duration) var(--motion-ease); }
+.trail-shelf-panel[hidden] { display: none; }
+.trail-shelf-panel.is-closing { animation: trail-shelf-disappear var(--motion-duration) var(--motion-ease) forwards; pointer-events: none; }
+.trail-shelf-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 4px 10px 4px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.trail-shelf-heading h2 { font-size: 14px; font-weight: 600; }
+.trail-shelf-content { padding: 4px 20px 20px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; scrollbar-width: thin; }
+.trail-shelf-content .personal-notes { margin: 0; padding-top: 8px; border: 0; }
+.trail-shelf-content .personal-notes-header { margin-bottom: 8px; justify-content: flex-end; }
+.trail-shelf-backdrop { position: absolute; inset: 0; z-index: 11; cursor: default; background: transparent; border: 0; padding: 0; }
+@keyframes trail-shelf-appear { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes trail-shelf-disappear { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(14px); } }

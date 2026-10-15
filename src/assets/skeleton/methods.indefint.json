@@ -1,0 +1,568 @@
+{
+  "block_id": "B.indefint",
+  "methods": [
+    {
+      "id": "M.basic_integral_formula",
+      "name": "基本积分公式法",
+      "aliases": [
+        "直接积分法",
+        "查基本积分表",
+        "直接积分"
+      ],
+      "one_liner": "把被积函数经简单恒等变形拆成幂、指数、基本三角与反三角等'表内函数'的线性组合，逐项查基本积分公式表求出原函数。",
+      "block_ids": [
+        "B.indefint"
+      ],
+      "applies_to_scenarios": [
+        "S.indefint.basic_formula"
+      ],
+      "triggers": [
+        "被积函数是基本初等函数的和差，或可拆成若干项之和",
+        "每一项都形如 x^α、a^x、sin x、1/(1+x²) 等能在基本积分表中直接找到原函数",
+        "只需把根式写成分数指数、把假分式拆项即可逐项查表",
+        "被积函数内不含复合结构，也不含不同类型的乘积"
+      ],
+      "steps": [
+        "用代数恒等变形把被积函数拆成基本函数的线性组合（根式化幂、假分式拆整、三角用恒等式降幂）",
+        "对每一项套用对应的基本积分公式",
+        "把各原函数相加并统一加积分常数 C",
+        "对结果求导检验是否还原被积函数"
+      ],
+      "preconditions": [
+        "被积函数经恒等变形后能被基本积分表的有限几类函数覆盖"
+      ],
+      "not_applicable": [
+        "被积函数含复合结构（如 e^{x²}，或外层之外还套内层），需换元或分部",
+        "被积函数是三角函数有理式或两个多项式之商，需用专门方法",
+        "形如 ∫sin x/x、∫e^{x²}dx 的一类，其原函数非初等函数，不能用基本公式"
+      ],
+      "pitfalls": [
+        "漏写积分常数 C",
+        "幂函数积分忘记系数 1/(α+1)，且 α=-1 时应改用 ln|x| 而非幂公式",
+        "把 ∫dx/x 的原函数误写成 ln x（正确为 ln|x|）",
+        "根式或分式未先化为幂、拆项就直接积分而出错"
+      ],
+      "relations": [],
+      "difficulty": 1,
+      "frequency": "high",
+      "exam_notes": "单独考'套公式'的题较少，但它几乎是每道积分题的最后一步；化幂、拆项等恒等变形能力是得分关键。",
+      "example_problems": [
+        {
+          "statement": "求 ∫(2x³ - 3/x + e^x) dx。",
+          "answer_sketch": "逐项套幂函数、1/x、指数函数公式，得 x⁴/2 - 3ln|x| + e^x + C。",
+          "scenario_id": "S.indefint.basic_formula"
+        },
+        {
+          "statement": "求 ∫(√x + 1/√x)² dx。",
+          "answer_sketch": "先展开为 x + 2 + 1/x，再逐项积分得 x²/2 + 2x + ln|x| + C。",
+          "scenario_id": "S.indefint.basic_formula"
+        },
+        {
+          "statement": "求 ∫(1/(1+x²) + sin x) dx。",
+          "answer_sketch": "分别用反正切与余弦的基本公式，得 arctan x - cos x + C。",
+          "scenario_id": "S.indefint.basic_formula"
+        }
+      ],
+      "origin_block_ids": [
+        "B.indefint"
+      ]
+    },
+    {
+      "id": "M.first_substitution",
+      "name": "凑微分（第一类换元法）",
+      "aliases": [
+        "第一类换元法",
+        "凑微分法",
+        "凑微分"
+      ],
+      "one_liner": "把被积式中的 φ'(x)dx 凑成 d(φ(x))，令 u=φ(x) 化为 ∫f(u)du，用基本公式积出后再回代 x。",
+      "block_ids": [
+        "B.defint",
+        "B.indefint",
+        "B.multiint"
+      ],
+      "applies_to_scenarios": [
+        "S.defint.newton_leibniz_calc",
+        "S.defint.piecewise_absolute",
+        "S.defint.improper_integral_calc",
+        "S.indefint.basic_formula",
+        "S.indefint.first_substitution",
+        "S.indefint.sqrt_integrand",
+        "S.indefint.trig_rational",
+        "S.indefint.rational_function",
+        "S.multiint.polar"
+      ],
+      "triggers": [
+        "被积函数形如 f(φ(x))·φ'(x)，内层结构与它的导数同时出现",
+        "能识别微分配对：x dx=½d(x²)、dx/x=d(ln x)、e^x dx=d(e^x)、sec²x dx=d(tan x)、dx/√(1-x²)=d(arcsin x)",
+        "分子是分母导数的常数倍（如 x/(x²+1)、2x/(x²+1)）",
+        "整个被积式只围绕一种内层结构，换元后可直接查基本公式"
+      ],
+      "steps": [
+        "找出内层 φ(x) 及其微分 dφ=φ'(x)dx",
+        "通过乘、除常数把 φ'(x)dx 配凑成 dφ（常数可自由调，保持等价）",
+        "令 u=φ(x)，把积分化为 ∫f(u)du",
+        "用基本积分公式积出，再把 u 回代为 φ(x) 并加 C"
+      ],
+      "preconditions": [
+        "φ 可导，且 φ'(x)dx 能在被积式中被'完整抠出'（至多相差常数倍）"
+      ],
+      "not_applicable": [
+        "凑不出内层导数因子（如 ∫e^{x²}dx，内层导数 2x 不在式中）",
+        "需要整体式换元才能化简（如含 √(a²-x²) 的三角代换），应改用第二类换元",
+        "被积函数是多项式之商且分母可因式分解，应优先部分分式"
+      ],
+      "pitfalls": [
+        "配凑微分时漏掉或写错常数因子，导致结果差一个倍数",
+        "换元后只换了函数、没把 dx 一起换成对应的微分，x 与 u 混用",
+        "积出后忘记回代原变量 x",
+        "对 ∫dx/x 等应加绝对值却漏写"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.basic_integral_formula",
+          "note": "凑微分的最后一步仍需落到基本积分公式"
+        },
+        {
+          "type": "alternative",
+          "target": "M.integration_by_substitution",
+          "note": "能凑出导数因子用第一类；需要整体代换用第二类，两者互补"
+        },
+        {
+          "type": "alternative",
+          "target": "M.trig_rational_integral",
+          "note": "三角有理式具奇偶性时用 u=sinx/cosx 凑微分更快，否则用三角有理式积分"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "最常用的积分技巧，很多题的'关键一步'就是凑出一个合适的微分，尤其是复合函数与分母含导数结构的题。",
+      "example_problems": [
+        {
+          "statement": "求 ∫ 2x/(x²+1) dx。",
+          "answer_sketch": "凑微分 2x dx=d(x²+1)，得 ln(x²+1) + C。",
+          "scenario_id": "S.indefint.first_substitution"
+        },
+        {
+          "statement": "求 ∫ (ln x)²/x dx。",
+          "answer_sketch": "凑 dx/x=d(ln x)，令 u=ln x，得 (ln x)³/3 + C。",
+          "scenario_id": "S.indefint.first_substitution"
+        },
+        {
+          "statement": "求 ∫ e^{sin x} cos x dx。",
+          "answer_sketch": "凑 cos x dx=d(sin x)，令 u=sin x，得 e^{sin x} + C。",
+          "scenario_id": "S.indefint.first_substitution"
+        }
+      ],
+      "origin_block_ids": [
+        "B.indefint"
+      ]
+    },
+    {
+      "id": "M.integration_by_substitution",
+      "name": "换元积分法（第二类）",
+      "aliases": [
+        "第二类换元积分法",
+        "变量代换法",
+        "三角代换",
+        "根式代换",
+        "倒代换"
+      ],
+      "one_liner": "主动引入新变量 x=ψ(t)（三角代换、根式代换、倒代换等），把难积形式化为易积形式，积出后再反解得回 x。",
+      "block_ids": [
+        "B.defint",
+        "B.indefint"
+      ],
+      "applies_to_scenarios": [
+        "S.defint.newton_leibniz_calc",
+        "S.defint.piecewise_absolute",
+        "S.indefint.first_substitution",
+        "S.indefint.sqrt_integrand",
+        "S.indefint.rational_function"
+      ],
+      "triggers": [
+        "被积函数含 √(a²-x²)、√(x²+a²)、√(x²-a²) 等二次根式（三角代换）",
+        "含 √(ax+b)、或被开方为一次/二次式（根式代换，令 t=根式整体）",
+        "分母含 x 的高次且可用 x=1/t 简化（倒代换）",
+        "凑微分凑不出内层导数因子，但整式代换能把结构显著化简"
+      ],
+      "steps": [
+        "按结构选代换：√(a²-x²)→x=a sin t；√(x²+a²)→x=a tan t；√(x²-a²)→x=a sec t；√(ax+b)→t=√(ax+b)",
+        "由代换求出 dx=ψ'(t)dt，把积分整体化为关于 t 的积分",
+        "对 t 的积分求出原函数",
+        "借辅助直角三角形把 t 换回 x，完成含根式的回代并加 C"
+      ],
+      "preconditions": [
+        "代换函数 ψ 单调可导，且换元后的新积分可积"
+      ],
+      "not_applicable": [
+        "能用凑微分一步到位的题（第一类换元更快）",
+        "有理函数分母可因式分解的题（用部分分式）",
+        "三角函数有理式且可直接用万能代换的题（归三角函数有理式积分）"
+      ],
+      "pitfalls": [
+        "回代时用错辅助三角形，把 √(a²-x²) 等的表达式写错",
+        "变换微分时漏乘 ψ'(t)，使积分式不平衡",
+        "三角代换未限制 t 的范围，开方时丢掉绝对值",
+        "根式类型与代换选错（如 √(a²-x²) 误用 x=a tan t）"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.first_substitution",
+          "note": "作用互补：能凑微分用第一类，需整体代换用第二类"
+        },
+        {
+          "type": "compose",
+          "target": "M.rationalization",
+          "note": "含根式的题常先有理化整理再代换；该法归属 B.limit，此处仅引用，不重复定义"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.basic_integral_formula",
+          "note": "换元后的 t 积分仍要靠基本公式积出"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "三类三角代换对应的代换式与回代（辅助直角三角形）是必考基本点，含根式的题几乎都用它。",
+      "example_problems": [
+        {
+          "statement": "求 ∫ dx/√(9-x²)。",
+          "answer_sketch": "令 x=3sin t，dx=3cos t dt，化为 ∫dt=t+C，回代 t=arcsin(x/3) 得 arcsin(x/3)+C。",
+          "scenario_id": "S.indefint.sqrt_integrand"
+        },
+        {
+          "statement": "求 ∫ √(1+x²) dx。",
+          "answer_sketch": "令 x=tan t，化为 ∫sec³t dt，再用递推/循环技巧，得 ½[x√(1+x²)+ln(x+√(1+x²))] + C。",
+          "scenario_id": "S.indefint.sqrt_integrand"
+        },
+        {
+          "statement": "求 ∫ x√(x+1) dx。",
+          "answer_sketch": "令 t=√(x+1)，x=t²-1，dx=2t dt，化为 ∫2(t⁴-t²)dt，得 (2/5)(x+1)^{5/2} - (2/3)(x+1)^{3/2} + C。",
+          "scenario_id": "S.indefint.sqrt_integrand"
+        }
+      ],
+      "origin_block_ids": [
+        "B.indefint"
+      ]
+    },
+    {
+      "id": "M.integration_by_parts",
+      "name": "分部积分法",
+      "aliases": [
+        "分部积分",
+        "integration by parts",
+        "udv 法"
+      ],
+      "one_liner": "用 ∫u dv = uv - ∫v du，把积分难度从 u 转移到 vdu，适用于两类函数乘积中'一类求导后变简单'的情形。",
+      "block_ids": [
+        "B.defint",
+        "B.indefint"
+      ],
+      "applies_to_scenarios": [
+        "S.defint.newton_leibniz_calc",
+        "S.defint.improper_integral_calc",
+        "S.indefint.by_parts_product",
+        "S.indefint.by_parts_log_inverse",
+        "S.indefint.recurrence"
+      ],
+      "triggers": [
+        "被积函数是两类不同函数的乘积，其中一类（多项式、对数、反三角）求导后变简单",
+        "出现 x^n e^{ax}、x^n sin bx、ln x、arcsin x、arctan x 等典型因子",
+        "直接查表无原函数，但拆成 u dv 后 ∫vdu 明显更易算",
+        "含 ln x 或反三角时，把它们设为 u 可以'消去'它们"
+      ],
+      "steps": [
+        "按'反、对、幂、三、指'的优先次序（或按求导后变简单的原则）选定 u，其余连同 dx 归为 dv",
+        "分别求 du=u' dx 与 v=∫dv",
+        "套用公式 ∫u dv = uv - ∫v du",
+        "计算新积分；若反而更复杂，就调换 u 与 dv 重新选择"
+      ],
+      "preconditions": [
+        "u 可导、dv 可积，且新积分 ∫vdu 比原积分更易处理"
+      ],
+      "not_applicable": [
+        "被积函数无乘积结构且非 ln x / 反三角（此类没有自然的 ∫u dv 划分）",
+        "选不出让 ∫vdu 变简单的 u、dv 划分（如 ∫x³e^{x²}dx 应先换元）",
+        "两类函数地位相同、分部后回到原积分又无法直接解出（应改用循环积分技巧）"
+      ],
+      "pitfalls": [
+        "u 与 dv 选反，导致分部后积分更复杂",
+        "漏写 uv 项，或把公式中的减号写成加号",
+        "循环型积分做两次分部后忘记移项解方程",
+        "连续分部时纠结 v 的常数（可任取，通常取 0）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.first_substitution",
+          "note": "分部前常先用凑微分整理 dv，或分部后再凑微分收尾"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "'u 的选取次序（反对幂三指）'是必背判断；题中若同时出现 x^n 与 ln x，u 一律取 ln x。",
+      "example_problems": [
+        {
+          "statement": "求 ∫ x ln x dx。",
+          "answer_sketch": "取 u=ln x、dv=x dx，得 x²ln x/2 - x²/4 + C。",
+          "scenario_id": "S.indefint.by_parts_log_inverse"
+        },
+        {
+          "statement": "求 ∫ (x²+1)e^{-x} dx。",
+          "answer_sketch": "u 依次取多项式因子，两次分部得 -e^{-x}(x²+2x+3) + C。",
+          "scenario_id": "S.indefint.by_parts_product"
+        },
+        {
+          "statement": "求 ∫ arctan x dx。",
+          "answer_sketch": "取 u=arctan x、dv=dx，得 x arctan x - ½ln(1+x²) + C。",
+          "scenario_id": "S.indefint.by_parts_log_inverse"
+        }
+      ],
+      "origin_block_ids": [
+        "B.indefint"
+      ]
+    },
+    {
+      "id": "M.partial_fraction",
+      "name": "有理函数部分分式",
+      "aliases": [
+        "部分分式分解",
+        "部分分式法",
+        "拆分有理函数"
+      ],
+      "one_liner": "先做整式除法与实因式分解，将有理式拆成简单分式之和；可用于积分，也能简化高阶求导。",
+      "block_ids": [
+        "B.defint",
+        "B.deriv",
+        "B.indefint"
+      ],
+      "applies_to_scenarios": [
+        "S.defint.newton_leibniz_calc",
+        "S.defint.improper_integral_calc",
+        "S.deriv.higher_order",
+        "S.indefint.rational_function"
+      ],
+      "triggers": [
+        "被积函数是两个多项式之商 P(x)/Q(x)",
+        "分子次数不低于分母次数（假分式，需先做整式除法）",
+        "分母可在实数范围内分解为一次因式 (x-a)^k 与不可约二次因式 (x²+px+q)^m",
+        "式子不含根号（含根号应先换元化为有理式）"
+      ],
+      "steps": [
+        "若为假分式（分子次数≥分母），先用多项式除法拆出整式部分",
+        "把分母因式分解为一次因式与不可约二次因式的幂",
+        "按因式类型设部分分式形式，用待定系数法确定各系数",
+        "按当前任务处理简单项：积分时逐项积分；高阶求导时使用简单分式的幂函数导数，不执行积分步骤。"
+      ],
+      "preconditions": [
+        "分子分母均为多项式；分母能在实数上因式分解"
+      ],
+      "not_applicable": [
+        "尚未完成实因式分解时先处理分母；x⁴+1可分成(x²+√2x+1)(x²−√2x+1)，不能称为不可分解。",
+        "被积函数含根式或有理式以外的结构（应先换元）",
+        "分子恰为分母导数的常数倍时，凑微分更快"
+      ],
+      "pitfalls": [
+        "分母因式分解出错，导致拆项全错",
+        "部分分式形式设错：重因式漏设低次项（如 (x-a)² 应设 A/(x-a)+B/(x-a)²）",
+        "解待定系数方程时算错数值",
+        "假分式忘记先做整式除法，直接分解导致次数不匹配"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.undetermined_coefficients",
+          "note": "分解出的系数用待定系数法确定；该法归属 B.ode，此处仅作子步骤引用，不重复定义"
+        },
+        {
+          "type": "compose",
+          "target": "M.first_substitution",
+          "note": "拆出的简单分式常靠凑微分积分"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.basic_integral_formula",
+          "note": "逐项积分最终落到基本积分公式"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "分解形式与待定系数的正确性是主要得分点；二次因式配方后的积分 ∫dx/(x²+a²)=(1/a)arctan(x/a) 需牢记。",
+      "example_problems": [
+        {
+          "statement": "求 ∫ (x+3)/(x²-x-2) dx。",
+          "answer_sketch": "分母分解为 (x-2)(x+1)，拆成 A/(x-2)+B/(x+1)，解得 A=5/3、B=-2/3，得 (5/3)ln|x-2| - (2/3)ln|x+1| + C。",
+          "scenario_id": "S.indefint.rational_function"
+        },
+        {
+          "statement": "求 ∫ dx/(x²-1)。",
+          "answer_sketch": "拆成 ½[1/(x-1)-1/(x+1)]，积分得 ½ln|(x-1)/(x+1)| + C。",
+          "scenario_id": "S.indefint.rational_function"
+        },
+        {
+          "statement": "求 ∫ x³/(x²+1) dx。",
+          "answer_sketch": "先做整式除法化为 x - x/(x²+1)，再积分得 x²/2 - ½ln(x²+1) + C。",
+          "scenario_id": "S.indefint.rational_function"
+        }
+      ],
+      "origin_block_ids": [
+        "B.indefint"
+      ]
+    },
+    {
+      "id": "M.trig_rational_integral",
+      "name": "三角函数有理式积分",
+      "aliases": [
+        "三角有理式积分",
+        "万能代换",
+        "万能公式代换"
+      ],
+      "one_liner": "对 sin x、cos x 的有理式 R(sin x,cos x)，依奇偶性选 u=sin x 或 u=cos x（或 u=tan x），一般情形用万能代换 t=tan(x/2) 化为有理函数再积分。",
+      "block_ids": [
+        "B.indefint"
+      ],
+      "applies_to_scenarios": [
+        "S.indefint.trig_rational",
+        "S.indefint.recurrence"
+      ],
+      "triggers": [
+        "被积函数是 sin x、cos x 的有理式 R(sin x,cos x)",
+        "分子分母含三角函数，或含 tan x、cot x、sec x、csc x 的运算",
+        "R 对 sin x 或 cos x 为奇函数（可用相应的 u 代换整体简化）",
+        "上述技巧都失效或结构复杂时，可用万能代换统一化为有理式"
+      ],
+      "steps": [
+        "判断奇偶性：R(-sin x,cos x)=-R → 令 u=cos x；R(sin x,-cos x)=-R → 令 u=sin x",
+        "若 R(-sin x,-cos x)=R，可尝试令 u=tan x",
+        "一般情形用万能代换 t=tan(x/2)，把 sin x、cos x、dx=2/(1+t²)dt 都用 t 表示",
+        "化为有理函数积分，用部分分式等法积出后回代 t=tan(x/2)"
+      ],
+      "preconditions": [
+        "被积函数确为 sin x、cos x 的有理式"
+      ],
+      "not_applicable": [
+        "被积函数可凑微分一步解决（如 ∫tan x dx 直接凑微分更快）",
+        "含 sin(x²)、e^{sin x} 等非有理结构（用凑微分或分部）",
+        "含 √(a²-x²) 等根式结构（用三角代换）"
+      ],
+      "pitfalls": [
+        "万能代换后漏乘 dx=2/(1+t²)dt 中的系数 2",
+        "奇偶性判断错误，把 u=sin x 与 u=cos x 选反",
+        "回代 t=tan(x/2) 时化简出错",
+        "含 sec x 时未先化为 cos x 再做代换"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.first_substitution",
+          "note": "具奇偶性时用 u=sinx/cosx 凑微分更快，否则用万能代换"
+        },
+        {
+          "type": "compose",
+          "target": "M.partial_fraction",
+          "note": "万能代换后化为有理函数，常再用部分分式积分"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "万能代换是万能但计算量大的兜底手段；带奇偶对称性的题优先用 u=sinx/cosx 配凑，能显著省力。",
+      "example_problems": [
+        {
+          "statement": "求 ∫ dx/(2+cos x)。",
+          "answer_sketch": "万能代换 t=tan(x/2)，化为 ∫2dt/(t²+3)，得 (2/√3)arctan(tan(x/2)/√3) + C。",
+          "scenario_id": "S.indefint.trig_rational"
+        },
+        {
+          "statement": "求 ∫ sin³x dx。",
+          "answer_sketch": "写成 (1-cos²x)sin x dx，令 u=cos x，得 -cos x + cos³x/3 + C。",
+          "scenario_id": "S.indefint.trig_rational"
+        },
+        {
+          "statement": "求 ∫ dx/(sin x cos x)。",
+          "answer_sketch": "化为 2/sin2x 或令 u=tan x，得 ln|tan x| + C。",
+          "scenario_id": "S.indefint.trig_rational"
+        }
+      ],
+      "origin_block_ids": [
+        "B.indefint"
+      ]
+    },
+    {
+      "id": "M.reduction_formula",
+      "name": "递推公式法（积分）",
+      "aliases": [
+        "递推法",
+        "渐化公式",
+        "循环积分法",
+        "降幂递推"
+      ],
+      "one_liner": "对含幂次参数或分部后循环的积分，用分部积分/恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'解方程'法把循环重现的原积分解出。",
+      "block_ids": [
+        "B.indefint"
+      ],
+      "applies_to_scenarios": [
+        "S.indefint.by_parts_product",
+        "S.indefint.recurrence"
+      ],
+      "triggers": [
+        "被积函数含幂次 n，如 sin^n x、cos^n x、(x²+a²)^n",
+        "形如 sec³x、csc³x 的奇次幂，分部后原积分重现",
+        "e^{ax}sin bx、e^{ax}cos bx 型，两次分部后回到原积分",
+        "一次分部只降一次幂或不降幂，需反复进行"
+      ],
+      "steps": [
+        "对目标积分 I_n 做一次分部积分或恒等变形",
+        "把结果整理成 I_n 与 I_{n-1} 或 I_{n-2} 的关系式",
+        "若为循环型（I 重现），把含 I 的项移到一边解出 I",
+        "由基础情形（如 I_0、I_1）逐次求出最终结果"
+      ],
+      "preconditions": [
+        "积分可通过分部积分或恒等变形与同类项关联"
+      ],
+      "not_applicable": [
+        "幂次固定的低次三角积分，用降幂公式或凑微分直接算即可",
+        "分部后无法回到自身同类的乘积（说明 u、dv 选错）",
+        "含根式可用整体代换更直接（如 ∫dx/√(x²+a²) 用三角代换）"
+      ],
+      "pitfalls": [
+        "循环型移项解方程时符号或系数算错",
+        "忘记写出递推的基础情形（初值）",
+        "把只在特定 n 范围成立的递推式当作通用公式",
+        "与微分方程的'可降阶'（M.reduction_of_order）混淆——那是解微分方程，不是求积分"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.integration_by_parts",
+          "note": "递推/循环积分以分部积分为基础操作"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "exam_notes": "∫sec³x dx 与 ∫e^{ax}sin bx dx 是循环解方程法的经典；含 n 的题若要求递推式，必须写出初值。",
+      "example_problems": [
+        {
+          "statement": "求 ∫ sec³x dx。",
+          "answer_sketch": "分部一次后出现 ∫sec x dx 与原积分，移项解得 ½(sec x tan x + ln|sec x + tan x|) + C。",
+          "scenario_id": "S.indefint.recurrence"
+        },
+        {
+          "statement": "求 ∫ sin⁴x dx。",
+          "answer_sketch": "用降幂公式 sin⁴x=(3-4cos2x+cos4x)/8，逐项积分得 3x/8 - sin2x/4 + sin4x/32 + C。",
+          "scenario_id": "S.indefint.recurrence"
+        },
+        {
+          "statement": "求 ∫ e^x sin x dx。",
+          "answer_sketch": "两次分部后原积分重现，移项解得 ½e^x(sin x - cos x) + C。",
+          "scenario_id": "S.indefint.by_parts_product"
+        }
+      ],
+      "origin_block_ids": [
+        "B.indefint"
+      ]
+    }
+  ]
+}

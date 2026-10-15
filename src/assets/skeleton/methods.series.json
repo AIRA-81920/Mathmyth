@@ -1,0 +1,665 @@
+{
+  "block_id": "B.series",
+  "methods": [
+    {
+      "id": "M.ratio_test",
+      "name": "比值判别法",
+      "aliases": [
+        "达朗贝尔判别法",
+        "比值审敛法",
+        "d'Alembert ratio test"
+      ],
+      "one_liner": "对正项级数 Σu_n，若 lim u_{n+1}/u_n = ρ，则当 ρ < 1 时收敛、ρ > 1 时发散、ρ = 1 时本判别法失效。",
+      "block_ids": [
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.series.positive_term_test",
+        "S.series.absolute_conditional",
+        "S.series.power_series_radius"
+      ],
+      "triggers": [
+        "通项含 n!、a^n、n^n 等相邻项比值易约分的因子",
+        "通项是乘积或连乘结构，前后项约分后极限好求",
+        "需借助 lim|a_{n+1}/a_n| 求幂级数的收敛半径",
+        "通项符号不定，但取绝对值后比值仍易化简"
+      ],
+      "steps": [
+        "确认 u_n > 0；若为任意项级数，先对 |u_n| 使用",
+        "写出 ρ = lim u_{n+1}/u_n（对幂级数则整理成含 x 的结构求收敛半径 R）",
+        "由 ρ < 1 收敛、ρ > 1 发散给出结论",
+        "若 ρ = 1，判定失效，改用比较判别法、根值判别法或其他方法"
+      ],
+      "preconditions": [
+        "通项 u_n > 0（任意项级数先取绝对值）",
+        "极限 lim u_{n+1}/u_n 存在（或为 +∞）"
+      ],
+      "not_applicable": [
+        "通项含加减结构、比值极限不易化简（如含 √(n²+1) 的差式）",
+        "比值极限 ρ = 1，本法完全失效，不能下任何结论",
+        "通项含与 n 无关的固定因子使比值不趋于确定值"
+      ],
+      "pitfalls": [
+        "算出 ρ = 1 后仍强行下结论（此时判别法失效）",
+        "对任意项级数忘记取绝对值，导致符号处理出错",
+        "对 p 级数型通项（比值极限恰为 1）套用比值法而误判"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.root_test",
+          "note": "通项为 n 次幂整体时用根值更简，含阶乘时用比值更简，二者常可互换"
+        },
+        {
+          "type": "compose",
+          "target": "M.equiv_infinitesimal",
+          "note": "通项含 sin(1/n)、ln(1+1/n) 等因子时，先用等价无穷小化简再求比值极限"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "比值判别是正项级数与幂级数收敛半径的常规工具，关键是识别“相邻项易约分”的结构；ρ = 1 时切忌下结论。",
+      "example_problems": [
+        {
+          "statement": "判别级数 Σ_{n=1}^∞ n!/n^n 的敛散性。",
+          "answer_sketch": "u_{n+1}/u_n = n^n/(n+1)^n = (n/(n+1))^n → 1/e < 1，故级数收敛。",
+          "scenario_id": "S.series.positive_term_test"
+        },
+        {
+          "statement": "判别级数 Σ_{n=1}^∞ n!/3^n 的敛散性。",
+          "answer_sketch": "u_{n+1}/u_n = (n+1)/3 → +∞ > 1，故级数发散。",
+          "scenario_id": "S.series.positive_term_test"
+        },
+        {
+          "statement": "求幂级数 Σ_{n=1}^∞ (x − 2)^n/(n·3^n) 的收敛半径。",
+          "answer_sketch": "a_n = 1/(n·3^n)，lim|a_n/a_{n+1}| = 3，故收敛半径 R = 3。",
+          "scenario_id": "S.series.power_series_radius"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    },
+    {
+      "id": "M.root_test",
+      "name": "根值判别法",
+      "aliases": [
+        "柯西判别法",
+        "根值审敛法",
+        "Cauchy root test"
+      ],
+      "one_liner": "对正项级数 Σu_n，若 lim ⁿ√u_n = ρ，则当 ρ < 1 时收敛、ρ > 1 时发散、ρ = 1 时失效，也是柯西-阿达马收敛半径公式的来源。",
+      "block_ids": [
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.series.positive_term_test",
+        "S.series.absolute_conditional",
+        "S.series.power_series_radius"
+      ],
+      "triggers": [
+        "通项整体是 n 次幂，形如 (f(n))^n，或含 [g(n)]^{1/n} 的结构",
+        "开 n 次方后极限容易求出",
+        "求幂级数收敛半径时需用 R = 1/lim ⁿ√|a_n|",
+        "通项是多项式的 n 次幂之比"
+      ],
+      "steps": [
+        "确认 u_n > 0；若为任意项级数，先对 |u_n| 使用",
+        "计算 ρ = lim ⁿ√u_n（求幂级数半径时由系数 a_n 得 R = 1/lim ⁿ√|a_n|）",
+        "由 ρ < 1 收敛、ρ > 1 发散给出结论",
+        "若 ρ = 1，改用其他判别法"
+      ],
+      "preconditions": [
+        "通项 u_n > 0（任意项级数先取绝对值）",
+        "ⁿ√u_n 的极限存在（或为 +∞）"
+      ],
+      "not_applicable": [
+        "通项含阶乘，开 n 次方反而更复杂，此时应改用比值判别",
+        "ρ = 1，本法失效",
+        "通项开 n 次方后极限不易求出"
+      ],
+      "pitfalls": [
+        "把 ⁿ√u_n 误算成 u_n 的 n 次幂，或漏掉 n 次方根",
+        "ρ = 1 时强行下结论",
+        "对含 n! 的通项误用根值判别（应改用比值判别）"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.ratio_test",
+          "note": "通项含阶乘时比值更简，通项为 n 次幂时根值更简，二者互换"
+        },
+        {
+          "type": "compose",
+          "target": "M.squeeze_theorem",
+          "note": "当通项为和式/积式的整体 n 次幂时，常先放缩构造上下界，再用夹逼求出 ⁿ√u_n 的极限"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "根值判别最适合作 n 次幂形式的通项，也是柯西-阿达马收敛半径公式的级数形式，二者需一并掌握。",
+      "example_problems": [
+        {
+          "statement": "判别级数 Σ_{n=1}^∞ (n/(2n+1))^n 的敛散性。",
+          "answer_sketch": "ⁿ√u_n = n/(2n+1) → 1/2 < 1，故级数收敛。",
+          "scenario_id": "S.series.positive_term_test"
+        },
+        {
+          "statement": "判别级数 Σ_{n=1}^∞ (1 + 1/n)^{n²} 的敛散性。",
+          "answer_sketch": "ⁿ√u_n = (1+1/n)^n → e > 1，故级数发散。",
+          "scenario_id": "S.series.positive_term_test"
+        },
+        {
+          "statement": "用根值判别求幂级数 Σ_{n=1}^∞ ((2n+1)/n)^n x^n 的收敛半径。",
+          "answer_sketch": "ⁿ√|a_n| = (2n+1)/n → 2，故收敛半径 R = 1/2。",
+          "scenario_id": "S.series.power_series_radius"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    },
+    {
+      "id": "M.leibniz_test",
+      "name": "莱布尼茨判别法",
+      "aliases": [
+        "莱布尼茨审敛法",
+        "交错级数判别法",
+        "Leibniz test"
+      ],
+      "one_liner": "交错级数 Σ(−1)^{n−1}u_n（u_n > 0），若 {u_n} 单调递减且趋于 0，则级数收敛，且其余项绝对值不超过 u_{n+1}。",
+      "block_ids": [
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.series.alternating_series",
+        "S.series.absolute_conditional"
+      ],
+      "triggers": [
+        "通项含 (−1)^n 或 (−1)^{n−1}（或等价的整齐交错符号）因子",
+        "去掉符号后 u_n > 0，可验证单调递减且趋于 0",
+        "需判断交错级数是否收敛，或估计其余项、和的范围",
+        "需讨论某任意项级数是否条件收敛"
+      ],
+      "steps": [
+        "把通项写成 (−1)^{n−1}u_n（u_n > 0）的标准交错形式",
+        "验证 u_n 单调不增：比较 u_{n+1} 与 u_n，或用导数、放缩论证",
+        "验证 lim u_n = 0",
+        "两项均满足则级数收敛，并可用余项估计 |R_n| ≤ u_{n+1}"
+      ],
+      "preconditions": [
+        "级数呈标准交错形式 (−1)^{n−1}u_n 或 (−1)^n u_n",
+        "u_n > 0、单调递减且 lim u_n = 0"
+      ],
+      "not_applicable": [
+        "u_n 不单调（莱布尼茨条件不满足，不能据此判收敛，需另寻方法）",
+        "lim u_n ≠ 0（此时通项不趋于 0，级数直接发散）",
+        "通项不是整齐交错（如符号由 sin n 决定），不能直接套用"
+      ],
+      "pitfalls": [
+        "只验证 u_n → 0 而漏验单调性",
+        "u_n 不单调时仍误用莱布尼茨判别法",
+        "把莱布尼茨判定的收敛误当成绝对收敛（它对绝对收敛无任何结论）"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.comparison_test",
+          "note": "判断绝对/条件收敛时，先对绝对值级数 Σu_n 用比较判别法讨论绝对收敛，莱布尼茨解决的是原交错级数的条件收敛"
+        },
+        {
+          "type": "compose",
+          "target": "M.monotonicity_analysis",
+          "note": "验证 u_n 单调递减时，常借助函数单调性判别（令 f(x) = u_x 后求导）"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "交错级数是高频考点，莱布尼茨的两个条件（单调、趋于 0）缺一不可；结论只保证收敛，绝不蕴含绝对收敛。",
+      "example_problems": [
+        {
+          "statement": "判别级数 Σ_{n=1}^∞ (−1)^{n−1}/√n 的敛散性。",
+          "answer_sketch": "u_n = 1/√n > 0 单调递减且趋于 0，由莱布尼茨判别法得收敛（且为条件收敛）。",
+          "scenario_id": "S.series.alternating_series"
+        },
+        {
+          "statement": "判别级数 Σ_{n=1}^∞ (−1)^n n/(n²+1) 的敛散性。",
+          "answer_sketch": "u_n = n/(n²+1) → 0，且当 n 充分大时单调递减，由莱布尼茨判别法得收敛。",
+          "scenario_id": "S.series.alternating_series"
+        },
+        {
+          "statement": "讨论级数 Σ_{n=1}^∞ (−1)^{n−1}/n 的收敛类型。",
+          "answer_sketch": "由莱布尼茨得自身收敛；但其绝对值级数 Σ1/n（调和级数）发散，故为条件收敛。",
+          "scenario_id": "S.series.absolute_conditional"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    },
+    {
+      "id": "M.convergence_radius",
+      "name": "幂级数收敛半径与收敛域求法",
+      "aliases": [
+        "收敛半径求法",
+        "幂级数收敛域",
+        "柯西-阿达马公式",
+        "收敛半径公式"
+      ],
+      "one_liner": "对幂级数 Σ a_n(x − x_0)^n，由 R = 1/lim ⁿ√|a_n|（或 R = lim|a_n/a_{n+1}|）求收敛半径，再单独判定两个端点 x = x_0 ± R 的敛散，从而得到收敛域。",
+      "block_ids": [
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.series.power_series_radius"
+      ],
+      "triggers": [
+        "幂级数一般项含 (x − x_0)^n 与系数 a_n 的乘积",
+        "题目要求收敛半径、收敛区间或收敛域",
+        "需要讨论端点敛散性以确定端点是否并入收敛域",
+        "系数 a_n 含 n!、n^α、a^n 等便于求极限的结构"
+      ],
+      "steps": [
+        "把幂级数写成标准形式，提取系数 a_n（将 (x − x_0)^n 之外的因子归入 a_n）",
+        "用比值法求 R = lim|a_n/a_{n+1}|，或用柯西-阿达马公式 R = 1/lim ⁿ√|a_n|",
+        "得开区间 (x_0 − R, x_0 + R) 内绝对收敛、区间外发散",
+        "分别令 x = x_0 − R 与 x = x_0 + R，代回得两个数项级数，各自判断敛散",
+        "合并结论给出收敛域（标明是否含端点）"
+      ],
+      "preconditions": [
+        "幂级数已写成 (x − x_0) 的幂的标准形式",
+        "系数极限存在（允许为 +∞，此时 R = 0 或 R = +∞）"
+      ],
+      "not_applicable": [
+        "缺项幂级数（如只含 x^{2n}、x^{2n+1}）不能直接用 a_{n+1}/a_n，需作换元或按缺项情形处理",
+        "非幂级数的数项级数（不含 x 的幂），应改用数项级数判别法",
+        "一般项不是 (x − x_0)^n 的整齐形式且无法整理成标准形式"
+      ],
+      "pitfalls": [
+        "求出 R 后漏判端点，使收敛域的开闭性写错",
+        "缺项幂级数（如 Σ x^{2n}/(2n)!）直接套公式而算错",
+        "提取系数 a_n 时漏掉分母中的 n^α、2^n 等因子"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.ratio_test",
+          "note": "求收敛半径常用比值法计算 lim|a_n/a_{n+1}|"
+        },
+        {
+          "type": "compose",
+          "target": "M.root_test",
+          "note": "系数为 n 次幂时用柯西-阿达马（根值）公式 R = 1/lim ⁿ√|a_n| 求 R"
+        },
+        {
+          "type": "compose",
+          "target": "M.comparison_test",
+          "note": "判定端点处数项级数敛散时，常将端点化为 p 级数、几何级数后用比较判别法处理"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "收敛半径与收敛域是幂级数一切问题的第一步；缺项幂级数与端点判定是最常见的失分点。",
+      "example_problems": [
+        {
+          "statement": "求幂级数 Σ_{n=1}^∞ x^n/n 的收敛半径与收敛域。",
+          "answer_sketch": "R = 1；x = 1 时化为调和级数发散，x = −1 时为交错调和级数收敛，故收敛域为 [−1, 1)。",
+          "scenario_id": "S.series.power_series_radius"
+        },
+        {
+          "statement": "求幂级数 Σ_{n=1}^∞ n! x^n 的收敛半径。",
+          "answer_sketch": "lim|a_n/a_{n+1}| = lim 1/(n+1) = 0，故 R = 0，级数仅在 x = 0 处收敛。",
+          "scenario_id": "S.series.power_series_radius"
+        },
+        {
+          "statement": "求幂级数 Σ_{n=1}^∞ (x − 1)^n/(n·2^n) 的收敛域。",
+          "answer_sketch": "R = 2；x = −1 时化为 Σ(−1)^n/n 收敛，x = 3 时化为 Σ1/n 发散，故收敛域为 [−1, 3)。",
+          "scenario_id": "S.series.power_series_radius"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    },
+    {
+      "id": "M.series_summation",
+      "name": "幂级数求和函数",
+      "aliases": [
+        "求和函数",
+        "幂级数求和",
+        "和函数求法",
+        "求幂级数的和函数"
+      ],
+      "one_liner": "在收敛域内求幂级数的和函数 S(x)——通过逐项求导或逐项积分把系数中的 n（或 1/n）消去或移出，化为可求和的几何级数，求和后再作逆运算还原。",
+      "block_ids": [
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.series.summation_function",
+        "S.series.termwise_operation"
+      ],
+      "triggers": [
+        "题目要求“求幂级数的和函数 S(x)”",
+        "级数系数含 n、n+1、1/n、1/(n+1) 等与 n 相关的简单因子",
+        "可借助几何级数 Σx^n = 1/(1 − x) 作为求和基础",
+        "需先求收敛域（和函数只在收敛域内有定义）"
+      ],
+      "steps": [
+        "先用收敛半径法求出收敛域",
+        "在收敛区间内设 S(x) = Σa_n x^n，判断应对 S 逐项求导还是逐项积分以消去系数中的 n",
+        "逐项求导/积分得到新级数，化为几何级数并求和，得 G(x)",
+        "对 G(x) 作相应逆运算（积分或求导）还原 S(x)",
+        "端点值由和函数的连续性结合幂级数的和函数在收敛域上的连续性另行确定"
+      ],
+      "preconditions": [
+        "已确定收敛区间",
+        "在收敛区间内幂级数可逐项求导、逐项积分（收敛半径不变）"
+      ],
+      "not_applicable": [
+        "非幂级数的数项级数（无 x 变量可求导/积分，需先构造幂级数再求和）",
+        "系数与 n 无关（如 Σx^n 本身已是几何级数，不必求导/积分）",
+        "和函数在收敛域端点处不连续时，端点值不能直接代入表达式"
+      ],
+      "pitfalls": [
+        "先求和函数再补收敛域，顺序颠倒容易遗漏定义域",
+        "逐项积分/求导后忘记作逆运算还原",
+        "设 S(x) 与使用 S'(x) 时变量不一致，或漏掉求导后级数下标起点的变化",
+        "端点值直接套用和函数表达式（应借助和函数在收敛域上的连续性另行确定）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.termwise_operation",
+          "note": "求和的关键步骤是对幂级数逐项求导或逐项积分化为几何级数"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.convergence_radius",
+          "note": "求 S(x) 前必须先确定收敛域"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.power_series_expansion",
+          "note": "求和的基础是几何级数与若干基本函数的展开式"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "求和函数的固定套路是“定收敛域 → 逐项求导/积分化为几何级数 → 求和 → 逆运算还原”；下标起点与端点取值是易错点。",
+      "example_problems": [
+        {
+          "statement": "求幂级数 Σ_{n=1}^∞ x^n/n 在收敛域内的和函数。",
+          "answer_sketch": "设 S(x) = Σx^n/n，则 S'(x) = Σx^{n−1} = 1/(1 − x)，积分得 S(x) = −ln(1 − x)（−1 ≤ x < 1）。",
+          "scenario_id": "S.series.summation_function"
+        },
+        {
+          "statement": "求幂级数 Σ_{n=0}^∞ (n+1)x^n 的和函数。",
+          "answer_sketch": "由 Σx^n = 1/(1 − x) 逐项求导得 Σn x^{n−1} = 1/(1 − x)²，整理得 Σ(n+1)x^n = 1/(1 − x)²（|x| < 1）。",
+          "scenario_id": "S.series.summation_function"
+        },
+        {
+          "statement": "求幂级数 Σ_{n=1}^∞ x^n/(n·2^n) 的和函数。",
+          "answer_sketch": "令 t = x/2，由 Σt^n/n = −ln(1 − t) 得 S(x) = −ln(1 − x/2)（−2 ≤ x < 2）。",
+          "scenario_id": "S.series.summation_function"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    },
+    {
+      "id": "M.termwise_operation",
+      "name": "逐项求导/逐项积分",
+      "aliases": [
+        "逐项求导",
+        "逐项积分",
+        "逐项微分",
+        "termwise differentiation and integration"
+      ],
+      "one_liner": "在幂级数的收敛区间内对其逐项求导或逐项积分（所得级数收敛半径不变），用于化简系数、由已知展开式推出新函数的展开式，或把数项级数求和转化为幂级数求和。",
+      "block_ids": [
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.series.termwise_operation"
+      ],
+      "triggers": [
+        "需要消去系数中的 n 或 1/n，以便把级数化为几何级数",
+        "已知某函数的展开式，要求相关函数（如 ln(1+x)、arctan x）的展开式",
+        "要求某数项级数之和（如 Σ n/2^n），可先构造幂级数再代入具体值",
+        "需在收敛区间内对幂级数作恒等变形"
+      ],
+      "steps": [
+        "确认在收敛区间（开区间）内进行，以保证逐项运算合法、收敛半径不变",
+        "选择求导还是积分：系数含 n 时求导，含 1/n 时积分",
+        "对级数逐项求导或逐项积分，注意下标起点变化与积分常数",
+        "化为已知展开式（几何、e^x、ln(1+x) 等）后再作逆运算还原或代入特定 x 求和"
+      ],
+      "preconditions": [
+        "在收敛区间（开区间）内进行运算",
+        "必要时收敛域端点另行单独讨论"
+      ],
+      "not_applicable": [
+        "在收敛区间之外（发散区域）进行逐项运算",
+        "数项级数未先构造出幂级数（无 x 变量可供求导/积分）",
+        "系数与 n 无关时逐项运算不改变结构，无益"
+      ],
+      "pitfalls": [
+        "逐项积分后漏写积分常数，或求导/积分后下标起点错乱",
+        "在收敛域端点处直接使用逐项运算的结论（逐项运算只在开区间内保证）",
+        "求导与积分方向选反，使系数变得更复杂"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.convergence_radius",
+          "note": "逐项运算须在收敛区间内进行，须先确定收敛域"
+        },
+        {
+          "type": "compose",
+          "target": "M.power_series_expansion",
+          "note": "由已知展开式出发，经逐项求导/积分得到新函数的展开式（间接法）"
+        },
+        {
+          "type": "compose",
+          "target": "M.series_summation",
+          "note": "求和函数时逐项运算是核心步骤，二者常连用"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "逐项求导/积分是幂级数一切运算的基础，务必强调“在收敛区间内”进行；下标起点与积分常数是常见错误点。",
+      "example_problems": [
+        {
+          "statement": "利用 1/(1 − x) = Σ_{n=0}^∞ x^n，求 Σ_{n=1}^∞ n x^n 的和（|x| < 1）。",
+          "answer_sketch": "对几何级数逐项求导得 Σn x^{n−1} = 1/(1 − x)²，两边乘 x 得 Σn x^n = x/(1 − x)²。",
+          "scenario_id": "S.series.termwise_operation"
+        },
+        {
+          "statement": "由 1/(1+x) = Σ(−1)^n x^n 出发，逐项积分求 ln(1+x) 的幂级数展开。",
+          "answer_sketch": "对 Σ(−1)^n x^n 在 [0, x] 上逐项积分，得 ln(1+x) = Σ(−1)^n x^{n+1}/(n+1)（−1 < x ≤ 1）。",
+          "scenario_id": "S.series.termwise_operation"
+        },
+        {
+          "statement": "求数项级数 Σ_{n=1}^∞ n/2^n 的和。",
+          "answer_sketch": "由 Σn x^n = x/(1 − x)² 取 x = 1/2，得 Σn/2^n = 2。",
+          "scenario_id": "S.series.termwise_operation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    },
+    {
+      "id": "M.power_series_expansion",
+      "name": "函数展开成幂级数",
+      "aliases": [
+        "幂级数展开",
+        "间接展开法",
+        "泰勒级数展开",
+        "函数的幂级数展开",
+        "麦克劳林级数"
+      ],
+      "one_liner": "把函数 f(x) 在指定点展开为幂级数 Σa_n(x − x_0)^n——以间接法为主：借 e^x、sin x、1/(1 − x)、(1+x)^α 等基本展开式，通过代换、四则与逐项求导/积分得到目标展开式，并注明收敛域。",
+      "block_ids": [
+        "B.deriv",
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.deriv.higher_order",
+        "S.series.power_series_expansion"
+      ],
+      "triggers": [
+        "题目要求把 f(x) 展开成 x（或 x − x_0）的幂级数",
+        "f 由常见初等函数经代换、四则、复合得到（如 e^{−x²}、1/(2+x)、arctan x）",
+        "要求写出展开式并指明收敛域",
+        "要求展开到指定阶，或求某点处的 n 阶导数"
+      ],
+      "steps": [
+        "选择展开点（一般取 x_0，求麦克劳林级数时取 x_0 = 0）",
+        "用恒等变形把 f 化成可套用基本展开式的形式（提常数、配方、因式分解、代换）",
+        "借基本展开式写出级数，必要时用四则运算或逐项求导/积分组合",
+        "由基本展开式的成立范围确定新展开式的收敛域（注意代换后区间的同步换算）"
+      ],
+      "preconditions": [
+        "f 在展开点邻域内具有任意阶导数（存在泰勒级数）",
+        "间接法要求所用基本展开式在相应区间上成立"
+      ],
+      "not_applicable": [
+        "只需函数在一点附近的有限项近似（用泰勒多项式即可，无需求完整级数）",
+        "f 在展开点不具有任意阶导数",
+        "要求的是傅里叶级数（三角级数）而非幂级数"
+      ],
+      "pitfalls": [
+        "收敛域确定错误（代换后未同步换算区间，如 e^{−x²}、1/(2+x) 的收敛范围）",
+        "逐项积分时漏写积分常数或下标起点出错",
+        "定义域端点未按原函数情况单独讨论",
+        "把间接法与直接法（逐阶求导）混用，导致系数或符号出错"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.taylor_expansion",
+          "note": "间接法源于泰勒公式，各基本展开式均由泰勒公式得到"
+        },
+        {
+          "type": "compose",
+          "target": "M.termwise_operation",
+          "note": "组合型、积分型函数的展开常借逐项求导或逐项积分由已知展开式推出"
+        },
+        {
+          "type": "compose",
+          "target": "M.convergence_radius",
+          "note": "展开后需确定收敛半径以给出成立区间"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "exam_notes": "幂级数展开以间接法为主，须牢记 e^x、sin x、cos x、ln(1+x)、(1+x)^α、1/(1 − x) 的基本展开式及其收敛域；收敛域的代入换算是高频失分点。",
+      "example_problems": [
+        {
+          "statement": "把 f(x) = 1/(2+x) 展开成 x 的幂级数。",
+          "answer_sketch": "f = (1/2)·1/(1 + x/2) = Σ(−1)^n x^n/2^{n+1}（|x| < 2）。",
+          "scenario_id": "S.series.power_series_expansion"
+        },
+        {
+          "statement": "把 f(x) = e^{−x²} 展开成 x 的幂级数。",
+          "answer_sketch": "由 e^t = Σt^n/n! 令 t = −x²，得 Σ(−1)^n x^{2n}/n!（收敛域为全体实数）。",
+          "scenario_id": "S.series.power_series_expansion"
+        },
+        {
+          "statement": "把 f(x) = x·arctan x 展开成 x 的幂级数。",
+          "answer_sketch": "由 1/(1+x²) = Σ(−1)^n x^{2n} 逐项积分得 arctan x = Σ(−1)^n x^{2n+1}/(2n+1)，再乘 x 得 Σ(−1)^n x^{2n+2}/(2n+1)（|x| ≤ 1）。",
+          "scenario_id": "S.series.power_series_expansion"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    },
+    {
+      "id": "M.fourier_series_expansion",
+      "name": "傅里叶级数展开",
+      "aliases": [
+        "傅里叶级数",
+        "傅里叶展开",
+        "三角级数展开",
+        "Fourier series"
+      ],
+      "one_liner": "把周期为 2π（或 2l）的周期函数展开为三角级数 a_0/2 + Σ(a_n cos nx + b_n sin nx)，系数由欧拉-傅里叶公式计算，和函数按狄利克雷收敛定理确定（间断点取左右极限的平均）。",
+      "block_ids": [
+        "B.series"
+      ],
+      "applies_to_scenarios": [
+        "S.series.fourier_series"
+      ],
+      "triggers": [
+        "函数为周期函数，或定义在 [−π,π]、[0,π]、[−l,l] 上，要求展开为傅里叶级数",
+        "题目出现“傅里叶级数”“正弦级数”“余弦级数”字样",
+        "需计算傅里叶系数 a_n、b_n 并写出和函数（含间断点取值）",
+        "函数具有奇偶性，可化为只含正弦项或只含余弦项的级数"
+      ],
+      "steps": [
+        "判断周期与展开区间，确认是周期延拓还是奇/偶延拓",
+        "用奇偶性简化：奇函数只含正弦项（a_n = 0），偶函数只含余弦项（b_n = 0）",
+        "用欧拉-傅里叶公式计算 a_0、a_n、b_n（常用分部积分、对称性）",
+        "写出傅里叶级数，并据狄利克雷定理给出和函数：连续点等于 f(x)，间断点等于左右极限的平均"
+      ],
+      "preconditions": [
+        "f 在一个周期上分段单调、至多有限个第一类间断点（满足狄利克雷条件）",
+        "各傅里叶系数所涉积分存在"
+      ],
+      "not_applicable": [
+        "非周期函数且未作周期延拓或奇偶延拓（不能直接展开）",
+        "要求的是幂级数（泰勒）展开而非三角级数",
+        "区间不是 [−l,l] 或 [0,l] 的标准形式且未作相应坐标伸缩"
+      ],
+      "pitfalls": [
+        "a_0/2 前的系数 1/2 漏写，或把 a_0/2 与 a_0 混淆",
+        "在间断点处直接写成 f(x)，忽略应取左右极限的平均值",
+        "奇偶延拓后区间的选取与端点处理出错（正弦/余弦级数的区间与边界值）",
+        "奇偶性判断错误，导致本应为 0 的系数未消去"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.integration_by_parts",
+          "note": "计算 a_n、b_n 时常用分部积分"
+        },
+        {
+          "type": "compose",
+          "target": "M.symmetry",
+          "note": "利用奇偶对称性使一半的傅里叶系数为零，简化积分"
+        },
+        {
+          "type": "compose",
+          "target": "M.newton_leibniz",
+          "note": "傅里叶系数最终由定积分（牛顿-莱布尼茨公式）算出"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "exam_notes": "傅里叶级数的关键是牢记系数公式、善用奇偶性简化，以及用狄利克雷定理正确处理间断点与端点的和函数取值。",
+      "example_problems": [
+        {
+          "statement": "将 f(x) = x（−π < x < π，周期 2π）展开成傅里叶级数。",
+          "answer_sketch": "f 为奇函数，a_n = 0；b_n = 2(−1)^{n+1}/n，故 f(x) ~ 2Σ_{n=1}^∞ (−1)^{n+1} sin nx/n。",
+          "scenario_id": "S.series.fourier_series"
+        },
+        {
+          "statement": "将周期 2π 的函数 f(x) = |x|（−π ≤ x ≤ π）展开成傅里叶级数。",
+          "answer_sketch": "f 为偶函数，b_n = 0；a_0 = π，a_n = 2((−1)^n − 1)/(πn²)，故 f(x) ~ π/2 − (4/π)Σ_{k=1}^∞ cos((2k−1)x)/(2k−1)²。",
+          "scenario_id": "S.series.fourier_series"
+        },
+        {
+          "statement": "把 f(x) = x 在 [0,π] 上展开成正弦级数。",
+          "answer_sketch": "作奇延拓，b_n = 2(−1)^{n+1}/n，故 x ~ 2Σ_{n=1}^∞ (−1)^{n+1} sin nx/n（0 ≤ x ≤ π）。",
+          "scenario_id": "S.series.fourier_series"
+        }
+      ],
+      "origin_block_ids": [
+        "B.series"
+      ]
+    }
+  ]
+}

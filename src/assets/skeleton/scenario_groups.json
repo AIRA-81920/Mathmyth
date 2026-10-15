@@ -1,0 +1,587 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "name": "骨架分级 · 情景组映射",
+    "purpose": "在「板块」与「情景」之间插入「情景组」一层，保证每一层分支数都很小，用户不会在几十条分支里挣扎。",
+    "base": "deepseek skeleton（blocks.json / scenarios.*.json / methods.*.json）",
+    "structure": "板块 → 情景组 → 情景 → 方法 →（点开）题目",
+    "hard_limit": "每一层分支数 ≤ 7",
+    "ui_rule": "如果一个情景组下面只有 1 个情景，界面自动跳过这一层，直接显示那个情景",
+    "relation_rule": "以情景为准，方法跟在情景后面；一个情景下可挂多个方法，方法不独立于情景存在",
+    "not_included": "本文件只定义「分组」，不重复定义情景与方法本体（本体沿用 deepseek 的 scenarios.*.json / methods.*.json）"
+  },
+  "blocks": [
+    {
+      "block_id": "B.limit",
+      "name": "极限",
+      "groups": [
+        {
+          "id": "G.limit.indeterminate",
+          "name": "未定式极限",
+          "order": 1,
+          "scenario_ids": [
+            "S.limit.0over0",
+            "S.limit.inf_over_inf",
+            "S.limit.zero_times_inf",
+            "S.limit.inf_minus_inf",
+            "S.limit.one_to_inf",
+            "S.limit.power_indeterminate",
+            "S.limit.parametric_limit",
+            "S.limit.growth_balance"
+          ]
+        },
+        {
+          "id": "G.limit.sequence",
+          "name": "数列极限",
+          "order": 2,
+          "scenario_ids": [
+            "S.limit.recurrence_sequence",
+            "S.limit.n_term_sum",
+            "S.limit.function_sequence_limit"
+          ]
+        },
+        {
+          "id": "G.limit.infinitesimal",
+          "name": "无穷小的比较",
+          "order": 3,
+          "scenario_ids": [
+            "S.limit.infinitesimal_order",
+            "S.limit.bounded_times_zero"
+          ]
+        },
+        {
+          "id": "G.limit.continuity",
+          "name": "连续性与间断点",
+          "order": 4,
+          "scenario_ids": [
+            "S.limit.piecewise_continuity",
+            "S.limit.discontinuity_classification"
+          ]
+        },
+        {
+          "id": "G.limit.epsilon",
+          "name": "极限的严格证明",
+          "order": 5,
+          "scenario_ids": [
+            "S.limit.epsilon_definition"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.deriv",
+      "name": "导数与微分",
+      "groups": [
+        {
+          "id": "G.deriv.rules",
+          "name": "求导方法",
+          "order": 1,
+          "scenario_ids": [
+            "S.deriv.composite_derivative",
+            "S.deriv.implicit_derivative",
+            "S.deriv.parametric_derivative",
+            "S.deriv.power_exponential",
+            "S.deriv.inverse",
+            "S.deriv.basic_definition"
+          ]
+        },
+        {
+          "id": "G.deriv.differentiability",
+          "name": "可导性与抽象函数",
+          "order": 2,
+          "scenario_ids": [
+            "S.deriv.piecewise_differentiability",
+            "S.deriv.abstract_function"
+          ]
+        },
+        {
+          "id": "G.deriv.higher",
+          "name": "高阶导数",
+          "order": 3,
+          "scenario_ids": [
+            "S.deriv.higher_order"
+          ]
+        },
+        {
+          "id": "G.deriv.application",
+          "name": "导数的应用",
+          "order": 4,
+          "scenario_ids": [
+            "S.deriv.differential_approx",
+            "S.deriv.tangent_normal"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.mvt",
+      "name": "微分中值定理与导数的应用",
+      "groups": [
+        {
+          "id": "G.mvt.mean_value",
+          "name": "中值定理证明题",
+          "order": 1,
+          "scenario_ids": [
+            "S.mvt.rolle_equality",
+            "S.mvt.lagrange_cauchy_equality",
+            "S.mvt.identity_proof"
+          ]
+        },
+        {
+          "id": "G.mvt.inequality_root",
+          "name": "不等式与方程根",
+          "order": 2,
+          "scenario_ids": [
+            "S.mvt.inequality_proof",
+            "S.mvt.equation_root"
+          ]
+        },
+        {
+          "id": "G.mvt.behavior",
+          "name": "函数性态分析",
+          "order": 3,
+          "scenario_ids": [
+            "S.mvt.monotonicity_extremum",
+            "S.mvt.concavity_inflection",
+            "S.mvt.asymptote",
+            "S.mvt.curvature",
+            "S.mvt.function_graphing"
+          ]
+        },
+        {
+          "id": "G.mvt.extremum_app",
+          "name": "最值应用",
+          "order": 4,
+          "scenario_ids": [
+            "S.mvt.max_min_application"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.indefint",
+      "name": "不定积分",
+      "groups": [
+        {
+          "id": "G.indefint.basic_substitution",
+          "name": "基本与换元",
+          "order": 1,
+          "scenario_ids": [
+            "S.indefint.basic_formula",
+            "S.indefint.first_substitution",
+            "S.indefint.sqrt_integrand"
+          ]
+        },
+        {
+          "id": "G.indefint.by_type",
+          "name": "分类积分技巧",
+          "order": 2,
+          "scenario_ids": [
+            "S.indefint.rational_function",
+            "S.indefint.trig_rational"
+          ]
+        },
+        {
+          "id": "G.indefint.by_parts",
+          "name": "分部积分",
+          "order": 3,
+          "scenario_ids": [
+            "S.indefint.by_parts_product",
+            "S.indefint.by_parts_log_inverse"
+          ]
+        },
+        {
+          "id": "G.indefint.recurrence",
+          "name": "递推型",
+          "order": 4,
+          "scenario_ids": [
+            "S.indefint.recurrence"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.defint",
+      "name": "定积分",
+      "groups": [
+        {
+          "id": "G.defint.calculation",
+          "name": "定积分的计算",
+          "order": 1,
+          "scenario_ids": [
+            "S.defint.newton_leibniz_calc",
+            "S.defint.symmetry_interval",
+            "S.defint.variable_limit_derivative",
+            "S.defint.piecewise_absolute"
+          ]
+        },
+        {
+          "id": "G.defint.improper",
+          "name": "反常积分",
+          "order": 2,
+          "scenario_ids": [
+            "S.defint.improper_integral_calc",
+            "S.defint.improper_convergence"
+          ]
+        },
+        {
+          "id": "G.defint.proof",
+          "name": "定积分的证明",
+          "order": 3,
+          "scenario_ids": [
+            "S.defint.integral_inequality"
+          ]
+        },
+        {
+          "id": "G.defint.element_method",
+          "name": "微元法应用",
+          "order": 4,
+          "scenario_ids": [
+            "S.defint.plane_area",
+            "S.defint.solid_volume",
+            "S.defint.arc_length_surface",
+            "S.defint.physics_application"
+          ]
+        },
+        {
+          "id": "G.defint.riemann",
+          "name": "n 项和化定积分",
+          "order": 5,
+          "scenario_ids": [
+            "S.defint.riemann_sum_limit"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.ode",
+      "name": "微分方程",
+      "groups": [
+        {
+          "id": "G.ode.first_order",
+          "name": "一阶方程",
+          "order": 1,
+          "scenario_ids": [
+            "S.ode.separable",
+            "S.ode.homogeneous_first_order",
+            "S.ode.linear_first_order",
+            "S.ode.bernoulli"
+          ]
+        },
+        {
+          "id": "G.ode.higher_order",
+          "name": "高阶方程",
+          "order": 2,
+          "scenario_ids": [
+            "S.ode.reducible_higher_order",
+            "S.ode.second_order_homogeneous",
+            "S.ode.second_order_nonhomogeneous"
+          ]
+        },
+        {
+          "id": "G.ode.reverse_apply",
+          "name": "反求与应用",
+          "order": 3,
+          "scenario_ids": [
+            "S.ode.reverse_from_solution",
+            "S.ode.modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.vecalg",
+      "name": "向量代数与空间解析几何",
+      "groups": [
+        {
+          "id": "G.vecalg.vector",
+          "name": "向量运算",
+          "order": 1,
+          "scenario_ids": [
+            "S.vecalg.vector_product"
+          ]
+        },
+        {
+          "id": "G.vecalg.plane_line",
+          "name": "平面与直线",
+          "order": 2,
+          "scenario_ids": [
+            "S.vecalg.plane_equation",
+            "S.vecalg.line_equation",
+            "S.vecalg.position_relation",
+            "S.vecalg.distance_angle"
+          ]
+        },
+        {
+          "id": "G.vecalg.surface",
+          "name": "曲面",
+          "order": 3,
+          "scenario_ids": [
+            "S.vecalg.surface_of_revolution",
+            "S.vecalg.cylinder_cone"
+          ]
+        },
+        {
+          "id": "G.vecalg.projection",
+          "name": "曲线投影",
+          "order": 4,
+          "scenario_ids": [
+            "S.vecalg.curve_projection"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.multivar",
+      "name": "多元函数微分法及其应用",
+      "groups": [
+        {
+          "id": "G.multivar.limit_continuity",
+          "name": "多元极限与连续",
+          "order": 1,
+          "scenario_ids": [
+            "S.multivar.binary_limit",
+            "S.multivar.continuity"
+          ]
+        },
+        {
+          "id": "G.multivar.derivative",
+          "name": "偏导与全微分",
+          "order": 2,
+          "scenario_ids": [
+            "S.multivar.partial_derivative",
+            "S.multivar.composite_derivative",
+            "S.multivar.implicit_derivative",
+            "S.multivar.total_differential",
+            "S.multivar.directional_gradient"
+          ]
+        },
+        {
+          "id": "G.multivar.geometry",
+          "name": "几何应用",
+          "order": 3,
+          "scenario_ids": [
+            "S.multivar.space_curve_tangent",
+            "S.multivar.surface_tangent"
+          ]
+        },
+        {
+          "id": "G.multivar.extremum",
+          "name": "极值与最值",
+          "order": 4,
+          "scenario_ids": [
+            "S.multivar.unconditional_extremum",
+            "S.multivar.conditional_extremum",
+            "S.multivar.closed_region_extremum"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.multiint",
+      "name": "重积分",
+      "groups": [
+        {
+          "id": "G.multiint.double",
+          "name": "二重积分",
+          "order": 1,
+          "scenario_ids": [
+            "S.multiint.double_cartesian",
+            "S.multiint.change_order",
+            "S.multiint.polar",
+            "S.multiint.symmetry_simplify"
+          ]
+        },
+        {
+          "id": "G.multiint.triple",
+          "name": "三重积分",
+          "order": 2,
+          "scenario_ids": [
+            "S.multiint.triple_cartesian",
+            "S.multiint.cylindrical",
+            "S.multiint.spherical"
+          ]
+        },
+        {
+          "id": "G.multiint.application",
+          "name": "重积分的应用",
+          "order": 3,
+          "scenario_ids": [
+            "S.multiint.geometric_application",
+            "S.multiint.physical_application"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.line_surface",
+      "name": "曲线积分与曲面积分",
+      "groups": [
+        {
+          "id": "G.line_surface.curve",
+          "name": "曲线积分",
+          "order": 1,
+          "scenario_ids": [
+            "S.line_surface.curve_integral_first_kind",
+            "S.line_surface.curve_integral_second_kind",
+            "S.line_surface.green_theorem",
+            "S.line_surface.path_independence"
+          ]
+        },
+        {
+          "id": "G.line_surface.surface",
+          "name": "曲面积分",
+          "order": 2,
+          "scenario_ids": [
+            "S.line_surface.surface_integral_first_kind",
+            "S.line_surface.surface_integral_second_kind",
+            "S.line_surface.gauss_theorem",
+            "S.line_surface.stokes_theorem"
+          ]
+        },
+        {
+          "id": "G.line_surface.field",
+          "name": "场论",
+          "order": 3,
+          "scenario_ids": [
+            "S.line_surface.divergence_curl"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.series",
+      "name": "无穷级数",
+      "groups": [
+        {
+          "id": "G.series.constant",
+          "name": "常数项级数敛散性",
+          "order": 1,
+          "scenario_ids": [
+            "S.series.positive_term_test",
+            "S.series.alternating_series",
+            "S.series.absolute_conditional"
+          ]
+        },
+        {
+          "id": "G.series.power",
+          "name": "幂级数",
+          "order": 2,
+          "scenario_ids": [
+            "S.series.power_series_radius",
+            "S.series.summation_function",
+            "S.series.power_series_expansion",
+            "S.series.termwise_operation"
+          ]
+        },
+        {
+          "id": "G.series.fourier",
+          "name": "傅里叶级数",
+          "order": 3,
+          "scenario_ids": [
+            "S.series.fourier_series"
+          ]
+        }
+      ]
+    }
+  ],
+  "adjustments": {
+    "note": "相对 deepseek 原版的结构性调整。数学内容沿用 deepseek，不重写。",
+    "added_scenarios": [
+      {
+        "id": "S.limit.epsilon_definition",
+        "name": "用 ε-δ / ε-N 定义证明极限",
+        "block_id": "B.limit",
+        "group_id": "G.limit.epsilon",
+        "source": "kimi 有、deepseek 漏",
+        "suggested_methods": [
+          "M.backward_analysis",
+          "M.epsilon_delta_proof"
+        ]
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "block_id": "B.deriv",
+        "group_id": "G.deriv.rules",
+        "source": "kimi 有、deepseek 漏",
+        "suggested_methods": [
+          "M.inverse_derivative",
+          "M.implicit_differentiation"
+        ]
+      }
+    ],
+    "id_normalization": {
+      "note": "合并 kimi 的方法进 deepseek 时，必须先统一 id；以 deepseek 的 id 为准，把 kimi 的 id 记入 aliases。",
+      "map": [
+        {
+          "concept": "泰勒展开",
+          "keep": "M.taylor_expansion",
+          "alias_from_kimi": "M.taylor"
+        },
+        {
+          "concept": "有理化",
+          "keep": "M.rationalization",
+          "alias_from_kimi": "M.rationalize"
+        },
+        {
+          "concept": "莱布尼茨公式",
+          "keep": "M.leibniz_formula",
+          "alias_from_kimi": "M.leibniz_rule"
+        },
+        {
+          "concept": "定积分定义求 n 项和",
+          "keep": "M.riemann_sum_limit",
+          "alias_from_kimi": "M.definite_integral_definition"
+        },
+        {
+          "concept": "左右极限法",
+          "keep": "M.one_sided_limit",
+          "alias_from_kimi": "M.left_right_limit"
+        },
+        {
+          "concept": "夹逼准则",
+          "keep": "M.squeeze_theorem",
+          "alias_from_kimi": "M.squeeze"
+        },
+        {
+          "concept": "抓大头 / 同除最高次幂",
+          "keep": "M.divide_highest_power",
+          "alias_from_kimi": "M.dominant_term"
+        }
+      ]
+    },
+    "methods_to_add": [
+      {
+        "id": "M.stolz",
+        "name": "施托尔茨定理",
+        "block_id": "B.limit",
+        "from": "kimi"
+      },
+      {
+        "id": "M.reciprocal_substitution",
+        "name": "倒代换",
+        "block_id": "B.limit",
+        "from": "kimi"
+      },
+      {
+        "id": "M.combine_fractions",
+        "name": "通分法",
+        "block_id": "B.limit",
+        "from": "kimi"
+      },
+      {
+        "id": "M.rewrite_as_fraction",
+        "name": "化为分式法",
+        "block_id": "B.limit",
+        "from": "kimi"
+      },
+      {
+        "id": "M.differential_form_invariance",
+        "name": "一阶微分形式不变性",
+        "block_id": "B.deriv",
+        "from": "kimi"
+      }
+    ]
+  }
+}

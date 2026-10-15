@@ -1,0 +1,39 @@
+.practice-levels { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0 0; }
+.practice-levels button { border: 0; background: transparent; padding: 5px 0; color: var(--text-muted); font-size: 13px; }
+.practice-levels button.is-active { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+.practice-check.is-radio { border-radius: 50%; }
+.practice-option { align-items: flex-start; }
+.practice-option .practice-check { flex-shrink: 0; margin-top: 3px; }
+.practice-option-name { min-width: 0; }
+.practice-option-name .math-markdown { font-size: 14px; line-height: 1.8; }
+.practice-option-name .math-markdown p { margin: 0; }
+.route-review { border-top: 1px solid var(--border); margin-top: 22px; padding-top: 18px; }
+.route-review h2 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.route-review-item { padding: 12px 0; }
+.route-review-item + .route-review-item { border-top: 1px solid var(--border); }
+.route-review-item .math-markdown { font-size: 13px; }
+.route-review-name { font-weight: 500; }
+.route-review ol { padding-left: 22px; }
+.route-review li { margin-top: 14px; }
+.practice-history-link { display: block; }
+.practice-goal-description, .practice-goal-example { margin: 14px 0; }
+.practice-goal-description .math-markdown, .practice-goal-example .math-markdown { font-size: 14px; line-height: 1.8; }
+.practice-detail-toggle { margin-top: 18px; }
+.practice-target-trigger { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; border: 0; padding: 0; background: transparent; text-align: left; color: inherit; }
+.practice-target-trigger > span { min-width: 0; overflow-wrap: anywhere; }
+.practice-target-trigger > svg { flex-shrink: 0; }
+.practice-target-dialog { width: min(480px, 100%); max-height: calc(100dvh - 48px); display: flex; flex-direction: column; gap: 16px; padding: 24px; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); animation: appear var(--motion-duration) var(--motion-ease); }
+.practice-target-dialog h2 { font-size: 16px; font-weight: 600; }
+.practice-target-list { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.practice-target-list h3 { font-size: 12px; font-weight: 400; margin: 0 0 8px; }
+.practice-target-list section + section { margin-top: 20px; }
+.practice-target-option { display: flex; flex-direction: column; gap: 5px; width: 100%; min-height: 52px; padding: 12px 0; text-align: left; border: 0; border-bottom: 1px solid var(--border); background: transparent; color: inherit; }
+.practice-target-option.is-selected > span { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.practice-target-option small { font-size: 12px; }
+@media (hover: hover) { .practice-target-option:hover { background: var(--surface-muted); } }
+.practice-history-item { display: flex; flex-direction: column; width: 100%; text-align: left; padding: 16px 0; border: 0; border-bottom: 1px solid var(--border); background: transparent; }
+.practice-history-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.practice-history-stem { display: block; max-height: 100px; overflow: hidden; width: 100%; }
+.practice-history-stem .math-markdown { font-size: 14px; }
+.practice-review { position: relative; width: min(640px, 100%); background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 24px; animation: appear var(--motion-duration) var(--motion-ease); }
+@media (max-width: 360px) { .practice-content { padding-left: 18px; padding-right: 18px; } .practice-entry { padding-left: 22px; padding-right: 22px; } }

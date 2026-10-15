@@ -1,0 +1,70 @@
+# Dependencies and generated web assets
+node_modules/
+/dist/
+/.vite/
+/public/pdf/
+
+# Local Android project, SDK, and build caches
+/android/
+/.android-sdk/
+/.gradle-cache/
+/.gradle/
+/local.properties
+
+# Installers and desktop build staging
+/artifacts/
+/.electron-cache/
+/.electron-builder-cache/
+/.desktop-stage/
+*.apk
+*.aab
+*.apks
+*.exe
+*.msi
+*.dmg
+*.AppImage
+*.jks
+*.keystore
+
+# Private exercise data, including questions embedded in JavaScript
+/src/assets/practice/bank402/
+/src/assets/practice/question-banks/*.json
+/src/assets/practice/first-batch-originals.json
+/src/assets/practice/first-batch.js
+/src/assets/practice/route-bank.js
+
+# Local checks, reports, and scratch files
+/.qa/
+/.tmp*/
+/coverage/
+*.log
+*.tmp
+*.bak
+__pycache__/
+*.pyc
+
+# Local configuration, credentials, and exported user databases
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.db3
+*.db3-*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS and editor state
+.DS_Store
+Thumbs.db
+Desktop.ini
+/.idea/
+/.vscode/

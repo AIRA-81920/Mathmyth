@@ -1,0 +1,361 @@
+{
+  "block_id": "B.line_surface",
+  "scenarios": [
+    {
+      "id": "S.line_surface.curve_integral_first_kind",
+      "block_id": "B.line_surface",
+      "name": "第一类曲线积分（对弧长）",
+      "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+      "signals": [
+        "被积表达式含 ds（对弧长），而不是 dx、dy",
+        "题目写成 ∫_L f(x,y)ds 或 ∮_L f(x,y,z)ds 形式",
+        "被积函数是标量函数（如线密度、温度），描述与方向无关的量",
+        "积分曲线以参数方程或几何图形（圆、抛物线、螺旋线）给出",
+        "曲线上的函数值随点变化，需要沿弧长累积"
+      ],
+      "recognition_examples": [
+        "∫_L (x²+y²)ds，L 为圆周 x²+y²=a²",
+        "∫_L y ds，L 为抛物线 y=x² 上从 (0,0) 到 (1,1) 的一段",
+        "∫_L √(x²+y²)ds，L 为圆 x²+y²=2x"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.curve_integral_second_kind",
+          "how": "第一类积分含 ds、积分值与曲线方向无关；第二类积分含 Pdx+Qdy，方向反向时整体变号"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.parametric_curve_integral",
+          "priority": 1,
+          "when_to_prefer": "曲线能用单参数表示（圆弧、椭圆、抛物线等）时的通用首选：参数化后代入 ds=√(x'²+y'²)dt，直接化为定积分"
+        },
+        {
+          "method_id": "M.symmetry",
+          "priority": 2,
+          "when_to_prefer": "曲线关于坐标轴对称、且被积函数对相应变量为奇函数时，可先判断该积分为 0，省去计算"
+        },
+        {
+          "method_id": "M.element_method",
+          "priority": 3,
+          "when_to_prefer": "题目给的是物理背景（求曲线质量、质心）时，先按“微元质量 dm=ρ·ds”建立积分，再回到参数化计算"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.curve_integral_second_kind",
+      "block_id": "B.line_surface",
+      "name": "第二类曲线积分（对坐标，直接计算）",
+      "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+      "signals": [
+        "被积表达式含 dx、dy（或 dz），形如 ∫_L Pdx+Qdy+Rdz",
+        "曲线有明确方向（给出起点终点，或“沿某方向”）",
+        "被积函数是向量场的分量，描述做功、环流等与方向有关的量",
+        "积分曲线不封闭（封闭且满足条件时优先格林公式）",
+        "直接沿曲线参数化计算可行但对 P、Q 补偏导不适用"
+      ],
+      "recognition_examples": [
+        "∫_L (x+y)dx+(x−y)dy，L 为从 (0,0) 到 (1,1) 的直线段",
+        "∫_L x dy，L 为抛物线 y=x² 从 (0,0) 到 (1,1) 的一段",
+        "∫_L (x²−y)dx+(x+y²)dy，L 为从 A 到 B 的圆弧"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.curve_integral_first_kind",
+          "how": "第一类含 ds 且与方向无关；本情景含 dx、dy，曲线反向时积分值变号"
+        },
+        {
+          "scenario_id": "S.line_surface.green_theorem",
+          "how": "若 L 为封闭曲线、且 P、Q 有连续偏导，应转入格林公式情景；本情景处理非封闭曲线或不宜用格林时的直接参数化计算"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.parametric_curve_integral",
+          "priority": 1,
+          "when_to_prefer": "曲线便于参数化（直线段、圆弧、抛物线）时的通用手段：参数化后代入 dx=x'(t)dt、dy=y'(t)dt，化为 ∫[P·x'+Q·y']dt"
+        },
+        {
+          "method_id": "M.path_independence",
+          "priority": 2,
+          "when_to_prefer": "先验算 ∂P/∂y 与 ∂Q/∂x 是否相等：若相等且区域单连通，积分与路径无关，可改走最简折线路径，远比沿原曲线计算省力"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.green_theorem",
+      "block_id": "B.line_surface",
+      "name": "格林公式（封闭曲线）",
+      "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+      "signals": [
+        "积分曲线 L 为封闭曲线，或补一条简单线段后可以封闭",
+        "被积式为 P(x,y)dx+Q(x,y)dy 的标准形式",
+        "对 P、Q 求偏导（∂Q/∂x−∂P/∂y）后表达式很简单",
+        "直接沿 L 参数化计算困难，或 L 围成的区域规则（圆、椭圆、多边形）",
+        "曲线取正向（逆时针）或明确给出方向"
+      ],
+      "recognition_examples": [
+        "∮_L (x dy − y dx)，L 为圆周 x²+y²=a² 取正向",
+        "∮_L (x+y)dx − (x−y)dy，L 为单位圆或椭圆取正向",
+        "∫_L (x²−y)dx+(x+y²)dy，L 为抛物线 y=x² 从 (0,0) 到 (1,1)（需补线）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.curve_integral_second_kind",
+          "how": "非封闭曲线、或 P、Q 在区域内含奇点时不适用格林公式；封闭且条件满足时优先格林"
+        },
+        {
+          "scenario_id": "S.line_surface.stokes_theorem",
+          "how": "格林公式处理平面内的闭曲线（区域在平面内）；空间闭曲线应改用斯托克斯公式"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.green_theorem",
+          "priority": 1,
+          "when_to_prefer": "L 封闭、取正向且 P、Q 有连续偏导时的首选：把线积分化为二重积分 ∬_D(∂Q/∂x−∂P/∂y)dxdy 后计算"
+        },
+        {
+          "method_id": "M.supplementary_path",
+          "priority": 2,
+          "when_to_prefer": "L 不封闭（如只是一段抛物线、一段圆弧）时：补一条坐标轴上的简单线段使其封闭，用格林公式后再减去补线段的积分"
+        },
+        {
+          "method_id": "M.polar_transform",
+          "priority": 3,
+          "when_to_prefer": "化为二重积分后，若区域为圆域、环域或扇形域，改用极坐标计算更省（如被积函数含 x²+y²）"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.path_independence",
+      "block_id": "B.line_surface",
+      "name": "曲线积分与路径无关",
+      "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+      "signals": [
+        "题目问“积分是否与路径无关”或要求证明积分与路径无关",
+        "出现“沿任意路径”“取一条简单路径”等表述，起点终点给定而路径未定",
+        "被积式 Pdx+Qdy 中 ∂P/∂y 与 ∂Q/∂x 相等（或待验证）",
+        "要求求势函数 u(x,y) 使 du=Pdx+Qdy",
+        "问保守场中的环流是否为 0"
+      ],
+      "recognition_examples": [
+        "验证 ∫_L (2xy)dx+(x²)dy 与路径无关，并求从 (0,0) 到 (1,2) 的积分",
+        "计算 ∫_L (e^x sin y)dx+(e^x cos y−1)dy 沿任意路径从 (0,0) 到 (1,π/2)",
+        "证明 ∮_L (x dy−y dx)/(x²+y²) 在挖去原点的区域内积分与路径有关"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.curve_integral_second_kind",
+          "how": "路径无关是第二类曲线积分的特殊情形；只在验证 ∂P/∂y=∂Q/∂x 成立时才用本情景，否则回到直接计算"
+        },
+        {
+          "scenario_id": "S.line_surface.green_theorem",
+          "how": "格林公式处理一般的封闭曲线积分；路径无关情景关注“值只与起终点有关”，闭曲线且场保守时环流为 0"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.path_independence",
+          "priority": 1,
+          "when_to_prefer": "核心手段：先验证区域单连通且 ∂P/∂y=∂Q/∂x，再用势函数 u(终点)−u(起点) 或改走折线路径求值；题目问“是否无关”时用该判据作答"
+        },
+        {
+          "method_id": "M.parametric_curve_integral",
+          "priority": 2,
+          "when_to_prefer": "判定与路径无关后，改走最简折线（如 (x₀,y₀)→(x,y₀)→(x,y)），仍用参数化代入计算该折线上的积分"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.surface_integral_first_kind",
+      "block_id": "B.line_surface",
+      "name": "第一类曲面积分（对面积）",
+      "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+      "signals": [
+        "被积表达式含 Ds/dS（对面积），而不是 dydz、dzdx、dxdy",
+        "题目写成 ∬_Σ f(x,y,z)dS 形式",
+        "被积函数是标量（如面密度、温度），描述与侧无关的量",
+        "曲面以显式 z=z(x,y) 或参数形式给出，且在坐标面上的投影规则"
+      ],
+      "recognition_examples": [
+        "∬_Σ (x+y+z)dS，Σ 为平面 x+y+z=1 在第一卦限的部分",
+        "∬_Σ (x²+y²)dS，Σ 为锥面 z=√(x²+y²) 被 z=1 截得的部分",
+        "∬_Σ z dS，Σ 为半球面 z=√(a²−x²−y²)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.surface_integral_second_kind",
+          "how": "第一类含 dS、与曲面所取侧无关；第二类含 dydz、dzdx、dxdy，随曲面侧反向而变号"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.surface_projection",
+          "priority": 1,
+          "when_to_prefer": "曲面可写成 z=z(x,y)、投影区域规则时的首选：用 dS=√(1+z_x²+z_y²)dxdy 化为二重积分计算"
+        },
+        {
+          "method_id": "M.symmetry",
+          "priority": 2,
+          "when_to_prefer": "曲面关于坐标面对称、被积函数对相应变量为奇函数时，可先判断积分为 0，避免无谓计算"
+        },
+        {
+          "method_id": "M.element_method",
+          "priority": 3,
+          "when_to_prefer": "题目给物理背景（求曲面质量、曲面面积）时，先按“微元质量 dm=ρ·dS”建立积分，再用投影法计算"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.surface_integral_second_kind",
+      "block_id": "B.line_surface",
+      "name": "第二类曲面积分（对坐标，直接投影）",
+      "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+      "signals": [
+        "被积表达式含 dydz、dzdx、dxdy（对坐标）",
+        "题目指定曲面的侧（上侧/下侧、外侧/内侧、前侧/后侧）",
+        "被积函数是向量场分量，描述通量（流量）",
+        "曲面不封闭（封闭且满足条件时优先高斯公式）",
+        "需要把各分量分别向 yOz、zOx、xOy 面投影"
+      ],
+      "recognition_examples": [
+        "∬_Σ z dxdy，Σ 为半球面 z=√(a²−x²−y²) 的上侧",
+        "∬_Σ x dydz + y dzdx + z dxdy，Σ 为平面 x+y+z=1 在第一卦限部分的上侧",
+        "∬_Σ (x−y)dxdy，Σ 为球面 x²+y²+z²=a² 下半部分的下侧"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.surface_integral_first_kind",
+          "how": "第一类含 dS 且与侧无关；第二类含坐标微元，曲面取不同侧时积分值变号"
+        },
+        {
+          "scenario_id": "S.line_surface.gauss_theorem",
+          "how": "曲面封闭且满足条件时优先高斯公式；本情景处理非封闭曲面，或不便于用高斯时的直接投影计算"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.surface_projection",
+          "priority": 1,
+          "when_to_prefer": "核心手段：把曲面写成显式并向对应坐标面投影，逐项化为二重积分，符号由曲面所取侧决定（上侧取 +、下侧取 −）；分片曲面需分片投影后按定向求和"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.gauss_theorem",
+      "block_id": "B.line_surface",
+      "name": "高斯公式",
+      "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+      "signals": [
+        "积分曲面 Σ 为封闭曲面，或补一片简单曲面后可以封闭",
+        "被积式为 P dydz + Q dzdx + R dxdy 的标准形式",
+        "对 P、Q、R 求偏导（散度 ∂P/∂x+∂Q/∂y+∂R/∂z）后表达式简单",
+        "直接投影计算困难，或 Σ 围成的立体规则（球、柱、锥）",
+        "题目指定曲面取外侧"
+      ],
+      "recognition_examples": [
+        "∯_Σ x dydz + y dzdx + z dxdy，Σ 为单位球面取外侧",
+        "∯_Σ x³ dydz + y³ dzdx + z³ dxdy，Σ 为球面 x²+y²+z²=a² 取外侧",
+        "∬_Σ x dydz + y dzdx + z dxdy，Σ 为上半球面 z=√(a²−x²−y²) 的上侧（需补面）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.surface_integral_second_kind",
+          "how": "非封闭曲面用投影法直接计算；封闭曲面（或可补面）时优先高斯公式"
+        },
+        {
+          "scenario_id": "S.line_surface.stokes_theorem",
+          "how": "高斯公式把闭曲面上的曲面积分化为三重积分；斯托克斯公式把空间闭曲线上的曲线积分化为曲面积分，作用对象不同"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.gauss_theorem",
+          "priority": 1,
+          "when_to_prefer": "Σ 封闭、取外侧且偏导连续时的首选：算出散度后把积分化为三重积分 ∭_Ω(∂P/∂x+∂Q/∂y+∂R/∂z)dv"
+        },
+        {
+          "method_id": "M.supplementary_path",
+          "priority": 2,
+          "when_to_prefer": "Σ 不封闭（如只有上半球面、开口锥面）时：补一片坐标面内的圆盘构成闭曲面，用高斯公式后再减去补面部分的积分"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.stokes_theorem",
+      "block_id": "B.line_surface",
+      "name": "斯托克斯公式",
+      "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+      "signals": [
+        "积分曲线 Γ 是空间中的封闭曲线，或补线后可以封闭",
+        "被积式为 P dx + Q dy + R dz 的三元标准形式",
+        "曲线常为某曲面与另一曲面的交线（如柱面与平面的交线）",
+        "计算旋度后与曲面法向量的内积很简单",
+        "题目指定曲线方向或要求按右手法则定向"
+      ],
+      "recognition_examples": [
+        "∮_Γ (y−z)dx+(z−x)dy+(x−y)dz，Γ 为柱面 x²+y²=1 与平面 z=0 的交线",
+        "∮_Γ (−y)dx+x dy，Γ 为球面 x²+y²+z²=a² 与平面 x+y+z=0 的交线",
+        "∮_Γ (z−y)dx+(x−z)dy+(y−x)dz，Γ 为平面 x+y+z=1 与坐标面围成的三角形边界"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.green_theorem",
+          "how": "格林公式处理平面内的闭曲线（可视为斯托克斯的特例）；曲线在空间中不规则地弯曲时用斯托克斯公式"
+        },
+        {
+          "scenario_id": "S.line_surface.gauss_theorem",
+          "how": "高斯公式针对闭曲面（化为三重积分）；斯托克斯公式针对闭曲线（化为曲面积分），注意作用对象的区别"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.stokes_theorem",
+          "priority": 1,
+          "when_to_prefer": "Γ 为空间闭曲线且能选取便于计算的以 Γ 为边界的曲面时的首选：算出旋度、选平面或简单曲面，把线积分化为 ∬_Σ(rot F)·n dS"
+        },
+        {
+          "method_id": "M.supplementary_path",
+          "priority": 2,
+          "when_to_prefer": "Γ 不封闭（如只是一段空间曲线）时：补线使其成为闭曲线，用斯托克斯公式后再减去补线段上的积分"
+        }
+      ]
+    },
+    {
+      "id": "S.line_surface.divergence_curl",
+      "block_id": "B.line_surface",
+      "name": "散度与旋度",
+      "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+      "signals": [
+        "题目直接要求求散度 div F 或旋度 rot F",
+        "要求判断场是否为无源场、无旋场或保守场",
+        "题目给出向量场 F=(P,Q,R) 的具体分量",
+        "出现“验证 rot F=0”“求 div F 在某点的值”等表述"
+      ],
+      "recognition_examples": [
+        "求 F=(x²y, yz, z²x) 的散度与旋度",
+        "判断 F=(2xy, x²+z, y) 是否为有势场（无旋场）",
+        "求 F=(y, z, x) 在点 (1,1,1) 处的旋度"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.line_surface.path_independence",
+          "how": "路径无关（保守场）可由 rot F=0 判定；但本情景专注计算散度、旋度本身及其判场性质，不涉及积分的具体求值"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.divergence_curl_calc",
+          "priority": 1,
+          "when_to_prefer": "核心手段：按公式用一阶偏导组合出散度与旋度；要求判断场的性质时据此看 div F 或 rot F 是否为零"
+        },
+        {
+          "method_id": "M.path_independence",
+          "priority": 2,
+          "when_to_prefer": "当算出 rot F=0（无旋场/保守场）后，若要进一步求曲线积分，可用路径无关与势函数方法求值"
+        }
+      ]
+    }
+  ]
+}

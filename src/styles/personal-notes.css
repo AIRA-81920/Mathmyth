@@ -1,0 +1,14 @@
+.personal-notes { margin: 16px 20px 32px; padding-top: 20px; border-top: 1px solid var(--border); }
+.personal-notes-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.personal-notes-header h2 { font-size: 14px; font-weight: 600; }
+.personal-note-action { min-height: 36px; padding: 4px 0; border: 0; background: transparent; color: var(--text-muted); font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+.personal-note-empty { font-size: 12px; }
+.personal-note { padding: 14px 0; }
+.personal-note + .personal-note { border-top: 1px solid var(--border); }
+.personal-note .math-markdown { font-size: 13px; overflow-wrap: anywhere; }
+.personal-note-actions { display: flex; gap: 18px; margin-top: 8px; }
+.personal-note-editor { display: flex; flex-direction: column; gap: 10px; }
+.personal-note-editor label { font-size: 12px; color: var(--text-muted); }
+.personal-note-editor textarea { resize: vertical; min-height: 100px; }
+.personal-note-link { display: inline-block; max-width: 100%; margin-top: 8px; padding: 4px 0; border: 0; background: transparent; color: var(--text-muted); font-size: 12px; text-align: left; text-decoration: underline; text-underline-offset: 4px; }
+.trail-empty { padding: 44px 24px 24px; text-align: center; }

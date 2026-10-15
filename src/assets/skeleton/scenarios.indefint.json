@@ -1,0 +1,304 @@
+{
+  "block_id": "B.indefint",
+  "scenarios": [
+    {
+      "id": "S.indefint.basic_formula",
+      "block_id": "B.indefint",
+      "name": "直接套基本积分公式",
+      "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+      "signals": [
+        "被积函数是幂函数、指数函数、基本三角函数、反三角函数的和差组合",
+        "每一项都能在基本积分公式表中直接找到对应的原函数",
+        "至多需要把根式化为分数指数、把假分式拆项、把常数提到积分号外",
+        "被积函数内部没有'函数套函数'的复合结构，也没有不同类型的乘积结构"
+      ],
+      "recognition_examples": [
+        "∫(3x² - 2x + 1/x) dx",
+        "∫(√x + 1/√x) dx（化为 x^{1/2} + x^{-1/2}）",
+        "∫(2^x + sec²x) dx"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.first_substitution",
+          "how": "若看似基本公式但暗含复合内层（如 ∫e^{2x}dx、∫cos3x dx），需要把内层导数凑出来，则属可凑微分情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.basic_integral_formula",
+          "priority": 1,
+          "when_to_prefer": "被积函数每一项都能在基本积分表中找到原函数时直接用，最快且无需换元"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 2,
+          "when_to_prefer": "当式子实际含简单线性内层（如 e^{2x}、sin3x、√(2x+1)）时，本质是凑微分，应改用它"
+        }
+      ]
+    },
+    {
+      "id": "S.indefint.first_substitution",
+      "block_id": "B.indefint",
+      "name": "可凑微分的复合结构",
+      "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+      "signals": [
+        "被积函数形如 f(φ(x))·φ'(x)，外层是熟悉函数，内层与其导数成对出现",
+        "存在可配对的微分关系：x dx=½d(x²)、dx/x=d(ln x)、e^x dx=d(e^x)、sec²x dx=d(tan x)、dx/√(1-x²)=d(arcsin x)",
+        "分子是分母导数的常数倍（如 x/(x²+1)、2x/(x²+1)）",
+        "整个被积式只围绕一种内层结构展开，换元后可直接查表"
+      ],
+      "recognition_examples": [
+        "∫ x e^{x²} dx",
+        "∫ (ln x)/x dx",
+        "∫ dx/(x ln x)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.sqrt_integrand",
+          "how": "凑微分只需'抠出'式中已有的导数因子；若必须主动做三角代换或整体代换才能去根号，则属含根式情景"
+        },
+        {
+          "scenario_id": "S.indefint.rational_function",
+          "how": "若约分后仍是两个多项式的商、且分母可因式分解，应走有理函数部分分式"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.first_substitution",
+          "priority": 1,
+          "when_to_prefer": "被积式中能找到现成的内层导数因子（至多差常数倍）时首选，步骤最短"
+        },
+        {
+          "method_id": "M.integration_by_substitution",
+          "priority": 2,
+          "when_to_prefer": "凑不出内层导数因子、但做一次显式代换（如令 t=√x）能把结构显著简化时改用"
+        }
+      ]
+    },
+    {
+      "id": "S.indefint.sqrt_integrand",
+      "block_id": "B.indefint",
+      "name": "含根式的积分（三角代换/根式代换）",
+      "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+      "signals": [
+        "被积函数含 √(a²-x²)、√(x²+a²)、√(x²-a²) 形式",
+        "被开方的是关于 x 的一次式 √(ax+b) 或二次式",
+        "分母含根式，或同一式中同时出现 x 与根式",
+        "直接查基本积分表无效，根号挡住结构"
+      ],
+      "recognition_examples": [
+        "∫ dx/√(a²-x²)",
+        "∫ √(a²-x²) dx",
+        "∫ dx/(x²√(x²+1))"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.rational_function",
+          "how": "含根号且无法整理成纯多项式之商时属本情景；纯多项式之比才属有理函数情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.integration_by_substitution",
+          "priority": 1,
+          "when_to_prefer": "含二次根式（√(a²-x²) 等）用三角代换；含一次根式 √(ax+b) 令 t=√(ax+b)，为首选"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 2,
+          "when_to_prefer": "根式部分的导数因子已在式中出现（如 ∫x/√(x²+1) dx）时，直接凑微分更快"
+        },
+        {
+          "method_id": "M.rationalization",
+          "priority": 3,
+          "when_to_prefer": "根式为 √x±√y 或分式含根式时，先有理化整理成便于换元的形式再积分"
+        }
+      ]
+    },
+    {
+      "id": "S.indefint.trig_rational",
+      "block_id": "B.indefint",
+      "name": "三角函数有理式积分",
+      "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+      "signals": [
+        "被积函数由 sin x、cos x 经四则运算与乘方构成，或含 tan x、cot x、sec x、csc x",
+        "出现 dx/(a sin x + b cos x)、dx/(sin x cos x)、sin^m x cos^n x 等形态",
+        "直接凑微分难以奏效，需要用统一变量把三角函数化为有理式",
+        "分子分母都含三角函数，形成'三角分式'"
+      ],
+      "recognition_examples": [
+        "∫ dx/(3 + 5cos x)",
+        "∫ sin²x cos³x dx",
+        "∫ dx/(sin x cos²x)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.recurrence",
+          "how": "奇次幂可拆出一个因子凑微分即属本情景；偶次高幂需递推或降幂的才归递推型情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.trig_rational_integral",
+          "priority": 1,
+          "when_to_prefer": "R 为一般情形（无 sin/cos 奇偶对称）时用万能代换 t=tan(x/2) 化为有理式，为通用首选"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 2,
+          "when_to_prefer": "当 sin^m x cos^n x 中 m、n 至少一个为奇数时，拆出一个因子后用 u=sin x 或 u=cos x 凑微分，更快"
+        }
+      ]
+    },
+    {
+      "id": "S.indefint.rational_function",
+      "block_id": "B.indefint",
+      "name": "有理函数积分",
+      "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+      "signals": [
+        "被积函数是两个多项式的商，分子分母均为多项式",
+        "分母可以因式分解成一次因式 (x-a)^k 与不可约二次因式 (x²+px+q)^m",
+        "分子次数不低于分母次数（假分式，需先做整式除法）",
+        "不含根号（含根号应先换元化为有理式）"
+      ],
+      "recognition_examples": [
+        "∫ (x+3)/(x²-x-2) dx",
+        "∫ dx/(x²-1)",
+        "∫ x³/(x²+1) dx（假分式，先做除法）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.sqrt_integrand",
+          "how": "分母含根式时先换元；只有纯多项式之比才用部分分式"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.partial_fraction",
+          "priority": 1,
+          "when_to_prefer": "分母可因式分解、且分子不是分母导数的倍数时首选，是通法"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 2,
+          "when_to_prefer": "分子恰为分母导数的常数倍（如 2x/(x²+1)）时，凑微分一步即可，更快"
+        },
+        {
+          "method_id": "M.integration_by_substitution",
+          "priority": 3,
+          "when_to_prefer": "先在实数范围内完整因式分解；若余下不可约二次因子及其重幂，且没有更直接的导数配对，可配方后作三角代换。"
+        },
+        {
+          "method_id": "M.polynomial_division",
+          "priority": 4,
+          "when_to_prefer": "假分式先拆成整式与真分式，再决定后续积分方法。"
+        }
+      ]
+    },
+    {
+      "id": "S.indefint.by_parts_product",
+      "block_id": "B.indefint",
+      "name": "乘积型分部积分",
+      "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+      "signals": [
+        "被积函数是幂函数与指数函数的乘积，如 x^n e^{ax}",
+        "被积函数是幂函数与三角函数的乘积，如 x^n sin bx、x^n cos bx",
+        "被积函数是指数函数与三角函数的乘积，如 e^{ax} sin bx（需两次分部成循环）",
+        "含明显的多项式因子，可通过分部积分逐次降低其幂次"
+      ],
+      "recognition_examples": [
+        "∫ x² e^{-x} dx",
+        "∫ x cos3x dx",
+        "∫ e^x sin x dx"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.by_parts_log_inverse",
+          "how": "u 应取多项式（求导后降次）的是本情景；u 应取对数或反三角的是另一情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.integration_by_parts",
+          "priority": 1,
+          "when_to_prefer": "被积函数是幂×指数或幂×三角时，u 取幂函数逐次降次，首选"
+        },
+        {
+          "method_id": "M.reduction_formula",
+          "priority": 2,
+          "when_to_prefer": "当为 e^{ax}sin bx 型、两次分部后原积分重现时，用循环积分解方程（递推法的循环用法）"
+        }
+      ]
+    },
+    {
+      "id": "S.indefint.by_parts_log_inverse",
+      "block_id": "B.indefint",
+      "name": "含对数/反三角函数的分部积分",
+      "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+      "signals": [
+        "被积函数含 ln x、log_a x、arcsin x、arccos x、arctan x、arccot x",
+        "形如 x^n ln x、ln(f(x))、arcsin x、x arctan x",
+        "对数/反三角不能直接查表求原函数，但其导数会变成有理式或幂式",
+        "被积函数是 ln x 或反三角与多项式、常数的乘积"
+      ],
+      "recognition_examples": [
+        "∫ ln x dx",
+        "∫ x arctan x dx",
+        "∫ arcsin x dx"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.by_parts_product",
+          "how": "u 取对数/反三角（因其求导后变有理式）的是本情景；u 取多项式的是乘积型情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.integration_by_parts",
+          "priority": 1,
+          "when_to_prefer": "只要出现 ln x 或反三角，就把它们设为 u、其余设为 dv，是最直接的判断依据"
+        }
+      ]
+    },
+    {
+      "id": "S.indefint.recurrence",
+      "block_id": "B.indefint",
+      "name": "递推型积分",
+      "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+      "signals": [
+        "被积函数含幂次参数 n，如 sin^n x、cos^n x、(x²+a²)^n",
+        "出现 sec³x、csc³x 等奇次幂结构",
+        "分部积分后积分项回到与原式同类的形式（循环重现）",
+        "一次分部只降一次幂或不降幂，必须反复进行"
+      ],
+      "recognition_examples": [
+        "∫ sec³x dx",
+        "∫ sin⁴x dx",
+        "∫ dx/(x²+a²)²"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.indefint.by_parts_product",
+          "how": "分部一次即可结束的乘积型属乘积型情景；需反复分部或解方程把原积分解出的属本情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.reduction_formula",
+          "priority": 1,
+          "when_to_prefer": "被积函数含幂次 n、或分部后原积分重现时，建立递推/循环关系，首选"
+        },
+        {
+          "method_id": "M.integration_by_parts",
+          "priority": 2,
+          "when_to_prefer": "递推的基础操作就是分部积分；当只需一次分部即可化归时直接用它"
+        },
+        {
+          "method_id": "M.trig_rational_integral",
+          "priority": 3,
+          "when_to_prefer": "sin^n x、cos^n x 等偶次三角幂可先用三角有理式的降幂/奇偶性思路处理"
+        }
+      ]
+    }
+  ]
+}

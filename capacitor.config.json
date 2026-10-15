@@ -1,0 +1,9 @@
+{
+  "appId": "app.mathmyth.mobile",
+  "appName": "Mathmyth",
+  "webDir": "dist",
+  "loggingBehavior": "none",
+  "server": { "androidScheme": "https" },
+  "android": { "backgroundColor": "#fafafa" },
+  "plugins": { "CapacitorHttp": { "enabled": false } }
+}

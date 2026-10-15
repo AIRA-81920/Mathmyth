@@ -1,0 +1,2954 @@
+{
+  "schema": "mathmyth-knowledge-patterns/v1",
+  "version": 1,
+  "reviewedAt": "2026-10-15",
+  "reviewBasis": "项目编写的恒等变形、导数/原函数验证、有限乘积及适用条件核对；不冒充教材原文或经典母题。",
+  "patterns": [
+    {
+      "id": "P.limit.product.power_chain",
+      "name": "指数倍增的因子连乘",
+      "scenarioIds": [
+        "S.limit.n_term_sum"
+      ],
+      "methodIds": [
+        "M.product_telescoping"
+      ],
+      "shape": "$\\prod_{k=0}^{n}(1+a^{2^k})$",
+      "signals": [
+        "指数是 $1,2,4,8,\\ldots$，后一项把前一项的幂再平方。"
+      ],
+      "why": "平方差 $(1-t)(1+t)=1-t^2$ 恰好把当前幂连接到下一幂；需要补的首因子是 $1-a$。",
+      "firstStep": "先补乘 $1-a$，对有限项反复使用平方差，得到 $(1-a)\\prod_{k=0}^{n}(1+a^{2^k})=1-a^{2^{n+1}}$。",
+      "conditions": [
+        "除回 $1-a$ 要求 $a\\ne1$；$a=1$ 应直接计算。",
+        "若要令 $a^{2^{n+1}}\\to0$，需另检查 $|a|<1$。"
+      ],
+      "examples": [
+        {
+          "statement": "当 $|a|<1$ 时，求 $\\lim_{n\\to\\infty}\\prod_{k=0}^{n}(1+a^{2^k})$。",
+          "solution": "有限乘积等于 $\\dfrac{1-a^{2^{n+1}}}{1-a}$。由 $|a|<1$，分子趋于 $1$，所以极限为 $1/(1-a)$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "三倍幂用 $1+t+t^2=(1-t^3)/(1-t)$：因子可变为 $1+a^{3^k}+a^{2\\cdot3^k}$，仍须检查除数。"
+      ],
+      "counterexample": {
+        "statement": "$\\prod_{k=1}^{n}(1+a^k)$",
+        "reason": "指数逐次加一不能直接接上平方差；先检查相邻因子的恒等关系。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "finite_product",
+        "case": "power_chain"
+      }
+    },
+    {
+      "id": "P.limit.product.half_angle",
+      "name": "角度逐次减半的余弦连乘",
+      "scenarioIds": [
+        "S.limit.n_term_sum"
+      ],
+      "methodIds": [
+        "M.product_telescoping"
+      ],
+      "shape": "$\\prod_{k=1}^{n}\\cos\\dfrac{x}{2^k}$",
+      "signals": [
+        "每一项都是余弦，角度从 $x/2$ 开始不断减半。"
+      ],
+      "why": "$\\sin 2t=2\\sin t\\cos t$ 同时出现相邻的两个角度，能把一串余弦收进同一个正弦恒等式。",
+      "firstStep": "先反复展开 $\\sin x$，得到 $\\sin x=2^n\\sin(x/2^n)\\prod_{k=1}^{n}\\cos(x/2^k)$。",
+      "conditions": [
+        "先建立有限恒等式；除以 $\\sin(x/2^n)$ 前检查非零。固定 $x\\ne0$ 时，充分大的 $n$ 满足此条件。",
+        "$x=0$ 时各因子均为 $1$，直接单独处理；角度使用弧度。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{n\\to\\infty}\\cos\\frac12\\cos\\frac14\\cdots\\cos\\frac1{2^n}$。",
+          "solution": "乘积为 $\\sin1/[2^n\\sin(2^{-n})]$。把分母写为 $\\sin u/u$，其中 $u=2^{-n}\\to0$，故极限为 $\\sin1$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "固定 $x\\ne0$ 时极限为 $\\sin x/x$；角度反向倍增可用同一恒等式，但后续极限必须重新判断。"
+      ],
+      "counterexample": {
+        "statement": "$\\cos x\\cos(x/3)\\cos(x/9)\\cdots$",
+        "reason": "二倍角公式不能直接连接三倍比例的角度；角度也在缩小并不足以使用这个恒等式。"
+      },
+      "nextScenarioIds": [
+        "S.limit.0over0"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "finite_product",
+        "case": "half_angle"
+      }
+    },
+    {
+      "id": "P.limit.product.shifted_factors",
+      "name": "分子分母下标错位的连乘",
+      "scenarioIds": [
+        "S.limit.n_term_sum"
+      ],
+      "methodIds": [
+        "M.product_telescoping"
+      ],
+      "shape": "$\\prod\\dfrac{F(k)}{F(k-1)}$，有时先藏在多项式分解里。",
+      "signals": [
+        "分子分母很像；把 $k$ 换成 $k-1$ 或 $k+1$ 后，可能正好成为另一块。"
+      ],
+      "why": "相消的关键是同一个函数在相邻下标的比值；多项式外观不必完全相同。",
+      "firstStep": "先因式分解，再核对 $F(k-1)$ 与分母是否一致，写出前几项确认首尾。",
+      "conditions": [
+        "所有参与相除的因子必须非零。",
+        "起始下标决定留下哪些首项，不能省掉首项系数。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{n\\to\\infty}\\prod_{k=2}^{n}\\dfrac{k^3-1}{k^3+1}$。",
+          "solution": "令 $F(k)=k^2+k+1$，则 $k^2-k+1=F(k-1)$。乘积分成 $\\prod (k-1)/(k+1)$ 与 $\\prod F(k)/F(k-1)$，分别为 $2/[n(n+1)]$ 和 $(n^2+n+1)/3$，极限为 $2/3$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "$\\prod_{k=1}^{n}(k^2+k+1)/(k^2-k+1)=n^2+n+1$。"
+      ],
+      "counterexample": {
+        "statement": "$\\prod (k^2+k+1)/(k^2-k+2)$",
+        "reason": "只差一个常数也可能破坏精确的下标平移；必须逐项验证恒等式。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "finite_product",
+        "case": "shifted_factors"
+      }
+    },
+    {
+      "id": "P.limit.product.split_chains",
+      "name": "一个因子拆成多条相消链",
+      "scenarioIds": [
+        "S.limit.n_term_sum"
+      ],
+      "methodIds": [
+        "M.product_telescoping"
+      ],
+      "shape": "$\\prod_{k=1}^{n}\\dfrac{(k+1)^2}{k(k+2)}$",
+      "signals": [
+        "一个因子的分子或分母有多个可配成相邻比值的块。"
+      ],
+      "why": "暂时分开观察各条比值链，比坚持让整个因子一次相消更容易看清首尾。",
+      "firstStep": "把单项拆成 $\\dfrac{k+1}{k}\\cdot\\dfrac{k+1}{k+2}$，分别对有限项连乘。",
+      "conditions": [
+        "拆分前后必须是精确等式，不能漏常数。",
+        "各条链的分母非零；最后把留下的边界因子全部合回去。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{n\\to\\infty}\\prod_{k=1}^{n}\\dfrac{(k+1)^2}{k(k+2)}$。",
+          "solution": "两条链分别为 $n+1$ 和 $2/(n+2)$，乘积为 $2(n+1)/(n+2)\\to2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "这是一种观察方式，可与下标错位结构重叠；不要求每道题只能属于一种结构。"
+      ],
+      "counterexample": {
+        "statement": "把 $\\prod(A_k+B_k)$ 写成 $\\prod A_k+\\prod B_k$。",
+        "reason": "乘积只能按单项的乘法分解拆链，不能把加法直接分配到整个连乘之外。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "finite_product",
+        "case": "split_chains"
+      }
+    },
+    {
+      "id": "P.limit.sum.uniform_bounds",
+      "name": "分母可统一估计的和式",
+      "scenarioIds": [
+        "S.limit.n_term_sum"
+      ],
+      "methodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling"
+      ],
+      "shape": "$\\sum_{k=1}^{n}\\dfrac{k}{n^2+k}$",
+      "signals": [
+        "求和下标只在分母的小范围内变化，可利用 $1\\le k\\le n$ 同时约束所有项。"
+      ],
+      "why": "项数增加时，不能只看单项趋于零；统一分母后，可以借助已知求和公式估计整体。",
+      "firstStep": "由 $n^2\\le n^2+k\\le n^2+n$，把整个和夹在两个可求和的式子之间。",
+      "conditions": [
+        "取倒数前核对分母正负；本例分母均为正。",
+        "上下界必须覆盖全部下标，并在求和后趋于同一个值。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{n\\to\\infty}\\sum_{k=1}^{n}\\dfrac{k}{n^2+k}$。",
+          "solution": "$\\dfrac12=\\dfrac{\\sum k}{n^2+n}\\le\\sum\\dfrac{k}{n^2+k}\\le\\dfrac{\\sum k}{n^2}=\\dfrac{n+1}{2n}$，故极限为 $1/2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "因为每项 $k/(n^2+k)$ 趋于零，就认定和趋于零。",
+        "reason": "项数也在变化；每项很小不能代替对整个和的控制。"
+      },
+      "nextScenarioIds": [
+        "S.defint.riemann_sum_limit"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "sequence_limit",
+        "case": "uniform_bounds"
+      }
+    },
+    {
+      "id": "P.limit.product.small_increments",
+      "name": "因子是 1 加小量的连乘",
+      "scenarioIds": [
+        "S.limit.n_term_sum"
+      ],
+      "methodIds": [
+        "M.log_transform"
+      ],
+      "shape": "$\\prod_{k=1}^{n}(1+u_{n,k})$",
+      "signals": [
+        "各因子接近 $1$，直接相邻相消看不出来，但取对数后每项都有 $\\ln(1+u)$。"
+      ],
+      "why": "对数把乘积化为和；真正要控制的是累积的一阶项和累计误差。",
+      "firstStep": "先检查因子为正，再写 $\\ln P_n=\\sum\\ln(1+u_{n,k})$，同时估计余项。",
+      "conditions": [
+        "因子为正才能直接取实对数。",
+        "逐项趋零不自动保证累计误差趋零；本例可用 $\\sum u_{n,k}^2\\to0$。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{n\\to\\infty}\\prod_{k=1}^{n}(1+k/n^2)$。",
+          "solution": "令 $u=k/n^2$。由 $0\\le u-\\ln(1+u)\\le u^2/2$，累计误差不超过 $\\sum k^2/(2n^4)\\to0$；而 $\\sum k/n^2\\to1/2$，故乘积趋于 $e^{1/2}$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "对 $\\prod_{k=1}^{n}(1+k/n)$，未经估计就逐项以 $k/n$ 替换对数。",
+        "reason": "这些小量不对所有下标一致趋零，而且累计误差未必消失；需要重新选择整体估计或黎曼和。"
+      },
+      "nextScenarioIds": [
+        "S.defint.riemann_sum_limit"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "sequence_limit",
+        "case": "small_increments"
+      }
+    },
+    {
+      "id": "P.limit.sum.finite_power_root",
+      "name": "固定几项幂和开 n 次根",
+      "scenarioIds": [
+        "S.limit.n_term_sum"
+      ],
+      "methodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling",
+        "M.log_transform"
+      ],
+      "shape": "$(a^n+b^n+c^n)^{1/n}$",
+      "signals": [
+        "相加的项数固定，变化的是指数；不是项数不断增加的求和。"
+      ],
+      "why": "最大底数提供整体上下界；固定倍数开 n 次根后趋于 1。",
+      "firstStep": "若 $0\\le a<b<c$，先夹住 $c^n\\le a^n+b^n+c^n\\le3c^n$。",
+      "conditions": [
+        "本例底数非负且最大底数为正。",
+        "若底数含变量，先固定变量并判断最大项；符号或奇偶性不能直接忽略。"
+      ],
+      "examples": [
+        {
+          "statement": "当 $0\\le a<b<c$ 时，求 $\\lim_{n\\to\\infty}(a^n+b^n+c^n)^{1/n}$。",
+          "solution": "$c\\le(a^n+b^n+c^n)^{1/n}\\le3^{1/n}c\\to c$，故极限为 $c$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "$(1+e^{nx}+e^{-nx})^{1/n}\\to e^{|x|}$：先固定 $x$，再比较底数 $1,e^x,e^{-x}$。"
+      ],
+      "counterexample": {
+        "statement": "把含负底数的奇数次幂和直接按最大绝对值处理。",
+        "reason": "符号可能引起抵消，根的定义和奇偶子列也需检查。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "sequence_limit",
+        "case": "finite_power_root"
+      }
+    },
+    {
+      "id": "P.integral.derivative_ratio",
+      "name": "分母和它的导数成对出现",
+      "scenarioIds": [
+        "S.indefint.first_substitution"
+      ],
+      "methodIds": [
+        "M.first_substitution"
+      ],
+      "shape": "$\\int\\dfrac{u\\prime(x)}{u(x)}\\,dx$",
+      "signals": [
+        "先看分子是否是分母导数的常数倍，不只看分母像不像某个公式。"
+      ],
+      "why": "$d u=u\\prime(x)dx$ 正好把分子连同微分一起带走，剩下的是 $\\int du/u$。",
+      "firstStep": "选定分母为 $u$，明确写出 $du$，核对只差常数倍。",
+      "conditions": [
+        "$u$ 在所讨论区间上可导且非零。",
+        "原函数写为 $\\ln|u|$；不能在未知符号时省略绝对值。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int 2x/(1+x^2)\\,dx$。",
+          "solution": "令 $u=1+x^2$，$du=2x\\,dx$，所以积分为 $\\ln(1+x^2)+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "$\\int dx/(1+x^2)$",
+        "reason": "分子没有 $2x$，不能直接变成对数；它是反正切的基本积分。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "2*x/(1+x**2)",
+        "result": "log(1+x**2)"
+      }
+    },
+    {
+      "id": "P.integral.inner_derivative",
+      "name": "内层函数与导数因子配齐",
+      "scenarioIds": [
+        "S.indefint.first_substitution",
+        "S.indefint.sqrt_integrand"
+      ],
+      "methodIds": [
+        "M.first_substitution"
+      ],
+      "shape": "$\\int f(u(x))u\\prime(x)\\,dx$",
+      "signals": [
+        "幂、指数或根式的内部有一个整体，外面恰好还有它的导数因子。"
+      ],
+      "why": "识别的是完整微分配对；根号或指数本身不一定意味着需要复杂代换。",
+      "firstStep": "先把外面的因子与 $dx$ 合成 $du$，再确认余下部分只含 $u$。",
+      "conditions": [
+        "至多可直接调整常数倍，不能凭空补一个变量因子。",
+        "换元后仍需在原定义域内回代，保留积分常数。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int x e^{x^2}\\,dx$。",
+          "solution": "取 $u=x^2$，$x\\,dx=du/2$，积分为 $e^{x^2}/2+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "$\\int x/\\sqrt{1+x^2}\\,dx=\\sqrt{1+x^2}+C$，同样先取 $u=1+x^2$。"
+      ],
+      "counterexample": {
+        "statement": "$\\int e^{x^2}\\,dx$",
+        "reason": "缺少内层导数 $2x$，不能直接宣布凑成 $d(x^2)$。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "x*exp(x**2)",
+        "result": "exp(x**2)/2"
+      }
+    },
+    {
+      "id": "P.integral.nested_log",
+      "name": "对数嵌套里隐藏的微分",
+      "scenarioIds": [
+        "S.indefint.first_substitution"
+      ],
+      "methodIds": [
+        "M.first_substitution"
+      ],
+      "shape": "$\\int\\dfrac{(\\ln x)^m}{x}\\,dx$",
+      "signals": [
+        "式子同时含 $\\ln x$ 和 $dx/x$，或含 $dx/(x\\ln x)$。"
+      ],
+      "why": "$dx/x=d(\\ln x)$；换掉整个对数，往往能去掉看起来复杂的嵌套。",
+      "firstStep": "令 $u=\\ln x$，把所有 $\\ln x$ 和 $dx/x$ 一起替换。",
+      "conditions": [
+        "实对数要求 $x>0$。",
+        "若还除以 $\\ln x$，需排除 $x=1$ 并在相应区间讨论。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int(\\ln x)^2/x\\,dx$，$x>0$。",
+          "solution": "取 $u=\\ln x$ 后为 $\\int u^2du=u^3/3+C$，即 $(\\ln x)^3/3+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "$\\int dx/(x\\ln x)=\\ln|\\ln x|+C$，须在 $x>0$ 且 $x\\ne1$ 的区间上。",
+        "$u=\\ln\\tan(x/2)$ 时 $du=dx/\\sin x$；须先选使对数及三角式有定义的区间。"
+      ],
+      "counterexample": {
+        "statement": "$\\int(\\ln x)^2\\,dx$",
+        "reason": "没有 $dx/x$，不能直接套这个配对；可考虑分部积分。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "log(x)**2/x",
+        "result": "log(x)**3/3",
+        "positive": true
+      }
+    },
+    {
+      "id": "P.integral.trig_pair",
+      "name": "三角函数与它的导数配对",
+      "scenarioIds": [
+        "S.indefint.first_substitution"
+      ],
+      "methodIds": [
+        "M.first_substitution"
+      ],
+      "shape": "$\\int f(\\sin x)\\cos x\\,dx$",
+      "signals": [
+        "内层是 $\\sin x$ 时找 $\\cos x\\,dx$；内层是 $\\cos x$ 时找 $-\\sin x\\,dx$。"
+      ],
+      "why": "先按导数关系成对观察，就能把三角函数的外观变成普通的一元积分。",
+      "firstStep": "如取 $u=\\sin x$，必须同时写出 $du=\\cos x\\,dx$。",
+      "conditions": [
+        "检查原式中的函数和分母在所讨论区间有定义。",
+        "导数中的负号和常数系数不能省略。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int e^{\\sin x}\\cos x\\,dx$。",
+          "solution": "取 $u=\\sin x$ 后得到 $\\int e^u du=e^{\\sin x}+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "$\\int e^{\\sin x}\\,dx$",
+        "reason": "少了 $\\cos x$，不能只凭出现 $\\sin x$ 就这样换元。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "exp(sin(x))*cos(x)",
+        "result": "exp(sin(x))"
+      }
+    },
+    {
+      "id": "P.integral.root.linear",
+      "name": "一次根式可以整体换掉",
+      "scenarioIds": [
+        "S.indefint.sqrt_integrand"
+      ],
+      "methodIds": [
+        "M.integration_by_substitution"
+      ],
+      "shape": "$\\sqrt{ax+b}$ 或 $e^{\\sqrt{x}}$ 出现在被积式中。",
+      "signals": [
+        "同一个一次根式反复出现，令它等于新变量后，原变量也能写成新变量的多项式。"
+      ],
+      "why": "令 $t=\\sqrt{ax+b}$ 能把根号和原变量同时表达出来；关键是连 $dx$ 也要换。",
+      "firstStep": "写 $t=\\sqrt{ax+b}$，再求 $x=(t^2-b)/a$ 和 $dx=2t\\,dt/a$。",
+      "conditions": [
+        "$a\\ne0$，选择使根式有定义的区间，并保留 $t\\ge0$。",
+        "当新变量在端点为零时，分别检查代换和原积分的端点行为。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int e^{\\sqrt{x}}dx$，$x>0$。",
+          "solution": "取 $t=\\sqrt{x}$，$dx=2t\\,dt$。分部得 $2\\int te^t dt=2(t-1)e^t+C=2(\\sqrt{x}-1)e^{\\sqrt{x}}+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "只把 $\\sqrt{x}$ 换成 $t$，仍把 $dx$ 原样保留。",
+        "reason": "微分没有同步替换，会改变被积式。"
+      },
+      "nextScenarioIds": [
+        "S.indefint.by_parts_product"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "exp(sqrt(x))",
+        "result": "2*(sqrt(x)-1)*exp(sqrt(x))",
+        "positive": true
+      }
+    },
+    {
+      "id": "P.integral.root.circle",
+      "name": "a² 减 x² 的根式",
+      "scenarioIds": [
+        "S.indefint.sqrt_integrand"
+      ],
+      "methodIds": [
+        "M.integration_by_substitution"
+      ],
+      "shape": "$\\sqrt{a^2-x^2}$，$a>0$",
+      "signals": [
+        "常数平方减变量平方，与 $1-\\sin^2t=\\cos^2t$ 对应。"
+      ],
+      "why": "取 $x=a\\sin t$ 后根号成为 $a|\\cos t|$；选对角度区间才能去掉绝对值。",
+      "firstStep": "在 $-a<x<a$ 上取 $x=a\\sin t$，$-\\pi/2<t<\\pi/2$，同步换掉 $dx$。",
+      "conditions": [
+        "$a>0$，并核对原积分允许的 $x$ 范围。",
+        "只有在所选区间 $\\cos t\\ge0$ 时，才有 $\\sqrt{a^2-x^2}=a\\cos t$。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int\\sqrt{a^2-x^2}\\,dx$，$a>0$、$|x|<a$。",
+          "solution": "代换后为 $a^2\\int\\cos^2t\\,dt$，降幂并回代，得 $\\dfrac{x\\sqrt{a^2-x^2}}2+\\dfrac{a^2}2\\arcsin(x/a)+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "把 $\\sqrt{a^2-x^2}$ 直接写成 $a-x$。",
+        "reason": "平方根不对减法分配；需要先用恒等式消去根号。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "sqrt(a**2-x**2)",
+        "result": "x*sqrt(a**2-x**2)/2+a**2*asin(x/a)/2",
+        "aPositive": true
+      }
+    },
+    {
+      "id": "P.integral.root.plus",
+      "name": "x² 加 a² 的根式",
+      "scenarioIds": [
+        "S.indefint.sqrt_integrand"
+      ],
+      "methodIds": [
+        "M.integration_by_substitution"
+      ],
+      "shape": "$\\sqrt{x^2+a^2}$，$a>0$",
+      "signals": [
+        "平方相加，与 $1+\\tan^2t=\\sec^2t$ 对应；先检查是否已有 $x\\,dx$ 可凑微分。"
+      ],
+      "why": "没有现成内层导数时，可取 $x=a\\tan t$，使根式与 $dx$ 都由正割表示。",
+      "firstStep": "取 $x=a\\tan t$，$-\\pi/2<t<\\pi/2$，得到根式 $a\\sec t$。",
+      "conditions": [
+        "$a>0$；所选区间的 $\\sec t$ 为正。",
+        "如果原式还含分母或对数，需要一起检查定义域。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int dx/\\sqrt{x^2+a^2}$，$a>0$。",
+          "solution": "代换后为 $\\int\\sec t\\,dt$，回代可得 $\\ln(x+\\sqrt{x^2+a^2})+C$；括号内对所有实数 $x$ 都为正。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "$\\int x/\\sqrt{x^2+a^2}\\,dx$",
+        "reason": "这个式子的内层导数已配齐，直接凑微分更简单；不必见到根式就做三角代换。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "1/sqrt(x**2+a**2)",
+        "result": "log(x+sqrt(x**2+a**2))",
+        "aPositive": true
+      }
+    },
+    {
+      "id": "P.integral.root.outside",
+      "name": "x² 减 a² 的外侧根式",
+      "scenarioIds": [
+        "S.indefint.sqrt_integrand"
+      ],
+      "methodIds": [
+        "M.integration_by_substitution"
+      ],
+      "shape": "$\\sqrt{x^2-a^2}$，$|x|>a>0$",
+      "signals": [
+        "变量平方减常数平方，与 $\\sec^2t-1=\\tan^2t$ 对应；左右两个外侧区间需分别选分支。"
+      ],
+      "why": "在 $x>a$ 上取 $x=a\\sec t$ 可消去根号，但不能把正分支的回代直接用于 $x<-a$。",
+      "firstStep": "例如在 $x>a$ 上选 $0<t<\\pi/2$，写 $x=a\\sec t$、$dx=a\\sec t\\tan t\\,dt$。",
+      "conditions": [
+        "$a>0$，按 $x>a$ 或 $x<-a$ 选择相应区间。",
+        "$\\sqrt{a^2\\tan^2t}=a|\\tan t|$，去绝对值需要符号依据。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int dx/[x\\sqrt{x^2-a^2}]$，$x>a>0$。",
+          "solution": "按上述正分支代换，被积式成为 $dt/a$，所以原函数为 $\\arccos(a/x)/a+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "对 $x<-a$ 不改分支，继续照抄同一个回代公式。",
+        "reason": "根式与反三角函数导数涉及绝对值，必须重新核对符号。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "1/(x*sqrt(x**2-a**2))",
+        "result": "acos(a/x)/a",
+        "positive": true,
+        "aPositive": true
+      }
+    },
+    {
+      "id": "P.integral.trig.odd_power",
+      "name": "正弦余弦幂里有奇次",
+      "scenarioIds": [
+        "S.indefint.trig_rational"
+      ],
+      "methodIds": [
+        "M.first_substitution"
+      ],
+      "shape": "$\\int\\sin^m x\\cos^n x\\,dx$，至少一个非负整数幂为奇数。",
+      "signals": [
+        "保留一个奇次因子作微分，其余偶次部分用平方和恒等式改写。"
+      ],
+      "why": "如余弦为奇次，留出 $\\cos x\\,dx=d(\\sin x)$，其余余弦平方可变为 $1-\\sin^2x$。",
+      "firstStep": "先拆出一个导数因子，再令 $u=\\sin x$ 或 $u=\\cos x$。",
+      "conditions": [
+        "本基准型的幂是非负整数；负幂、分数幂另查定义域。",
+        "若留下正弦作微分，别漏掉负号。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int\\sin^2x\\cos^3x\\,dx$。",
+          "solution": "把 $\\cos^3x$ 写成 $(1-\\sin^2x)\\cos x$，令 $u=\\sin x$，得 $u^3/3-u^5/5+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "$\\int\\sin^2x\\cos^2x\\,dx$",
+        "reason": "两边都是偶次，不能按同样方式留出一个现成导数因子；可先降幂。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "sin(x)**2*cos(x)**3",
+        "result": "sin(x)**3/3-sin(x)**5/5"
+      }
+    },
+    {
+      "id": "P.integral.trig.even_powers",
+      "name": "正弦余弦都是偶次幂",
+      "scenarioIds": [
+        "S.indefint.trig_rational"
+      ],
+      "methodIds": [
+        "M.trig_rational_integral"
+      ],
+      "shape": "$\\int\\sin^{2p}x\\cos^{2q}x\\,dx$",
+      "signals": [
+        "没有现成的单个正弦或余弦导数因子；用倍角和降幂可降低次数。"
+      ],
+      "why": "$\\sin^2x=(1-\\cos2x)/2$、$\\cos^2x=(1+\\cos2x)/2$ 能把偶次幂转为更简单的三角和。",
+      "firstStep": "先作降幂或积化和差，整理后再逐项积分。",
+      "conditions": [
+        "使用的三角恒等式必须保持全部系数。",
+        "有分母时还需保留原分母非零的区间限制。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int\\sin^2x\\cos^2x\\,dx$。",
+          "solution": "$\\sin^2x\\cos^2x=(1-\\cos4x)/8$，原函数为 $x/8-\\sin4x/32+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "把 $\\sin^2x$ 直接替换为 $\\sin(2x)/2$。",
+        "reason": "平方关系与倍角关系不同，错误恒等式会改变被积函数。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "sin(x)**2*cos(x)**2",
+        "result": "x/8-sin(4*x)/32"
+      }
+    },
+    {
+      "id": "P.integral.trig.tan_sec",
+      "name": "正切与正割平方配对",
+      "scenarioIds": [
+        "S.indefint.trig_rational",
+        "S.indefint.first_substitution"
+      ],
+      "methodIds": [
+        "M.first_substitution"
+      ],
+      "shape": "$\\int f(\\tan x)\\sec^2x\\,dx$",
+      "signals": [
+        "正切的函数旁边有 $\\sec^2x\\,dx$；余切与 $-\\csc^2x\\,dx$ 同理。"
+      ],
+      "why": "$d(\\tan x)=\\sec^2x\\,dx$，比直接使用半角万能代换更短。",
+      "firstStep": "令 $u=\\tan x$，把现成的正割平方连同微分一起换掉。",
+      "conditions": [
+        "正切配对要求 $\\cos x\\ne0$；余切配对要求 $\\sin x\\ne0$。",
+        "余切配对时导数带负号；不能只因出现正切就假定微分已配齐。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int\\tan^3x\\sec^2x\\,dx$。",
+          "solution": "令 $u=\\tan x$ 后为 $\\int u^3du=\\tan^4x/4+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "$\\int\\tan^3x\\,dx$",
+        "reason": "没有现成 $\\sec^2x\\,dx$；需先用恒等式整理，不能照抄。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "tan(x)**3/cos(x)**2",
+        "result": "tan(x)**4/4"
+      }
+    },
+    {
+      "id": "P.integral.trig.half_angle",
+      "name": "一般三角分式化成有理式",
+      "scenarioIds": [
+        "S.indefint.trig_rational"
+      ],
+      "methodIds": [
+        "M.trig_rational_integral"
+      ],
+      "shape": "$\\int R(\\sin x,\\cos x)\\,dx$",
+      "signals": [
+        "正弦余弦混在分式里，检查后没有更直接的导数配对或简单降幂。"
+      ],
+      "why": "令 $t=\\tan(x/2)$ 后，正弦、余弦和 $dx$ 都能写成 $t$ 的有理式。",
+      "firstStep": "一起替换 $\\sin x=2t/(1+t^2)$、$\\cos x=(1-t^2)/(1+t^2)$、$dx=2dt/(1+t^2)$。",
+      "conditions": [
+        "在半角代换有效的区间上操作；跨过代换奇点时分区间回代。",
+        "保留原分母非零条件；有简单配对时可优先选择更短的办法。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int dx/(2+\\cos x)$。",
+          "solution": "半角代换后为 $\\int2dt/(t^2+3)$，在所选区间的原函数为 $\\dfrac2{\\sqrt3}\\arctan\\!\\dfrac{\\tan(x/2)}{\\sqrt3}+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "只代换三角函数，不代换 $dx$。",
+        "reason": "所有因子必须同步替换，否则所得有理式不等价。"
+      },
+      "nextScenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "1/(2+cos(x))",
+        "result": "2/sqrt(3)*atan(tan(x/2)/sqrt(3))"
+      }
+    },
+    {
+      "id": "P.integral.rational.improper",
+      "name": "分子次数不低于分母",
+      "scenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "methodIds": [
+        "M.polynomial_division",
+        "M.partial_fraction"
+      ],
+      "shape": "$\\int P(x)/Q(x)\\,dx$，$\\deg P\\ge\\deg Q$",
+      "signals": [
+        "先比较分子分母次数，假分式通常先做整式除法。"
+      ],
+      "why": "部分分式的基准对象是真分式；先分出整式，才不漏掉增长项。",
+      "firstStep": "写 $P/Q=A+R/Q$，其中 $\\deg R<\\deg Q$。",
+      "conditions": [
+        "$Q(x)\\ne0$，除法后仍保留原定义域。",
+        "商与余式都要保留；不是只留下最高次项。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int x^3/(x^2+1)\\,dx$。",
+          "solution": "$x^3/(x^2+1)=x-x/(x^2+1)$，所以积分为 $x^2/2-\\ln(x^2+1)/2+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "直接用 $x$ 代替 $x^3/(x^2+1)$ 来求原函数。",
+        "reason": "那只是无穷远主项，原函数计算要求精确恒等式。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "x**3/(x**2+1)",
+        "result": "x**2/2-log(x**2+1)/2"
+      }
+    },
+    {
+      "id": "P.integral.rational.distinct_linear",
+      "name": "分母分解成互异一次因子",
+      "scenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "methodIds": [
+        "M.partial_fraction"
+      ],
+      "shape": "$\\dfrac{P(x)}{(x-a)(x-b)}$，$a\\ne b$",
+      "signals": [
+        "分母能拆成互不相同的一次因子，可为每个因子设常数分子。"
+      ],
+      "why": "用待定系数把原来的复杂分式变成基本对数积分。",
+      "firstStep": "先确保是真分式，再设 $A/(x-a)+B/(x-b)$ 并通分对比系数。",
+      "conditions": [
+        "因子必须在当前系数范围内正确分解。",
+        "在避开分母零点的各区间上写原函数和对数绝对值。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int(x+3)/(x^2-x-2)\\,dx$。",
+          "solution": "分母为 $(x-2)(x+1)$，系数为 $5/3$ 与 $-2/3$；原函数为 $\\frac53\\ln|x-2|-\\frac23\\ln|x+1|+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "把重因子 $x^2$ 只当作一个互异一次因子。",
+        "reason": "重因子必须保留对应的每一级幂次。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "(x+3)/(x**2-x-2)",
+        "result": "5*log(x-2)/3-2*log(x+1)/3"
+      }
+    },
+    {
+      "id": "P.integral.rational.repeated_linear",
+      "name": "一次因子重复出现",
+      "scenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "methodIds": [
+        "M.partial_fraction"
+      ],
+      "shape": "$Q(x)$ 含 $(x-a)^m$，$m\\ge2$。",
+      "signals": [
+        "同一个一次因子有多重幂，展开式要列出每一级。"
+      ],
+      "why": "只设最高幂对应的一项通常无法表示原式；需要 $A_1/(x-a)+\\cdots+A_m/(x-a)^m$。",
+      "firstStep": "把各个重因子的每一级分式列齐，再统一通分求系数。",
+      "conditions": [
+        "先做必要的整式除法。",
+        "在原分母非零区间上积分，重幂项不都对应对数。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int dx/[x^2(x+1)]$。",
+          "solution": "$1/[x^2(x+1)]=-1/x+1/x^2+1/(x+1)$，积分为 $-\\ln|x|-1/x+\\ln|x+1|+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "只设 $A/x^2+B/(x+1)$。",
+        "reason": "缺少一次幂分式，无法匹配本例的全部系数。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "1/(x**2*(x+1))",
+        "result": "-log(x)-1/x+log(x+1)"
+      }
+    },
+    {
+      "id": "P.integral.rational.quadratic",
+      "name": "不可约二次因子的线性分子",
+      "scenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "methodIds": [
+        "M.partial_fraction",
+        "M.first_substitution"
+      ],
+      "shape": "$\\dfrac{Ax+B}{x^2+px+q}$，二次式在实数上不可约。",
+      "signals": [
+        "先看分子能否拆成分母导数的倍数加常数，再对二次式配方。"
+      ],
+      "why": "导数配对部分产生对数，配方后剩下的常数分子部分常对应反正切。",
+      "firstStep": "将 $Ax+B$ 对齐 $2x+p$，同时把分母写成 $(x+p/2)^2+d$。",
+      "conditions": [
+        "本基准型要求 $d=q-p^2/4>0$。",
+        "不可约二次因子的待定分子应保留一次项，不能一律只设常数。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int x/(x^2+2x+2)\\,dx$。",
+          "solution": "$x=\\tfrac12(2x+2)-1$，所以原函数为 $\\tfrac12\\ln(x^2+2x+2)-\\arctan(x+1)+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "面对 $x^2-1$ 仍把它当作实数不可约二次式。",
+        "reason": "应先因式分解；平方差有两个实一次因子。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "x/(x**2+2*x+2)",
+        "result": "log(x**2+2*x+2)/2-atan(x+1)"
+      }
+    },
+    {
+      "id": "P.integral.rational.repeated_quadratic",
+      "name": "不可约二次因子的重幂",
+      "scenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "methodIds": [
+        "M.partial_fraction",
+        "M.integration_by_substitution"
+      ],
+      "shape": "$\\dfrac{P(x)}{(x^2+px+q)^m}$，$m\\ge2$。",
+      "signals": [
+        "二次因子重复出现；一般分解的每一级都保留线性分子。"
+      ],
+      "why": "列齐部分分式后，剩下的单个二次重幂可继续配方、三角代换或递推；分解并不总是最后一步。",
+      "firstStep": "一般式列 $\\sum_{j=1}^{m}(A_jx+B_j)/(x^2+px+q)^j$；先查是否已有导数配对。",
+      "conditions": [
+        "二次式的不可约性和各区间定义域先核对。",
+        "单个二次重幂本身已是一个简单分式，可能需要后续积分技巧。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int dx/(1+x^2)^2$。",
+          "solution": "令 $x=\\tan t$ 后成为 $\\int\\cos^2t\\,dt$，回代得 $x/[2(1+x^2)]+\\arctan x/2+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "把 $1/(1+x^2)^2$ 当作 $1/(1+x^2)$ 的常数倍。",
+        "reason": "分母幂次的改变会改变导数和原函数，不能直接套一次幂的公式。"
+      },
+      "nextScenarioIds": [
+        "S.indefint.trig_rational"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "1/(1+x**2)**2",
+        "result": "x/(2*(1+x**2))+atan(x)/2"
+      }
+    },
+    {
+      "id": "P.integral.parts.lower_degree",
+      "name": "多项式因子逐次降次",
+      "scenarioIds": [
+        "S.indefint.by_parts_product"
+      ],
+      "methodIds": [
+        "M.integration_by_parts"
+      ],
+      "shape": "$\\int P(x)e^{ax}dx$ 或 $\\int P(x)\\sin(bx)dx$",
+      "signals": [
+        "一个因子是多项式，求导会降次；另一个因子容易反复积分。"
+      ],
+      "why": "每次让多项式求导，可以在有限次分部后把它消掉；选择依据是结构变化。",
+      "firstStep": "取多项式为 $u$，其余连同 $dx$ 为 $dv$，先算出新的积分再决定是否继续。",
+      "conditions": [
+        "检查新积分是否确实降低复杂度。",
+        "每次分部保留系数、符号和全部边界项。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int x^2e^x dx$。",
+          "solution": "两次分部，得 $x^2e^x-2\\int xe^x dx=e^x(x^2-2x+2)+C$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "$\\int x\\sin xdx=-x\\cos x+\\sin x+C$，仍是让多项式降次。"
+      ],
+      "counterexample": {
+        "statement": "$\\int xe^{x^2}dx$",
+        "reason": "内层导数已经配齐，直接凑微分更短；不必把所有乘积都先分部。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "x**2*exp(x)",
+        "result": "exp(x)*(x**2-2*x+2)"
+      }
+    },
+    {
+      "id": "P.integral.parts.cycle",
+      "name": "分部后原积分循环重现",
+      "scenarioIds": [
+        "S.indefint.by_parts_product",
+        "S.indefint.recurrence"
+      ],
+      "methodIds": [
+        "M.integration_by_parts",
+        "M.reduction_formula"
+      ],
+      "shape": "$\\int e^{ax}\\sin(bx)dx$ 或 $\\int e^{ax}\\cos(bx)dx$",
+      "signals": [
+        "两类函数求导或积分后仍属同一族，分部两次常回到原积分。"
+      ],
+      "why": "这时目标不是继续降次，而是把原积分当未知量，移项解一个线性等式。",
+      "firstStep": "把原积分记作 I，分部到再次出现 I 时停止，并把系数和符号整理到同一边。",
+      "conditions": [
+        "一般公式除以 $a^2+b^2$ 时要求它非零；退化情况直接算。",
+        "循环项的正负号必须逐次推导，不能只凭记忆移项。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $I=\\int e^x\\sin xdx$。",
+          "solution": "分部得 $I=e^x\\sin x-J$，其中 $J=\\int e^x\\cos xdx=e^x\\cos x+I$。故 $2I=e^x(\\sin x-\\cos x)$，原函数为右边的一半加 C。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "看见原积分重现就断定分部失败，继续无休止地分部。",
+        "reason": "精确重现恰好提供了可以移项求解的关系。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "exp(x)*sin(x)",
+        "result": "exp(x)*(sin(x)-cos(x))/2"
+      }
+    },
+    {
+      "id": "P.derivative.higher.shifted_power",
+      "name": "平移幂函数的下降系数",
+      "scenarioIds": [
+        "S.deriv.higher_order"
+      ],
+      "methodIds": [
+        "M.chain_rule"
+      ],
+      "shape": "$y=(x+c)^\\mu$",
+      "signals": [
+        "每求一次导数，幂次降一，系数多乘一个连续下降的因子。"
+      ],
+      "why": "先算前几阶即可看见下降系数；整数幂的导数最终为零，非整数幂需保留定义域。",
+      "firstStep": "写出 $(x+c)^\\mu$ 的前两阶导数，再归纳 $\\mu(\\mu-1)\\cdots(\\mu-n+1)(x+c)^{\\mu-n}$。",
+      "conditions": [
+        "$n$ 为正整数；非整数实幂通常在 $x+c>0$ 的区间讨论。",
+        "若是非负整数次多项式且 n 超过次数，应直接写零，不在零点把零系数乘负幂。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $y=(x+1)^5$ 的三阶导数。",
+          "solution": "$y^{(3)}=5\\cdot4\\cdot3(x+1)^2=60(x+1)^2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "把 $(x+c)^\\mu$ 的 n 阶系数误写成 $\\mu^n$。",
+        "reason": "下降系数与每次固定乘同一常数的指数函数不同。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "derivative",
+        "function": "(x+1)**5",
+        "order": 3,
+        "result": "60*(x+1)**2"
+      }
+    },
+    {
+      "id": "P.derivative.higher.trig_cycle",
+      "name": "三角函数导数的周期规律",
+      "scenarioIds": [
+        "S.deriv.higher_order"
+      ],
+      "methodIds": [
+        "M.chain_rule"
+      ],
+      "shape": "$\\sin(ax+b)$、$\\cos(ax+b)$",
+      "signals": [
+        "函数族每四次导数循环，每次还有来自内层的系数 a。"
+      ],
+      "why": "把循环相位和链式系数分开看，可以避免高阶时只记住符号却漏掉系数。",
+      "firstStep": "先列一个四步循环，归纳 $D^n\\sin(ax+b)=a^n\\sin(ax+b+n\\pi/2)$。",
+      "conditions": [
+        "$a,b$ 为常数，$n\\ge1$。",
+        "先确认内层是线性的；一般 sin(g(x)) 不能直接照搬这个公式。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\sin(2x)$ 的五阶导数。",
+          "solution": "五次求导相当于一个完整循环再求一次，结果为 $32\\cos(2x)$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "对 $\\sin(x^2)$ 直接写 $(2x)^n\\sin(x^2+n\\pi/2)$。",
+        "reason": "内层导数不再是常数，继续求导会产生额外项。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "derivative",
+        "function": "sin(2*x)",
+        "order": 5,
+        "result": "32*cos(2*x)"
+      }
+    },
+    {
+      "id": "P.derivative.higher.product",
+      "name": "多项式乘简单函数的高阶导",
+      "scenarioIds": [
+        "S.deriv.higher_order"
+      ],
+      "methodIds": [
+        "M.leibniz_formula"
+      ],
+      "shape": "$P(x)e^{ax}$ 或 $P(x)\\sin(ax)$",
+      "signals": [
+        "多项式超过自身次数的导数为零，莱布尼茨和式实际只剩少量项。"
+      ],
+      "why": "求十阶并不一定需要手算十遍；乘积公式会把工作量限制在多项式的次数附近。",
+      "firstStep": "使用 $D^n(uv)=\\sum_{j=0}^{n}\\binom nj u^{(j)}v^{(n-j)}$，先删去为零的多项式高阶导。",
+      "conditions": [
+        "两函数具有所需阶导数。",
+        "保留二项式系数，不能把乘积的 n 阶导当作两个 n 阶导的乘积。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $x^2e^{-x}$ 的十阶导数。",
+          "solution": "只剩 j=0,1,2 三项，结果为 $e^{-x}(x^2-20x+90)$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "写成 $(x^2)^{(10)}(e^{-x})^{(10)}=0$。",
+        "reason": "高阶乘积求导是各阶搭配的和，不是同阶导数直接相乘。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "derivative",
+        "function": "x**2*exp(-x)",
+        "order": 10,
+        "result": "exp(-x)*(x**2-20*x+90)"
+      }
+    },
+    {
+      "id": "P.derivative.higher.partial_fractions",
+      "name": "先拆简单分式再求高阶导",
+      "scenarioIds": [
+        "S.deriv.higher_order"
+      ],
+      "methodIds": [
+        "M.partial_fraction"
+      ],
+      "shape": "$1/(x^2-1)$ 等可分解的有理分式。",
+      "signals": [
+        "分母因式分解后，可能变成几个已知高阶导规律的简单幂式。"
+      ],
+      "why": "反复商式求导会越来越长；精确拆项后，每一项都有直接的 n 阶公式。",
+      "firstStep": "先检查分式次数并因式分解，作部分分式，再逐项求导。",
+      "conditions": [
+        "拆分必须是精确恒等式。",
+        "保留原函数分母非零的区间限制。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $1/(x^2-1)$ 的三阶导数，$x\\ne\\pm1$。",
+          "solution": "先写成 $\\tfrac12[(x-1)^{-1}-(x+1)^{-1}]$，三阶导为 $-3[(x-1)^{-4}-(x+1)^{-4}]$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "把 $1/(x^2-1)$ 拆成 $1/x^2-1$。",
+        "reason": "分母的加减不能直接拆开取倒数。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "derivative",
+        "function": "1/(x**2-1)",
+        "order": 3,
+        "result": "-3*((x-1)**(-4)-(x+1)**(-4))"
+      }
+    },
+    {
+      "id": "P.derivative.higher.series_coefficient",
+      "name": "从局部幂级数读某点高阶导",
+      "scenarioIds": [
+        "S.deriv.higher_order"
+      ],
+      "methodIds": [
+        "M.power_series_expansion"
+      ],
+      "shape": "$f(x)=\\sum a_n(x-x_0)^n$",
+      "signals": [
+        "所求是在展开点的高阶导数，而且已经知道或容易得到有效的幂级数展开。"
+      ],
+      "why": "在正收敛半径内，系数满足 $f^{(n)}(x_0)=n!a_n$，无须先求一般点的高阶导。",
+      "firstStep": "先找到目标幂次的系数，再乘对应的阶乘，缺失的幂次系数为零。",
+      "conditions": [
+        "必须有在该点附近有效的幂级数或足够条件支持的泰勒展开。",
+        "只有一阶近似不能推出任意高阶导数。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $f(x)=e^{x^2}$ 的四阶导数在零点的值。",
+          "solution": "$e^{x^2}=1+x^2+x^4/2+\\cdots$，所以 $f^{(4)}(0)=4!/2=12$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "仅由 $f(x)=1+x+o(x)$ 就断定 $f^{\\prime\\prime}(0)=0$。",
+        "reason": "这个余项精度没有提供二阶及以上导数的信息。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "derivative_at",
+        "function": "exp(x**2)",
+        "order": 4,
+        "point": 0,
+        "result": "12"
+      }
+    },
+    {
+      "id": "P.mvt.rolle.direct",
+      "name": "端点已经等值",
+      "scenarioIds": [
+        "S.mvt.rolle_equality"
+      ],
+      "methodIds": [
+        "M.rolle_theorem"
+      ],
+      "shape": "$f(a)=f(b)$，要证明某处 $f\\prime(\\xi)=0$。",
+      "signals": [
+        "结论就是原函数导数为零，端点等值已在条件中给出。"
+      ],
+      "why": "罗尔定理需要的对象已经是原函数，没有必要再凭空构造辅助函数。",
+      "firstStep": "逐条检查闭区间连续、开区间可导、端点等值，然后应用定理。",
+      "conditions": [
+        "区间有两个不同端点。",
+        "三个前提都需满足，端点相等不能替代连续和可导。"
+      ],
+      "examples": [
+        {
+          "statement": "对 $f(x)=x^2-x$，说明为何在 $(0,1)$ 内有导数为零的点。",
+          "solution": "函数在 $[0,1]$ 连续，在 $(0,1)$ 可导且两端值为零。由罗尔定理存在该点；直接求导还可验证 $\\xi=1/2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "$f(x)=|x|$ 在 $[-1,1]$ 两端相等，就断定内部有导数为零的点。",
+        "reason": "在零点不可导，缺少罗尔定理的前提。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "rolle_endpoints",
+        "function": "x**2-x",
+        "left": 0,
+        "right": 1
+      }
+    },
+    {
+      "id": "P.mvt.rolle.polynomial_weight",
+      "name": "结论像多项式乘积的导数",
+      "scenarioIds": [
+        "S.mvt.rolle_equality"
+      ],
+      "methodIds": [
+        "M.construct_auxiliary_function",
+        "M.rolle_theorem"
+      ],
+      "shape": "$xf\\prime(x)+f(x)$ 或 $x^mf\\prime(x)+mx^{m-1}f(x)$",
+      "signals": [
+        "f 与导数 f′ 同时出现，系数恰好能拼成一个乘积求导式。"
+      ],
+      "why": "$(x^mf(x))\\prime=x^mf\\prime+mx^{m-1}f$；识别系数关系，就能反推辅助函数。",
+      "firstStep": "先试 $F(x)=x^mf(x)$，再检查 F 的两个端点是否相等。",
+      "conditions": [
+        "构造出的 F 满足闭区间连续、开区间可导。",
+        "目标形状正确还不够，端点等值必须由题设推出。"
+      ],
+      "examples": [
+        {
+          "statement": "f 在 $[0,1]$ 连续、$(0,1)$ 可导，且 $f(1)=0$。证明某处 $f(\\xi)+\\xi f\\prime(\\xi)=0$。",
+          "solution": "取 $F(x)=xf(x)$。由 $F(0)=F(1)=0$，罗尔定理给出 $F\\prime(\\xi)=f(\\xi)+\\xi f\\prime(\\xi)=0$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "面对 $xf\\prime+2f$ 仍原样取 $F=xf$。",
+        "reason": "导数系数不匹配，需要重新寻找权重并核对端点。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "diff(x*f(x),x)",
+        "rhs": "x*diff(f(x),x)+f(x)"
+      }
+    },
+    {
+      "id": "P.mvt.rolle.exponential_weight",
+      "name": "f′ 加系数乘 f 的指数权重",
+      "scenarioIds": [
+        "S.mvt.rolle_equality"
+      ],
+      "methodIds": [
+        "M.construct_auxiliary_function",
+        "M.rolle_theorem"
+      ],
+      "shape": "$f\\prime(x)+q(x)f(x)$，尤其是常系数 $q=\\lambda$。",
+      "signals": [
+        "f′ 的系数为 1，f 的系数提示寻找一个指数权重。"
+      ],
+      "why": "若 $Q\\prime=q$，则 $(e^{Q(x)}f(x))\\prime=e^{Q(x)}(f\\prime+qf)$；指数因子永不为零。",
+      "firstStep": "先找 $Q\\prime=q$，取 $F=e^Qf$，再核对 $e^{Q(a)}f(a)=e^{Q(b)}f(b)$；常系数时 $Q=\\lambda x$。",
+      "conditions": [
+        "F 的连续性、可导性和端点等值均须验证。",
+        "系数随 x 变化时需用它的原函数 Q，不能直接把 q(x)x 塞进指数。"
+      ],
+      "examples": [
+        {
+          "statement": "f 在 $[0,1]$ 连续、$(0,1)$ 可导，且 $f(1)=e^{-1}f(0)$。证明某处 $f\\prime(\\xi)+f(\\xi)=0$。",
+          "solution": "取 $F=e^xf$，两端值相等。由罗尔定理，$e^\\xi(f\\prime(\\xi)+f(\\xi))=0$，指数非零，得结论。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "若系数为 $1-2x$，可取 $Q=x-x^2$；还须由题设找到加权后的两个等值点。"
+      ],
+      "counterexample": {
+        "statement": "仅由 $f(0)=f(1)$ 就声称 $e^0f(0)=e^1f(1)$。",
+        "reason": "原函数端点等值不等于加权后仍等值。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "diff(exp(x)*f(x),x)",
+        "rhs": "exp(x)*(diff(f(x),x)+f(x))"
+      }
+    },
+    {
+      "id": "P.mvt.rolle.quotient_weight",
+      "name": "结论像商的导数",
+      "scenarioIds": [
+        "S.mvt.rolle_equality"
+      ],
+      "methodIds": [
+        "M.construct_auxiliary_function",
+        "M.rolle_theorem"
+      ],
+      "shape": "$xf\\prime(x)-f(x)$",
+      "signals": [
+        "一项乘 x，另一项带负号，与 f/x 的商式求导分子一致。"
+      ],
+      "why": "$(f/x)\\prime=(xf\\prime-f)/x^2$；分母非零时，导数为零就得到目标分子为零。",
+      "firstStep": "试 $F=f/x$，先查区间是否避开零，再查 $f(a)/a=f(b)/b$。",
+      "conditions": [
+        "整个所用闭区间不能穿过权重的零点。",
+        "商函数仍需满足罗尔定理的全部前提。"
+      ],
+      "examples": [
+        {
+          "statement": "f 在 $[1,2]$ 连续、$(1,2)$ 可导，$f(2)=2f(1)$。证明某处 $\\xi f\\prime(\\xi)-f(\\xi)=0$。",
+          "solution": "取 $F=f/x$，则 $F(1)=F(2)$。由罗尔定理有 $(\\xi f\\prime(\\xi)-f(\\xi))/\\xi^2=0$，得到结论。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "在含零点的区间上直接构造 f/x 而不检查可延拓性。",
+        "reason": "辅助函数可能不连续，定理就不能使用。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "diff(f(x)/x,x)",
+        "rhs": "(x*diff(f(x),x)-f(x))/x**2"
+      }
+    },
+    {
+      "id": "P.multivar.limit.regular_point",
+      "name": "目标点有定义且连续",
+      "scenarioIds": [
+        "S.multivar.binary_limit"
+      ],
+      "methodIds": [
+        "M.continuity_rules"
+      ],
+      "shape": "多元初等表达式在目标点各项有定义，分母非零。",
+      "signals": [
+        "先代入检查定义域；并非所有二元极限都必须用路径或极坐标。"
+      ],
+      "why": "连续函数在该点的极限就是函数值，先做这一步可避免额外构造。",
+      "firstStep": "核对组成函数的连续性与分母、根式、对数等条件，再代入。",
+      "conditions": [
+        "目标点和附近所需的定义域条件成立。",
+        "分母为零或函数在该点有特别定义时，不能直接套连续性。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{(x,y)\\to(1,2)}(x+y)/(xy)$。",
+          "solution": "在 $(1,2)$ 附近分母不为零，表达式连续，极限为 $3/2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "在原点对 $xy/(x^2+y^2)$ 直接代入。",
+        "reason": "分母为零，连续函数商的条件不成立。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "value",
+        "function": "(x+y)/(x*y)",
+        "point": {
+          "x": 1,
+          "y": 2
+        },
+        "result": "3/2"
+      }
+    },
+    {
+      "id": "P.multivar.limit.radial",
+      "name": "可收成径向变量的结构",
+      "scenarioIds": [
+        "S.multivar.binary_limit"
+      ],
+      "methodIds": [
+        "M.polar_transform"
+      ],
+      "shape": "$x^2+y^2$ 作为一个整体反复出现。",
+      "signals": [
+        "函数可直接写成关于 r 或 r² 的一元表达式，角度完全消失。"
+      ],
+      "why": "如果化归后确实与角度无关，只需处理半径趋零的一元极限。",
+      "firstStep": "令 $r=\\sqrt{x^2+y^2}$，把全部相关项一起改写，检查角度是否真的消失。",
+      "conditions": [
+        "不能把固定某个角度的结果当成所有路径都一致的证明。",
+        "若角度仍在，须对角度作统一估计。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{(x,y)\\to(0,0)}\\sin(x^2+y^2)/(x^2+y^2)$。",
+          "solution": "令 $u=x^2+y^2\\to0^+$，得到 $\\sin u/u\\to1$，因此二元极限为 1。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "极坐标后仍含 r 和角度，就固定角度分别取极限并宣称足够。",
+        "reason": "不同路径可能使角度随半径变化，仍需一致控制。"
+      },
+      "nextScenarioIds": [
+        "S.limit.0over0"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "limit",
+        "function": "sin(x)/x",
+        "point": 0,
+        "result": "1"
+      }
+    },
+    {
+      "id": "P.multivar.limit.uniform_bound",
+      "name": "余下因子可统一控制",
+      "scenarioIds": [
+        "S.multivar.binary_limit"
+      ],
+      "methodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling",
+        "M.polar_transform"
+      ],
+      "shape": "$\\dfrac{x^2y}{x^2+y^2}$ 等可提取趋零因子的分式。",
+      "signals": [
+        "部分比值在所有方向都有统一上界，剩余因子随点趋近而变小。"
+      ],
+      "why": "证明存在要覆盖全部路径，统一绝对值估计比检查几条路径更有力。",
+      "firstStep": "先找不依赖方向的上界，把绝对值压到一个明确趋零的量。",
+      "conditions": [
+        "上界必须对目标点附近的所有定义域点成立。",
+        "只沿固定方向得到的界不能替代统一上界。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\lim_{(x,y)\\to(0,0)}x^2y/(x^2+y^2)$。",
+          "solution": "原点外有 $|x^2y/(x^2+y^2)|\\le|y|\\to0$，由夹逼可得极限为零。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "在 $(0,2)$ 附近，对 $\\sin(xy)/x-y$ 估计：$|y|\\le3$ 时，误差不超过 $27x^2/6\\to0$，所以原极限为 2。"
+      ],
+      "counterexample": {
+        "statement": "沿 x 轴和 y 轴均为零，因此所有路径都趋零。",
+        "reason": "有限条路径只能提供候选值，不能证明极限存在。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "bound",
+        "case": "binary_uniform"
+      }
+    },
+    {
+      "id": "P.multivar.limit.balanced_path",
+      "name": "分母异次项提示曲线路径",
+      "scenarioIds": [
+        "S.multivar.binary_limit"
+      ],
+      "methodIds": [
+        "M.path_approach"
+      ],
+      "shape": "$x^4+y^2$ 等不同次数的项同时出现在分母。",
+      "signals": [
+        "先比较哪些路径可令两个关键项同阶，例如 $y=x^2$。"
+      ],
+      "why": "所有直线路径恰好相同，也可能漏掉能让分母两项同时起作用的弯曲路径。",
+      "firstStep": "先求一条简单路径的结果，再按分母项平衡选另一条定义域内的路径，比较极限。",
+      "conditions": [
+        "找出的路径必须在定义域中，并趋于同一个目标点。",
+        "路径法可以证不存在；几条路径相同不能反过来证存在。"
+      ],
+      "examples": [
+        {
+          "statement": "判断 $\\lim_{(x,y)\\to(0,0)}x^2y/(x^4+y^2)$ 是否存在。",
+          "solution": "沿 $y=0$ 值为零；沿 $y=x^2$ 且 $x\\ne0$ 值恒为 $1/2$，故极限不存在。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "只检查 $y=kx$：这些直线路径结果均为零，就宣称极限为零。",
+        "reason": "本例正是曲线路径给出不同结果的反例。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "paths",
+        "function": "x**2*y/(x**4+y**2)",
+        "paths": [
+          {
+            "y": "0",
+            "result": "0"
+          },
+          {
+            "y": "x**2",
+            "result": "1/2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P.ode.reduction.only_x",
+      "name": "最高阶导数只等于 x 的函数",
+      "scenarioIds": [
+        "S.ode.reducible_higher_order"
+      ],
+      "methodIds": [
+        "M.reduction_of_order"
+      ],
+      "shape": "$y^{\\prime\\prime}=f(x)$",
+      "signals": [
+        "右端不含 y，也不含任何较低阶导数。"
+      ],
+      "why": "每积分一次降一阶，直接逐次积分即可；每次都会出现独立常数。",
+      "firstStep": "先对右端积分得到 y′，再积分得到 y。",
+      "conditions": [
+        "右端在所讨论区间满足相应可积条件。",
+        "二阶方程逐次积分应保留两个独立常数，并按初值确定。"
+      ],
+      "examples": [
+        {
+          "statement": "解 $y^{\\prime\\prime}=e^x$。",
+          "solution": "逐次积分得 $y\\prime=e^x+C_1$、$y=e^x+C_1x+C_2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "$y^{\\prime\\prime}=y\\prime+x$ 也把右端当作只含 x 直接积分两次。",
+        "reason": "y′ 仍是未知函数，需先降阶得到关于它的一阶方程。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "ode",
+        "solution": "exp(x)+c1*x+c2",
+        "residual": "diff(Y,x,2)-exp(x)"
+      }
+    },
+    {
+      "id": "P.ode.reduction.missing_y",
+      "name": "方程不显含 y",
+      "scenarioIds": [
+        "S.ode.reducible_higher_order"
+      ],
+      "methodIds": [
+        "M.reduction_of_order"
+      ],
+      "shape": "$F(x,y\\prime,y^{\\prime\\prime})=0$",
+      "signals": [
+        "出现导数和 x，却没有 y 本身；可把最低出现的一阶导当新未知量。"
+      ],
+      "why": "令 $p=p(x)=y\\prime$ 后，$y^{\\prime\\prime}=p\\prime(x)$，方程阶数下降。",
+      "firstStep": "先把方程完整改写为关于 p 和 x 的一阶方程，解出 p 后再积分。",
+      "conditions": [
+        "新未知量 p 在这里是 x 的函数。",
+        "解 p 后还需积分得到 y，并补上新的独立常数。"
+      ],
+      "examples": [
+        {
+          "statement": "解 $y^{\\prime\\prime}=y\\prime+x$。",
+          "solution": "令 $p=y\\prime$，得 $p\\prime-p=x$，解得 $p=C_1e^x-x-1$，再积分得 $y=C_1e^x-x^2/2-x+C_2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "把这里的 y″ 写成 $p\\,dp/dy$。",
+        "reason": "这是把 p 看成 y 的函数时的另一种链式关系，不能与当前 p(x) 混用。"
+      },
+      "nextScenarioIds": [
+        "S.ode.linear_first_order"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "ode",
+        "solution": "c1*exp(x)-x**2/2-x+c2",
+        "residual": "diff(Y,x,2)-diff(Y,x)-x"
+      }
+    },
+    {
+      "id": "P.ode.reduction.missing_x",
+      "name": "方程不显含 x",
+      "scenarioIds": [
+        "S.ode.reducible_higher_order"
+      ],
+      "methodIds": [
+        "M.reduction_of_order"
+      ],
+      "shape": "$F(y,y\\prime,y^{\\prime\\prime})=0$",
+      "signals": [
+        "方程只有 y 和导数，没有 x 本身；可在合适局部分支把 p 看成 y 的函数。"
+      ],
+      "why": "取 $p=p(y)=y\\prime$ 时，链式法则给出 $y^{\\prime\\prime}=p\\,dp/dy$；这与缺 y 型不同。",
+      "firstStep": "先写 $p=p(y)$ 并代入 $y^{\\prime\\prime}=p\\,dp/dy$；要除以 p 或 y 时另查零分支。",
+      "conditions": [
+        "局部把 y 用作变量需要相应非退化条件；常值解单独检查。",
+        "除去可能为零的因子前保留特殊解，回代后代入原方程验证。"
+      ],
+      "examples": [
+        {
+          "statement": "解 $y y^{\\prime\\prime}=(y\\prime)^2$。",
+          "solution": "在 $yp\\ne0$ 的分支，$y p\\,dp/dy=p^2$，故 $dp/p=dy/y$，得到 $p=By$，再得 $y=Ae^{Bx}$。另查常值解，均满足原方程，包括 $y=0$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "若 $yy^{\\prime\\prime}+(y\\prime)^2=0$，还可直接识别为 $(yy\\prime)\\prime=0$，优先利用完整导数。"
+      ],
+      "counterexample": {
+        "statement": "除以 p 后就断定不存在常值解。",
+        "reason": "p=0 正对应常值分支，不能在相除时丢掉。"
+      },
+      "nextScenarioIds": [
+        "S.ode.separable"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "ode",
+        "solution": "c1*exp(c2*x)",
+        "residual": "Y*diff(Y,x,2)-diff(Y,x)**2"
+      }
+    },
+    {
+      "id": "P.ode.forcing.exp_polynomial",
+      "name": "右端为多项式乘指数",
+      "scenarioIds": [
+        "S.ode.second_order_nonhomogeneous"
+      ],
+      "methodIds": [
+        "M.undetermined_coefficients"
+      ],
+      "shape": "$y^{\\prime\\prime}+py\\prime+qy=P_m(x)e^{\\lambda x}$",
+      "signals": [
+        "右端的指数参数和多项式次数决定试探特解的外形。"
+      ],
+      "why": "常系数微分算子作用后仍留在同一函数族；与齐次解重合时，要补乘 x 的相应幂。",
+      "firstStep": "先求特征方程，再设 $y_p=x^s e^{\\lambda x}Q_m(x)$，s 是 λ 作为特征根的重数。",
+      "conditions": [
+        "方程是常系数线性方程，p、q 为常数。",
+        "Q 的系数要列齐；特解设好后必须代回原方程定系数。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $y^{\\prime\\prime}-3y\\prime+2y=e^{3x}$ 的一个特解。",
+          "solution": "特征根为 1、2，3 不是根，设 $y_p=Ae^{3x}$，代入得 $2Ae^{3x}=e^{3x}$，所以 $y_p=e^{3x}/2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "共振检查是这一结构内部的条件分支，不按常数 λ 的每个取值创建新编号。"
+      ],
+      "counterexample": {
+        "statement": "对 $y^{\\prime\\prime}-2y\\prime+y=e^x$ 仍设 $Ae^x$。",
+        "reason": "e^x 已在齐次解中，且根 1 为二重根；须设 $Ax^2e^x$，本例 A=1/2。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "ode",
+        "solution": "exp(3*x)/2",
+        "residual": "diff(Y,x,2)-3*diff(Y,x)+2*Y-exp(3*x)"
+      }
+    },
+    {
+      "id": "P.ode.forcing.exp_trig",
+      "name": "右端含指数乘正弦余弦",
+      "scenarioIds": [
+        "S.ode.second_order_nonhomogeneous"
+      ],
+      "methodIds": [
+        "M.undetermined_coefficients"
+      ],
+      "shape": "$e^{\\alpha x}(P(x)\\cos\\beta x+Q(x)\\sin\\beta x)$",
+      "signals": [
+        "即使右端只有正弦，求导也会同时出现正弦和余弦，试探式需保留两部分。"
+      ],
+      "why": "指数与三角函数求导后彼此封闭；与齐次解重合时同样需要补乘 x。",
+      "firstStep": "先查特征根 $\\alpha\\pm i\\beta$，再设含两种三角函数的特解，并根据重合情况补乘 $x^s$。",
+      "conditions": [
+        "常系数线性方程，基准三角型取 $\\beta\\ne0$。",
+        "P、Q 为多项式，试探多项式的次数取二者最高次数，并列齐系数。",
+        "不能仅因右端没有余弦，就在试探式中删掉余弦。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $y^{\\prime\\prime}+y=\\sin x$ 的一个特解。",
+          "solution": "齐次解已含 sin x、cos x，设 $x(A\\cos x+B\\sin x)$，代入得 $A=-1/2$、$B=0$，所以 $y_p=-x\\cos x/2$。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "不查特征根就直接设 $A\\sin x$。",
+        "reason": "本例代入左边恒为零，无法产生右端；还会漏掉需要的余弦分量。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "ode",
+        "solution": "-x*cos(x)/2",
+        "residual": "diff(Y,x,2)+Y-sin(x)"
+      }
+    },
+    {
+      "id": "P.series.positive.power_tail",
+      "name": "通项有可比较的幂式尾部",
+      "scenarioIds": [
+        "S.series.positive_term_test"
+      ],
+      "methodIds": [
+        "M.comparison_test",
+        "M.inequality_scaling"
+      ],
+      "shape": "$\\sum 1/(n^2+1)$ 或含可化简根式的正项级数。",
+      "signals": [
+        "先识别通项在无穷远的主导阶，寻找已知敛散的 p 级数或几何级数。"
+      ],
+      "why": "比较需要一个具体的已知对象；看见分式不能只说使用比较判别法。",
+      "firstStep": "写出候选标准项 $b_n$，再证明大小关系或计算 $a_n/b_n$。",
+      "conditions": [
+        "通项至少从某项开始非负，标准对象敛散性已知。",
+        "正的有限比值极限给出同敛散；极限为零或无穷时需检查能用的推论方向。"
+      ],
+      "examples": [
+        {
+          "statement": "判别 $\\sum_{n=1}^{\\infty}1/(n^2+1)$。",
+          "solution": "与 $1/n^2$ 比，$n^2/(n^2+1)\\to1$；p=2 的级数收敛，所以原级数收敛。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "分母含 $n^2$ 就把 $1/(\\sqrt{n^2+1}+n)$ 与 $1/n^2$ 视为同阶。",
+        "reason": "根式使分母实际是一阶，该项与 $1/(2n)$ 同阶，不能忽略根号。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "limit_infinity",
+        "function": "x**2/(x**2+1)",
+        "result": "1"
+      }
+    },
+    {
+      "id": "P.series.positive.factorial",
+      "name": "阶乘或连乘使相邻项好约分",
+      "scenarioIds": [
+        "S.series.positive_term_test"
+      ],
+      "methodIds": [
+        "M.ratio_test"
+      ],
+      "shape": "$\\sum n!/n^n$、$\\sum n!/3^n$",
+      "signals": [
+        "阶乘的相邻项相除后大部分消去，比直接估计通项更方便。"
+      ],
+      "why": "选择比值法的依据是相邻结构可约去；结果仍要由算出的极限判断。",
+      "firstStep": "完整写 $a_{n+1}/a_n$，特别核对 $(n+1)^{n+1}$ 与 $n^n$。",
+      "conditions": [
+        "通项为正，且相邻比有定义。",
+        "比值极限小于 1 收敛，大于 1 发散，等于 1 时此法不能决定。"
+      ],
+      "examples": [
+        {
+          "statement": "判别 $\\sum n!/n^n$。",
+          "solution": "$a_{n+1}/a_n=(n/(n+1))^n\\to e^{-1}<1$，故收敛。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "$n!/3^n$ 的相邻比为 $(n+1)/3\\to\\infty$，由比值法判发散。"
+      ],
+      "counterexample": {
+        "statement": "$\\sum1/n$ 的相邻比趋于 1，就认定收敛。",
+        "reason": "等于 1 是比值法的失效边界；该级数实际上发散。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "sequence_limit",
+        "case": "factorial_ratio"
+      }
+    },
+    {
+      "id": "P.series.positive.nth_power",
+      "name": "通项整体是 n 次幂",
+      "scenarioIds": [
+        "S.series.positive_term_test"
+      ],
+      "methodIds": [
+        "M.root_test"
+      ],
+      "shape": "$\\sum(f(n))^n$",
+      "signals": [
+        "开 n 次方后复杂指数恰好消失，得到容易计算的底数极限。"
+      ],
+      "why": "根值法直接利用整体幂结构；外面还有其他因子时，也要一起开方。",
+      "firstStep": "计算 $\\sqrt[n]{|a_n|}$，再按其极限与 1 的关系判断。",
+      "conditions": [
+        "各项取绝对值后开根；本基准情景为非负项。",
+        "根值极限等于 1 时不能作出敛散结论。"
+      ],
+      "examples": [
+        {
+          "statement": "判别 $\\sum_{n=1}^{\\infty}(n/(2n+1))^n$。",
+          "solution": "根值为 $n/(2n+1)\\to1/2<1$，所以级数收敛。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "对 $\\sum(n/(n+1))^n$，因为每个底数小于 1 就认定收敛。",
+        "reason": "根值极限为 1，根值法不能决定；本例通项趋于 $e^{-1}$，级数反而发散。"
+      },
+      "nextScenarioIds": [],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "limit_infinity",
+        "function": "x/(2*x+1)",
+        "result": "1/2"
+      }
+    },
+    {
+      "id": "P.integral.root.common_power",
+      "name": "同一内层的分数幂统一换元",
+      "scenarioIds": [
+        "S.indefint.sqrt_integrand"
+      ],
+      "methodIds": [
+        "M.integration_by_substitution"
+      ],
+      "shape": "$\\sqrt{x}$ 与 $\\sqrt[3]{x}$ 同时出现，或出现一次式的高次根。",
+      "signals": [
+        "根式共用同一内层；把各分数指数化成同一分母，可以一次去掉多个根号。"
+      ],
+      "why": "对 $x^{1/2}$、$x^{1/3}$，分母的最小公倍数为 6，取 $t=x^{1/6}$ 后两者都成为整数幂。",
+      "firstStep": "先找公共内层和分数幂的公分母，再同时表达原变量、全部根式和微分。",
+      "conditions": [
+        "偶次根的符号与定义域必须保留；本例取 x>0。",
+        "不同内层如 x 与 x+1 不能直接按这个公分母思路同时消去。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int dx/(\\sqrt{x}+\\sqrt[3]{x})$，$x>0$。",
+          "solution": "令 $t=x^{1/6}>0$，得 $6\\int t^3/(t+1)dt$。多项式除法后，积分为 $2t^3-3t^2+6t-6\\ln(t+1)+C$，最后回代。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [
+        "单个 $\\sqrt[3]{x+2}$ 可以令 $t=\\sqrt[3]{x+2}$、$x=t^3-2$，但奇次根不要求 t 非负。"
+      ],
+      "counterexample": {
+        "statement": "面对 $\\sqrt{x}+\\sqrt{x+1}$，直接令 t=√x 就声称两个根号都已消失。",
+        "reason": "第二个根号会变成 √(t²+1)，需要另找关系；它不属于共用同一个内层的幂。"
+      },
+      "nextScenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "antiderivative",
+        "integrand": "1/(sqrt(x)+x**Rational(1,3))",
+        "result": "2*sqrt(x)-3*x**Rational(1,3)+6*x**Rational(1,6)-6*log(1+x**Rational(1,6))",
+        "positive": true
+      }
+    },
+    {
+      "id": "P.integral.root.conjugate_pair",
+      "name": "相差常数的两个根式可用和差联动",
+      "scenarioIds": [
+        "S.indefint.sqrt_integrand"
+      ],
+      "methodIds": [
+        "M.integration_by_substitution"
+      ],
+      "shape": "$\\sqrt{x+1}+\\sqrt{x}$",
+      "signals": [
+        "两个根式平方后的差是常数，和与差的乘积因此已知。"
+      ],
+      "why": "取 $t=\\sqrt{x+1}+\\sqrt{x}$ 后，差为 $1/t$，于是两个根式和 x 都能用 t 表达。",
+      "firstStep": "写出和差关系，得到 $\\sqrt{x}=(t-1/t)/2$，再由此求 x 和 dx。",
+      "conditions": [
+        "先核对原根式有定义；本例在 x>0 上取 t>1。",
+        "必须验证和差关系与回代分支，不能只凭根号相似就假定差为倒数。"
+      ],
+      "examples": [
+        {
+          "statement": "求 $\\int dx/(1+\\sqrt{x}+\\sqrt{x+1})$，$x>0$。",
+          "solution": "有 $x=(t-1/t)^2/4$，$dx=(t-t^{-3})dt/2$。积分成为 $\\frac12\\int(1-t^{-1}+t^{-2}-t^{-3})dt$，原函数为 $t/2-\\ln t/2-1/(2t)+1/(4t^2)+C$，再代回 t。",
+          "source": "Mathmyth 项目编写与推导"
+        }
+      ],
+      "variants": [],
+      "counterexample": {
+        "statement": "对 $\\sqrt{x^2+1}+\\sqrt{x}$ 仍假定和乘差等于 1。",
+        "reason": "两被开方数的差不是常数 1，需要重新计算，不能照搬。"
+      },
+      "nextScenarioIds": [
+        "S.indefint.rational_function"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "diff(t/2-log(t)/2-1/(2*t)+1/(4*t**2),t)",
+        "rhs": "(t-t**(-3))/(2*(1+t))"
+      }
+    }
+  ],
+  "questionLinks": [
+    {
+      "patternId": "P.limit.product.half_angle",
+      "questionId": "candidate.bank402.30",
+      "routeId": "r-0",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "014b7c346dfcc4cc3607f5d0498c48562f4986b8bd33495360a7dc341f488bad",
+      "scenarioId": "S.limit.n_term_sum",
+      "methodId": "M.product_telescoping",
+      "stepSignature": "[\"S.limit.n_term_sum\",\"M.product_telescoping\",\"$\\\\lim\\\\limits _{n\\\\to \\\\infty} \\\\cos \\\\frac{1}{2} \\\\cos \\\\frac{1}{4} \\\\cdots \\\\cos \\\\frac{1}{2^{n}}=$  。\",\"$P_n=\\\\frac{\\\\sin1}{2^n\\\\sin(2^{-n})}$。先用二倍角公式对有限乘积逐项相消。\",\"n为正整数，各角在(0,1)，相除的正弦非零。\"]"
+    },
+    {
+      "patternId": "P.limit.sum.uniform_bounds",
+      "questionId": "candidate.bank402.23",
+      "routeId": "r-0",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "32c1847417f6c94d8f3e639663c3a08e18f160235f0273b72f7dcb0ef98a8031",
+      "scenarioId": "S.limit.n_term_sum",
+      "methodId": "M.squeeze_theorem",
+      "stepSignature": "[\"S.limit.n_term_sum\",\"M.squeeze_theorem\",\"每个求和项的分母介于$n^{2}+1$与$n^{2}+n$\",\"$k/(n^{2}+n)≤k/(n^{2}+k)≤k/(n^{2}+1)$。\",\"$1≤k≤n$，各分母正。\"]"
+    },
+    {
+      "patternId": "P.limit.sum.uniform_bounds",
+      "questionId": "candidate.bank402.23",
+      "routeId": "r-alternative",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "32c1847417f6c94d8f3e639663c3a08e18f160235f0273b72f7dcb0ef98a8031",
+      "scenarioId": "S.limit.n_term_sum",
+      "methodId": "M.inequality_scaling",
+      "stepSignature": "[\"S.limit.n_term_sum\",\"M.inequality_scaling\",\"对比$Σk/(n^{2}+k)$与$Σk/n^{2}$\",\"$0≤Σk/n^{2}-Σk/(n^{2}+k)=Σk^{2}/[n^{2}(n^{2}+k)]≤Σk^{2}/n^{4}$。\",\"$1≤k≤n$，所有分母正。\"]"
+    },
+    {
+      "patternId": "P.limit.sum.finite_power_root",
+      "questionId": "candidate.bank402.16",
+      "routeId": "r-0",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "45649bd67b2b930d4cc756dec6cec1c9e190c646409dafe6883b60e2e02e8c1b",
+      "scenarioId": "S.limit.n_term_sum",
+      "methodId": "M.squeeze_theorem",
+      "stepSignature": "[\"S.limit.n_term_sum\",\"M.squeeze_theorem\",\"三项指数和的n次根\",\"$M=e^{|x|}$是三个底数中的最大者，$M^n≤1+e^{nx}+e^{-nx}≤3M^n$。\",\"x固定、n正整数，$M≥1$。\"]"
+    },
+    {
+      "patternId": "P.limit.sum.finite_power_root",
+      "questionId": "candidate.bank402.16",
+      "routeId": "r-alternative",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "45649bd67b2b930d4cc756dec6cec1c9e190c646409dafe6883b60e2e02e8c1b",
+      "scenarioId": "S.limit.n_term_sum",
+      "methodId": "M.log_transform",
+      "stepSignature": "[\"S.limit.n_term_sum\",\"M.log_transform\",\"令$M=e^{|x|}$，原根式$=M\\\\cdot B_n^{1/n}$\",\"$B_n=(1+e^{nx}+e^{-nx})/M^n$，$1≤B_n≤3$。\",\"x固定、n正整数，M>0。\"]"
+    },
+    {
+      "patternId": "P.limit.sum.finite_power_root",
+      "questionId": "candidate.bank402.20",
+      "routeId": "r-0",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "ea06fa70a4f74a213a9acc78a74c7b2aca8c7b076b750c8076ca3b0c82510c4c",
+      "scenarioId": "S.limit.n_term_sum",
+      "methodId": "M.squeeze_theorem",
+      "stepSignature": "[\"S.limit.n_term_sum\",\"M.squeeze_theorem\",\"三个底数的n次幂和\",\"$c^n≤a^n+b^n+c^n≤3c^n$。\",\"$0≤a<b<c$，故c>0。\"]"
+    },
+    {
+      "patternId": "P.limit.sum.finite_power_root",
+      "questionId": "candidate.bank402.20",
+      "routeId": "r-alternative",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "ea06fa70a4f74a213a9acc78a74c7b2aca8c7b076b750c8076ca3b0c82510c4c",
+      "scenarioId": "S.limit.n_term_sum",
+      "methodId": "M.log_transform",
+      "stepSignature": "[\"S.limit.n_term_sum\",\"M.log_transform\",\"原式$=c[1+(a/c)^n+(b/c)^n]^{1/n}$\",\"余下括号$B_n$在[1,3]内。\",\"c>0且$0≤a/c<b/c<1$。\"]"
+    },
+    {
+      "patternId": "P.integral.derivative_ratio",
+      "questionId": "candidate.bank402.109",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "71fafa0640e4bbc1c174426be04e0e84e02db35db751afdd8ec0ef16951c8fac",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"求$\\\\int{\\\\tan xdx}$\",\"$\\\\tan  x=\\\\sin  x/\\\\cos  x$，$u=\\\\cos  x,du=-\\\\sin  x dx$，$I=-\\\\ln |\\\\cos  x|+C$；导数为$\\\\tan  x$。\",\"$\\\\cos  x≠0$的任一连通区间\"]"
+    },
+    {
+      "patternId": "P.integral.derivative_ratio",
+      "questionId": "candidate.bank402.123",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "00a8b4de7178fcbc4d93ebc08c02d11151475386e42289952e9fc85564f458b7",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"求$\\\\int{\\\\frac{1}{3+2x}dx}$\",\"$u=3+2x,du=2dx$，$I=\\\\ln |3+2x|/2+C$；导数为$1/(3+2x)$。\",\"$x≠-3/2$\"]"
+    },
+    {
+      "patternId": "P.integral.derivative_ratio",
+      "questionId": "candidate.bank402.150",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "a343ce93189bf3496838720cc421f0c9ced4eeabf4a6a51a2b8b41059c235327",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"$\\\\int{\\\\frac{(1+2x^2)e^{x^2}}{2-3xe^{x^2}}dx}$\",\"$u=2-3xe^{x^{2}}$，$du=-3(1+2x^{2})e^{x^{2}}dx$；$I=-\\\\ln |u|/3+C$，求导还原原分式。\",\"$2-3xe^{x^{2}}≠0$\"]"
+    },
+    {
+      "patternId": "P.integral.derivative_ratio",
+      "questionId": "candidate.bank402.160",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1aca7051132dfa6c02179410bf61b18801964c695484a6447a811458796e2114",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"求$\\\\int{\\\\frac{dx}{x(1+2\\\\ln x)}}$\",\"$u=1+2ln x$，$du=2dx/x$；$I=\\\\ln |1+2ln x|/2+C$，导数核对。\",\"x>0且$x≠e^-1/2$\"]"
+    },
+    {
+      "patternId": "P.integral.derivative_ratio",
+      "questionId": "candidate.bank402.143",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "8098d5b0af9d029ab1b05d7a5d755779cd89ca7098f44bbcd538cd37fcc547b1",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"令$x=a \\\\tan  t$，固定$-π/2<t<π/2$，积分化为$\\\\int sec t dt$。\",\"$sec t=(sec t+\\\\tan  t)prime/(sec t+\\\\tan  t)$，凑对数微分得$\\\\ln |sec t+\\\\tan  t|+C$，再回代。\",\"$a>0,x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.inner_derivative",
+      "questionId": "candidate.bank402.158",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1c3760648ebb65b83934fe1bcf4bf2eabe37329cb0c84a299c75cbd105109c23",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"$\\\\int{\\\\frac{e^{\\\\arctan\\\\sqrt{1+x}}}{(2+x)\\\\sqrt{1+x}}dx}$\",\"$u=\\\\arctan \\\\sqrt{1+x}$，$u'=1/[2(2+x)\\\\sqrt{1+x}]$；原式$=2\\\\int e^u du=2e^u+C$。\",\"x>-1\"]"
+    },
+    {
+      "patternId": "P.integral.inner_derivative",
+      "questionId": "candidate.bank402.166",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "f803b28340cbb52739be6b9016847d84fa29a9e20c4b877d6a691bb432a3bd55",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"求$\\\\int{\\\\frac{e^{3\\\\sqrt{x}}}{\\\\sqrt{x}}dx}$\",\"$u=3\\\\sqrt{x}$，$du=3dx/(2\\\\sqrt{x})$，$I=2e^{3\\\\sqrt{x}}/3+C$；求导验证。\",\"x>0\"]"
+    },
+    {
+      "patternId": "P.integral.nested_log",
+      "questionId": "candidate.bank402.148",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "569fc8a0f012e90a184c3415a212be4fd97721ae22901a65599e025910f3d706",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"$\\\\int{\\\\frac{\\\\ln\\\\tan\\\\frac{x}{2}}{\\\\sin x}dx}$\",\"$u=\\\\ln  \\\\tan (x/2)$，$u'=1/\\\\sin  x$；$I=\\\\int u du=u^{2}/2+C$，求导核对。\",\"$\\\\tan (x/2)>0$且$\\\\sin  x≠0$；不能擅自给原题$\\\\ln $增加绝对值以扩大实定义域\"]"
+    },
+    {
+      "patternId": "P.integral.nested_log",
+      "questionId": "candidate.bank402.160",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1aca7051132dfa6c02179410bf61b18801964c695484a6447a811458796e2114",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"求$\\\\int{\\\\frac{dx}{x(1+2\\\\ln x)}}$\",\"$u=1+2ln x$，$du=2dx/x$；$I=\\\\ln |1+2ln x|/2+C$，导数核对。\",\"x>0且$x≠e^-1/2$\"]"
+    },
+    {
+      "patternId": "P.integral.nested_log",
+      "questionId": "candidate.bank402.272",
+      "routeId": "A",
+      "stepIndex": 2,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "3625518e5626e8221a10d92fa57aadd51f8fd699b9bb66b95a3e9d4f6e5c0e67",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"积分因子$1/x$，故$(z/x)'=-a \\\\ln  x/x$。\",\"令$t=\\\\ln  x$，积分$z/x=C-(a/2)(\\\\ln  x)^{2}$。\",\"x>0，非零分支分母不得为0\"]"
+    },
+    {
+      "patternId": "P.integral.trig_pair",
+      "questionId": "candidate.bank402.151",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "7cf1a9536179151d1bb1e1bf96073694db054574d2c74d57e817314766c04889",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"$\\\\int \\\\frac{\\\\cos x d x}{1+e^{\\\\sin x}}$  。\",\"$u=\\\\sin  x,du=\\\\cos  x dx$；$\\\\int du/(1+e^u)=u-\\\\ln (1+e^u)+C$，因为其导数$1-e^u/(1+e^u)=1/(1+e^u)$。故$I=\\\\sin  x-\\\\ln (1+e^{\\\\sin  x})+C$。\",\"$x∈R$，$1+e^u$恒正\"]"
+    },
+    {
+      "patternId": "P.integral.root.linear",
+      "questionId": "candidate.bank402.120",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "9d7de50924f93f7079ac30248157c18647d4b31a283b059e122b637a5f45755e",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{e^{\\\\sqrt{x}}dx}$\",\"令$t=\\\\sqrt{x}$，$dx=2t dt$，原积分化为$2\\\\int t e^t dt$。\",\"x>0求导验证；原被积函数在$x=0$连续\"]"
+    },
+    {
+      "patternId": "P.integral.root.linear",
+      "questionId": "candidate.bank402.129",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "c3b29b0d50254fc0f0848d62f47ac63c5c6ea8ae66931274b837c19f6061d9f0",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{\\\\sqrt{x-1}}{x}dx}$\",\"$t=\\\\sqrt{x-1}$，$x=t^{2}+1,dx=2t dt$，得$2\\\\int t^{2}/(t^{2}+1)dt$。\",\"x>1积分，原式在$x=1$连续\"]"
+    },
+    {
+      "patternId": "P.integral.root.linear",
+      "questionId": "candidate.bank402.131",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1b29810b0941881d902820b3a98e181acbef3ec5596ed31f5d0c8a3cdffdf18f",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{1}{1+\\\\sqrt{2x}}dx}$\",\"令$t=\\\\sqrt{2x}$，$dx=t dt$，积分化为$\\\\int t/(1+t)dt$。\",\"x>0求导验证；原式在0连续\"]"
+    },
+    {
+      "patternId": "P.integral.root.circle",
+      "questionId": "candidate.bank402.130",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "7b397a1103ac7dd3c8ab1b23e4b65ecddc5bd044af15e14c1ea2f8463fa59ece",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\sqrt{a^2-x^2}dx}(a\\\\gt0)$\",\"$x=a \\\\sin  t,a>0,-π/2<t<π/2$，$I=a^{2}\\\\int \\\\cos ^{2}t dt=a^{2}t/2+a^{2}\\\\sin 2t/4+C=a^{2}\\\\arcsin (x/a)/2+x\\\\sqrt{a^{2}-x^{2}}/2+C$。\",\"a>0,-a<x<a；端点连续延伸\"]"
+    },
+    {
+      "patternId": "P.integral.root.circle",
+      "questionId": "candidate.bank402.153",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "f0e37ef8fb52e07477d4559bad7f9bb8c52015e921ded63b2464b42064b7103e",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{\\\\sqrt{a^2-x^2}}{x^4}dx}(a\\\\not=0)$\",\"$A=|a|$，令$x=A \\\\sin  t$；积分化为$A^-2\\\\int \\\\cot ^{2}t csc^{2}t dt$。\",\"$a≠0,0<|x|<|a|$；不跨$x=0$\"]"
+    },
+    {
+      "patternId": "P.integral.root.plus",
+      "questionId": "candidate.bank402.143",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "8098d5b0af9d029ab1b05d7a5d755779cd89ca7098f44bbcd538cd37fcc547b1",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{1}{\\\\sqrt{x^2+a^2}}dx}(a>0)$\",\"令$x=a \\\\tan  t$，固定$-π/2<t<π/2$，积分化为$\\\\int sec t dt$。\",\"$a>0,x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.root.outside",
+      "questionId": "candidate.bank402.145",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "95027cea6a5450e0e6f3d32680111bd95cf6912bdca9ca1ba4f4a6e1a008345e",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{1}{\\\\sqrt{x^2-a^2}}dx}(a\\\\gt0)$\",\"x>a时$x=a sec t$得$\\\\ln (x+\\\\sqrt{x^{2}-a^{2}})+C$；x<-a时令$u=-x$，得到$-\\\\ln (-x+\\\\sqrt{x^{2}-a^{2}})+C$，利用两因子乘积$a^{2}$可合并为$\\\\ln |x+\\\\sqrt{x^{2}-a^{2}}|+C$。求导在两分支均为正的$1/\\\\sqrt{x^{2}-a^{2}}$。\",\"a>0，x>a或x<-a；分支常数可独立\"]"
+    },
+    {
+      "patternId": "P.integral.root.common_power",
+      "questionId": "candidate.bank402.137",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "5e614642e8be0257a32cfb93ac935ede1d7c19c9035c3f26f16b9f4c85532f9f",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{1}{1+\\\\sqrt[3]{x+2}}dx}$\",\"$t=\\\\sqrt[3]{x+2}$，$dx=3t^{2}dt$，积分为$3\\\\int t^{2}/(1+t)dt$。\",\"$x≠-3$；t为实立方根；$x=-2$处结果按连续延伸核对\"]"
+    },
+    {
+      "patternId": "P.integral.root.common_power",
+      "questionId": "candidate.bank402.146",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "0c67bb4fc15172ebb970cec9c3f2a8720acfc4514006b4aa86020f42a0eb065a",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{1}{\\\\sqrt{x}+\\\\sqrt[3]{x}}dx}$\",\"$t=x^{1/6}>0$，$dx=6t^{5}dt$，积分化为$6\\\\int t^{3}/(t+1)dt$。\",\"x>0；$x=0$为分母零点\"]"
+    },
+    {
+      "patternId": "P.integral.root.conjugate_pair",
+      "questionId": "candidate.bank402.147",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "7c456d3ce93d97622f80be49a849428ea9ce4716f44c2ba0b37f68390457a900",
+      "scenarioId": "S.indefint.sqrt_integrand",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.sqrt_integrand\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{1}{1+\\\\sqrt{x}+\\\\sqrt{x+1}}dx}$\",\"$t=\\\\sqrt{x}+\\\\sqrt{x+1}$，$x=(t-1/t)^{2}/4,dx=(t-t^-3)dt/2$，积分化为$(1/2)\\\\int (t-t^-3)/(1+t)dt$。\",\"x>0计算；t>1；原式在$x=0$连续\"]"
+    },
+    {
+      "patternId": "P.integral.trig.odd_power",
+      "questionId": "candidate.bank402.164",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1c76a8974f8d1ec35ae02a2c73661fbe86453e585005944bd691b93fdfd18482",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.first_substitution\",\"求$\\\\int{\\\\sin ^2x\\\\cos^5xdx}$\",\"$t=\\\\sin  x$，将$\\\\cos  x dx$配成dt，余$\\\\cos ^{4}x=(1-t^{2})^{2}$，得$\\\\int (t^{2}-2t^{4}+t^{6})dt$。\",\"$x∈R$，凑微分无需要求$\\\\sin  x$全局单调\"]"
+    },
+    {
+      "patternId": "P.integral.trig.odd_power",
+      "questionId": "candidate.bank402.185",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "7501b22b4ad0fb19c6c51152f316f1bfb8f08190a0c73cf7c148d2c1b45e345b",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.first_substitution\",\"$t=x/2$，$dx=2dt$，$I=2\\\\int _0^{π/2}\\\\cos ^{5}t dt$。\",\"$u=\\\\sin  t$，保留$\\\\cos  t dt=du$，$\\\\cos ^{4}t=(1-u^{2})^{2}$，积分化为$2\\\\int _0^{1}(1-2u^{2}+u^{4})du$。\",\"换元后上限$π/2$；$\\\\cos  t≥0$\"]"
+    },
+    {
+      "patternId": "P.integral.trig.even_powers",
+      "questionId": "candidate.bank402.126",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "e28acce495a9b644b06e846bbbde7184d5706ec487d1d3caa766627889ded5ef",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.trig_rational_integral",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.trig_rational_integral\",\"令$x=\\\\tan  t$，$dx=sec^{2}t dt$，积分化为$\\\\int \\\\cos ^{2}t dt$。\",\"$\\\\cos ^{2}t=(1+\\\\cos 2t)/2$；积分$=t/2+\\\\sin 2t/4+C$，回代$\\\\tan  t=x$得原函数。\",\"$x∈R$，三角代换固定$\\\\cos  t>0$分支\"]"
+    },
+    {
+      "patternId": "P.integral.trig.even_powers",
+      "questionId": "candidate.bank402.183",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "303523b0356b79fa05ce89c00e74f1f474ddbdd36330355798dea1793531a4cc",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.trig_rational_integral",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.trig_rational_integral\",\"$x=\\\\sqrt{2} \\\\sin  t$，上下限$0,π/2$，雅可比$\\\\sqrt{2} \\\\cos  t$，积分化为$2\\\\int _0^{π/2}\\\\cos ^{2}t dt$。\",\"$\\\\cos ^{2}t=(1+\\\\cos 2t)/2$，原函数对应$t+\\\\sin 2t/2$。\",\"根式非负；三角代换选$\\\\cos  t≥0$\"]"
+    },
+    {
+      "patternId": "P.integral.trig.even_powers",
+      "questionId": "candidate.bank402.241",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "c7121817863b7cbc481bf63988c6786b0e391f18759ed316c80452a2e93d6d45",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.trig_rational_integral",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.trig_rational_integral\",\"负半轴换元且g偶，积分等于$\\\\int _0^a[f(x)+f(-x)]g(x)dx=C\\\\int _0^a g$。应用时对数互补之和ln4，剩$\\\\ln 4\\\\int _0^{π/2}\\\\cos ^{4}x dx$。\",\"降幂$\\\\cos ^{4}x=(3+4cos2x+\\\\cos 4x)/8$，积分为$3x/8+\\\\sin 2x/4+\\\\sin 4x/32$。\",\"连续，g偶；对数内$x+\\\\sqrt{4+x^{2}}>0$\"]"
+    },
+    {
+      "patternId": "P.integral.trig.even_powers",
+      "questionId": "candidate.bank402.248",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "4e9f48c58d824fc6920c428be04722187153a333df52295aa1464b7f69cc4d46",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.trig_rational_integral",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.trig_rational_integral\",\"只描一次的角区间$[-π/2,π/2]$，面积$S=2a^{2}\\\\int _-π/2^π/2 \\\\cos ^{2}θ dθ$。\",\"$\\\\cos ^{2}θ=(1+\\\\cos 2θ)/2$，原函数$θ/2+\\\\sin 2θ/4$。\",\"a>0；极坐标面积只计一次封闭边界\"]"
+    },
+    {
+      "patternId": "P.integral.trig.even_powers",
+      "questionId": "candidate.bank402.254",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "cc03c22a19371fe904ffa8ce613df0d153b2bb2bc8588cb3a2c7662290ff910c",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.trig_rational_integral",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.trig_rational_integral\",\"$ρ=a(1+\\\\cos θ)$在0到2π描一遍，$S=(a^{2}/2)\\\\int _0^{2π}(1+\\\\cos θ)^{2}dθ$。\",\"展开$1+2cosθ+\\\\cos ^{2}θ$，并降幂$\\\\cos ^{2}θ=(1+\\\\cos 2θ)/2$。\",\"$ρ≥0$，闭合曲线描一遍\"]"
+    },
+    {
+      "patternId": "P.integral.trig.tan_sec",
+      "questionId": "candidate.bank402.153",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "f0e37ef8fb52e07477d4559bad7f9bb8c52015e921ded63b2464b42064b7103e",
+      "scenarioId": "S.indefint.first_substitution",
+      "methodId": "M.first_substitution",
+      "stepSignature": "[\"S.indefint.first_substitution\",\"M.first_substitution\",\"$A=|a|$，令$x=A \\\\sin  t$；积分化为$A^-2\\\\int \\\\cot ^{2}t csc^{2}t dt$。\",\"$u=\\\\cot  t,du=-csc^{2}t dt$，原函数$=-u^{3}/(3A^{2})+C=-(a^{2}-x^{2})^{3/2}/(3a^{2}x^{3})+C$。\",\"$a≠0,0<|x|<|a|$；不跨$x=0$\"]"
+    },
+    {
+      "patternId": "P.integral.trig.half_angle",
+      "questionId": "candidate.bank402.141",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "c36c1e935d9db6aa596015ba05acf76192a94d719658d4255ac1d754f7087bf3",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.trig_rational_integral",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.trig_rational_integral\",\"求$\\\\int{\\\\frac{1}{8-4\\\\sin x+7\\\\cos x}dx}$\",\"令$t=\\\\tan (x/2)$，带入$\\\\sin 、\\\\cos $及雅可比，积分化为$\\\\int 2/[(t-3)(t-5)]dt$。\",\"原分母$≠0$；半角坐标需分片，x为奇数π附近可选另一坐标或连续拼接\"]"
+    },
+    {
+      "patternId": "P.integral.trig.half_angle",
+      "questionId": "candidate.bank402.149",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "13f483568cf0914d41255bb2f8ca29aa7384d8879fb67850a35d4cf515dfb5c2",
+      "scenarioId": "S.indefint.trig_rational",
+      "methodId": "M.trig_rational_integral",
+      "stepSignature": "[\"S.indefint.trig_rational\",\"M.trig_rational_integral\",\"求$\\\\int{\\\\frac{1+\\\\sin x}{\\\\sin x(1+\\\\cos x)}dx}$\",\"令$u=\\\\tan (x/2)$，同换$\\\\sin 、\\\\cos $及dx，得$\\\\int (u/2+1+1/(2u))du$。\",\"$\\\\sin  x(1+\\\\cos  x)≠0$；半角代换按连通区间选分支\"]"
+    },
+    {
+      "patternId": "P.integral.rational.improper",
+      "questionId": "candidate.bank402.132",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "7a138b004efe31d6d645a9c53267c60df9bbad6da38621e9b5a69a2324921c6f",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"$\\\\int{\\\\frac{x^4}{1+x^2}dx}$\",\"多项式除法$x^{4}/(1+x^{2})=x^{2}-1+1/(1+x^{2})$。故$I=x^{3}/3-x+\\\\arctan  x+C$，求导核对。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.improper",
+      "questionId": "candidate.bank402.129",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "c3b29b0d50254fc0f0848d62f47ac63c5c6ea8ae66931274b837c19f6061d9f0",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"$t=\\\\sqrt{x-1}$，$x=t^{2}+1,dx=2t dt$，得$2\\\\int t^{2}/(t^{2}+1)dt$。\",\"有理式$t^{2}/(1+t^{2})=1-1/(1+t^{2})$，故积分2t-2arctan t+C，回代。\",\"x>1积分，原式在$x=1$连续\"]"
+    },
+    {
+      "patternId": "P.integral.rational.improper",
+      "questionId": "candidate.bank402.131",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1b29810b0941881d902820b3a98e181acbef3ec5596ed31f5d0c8a3cdffdf18f",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"令$t=\\\\sqrt{2x}$，$dx=t dt$，积分化为$\\\\int t/(1+t)dt$。\",\"除法$t/(1+t)=1-1/(1+t)$，积分为$t-\\\\ln (1+t)+C$，回代。\",\"x>0求导验证；原式在0连续\"]"
+    },
+    {
+      "patternId": "P.integral.rational.distinct_linear",
+      "questionId": "candidate.bank402.127",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "65c8cf664f95c6392d2625fbcdd05c09b65aefe65aac5d8f9a4b6fe11e9eaebc",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{x+1}{x^2-5x+6}dx}$\",\"分母$=(x-2)(x-3)$，分式$=-3/(x-2)+4/(x-3)$，通分分子为x+1。$I=-3ln|x-2|+4ln|x-3|+C$。\",\"$x≠2,3$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.distinct_linear",
+      "questionId": "candidate.bank402.169",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "55834885132ac7b217a75f1b19979978d4f3bf74b032a3490ecb0d460a386527",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{1}{x^2-a^2}dx}$\",\"$a≠0$时$1/(x^{2}-a^{2})=[1/(x-a)-1/(x+a)]/(2a)$，故$I=\\\\ln |(x-a)/(x+a)|/(2a)+C$；$a=0$时$I=-1/x+C$。原题未限制a，原答遗漏$a=0$。\",\"实a，$x^{2}≠a^{2}$；$a=0$单列\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_linear",
+      "questionId": "candidate.bank402.128",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "3f4d9b1bcc2fa8240428d27adbc91880a9cd3ff057b745e67b4589fe0b989678",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{1}{x^4(x^2+1)}dx}$\",\"恒等分解$1/[x^{4}(1+x^{2})]=x^-4-x^-2+1/(1+x^{2})$。积分得$-1/(3x^{3})+1/x+\\\\arctan  x+C$，求导还原。\",\"$x≠0$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_linear",
+      "questionId": "candidate.bank402.133",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "71e622e62d0dac9f8cabaa58cc5d7fb223cfcfaf082c85ea418a9e9bf5916d18",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{x^3+1}{x(x-1)^3}dx}$\",\"通分检验分解$=-1/x+2/(x-1)+1/(x-1)^{2}+2/(x-1)^{3}$；$I=-\\\\ln |x|+2ln|x-1|-1/(x-1)-1/(x-1)^{2}+C$。\",\"$x≠0,1$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_linear",
+      "questionId": "candidate.bank402.144",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "c836f251eb37157900433773154b31e2ebbecf5d452273a65ceaee74e6d59e5a",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{2x^2+7x-1}{x^3+x^2-x-1}dx}$\",\"分母$=(x+1)^{2}(x-1)$，分解$=3/(x+1)^{2}+2/(x-1)$，通分为$2x^{2}+7x-1$；积分$=-3/(x+1)+2ln|x-1|+C$。\",\"$x≠±1$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_linear",
+      "questionId": "candidate.bank402.155",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "cbc032f8fdce91c5b8e7ff703d7aca148bc6db0853050b4de09432def5f5b96e",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{1}{x^8(1+x^2)}dx}$\",\"恒等分解$=x^-8-x^-6+x^-4-x^-2+1/(1+x^{2})$，逐项积分得$-1/(7x^{7})+1/(5x^{5})-1/(3x^{3})+1/x+\\\\arctan  x+C$。求导通分核对。\",\"$x≠0$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.quadratic",
+      "questionId": "candidate.bank402.134",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "ef3ca1f5d5b8970c3fed347dc4095b0a9a15892b8f3a4353982e10b8cb979a6a",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{1}{(2x+1)(x^2+1)}dx}$\",\"分解为$(4/5)/(2x+1)+(-2x/5+1/5)/(x^{2}+1)$，通分分子为1；$I=2ln|2x+1|/5-\\\\ln (x^{2}+1)/5+\\\\arctan  x/5+C$。\",\"$x≠-1/2$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.quadratic",
+      "questionId": "candidate.bank402.161",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "e9bde5bf645f8b95d70ba84563496081b20a6fa26586acab96ee3a20c4dea894",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"$t=e^{x/6}>0,dx=6dt/t$，分母$=(t+1)(t^{2}+1)$，得到$\\\\int 6/[t(t+1)(t^{2}+1)]dt$。\",\"分解$=6/t-3/(t+1)-3(t+1)/(t^{2}+1)$，积分含对数与反正切，回代得到所列原函数。\",\"$x∈R,t>0$\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_quadratic",
+      "questionId": "candidate.bank402.126",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "e28acce495a9b644b06e846bbbde7184d5706ec487d1d3caa766627889ded5ef",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.integration_by_substitution\",\"求$\\\\int{\\\\frac{1}{(1+x^2)^2}dx}$\",\"令$x=\\\\tan  t$，$dx=sec^{2}t dt$，积分化为$\\\\int \\\\cos ^{2}t dt$。\",\"$x∈R$，三角代换固定$\\\\cos  t>0$分支\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_quadratic",
+      "questionId": "candidate.bank402.136",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "0c263f7d3378c3fd66f588d18fb29e41655b3d1d41449c73ec9a7a8dff1072bb",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.integration_by_substitution",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.integration_by_substitution\",\"求 $\\\\int{\\\\frac{x^3}{(x^2-2x+2)^2}dx}$\",\"令$u=x-1,Q=u^{2}+1$，积分变为$\\\\int (u^{3}+3u^{2}+3u+1)/Q^{2}du$。\",\"$x∈R$，分母恒正\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_quadratic",
+      "questionId": "candidate.bank402.136",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "0c263f7d3378c3fd66f588d18fb29e41655b3d1d41449c73ec9a7a8dff1072bb",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"令$u=x-1,Q=u^{2}+1$，积分变为$\\\\int (u^{3}+3u^{2}+3u+1)/Q^{2}du$。\",\"拆成$u/Q+3/Q+(2u-2)/Q^{2}$，前三个可凑微分或反正切，留下$J=\\\\int du/Q^{2}$。\",\"$x∈R$，分母恒正\"]"
+    },
+    {
+      "patternId": "P.integral.rational.repeated_quadratic",
+      "questionId": "candidate.bank402.140",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1383609cc6761f667c2d7e2168ac6fffcd2e205ff877ea61382eb313cdb0ef05",
+      "scenarioId": "S.indefint.rational_function",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.indefint.rational_function\",\"M.partial_fraction\",\"求$\\\\int{\\\\frac{2x+2}{(x-1)(x^2+1)^2}dx}$\",\"分解$=1/(x-1)-(x+1)/(x^{2}+1)-2x/(x^{2}+1)^{2}$，通分得2x+2；$I=\\\\ln |x-1|-\\\\ln (x^{2}+1)/2-\\\\arctan  x+1/(x^{2}+1)+C$。\",\"$x≠1$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.108",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "f9511739411245de78cdb5fcaccdda7b8150a14b846c131be88ac6c895d3c586",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"求 $\\\\int{xe^xdx}$\",\"取$u=x,dv=e^x dx$，$I=xe^x-\\\\int e^x dx=e^x(x-1)+C$；求导得$xe^x$。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.110",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "93622620b44142645581628142417dd71ebb4d9d1f3fb46b0f351ed1e4c2e4b2",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"求$\\\\int{x^2e^xdx}$\",\"分部两次：$I=x^{2}e^x-2\\\\int xe^x dx=e^x(x^{2}-2x+2)+C$；导数为$x^{2}e^x$。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.113",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "d363d38ae820ecfb70722c3fd6eb3322c0941ded88377cf3e6cf163e82c514a5",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"求$\\\\int{x\\\\sin xdx}$\",\"$u=x,dv=\\\\sin  x dx$，$I=-x \\\\cos  x+\\\\int \\\\cos  x dx=-x \\\\cos  x+\\\\sin  x+C$，导数为$x \\\\sin  x$。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.117",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "9a4ef07b7aafd1c7f9acbd638c3f7d97277ef92700e55a65e3dee18720badc77",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"求 $\\\\int x^2e^{2x}\\\\,dx$。\",\"题尾ex由答案中明确的dx修复。取$dv=e^{2x}dx,v=e^{2x}/2$，两次分部得$e^{2x}(x^{2}/2-x/2+1/4)+C$；求导为$x^{2}e^{2x}$。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.120",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "9d7de50924f93f7079ac30248157c18647d4b31a283b059e122b637a5f45755e",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"令$t=\\\\sqrt{x}$，$dx=2t dt$，原积分化为$2\\\\int t e^t dt$。\",\"对$t e^t$分部：$2te^t-2\\\\int e^t dt=2e^t(t-1)+C$，回代$t=\\\\sqrt{x}$。\",\"x>0求导验证；原被积函数在$x=0$连续\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.124",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "705ece6bae51a5df58def7c60781f1654da6ca0274a299f4a650f0568a934ed8",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"求$\\\\int{(x^3+2x)\\\\sin xdx}$\",\"将$P=x^{3}+2x$连续分部：$I=-P \\\\cos  x+P' \\\\sin  x+P'' \\\\cos  x-P''' \\\\sin  x+C=(3x^{2}-4)\\\\sin  x-(x^{3}-4x)\\\\cos  x+C$。逐项求导后余项抵消，留下$P \\\\sin  x$。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.138",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "28c7a14331bf1b083e2cc6073e4d3c97a47c914bab1cbdf047d335ee8231a4ca",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"为对乘积分部先降幂：$\\\\sin ^{2}x=(1-\\\\cos 2x)/2$，原式$=x^{2}/4-(1/2)\\\\int x \\\\cos 2x dx$。\",\"对x cos2x取$u=x,v=\\\\sin 2x/2$，得$x^{2}/4-x \\\\sin 2x/4-\\\\cos 2x/8+C$。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.lower_degree",
+      "questionId": "candidate.bank402.177",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "a930958f9f0781626cacc1ddbbbb39b3c71cf0634d80bdc951d284bd36d0e205",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"$t=\\\\sqrt{x}$，$dx=2t dt$，x从0到1对应t从0到1，$I=2\\\\int _0^{1}t e^t dt$。\",\"求余乘积的原函数：$\\\\int t e^t dt=te^t-\\\\int e^t dt=e^t(t-1)+C$。\",\"换元带上雅可比且端点相配\"]"
+    },
+    {
+      "patternId": "P.integral.parts.cycle",
+      "questionId": "candidate.bank402.119",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "d10c87762fb5c112ce3811a0e0d6238f57b056649a3600e17c29b59a7b8c9575",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"求 $\\\\int{e^x\\\\sin xdx}$\",\"设$I=\\\\int e^x \\\\sin  x dx,J=\\\\int e^x \\\\cos  x dx$，$I=e^x \\\\sin  x-J,J=e^x \\\\cos  x+I$，联立得$I=e^x(\\\\sin  x-\\\\cos  x)/2+C$。\",\"$x∈R$\"]"
+    },
+    {
+      "patternId": "P.integral.parts.cycle",
+      "questionId": "candidate.bank402.178",
+      "routeId": "r-checked",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "aaad62a1578e8b7b1a13862cad36ccbcb4b80230e66cd1e688b7da1da2e34f69",
+      "scenarioId": "S.indefint.by_parts_product",
+      "methodId": "M.integration_by_parts",
+      "stepSignature": "[\"S.indefint.by_parts_product\",\"M.integration_by_parts\",\"$t=\\\\ln  x$，$dx=e^t dt$，边界1,e化为0,1，得$\\\\int _0^{1}e^t \\\\sin  t dt$。\",\"对$e^t \\\\sin  t$连续分部两次并移回原积分，原函数$=e^t(\\\\sin  t-\\\\cos  t)/2+C$。\",\"$x∈[1,e]$，换元单调且边界改变\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.shifted_power",
+      "questionId": "candidate.bank402.49",
+      "routeId": "r-0",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "beafbfe7be62c079af2a55bd6813590fcb88219849a27dccadf6376cb951bf8d",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.chain_rule",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.chain_rule\",\"求$y=(x+c)^\\\\mu的n$阶导数。\",\"n为正整数，在实数幂可微区间反复求导，$y^{n}=μ(μ-1)…(μ-n+1)(x+c)^{μ-n}$。一般实μ可在x+c>0使用；非负整数μ时为多项式，n>μ导数恒0，勿将0乘未定义负幂当作端点公式。\",\"$n≥1$；一般实μ在x+c>0，多项式另作全实轴解释。\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.trig_cycle",
+      "questionId": "candidate.bank402.51",
+      "routeId": "r-phase",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "b2159831db33c6d301c8dc941066477780d4d04ceedede35b40cf6a0f85eee75",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.chain_rule",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.chain_rule\",\"sin(ωx)的重复求导\",\"每次导数提出一个ω。\",\"ω为常数。\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.product",
+      "questionId": "candidate.bank402.50",
+      "routeId": "r-truncate",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "6d4320a4d204277de128d7cc42282b1670852bad9b2a0a0ec796d1a566515fcf",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.leibniz_formula",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.leibniz_formula\",\"多项式与指数的乘积\",\"k=0,1,2三项给出 $e^{-x}(x^2-20x+90)$。\",\"x²的三阶以上导数为0，组合数必须保留。\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.product",
+      "questionId": "candidate.bank402.50",
+      "routeId": "r-recurrence",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "6d4320a4d204277de128d7cc42282b1670852bad9b2a0a0ec796d1a566515fcf",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.leibniz_formula",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.leibniz_formula\",\"先使用一阶乘积法则\",\"设 $y^{(n)}=e^{-x}P_n$，得 $P_{n+1}=P_n'-P_n$。\",\"莱布尼茨在n=1时即乘积法则。\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.product",
+      "questionId": "candidate.bank402.97",
+      "routeId": "r-0",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "d2c71154557a7868539c0caed746968c4b0ea0904f4ae919ba48275306482274",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.leibniz_formula",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.leibniz_formula\",\"对$(1+x^{2})e^x$的100阶导数展开\",\"只保留$k=0、1、2$三项：其余多项式导数为0。\",\"组合系数C(100,k)必须保留。\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.partial_fractions",
+      "questionId": "candidate.bank402.53",
+      "routeId": "r-partial",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "e4344e10bc3d61234d371dcccf6e6071593ac6fa32445a5416ba9c1ad6377a09",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.partial_fraction",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.partial_fraction\",\"有理式x/(x²−1)\",\"$y=\\\\frac12[(x-1)^{-1}+(x+1)^{-1}]$。\",\"x≠±1。\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.series_coefficient",
+      "questionId": "candidate.bank402.59",
+      "routeId": "r-alternative",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "e212673f577fc754c0ed6c01db6153ba340950746a1e42f95ee5a529ded5c101",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.power_series_expansion",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.power_series_expansion\",\"$\\\\arctan  x$在0的高阶导数\",\"先识别它在|x|<1的展开$Σ_{k≥0}(-1)^k x^{2k+1}/(2k+1)$。\",\"已建立反正切幂级数；其可由$1/(1+x^{2})$几何级数积分得到。\"]"
+    },
+    {
+      "patternId": "P.derivative.higher.series_coefficient",
+      "questionId": "candidate.bank402.97",
+      "routeId": "r-alternative",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "d2c71154557a7868539c0caed746968c4b0ea0904f4ae919ba48275306482274",
+      "scenarioId": "S.deriv.higher_order",
+      "methodId": "M.power_series_expansion",
+      "stepSignature": "[\"S.deriv.higher_order\",\"M.power_series_expansion\",\"求$f^{100}(0)$，先改看其泰勒系数\",\"$e^x$展开中$x^{100}$项系数$1/100!$；乘$x^{2}$后的贡献来自$x^{98}$，系数$1/98!$。\",\"$e^x$在0可展开，有限目标系数只需要这两项。\"]"
+    },
+    {
+      "patternId": "P.mvt.rolle.polynomial_weight",
+      "questionId": "candidate.bank402.103",
+      "routeId": "r-0",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "8971669b3c179974eaf91694df25272f67ffddf7e41de16ab349b44e5d72167b",
+      "scenarioId": "S.mvt.rolle_equality",
+      "methodId": "M.construct_auxiliary_function",
+      "stepSignature": "[\"S.mvt.rolle_equality\",\"M.construct_auxiliary_function\",\"设$f(x)在[0,a]$上连续，在$(0,a)$内可导，且$f(a)=0$证明存在一点$\\\\xi\\\\in(0,a),使得f(\\\\xi)=-\\\\xi f^{'}(\\\\xi)$\",\"令$G(x)=xf(x)$，在[0,a]连续、(0,a)可导，$G(0)=0=G(a)$。罗尔给$ξ∈(0,a)$使$G'=f(ξ)+ξf'(ξ)=0$，即所求。\",\"区间[0,a]且存在内点意味着a>0；xf在0仍连续。\"]"
+    },
+    {
+      "patternId": "P.mvt.rolle.polynomial_weight",
+      "questionId": "candidate.bank402.237",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "77294440118b1a205860f3940d1c78e9640ce2e32109e830600717bf87a0c9bd",
+      "scenarioId": "S.mvt.rolle_equality",
+      "methodId": "M.construct_auxiliary_function",
+      "stepSignature": "[\"S.mvt.rolle_equality\",\"M.construct_auxiliary_function\",\"设f(x)在区间[0,1]上可微，且满足$f(1)=2\\\\int_0^{\\\\frac{1}{2}}xf(x)dx$,试证明在$(0,1)$内至少存在一点$\\\\xi,使f(\\\\xi)+\\\\xi f^{'}(\\\\xi)=0$\",\"构造$F(x)=xf(x)$，目标导数为$Fprime=f+xfprime$；给定条件变为$F(1)=2\\\\int _0^{1/2}F$。\",\"先保证$F(θ)=F(1)$，再在长度正的[θ,1]应用罗尔\"]"
+    },
+    {
+      "patternId": "P.mvt.rolle.polynomial_weight",
+      "questionId": "candidate.bank402.237",
+      "routeId": "r-checked",
+      "stepIndex": 2,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "77294440118b1a205860f3940d1c78e9640ce2e32109e830600717bf87a0c9bd",
+      "scenarioId": "S.mvt.rolle_equality",
+      "methodId": "M.rolle_theorem",
+      "stepSignature": "[\"S.mvt.rolle_equality\",\"M.rolle_theorem\",\"由F连续，中值$θ∈[0,1/2]$满足$2\\\\int _0^{1/2}F=F(θ)$，故$F(θ)=F(1)$。\",\"在[θ,1]端点等值，罗尔给$ξ∈(θ,1)⊂(0,1)$，$Fprime(ξ)=0$，即所求。\",\"先保证$F(θ)=F(1)$，再在长度正的[θ,1]应用罗尔\"]"
+    },
+    {
+      "patternId": "P.mvt.rolle.exponential_weight",
+      "questionId": "candidate.bank402.239",
+      "routeId": "r-checked",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "ade34738f1bad0482b8f2cf93fe3955113948468d006a8d1fb05694d88fde61b",
+      "scenarioId": "S.mvt.rolle_equality",
+      "methodId": "M.construct_auxiliary_function",
+      "stepSignature": "[\"S.mvt.rolle_equality\",\"M.construct_auxiliary_function\",\"设$f(x)在[0,1]上连续，(0,1)内可导$，且$f(1)=2\\\\int_0^{\\\\frac{1}{2}}e^{x-x^2}f(x)dx$,试证：至少存在一点$\\\\xi\\\\in(0,1)使f^{'}(\\\\xi)=(2\\\\xi-1)\\\\cdot f(\\\\xi)$\",\"构造$F=e^{x-x^{2}}f(x)$，$F(1)=f(1)=2\\\\int _0^{1/2}F$。\",\"F连续且内点可导；θ允许端点，不影响$ξ∈(0,1)$\"]"
+    },
+    {
+      "patternId": "P.mvt.rolle.exponential_weight",
+      "questionId": "candidate.bank402.239",
+      "routeId": "r-checked",
+      "stepIndex": 2,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "ade34738f1bad0482b8f2cf93fe3955113948468d006a8d1fb05694d88fde61b",
+      "scenarioId": "S.mvt.rolle_equality",
+      "methodId": "M.rolle_theorem",
+      "stepSignature": "[\"S.mvt.rolle_equality\",\"M.rolle_theorem\",\"积分中值定理给$θ∈[0,1/2]$使$F(θ)=F(1)$。\",\"罗尔给$Fprime(ξ)=0$，而$Fprime=e^{x-x^{2}}[fprime+(1-2x)f]$，所以$fprime(ξ)=(2ξ-1)f(ξ)$。\",\"F连续且内点可导；θ允许端点，不影响$ξ∈(0,1)$\"]"
+    },
+    {
+      "patternId": "P.multivar.limit.regular_point",
+      "questionId": "candidate.bank402.326",
+      "routeId": "A",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "c0f6d44dcd05ae2a37f58ad53da6ca2302a35fd9b7ac0877ffac06dafe6d4482",
+      "scenarioId": "S.multivar.binary_limit",
+      "methodId": "M.continuity_rules",
+      "stepSignature": "[\"S.multivar.binary_limit\",\"M.continuity_rules\",\"求$\\\\lim\\\\limits_{(x,y)\\\\to(1,2)}{\\\\frac{x+y}{xy}}$\",\"邻域$xy≠0$，写$(x+y)/(xy)=1/x+1/y$。沿任意趋近(1,2)的路径，两项由连续性分别趋$1,1/2$，故总极限$3/2$。\",\"在(1,2)的足够小邻域内$xy≠0$，有理函数连续。\"]"
+    },
+    {
+      "patternId": "P.multivar.limit.uniform_bound",
+      "questionId": "candidate.bank402.327",
+      "routeId": "A",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "7ccec0a20317e32596b4ed078e4918cd786c4c01d012a877f1381cf9f6c34569",
+      "scenarioId": "S.multivar.binary_limit",
+      "methodId": "M.squeeze_theorem",
+      "stepSignature": "[\"S.multivar.binary_limit\",\"M.squeeze_theorem\",\"求$\\\\lim\\\\limits_{(x,y)\\\\to(0,2)}{\\\\frac{\\\\sin(xy)}{x}}$\",\"设$u=xy$，$\\\\sin  u/u$在$u=0$连续延拓为1。原式$=y\\\\cdot (\\\\sin  u/u)$，其中$y\\\\to 2,u\\\\to 0$，对所有路径一致，故极限2。亦由$|\\\\sin  u/u-1|≤u^{2}/6$在小邻域夹逼。\",\"在题面给定的定义域及条件内\"]"
+    },
+    {
+      "patternId": "P.ode.reduction.missing_x",
+      "questionId": "candidate.bank402.282",
+      "routeId": "A",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "60ee7885d8b264e2dbde8bb8dcb77fc761b1f9d80882b6f589d1812e9af4e13f",
+      "scenarioId": "S.ode.reducible_higher_order",
+      "methodId": "M.reduction_of_order",
+      "stepSignature": "[\"S.ode.reducible_higher_order\",\"M.reduction_of_order\",\"函数 $y(x)$ 满足微分方程 $y^{\\\\prime \\\\prime}=e^{2 y}+e^{y}$, 且 $y(0)=0, y^{\\\\prime}(0)=2$, 求 $y(x)$。\",\"令$p=y'$并在初值附近以y为变量，$p dp/dy=e^{2y}+e^y$。积分$p^{2}=e^{2y}+2e^y+C$。\",\"包含0的最大实解区间 x<ln2\"]"
+    },
+    {
+      "patternId": "P.ode.reduction.missing_x",
+      "questionId": "candidate.bank402.286",
+      "routeId": "A",
+      "stepIndex": 0,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "ff5ea30b9f28e558ab24515ef12b3579da73484c231145ac2183066011947770",
+      "scenarioId": "S.ode.reducible_higher_order",
+      "methodId": "M.reduction_of_order",
+      "stepSignature": "[\"S.ode.reducible_higher_order\",\"M.reduction_of_order\",\"微分方程 $y y^{\\\\prime\\\\prime}+(y^{\\\\prime})^{2}=0$ 满足初始条件 $.y|_{x=0}=1,.y^{\\\\prime}|_{x=0}=\\\\frac{1}{2}$ 的解为: （请给出结果） 。\",\"识别$yy''+(y')^{2}=(y y')'=0$，积分$y y'=C_{1}$。\",\"包含0的实解区间 x>-1\"]"
+    },
+    {
+      "patternId": "P.ode.forcing.exp_polynomial",
+      "questionId": "candidate.bank402.275",
+      "routeId": "A",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "2b0253cae2059afae1e2c087f7b4334e43f8547fb6f1821c67bf40f79fe984e8",
+      "scenarioId": "S.ode.second_order_nonhomogeneous",
+      "methodId": "M.undetermined_coefficients",
+      "stepSignature": "[\"S.ode.second_order_nonhomogeneous\",\"M.undetermined_coefficients\",\"先求对应齐次方程：$r^{2}+4r+4=(r+2)^{2}$，故$y_h=(C_{1}+C_{2}x)e^{-2x}$。\",\"指数1不是特征根，试$y_p=Ae^x$，代入$9Ae^x=e^x$得$A=1/9$。\",\"在题面给定的定义域及条件内\"]"
+    },
+    {
+      "patternId": "P.ode.forcing.exp_polynomial",
+      "questionId": "candidate.bank402.283",
+      "routeId": "A",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "6bc6ebd8fbad5cd9275e0bbb6c9af774bd6244559dc0f83b4797f9c8c3aafb5d",
+      "scenarioId": "S.ode.second_order_nonhomogeneous",
+      "methodId": "M.undetermined_coefficients",
+      "stepSignature": "[\"S.ode.second_order_nonhomogeneous\",\"M.undetermined_coefficients\",\"原特征方程$r^{2}+2r-2=0$，根为$-1±\\\\sqrt{3}$，得到$y_h$两支指数解。\",\"试$y_p=(Ax+B)e^x$，代入得$L[y_p]=e^x(Ax+B+4A)$，比系数$A=4,B=-16$。\",\"在题面给定的定义域及条件内\"]"
+    },
+    {
+      "patternId": "P.ode.forcing.exp_trig",
+      "questionId": "candidate.bank402.285",
+      "routeId": "A",
+      "stepIndex": 1,
+      "reason": "核对该有效路线此步骤的实际变形，与结构的题面特征和方法配对一致。",
+      "questionKey": "1b811bf320cd90a3b24ecaf2688d7d5ad2bdf9772ab39367e86d6eb87d5989fe",
+      "scenarioId": "S.ode.second_order_nonhomogeneous",
+      "methodId": "M.undetermined_coefficients",
+      "stepSignature": "[\"S.ode.second_order_nonhomogeneous\",\"M.undetermined_coefficients\",\"齐次特征方程$(r-1)(r-2)=0$，$y_h=C_{1}e^x+C_{2}e^{2x}$。\",\"试$y_p=Acos x+Bsin x$，得到$A-3B=1,3A+B=0$，解$A=1/10,B=-3/10$。\",\"在题面给定的定义域及条件内\"]"
+    },
+    {
+      "patternId": "P.series.positive.power_tail",
+      "questionId": "candidate.bank2027a.4",
+      "routeId": "r-compare",
+      "stepIndex": 0,
+      "reason": "核对通项结构及有效路线的比较对象或相邻项约分，不给其它解法复制标签。",
+      "questionKey": "dcda52448e2e14e4026b1962d1c6a671eafd087e3e950453ec91b49242e37223",
+      "scenarioId": "S.series.positive_term_test",
+      "methodId": "M.comparison_test",
+      "stepSignature": "[\"S.series.positive_term_test\",\"M.comparison_test\",\"$\\\\sum_{n\\\\ge1}\\\\frac{1}{n2^n}$\",\"$0<\\\\frac{1}{n2^n}\\\\le\\\\frac{1}{2^n}$，$\\\\sum 2^{-n}$ 收敛，故原级数收敛\",\"各项为正；$n\\\\ge1$ 时 $\\\\frac1n\\\\le1$。\"]"
+    },
+    {
+      "patternId": "P.series.positive.factorial",
+      "questionId": "candidate.bank2027a.5",
+      "routeId": "r-ratio",
+      "stepIndex": 0,
+      "reason": "核对通项结构及有效路线的比较对象或相邻项约分，不给其它解法复制标签。",
+      "questionKey": "7e8c43c29805c65f9c1efe0fa20d8020dd15b37df35dc51e01f42da332422cb0",
+      "scenarioId": "S.series.positive_term_test",
+      "methodId": "M.ratio_test",
+      "stepSignature": "[\"S.series.positive_term_test\",\"M.ratio_test\",\"$\\\\frac{u_{n+1}}{u_n}=\\\\left(\\\\frac{n}{n+1}\\\\right)^n$\",\"$\\\\to\\\\frac1e<1$，故级数收敛\",\"各 $u_n>0$ 且比值有极限。\"]"
+    },
+    {
+      "patternId": "P.series.positive.factorial",
+      "questionId": "candidate.bank2027a.6",
+      "routeId": "r-ratio",
+      "stepIndex": 0,
+      "reason": "核对通项结构及有效路线的比较对象或相邻项约分，不给其它解法复制标签。",
+      "questionKey": "7c6fbfb2373c3f6ee86b098a589fdd11edd4244e8d3ea4635a82e2d4c5b2b8c5",
+      "scenarioId": "S.series.positive_term_test",
+      "methodId": "M.ratio_test",
+      "stepSignature": "[\"S.series.positive_term_test\",\"M.ratio_test\",\"$\\\\frac{u_{n+1}}{u_n}=\\\\frac{n+1}{3}$\",\"$\\\\to+\\\\infty>1$，故级数发散\",\"各 $u_n>0$。\"]"
+    }
+  ]
+}

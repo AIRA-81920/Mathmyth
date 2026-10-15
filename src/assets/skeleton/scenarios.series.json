@@ -1,0 +1,324 @@
+{
+  "block_id": "B.series",
+  "scenarios": [
+    {
+      "id": "S.series.positive_term_test",
+      "block_id": "B.series",
+      "name": "正项级数敛散性判别（比较、比值、根值）",
+      "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+      "signals": [
+        "级数各项均为非负（u_n ≥ 0），不含 (−1)^n 等变号因子",
+        "通项是分式、根式、含 n 次幂或 n! 的组合，直接求和困难",
+        "题目要求判断级数敛散性，或讨论参数取值使级数收敛",
+        "通项与 1/n^p、q^n 等已知敛散性的标准级数形态相近",
+        "无需讨论绝对收敛与条件收敛（通项不变号）"
+      ],
+      "recognition_examples": [
+        "Σ_{n=1}^∞ 1/(n² + 1)",
+        "Σ_{n=1}^∞ n!/n^n",
+        "Σ_{n=1}^∞ (n/(2n+1))^n"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.alternating_series",
+          "how": "通项含 (−1)^n 等整齐变号因子，属交错级数，用莱布尼茨判别法"
+        },
+        {
+          "scenario_id": "S.series.absolute_conditional",
+          "how": "通项符号不定且不是整齐交错（如含 sin n），须讨论绝对/条件收敛"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.comparison_test",
+          "priority": 1,
+          "when_to_prefer": "通项是分式、根式且与 1/n^p 或几何级数同阶时，用极限比较判别最快；通项可放缩到已知敛散性的标准级数时用一般比较判别"
+        },
+        {
+          "method_id": "M.ratio_test",
+          "priority": 2,
+          "when_to_prefer": "通项含 n!、a^n、n^n 等相邻项之比易约分的乘法结构时首选比值判别"
+        },
+        {
+          "method_id": "M.root_test",
+          "priority": 3,
+          "when_to_prefer": "通项整体是 n 次幂（形如 (f(n))^n）时，开 n 次方后极限易求，用根值判别更直接"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 4,
+          "when_to_prefer": "找不到现成的标准比较对象时，先把通项放缩到已知敛散性的级数（如放缩为 Σ1/2^n）再作比较判别"
+        }
+      ]
+    },
+    {
+      "id": "S.series.alternating_series",
+      "block_id": "B.series",
+      "name": "交错级数（莱布尼茨判别法）",
+      "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+      "signals": [
+        "通项含 (−1)^n 或 (−1)^{n−1} 等整齐交错符号因子",
+        "去掉符号后的正项 u_n > 0，且可验证单调递减、趋于 0",
+        "题目要求判断该交错级数是否收敛，或估计其余项/和的范围",
+        "是数项级数中的变号情形，不是幂级数"
+      ],
+      "recognition_examples": [
+        "Σ_{n=1}^∞ (−1)^{n−1}/n",
+        "Σ_{n=1}^∞ (−1)^n n/(n²+1)",
+        "Σ_{n=1}^∞ (−1)^{n−1}/√n"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.absolute_conditional",
+          "how": "若还需讨论绝对值级数 Σ|u_n| 是否收敛（判断绝对/条件收敛），则属任意项级数情景"
+        },
+        {
+          "scenario_id": "S.series.positive_term_test",
+          "how": "通项不含变号因子、恒非负，属正项级数判别"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.leibniz_test",
+          "priority": 1,
+          "when_to_prefer": "通项为整齐交错形 (−1)^{n−1}u_n 且 u_n 单调递减趋于 0 时直接使用，是交错级数的标准判别"
+        }
+      ]
+    },
+    {
+      "id": "S.series.absolute_conditional",
+      "block_id": "B.series",
+      "name": "任意项级数绝对/条件收敛",
+      "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+      "signals": [
+        "通项符号不定，但不一定是整齐的 (−1)^n 交错（如含 sin n、cos n 或分段变号）",
+        "题目出现“绝对收敛”“条件收敛”或要求讨论收敛类型",
+        "需要同时判断 Σ|u_n| 与 Σu_n 的敛散",
+        "可能含参数，需按参数分类讨论收敛类型"
+      ],
+      "recognition_examples": [
+        "Σ_{n=1}^∞ (−1)^{n−1}/√n",
+        "Σ_{n=1}^∞ sin n / n²",
+        "Σ_{n=1}^∞ (−1)^{n−1}/(n + (−1)^{n−1})"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.positive_term_test",
+          "how": "通项恒非负，只讨论是否收敛，不区分绝对/条件收敛"
+        },
+        {
+          "scenario_id": "S.series.alternating_series",
+          "how": "通项是整齐交错且只需用莱布尼茨判断收敛，不要求给出收敛类型"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.comparison_test",
+          "priority": 1,
+          "when_to_prefer": "取绝对值后 Σ|u_n| 是正项级数，将其与 p 级数、几何级数作比较或极限比较，判断绝对收敛，这是最常规入口"
+        },
+        {
+          "method_id": "M.leibniz_test",
+          "priority": 2,
+          "when_to_prefer": "当 Σ|u_n| 发散、原级数又呈整齐交错形时，用莱布尼茨判断 Σu_n 收敛，从而判定为条件收敛"
+        },
+        {
+          "method_id": "M.ratio_test",
+          "priority": 3,
+          "when_to_prefer": "取绝对值后相邻项之比易化简（通项含 n!、a^n）时，用比值判别判断 Σ|u_n| 是否收敛"
+        },
+        {
+          "method_id": "M.root_test",
+          "priority": 4,
+          "when_to_prefer": "取绝对值后通项为 n 次幂整体时，用根值判别判断 Σ|u_n| 的敛散"
+        }
+      ]
+    },
+    {
+      "id": "S.series.power_series_radius",
+      "block_id": "B.series",
+      "name": "幂级数收敛半径与收敛域",
+      "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+      "signals": [
+        "一般项含 (x − x_0)^n 与系数 a_n 的乘积",
+        "题目要求“收敛半径”“收敛区间”或“收敛域”",
+        "系数 a_n 含 n!、n 的幂、a^n 等便于求极限的结构",
+        "需要讨论端点 x = x_0 ± R 的敛散以确定收敛域是否含端点"
+      ],
+      "recognition_examples": [
+        "Σ_{n=1}^∞ x^n/n",
+        "Σ_{n=1}^∞ n! x^n",
+        "Σ_{n=1}^∞ (x − 1)^n/(n·2^n)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.summation_function",
+          "how": "求收敛域之后的进一步任务是求 S(x)，本情景只求 R 与收敛域"
+        },
+        {
+          "scenario_id": "S.series.termwise_operation",
+          "how": "本情景不涉及逐项求导/积分，只做系数极限与端点判定"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.convergence_radius",
+          "priority": 1,
+          "when_to_prefer": "幂级数求收敛域的标准流程——用比值或根值公式求 R，再单独考察两个端点，本情景首选"
+        },
+        {
+          "method_id": "M.ratio_test",
+          "priority": 2,
+          "when_to_prefer": "系数 a_n 含 n! 或分式时，用 lim|a_n/a_{n+1}| 求 R 最简便"
+        },
+        {
+          "method_id": "M.root_test",
+          "priority": 3,
+          "when_to_prefer": "系数为 n 次幂整体时，用柯西-阿达马公式 R = 1/lim ⁿ√|a_n| 求收敛半径"
+        }
+      ]
+    },
+    {
+      "id": "S.series.summation_function",
+      "block_id": "B.series",
+      "name": "幂级数求和函数",
+      "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+      "signals": [
+        "题目要求“求幂级数的和函数 S(x)”",
+        "幂级数系数含 n、n+1、1/n、1/(n+1) 等与 n 有关的简单因子",
+        "可借助几何级数 Σx^n = 1/(1 − x) 作为求和基础",
+        "需要先确定收敛域（和函数只在收敛域内有定义）"
+      ],
+      "recognition_examples": [
+        "求 Σ_{n=1}^∞ x^n/n 的和函数",
+        "求 Σ_{n=0}^∞ (n+1)x^n 的和函数",
+        "求 Σ_{n=1}^∞ x^n/(n·2^n) 的和函数"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.power_series_radius",
+          "how": "只求收敛半径/收敛域而不求和函数"
+        },
+        {
+          "scenario_id": "S.series.termwise_operation",
+          "how": "侧重用逐项运算求数项级数之和或推导展开式，而非写出和函数的一般表达式"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.series_summation",
+          "priority": 1,
+          "when_to_prefer": "幂级数求和函数的通用套路（定收敛域 → 逐项求导/积分化为几何级数 → 求和 → 逆运算还原），本情景首选"
+        }
+      ]
+    },
+    {
+      "id": "S.series.power_series_expansion",
+      "block_id": "B.series",
+      "name": "函数展开成幂级数",
+      "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+      "signals": [
+        "题目要求把 f(x) 展开成 x（或 x − x_0）的幂级数",
+        "f 是常见初等函数（e^x、sin x、ln(1+x)、(1+x)^α、1/(1 − x)）或其复合与运算（如 e^{−x²}、1/(2+x)）",
+        "要求写出展开式并指明收敛域，或展开到指定阶、求某点 n 阶导数",
+        "题目出现“幂级数展开”“麦克劳林级数”字样"
+      ],
+      "recognition_examples": [
+        "将 1/(2+x) 展开成 x 的幂级数",
+        "将 e^{−x²} 展开成 x 的幂级数",
+        "将 ln(1+x) 展开成麦克劳林级数"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.termwise_operation",
+          "how": "本情景目标是给出某函数的级数表示，而逐项运算情景侧重运算过程本身"
+        },
+        {
+          "scenario_id": "S.series.fourier_series",
+          "how": "傅里叶展开得到的是三角级数（周期函数），而非某点附近的幂级数"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.power_series_expansion",
+          "priority": 1,
+          "when_to_prefer": "函数展开成幂级数的主方法（间接法为主，借基本展开式做代换、四则、逐项求导/积分），绝大多数题首选"
+        },
+        {
+          "method_id": "M.taylor_expansion",
+          "priority": 2,
+          "when_to_prefer": "需用直接法逐阶求导得到系数，或只需展开到有限阶、求某点高阶导数时，用泰勒公式"
+        }
+      ]
+    },
+    {
+      "id": "S.series.termwise_operation",
+      "block_id": "B.series",
+      "name": "逐项求导/逐项积分的应用",
+      "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+      "signals": [
+        "需要消去系数中的 n 或 1/n 以便把级数化为几何级数",
+        "已知某函数的展开式，要求相关函数（如 ln(1+x)、arctan x）的展开式",
+        "要求某数项级数之和（如 Σ n/2^n），可先构造幂级数再代值",
+        "需在收敛区间内对幂级数作恒等变形"
+      ],
+      "recognition_examples": [
+        "由 Σx^n 逐项求导求 Σ n x^n 的和",
+        "由 Σ(−1)^n x^n 逐项积分求 ln(1+x) 的展开式",
+        "求数项级数 Σ_{n=1}^∞ n/2^n 的和"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.summation_function",
+          "how": "目标是写出和函数 S(x) 的一般表达式，而非求某个数项级数的和或推导新展开式"
+        },
+        {
+          "scenario_id": "S.series.power_series_expansion",
+          "how": "目标是给出某函数完整的幂级数表示，而本情景侧重逐项运算这一操作过程"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.termwise_operation",
+          "priority": 1,
+          "when_to_prefer": "逐项求导/积分是处理幂级数的核心运算，凡是需要消去系数中的 n 或由已知展开式推导新展开式时首选"
+        },
+        {
+          "method_id": "M.series_summation",
+          "priority": 2,
+          "when_to_prefer": "当需先构造幂级数、求其和函数再代入具体数值来求数项级数之和时，用求和函数套路"
+        }
+      ]
+    },
+    {
+      "id": "S.series.fourier_series",
+      "block_id": "B.series",
+      "name": "傅里叶级数展开",
+      "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+      "signals": [
+        "函数为周期函数，或定义在 [−π,π]、[0,π]、[−l,l] 等标准区间上",
+        "题目出现“傅里叶级数”“正弦级数”“余弦级数”字样",
+        "需计算傅里叶系数 a_n、b_n 并写出和函数（含间断点取值）",
+        "函数具有奇偶性，可化为只含正弦或只含余弦的级数"
+      ],
+      "recognition_examples": [
+        "将 f(x) = x（−π < x < π）展开成傅里叶级数",
+        "将周期 2π 的函数 f(x) = |x| 展开成傅里叶级数",
+        "把 f(x) = x 在 [0,π] 上展开成正弦级数"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.series.power_series_expansion",
+          "how": "本情景展开为三角级数（周期函数），而非在一点附近的幂级数（泰勒级数）"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.fourier_series_expansion",
+          "priority": 1,
+          "when_to_prefer": "傅里叶系数（欧拉-傅里叶）公式 + 奇偶性简化 + 狄利克雷收敛定理，本情景唯一主方法"
+        }
+      ]
+    }
+  ]
+}

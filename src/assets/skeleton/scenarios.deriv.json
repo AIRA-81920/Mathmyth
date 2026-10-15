@@ -1,0 +1,405 @@
+{
+  "block_id": "B.deriv",
+  "scenarios": [
+    {
+      "id": "S.deriv.composite_derivative",
+      "block_id": "B.deriv",
+      "name": "复合函数求导",
+      "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+      "signals": [
+        "函数写成“外层函数(内层函数)”的套叠形式，如 sin(2x+1)、ln(cos x)",
+        "表达式中出现 ln、e^□、sin/cos、开方、幂的层层嵌套",
+        "求导目标是显式函数 y=f(x) 的导函数，而非某点导数",
+        "可以用基本求导公式配合“由外向内”逐层相乘得到"
+      ],
+      "recognition_examples": [
+        "求 y = ln(sin 2x) 的导数",
+        "求 y = e^{x²+1} 的导数",
+        "求 y = arctan(ln x)、y = sin²(3x) 的导数"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.power_exponential",
+          "how": "幂指函数的底也含自变量（如 x^x），不能当作复合函数用链式法则，须对数求导"
+        },
+        {
+          "scenario_id": "S.deriv.implicit_derivative",
+          "how": "隐函数由 x、y 的方程隐含给出且未解出 y；复合函数是显式套叠结构"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.chain_rule",
+          "priority": 1,
+          "when_to_prefer": "绝大多数复合求导的首选：能从外到内清楚分层时，直接逐层求导并相乘"
+        },
+        {
+          "method_id": "M.derivative_definition",
+          "priority": 2,
+          "when_to_prefer": "复合结构中含分界点、绝对值或只在某点不能套用求导公式时，在该关键点改用导数定义求值"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.implicit_derivative",
+      "block_id": "B.deriv",
+      "name": "隐函数求导",
+      "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+      "signals": [
+        "给出的不是 y=f(x)，而是 x 与 y 的方程，如 e^y+xy=e",
+        "方程含 e^y、ln y、y²、sin y 等关于 y 的项",
+        "难以或不必把 y 解成 x 的显函数",
+        "问题要求 dy/dx，或求隐式曲线在某点的切线斜率"
+      ],
+      "recognition_examples": [
+        "由方程 e^y + xy = e 求 y'",
+        "由 x² + y² = 1 求 y''",
+        "由 ln y = x + y 或 x^y = y^x 求 y'"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.composite_derivative",
+          "how": "复合函数是显式套叠；隐函数由方程隐含，求导时对含 y 的每一项都要乘 y'"
+        },
+        {
+          "scenario_id": "S.deriv.power_exponential",
+          "how": "x^y=y^x 类兼有幂指特征，两边取对数后即转化为对数求导；普通隐式方程则直接隐式求导更省"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.implicit_differentiation",
+          "priority": 1,
+          "when_to_prefer": "方程不易解出 y 时的标准解法：两边直接对 x 求导，把 y 视作 x 的函数"
+        },
+        {
+          "method_id": "M.chain_rule",
+          "priority": 2,
+          "when_to_prefer": "隐式求导中对含 y 的项（e^y、y² 等）逐项求导时，用链式法则在结果后乘上 y'"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.parametric_derivative",
+      "block_id": "B.deriv",
+      "name": "参数方程求导",
+      "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+      "signals": [
+        "函数以参数方程形式给出：x=x(t), y=y(t)",
+        "题目要求 dy/dx、切线斜率或 d²y/dx²",
+        "曲线方程写成含参形式，如 x=cos t, y=sin t",
+        "x、y 都是同一参数 t 的函数，消参不便"
+      ],
+      "recognition_examples": [
+        "x = t − sin t, y = 1 − cos t，求 dy/dx",
+        "x = a cos³t, y = a sin³t，求二阶导数",
+        "x = e^t, y = t²，求曲线在某点的切线"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.tangent_normal",
+          "how": "参数方程求导关注 dy/dx 公式本身；切线问题关注由斜率写出的直线方程，是求导的应用"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.parametric_differentiation",
+          "priority": 1,
+          "when_to_prefer": "参数式求导的标准公式：先分别求 dx/dt、dy/dt，再作商得 dy/dx"
+        },
+        {
+          "method_id": "M.chain_rule",
+          "priority": 2,
+          "when_to_prefer": "当 x(t)、y(t) 本身是复合函数（如 x=cos 2t）时，对 t 求导需用链式法则分层"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.power_exponential",
+      "block_id": "B.deriv",
+      "name": "幂指函数 / 连乘式求导",
+      "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+      "signals": [
+        "出现 u(x)^{v(x)} 形式，底和指数都在变，如 x^x、(sin x)^x",
+        "函数是多个因子的连乘、连除或根式复合，如 √[(x−1)(x−2)/(x−3)]",
+        "直接套幂函数公式或指数函数公式都不适用",
+        "若不取对数，求导过程会极其繁琐"
+      ],
+      "recognition_examples": [
+        "求 y = x^x 的导数",
+        "求 y = (1 + 1/x)^x 的导数",
+        "求 y = x²√(x−1)/(x+1) 这类多因子连乘除的导数"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.composite_derivative",
+          "how": "普通复合函数的底是常量（如 e^x、a^x）；幂指函数的底也含 x，须用对数求导"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.logarithmic_differentiation",
+          "priority": 1,
+          "when_to_prefer": "幂指函数与多因子连乘除的首选：两边取对数把乘除幂化为加减，计算最省"
+        },
+        {
+          "method_id": "M.chain_rule",
+          "priority": 2,
+          "when_to_prefer": "取对数后对 ln 复合式求导，或改写成 e^{v ln u} 指数化后再求导时，用链式法则收尾"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.higher_order",
+      "block_id": "B.deriv",
+      "name": "高阶导数",
+      "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+      "signals": [
+        "题目要求 y''、y''' 或 y^{(n)}",
+        "出现“求 n 阶导数”“求二阶导”“逐次求导找规律”等表述",
+        "被求导函数是乘积或简单有理分式，高阶导具有可归纳的规律",
+        "需要把高阶导用于后续的凹凸性、泰勒展开等判断"
+      ],
+      "recognition_examples": [
+        "求 y = x²e^x 的 n 阶导数",
+        "求 y = 1/(x²−1) 的 n 阶导数",
+        "求 y = sin(2x) 的 n 阶导数"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.implicit_derivative",
+          "how": "隐函数的二阶导仍由隐式求导方式得到；这里指显式函数的一般高阶导数"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.leibniz_formula",
+          "priority": 1,
+          "when_to_prefer": "被求导函数是两个函数之积（尤其含多项式因子）时，用莱布尼茨公式最直接"
+        },
+        {
+          "method_id": "M.partial_fraction",
+          "priority": 2,
+          "when_to_prefer": "有理分式求 n 阶导时，先部分分式拆成 1/(x−a)^k 之类简单分式再逐项求导"
+        },
+        {
+          "method_id": "M.chain_rule",
+          "priority": 3,
+          "when_to_prefer": "对 sin(ax+b)、e^{ax+b} 等复合式求 n 阶导时，按链式法则每次提出系数 a，得到 aⁿ 因子"
+        },
+        {
+          "method_id": "M.polynomial_division",
+          "priority": 4,
+          "when_to_prefer": "对假有理式先做恒等拆分，再分别求导；余式不能丢掉。"
+        },
+        {
+          "method_id": "M.power_series_expansion",
+          "priority": 5,
+          "when_to_prefer": "在收敛半径内部，若已知展开系数，可由x^n项系数乘n!读取展开点的高阶导数。"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.piecewise_differentiability",
+      "block_id": "B.deriv",
+      "name": "分段函数分界点可导性",
+      "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+      "signals": [
+        "函数以分段形式给出，分段点是讨论对象",
+        "题目出现“在 x=x₀ 处是否可导/连续”",
+        "分段点两侧函数的表达式不同",
+        "含绝对值、max/min、取整等天然分界特征"
+      ],
+      "recognition_examples": [
+        "f(x)=x²sin(1/x)(x≠0)、f(0)=0，判断 x=0 处是否可导",
+        "f(x)=|x−1| 在 x=1 处的可导性",
+        "含参数 a 的分段函数，问 a 取何值时在分界点可导"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.abstract_function",
+          "how": "抽象函数没有显式分段表达式，只给函数方程或极限条件；分段函数有明确的分段表达式"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.derivative_definition",
+          "priority": 1,
+          "when_to_prefer": "判断分界点可导性的根本方法：分别计算函数在该点的左导数与右导数再比较是否相等"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 2,
+          "when_to_prefer": "用定义计算差商极限时，若为 0/0 型（如含 sin x、1−cos x），先用等价无穷小替换化简"
+        },
+        {
+          "method_id": "M.chain_rule",
+          "priority": 3,
+          "when_to_prefer": "需要先写出各分段区间内部的导函数表达式备用时，用链式法则逐段求导"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.abstract_function",
+      "block_id": "B.deriv",
+      "name": "用导数定义处理抽象函数",
+      "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+      "signals": [
+        "题目只给 f 满足某函数方程（如 f(x+y)=f(x)+f(y)）或某极限条件",
+        "要求 f'(x₀) 或 f(x₀)，但题目没有给出 f 的解析式",
+        "条件中出现“f 可导”“f 连续”这类抽象假设",
+        "出现 lim_{x→x₀} f(x)/(某无穷小) = A 之类的极限条件"
+      ],
+      "recognition_examples": [
+        "已知 lim_{x→0} f(x)/x = 3，求 f(0) 与 f'(0)",
+        "f 在 x=0 可导且 f(x+y)=f(x)+f(y)，求 f'(x)",
+        "已知 f 可导与某抽象恒等式，求某点导数"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.piecewise_differentiability",
+          "how": "分段函数有具体的分段表达式可逐段求导；抽象函数只有函数方程或极限条件，必须回到定义"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.derivative_definition",
+          "priority": 1,
+          "when_to_prefer": "抽象函数求某点导数时的普适手段：写出差商，用所给条件求该差商的极限"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 2,
+          "when_to_prefer": "当条件给出的极限或差商是 0/0 型时，先用等价无穷小替换化简再取极限"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 3,
+          "when_to_prefer": "当条件给的是 0/0 型抽象极限，且已知相关函数在邻域内可导时，可用洛必达把极限与导数联系起来"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.differential_approx",
+      "block_id": "B.deriv",
+      "name": "微分与近似计算",
+      "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+      "signals": [
+        "题目出现“求微分 dy”“求 Δy 的近似值”",
+        "要求某个数（√1.02、e^{0.01}、ln 1.01 等）的近似值",
+        "给出自变量增量 Δx，要求函数增量的近似值",
+        "涉及 Δy≈dy 形式的近似或误差估计"
+      ],
+      "recognition_examples": [
+        "求 y = x²e^x 的微分 dy",
+        "用微分近似计算 √1.02 的近似值",
+        "半径增加 Δr 时，球体积增量的近似值"
+      ],
+      "methods": [
+        {
+          "method_id": "M.linear_approximation",
+          "priority": 1,
+          "when_to_prefer": "近似计算与 Δy≈dy 类问题的核心：选取使 f(x₀)、f'(x₀) 都容易计算的 x₀，再套用线性近似公式"
+        },
+        {
+          "method_id": "M.chain_rule",
+          "priority": 2,
+          "when_to_prefer": "当被近似函数是复合结构时（如 ln(1+Δx)、√(1+Δx) 隐含的复合），先用链式法则求出 f'(x₀) 再代入近似公式"
+        }
+      ],
+      "distinguish_from": []
+    },
+    {
+      "id": "S.deriv.tangent_normal",
+      "block_id": "B.deriv",
+      "name": "切线与法线方程",
+      "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+      "signals": [
+        "题目要求切线方程、法线方程或切线斜率",
+        "出现“在点…处的切线”“过某点作切线”等表述",
+        "曲线以显式、隐式或参数形式给出",
+        "需求解切点坐标或由斜率写出直线方程"
+      ],
+      "recognition_examples": [
+        "求 y = x³−2x 在点 (1,−1) 处的切线方程",
+        "求过原点且与 y = e^x 相切的直线",
+        "求隐式曲线 x²+y²=25 在点 (3,4) 处的切线"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.deriv.implicit_derivative",
+          "how": "隐函数求导关注 dy/dx 的求法；切线问题关注由斜率最终写出直线方程，是求导的应用"
+        },
+        {
+          "scenario_id": "S.deriv.parametric_derivative",
+          "how": "参数方程求导关注 dy/dx 公式；切线问题关注最终给出的直线方程"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.tangent_normal_equation",
+          "priority": 1,
+          "when_to_prefer": "显式曲线求切线/法线的直接方法：由 k=f'(x₀) 后点斜式，注意“在点处”与“过某点”的区别"
+        },
+        {
+          "method_id": "M.implicit_differentiation",
+          "priority": 2,
+          "when_to_prefer": "曲线由隐式方程 F(x,y)=0 给出时，先隐式求导得到斜率表达式，再代入切点写切线"
+        },
+        {
+          "method_id": "M.parametric_differentiation",
+          "priority": 3,
+          "when_to_prefer": "曲线由参数式给出时，先用参数求导公式求出 dy/dx，再代入参数值写切线"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.basic_definition",
+      "block_id": "B.deriv",
+      "name": "基本函数的定义法求导",
+      "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+      "signals": [
+        "要求从定义推导基本函数的导数",
+        "写出[f(x+h)-f(x)]/h"
+      ],
+      "recognition_examples": [
+        "用定义求sin x的导数",
+        "推导a^x的导数"
+      ],
+      "distinguish_from": [],
+      "methods": [
+        {
+          "method_id": "M.derivative_definition",
+          "priority": 1,
+          "when_to_prefer": "先写差商，变形后再用已成立的基本极限。"
+        }
+      ]
+    },
+    {
+      "id": "S.deriv.inverse",
+      "block_id": "B.deriv",
+      "name": "反函数求导",
+      "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+      "signals": [
+        "反三角函数求导",
+        "已知x=g(y)，要求dy/dx"
+      ],
+      "recognition_examples": [
+        "y=arccos x，-1<x<1"
+      ],
+      "distinguish_from": [],
+      "methods": [
+        {
+          "method_id": "M.inverse_derivative",
+          "priority": 1,
+          "when_to_prefer": "原函数对应点的导数非零时取倒数，核对值域与符号。"
+        },
+        {
+          "method_id": "M.implicit_differentiation",
+          "priority": 2,
+          "when_to_prefer": "也可对原函数关系隐式求导，保留内层导数。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,912 @@
+{
+  "block_id": "B.vecalg",
+  "methods": [
+    {
+      "id": "M.cross_product",
+      "name": "向量积（叉积）求法向量与面积",
+      "aliases": [
+        "向量积",
+        "叉积",
+        "外积",
+        "cross product"
+      ],
+      "one_liner": "用两向量的叉积 a×b 得到一个同时垂直于 a、b 的向量，其模等于以 a、b 为邻边的平行四边形面积，是求平面法向量、判定平行与求面积的通用工具。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.vector_product",
+        "S.vecalg.plane_equation",
+        "S.vecalg.line_equation",
+        "S.vecalg.position_relation"
+      ],
+      "triggers": [
+        "需要找到一个同时垂直于两个已知向量的向量（求平面法向量、直线方向向量）",
+        "已知平面上三个点或两条方向向量，要用它们确定平面的法向量",
+        "需要计算以两向量为邻边的平行四边形、三角形的面积",
+        "需要判定两向量是否平行（叉积是否为零向量）"
+      ],
+      "steps": [
+        "确定两个不共线的向量 a、b（平面题取平面上两个方向向量，或两点连线）",
+        "按 i、j、k 三分量展开式写出 a×b 并逐项计算",
+        "化简得到法向量 n=a×b；若需单位法向量再除以 |n|",
+        "若求面积，取 |a×b|（三角形面积取其一半）；判定平行则看 a×b 是否为零向量"
+      ],
+      "preconditions": [
+        "两向量已知且不共线（共线时叉积为零向量，不能充当法向量）"
+      ],
+      "not_applicable": [
+        "只涉及两向量夹角或投影时，用数量积更直接，无需叉积",
+        "判定三点共线、三向量共面或求平行六面体体积时应用混合积",
+        "求点线面之间距离时用距离公式，叉积只作为其中一步"
+      ],
+      "pitfalls": [
+        "叉积分量展开时 j 分量前的负号写错（j 分量为 -(a_x b_z - a_z b_x)）",
+        "把 a×b 与 b×a 混用，二者方向相反（相差一个负号）",
+        "求法向量时选到的两个向量共线，得到零向量导致平面无法确定",
+        "把 |a×b| 当作线段长度（实为平行四边形面积）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.plane_point_normal",
+          "note": "叉积求出法向量后，代入点法式即得平面方程"
+        },
+        {
+          "type": "compose",
+          "target": "M.line_symmetric_parametric",
+          "note": "两平面交线的方向向量由两法向量叉积得到"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.mixed_product",
+          "note": "混合积 (a×b)·c 以叉积为基础"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "叉积是本章第一工具，凡'求法向量/求方向向量'基本都要用到它；分量展开式（尤其 j 分量符号）是主要失分点。",
+      "example_problems": [
+        {
+          "statement": "已知 a=(1,2,-1)、b=(2,-1,1)，求 a×b，并求以 a、b 为邻边的平行四边形的面积。",
+          "answer_sketch": "按三分量展开得 a×b=(1,-3,-5)，面积 = |a×b| = √35。",
+          "scenario_id": "S.vecalg.vector_product"
+        },
+        {
+          "statement": "已知 A(1,0,0)、B(0,1,0)、C(0,0,1)，求平面 ABC 的一个法向量。",
+          "answer_sketch": "取 AB=(-1,1,0)、AC=(-1,0,1)，叉积得法向量 n=AB×AC=(1,1,1)。",
+          "scenario_id": "S.vecalg.plane_equation"
+        },
+        {
+          "statement": "求以 A(0,0,0)、B(1,1,0)、C(1,0,1) 为顶点的三角形的面积。",
+          "answer_sketch": "AB=(1,1,0)、AC=(1,0,1)，面积 = ½|AB×AC| = ½|(1,-1,-1)| = √3/2。",
+          "scenario_id": "S.vecalg.vector_product"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.mixed_product",
+      "name": "混合积判定共面与求体积",
+      "aliases": [
+        "混合积",
+        "三重积",
+        "scalar triple product",
+        "三向量共面判定"
+      ],
+      "one_liner": "用三向量的混合积 (a×b)·c 判定三向量是否共面，其绝对值等于以三向量为棱的平行六面体体积、六分之一等于四面体体积。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.vector_product",
+        "S.vecalg.position_relation"
+      ],
+      "triggers": [
+        "判定三个向量是否共面，或判断四点是否共面",
+        "判定两条直线是否共面（区分相交与异面）",
+        "求平行六面体或四面体的体积",
+        "出现 (a×b)·c 形式或要求计算三向量的混合积"
+      ],
+      "steps": [
+        "取三向量 a、b、c（共面判定时 c 常取由公共起点出发的第三个向量）",
+        "计算混合积 (a×b)·c，可先叉积再点乘，也可写成 3×3 行列式",
+        "共面判定：混合积为 0 则三向量共面（对应四点共面、两直线共面）",
+        "体积计算：|(a×b)·c| 为平行六面体体积，再除以 6 得四面体体积"
+      ],
+      "preconditions": [
+        "三个向量均由空间点或方向确定，且取自同一几何对象"
+      ],
+      "not_applicable": [
+        "只判定两向量平行用叉积即可，不必用混合积",
+        "求平行四边形面积用叉积的模，不涉及混合积",
+        "共面问题之外的夹角、投影计算不用混合积"
+      ],
+      "pitfalls": [
+        "把'混合积为零'误解为两两平行，实为三向量共面",
+        "三向量排列顺序不同会使混合积变号（求体积时需取绝对值）",
+        "求四面体体积时忘记除以 6",
+        "判定四点共面时起点不统一，导致所取向量不是从同一点出发而算错"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.cross_product",
+          "note": "混合积需先算叉积再与第三向量点乘"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "异面直线判定（混合积不为 0）与四面体体积是典型考法；计算时统一以同一点为起点取三个向量，可减少符号错误。",
+      "example_problems": [
+        {
+          "statement": "判断向量 a=(1,0,0)、b=(0,1,0)、c=(1,1,0) 是否共面。",
+          "answer_sketch": "a×b=(0,0,1)，与 c 点乘得 (a×b)·c=0，故三向量共面。",
+          "scenario_id": "S.vecalg.vector_product"
+        },
+        {
+          "statement": "已知 A(0,0,0)、B(1,0,0)、C(0,1,0)、D(1,1,0)，判断这四点是否共面。",
+          "answer_sketch": "取 AB=(1,0,0)、AC=(0,1,0)、AD=(1,1,0)，混合积为 0，四点共面。",
+          "scenario_id": "S.vecalg.position_relation"
+        },
+        {
+          "statement": "求以 A(0,0,0)、B(1,0,0)、C(0,1,0)、D(0,0,1) 为顶点的四面体体积。",
+          "answer_sketch": "以 AB、AC、AD 为棱，体积 = |(AB×AC)·AD|/6 = 1/6。",
+          "scenario_id": "S.vecalg.vector_product"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.dot_product",
+      "name": "数量积求夹角、投影与垂直判定",
+      "aliases": [
+        "数量积",
+        "点积",
+        "内积",
+        "dot product",
+        "标量积"
+      ],
+      "one_liner": "用数量积 a·b=|a||b|cosθ 求两向量夹角的余弦，用 a·b/|b| 求 a 在 b 上的投影，用 a·b=0 判定垂直。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.vector_product",
+        "S.vecalg.position_relation",
+        "S.vecalg.distance_angle"
+      ],
+      "triggers": [
+        "要求两个向量之间的夹角（进而求线线、线面、面面夹角）",
+        "要求某一向量在另一向量方向上的投影或投影向量",
+        "要判定两向量垂直、两直线垂直，或直线与平面平行（方向向量与法向量垂直）",
+        "题目给出 |a|、|b|、a·b 等量，要求其余有关的模或夹角"
+      ],
+      "steps": [
+        "用坐标写出两向量并计算数量积 a·b = a_x b_x + a_y b_y + a_z b_z",
+        "分别求出两向量的模 |a|、|b|",
+        "夹角：cosθ = a·b/(|a||b|)；垂直判定：看 a·b 是否为 0",
+        "投影：a 在 b 方向上的投影为 a·b/|b|"
+      ],
+      "preconditions": [
+        "两向量坐标已知，或可由几何关系先求得"
+      ],
+      "not_applicable": [
+        "求面积、判定平行、求法向量时应改用叉积",
+        "判定三向量共面或求体积时应改用混合积",
+        "求异面直线的公垂线方向用叉积，而不是数量积"
+      ],
+      "pitfalls": [
+        "直线与直线、平面与平面的夹角公式忘取绝对值，导致出现钝角",
+        "直线与平面夹角应取 sinθ=|s·n|/(|s||n|)，误用 cos 公式",
+        "把投影（一个可正可负的实数）与投影向量混为一谈",
+        "把 a·b 当成向量，实际结果是一个实数"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.distance_formula",
+          "note": "点到平面的距离即向量在法向量上投影的绝对值，离不开数量积"
+        },
+        {
+          "type": "compose",
+          "target": "M.normal_direction_relation",
+          "note": "判定平行垂直时以数量积（垂直）与叉积（平行）为工具"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "夹角公式是必考；关键是分清何时用 cos（线线、面面）、何时用 sin（线面），并注意取绝对值。",
+      "example_problems": [
+        {
+          "statement": "求向量 a=(1,2,2) 与 b=(2,1,-2) 的夹角。",
+          "answer_sketch": "a·b = 2+2-4 = 0，故 cosθ=0，两向量夹角为 π/2。",
+          "scenario_id": "S.vecalg.distance_angle"
+        },
+        {
+          "statement": "已知直线方向向量 s=(1,-1,2)、平面法向量 n=(1,1,0)，判断直线与平面的位置关系。",
+          "answer_sketch": "s·n = 1-1+0 = 0，方向向量与法向量垂直，故直线与平面平行（或直线在平面内）。",
+          "scenario_id": "S.vecalg.position_relation"
+        },
+        {
+          "statement": "已知 |a|=3、|b|=2、a·b=3，求 |a+b| 及 a 在 b 方向上的投影。",
+          "answer_sketch": "|a+b|²=|a|²+2a·b+|b|²=9+6+4=19，故 |a+b|=√19；投影为 a·b/|b|=3/2。",
+          "scenario_id": "S.vecalg.vector_product"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.plane_point_normal",
+      "name": "点法式求平面方程",
+      "aliases": [
+        "点法式",
+        "平面的点法式方程",
+        "三点式求平面",
+        "法向量法"
+      ],
+      "one_liner": "已知平面上一点 M0 与平面的法向量 n=(A,B,C)，由 A(x-x0)+B(y-y0)+C(z-z0)=0 写出平面方程，再整理成一般式。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.plane_equation"
+      ],
+      "triggers": [
+        "已知平面上一点及该平面的一个法向量",
+        "已知平面上三个点（可取其连线叉积求法向量）",
+        "已知平面过某点且与已知平面平行（法向量相同）或垂直（法向量满足相应条件）",
+        "题目给出平面上一点以及平面与某直线、某平面的垂直关系"
+      ],
+      "steps": [
+        "确定平面上一个已知点 M0(x0,y0,z0)",
+        "确定法向量 n：直接给出，或由平面上两方向向量叉积得到",
+        "代入点法式 A(x-x0)+B(y-y0)+C(z-z0)=0",
+        "展开合并，整理成一般式 Ax+By+Cz+D=0"
+      ],
+      "preconditions": [
+        "法向量非零，即平面上至少有两个不共线的方向"
+      ],
+      "not_applicable": [
+        "平面过两个已知平面的交线时，用平面束法设参数更省力",
+        "只能确定平面的方向而无法确定平面上任何一点时不适用",
+        "要求的是直线方程而不是平面方程时不用此法"
+      ],
+      "pitfalls": [
+        "法向量取错：用了平面内的方向向量而非垂直于平面的向量",
+        "点法式中坐标代入错误（如把 x-x0 写成 x+x0）",
+        "由三点求法向量时两点连线选择不当，导致叉积为零向量",
+        "写出点法式后忘记整理成一般式或漏写常数项 D"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.cross_product",
+          "note": "当法向量未直接给出时，需用叉积求得"
+        },
+        {
+          "type": "alternative",
+          "target": "M.plane_pencil",
+          "note": "过两平面交线的平面既可用点法式也可用平面束，后者更省力"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "点法式是求平面方程的通法；关键在于先把法向量确定下来，'三点求平面'其实就是叉积求法向量加代入。",
+      "example_problems": [
+        {
+          "statement": "求过点 M(2,-1,3) 且以 n=(1,-2,2) 为法向量的平面方程。",
+          "answer_sketch": "代入点法式得 (x-2)-2(y+1)+2(z-3)=0，整理为 x-2y+2z-10=0。",
+          "scenario_id": "S.vecalg.plane_equation"
+        },
+        {
+          "statement": "求过三点 A(1,0,0)、B(0,1,0)、C(0,0,1) 的平面方程。",
+          "answer_sketch": "取 AB=(-1,1,0)、AC=(-1,0,1)，叉积得法向量 (1,1,1)，点法式化简为 x+y+z=1。",
+          "scenario_id": "S.vecalg.plane_equation"
+        },
+        {
+          "statement": "求过点 M(1,2,1) 且平行于平面 2x-y+3z=5 的平面方程。",
+          "answer_sketch": "两平面法向量相同 (2,-1,3)，代入点法式得 2(x-1)-(y-2)+3(z-1)=0，即 2x-y+3z-3=0。",
+          "scenario_id": "S.vecalg.plane_equation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.plane_pencil",
+      "name": "平面束法",
+      "aliases": [
+        "平面束",
+        "平面束方程",
+        "过交线的平面系"
+      ],
+      "one_liner": "把经过两个已知平面交线的所有平面统一写成 π1+λπ2=0（λ 为参数）的形式，再由附加条件定出 λ，从而免去求交线与法向量。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.plane_equation"
+      ],
+      "triggers": [
+        "所求平面经过两个已知平面的交线",
+        "题目附加条件为'过交线且与某平面垂直/平行/成某角'",
+        "已知两个平面方程，要求一个属于它们平面束的平面",
+        "出现'过两平面交线'并另给一点或一个位置条件"
+      ],
+      "steps": [
+        "写出已知两平面的方程 π1=0、π2=0",
+        "设平面束方程 π1+λπ2=0（注意检验 π2 本身是否被漏掉，必要时改用 μπ1+π2）",
+        "利用附加条件（过某点、法向量垂直/平行等）列方程解出 λ",
+        "把 λ 代回并整理成一般式"
+      ],
+      "preconditions": [
+        "两个已知平面确实相交（法向量不平行），其交线存在"
+      ],
+      "not_applicable": [
+        "两已知平面平行时无公共交线，平面束不适用",
+        "所求平面与两已知平面的交线无关联时不用此法",
+        "已知一点与法向量、可直接写点法式的题目用点法式更快"
+      ],
+      "pitfalls": [
+        "只用 π1+λπ2 形式，漏掉 π2 本身这一解，需单独检验",
+        "未先判断两平面是否相交就直接套用",
+        "用附加条件列方程时把法向量的平行/垂直关系写反",
+        "解出 λ 后忘记代回并化简平面方程"
+      ],
+      "relations": [
+        {
+          "type": "alternative",
+          "target": "M.plane_point_normal",
+          "note": "过交线的平面也可用点法式（取交线上两点加另一点），但平面束通常更省力"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "'过两平面交线'是平面束法的标志性触发语；设好参数后关键是用附加条件解 λ，别漏掉 π2 本身。",
+      "example_problems": [
+        {
+          "statement": "求经过平面 x+y-z+1=0 与 2x-y+z-2=0 的交线，且过点 M(1,1,2) 的平面方程。",
+          "answer_sketch": "设 (x+y-z+1)+λ(2x-y+z-2)=0，代入 M 得 λ=-1，化简为 x-2y+2z-3=0。",
+          "scenario_id": "S.vecalg.plane_equation"
+        },
+        {
+          "statement": "求经过平面 x+z-1=0 与 y-z+1=0 的交线，且过原点 O(0,0,0) 的平面方程。",
+          "answer_sketch": "设 (x+z-1)+λ(y-z+1)=0，代入 O 得 -1+λ=0，λ=1，化简为 x+y=0。",
+          "scenario_id": "S.vecalg.plane_equation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.line_symmetric_parametric",
+      "name": "对称式（参数式）求直线方程",
+      "aliases": [
+        "对称式",
+        "点向式",
+        "参数式",
+        "直线方程的点向式"
+      ],
+      "one_liner": "已知直线上一点 M0 与方向向量 s=(m,n,p)，用 (x-x0)/m=(y-y0)/n=(z-z0)/p 写出对称式，或令其等于 t 得参数式。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.line_equation"
+      ],
+      "triggers": [
+        "已知直线上一点与该直线的方向向量",
+        "已知空间两点（方向向量取两点连线）",
+        "求两平面的交线（方向向量取两法向量的叉积 n1×n2）",
+        "已知直线与某平面垂直（方向向量取平面法向量）或与已知直线平行"
+      ],
+      "steps": [
+        "确定直线上一点 M0(x0,y0,z0)",
+        "确定方向向量 s=(m,n,p)：两点连线，或两平面法向量叉积，或由平行垂直条件定出",
+        "写出对称式 (x-x0)/m=(y-y0)/n=(z-z0)/p（某分量为 0 时就该分量单独写等式）",
+        "需要时引入参数 t，写成参数方程"
+      ],
+      "preconditions": [
+        "方向向量非零，且直线上一点已知"
+      ],
+      "not_applicable": [
+        "题目只要求用两平面联立表示交线、不必化为对称式时可直接保留联立形式",
+        "求平面方程不属于此法",
+        "方向向量无法确定时不适用"
+      ],
+      "pitfalls": [
+        "方向向量取错（用两平面法向量相加而非叉积）",
+        "某个方向分量为 0 时仍硬写分母为该分量的对称式，导致分母为零",
+        "点坐标代入对称式时符号写错",
+        "由两点求方向向量时用错减序（应为终点坐标减起点坐标）"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.cross_product",
+          "note": "两平面交线的方向向量由两法向量的叉积得到"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "exam_notes": "对称式是直线方程的标准形式；'两平面交线'题的关键就是用叉积求方向向量，再补上一点。",
+      "example_problems": [
+        {
+          "statement": "求过点 M(1,-2,3) 且方向向量为 s=(2,0,-1) 的直线方程。",
+          "answer_sketch": "对称式写为 (x-1)/2=(z-3)/(-1)，且 y=-2；参数式为 x=1+2t、y=-2、z=3-t。",
+          "scenario_id": "S.vecalg.line_equation"
+        },
+        {
+          "statement": "求两平面 x+y+z=1 与 x-y+z=0 的交线方程。",
+          "answer_sketch": "方向向量取 n1×n2=(2,0,-2)（可约化为 (1,0,-1)），取交线上一点 (0,1/2,1/2)，写出对称式。",
+          "scenario_id": "S.vecalg.line_equation"
+        },
+        {
+          "statement": "求过点 A(1,2,3) 且与直线（方向向量 s=(1,-1,2)）平行的直线方程。",
+          "answer_sketch": "方向向量相同，得 (x-1)/1=(y-2)/(-1)=(z-3)/2。",
+          "scenario_id": "S.vecalg.line_equation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.normal_direction_relation",
+      "name": "法向量与方向向量判定位置关系",
+      "aliases": [
+        "位置关系判定",
+        "平行与垂直判定",
+        "方向向量法向量关系法"
+      ],
+      "one_liner": "把点、线、面的平行、垂直、相交判定化归为法向量与方向向量之间的平行（成比例）、垂直（数量积为 0）或共面（混合积为 0）关系。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.position_relation"
+      ],
+      "triggers": [
+        "判定两平面平行/垂直/相交，或直线与平面平行/垂直/相交",
+        "判定两直线平行/相交/异面",
+        "判定点是否在平面或直线上",
+        "含参数方程，要求讨论参数取值使平行/垂直/相交成立"
+      ],
+      "steps": [
+        "从方程中提取每个对象的法向量（平面）或方向向量（直线）",
+        "平行判定：两向量对应分量成比例；垂直判定：数量积为 0",
+        "直线与平面平行：方向向量与法向量垂直（s·n=0），再检验直线上一点不在平面内",
+        "两直线关系：方向向量平行时看是否共点（平行或重合）；不平行时用混合积判共面（相交）还是异面"
+      ],
+      "preconditions": [
+        "各对象的方程已给出，能读出其法向量或方向向量"
+      ],
+      "not_applicable": [
+        "只求夹角数值或距离数值时不涉及关系类型的完整判定",
+        "要求写出新的平面或直线方程时不属此法",
+        "两对象无法用线性方程或点向式表示时（如一般曲线）不适用"
+      ],
+      "pitfalls": [
+        "直线与平面平行只检验 s·n=0，漏查直线上的点是否在平面内（否则直线可能在平面内）",
+        "两直线方向向量平行后忘记区分'平行'与'重合'",
+        "把直线与平面垂直误判为方向向量与法向量垂直（应为平行/成比例）",
+        "含参数时分类讨论不全，漏掉重合或异面的边界情形"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.dot_product",
+          "note": "垂直判定以数量积为零为判据"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.cross_product",
+          "note": "平行判定与交线方向常借助叉积"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.mixed_product",
+          "note": "两直线共面/异面的判定用混合积"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "位置关系判定的通用思路是'抓向量、看相关（平行、垂直）'；直线与平面平行务必补查点是否在平面上。",
+      "example_problems": [
+        {
+          "statement": "判断直线 (x-1)/2=(y+1)/1=z/3 与平面 2x+y+3z=5 的位置关系。",
+          "answer_sketch": "方向向量 s=(2,1,3) 与法向量 n=(2,1,3) 成比例，故直线与平面垂直。",
+          "scenario_id": "S.vecalg.position_relation"
+        },
+        {
+          "statement": "判断两平面 x+2y-3z=1 与 2x+4y-6z=5 的位置关系。",
+          "answer_sketch": "法向量 (1,2,-3) 与 (2,4,-6) 成比例，而常数项不成同一比例，故两平面平行但不重合。",
+          "scenario_id": "S.vecalg.position_relation"
+        },
+        {
+          "statement": "判断直线 L1（过点 A(1,0,1)，方向 (1,2,3)）与直线 L2（过点 B(2,1,2)，方向 (2,4,6)）的位置关系。",
+          "answer_sketch": "方向向量成比例；AB=(1,1,1) 与 (1,2,3) 不成比例，故两直线平行但不重合。",
+          "scenario_id": "S.vecalg.position_relation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.distance_formula",
+      "name": "距离公式法（点到平面、点到直线、异面直线）",
+      "aliases": [
+        "距离公式",
+        "点到平面距离公式",
+        "异面直线距离公式"
+      ],
+      "one_liner": "把各类距离化归为向量在法向量上的投影或叉积、混合积与模之比：点到平面 |AM·n|/|n|，点到直线 |s×AM|/|s|，异面直线 |(s1×s2)·M1M2|/|s1×s2|。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.distance_angle"
+      ],
+      "triggers": [
+        "求点到平面的距离、点到直线的距离",
+        "求两平行平面之间、两平行直线之间的距离",
+        "求异面直线之间的距离（及其公垂线）",
+        "题目涉及线段在法向量方向上的投影长度"
+      ],
+      "steps": [
+        "明确所求距离对应的'点—对象'几何关系，取出所需的点与向量",
+        "点到平面：取平面法向量 n 与连向量 AM，算 |AM·n|/|n|",
+        "点到直线：取直线方向向量 s 与连向量 AM，算 |s×AM|/|s|",
+        "异面直线：取两方向向量 s1、s2 与连向量 M1M2，算 |(s1×s2)·M1M2|/|s1×s2|"
+      ],
+      "preconditions": [
+        "能读出平面的法向量、直线的方向向量，以及所需的点或连向量"
+      ],
+      "not_applicable": [
+        "求夹角应使用夹角公式，而非距离公式",
+        "判定位置关系不属此法",
+        "曲面或曲线上的最短距离不属于点线面直线距离公式的范围"
+      ],
+      "pitfalls": [
+        "点到平面公式忘记取绝对值或忘记除以 |n|",
+        "取点 M 时误用了平面上/直线上的点（应取该对象之外的点）",
+        "异面直线距离中两方向向量取反或连向量起点不统一",
+        "把点到平面距离当成有向投影，漏取绝对值"
+      ],
+      "relations": [
+        {
+          "type": "prerequisite",
+          "target": "M.cross_product",
+          "note": "点到直线与异面直线距离都要先算叉积"
+        },
+        {
+          "type": "prerequisite",
+          "target": "M.mixed_product",
+          "note": "异面直线距离的分子是混合积"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "三类距离公式本质都是'投影型'；记忆时抓住'分子取点乘/混合积、分母取模'的结构就不易混。",
+      "example_problems": [
+        {
+          "statement": "求点 M(1,2,3) 到平面 2x-2y+z-3=0 的距离。",
+          "answer_sketch": "d = |2·1-2·2+1·3-3|/√(4+4+1) = |-2|/3 = 2/3。",
+          "scenario_id": "S.vecalg.distance_angle"
+        },
+        {
+          "statement": "求点 M(0,0,1) 到直线 (x-1)/1=y/1=(z-1)/1 的距离。",
+          "answer_sketch": "取 A(1,0,1)、s=(1,1,1)、AM=(-1,0,0)，s×AM=(0,-1,1)，d = |s×AM|/|s| = √2/√3 = √6/3。",
+          "scenario_id": "S.vecalg.distance_angle"
+        },
+        {
+          "statement": "求异面直线 L1（过原点，方向 s1=(1,1,0)）与 L2（过点 A(0,0,1)，方向 s2=(0,1,1)）之间的距离。",
+          "answer_sketch": "s1×s2=(1,-1,1)，连向量 M1M2=(0,0,1)，d = |(s1×s2)·M1M2|/|s1×s2| = 1/√3 = √3/3。",
+          "scenario_id": "S.vecalg.distance_angle"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.angle_formula",
+      "name": "向量法求夹角（线线、线面、面面）",
+      "aliases": [
+        "夹角公式",
+        "两向量夹角公式",
+        "线面角公式"
+      ],
+      "one_liner": "把线线、线面、面面夹角统一用数量积计算：线线 cosθ=|s1·s2|/(|s1||s2|)，线面 sinθ=|s·n|/(|s||n|)，面面 cosθ=|n1·n2|/(|n1||n2|)。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.distance_angle"
+      ],
+      "triggers": [
+        "求两条直线的夹角、直线与平面的夹角、两个平面的夹角",
+        "题目给出方向向量与法向量，要求夹角",
+        "涉及二面角或向量夹角的相关结论",
+        "需要用夹角条件反求方程中的参数"
+      ],
+      "steps": [
+        "判定夹角类型，选取对应公式（线线、面面用 cos，线面用 sin）",
+        "提取方向向量或法向量，计算其数量积与各自的模",
+        "代入公式，注意取绝对值使结果落在 [0, π/2]",
+        "由余弦值或正弦值求角，必要时用反三角函数表示"
+      ],
+      "preconditions": [
+        "各对象的方向向量或法向量已知"
+      ],
+      "not_applicable": [
+        "求距离用距离公式，不用夹角公式",
+        "判定平行垂直关系属位置关系情景",
+        "只求两个普通向量（非线面对象）夹角时可直接用数量积"
+      ],
+      "pitfalls": [
+        "直线与平面夹角误用 cos 公式（应当用 sin）",
+        "忘记取绝对值，导致算出钝角",
+        "方向向量或法向量提取错误，使整个公式失效",
+        "用反三角函数表示时角度范围写错"
+      ],
+      "relations": [
+        {
+          "type": "generalizes",
+          "target": "M.dot_product",
+          "note": "本方法是数量积夹角公式在直线、平面各类对象上的推广形式"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "exam_notes": "夹角题的核心口诀是'线线、面面用 cos，线面用 sin'，并一律取绝对值；二面角还需结合图形判断是锐角还是钝角。",
+      "example_problems": [
+        {
+          "statement": "求直线（方向向量 s=(1,2,2)）与平面 2x-y+2z=1 所成的角。",
+          "answer_sketch": "sinθ = |s·n|/(|s||n|) = |2-2+4|/(3·3) = 4/9，故 θ = arcsin(4/9)。",
+          "scenario_id": "S.vecalg.distance_angle"
+        },
+        {
+          "statement": "求平面 x+2y+2z=1 与平面 2x-y+2z=3 的夹角。",
+          "answer_sketch": "cosθ = |n1·n2|/(|n1||n2|) = |2-2+4|/(3·3) = 4/9，故 θ = arccos(4/9)。",
+          "scenario_id": "S.vecalg.distance_angle"
+        },
+        {
+          "statement": "求直线（方向向量 s1=(1,2,2)）与直线（方向向量 s2=(2,1,2)）的夹角。",
+          "answer_sketch": "cosθ = |s1·s2|/(|s1||s2|) = |2+2+4|/(3·3) = 8/9，故 θ = arccos(8/9)。",
+          "scenario_id": "S.vecalg.distance_angle"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.revolution_surface",
+      "name": "旋转曲面构造法",
+      "aliases": [
+        "旋转曲面",
+        "旋转曲面方程",
+        "母线绕轴旋转"
+      ],
+      "one_liner": "坐标面内的母线曲线绕坐标轴旋转时，把方程中旋转轴对应的坐标保持不变、另一个坐标替换为其与第三坐标的平方和的开方（平方形式），如绕 z 轴把 x² 换成 x²+y²。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.surface_of_revolution"
+      ],
+      "triggers": [
+        "题给某坐标面内一条曲线（母线），要求它绕该面内一坐标轴旋转所得曲面方程",
+        "母线方程只含两个变量，且绕其中一个变量对应的轴旋转",
+        "要求判别某曲面是不是旋转曲面、并指出其旋转轴",
+        "给出曲面方程要求化为旋转曲面的标准形式"
+      ],
+      "steps": [
+        "明确母线所在的坐标面，以及绕哪条坐标轴旋转",
+        "确定旋转轴对应的变量（该变量在旋转过程中保持不变）",
+        "把母线上另一个变量的平方替换为它与第三变量的平方和（绕 z 轴即把 x² 换成 x²+y²）",
+        "整理得到旋转曲面方程；反向判轴时，看方程中哪两个变量以平方和形式出现"
+      ],
+      "preconditions": [
+        "母线位于坐标面内，且绕的是该坐标面内的坐标轴"
+      ],
+      "not_applicable": [
+        "绕空间中任意直线（非坐标轴）旋转时不能直接替换，需先平移旋转坐标系",
+        "母线不在坐标面内的题目",
+        "柱面与锥面的识别不属于本方法"
+      ],
+      "pitfalls": [
+        "替换时搞错哪两个变量取平方和（绕 z 轴应把 x² 替换为 x²+y²，保持不变的是 z）",
+        "忘记只有绕轴的那个变量保持不变",
+        "母线方程含根式时未先平方整理，替换后形式混乱",
+        "把旋转曲面与柱面、锥面混淆，判错曲面类型"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.cylinder_cone_recognition",
+          "note": "识别曲面类型时常需同时区分旋转曲面、柱面与锥面"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "绕坐标轴旋转的替换规律（绕谁谁不变，另一个变量改成平方和）是必记结论，考试中常与柱面、锥面一起考查识别。",
+      "example_problems": [
+        {
+          "statement": "求 xOz 面上的曲线 x²=2z 绕 z 轴旋转所得的曲面方程。",
+          "answer_sketch": "绕 z 轴把 x² 换成 x²+y²，得 x²+y²=2z，为旋转抛物面。",
+          "scenario_id": "S.vecalg.surface_of_revolution"
+        },
+        {
+          "statement": "求 yOz 面上的直线 z=2y 绕 z 轴旋转所得的曲面方程。",
+          "answer_sketch": "由 z=2y 得 z²=4y²，绕 z 轴把 y² 换成 x²+y²，得 z²=4(x²+y²)，为圆锥面。",
+          "scenario_id": "S.vecalg.surface_of_revolution"
+        },
+        {
+          "statement": "求 xOy 面上的椭圆 x²/4+y²/9=1 绕 y 轴旋转所得的曲面方程。",
+          "answer_sketch": "绕 y 轴把 x² 换成 x²+z²，得 (x²+z²)/4+y²/9=1，为旋转椭球面。",
+          "scenario_id": "S.vecalg.surface_of_revolution"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.cylinder_cone_recognition",
+      "name": "柱面与锥面的识别",
+      "aliases": [
+        "柱面识别",
+        "锥面识别",
+        "缺变量判定柱面",
+        "齐次判定锥面"
+      ],
+      "one_liner": "方程中缺少某个变量（对该变量无约束）表示母线平行于该变量所对应坐标轴的柱面；关于 x、y、z 的齐次方程表示顶点在原点的锥面。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.cylinder_cone"
+      ],
+      "triggers": [
+        "曲面方程中缺少某一个变量（如 F(x,y)=0 不含 z）",
+        "方程关于 x、y、z 是齐次的，各项次数相同",
+        "题目要求指出曲面的名称、母线方向或顶点",
+        "出现 x²+y²=R²、y²=2px、z²=a²(x²+y²) 等典型形式"
+      ],
+      "steps": [
+        "观察方程缺少哪些变量：缺 z 则母线平行于 z 轴，为柱面",
+        "判断方程是否关于 x、y、z 齐次：是则为锥面，顶点在原点",
+        "结合二次曲面标准形式确认具体类型（圆柱面、椭圆柱面、抛物柱面、圆锥面等）",
+        "写出母线方向（柱面）或顶点与准线（锥面）"
+      ],
+      "preconditions": [
+        "曲面方程已整理为含 x、y、z 的代数方程"
+      ],
+      "not_applicable": [
+        "三个变量都出现且非齐次时，多为一般二次曲面（如椭球面），不属柱面/锥面",
+        "曲线绕坐标轴旋转的生成题属旋转曲面情景",
+        "求空间曲线在坐标面上的投影属投影情景"
+      ],
+      "pitfalls": [
+        "把缺变量的方程误判为旋转曲面",
+        "齐次性判断错误（只要含常数项即非齐次）",
+        "把柱面的母线方向与准线所在平面搞混",
+        "锥面顶点不在原点时未先平移，直接套用导致误判"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.revolution_surface",
+          "note": "判别曲面类型时两者常需一并考察以区分旋转曲面与柱面、锥面"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "'缺变量即柱面、三变量齐次即锥面'是快速判定的两条经验法则，考试中常以选择或填空题形式出现。",
+      "example_problems": [
+        {
+          "statement": "指出曲面 x²+y²=4 的名称及母线方向。",
+          "answer_sketch": "方程缺 z，为圆柱面，母线平行于 z 轴。",
+          "scenario_id": "S.vecalg.cylinder_cone"
+        },
+        {
+          "statement": "判断曲面 z²=x²+y² 是柱面还是锥面。",
+          "answer_sketch": "方程关于 x、y、z 齐次，为顶点在原点的圆锥面。",
+          "scenario_id": "S.vecalg.cylinder_cone"
+        },
+        {
+          "statement": "判断曲面 y²=2x 的类型并指出母线方向。",
+          "answer_sketch": "方程缺 z，为抛物柱面，母线平行于 z 轴。",
+          "scenario_id": "S.vecalg.cylinder_cone"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    },
+    {
+      "id": "M.projection_method",
+      "name": "投影柱面法（求空间曲线在坐标面上的投影）",
+      "aliases": [
+        "投影柱面法",
+        "曲线投影",
+        "消元求投影"
+      ],
+      "one_liner": "由空间曲线的两个方程消去目标坐标面之外的那个变量，得到投影柱面方程，再与目标坐标面方程联立，即得曲线在该坐标面上的投影。",
+      "block_ids": [
+        "B.vecalg"
+      ],
+      "applies_to_scenarios": [
+        "S.vecalg.curve_projection"
+      ],
+      "triggers": [
+        "求空间曲线在 xOy、yOz 或 zOx 面上的投影曲线",
+        "已知空间曲线由两个曲面方程联立给出",
+        "求某个立体或曲面在坐标面上的投影区域的边界",
+        "题目出现'消去 z 求投影柱面'之类的提示语"
+      ],
+      "steps": [
+        "确定目标坐标面（如求 xOy 面上的投影，则忽略 z）",
+        "由曲线的两个方程消去目标面之外的变量（求 xOy 面投影则消去 z）",
+        "得到投影柱面方程 F(x,y)=0（它是母线平行于 z 轴的柱面）",
+        "与目标坐标面方程 z=0 联立，写出投影曲线（投影到坐标面上时 z=0 常可省略）"
+      ],
+      "preconditions": [
+        "空间曲线由两个曲面方程联立给出，且能消去目标变量"
+      ],
+      "not_applicable": [
+        "只求空间曲线本身（由两曲面联立即为曲线，不必投影）",
+        "求一个点在某坐标面上的投影点坐标属点投影，另有做法",
+        "曲面在坐标面上的投影区域边界若可直接读出，无需消元"
+      ],
+      "pitfalls": [
+        "消错变量（求 xOy 面投影必须消去 z 而不是 x 或 y）",
+        "只写出投影柱面，忘记把它限制在目标坐标面内（应补上 z=0 或说明范围）",
+        "消元时平方开方未讨论正负，丢失曲线的部分分支",
+        "把投影柱面（空间曲面）误当成投影曲线（平面曲线）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.cylinder_cone_recognition",
+          "note": "投影柱面本身就是一个柱面，需借柱面的观点来描述它"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "exam_notes": "求投影的标准流程是'消元得投影柱面，再与坐标面联立'；提醒自己缺哪个变量就等于母线平行于哪条轴的柱面。",
+      "example_problems": [
+        {
+          "statement": "求柱面 x²+y²=1 与平面 z=x+y 的交线在 xOy 面上的投影曲线。",
+          "answer_sketch": "消去 z 后投影柱面即为 x²+y²=1，投影是 xOy 面上的圆 x²+y²=1。",
+          "scenario_id": "S.vecalg.curve_projection"
+        },
+        {
+          "statement": "求球面 x²+y²+z²=4 与柱面 x²+y²=2x 的交线在 xOy 面上的投影。",
+          "answer_sketch": "柱面方程不含 z，即为投影柱面 x²+y²=2x，投影为 xOy 面上的圆 (x-1)²+y²=1。",
+          "scenario_id": "S.vecalg.curve_projection"
+        },
+        {
+          "statement": "求球面 x²+y²+z²=1 与平面 z=1/2 的交线在 xOy 面上的投影曲线。",
+          "answer_sketch": "消去 z 得 x²+y²=3/4，投影为 xOy 面上的圆 x²+y²=3/4。",
+          "scenario_id": "S.vecalg.curve_projection"
+        }
+      ],
+      "origin_block_ids": [
+        "B.vecalg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,518 @@
+{
+  "block_id": "B.defint",
+  "scenarios": [
+    {
+      "id": "S.defint.newton_leibniz_calc",
+      "block_id": "B.defint",
+      "name": "牛顿-莱布尼茨公式计算",
+      "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+      "signals": [
+        "题目给出确定的积分上下限，要求算出一个具体数值",
+        "被积函数能在基本积分表中直接找到原函数，或经换元/分部后能求出原函数",
+        "被积函数在积分区间上连续，区间内没有无界点",
+        "积分上下限都是常数，不随自变量变化",
+        "式子不是 n 项和的极限，也不含需要判敛散的反常积分"
+      ],
+      "recognition_examples": [
+        "∫_0^1 (3x² − 2x + 1) dx",
+        "∫_1^e (ln x)/x dx",
+        "∫_0^{π/2} x sin x dx"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.improper_integral_calc",
+          "how": "若积分限含无穷或 integrand 在区间内无界（如 ∫_1^∞ dx/x²、∫_0^1 dx/√x），须按反常积分先化为极限再算"
+        },
+        {
+          "scenario_id": "S.defint.riemann_sum_limit",
+          "how": "若所求是 n→∞ 的 n 项和极限而非某个定积分的值，属用定积分定义求极限的情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 1,
+          "when_to_prefer": "被积函数在区间上连续且能求出原函数时直接用，是最短路径"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 2,
+          "when_to_prefer": "被积式中能找到现成的内层导数因子（如 (ln x)/x、x e^{x²}）时，先凑微分求出原函数再作差"
+        },
+        {
+          "method_id": "M.integration_by_substitution",
+          "priority": 3,
+          "when_to_prefer": "被积函数含 √(a²−x²)、√(x²+a²) 等二次根式需整体代换时，用三角代换并同步更换积分上下限"
+        },
+        {
+          "method_id": "M.integration_by_parts",
+          "priority": 4,
+          "when_to_prefer": "被积函数是幂×指数、幂×三角的乘积，或含 ln x、反三角因子时，用分部积分求出原函数"
+        },
+        {
+          "method_id": "M.partial_fraction",
+          "priority": 5,
+          "when_to_prefer": "被积函数是有理分式且分母可因式分解时，先部分分式分解再逐项作差"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.symmetry_interval",
+      "block_id": "B.defint",
+      "name": "对称区间奇偶简化",
+      "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+      "signals": [
+        "积分区间形如 [−a,a]，关于原点对称",
+        "被积函数是奇函数或偶函数，或含 x 的奇次/偶次幂、sin/cos 等奇偶性明显的因子",
+        "被积函数可拆成奇部与偶部之和（如 x³ + x²、x + √(a²−x²)）",
+        "直接积分运算量大，但对称性可大量消项"
+      ],
+      "recognition_examples": [
+        "∫_{−1}^{1} x³ cos x dx",
+        "∫_{−π}^{π} (x² sin x + 1) dx",
+        "∫_{−2}^{2} (x + √(4 − x²)) dx"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.newton_leibniz_calc",
+          "how": "区间不对称（如 [0,a]、[a,b]）时无法用奇偶消项，只能按普通定积分计算"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.symmetry",
+          "priority": 1,
+          "when_to_prefer": "区间关于原点对称且被积函数（或拆出的部分）能判断奇偶性时的首选，可一步消去大量项"
+        },
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 2,
+          "when_to_prefer": "消去奇部后剩余偶部（或非对称部分）仍需算值，用公式计算剩余积分"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.variable_limit_derivative",
+      "block_id": "B.defint",
+      "name": "变限积分求导",
+      "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+      "signals": [
+        "函数由积分定义，且其积分上限或下限含变量 x",
+        "被积函数以 t 为积分变量，而函数的外部自变量为 x",
+        "题目要求对该积分函数求导，或求含变限积分的导数表达式",
+        "常与 0/0 型极限一起出现（分子或分母含变限积分）"
+      ],
+      "recognition_examples": [
+        "设 F(x) = ∫_0^{x²} sin t dt，求 F'(x)",
+        "求 lim_{x→0} (∫_0^x ln(1+t) dt)/x²",
+        "设 F(x) = ∫_x^{x²} e^{−t²} dt，求 F'(x)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.newton_leibniz_calc",
+          "how": "上下限均为常数时积分是常数，属普通定积分计算，不需要求导"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.variable_limit_integral",
+          "priority": 1,
+          "when_to_prefer": "上下限含变量时必选，直接套变限求导法则；下限为变量时先交换上下限补负号"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 2,
+          "when_to_prefer": "极限式中出现变限积分且代入为 0/0 型时，对分子分母分别求导后用洛必达"
+        },
+        {
+          "method_id": "M.equiv_infinitesimal",
+          "priority": 3,
+          "when_to_prefer": "变限积分出现标准无穷小结构（如 ∫_0^x sin t dt 与 x²/2 等价）时，用等价替换化简"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.piecewise_absolute",
+      "block_id": "B.defint",
+      "name": "分段函数与含绝对值的定积分",
+      "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+      "signals": [
+        "被积函数含绝对值（如 |x − 1|、|sin x|）或取整符号 [x]",
+        "被积函数由若干段不同表达式给出",
+        "被积函数含 max/min，或含需要按符号讨论的因子",
+        "积分区间跨过分段点或绝对值的零点"
+      ],
+      "recognition_examples": [
+        "∫_0^2 |x − 1| dx",
+        "∫_0^{2π} |sin x| dx",
+        "∫_{−1}^{2} f(x) dx，其中 f(x) = x²（x ≤ 0）、f(x) = x（x > 0）"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.newton_leibniz_calc",
+          "how": "被积函数在区间上连续且无需分段讨论、一处即可积完时，属普通定积分计算"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 1,
+          "when_to_prefer": "在分界点或绝对值零点处拆区间、逐段去绝对值后，对每段用公式计算，是本情景的基本框架"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 2,
+          "when_to_prefer": "某一段被积式含可凑出的内层导数因子时，对该段凑微分求出原函数"
+        },
+        {
+          "method_id": "M.integration_by_substitution",
+          "priority": 3,
+          "when_to_prefer": "某一段含二次根式需整体代换时，对该段用三角代换或根式代换"
+        },
+        {
+          "method_id": "M.symmetry",
+          "priority": 4,
+          "when_to_prefer": "分段或绝对值函数在对称区间上具有奇偶性（如 |x|、|sin x|）时，先利用对称性把区间减半"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.riemann_sum_limit",
+      "block_id": "B.defint",
+      "name": "用定积分定义求 n 项和极限",
+      "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+      "signals": [
+        "极限为 n→∞ 时的 n 项和",
+        "和式可提出公共因子 1/n（或 (b − a)/n），其余部分只通过 k/n 变化",
+        "第 k 项结构统一，形如 f(k/n)",
+        "直接求和困难，但 k/n 明显是一个区间上的采样点"
+      ],
+      "recognition_examples": [
+        "lim_{n→∞} (1/n)(sin(π/n) + sin(2π/n) + ⋯ + sin(nπ/n))",
+        "lim_{n→∞} (1/n)Σ_{k=1}^n √(1 + k/n)",
+        "lim_{n→∞} Σ_{k=1}^n n/(n² + k²)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.limit.n_term_sum",
+          "how": "若和式无法提出统一的 1/n 与 k/n 采样点（如分母为 n² + k），则不能化为黎曼和，应改用夹逼准则（属极限板块的情景）"
+        },
+        {
+          "scenario_id": "S.defint.newton_leibniz_calc",
+          "how": "本情景的入口是“识别黎曼和”，最终虽然也用定积分计算，但触发信号是 n 项和极限而非直接给出的定积分"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.riemann_sum_limit",
+          "priority": 1,
+          "when_to_prefer": "能提出 1/n 公共因子并识别出 f(k/n) 时的首选，直接化为 ∫_0^1 f(x)dx 再计算"
+        },
+        {
+          "method_id": "M.squeeze_theorem",
+          "priority": 2,
+          "when_to_prefer": "和式不能精确凑成黎曼和、但可把整体夹在两个极限相同的和之间时使用"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 3,
+          "when_to_prefer": "需要构造夹逼的上下界（如统一放大或缩小分母）时，先放缩再配合夹逼"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.improper_integral_calc",
+      "block_id": "B.defint",
+      "name": "反常积分计算",
+      "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+      "signals": [
+        "积分上限或下限为无穷大",
+        "被积函数在积分区间内某点无界（如 1/√x 在 x→0⁺、1/(x − 1)² 在 x = 1）",
+        "题目要求“计算”该反常积分的值（而非仅判敛散）",
+        "收敛前提下原函数可求，或积分可经分部、换元处理"
+      ],
+      "recognition_examples": [
+        "∫_1^{+∞} dx/x²",
+        "∫_0^1 dx/√x",
+        "∫_0^{+∞} x e^{−x} dx"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.newton_leibniz_calc",
+          "how": "积分限有限且被积函数有界时为普通定积分，不需取极限"
+        },
+        {
+          "scenario_id": "S.defint.improper_convergence",
+          "how": "本情景要求算出反常积分的值，后者只需判断其敛散性"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 1,
+          "when_to_prefer": "原函数可求时的首选：先用参数（如 t 或 R）代替无穷限或瑕点，求原函数后对该参数取极限"
+        },
+        {
+          "method_id": "M.integration_by_parts",
+          "priority": 2,
+          "when_to_prefer": "被积函数含 e^{−x} 与多项式乘积，或含 ln、反三角因子时，用分部积分求出原函数再取极限"
+        },
+        {
+          "method_id": "M.first_substitution",
+          "priority": 3,
+          "when_to_prefer": "被积式中含可凑出的内层导数因子（如 e^{−x²}·x）时，先凑微分求原函数再取极限"
+        },
+        {
+          "method_id": "M.partial_fraction",
+          "priority": 4,
+          "when_to_prefer": "有理分式型的反常积分且分母可因式分解时，先部分分式再逐项求极限"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.improper_convergence",
+      "block_id": "B.defint",
+      "name": "反常积分敛散性判断",
+      "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+      "signals": [
+        "题目要求判断反常积分“收敛还是发散”，而非求具体值",
+        "被积函数与原函数难以求出，或被积函数是 1/x^p 型",
+        "被积函数非负，形态与已知敛散性的标准积分接近",
+        "可能出现多个奇点（无穷限与瑕点同时存在）"
+      ],
+      "recognition_examples": [
+        "判断 ∫_1^{+∞} (x + 1)/(x³ + 2) dx 的敛散性",
+        "判断 ∫_0^1 dx/x^{1/3} 的敛散性",
+        "判断 ∫_1^{+∞} dx/(x ln x) 的敛散性"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.improper_integral_calc",
+          "how": "若原函数易求出且题目要求值，属反常积分计算；本情景只要求敛散性结论"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.comparison_test",
+          "priority": 1,
+          "when_to_prefer": "被积函数非负且与 1/x^p 等标准积分同阶时的首选，用极限比较法最快"
+        },
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 2,
+          "when_to_prefer": "原函数可求时，直接算出含参极限：极限为有限值则收敛，为无穷则发散"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 3,
+          "when_to_prefer": "需用一般比较法时，先用放缩建立被积函数与标准对象的大小关系"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.integral_inequality",
+      "block_id": "B.defint",
+      "name": "定积分等式与不等式的证明",
+      "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+      "signals": [
+        "命题形式是“证明 ∫_a^b … = …”或“证明 ∫_a^b … ≥/≤ …”",
+        "结论中出现中值点 ξ，形如 ∫_a^b f(x)dx = f(ξ)(b − a)",
+        "含变限积分函数，需对它求导研究单调性",
+        "需要估计积分值的大小（利用被积函数的有界性或单调性）"
+      ],
+      "recognition_examples": [
+        "设 f 在 [0,1] 上连续，证明存在 ξ∈[0,1] 使 ∫_0^1 f(x)dx = f(ξ)",
+        "设 f 在 [a,b] 上单调增加，证明 ∫_a^b x f(x)dx ≥ ((a + b)/2)∫_a^b f(x)dx",
+        "证明当 x > 0 时 ∫_0^x ln(1 + t) dt < x ln(1 + x)"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.inequality_proof",
+          "how": "不含定积分、纯用导数工具证明的不等式属中值定理板块；含定积分（尤其变限积分、积分中值）的归本情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.variable_limit_integral",
+          "priority": 1,
+          "when_to_prefer": "最通用的入口：构造变限积分函数 F(x) = ∫_a^x f(t)dt 并求导，再用单调性或中值定理证明"
+        },
+        {
+          "method_id": "M.integral_mean_value_theorem",
+          "priority": 2,
+          "when_to_prefer": "结论含 f(ξ)(b − a) 形式、需把积分换成中值点函数值时，直接用积分中值定理"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 3,
+          "when_to_prefer": "需用被积函数的上/下界或单调性对积分作放缩估计（如 m(b − a) ≤ ∫f ≤ M(b − a)）时使用"
+        },
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 4,
+          "when_to_prefer": "结论无法直接套中值定理、需要构造合适辅助函数（常含变限积分）时使用"
+        },
+        {
+          "method_id": "M.monotonicity_analysis",
+          "priority": 5,
+          "when_to_prefer": "构造出辅助函数后，用导数判断其单调性以完成不等式证明"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.plane_area",
+      "block_id": "B.defint",
+      "name": "平面图形面积",
+      "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+      "signals": [
+        "题目给出曲线与直线，要求求所围图形的面积",
+        "出现“由 … 围成”“所围区域”等表述",
+        "需要先求曲线交点以确定积分上下限或分段边界",
+        "图形边界可用直角坐标（或极坐标）表示"
+      ],
+      "recognition_examples": [
+        "求由 y = x² 与 y = x 所围图形的面积",
+        "求由 y = ln x、x 轴与直线 x = e 所围图形的面积",
+        "求心形线 ρ = a(1 + cos θ) 所围图形的面积"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.geometric_application",
+          "how": "空间立体体积或需用二重积分计算的面积属重积分板块；本情景指一元平面图形面积"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.element_method",
+          "priority": 1,
+          "when_to_prefer": "面积类问题的通用入口：先画图定上下边界并求交点，取微元 dA = (上 − 下)dx 后积分"
+        },
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 2,
+          "when_to_prefer": "微元建立面积积分后，用公式算出结果"
+        },
+        {
+          "method_id": "M.symmetry",
+          "priority": 3,
+          "when_to_prefer": "图形关于坐标轴对称时，只算一半再乘 2"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.solid_volume",
+      "block_id": "B.defint",
+      "name": "旋转体体积",
+      "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+      "signals": [
+        "题目含“绕 x 轴/y 轴旋转”“旋转所得”等表述",
+        "要求旋转体的体积",
+        "需要确定参与旋转的平面图形边界与旋转轴",
+        "可能无内孔（圆盘）或有内孔（垫圈）"
+      ],
+      "recognition_examples": [
+        "求 y = √x、x = 0、x = 4、y = 0 围成图形绕 x 轴旋转所得旋转体体积",
+        "求 y = x² 与 y = x 围成图形绕 x 轴旋转所得旋转体体积",
+        "求 y = x²、y = 1、x = 0 围成图形绕 y 轴旋转所得旋转体体积"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.plane_area",
+          "how": "面积只求平面图形的大小，不涉及绕轴旋转；体积需写出旋转体的圆盘/垫圈微元"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.element_method",
+          "priority": 1,
+          "when_to_prefer": "核心手法：写出圆盘/垫圈微元 dV = π(外半径² − 内半径²)dx（或柱壳微元）后积分"
+        },
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 2,
+          "when_to_prefer": "建立体积积分后，用公式算出结果"
+        },
+        {
+          "method_id": "M.symmetry",
+          "priority": 3,
+          "when_to_prefer": "旋转体由对称图形生成时，利用对称性把积分区间减半"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.arc_length_surface",
+      "block_id": "B.defint",
+      "name": "弧长与旋转曲面面积",
+      "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+      "signals": [
+        "题目要求曲线的弧长（“弧长”“曲线长度”）",
+        "题目要求曲线绕轴旋转所得旋转曲面的面积（“侧面积”“旋转曲面面积”）",
+        "曲线以显式 y = f(x)、参数式 (x(t), y(t)) 或极坐标 ρ = ρ(θ) 给出",
+        "式子中会出现弧微元 ds 或 √(1 + y'²) 结构"
+      ],
+      "recognition_examples": [
+        "求 y = x^{3/2} 在 [0,1] 上的弧长",
+        "求摆线 x = a(t − sin t)、y = a(1 − cos t) 一拱的弧长",
+        "求 y = x² 在 [0,1] 上绕 x 轴旋转所得曲面的面积"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.defint.plane_area",
+          "how": "平面图形面积不含弧长与曲面面积；本情景的微元是弧长微元 ds 或曲面微元 dS"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.element_method",
+          "priority": 1,
+          "when_to_prefer": "核心手法：按曲线给出形式（显式/参数/极坐标）写出弧微元 ds，再据旋转半径写出曲面微元 dS = 2π|y|ds 后积分"
+        },
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 2,
+          "when_to_prefer": "建立弧长/面积积分后，用公式（必要时先换元化简含 √ 的被积函数）算出结果"
+        }
+      ]
+    },
+    {
+      "id": "S.defint.physics_application",
+      "block_id": "B.defint",
+      "name": "物理应用（功/压力/形心等）",
+      "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+      "signals": [
+        "题目是物理背景：变力沿直线做功、液体对薄板的压力、平面薄片的形心/质心、转动惯量等",
+        "所求物理量具有对位置区间的可加性",
+        "需要先建立坐标系并写出该物理量的微元",
+        "常与“由 … 围成的薄片”“水深 … m”“弹簧伸长 …”等表述一起出现"
+      ],
+      "recognition_examples": [
+        "求弹簧由自然长度压缩 a 所做的功（弹力 F = kx）",
+        "求半径为 R 的半圆形闸门（顶边与水面齐平）一侧所受的液体压力",
+        "求由 y = x² 与 y = x 围成的均匀薄片的形心坐标"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.multiint.physical_application",
+          "how": "涉及空间物体（用三重积分求）的质心、转动惯量属重积分板块；本情景为平面薄片与一维区间上的物理量"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.element_method",
+          "priority": 1,
+          "when_to_prefer": "核心手法：建立坐标系后写出物理量微元（dW = F(x)dx、dP = γ·h(x)·L(x)dx、dM = ρ·dA 等）再积分"
+        },
+        {
+          "method_id": "M.newton_leibniz",
+          "priority": 2,
+          "when_to_prefer": "由微元建立积分后，用公式算出结果"
+        },
+        {
+          "method_id": "M.symmetry",
+          "priority": 3,
+          "when_to_prefer": "薄片或构件对称时，由对称性直接判定形心位置或合力方向（位于对称轴上），减少计算"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,438 @@
+{
+  "block_id": "B.mvt",
+  "scenarios": [
+    {
+      "id": "S.mvt.rolle_equality",
+      "block_id": "B.mvt",
+      "name": "证明含中值的等式（罗尔型）",
+      "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+      "signals": [
+        "结论形态是“证明存在 ξ∈(a,b)，使得……”，出现中值点 ξ",
+        "结论含有 f'(ξ)，且经整理可写成“H'(ξ)=0”（H 为某个构造函数）",
+        "区间端点函数值相等 f(a)=f(b)，或可构造出端点值相等的辅助函数",
+        "题干明确给出函数在闭区间连续、在开区间可导",
+        "结论只含一个中值点 ξ，不含 f(b)−f(a) 之类的端点差商"
+      ],
+      "recognition_examples": [
+        "设 f 在 [0,2] 连续、(0,2) 可导且 f(0)=f(2)，证明存在 ξ∈(0,2) 使 f'(ξ)=0",
+        "设 f(1)=0，证明存在 ξ∈(0,1) 使 2ξf(ξ)+ξ²f'(ξ)=0",
+        "若 f(a)=f(b)，证明区间 (a,b) 内存在使导数等于零的点"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.lagrange_cauchy_equality",
+          "how": "罗尔型端点函数值相等或结论可化为某函数导数为零；拉格朗日/柯西型端点值一般不相等，结论含 f(b)−f(a) 的差商或两个函数导数之比"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.rolle_theorem",
+          "priority": 1,
+          "when_to_prefer": "题干已直接给出 f(a)=f(b) 或端点函数值显然相等，且结论就是 f'(ξ)=0 时，直接对 f 使用罗尔定理最快"
+        },
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 2,
+          "when_to_prefer": "要证的式子不是 f'(ξ)=0 的原始形式（含 x 的多项式因子或指数因子）时，先构造 F 使 F'=所证表达式，再用罗尔定理"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.lagrange_cauchy_equality",
+      "block_id": "B.mvt",
+      "name": "证明含中值的等式（拉格朗日/柯西型）",
+      "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+      "signals": [
+        "结论含端点差商：(f(b)−f(a))/(b−a) 与 f'(ξ) 建立等式",
+        "结论含两个函数增量之比 [f(b)−f(a)]/[g(b)−g(a)] 与 f'(ξ)/g'(ξ)（柯西型）",
+        "结论可整理为含 f'(ξ) 与 f(b)−f(a) 的组合式，如 f'(ξ)=λ·[f(b)−f(a)]",
+        "端点函数值一般不相等，无法直接套用罗尔定理",
+        "题干给出函数在闭区间连续、开区间可导（柯西型还要求分母函数导数非零）"
+      ],
+      "recognition_examples": [
+        "f 在 [a,b] 连续可导，证明存在 ξ∈(a,b) 使 f(b)−f(a)=f'(ξ)(b−a)",
+        "设 g(x)=x²，证明存在 ξ∈(a,b) 使 [f(b)−f(a)]/(b²−a²)=f'(ξ)/(2ξ)",
+        "证明存在 ξ∈(0,1) 使 f'(ξ)=2ξ[f(1)−f(0)]"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.rolle_equality",
+          "how": "若 f(a)=f(b) 且结论就是 f'(ξ)=0，属罗尔型；若端点值不等、结论含差商或双函数比，则属本例"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.lagrange_mvt",
+          "priority": 1,
+          "when_to_prefer": "结论只涉及一个函数的增量与导数 f'(ξ)，直接把 f(b)−f(a) 写成 f'(ξ)(b−a) 即可"
+        },
+        {
+          "method_id": "M.cauchy_mvt",
+          "priority": 2,
+          "when_to_prefer": "结论中出现两个函数增量之比或两函数导数之比时，选用柯西中值定理（注意分母函数导数非零）"
+        },
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 3,
+          "when_to_prefer": "结论形式不标准、无法直接套公式时，构造辅助函数把问题化成可对某函数使用拉格朗日或柯西定理的形式"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.inequality_proof",
+      "block_id": "B.mvt",
+      "name": "证明不等式",
+      "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+      "signals": [
+        "题面为“证明：当 x 落在某范围时，某表达式 > 或 < 另一表达式”",
+        "不等式两侧是初等函数（指数、对数、三角、幂函数）的组合",
+        "结论要求在区间上恒成立，而不是求某一点的具体值",
+        "可能含参数，需要按参数范围分类讨论",
+        "常需借助函数单调性、最值或中值定理来论证"
+      ],
+      "recognition_examples": [
+        "证明当 x>0 时 ln(1+x) < x",
+        "证明当 0<x<1 时 (1+x)ln(1+x) > x",
+        "证明对任意实数 a、b 有 |arctan a − arctan b| ≤ |a − b|"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.identity_proof",
+          "how": "不等式要求两侧保持大小关系（>、≥、<、≤）；恒等式要求两侧处处相等"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 1,
+          "when_to_prefer": "形如 f(x)>g(x) 的不等式，先令 F=f−g，用导数判断 F 的单调性或最小值是否非负，是最通用的思路"
+        },
+        {
+          "method_id": "M.inequality_scaling",
+          "priority": 2,
+          "when_to_prefer": "两侧含已知标准不等式（如 sin x<x、ln(1+x)<x）可直接放缩，或需把量夹在上下界之间时优先使用"
+        },
+        {
+          "method_id": "M.lagrange_mvt",
+          "priority": 3,
+          "when_to_prefer": "不等式中出现 f(b)−f(a) 结构，或可对差商作估计（如含绝对值差）时，用拉格朗日中值定理更直接"
+        },
+        {
+          "method_id": "M.taylor_expansion",
+          "priority": 4,
+          "when_to_prefer": "需要精确到高阶项（含 x²/2 之类的精细估计），或放缩、单调性都不好处理时，用带拉格朗日余项的泰勒公式"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.equation_root",
+      "block_id": "B.mvt",
+      "name": "方程根的存在性与唯一性",
+      "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+      "signals": [
+        "题目问“方程 f(x)=0 有几个实根/至少有几个根”",
+        "要求“证明存在唯一 ξ 使 f(ξ)=0”",
+        "函数连续且可找出函数值异号的两个点",
+        "含参数的方程要求讨论根个数与参数取值的关系",
+        "常需结合单调性、极值或最值分析来确定根的个数"
+      ],
+      "recognition_examples": [
+        "证明方程 x·e^x = 1 在 (0,1) 内有唯一实根",
+        "讨论方程 x³ − 3x + a = 0 的实根个数随 a 的变化",
+        "证明方程 x = e^{−x} 有唯一实根"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.identity_proof",
+          "how": "方程根是求零点个数（f(x)=0 的解）；恒等式是证明两个函数在区间上处处相等"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.zero_point_theorem",
+          "priority": 1,
+          "when_to_prefer": "只需证明“至少有一个根”时，先找函数值异号的端点或特殊点，用零点存在定理证存在性是第一步"
+        },
+        {
+          "method_id": "M.monotonicity_analysis",
+          "priority": 2,
+          "when_to_prefer": "证“至多一个根（唯一性）”时，用导数说明函数严格单调，是首选思路"
+        },
+        {
+          "method_id": "M.rolle_theorem",
+          "priority": 3,
+          "when_to_prefer": "不便直接判断单调性、但可假设有两个根时，用罗尔定理导出矛盾来证明唯一性"
+        },
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 4,
+          "when_to_prefer": "含参数方程要求讨论根个数时，构造目标函数并结合其极值/最值的符号来分段讨论"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.identity_proof",
+      "block_id": "B.mvt",
+      "name": "证明恒等式",
+      "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+      "signals": [
+        "题面为“证明：对一切 x∈I，某表达式 = 另一表达式”",
+        "两侧含反三角函数、对数等的组合，直接化简为同一形式较困难",
+        "结论在区间上处处成立，而非只在某一个点成立",
+        "可通过证明差函数的导数恒为零且在某点取零来完成"
+      ],
+      "recognition_examples": [
+        "证明当 x>0 时 arctan x + arctan(1/x) = π/2",
+        "证明当 0<x<1 时 2arctan x = arctan(2x/(1−x²))",
+        "证明对一切 x∈[−1,1] 有 arcsin x + arccos x = π/2"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.inequality_proof",
+          "how": "恒等式证两侧相等；不等式证两侧的大小关系"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 1,
+          "when_to_prefer": "令 F 为两侧之差，若求得 F'≡0 且在某点 F=0，即可得恒等式，是最常用的方法"
+        },
+        {
+          "method_id": "M.lagrange_mvt",
+          "priority": 2,
+          "when_to_prefer": "需论证“导数为零的函数必为常数”时，用拉格朗日中值定理的推论，为上述做法提供理论依据"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.monotonicity_extremum",
+      "block_id": "B.mvt",
+      "name": "单调性与极值",
+      "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+      "signals": [
+        "题目要求“求单调区间”“讨论单调性”或“求极值”",
+        "问题与一阶导数 f' 的零点和符号变号直接相关",
+        "含参数时需按参数取值讨论 f' 的符号",
+        "常要求以列表形式呈现区间、f' 符号与 f 的增减"
+      ],
+      "recognition_examples": [
+        "求 f(x)=x³−3x²+1 的单调区间与极值",
+        "讨论 f(x)=x³−ax 的单调性",
+        "求 f(x)=x+1/x（x>0）的极值"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.max_min_application",
+          "how": "极值是局部性质（在邻域内比较）；最值是区间上的整体性质，需比较极值与端点值"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.monotonicity_analysis",
+          "priority": 1,
+          "when_to_prefer": "题目围绕 f' 的符号或要求极值时，求 f'、定号、列表即可确定单调区间与极值点"
+        },
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 2,
+          "when_to_prefer": "当问题转化为“证明某函数在区间上单调/非负”，或需借助辅助函数的增减性间接论证时使用"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.max_min_application",
+      "block_id": "B.mvt",
+      "name": "最值及其应用",
+      "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+      "signals": [
+        "题目问“最大值/最小值”“最优方案”“最大面积/最小成本/最大利润”等",
+        "给出闭区间，或实际问题给出变量的可行取值范围",
+        "需要比较区间端点的函数值与区间内的极值",
+        "应用题需先设变量、建立目标函数并写出其定义域"
+      ],
+      "recognition_examples": [
+        "求 f(x)=x³−3x+2 在 [−2,2] 上的最大值与最小值",
+        "用长为 2L 的绳子围成矩形，求使面积最大的边长",
+        "求内接于半径为 R 的圆中的矩形面积的最大值"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.monotonicity_extremum",
+          "how": "问极值属单调性与极值情景；问区间上的最大/最小值或实际最优问题属本例"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.monotonicity_analysis",
+          "priority": 1,
+          "when_to_prefer": "闭区间上求最值：先求内部极值点，再与端点函数值比较取最大/最小，是标准做法"
+        },
+        {
+          "method_id": "M.construct_auxiliary_function",
+          "priority": 2,
+          "when_to_prefer": "实际应用问题需先依题意设变量并建立目标函数（如面积、成本关于边长的函数），再求其最值"
+        },
+        {
+          "method_id": "M.model_objective_function",
+          "priority": 3,
+          "when_to_prefer": "应用题先列出变量、约束、目标函数和区间，再求最值。"
+        },
+        {
+          "method_id": "M.complete_square",
+          "priority": 4,
+          "when_to_prefer": "目标为二次式时先配方，并检查顶点是否位于允许区间。"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.concavity_inflection",
+      "block_id": "B.mvt",
+      "name": "凹凸性与拐点",
+      "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+      "signals": [
+        "题目要求判断曲线的凹凸区间或求拐点",
+        "问题与二阶导数 f'' 的符号及其变号点直接相关",
+        "可能要求由凹凸性证明不等式或为作图提供依据",
+        "拐点候选为 f''=0 或 f'' 不存在的点"
+      ],
+      "recognition_examples": [
+        "求曲线 y = x³−3x² 的凹凸区间与拐点",
+        "确定曲线 y = x⁴ 是否有拐点",
+        "讨论曲线 y = x/(1+x²) 的凹凸性"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.monotonicity_extremum",
+          "how": "凹凸性由二阶导数 f'' 的符号判断；单调性与极值由一阶导数 f' 的符号判断"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.concavity_test",
+          "priority": 1,
+          "when_to_prefer": "题目直接要求凹凸区间或拐点时，求 f''、定号、找变号点即可，是首要方法"
+        },
+        {
+          "method_id": "M.monotonicity_analysis",
+          "priority": 2,
+          "when_to_prefer": "题目要求综合列表分析函数性态（同时给出单调性与凹凸性）时，需与一阶导数的符号分析配合使用"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.asymptote",
+      "block_id": "B.mvt",
+      "name": "渐近线",
+      "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+      "signals": [
+        "题目要求求曲线的渐近线方程",
+        "函数在无定义点附近函数值趋于无穷",
+        "x 趋于无穷时函数趋于常数或趋于一次函数",
+        "常需分别讨论 x→+∞ 与 x→−∞ 两个方向"
+      ],
+      "recognition_examples": [
+        "求曲线 y = (x²+x)/(x−1) 的全部渐近线",
+        "求曲线 y = x·arctan x 的渐近线",
+        "求曲线 y = x + 1/x 的渐近线"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.function_graphing",
+          "how": "仅要求渐近线属本情景；要求综合单调性、凹凸性、渐近线并画出图像属函数作图情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.find_asymptote",
+          "priority": 1,
+          "when_to_prefer": "题目专门求渐近线时，按铅直、水平、斜三类逐项考察定义点与无穷远极限即可"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 2,
+          "when_to_prefer": "求斜渐近线的斜率 a=lim f(x)/x 与截距 b=lim [f(x)−ax] 时，若遇 0/0 或 ∞/∞ 型极限则用洛必达计算"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.curvature",
+      "block_id": "B.mvt",
+      "name": "曲率",
+      "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+      "signals": [
+        "题目要求求曲线在某点的曲率或曲率半径",
+        "出现“曲率圆”“曲率中心”“曲率最大的点”等表述",
+        "曲线以直角坐标或参数方程给出，需先求一阶、二阶导数"
+      ],
+      "recognition_examples": [
+        "求曲线 y = x² 在点 (1,1) 处的曲率与曲率半径",
+        "求曲线 y = ln x 上曲率最大的点",
+        "求参数方程 x=t−sin t、y=1−cos t 所给曲线在 t=π 处的曲率"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.function_graphing",
+          "how": "只要求曲率数值或曲率相关对象属本情景；要求描绘完整函数图像不属本情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.curvature_formula",
+          "priority": 1,
+          "when_to_prefer": "题目直接给出曲线求曲率或曲率半径时，代入曲率公式计算即可"
+        },
+        {
+          "method_id": "M.monotonicity_analysis",
+          "priority": 2,
+          "when_to_prefer": "当要求“曲率最大的点”时，需把曲率写成 K(x) 后用导数分析其单调性与最值"
+        }
+      ]
+    },
+    {
+      "id": "S.mvt.function_graphing",
+      "block_id": "B.mvt",
+      "name": "函数作图",
+      "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+      "signals": [
+        "题目要求“作函数图像”或“讨论并画出图形”",
+        "需先求定义域、奇偶性、周期性、单调区间、凹凸区间、渐近线等多项性态",
+        "常要求以列表形式汇总各区间内的函数性态",
+        "需要计算特殊点的函数值以及端部极限"
+      ],
+      "recognition_examples": [
+        "作出函数 y = x/(1+x²) 的图像",
+        "讨论并作函数 y = x + 1/x 的图像",
+        "描绘 y = x·e^{−x} 的图形"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.mvt.asymptote",
+          "how": "只求渐近线归渐近线情景；综合多类性态并绘制图像归本情景"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.monotonicity_analysis",
+          "priority": 1,
+          "when_to_prefer": "作图第一步用一阶导数确定单调区间与极值点，构成图像的增减骨架"
+        },
+        {
+          "method_id": "M.concavity_test",
+          "priority": 2,
+          "when_to_prefer": "在单调区间基础上用二阶导数确定凹凸区间与拐点，刻画曲线的弯曲方向"
+        },
+        {
+          "method_id": "M.find_asymptote",
+          "priority": 3,
+          "when_to_prefer": "图像两端或间断点附近的走向需要确定时，求铅直、水平、斜渐近线作为图像的边界参考"
+        },
+        {
+          "method_id": "M.lhopital",
+          "priority": 4,
+          "when_to_prefer": "计算作图所需的端部极限（如求 x→∞ 时的极限以定水平渐近线）遇到未定式时使用"
+        }
+      ]
+    }
+  ]
+}
