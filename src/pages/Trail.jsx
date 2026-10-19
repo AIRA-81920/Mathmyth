@@ -15,6 +15,8 @@ export default function Trail({ includeNode = includeTouched, onMethod, onScenar
   const [nodes, setNodes] = useState([]);
   const [error, setError] = useState('');
   const selectConversation = useAppStore((state) => state.selectConversation);
+  const trailFocus = useAppStore((state) => state.trailFocus);
+  const returnToQuestion = useAppStore((state) => state.returnToQuestion);
   const ref = useRef(null);
   const scrollEpoch = useRef(useAppStore.getState().trailEpoch);
   const restored = useRef(false);
@@ -42,7 +44,22 @@ export default function Trail({ includeNode = includeTouched, onMethod, onScenar
     refresh();
     return () => { live = false; unsubscribe(); };
   }, [includeNode]);
-  return <div className="trail-page"><div ref={ref} className="trail-scroll" onScroll={(event) => useAppStore.getState().setTrailScroll(event.currentTarget.scrollTop, scrollEpoch.current)}>
+  useLayoutEffect(() => {
+    if (!active || !trailFocus || !nodes.length || !ref.current) return;
+    const frame = requestAnimationFrame(() => {
+      const flow = ref.current;
+      if (!flow) return;
+      const branches = [...flow.querySelectorAll('[data-node-key]')];
+      for (const branch of branches) branch.classList.toggle('is-route-target', trailFocus.scenarioIds.some(id => branch.dataset.nodeKey === `scenario:${id}`));
+      const targetId = trailFocus.scenarioIds.at(-1);
+      const target = branches.find(branch => branch.dataset.viewKey === trailFocus.targetPath)
+        ?? branches.find(branch => branch.dataset.nodeKey === `scenario:${targetId}`);
+      if (target) flow.scrollTo({ top: flow.scrollTop + target.getBoundingClientRect().top - flow.getBoundingClientRect().top - 16,
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [active, nodes, trailFocus]);
+  return <div className="trail-page">{trailFocus && <button type="button" className="trail-return" onClick={returnToQuestion}>← 回到题目</button>}<div ref={ref} className="trail-scroll" onScroll={(event) => useAppStore.getState().setTrailScroll(event.currentTarget.scrollTop, scrollEpoch.current)}>
     {nodes.length ? <TrailOutline active={active} nodes={nodes} onMethod={onMethod} onScenario={onScenario ?? ((node) => useAppStore.getState().openScenario(node))} onQuestion={(item) => selectConversation(item.conversationId)} />
       : <div className="trail-empty"><p className="muted" role={error ? 'status' : undefined}>{error || '你还没走过任何地方。去问一道题吧。'}</p></div>}
   </div><TrailBottomShelf active={active} items={[

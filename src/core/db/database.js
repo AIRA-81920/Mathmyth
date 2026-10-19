@@ -64,6 +64,8 @@ export const checkpointJob = (claim, blockIds, classification) => rpcAt(claim.ge
 export const completeJob = (claim, entries) => rpcAt(claim.generation, 'completeJob', claim, entries);
 export const failJob = (claim, options) => rpcAt(claim.generation, 'failJob', claim, options);
 export const loadTrail = () => rpc('loadTrail');
+export const loadQuestionRoutes = (conversationId) => rpc('loadQuestionRoutes', conversationId);
+export const retryQuestionRoutes = (messageId) => rpc('retryQuestionRoutes', messageId);
 export const loadPatternProgress = () => rpc('loadPatternProgress');
 export const listPersonalNotes = () => rpc('listPersonalNotes');
 export const savePersonalNote = (input) => rpc('savePersonalNote', input);

@@ -19,7 +19,7 @@ function engine() {
 }
 
 const methods = new Set(['initializeDatabase','loadConversation','loadImage','saveChanges','exportBackup','prepareImport','commitImport','cancelImport','clearDatabase',
-  'claimNextJob','checkpointJob','completeJob','failJob','loadTrail','loadPatternProgress','listPersonalNotes','savePersonalNote','deletePersonalNote',
+  'claimNextJob','checkpointJob','completeJob','failJob','loadTrail','loadQuestionRoutes','retryQuestionRoutes','loadPatternProgress','listPersonalNotes','savePersonalNote','deletePersonalNote',
   'listStarredQuestions','loadStarredQuestion','setQuestionStar','removeStarredQuestion','getMessageQuestionClassification','requestMessageQuestionClassification',
   'createPracticeRun','appendPracticeItems','updateConversation','deleteConversation','loadActivePractice','loadPracticeItem','listPracticeHistory','loadPracticeUsage','gradePracticeItem','revealPracticeItem','advancePracticeItem','searchConversations']);
 let serial = Promise.resolve();
@@ -41,7 +41,7 @@ self.onmessage = ({ data }) => {
       if (method === 'commitImport' || method === 'clearDatabase') generation += 1;
       if (['claimNextJob','createPracticeRun','appendPracticeItems','loadActivePractice','loadPracticeItem','gradePracticeItem','revealPracticeItem','advancePracticeItem'].includes(method) && result) result.generation = generation;
       self.postMessage({ id, ok: true, result, generation });
-      if (['saveChanges','deleteConversation','checkpointJob','completeJob','commitImport','clearDatabase','gradePracticeItem','revealPracticeItem','savePersonalNote','deletePersonalNote','setQuestionStar','removeStarredQuestion','requestMessageQuestionClassification'].includes(method)) {
+      if (['saveChanges','deleteConversation','checkpointJob','completeJob','failJob','retryQuestionRoutes','commitImport','clearDatabase','gradePracticeItem','revealPracticeItem','savePersonalNote','deletePersonalNote','setQuestionStar','removeStarredQuestion','requestMessageQuestionClassification'].includes(method)) {
         self.postMessage({ type: 'changed', method, generation });
       }
     } catch (error) {

@@ -1,0 +1,525 @@
+{
+  "scope": "Selected symbolic substitution/integration checks; no claim that every published record has automated proof.",
+  "method": "SymPy simplification of independently entered equations, derivatives and integrals.",
+  "sympyVersion": "1.14.0",
+  "distinctOriginalIdsChecked": 34,
+  "assertionCount": 65,
+  "passed": true,
+  "checks": [
+    {
+      "originalId": 264,
+      "check": "Nonzero branch residual yprime-2xy²",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 264,
+      "check": "Zero branch residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 265,
+      "check": "General solution residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 266,
+      "check": "Positive-x chart residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 267,
+      "check": "First-integral directional residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 267,
+      "check": "Exact-form x coefficient",
+      "actual": "(-x - y)/(x**2 + y**2)",
+      "expected": "(-x - y)/(x**2 + y**2)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 267,
+      "check": "Exact-form y coefficient",
+      "actual": "(x - y)/(x**2 + y**2)",
+      "expected": "(x - y)/(x**2 + y**2)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 268,
+      "check": "Inverse-function linear residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 269,
+      "check": "Squared-coordinate linear residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 269,
+      "check": "Initial squared-coordinate value",
+      "actual": "1",
+      "expected": "1",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 270,
+      "check": "ODE residual on x>-1",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 272,
+      "check": "Nonzero Bernoulli solution residual on x>0",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 273,
+      "check": "Slope equation residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 273,
+      "check": "Point condition",
+      "actual": "2",
+      "expected": "2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 274,
+      "check": "Real homogeneous basis residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 274,
+      "check": "Real homogeneous basis residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 275,
+      "check": "Particular-solution substitution residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 283,
+      "check": "Particular-solution substitution residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 285,
+      "check": "Particular-solution substitution residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 275,
+      "check": "Repeated-root homogeneous basis residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 275,
+      "check": "Repeated-root homogeneous basis residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 276,
+      "check": "Newton equation residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 276,
+      "check": "Initial velocity",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 277,
+      "check": "Literal candidate-function residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 278,
+      "check": "Literal equation residual on positive-x chart",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 278,
+      "check": "Source answer rejection",
+      "sourceResidual": "C + log(x) + 1/x",
+      "passed": true
+    },
+    {
+      "originalId": 279,
+      "check": "First equation inverse linear residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 279,
+      "check": "Second equation reciprocal-exponential residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 282,
+      "check": "Nonlinear second-order equation residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 282,
+      "check": "Initial function value",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 282,
+      "check": "Initial derivative value",
+      "actual": "2",
+      "expected": "2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 283,
+      "check": "Correct characteristic root",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 283,
+      "check": "Correct characteristic root",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 286,
+      "check": "Reduced nonlinear ODE residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 286,
+      "check": "Initial function",
+      "actual": "1",
+      "expected": "1",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 286,
+      "check": "Initial derivative",
+      "actual": "1/2",
+      "expected": "1/2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 288,
+      "check": "Linear modeled equation residual",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 288,
+      "check": "Original area identity",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 322,
+      "check": "Full differential y coefficient",
+      "actual": "z*exp(y*z) + cos(y/2)/2",
+      "expected": "z*exp(y*z) + cos(y/2)/2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 328,
+      "check": "Corrected x partial",
+      "actual": "(y*sin(x + y) + cos(x + y))*exp(x*y)",
+      "expected": "(y*sin(x + y) + cos(x + y))*exp(x*y)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 328,
+      "check": "Completed y partial",
+      "actual": "(x*sin(x + y) + cos(x + y))*exp(x*y)",
+      "expected": "(x*sin(x + y) + cos(x + y))*exp(x*y)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 331,
+      "check": "Two-dimensional Laplacian away from origin",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 357,
+      "check": "Cross-partials at lambda=-1/2",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 357,
+      "check": "Potential x derivative",
+      "actual": "x/(y*sqrt(x**2 + y**2))",
+      "expected": "x/(y*sqrt(x**2 + y**2))",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 357,
+      "check": "Potential y derivative",
+      "actual": "-x**2/(y**2*sqrt(x**2 + y**2))",
+      "expected": "-x**2/(y**2*sqrt(x**2 + y**2))",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 357,
+      "check": "Reject lambda=+1/2 source fragment",
+      "sourceResidual": "2*x*sqrt(x**2 + y**2)/y**2",
+      "passed": true
+    },
+    {
+      "originalId": 340,
+      "check": "Split plane-area integral",
+      "actual": "-1 + E/2",
+      "expected": "-1 + E/2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 342,
+      "check": "Changed-order integral",
+      "actual": "-1/2 + sqrt(2)*sin(pi/4 + 1)/2",
+      "expected": "-1/2 + cos(1)/2 + sin(1)/2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 343,
+      "check": "Polar volume",
+      "actual": "5*pi*a**3/6",
+      "expected": "5*pi*a**3/6",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 347,
+      "check": "Literal multiplication: inner k=1 disk",
+      "actual": "1/8",
+      "expected": "1/8",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 347,
+      "check": "Literal multiplication: outer k=2 annulus",
+      "actual": "-2/15 + 8*sqrt(2)/15",
+      "expected": "-2/15 + 8*sqrt(2)/15",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 347,
+      "check": "Literal multiplication: total matches source answer",
+      "actual": "-1/120 + 8*sqrt(2)/15",
+      "expected": "-1/120 + 8*sqrt(2)/15",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 347,
+      "check": "Alternative y-exponent reading rejected",
+      "literalOuter": "-2/15 + 8*sqrt(2)/15",
+      "hypotheticalExponentOuter": "7*pi/96",
+      "passed": true
+    },
+    {
+      "originalId": 351,
+      "check": "Horizontal cap contribution",
+      "actual": "pi/2",
+      "expected": "pi/2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 351,
+      "check": "Cone lateral contribution",
+      "actual": "sqrt(2)*pi/2",
+      "expected": "sqrt(2)*pi/2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 351,
+      "check": "Whole closed surface includes both pieces",
+      "actual": "pi*(1 + sqrt(2))/2",
+      "expected": "pi*(1 + sqrt(2))/2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 354,
+      "check": "Stokes curl z-component",
+      "actual": "2*x + y - 1",
+      "expected": "2*x + y - 1",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 356,
+      "check": "Constant curl dotted into chosen positive-x normal",
+      "actual": "-2*sqrt(3)",
+      "expected": "-2*sqrt(3)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 367,
+      "check": "Integrated arctan sum value",
+      "actual": "-log(2)/2 + pi/4",
+      "expected": "-log(2)/2 + pi/4",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 390,
+      "check": "Interior x stationary condition",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 390,
+      "check": "Interior y stationary condition",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 390,
+      "check": "Interior candidate maximum value",
+      "actual": "81/64",
+      "expected": "81/64",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 390,
+      "check": "Slanted boundary stationary derivative",
+      "actual": "0",
+      "expected": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 390,
+      "check": "Slanted boundary minimum value",
+      "actual": "-256/27",
+      "expected": "-256/27",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "originalId": 394,
+      "check": "Implicit second derivative via chain rule",
+      "actual": "a*sin(y)/(a*cos(y) - 1)**3",
+      "expected": "-a*sin(y)/(-a*cos(y) + 1)**3",
+      "residual": "0",
+      "passed": true
+    }
+  ]
+}

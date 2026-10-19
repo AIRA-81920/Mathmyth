@@ -5,6 +5,8 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
   const config = useRef({ index, count, disabled, onChange, onDrawer });
   config.current = { index, count, disabled, onChange, onDrawer };
   const reset = useRef(null);
+  const animate = useRef(null);
+  const previousIndex = useRef(index);
   const pendingIndex = useRef(null);
   useLayoutEffect(() => {
     const viewport = viewportRef.current, track = trackRef.current;
@@ -34,6 +36,7 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
       position(next); settling = setTimeout(settled, SWIPE_SETTLE_MS + 30);
     }
     reset.current = () => { gesture = null; clearPeek(); settled(); width = viewport.clientWidth; position(config.current.index); };
+    animate.current = () => { clearPeek(); width = viewport.clientWidth; settle(config.current.index); };
     function start(event) {
       if (config.current.disabled || event.touches.length !== 1 || document.getElementById('root')?.inert || blocksAreaSwipe(event.target, viewport)) return;
       const touch = event.touches[0];
@@ -84,7 +87,7 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
     }) : null;
     observer?.observe(viewport); position(config.current.index);
     return () => {
-      observer?.disconnect(); clearTimeout(settling); clearPeek(); reset.current = null;
+      observer?.disconnect(); clearTimeout(settling); clearPeek(); reset.current = null; animate.current = null;
       viewport.removeEventListener('touchstart', start); viewport.removeEventListener('touchmove', move);
       viewport.removeEventListener('touchend', end); viewport.removeEventListener('touchcancel', cancel);
     };
@@ -92,7 +95,10 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
   useLayoutEffect(() => {
     const viewport = viewportRef.current, track = trackRef.current;
     if (!viewport || !track) return;
+    const changed = previousIndex.current !== index;
+    previousIndex.current = index;
     if (disabled) { reset.current?.(); return; }
+    if (changed && pendingIndex.current !== index) { animate.current?.(); return; }
     // The committing touch already supplied the correct animation start point.
     if (!viewport.classList.contains('is-settling') || pendingIndex.current !== index) reset.current?.();
   }, [index, disabled, viewportRef, trackRef]);

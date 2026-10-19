@@ -3,6 +3,9 @@ import { createDefaultModelConfig, providers, validateModelConfig } from '../cor
 import { streamAnswer } from '../core/ai/client.js';
 import { attachPersistence } from './persistence.js';
 import { ASK_SYSTEM_PROMPT } from '../core/ai/prompts.js';
+import { answerRequest } from '../core/ai/answerThinking.js';
+import { routeTrailLocation } from '../core/skeleton/trailLocation.js';
+import { routeScenarioIds } from '../core/chat/questionRoutes.js';
 import { IMAGE_TRANSCRIPT_INSTRUCTION, splitImageTranscript } from '../core/ai/imageTranscript.js';
 import { generateTitle } from '../core/ai/title.js';
 import { normalizePreferences } from '../core/config/preferences.js';
@@ -151,6 +154,7 @@ export const useAppStore = create((set, get) => ({
   trailEpoch: 0,
   activeArea: 'ask',
   drawerOpen: false,
+  trailFocus: null,
   modelConfig: createDefaultModelConfig(),
   conversations: [],
   currentConversationId: null,
@@ -181,6 +185,20 @@ export const useAppStore = create((set, get) => ({
     if (get().dataOperation) return;
     set((state) => ({ modelConfig: { ...state.modelConfig, ...patch } }));
   },
+  setAnswerThinking: (answerThinking) => {
+    if (!get().dataOperation && ['auto', 'enabled', 'disabled'].includes(answerThinking)) set((state) => ({ preferences: { ...state.preferences, answerThinking } }));
+  },
+  locateQuestionRoute: async (route, messageId) => {
+    if (get().dataOperation || !routeScenarioIds(route).length) return;
+    const { loadSkeleton } = await import('../core/skeleton/load.js');
+    const skeleton = await loadSkeleton();
+    if (get().dataOperation) return;
+    const scenarioIds = routeScenarioIds(route).filter(id => skeleton.scenarioById.has(id));
+    const { expanded, targetPath } = routeTrailLocation(skeleton, scenarioIds, get().preferences.trailExpanded);
+    set(state => ({ activeArea: 'trail', drawerOpen: false, trailFocus: { scenarioIds, targetPath, messageId, nonce: Date.now() },
+      preferences: { ...state.preferences, trailExpanded: expanded } }));
+  },
+  returnToQuestion: () => set({ activeArea: 'ask', trailFocus: null }),
 
   selectProvider: (id) => {
     if (get().dataOperation) return;
@@ -435,7 +453,7 @@ export const useAppStore = create((set, get) => ({
       }
       const systemPrompt = conversation.methodId ? methodDiscussionPrompt(await (await import('../core/skeleton/load.js')).loadSkeleton(), conversation.methodId) : ASK_SYSTEM_PROMPT;
       const content = await streamAnswer({
-        config,
+        ...answerRequest(config, conversation.methodId ? 'auto' : get().preferences.answerThinking),
         messages,
         signal: request.controller.signal,
         systemPrompt: systemPrompt + (transcribeImage ? IMAGE_TRANSCRIPT_INSTRUCTION : ''),

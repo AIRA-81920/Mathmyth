@@ -1,0 +1,98 @@
+{
+  "purpose": "辅助符号核对，不代表自动证明全部题目",
+  "checks": [
+    {
+      "originalId": 19,
+      "check": "symmetric square-root cancellation",
+      "computed": "-1/4",
+      "expected": "-1/4"
+    },
+    {
+      "originalId": 26,
+      "check": "tan minus sin cubic cancellation",
+      "computed": "1/2",
+      "expected": "1/2"
+    },
+    {
+      "originalId": 33,
+      "check": "cube root at nonzero base point",
+      "computed": "1/3",
+      "expected": "1/3"
+    },
+    {
+      "originalId": 50,
+      "check": "tenth derivative by symbolic differentiation",
+      "computed": "(x**2 - 20*x + 90)*exp(-x)",
+      "expected": "(x**2 - 20*x + 90)*exp(-x)"
+    },
+    {
+      "originalId": 56,
+      "check": "sixth-power trigonometric identity",
+      "computed": "sin(x)**6 + cos(x)**6 - 3*cos(x)**4 + 3*cos(x)**2 - 1",
+      "expected": "0"
+    },
+    {
+      "originalId": 70,
+      "check": "implicit second derivative after chain factor",
+      "computed": "-4*sin(x)/(2 - cos(x))**3",
+      "expected": "-4*sin(x)/(2 - cos(x))**3"
+    },
+    {
+      "originalId": 79,
+      "check": "first-order absolute error",
+      "computed": "6003*pi/4000",
+      "expected": "6003*pi/4000"
+    },
+    {
+      "originalId": 88,
+      "check": "exponential second Taylor coefficient",
+      "computed": "2",
+      "expected": "2"
+    },
+    {
+      "originalId": 91,
+      "check": "second inflection ordinate",
+      "computed": "11/27",
+      "expected": "11/27"
+    },
+    {
+      "originalId": 92,
+      "check": "global candidate value",
+      "computed": "27",
+      "expected": "27"
+    },
+    {
+      "originalId": 95,
+      "check": "nonzero fifth coefficient under solved parameters",
+      "computed": "1/30",
+      "expected": "1/30"
+    },
+    {
+      "originalId": 96,
+      "check": "fourth-order cosine exponential cancellation",
+      "computed": "-1/12",
+      "expected": "-1/12"
+    },
+    {
+      "originalId": 97,
+      "check": "hundredth derivative at zero",
+      "computed": "9901",
+      "expected": "9901"
+    },
+    {
+      "originalId": 44,
+      "check": "counterexample f=x has nonzero derivative limit",
+      "computed": "1",
+      "expected": "1"
+    },
+    {
+      "originalId": 46,
+      "check": "counterexample derivative residual",
+      "computed": "-1",
+      "expected": "-1"
+    }
+  ],
+  "checked": 15,
+  "sourceSha256": "34b9e60ec33c83aa158baebf664937ea725e7316590bf3e9bbe0216bce882fe6",
+  "sourcePreserved": true
+}

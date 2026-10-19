@@ -1,13 +1,19 @@
 import { Fragment, lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ArrowUp, Camera, Plus, ChevronLeft, ChevronRight, Image as ImageIcon, Paperclip, Square, X, FileText } from 'lucide-react'
+import { ArrowUp, Camera, Plus, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Image as ImageIcon, Paperclip, Square, X, FileText } from 'lucide-react'
 import { useAppStore } from '../store/appStore.js'
 import MathMarkdown from '../components/MathMarkdown.jsx'
 import MessageMenu from '../components/MessageMenu.jsx'
 import ThinkingIndicator from '../components/ThinkingIndicator.jsx'
 import ChatPracticeCard from '../components/ChatPracticeCard.jsx'
+import AnimatedDisclosure from '../components/AnimatedDisclosure.jsx'
+import QuestionRoutePanel from '../components/QuestionRoutePanel.jsx'
+import ThinkingSwitch from '../components/ThinkingSwitch.jsx'
+import useQuestionScroll from '../app/useQuestionScroll.js'
+import { thinkingCapability } from '../core/ai/answerThinking.js'
+import { loadSkeleton } from '../core/skeleton/load.js'
 import { useChatPracticeStore } from '../store/chatPracticeStore.js'
 import { visibleMessages, revisionVersions } from '../core/chat/revisions.js'
-import { getMessageQuestionClassification, requestMessageQuestionClassification, setQuestionStar, onDatabaseChange } from '../core/db/database.js'
+import { getMessageQuestionClassification, requestMessageQuestionClassification, setQuestionStar, onDatabaseChange, loadQuestionRoutes } from '../core/db/database.js'
 import '../styles/message-actions.css'
 import { readAttachment, FILE_ACCEPT } from '../core/files/input.js'
 import { isNative, pickNativePhoto, photoToFile, onRestoredPhoto } from '../core/platform/photos.js'
@@ -21,6 +27,9 @@ export default function Ask({ active = true }) {
   const currentId = useAppStore((state) => state.currentConversationId)
   const conversation = useAppStore((state) => state.conversations.find((item) => item.id === state.currentConversationId))
   const supportsImage = useAppStore((state) => state.modelConfig.supportsImage)
+  const modelConfig = useAppStore((state) => state.modelConfig)
+  const thinkingMode = useAppStore((state) => state.preferences.answerThinking)
+  const setAnswerThinking = useAppStore((state) => state.setAnswerThinking)
   const sendMessage = useAppStore((state) => state.sendMessage)
   const stopGenerating = useAppStore((state) => state.stopGenerating)
   const selectMessageRevision = useAppStore((state) => state.selectMessageRevision)
@@ -34,6 +43,8 @@ export default function Ask({ active = true }) {
   const [answering, setAnswering] = useState(null)
   const practiceBusy = useChatPracticeStore((state) => Boolean(state.busy[answering?.id]))
   const [classifications, setClassifications] = useState({})
+  const [questionRoutes, setQuestionRoutes] = useState({})
+  const [skeleton, setSkeleton] = useState(null)
   const [starring, setStarring] = useState(false)
   const [attachments, setAttachments] = useState([])
   const [pickerOpen, setPickerOpen] = useState(false)
@@ -46,11 +57,11 @@ export default function Ask({ active = true }) {
   const inputRef = useRef(null)
   const classificationEpoch = useRef(0)
   const flowRef = useRef(null)
+  const contentRef = useRef(null)
   const galleryRef = useRef(null)
   const cameraRef = useRef(null)
   const fileRef = useRef(null)
   const imageTaskRef = useRef({ version: 0, controller: null })
-  const keepBottomRef = useRef(true)
   const longPressRef = useRef(null)
   const restoredHandler = useRef(null)
   const allMessages = conversation?.messages ?? []
@@ -61,7 +72,9 @@ export default function Ask({ active = true }) {
   const canSubmit = editing ? Boolean(editingMessage && (editing.text.trim() || editingMessage.image || editingMessage.attachments?.length)) : answering ? Boolean(answering.text.trim()) : Boolean(draft.trim() || attachments.length)
   const busy = messages.some((message) => message.status === 'streaming') || practiceBusy
   const blocked = Boolean(conversationLoading || conversation?.loaded === false || dataOperation)
-  const lastContent = messages[messages.length - 1]?.content
+  const questionScroll = useQuestionScroll({ flowRef, contentRef, currentId, userIds: messages.filter(item => item.role === 'user').map(item => item.id), active, ready: !blocked })
+  const thinking = thinkingCapability(modelConfig)
+  const thinkingOn = thinking.switchable ? (thinkingMode === 'auto' ? thinking.defaultOn : thinkingMode === 'enabled') : thinking.defaultOn
   const imageReason = supportsImage ? '拍照或选择题目图片。' : '尚未开启图片支持，请在设置中确认模型能力后勾选。'
   restoredHandler.current = async (result) => {
     if (!active || !result || !supportsImage || blocked || busy) return
@@ -77,6 +90,7 @@ export default function Ask({ active = true }) {
     setEditing(null)
     setAnswering(null)
     setClassifications({})
+    setQuestionRoutes({})
     setStarring(false)
     classificationEpoch.current++
     setAttachments([])
@@ -85,7 +99,6 @@ export default function Ask({ active = true }) {
     setCrop(null)
     setReadingImage(false)
     setInputError('')
-    keepBottomRef.current = true
     const frame = requestAnimationFrame(() => { if (active) inputRef.current?.focus({ preventScroll: true }) })
     return () => cancelAnimationFrame(frame)
   }, [currentId])
@@ -95,9 +108,28 @@ export default function Ask({ active = true }) {
     imageTaskRef.current.controller?.abort()
   }, [currentId])
 
-  useLayoutEffect(() => {
-    if (active && flowRef.current && keepBottomRef.current) flowRef.current.scrollTop = flowRef.current.scrollHeight
-  }, [currentId, messages.length, lastContent, active])
+  useEffect(() => {
+    let live = true;
+    loadSkeleton().then(value => { if (live) setSkeleton(value) }).catch(() => {});
+    return () => { live = false };
+  }, [])
+  useEffect(() => {
+    if (!currentId) return;
+    let live = true, request = 0;
+    async function refresh() {
+      if (!useAppStore.getState().storageInitialized || useAppStore.getState().dataOperation) return;
+      const sequence = ++request;
+      try {
+        const results = await loadQuestionRoutes(currentId);
+        if (live && sequence === request) setQuestionRoutes(Object.fromEntries(results.map(item => [item.messageId, item])));
+      } catch { /* Background routes never interrupt reading or answering. */ }
+    }
+    refresh();
+    const unsubscribe = onDatabaseChange(({ method }) => {
+      if (['saveChanges','checkpointJob','completeJob','failJob','retryQuestionRoutes','commitImport','clearDatabase'].includes(method)) refresh();
+    });
+    return () => { live = false; unsubscribe() };
+  }, [currentId])
 
   useEffect(() => () => clearTimeout(longPressRef.current?.timer), [])
 
@@ -148,12 +180,11 @@ export default function Ask({ active = true }) {
       return
     }
     setInputError('')
-    keepBottomRef.current = true
     sendMessage(draft, attachments.length ? { attachments: attachments.map(submissionAttachment) } : undefined)
     setDraft('')
     setAttachments([])
     setPickerOpen(false)
-    inputRef.current.focus()
+    inputRef.current.focus({ preventScroll: true })
   }
 
   function openMenu(event, message) {
@@ -197,7 +228,6 @@ export default function Ask({ active = true }) {
   function retryOrEdit(message, content, action) {
     if (busy || blocked) return
     if (message.image && !supportsImage) { setInputError('请先在设置中开启当前模型的图片支持，再重新发送这道图片题。'); return }
-    keepBottomRef.current = true
     const pending = reviseUserMessage(message.id, content, { action, conversationId: currentId })
     if (pending) { setEditing(null); Promise.resolve(pending).catch(() => setInputError('暂时无法重新发送，请重试。')) }
   }
@@ -303,13 +333,15 @@ export default function Ask({ active = true }) {
   return (
     <div className="ask-page flex min-h-0 flex-1 flex-col">
       <div ref={flowRef} className="conversation-flow" role="log" aria-label="对话" aria-live="polite" aria-relevant="additions"
-        onScroll={() => { const flow = flowRef.current; keepBottomRef.current = flow.scrollHeight - flow.scrollTop - flow.clientHeight < 72 }}>
+        onScroll={questionScroll.onScroll}>
+        <div ref={contentRef} className="conversation-content">
         {conversationLoading && <p className="muted message-status" role="status">正在读取会话…</p>}
         {messages.map((message) => {
           const versions = message.role === 'user' ? revisionVersions(allMessages, message.id) : []
           const versionIndex = versions.findIndex(item => item.id === message.id)
           const switchVersion = (offset) => { if (selectMessageRevision(versions[versionIndex + offset]?.id)) { setMenu(null); setEditing(null); setAnswering(null) } }
           return <Fragment key={message.id}><article className={`message message-${message.role}`} aria-label={message.role === 'user' ? '你的消息' : '助手的消息'}
+            data-user-message-id={message.role === 'user' ? message.id : undefined}
             aria-busy={message.status === 'streaming' || undefined} tabIndex={message.role === 'user' ? 0 : undefined}
             aria-haspopup={message.role === 'user' ? 'menu' : undefined}
             onContextMenu={message.role === 'user' ? (event) => openMenu(event, message) : undefined}
@@ -333,12 +365,15 @@ export default function Ask({ active = true }) {
             {!message.content && message.status === 'streaming' && <ThinkingIndicator />}
             {message.error && <p className="muted message-status" role="status">{message.error}</p>}
           </article>
+          {message.role === 'user' && questionRoutes[message.id] && <QuestionRoutePanel key={`${message.id}:route`} result={questionRoutes[message.id]} skeleton={skeleton} />}
           {versions.length > 1 && <nav className="message-version-controls" aria-label="消息版本" data-no-area-swipe>
             <button type="button" className="icon-button" aria-label="上一版问答" disabled={busy || blocked || versionIndex <= 0} onClick={() => switchVersion(-1)}><ChevronLeft size={17} /></button>
             <span aria-live="polite">{versionIndex + 1} / {versions.length}</span>
             <button type="button" className="icon-button" aria-label="下一版问答" disabled={busy || blocked || versionIndex >= versions.length - 1} onClick={() => switchVersion(1)}><ChevronRight size={17} /></button>
           </nav>}</Fragment>
         })}
+        </div>
+        <div className="conversation-tail" aria-hidden="true" style={{ height: questionScroll.space }} />
       </div>
       <form className="composer" onSubmit={submit} aria-label={editing ? '编辑消息' : answering ? '聊天练习作答' : '题目输入'}>
         {editing && <div className="composer-edit-heading"><span className="muted">正在编辑消息 · 发送后重新回答</span><button type="button" className="icon-button" aria-label="取消编辑" onClick={() => setEditing(null)}><X size={16} /></button></div>}
@@ -373,12 +408,23 @@ export default function Ask({ active = true }) {
         {busy ? <button key="stop" className="send-button" type="button" aria-label={practiceBusy ? '停止检查' : '停止回答'} onClick={(event) => { event.preventDefault(); practiceBusy ? useChatPracticeStore.getState().cancel(answering.id) : stopGenerating() }}><Square size={14} strokeWidth={1.8} aria-hidden="true" /></button>
           : <button key="send" className="send-button" type="submit" aria-label={editing ? '保存并重发' : answering ? '提交关键步骤' : '发送消息'} disabled={!canSubmit || readingImage || blocked}><ArrowUp size={20} strokeWidth={1.8} aria-hidden="true" /></button>}
         </div>
+        <div className="composer-footer">
+          {!answering && <div className="composer-tools"><ThinkingSwitch checked={thinkingOn}
+            disabled={!thinking.switchable || busy || blocked}
+            description={thinking.switchable ? '控制下一次问答的思考模式；可点击或左右拨动' : thinking.reason}
+            status={thinking.switchable ? '' : thinking.defaultOn ? '固定开启' : '不可切换'}
+            onChange={enabled => setAnswerThinking(enabled ? 'enabled' : 'disabled')} /></div>}
+          {messages.filter(item => item.role === 'user').length > 1 && <nav className="question-navigation" aria-label="定位用户输入" data-no-area-swipe>
+        <button type="button" className="icon-button" aria-label="上一个输入" disabled={!questionScroll.navigation.previous} onClick={() => questionScroll.navigate(-1)}><ChevronUp size={17} /></button>
+        <button type="button" className="icon-button" aria-label="下一个输入" disabled={!questionScroll.navigation.next} onClick={() => questionScroll.navigate(1)}><ChevronDown size={17} /></button>
+      </nav>}
+        </div>
         {(inputError || (conversation?.loaded === false && !conversationLoading && storageError)) && <p className="composer-feedback muted" role="status">{inputError || storageError}</p>}
         <input ref={galleryRef} type="file" accept="image/jpeg,image/png,image/gif,image/webp" hidden onChange={(event) => { chooseFile(event.target.files?.[0]); event.target.value = '' }} />
         <input ref={cameraRef} type="file" accept="image/*" capture="environment" hidden onChange={(event) => { chooseFile(event.target.files?.[0]); event.target.value = '' }} />
         <input ref={fileRef} type="file" accept={FILE_ACCEPT} hidden onChange={(event) => { chooseFile(event.target.files?.[0]); event.target.value = '' }} />
       </form>
-      {pickerOpen && <section id="attachment-panel" className="attachment-panel" aria-label="添加附件面板">
+      <AnimatedDisclosure open={pickerOpen} id="attachment-panel" className="attachment-disclosure"><section className="attachment-panel" aria-label="添加附件面板">
         <div className="attachment-panel-heading"><span className="muted">{isNative() ? '最近图片' : '最近选用的图片'}</span><button type="button" className="icon-button" aria-label="关闭附件面板" onClick={() => setPickerOpen(false)}><X size={18} /></button></div>
         {recentPhotos.length > 0 && <div className="recent-photo-row">{recentPhotos.map((photo) => {
           const selected = attachments.some((item) => matchesPendingPhoto(item, photo))
@@ -394,7 +440,7 @@ export default function Ask({ active = true }) {
           <button type="button" disabled={!supportsImage || readingImage} title={imageReason} onClick={() => pickPhoto('gallery')}><ImageIcon size={24} />相册</button>
           <button type="button" disabled={readingImage} onClick={() => fileRef.current?.click()}><Paperclip size={24} />文件</button>
         </div>
-      </section>}
+      </section></AnimatedDisclosure>
       {active && menu && <MessageMenu {...menu} items={menuItems} disabled={busy || blocked} onClose={() => setMenu(null)} />}
       {cameraOpen && <Suspense fallback={null}><CameraCapture onClose={() => setCameraOpen(false)} onPhoto={(file) => { setCameraOpen(false);chooseFile(file) }} /></Suspense>}
       {crop && <Suspense fallback={null}><ImageCrop attachment={crop.attachment} onClose={() => setCrop(null)} onApply={applyCrop} onRestore={applyCrop} /></Suspense>}

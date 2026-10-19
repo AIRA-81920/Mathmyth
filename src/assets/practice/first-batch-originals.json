@@ -1,0 +1,172 @@
+[
+  {
+    "category": "01 函数与极限",
+    "difficulty": "低",
+    "text": "$\\lim\\limits_{x\\to0}{(1+2x)^{\\frac{3}{\\sin x}}}$",
+    "answer": "x\\to 0时，(1+2x)\\to 1那极限不就是1吗？ × 要明白底数在变，指数也在变,就是典型的幂指函数 \\\\\n可以给幂指函数底数和指数部分分别凑重要极限或者利用公式 a = e^{lna} 这里用前面的方法 \\\\\n\\lim\\limits_{x\\to0}{(1+2x)^{\\frac{3}{\\sin x}}}=\\lim\\limits_{x\\to0}{(1+2x)^{\\frac{1}{2x}\\frac{6x}{\\sin x}}}=e^6",
+    "notes": "",
+    "source": "gaogzhen/01函数与极限\\0109连续函数的运算和初等函数的连续性-函数与极限-高等数学.md",
+    "id": 8,
+    "method": "1^∞型与幂指函数极限"
+  },
+  {
+    "category": "01 函数与极限",
+    "difficulty": "中",
+    "text": "设$\\lim\\limits_{x\\to+\\infty}{(\\sqrt{x^2+x+1}-ax-b)}=0$，求常数$a,b$",
+    "answer": "令x=\\frac{1}{t}，则当x\\to+\\infty时，t\\to+0，此时可利用的方法很多\\\\\n\\lim\\limits_{x\\to+\\infty}{(\\sqrt{x^2+x+1}-ax-b)}=\\lim\\limits_{t\\to+0}{\\frac{(\\sqrt{t^2+t+1}-a-bt)}{t}}=0 \\\\\n因为分母t\\to0,所以\\lim\\limits_{t\\to+0}{(\\sqrt{t^2+t+1}-a-bt)}=1-a=0,得 a = 1 \\\\\n原式=\\lim\\limits_{t\\to+0}{\\frac{(\\sqrt{t^2+t+1}-1)}{t}-b}=\\lim\\limits_{t\\to+0}{\\frac{\\frac{1}{2}(t^2+t)}{t}-b}=\\frac{1}{2}-b=0,得b=\\frac{1}{2}",
+    "notes": "",
+    "source": "gaogzhen/01函数与极限\\0112习题-函数与极限-高等数学.md",
+    "id": 13,
+    "method": "根式有理化"
+  },
+  {
+    "category": "01 函数与极限",
+    "difficulty": "中",
+    "text": "$\\lim\\limits_{x\\to0}{(2e^{\\frac{x}{1+x}}-1)^{\\frac{x^2+1}{x}}}$",
+    "answer": "解：\\lim\\limits_{x\\to0}{(2e^{\\frac{x}{1+x}}-1)^{\\frac{x^2+1}{x}}}=e^{\\lim\\limits_{x\\to0}{\\ln(2e^{\\frac{x}{1+x}}-1)^{\\frac{x^2+1}{x}}}}  于是 \\\\\n\\lim\\limits_{x\\to0}{\\ln(2e^{\\frac{x}{1+x}}-1)^{\\frac{x^2+1}{x}}}=\\lim\\limits_{x\\to0}{\\frac{x^2+1}{x}\\ln(2e^{\\frac{x}{1+x}}-1)} \\\\\n=\\lim\\limits_{x\\to0}{\\frac{x^2+1}{x}\\ln(2e^{\\frac{x}{1+x}}-2+1)}=\\lim\\limits_{x\\to0}{\\frac{x^2+1}{x}2(e^{\\frac{x}{1+x}}-1)}\\\\\n=\\lim\\limits_{x\\to0}{\\frac{x^2+1}{x}2(\\frac{x}{1+x})}=2,所以 \\\\\n\\lim\\limits_{x\\to0}{(2e^{\\frac{x}{1+x}}-1)^{\\frac{x^2+1}{x}}}=e^2",
+    "notes": "",
+    "source": "gaogzhen/01函数与极限\\0109连续函数的运算和初等函数的连续性-函数与极限-高等数学.md",
+    "id": 14,
+    "method": "1^∞型与幂指函数极限"
+  },
+  {
+    "category": "01 函数与极限",
+    "difficulty": "中",
+    "text": "计算极限 $\\lim\\limits _{x arrow 0} \\frac{\\sin x-\\sin (\\sin x)}{x^{3}}$。",
+    "answer": "**考点**：极限计算、泰勒公式展开。\n\n**思路**：当 $x \\to 0$ 时，分子分母均趋于 0，属于 $\\frac{0}{0}$ 型未定式。直接代入无法计算，需利用三角函数的泰勒展开式将分子展开至 $x^3$ 项，再进行约分求极限。\n\n**解答**\n\n1. 写出 $\\sin x$ 在 $x=0$ 处的泰勒展开式：$\\sin x = x - \\frac{x^3}{6} + o(x^3)$。\n\n2. 将上述展开式代入 $\\sin(\\sin x)$ 中，令 $u = \\sin x$，则 $u = x - \\frac{x^3}{6} + o(x^3)$。\n\n3. 利用 $\\sin u = u - \\frac{u^3}{6} + o(u^3)$，将 $u$ 的展开式代入：\n   $\\sin(\\sin x) = \\left(x - \\frac{x^3}{6} + o(x^3)\\right) - \\frac{1}{6}\\left(x - \\frac{x^3}{6} + o(x^3)\\right)^3 + o\\left(\\left(x - \\frac{x^3}{6} + o(x^3)\\right)^3\\right)$。\n\n4. 计算 $\\left(x - \\frac{x^3}{6} + o(x^3)\\right)^3$ 的主部：\n   $\\left(x - \\frac{x^3}{6} + o(x^3)\\right)^3 = x^3 + 3x^2\\left(-\\frac{x^3}{6}\\right) + \\dots = x^3 + o(x^3)$。\n   （注：更高阶项均为 $x^5$ 及以上，可归入 $o(x^3)$）。\n\n5. 代回 $\\sin(\\sin x)$ 的表达式：\n   $\\sin(\\sin x) = x - \\frac{x^3}{6} + o(x^3) - \\frac{1}{6}(x^3 + o(x^3)) + o(x^3)$。\n\n6. 合并同类项：\n   $\\sin(\\sin x) = x - \\frac{x^3}{6} - \\frac{x^3}{6} + o(x^3) = x - \\frac{x^3}{3} + o(x^3)$。\n\n7. 计算分子 $\\sin x - \\sin(\\sin x)$：\n   $\\sin x - \\sin(\\sin x) = \\left(x - \\frac{x^3}{6} + o(x^3)\\right) - \\left(x - \\frac{x^3}{3} + o(x^3)\\right)$。\n\n8. 化简分子：\n   $\\sin x - \\sin(\\sin x) = x - x - \\frac{x^3}{6} + \\frac{x^3}{3} + o(x^3) = \\frac{x^3}{6} + o(x^3)$。\n\n9. 将化简后的分子代回原极限式：\n   $\\lim_{x \\to 0} \\frac{\\sin x - \\sin(\\sin x)}{x^3} = \\lim_{x \\to 0} \\frac{\\frac{x^3}{6} + o(x^3)}{x^3}$。\n\n10. 约去 $x^3$：\n    $\\lim_{x \\to 0} \\left(\\frac{1}{6} + \\frac{o(x^3)}{x^3}\\right)$。\n\n11. 利用极限性质 $\\lim_{x \\to 0} \\frac{o(x^3)}{x^3} = 0$，得出最终结果：\n    $\\frac{1}{6} + 0 = \\frac{1}{6}$。\n\n**答案**\n\n$$\\boxed{\\frac{1}{6}}$$",
+    "notes": "",
+    "source": "am601/2005.tex",
+    "id": 17,
+    "method": "综合/其他"
+  },
+  {
+    "category": "01 函数与极限",
+    "difficulty": "中",
+    "text": "$\\lim\\limits _{x arrow 0} \\frac{\\sqrt{1+x}+\\sqrt{1-x}-2}{x^{2}}=$ \\tk{} 。",
+    "answer": "**考点**：重要极限、等价无穷小替换。\n\n**思路**：当 $x \\to 0$ 时，分子分母均趋于 0，属于 $\\frac{0}{0}$ 型未定式。利用重要极限 $\\lim_{x\\to 0}\\frac{\\sqrt{1+x}-1}{x}=\\frac{1}{2}$ 进行变形和化简。\n\n**解答**\n\n1. 将分子中的 $\\sqrt{1+x}$ 和 $\\sqrt{1-x}$ 分别变形，构造出重要极限的形式。\n2. 原式变形为 $\\lim_{x\\to 0}\\frac{(\\sqrt{1+x}-1)+ (\\sqrt{1-x}-1)}{x^2}$。\n3. 将分母 $x^2$ 拆分为 $x \\cdot x$，以便分别与两项匹配。\n4. 将极限拆分为两项之和：$\\lim_{x\\to 0}\\left[ \\frac{\\sqrt{1+x}-1}{x} \\cdot \\frac{1}{x} + \\frac{\\sqrt{1-x}-1}{x} \\cdot \\frac{1}{x} \\right]$。\n5. 利用重要极限 $\\lim_{x\\to 0}\\frac{\\sqrt{1+x}-1}{x}=\\frac{1}{2}$ 计算第一项的极限部分。\n6. 利用重要极限 $\\lim_{x\\to 0}\\frac{\\sqrt{1-x}-1}{x}=-\\frac{1}{2}$ 计算第二项的极限部分。\n7. 代入数值，原式变为 $\\lim_{x\\to 0}\\left[ \\frac{1}{2} \\cdot \\frac{1}{x} + \\left(-\\frac{1}{2}\\right) \\cdot \\frac{1}{x} \\right]$。\n8. 合并同类项，得到 $\\lim_{x\\to 0}\\left[ \\frac{1}{2x} - \\frac{1}{2x} \\right]$。\n9. 计算括号内的结果，分子为 0。\n10. 最终得出极限值为 0。\n\n**答案**\n\n$$\\boxed{0}$$",
+    "notes": "",
+    "source": "am601/2001.tex",
+    "id": 19,
+    "method": "根式有理化"
+  },
+  {
+    "category": "01 函数与极限",
+    "difficulty": "中",
+    "text": "$\\lim\\limits _{x arrow 0} \\frac{\\tan x-\\sin x}{\\ln (1+x^{3})}$ \\tk{$ \\frac{ 1 }{ 2 } $} 。",
+    "answer": "**考点**：极限计算、等价无穷小替换、三角恒等变换。\n\n**思路**：当 $x \\to 0$ 时，分子分母均趋于 0，属于 $\\frac{0}{0}$ 型极限。利用等价无穷小 $\\tan x \\sim x$ 和 $\\ln(1+u) \\sim u$ 简化表达式，再结合三角恒等式 $\\sin x = \\tan x \\cos x$ 进行化简求值。\n\n**解答**\n\n1. 利用等价无穷小 $\\tan x \\sim x$ 和 $\\ln(1+x^3) \\sim x^3$（当 $x \\to 0$ 时），将原极限写为：\n   $$\\lim_{x \\to 0} \\frac{x - \\sin x}{x^3}$$\n\n2. 利用三角恒等式 $\\sin x = \\tan x \\cos x$，将分子变形为 $x - \\tan x \\cos x$：\n   $$\\lim_{x \\to 0} \\frac{x - \\tan x \\cos x}{x^3}$$\n\n3. 将 $x$ 写成 $x \\cos x + x \\sin x$ 的辅助形式并不直接，改为通分处理分子：\n   $$x - \\tan x \\cos x = x - \\frac{\\sin x}{\\cos x} \\cos x = x - \\sin x$$\n   回到上一步，尝试将 $x$ 拆分为 $x \\cos^2 x + x \\sin^2 x$ 以便提取公因式，或者更直接地：\n   $$x - \\sin x = x - \\frac{\\sin x}{\\cos x} \\cdot \\cos x = x \\cos x - \\sin x + x(1-\\cos x)$$\n   这种拆分较复杂，改用通分法：\n   $$\\frac{x - \\sin x}{x^3} = \\frac{x \\cos x - \\sin x + x(1-\\cos x)}{x^3}$$\n   重新整理思路，直接对 $x - \\sin x$ 进行泰勒展开或等价替换更稳妥。\n\n   修正思路：利用 $\\sin x = x - \\frac{x^3}{6} + o(x^3)$ 和 $\\tan x = x + \\frac{x^3}{3} + o(x^3)$。\n   分子 $\\tan x - \\sin x = (x + \\frac{x^3}{3} + o(x^3)) - (x - \\frac{x^3}{6} + o(x^3)) = \\frac{x^3}{2} + o(x^3)$。\n   分母 $\\ln(1+x^3) = x^3 + o(x^3)$。\n   因此极限为 $\\lim_{x \\to 0} \\frac{\\frac{x^3}{2} + o(x^3)}{x^3} = \\frac{1}{2}$。\n\n   为了符合“分步推导”且不使用高阶泰勒（若允许），我们使用三角恒等变换：\n   $$\\tan x - \\sin x = \\frac{\\sin x}{\\cos x} - \\sin x = \\sin x \\left( \\frac{1}{\\cos x} - 1 \\right) = \\sin x \\cdot \\frac{1 - \\cos x}{\\cos x}$$\n\n4. 将上述变形代入极限式：\n   $$\\lim_{x \\to 0} \\frac{\\sin x \\cdot \\frac{1 - \\cos x}{\\cos x}}{\\ln(1+x^3)}$$\n\n5. 利用等价无穷小 $\\sin x \\sim x$ 和 $\\ln(1+x^3) \\sim x^3$：\n   $$\\lim_{x \\to 0} \\frac{x \\cdot \\frac{1 - \\cos x}{\\cos x}}{x^3} = \\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2 \\cos x}$$\n\n6. 利用等价无穷小 $1 - \\cos x \\sim \\frac{1}{2}x^2$ 和 $\\cos x \\to 1$：\n   $$\\lim_{x \\to 0} \\frac{\\frac{1}{2}x^2}{x^2 \\cdot 1}$$\n\n7. 约去 $x^2$：\n   $$\\lim_{x \\to 0} \\frac{1}{2}$$\n\n**答案**\n\n$$\\boxed{\\frac{1}{2}}$$",
+    "notes": "",
+    "source": "am601/2007.tex",
+    "id": 26,
+    "method": "1^∞型与幂指函数极限"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "求$y=x^2e^{-x}的10$阶导数",
+    "answer": "y^{(10)}=(x^2e^{-x})^{(10)}=\\displaystyle\\sum_{k=0}^n(x^2)^{(k)}(e^{-x})^{(n-k)} \\\\\n=C_{10}^0x^2(e^{-x})^{(10)}+C_{10}^1(x^2)^{'}(e^{-x})^{(9)}+C_{10}^2(x^2)^{''}(e^{-x})^{(8)} \\\\\n=x^2(e^{-x})-10\\cdot2x(e^{-x})+45\\cdot2(e^{-x})=e^{-x}(x^2-20x+90)",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0203高阶导数-导数与微分.md",
+    "id": 50,
+    "method": "高阶导数"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "求$y=\\sin\\omega x的n$阶导数",
+    "answer": "解：y^{'}=\\omega\\cos\\omega x=\\omega\\sin(\\omega x+\\frac{\\pi}{2}) \\\\\ny^{''}=\\omega^2\\cos(\\omega x+\\frac{\\pi}{2})=\\omega^2\\sin(\\omega x+2\\cdot\\frac{\\pi}{2}) \\\\\n... \\\\\ny^{(n)}=\\omega^n\\sin(\\omega x+n\\cdot\\frac{\\pi}{2})",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0203高阶导数-导数与微分.md",
+    "id": 51,
+    "method": "高阶导数"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "求$y=\\frac{x}{x^2-1}的n$阶导数。",
+    "answer": "y=\\frac{x}{x^2-1}=\\frac{1}{2}(\\frac{1}{x-1}+\\frac{1}{x+1}) \\\\\ny^{(n)}=\\frac{1}{2}(\\frac{1}{x-1}+\\frac{1}{x+1})^{(n)}=\\frac{1}{2}[(\\frac{1}{x-1})^{(n)}+\\frac{1}{x+1})^{(n)}] \\\\\n=\\frac{1}{2}[\\frac{(-1)^nn!}{(x-1)^{n+1}}+\\frac{(-1)^nn!}{(x+1)^{n+1}}]=\\frac{(-1)^nn!}{2}[\\frac{1}{(x-1)^{n+1}}+\\frac{1}{(x+1)^{n+1}}]",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0203高阶导数-导数与微分.md",
+    "id": 53,
+    "method": "高阶导数"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "求$y=x^{\\sin x}(x\\gt0)$的导数。",
+    "answer": "两边取对数， 得 \\\\\n\\ln y=\\sin x \\ln x, 两边对x求导 \\\\\n\\frac{y^{'}}{y}=\\cos x\\ln x+\\frac{\\sin x}{x} \\\\\ny^{'}=x^{\\sin x}(\\cos x\\ln x+\\frac{\\sin x}{x})",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0204隐函数及由参数方程所确定的函数的导数相关变化率-导数与微分.md",
+    "id": 54,
+    "method": "对数求导法"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "设$y=\\sin^6x+\\cos^6x,求y^{(n)}$",
+    "answer": "如果直接计算的话会很复杂，那么我们尝试先化简 \\\\\ny=\\sin^6x+\\cos^6x=(\\sin^2x+\\cos^2x)(\\sin^4x+\\sin^2x\\cos^2x+\\cos^4x) \\\\\n=(\\sin^2x+\\cos^2x)^2-3\\sin^2x\\cos^2x=1-\\frac{3}{4}(-\\frac{1}{2}\\cos4x-1) \\\\\n=\\frac{7}{8}+\\frac{3}{8}cos4x \\\\\ny^{(n)}=(\\frac{7}{8}+\\frac{3}{8}cos4x)^{(n)}=\\frac{3}{8}4^n\\cos(4x+n\\cdot\\frac{\\pi}{2})",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0203高阶导数-导数与微分.md",
+    "id": 56,
+    "method": "高阶导数"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "求$e^y+xy-e=0$所确定的隐函数的导数$\\frac{dy}{dx}$",
+    "answer": "解：等式两边求导,\\\\\n(e^y)^{'}+(xy)^{'}-(e)^{'}=0 \\\\\ne^yy^{'}+y+xy^{'}=0 \\\\\ny^{'}=-\\frac{y}{e^y+x},\\quad e^y+x\\not=0",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0204隐函数及由参数方程所确定的函数的导数相关变化率-导数与微分.md",
+    "id": 64,
+    "method": "隐函数求导"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "求$y=\\sqrt{\\frac{(x-1)(x-2)}{(x-3)(x-4)}}$的导数。",
+    "answer": "(\\ln|x|)^{'}=\\frac{1}{x} \\\\\n两边取对数,得 \\\\\n\\ln|y|=\\ln\\sqrt{\\frac{(x-1)(x-2)}{(x-3)(x-4)}}=\\frac{1}{2}(\\ln(x-1)+\\ln(x-2)-\\ln(x-3)-\\ln(x-4)) \\\\\n两边对x求导 \\\\\n\\frac{y^{'}}{y}=\\frac{1}{2}(\\frac{1}{x-1}+\\frac{1}{x-2}-\\frac{1}{x-3}-\\frac{1}{x-4}) \\\\\ny^{'}=\\frac{1}{2}\\sqrt{\\frac{(x-1)(x-2)}{(x-3)(x-4)}}(\\frac{1}{x-1}+\\frac{1}{x-2}-\\frac{1}{x-3}-\\frac{1}{x-4})",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0204隐函数及由参数方程所确定的函数的导数相关变化率-导数与微分.md",
+    "id": 66,
+    "method": "对数求导法"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "由方程$x-y+\\frac{1}{2}\\sin y =0$所确定的隐函数，求$\\frac{dy^2}{dx^2}$",
+    "answer": "解：方程两边对x求导 \\\\\n1-y^{'}+\\frac{1}{2}\\cos yy^{'}=0 ，y^{'}=\\frac{2}{2-\\cos y} \\\\\ny^{''}=\\frac{0-2(\\sin yy^{'})}{(2-\\cos y)^2}=\\frac{-4\\sin y}{(2-\\cos y)^3} \\\\",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0204隐函数及由参数方程所确定的函数的导数相关变化率-导数与微分.md",
+    "id": 70,
+    "method": "隐函数求导"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "求由方程$y^5+2y-x-3x^7=0$所确定的隐函数在$x=0处的导数\\frac{dy}{dx}|_{x=0}$",
+    "answer": "解：等式两端对x求导\\\\\n5y^4y^{'}+2y^{'}-1-21x^6=0 \\\\\ny^{'}=\\frac{1+21x^6}{2+5y^4} \\\\\nx=0时，y=0带入得\\\\\n\\frac{dy}{dx}|_{x=0}=\\frac{1}{2}",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0204隐函数及由参数方程所确定的函数的导数相关变化率-导数与微分.md",
+    "id": 71,
+    "method": "隐函数求导"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "中",
+    "text": "已知椭圆$\\frac{x^2}{16}+\\frac{y^2}{9}=1$.求该椭圆在点$(2,\\frac{3}{2}\\sqrt{3})$处的切线方程。",
+    "answer": "解：切线斜率k=y^{'}(x) ,方程两边对x求导 \\\\\n\\frac{x}{8}+\\frac{2}{9}yy^{'}=0,y^{'}=-\\frac{9x}{16y} \\\\\nk=y^{'}(2)=-\\frac{\\sqrt{3}}{4} \\\\\n切线方程为y-\\frac{3}{2}\\sqrt{3}=-\\frac{\\sqrt{3}}{4}(x-2) \\\\\n即\\sqrt{3}x+4y-8\\sqrt{3}=0",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0204隐函数及由参数方程所确定的函数的导数相关变化率-导数与微分.md",
+    "id": 75,
+    "method": "切线/法线"
+  },
+  {
+    "category": "02 导数与微分",
+    "difficulty": "低",
+    "text": "设$f(\\frac{x}{2})=\\sin x,求f^{'}[f(x)]，(f[f(x)])^{'}$",
+    "answer": "解:f(x)=\\sin 2x,f^{'}(x)=2\\cos2x \\\\\nf^{'}[f(x)]=2\\cos (2\\sin 2x) \\\\\n(f[f(x)])^{'}=[\\sin 2(\\sin 2x)]^{'}=\\cos 2(\\sin 2x)\\cdot2\\cos 2x\\cdot2=4\\cos 2x\\cos2(\\sin2x)",
+    "notes": "",
+    "source": "gaogzhen/02导数与微分\\0202函数的求导法则-导数与微分.md",
+    "id": 68,
+    "method": "综合/其他"
+  }
+]

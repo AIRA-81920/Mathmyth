@@ -4,6 +4,7 @@ import App from './app/App.jsx'
 import 'katex/dist/katex.min.css'
 import './styles/tokens.css'
 import './styles/app.css'
+import './styles/question-routes.css'
 import { useAppStore } from './store/appStore.js'
 import { usePracticeStore } from './store/practiceStore.js'
 

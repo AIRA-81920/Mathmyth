@@ -1,6 +1,7 @@
 import { rows } from '../db/validation.js';
 import { DatabaseError } from '../db/errors.js';
 import { wantsChatPractice, chatRouteLetters } from '../chat/practiceIntent.js';
+import { validateQuestionRoutes, mergeQuestionRoute } from '../chat/questionRoutes.js';
 
 export const MAX_ATTEMPTS = 3;
 export function sourceQuestion(db, message) {
@@ -30,10 +31,12 @@ export function enqueueAnswers(db, conversationIds) {
       phase: 'blocks', blockIds: [], source: {
         question: sourceQuestion(db, users[0]), followup: sourceQuestion(db, last), answer: answer.content,
         userMessageId: last.id, userQuestion: sourceQuestion(db, last),
+        questionMessages: users.filter(message => message.is_math_question !== 0).slice(-8)
+          .map(message => ({ messageId: message.id, question: sourceQuestion(db, message).slice(0, 1200) })),
         ...((last.image_ref || users[0].image_ref) ? { imageId: last.image_ref || users[0].image_ref } : {}),
         ...(selectedAnswer ? { selectedAnswer } : {}),
         context: history.filter((message) => message.status !== 'error' && message.status !== 'streaming')
-          .slice(-6).map(({ role, content }) => ({ role, content })),
+          .slice(-6).map(({ id, role, content }) => ({ messageId: id, role, content })),
       },
     };
     db.run(`INSERT OR IGNORE INTO queue_job(id,kind,conversation_id,status,attempts,payload,created_at,source_message_id)
@@ -132,10 +135,16 @@ export function checkpointJob(engine, claim, blockIds, classification) {
 
 export function completeJob(engine, claim, entries) {
   const job = claimRow(engine, claim);
+  const payload = JSON.parse(job.payload);
+  const result = Array.isArray(entries) ? { encounters: entries, routes: [] } : entries;
+  entries = result?.encounters;
   if (!Array.isArray(entries) || entries.some((entry) => !entry || typeof entry.scenario_id !== 'string'
     || (entry.method_id !== null && typeof entry.method_id !== 'string') || typeof entry.is_main !== 'boolean')) {
     throw new DatabaseError('归位结果无效。', 'invalid_location');
   }
+  let routes;
+  try { routes = validateQuestionRoutes(result.routes, entries, payload.source); }
+  catch { throw new DatabaseError('本题路径缺少可靠依据。', 'invalid_location'); }
   return engine.transaction((db) => {
     const learnerId = rows(db, 'SELECT learner_id FROM conversation WHERE id=?', [job.conversation_id])[0]?.learner_id;
     const now = new Date().toISOString();
@@ -143,15 +152,70 @@ export function completeJob(engine, claim, entries) {
       db.run(`INSERT OR IGNORE INTO encounter(id,learner_id,scenario_id,method_id,is_main,source,occurred_at,conversation_id,message_id,question_snapshot)
         VALUES(?,?,?,?,?,'ask',?,?,?,?)`,
       [`${job.id}:${entry.scenario_id}:${entry.method_id ?? 'scenario'}`, learnerId, entry.scenario_id, entry.method_id,
-        entry.is_main ? 1 : 0, job.created_at, job.conversation_id, job.source_message_id, JSON.parse(job.payload).source.question]);
+        entry.is_main ? 1 : 0, job.created_at, job.conversation_id, job.source_message_id, payload.source.userQuestion || payload.source.question]);
       const targets = [['scenario', entry.scenario_id], ...(entry.method_id ? [['method', entry.method_id]] : [])];
       for (const [type, id] of targets) {
         db.run(`INSERT OR IGNORE INTO mastery(id,learner_id,target_type,target_id,state,success_count,faces,updated_at)
           VALUES(?,?,?,?,'exposed',0,'[]',?)`, [`${learnerId}:${type}:${id}`, learnerId, type, id, now]);
       }
     }
-    db.run("UPDATE queue_job SET status='done',lease_token=NULL,next_attempt_at=NULL WHERE id=?", [job.id]);
+    // Keep existing schema/backup compatibility: route evidence belongs to the
+    // specific answer job, and is invalidated with that answer's revision.
+    payload.questionRoutes = routes;
+    db.run("UPDATE queue_job SET status='done',lease_token=NULL,next_attempt_at=NULL,payload=? WHERE id=?", [JSON.stringify(payload), job.id]);
     return { recorded: JSON.parse(job.payload).classificationOnly ? 0 : entries.length };
+  });
+}
+
+export function loadQuestionRoutes(engine, conversationId) {
+  const db = engine.ensureOpen();
+  const jobs = rows(db, `SELECT q.*,m.seq FROM queue_job q JOIN message m ON m.id=q.source_message_id
+    WHERE q.conversation_id=? AND q.kind='locate' AND m.superseded=0 ORDER BY m.seq`, [conversationId]);
+  const userRows = rows(db, "SELECT id,is_math_question,image_ref FROM message WHERE conversation_id=? AND role='user' AND superseded=0", [conversationId]);
+  const validUsers = new Set(userRows.map(row => row.id));
+  const grouped = new Map();
+  for (const job of jobs) {
+    let payload; try { payload = JSON.parse(job.payload); } catch { continue; }
+    if (payload.classificationOnly) continue;
+    const userId = payload.source.userMessageId;
+    if (!validUsers.has(userId)) continue;
+    if (job.status !== 'done') {
+      const user = userRows.find(row => row.id === userId);
+      if (!grouped.has(userId) && (user.is_math_question === 1 || user.image_ref)) grouped.set(userId, { messageId: userId, status: job.status, routes: [] });
+      continue;
+    }
+    const routes = payload.questionRoutes ?? [];
+    if (routes.length) for (const route of routes) {
+      if (!validUsers.has(route.user_message_id)) continue;
+      const anchor = route.user_message_id;
+      const previous = grouped.get(anchor) ?? { messageId: anchor, routes: [] };
+      const oldRoute = previous.routes.find(old => old.question_index === route.question_index);
+      const combined = anchor !== userId ? mergeQuestionRoute(oldRoute, route) : route;
+      grouped.set(anchor, { ...previous, status: 'done', ordered: true,
+        routes: [...previous.routes.filter(old => old.question_index !== route.question_index), combined].sort((a,b) => a.question_index-b.question_index) });
+      if (anchor !== userId) grouped.delete(userId);
+    }
+    else {
+      const encounters = rows(db, 'SELECT scenario_id,method_id FROM encounter WHERE message_id=? ORDER BY rowid', [job.source_message_id]);
+      if (encounters.length) grouped.set(userId, { messageId: userId, status: 'done', ordered: false,
+        routes: [{ user_message_id: userId, question_index: 1, steps: encounters }] });
+    }
+  }
+  return [...grouped.values()];
+}
+
+export function retryQuestionRoutes(engine, messageId) {
+  const db = engine.ensureOpen();
+  const jobs = rows(db, `SELECT q.* FROM queue_job q JOIN message a ON a.id=q.source_message_id
+    JOIN message u ON u.conversation_id=a.conversation_id WHERE u.id=? AND u.role='user'
+    AND u.superseded=0 AND a.superseded=0 AND q.status='failed' AND q.kind='locate'`, [messageId]);
+  const eligible = jobs.filter(job => {
+    const payload = JSON.parse(job.payload);
+    return !payload.classificationOnly && payload.source.userMessageId === messageId;
+  });
+  return engine.transaction(database => {
+    for (const job of eligible) database.run("UPDATE queue_job SET status='pending',attempts=0,lease_token=NULL,next_attempt_at=NULL WHERE id=?", [job.id]);
+    return { retried: eligible.length };
   });
 }
 

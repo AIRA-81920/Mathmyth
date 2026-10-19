@@ -26,12 +26,9 @@ node_modules/
 *.jks
 *.keystore
 
-# Private exercise data, including questions embedded in JavaScript
-/src/assets/practice/bank402/
-/src/assets/practice/question-banks/*.json
-/src/assets/practice/first-batch-originals.json
-/src/assets/practice/first-batch.js
-/src/assets/practice/route-bank.js
+# Exercise data is tracked: the questions come from open educational sources.
+# See src/assets/practice/question-banks/ and the review files next to it.
+# Only regenerate these with `npm run bank:build`; do not hand-edit the JSON.
 
 # Local checks, reports, and scratch files
 /.qa/

@@ -5,9 +5,11 @@ import MathMarkdown from './MathMarkdown.jsx';
 import QuestionLink from './QuestionLink.jsx';
 import { knowledgeMarkdown } from '../core/skeleton/content.js';
 import '../styles/scenario-content.css';
+import { trailIdentity, trailBranchPath, trailExpansionKey } from '../core/skeleton/trailLocation.js';
 
-function Branch({ node, onMethod, onQuestion, onScenario, active }) {
-  const key = `${node.kind}:${node.id}`;
+function Branch({ node, onMethod, onQuestion, onScenario, active, parentPath = '' }) {
+  const path = trailBranchPath(parentPath, node);
+  const key = trailExpansionKey(parentPath, node);
   const open = useAppStore((state) => Boolean(state.preferences.trailExpanded[key]));
   const toggle = useAppStore((state) => state.toggleTrailNode);
   const state = node.mastery?.state;
@@ -17,7 +19,7 @@ function Branch({ node, onMethod, onQuestion, onScenario, active }) {
   const actionable = items.length > 0 || Boolean(isMethod && onMethod);
   const hold = useHoldToOpen({ enabled: active && !isMethod && Boolean(onScenario), onOpen: () => onScenario?.({ id: node.id, kind: node.kind }) });
   return (
-    <li className={`trail-node trail-${intensity}`}>
+    <li className={`trail-node trail-${intensity}`} data-node-key={trailIdentity(node)} data-view-key={path}>
       <div className="trail-row-actions">
       {isMethod ? <button type="button" className={`trail-row${open ? ' is-open' : ''}`} disabled={!actionable}
         aria-expanded={!onMethod && actionable ? open : undefined} onClick={() => onMethod ? onMethod(node.id) : toggle(key)}>
@@ -37,7 +39,7 @@ function Branch({ node, onMethod, onQuestion, onScenario, active }) {
       {open && <ul className="trail-children">
         {isMethod ? items.filter((item, index, all) => all.findIndex((other) => (other.practiceItemId || other.conversationId) === (item.practiceItemId || item.conversationId)) === index)
           .map((item) => <li key={item.id}><QuestionLink item={item} onClick={() => onQuestion?.(item)} /></li>)
-          : items.map((child) => <Branch key={child.id} node={child} onMethod={onMethod} onQuestion={onQuestion} onScenario={onScenario} active={active} />)}
+          : items.map((child) => <Branch key={child.id} node={child} onMethod={onMethod} onQuestion={onQuestion} onScenario={onScenario} active={active} parentPath={path} />)}
       </ul>}
     </li>
   );

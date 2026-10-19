@@ -32,7 +32,7 @@
         },
         {
           "id": "G.limit.sequence",
-          "name": "数列极限",
+          "name": "数列与含参极限",
           "order": 2,
           "scenario_ids": [
             "S.limit.recurrence_sequence",
@@ -55,7 +55,8 @@
           "order": 4,
           "scenario_ids": [
             "S.limit.piecewise_continuity",
-            "S.limit.discontinuity_classification"
+            "S.limit.discontinuity_classification",
+            "S.limit.function_sequence_limit"
           ]
         },
         {

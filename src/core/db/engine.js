@@ -209,6 +209,8 @@ export class DatabaseEngine {
   completeJob(claim, entries) { return jobs.completeJob(this, claim, entries); }
   failJob(claim, options) { return jobs.failJob(this, claim, options); }
   loadTrail() { return jobs.loadTrail(this); }
+  loadQuestionRoutes(conversationId) { return jobs.loadQuestionRoutes(this, conversationId); }
+  retryQuestionRoutes(messageId) { return jobs.retryQuestionRoutes(this, messageId); }
   loadPatternProgress() { return loadPatternProgress(this); }
   listPersonalNotes() { return personalNotes.listPersonalNotes(this); }
   savePersonalNote(input) { return personalNotes.savePersonalNote(this, input); }

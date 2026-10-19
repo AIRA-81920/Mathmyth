@@ -617,22 +617,30 @@
     {
       "id": "S.limit.function_sequence_limit",
       "block_id": "B.limit",
-      "name": "函数列的点态极限",
-      "definition": "表达式同时含x和n；先固定x求n的极限，得到随x变化的新函数。",
+      "name": "含参极限定义的函数",
+      "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
       "signals": [
-        "题目用n趋于无穷的极限定义f(x)",
-        "不同x的范围可能给出不同极限"
+        "f(x) 由 n→∞ 或 t→∞ 的极限定义，极限变量不是 x",
+        "出现 x^{2n}、x^n 或 e^{tx} 等随 x 的范围改变极限的结构",
+        "先求出分段表达式，再研究连续性、间断点或求参数"
       ],
       "recognition_examples": [
-        "f(x)=lim_{n→∞} x(1-x^{2n})/(1+x^{2n})"
+        "f(x)=lim_{n→∞} x(1-x^{2n})/(1+x^{2n})，求间断点并分类",
+        "f(x)=lim_{t→∞} x/(2+x²+e^{tx})，讨论连续性",
+        "f(x)=lim_{n→∞} (x^{2n-1}+ax²+bx)/(1+x^{2n})，求使 f 在实数轴连续的 a、b"
       ],
       "distinguish_from": [],
       "methods": [
         {
           "method_id": "M.pointwise_limit",
           "priority": 1,
-          "when_to_prefer": "先按|x|与1的关系分支，边界点单独计算。"
+          "when_to_prefer": "先固定 x；幂型按 |x| 与 1 分区，e^{tx} 型按 x 的符号分区，临界点直接代入单算。"
         }
+      ],
+      "aliases": [
+        "函数列的点态极限",
+        "极限定义的函数",
+        "先求极限函数再判断连续性"
       ]
     },
     {

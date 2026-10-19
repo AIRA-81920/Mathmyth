@@ -59,7 +59,8 @@ function MainShell() {
           <button className="icon-button" aria-label="历史与设置" aria-expanded={drawerOpen} aria-controls="history-drawer" onClick={() => setDrawerOpen(true)}>
             <Menu size={21} strokeWidth={1.6} aria-hidden="true" />
           </button>
-          <nav className="area-tabs" role="tablist" aria-label="主要区域">
+          <nav className="area-tabs" role="tablist" aria-label="主要区域" style={{ '--active-area': activeIndex }}>
+            <span className="area-tab-indicator" aria-hidden="true" />
             {areas.map((area, index) => (
               <button key={area.id} id={`tab-${area.id}`} className={`area-tab${activeArea === area.id ? ' is-active' : ''}`}
                 role="tab" aria-selected={activeArea === area.id} aria-controls="area-panel"
