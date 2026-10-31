@@ -20,7 +20,16 @@
   --radius-full: 999px;
   --motion-duration: 180ms;
   --motion-ease: ease-out;
-  --content-width: 640px;
+  /* 正文阅读列宽。注意：它只约束文字列，不再约束整个外壳 —— 原来 --content-width
+     同时卡住 .app-canvas，导致横屏平板上整个应用（含抽屉）被挤在中间固定宽度的一条里，
+     抽屉永远贴不到屏幕左缘。 */
+  --reading-width: 640px;
+  --content-width: var(--reading-width); /* 兼容既有引用（如 .method-chat-window 的居中定位）*/
+  /* 抽屉宽度不再写死 286px：窄屏按视口占比（约 73%，与旧观感一致），宽屏封顶 320px。
+     卡片缩放的 0.05 本来就是相对值（transform 的百分比语义），保留不动。 */
+  --drawer-w: clamp(268px, 73vw, 320px);
+  --drawer-scale: .05;
+  --scrim-blur: 6px;   /* 遮罩毛玻璃半径（v3.6.3 起动画期间也生效） */
   font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;

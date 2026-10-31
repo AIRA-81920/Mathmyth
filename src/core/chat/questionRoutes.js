@@ -39,6 +39,9 @@ export function routeScenarioIds(route) {
 }
 
 export function routePresentation(route, skeleton, ordered = true) {
+  // Only explicit paths establish the order of operations within one scene.
+  // Older method lists remain associations, even when only one scene appears.
+  const explicitPaths = ordered && Array.isArray(route.paths) && route.paths.length > 0;
   const paths = routePaths(route).map(path => {
     const stages = [];
     for (const step of path.steps) {
@@ -47,12 +50,20 @@ export function routePresentation(route, skeleton, ordered = true) {
       const method = step.method_id && skeleton.methodById.get(step.method_id);
       let stage = stages.at(-1);
       if (!stage || stage.scenarioId !== step.scenario_id) {
-        stage = { scenarioId: step.scenario_id, scenario: scenario.name, methods: [] };stages.push(stage);
+        stage = { scenarioId: step.scenario_id, scenario: scenario.name, methods: [],
+          ...(explicitPaths ? { operations: [] } : {}) };stages.push(stage);
       }
       if (method && !stage.methods.includes(method.name)) stage.methods.push(method.name);
+      if (explicitPaths) stage.operations.push({ method: method?.name ?? null, evidence: step.evidence ?? null });
     }
     return { stages };
   }).filter(path => path.stages.length);
+  if (explicitPaths) return {
+    // Independent solutions never become one chain just because they share a
+    // scene. Consecutive operations can stay in that scene without new nodes.
+    kind: paths.length > 1 ? 'parallel' : paths.some(path => path.stages.reduce((count, stage) => count + stage.operations.length, 0) > 1) ? 'chain' : 'single',
+    paths,
+  };
   const unique = new Map();
   for (const stage of paths.flatMap(path => path.stages)) {
     const previous = unique.get(stage.scenarioId);

@@ -1,0 +1,13 @@
+.answer-learning { margin-top: 16px; font-size: .85rem; line-height: 1.6; }
+.answer-learning-actions { display: flex; align-items: flex-start; flex-wrap: wrap; column-gap: 18px; row-gap: 6px; }
+.answer-learning-actions > .question-route { margin: 0; min-width: 0; }
+.answer-learning .question-route-toggle { margin: 0; }
+.answer-learning .practice-text-button { margin: 0; min-height: 30px; text-align: left; }
+.answer-practice-action { font-weight: 600; }
+.answer-star-action { display: inline-flex; align-items: center; gap: 5px; }
+.answer-learning-actions:has(.question-route-card) > .question-route { flex-basis: 100%; }
+.answer-practice-picker { display: grid; gap: 8px; padding: 12px 0; }
+.answer-practice-picker .knowledge-link { font-size: inherit; }
+.answer-learning-fallback { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 16px; }
+.answer-learning-fallback > span { flex-basis: 100%; }
+@media (max-width: 360px) { .answer-learning-actions { column-gap: 12px; } }

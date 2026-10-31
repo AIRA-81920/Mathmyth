@@ -18,10 +18,10 @@ function engine() {
   return enginePromise;
 }
 
-const methods = new Set(['initializeDatabase','loadConversation','loadImage','saveChanges','exportBackup','prepareImport','commitImport','cancelImport','clearDatabase',
-  'claimNextJob','checkpointJob','completeJob','failJob','loadTrail','loadQuestionRoutes','retryQuestionRoutes','loadPatternProgress','listPersonalNotes','savePersonalNote','deletePersonalNote',
+const methods = new Set(['initializeDatabase','loadConversation','loadImage','saveChanges','exportBackup','prepareImport','commitImport','cancelImport','clearDatabase','listConversations',
+  'claimNextJob','checkpointJob','completeJob','failJob','loadTrail','loadQuestionRoutes','loadAnswerQuestionRoutes','retryQuestionRoutes','loadPatternProgress','listPersonalNotes','savePersonalNote','deletePersonalNote',
   'listStarredQuestions','loadStarredQuestion','setQuestionStar','removeStarredQuestion','getMessageQuestionClassification','requestMessageQuestionClassification',
-  'createPracticeRun','appendPracticeItems','updateConversation','deleteConversation','loadActivePractice','loadPracticeItem','listPracticeHistory','loadPracticeUsage','gradePracticeItem','revealPracticeItem','advancePracticeItem','searchConversations']);
+  'createPracticeRun','appendPracticeItems','updateConversation','deleteConversation','loadActivePractice','loadPracticeItem','listPracticeHistory','loadPracticeUsage','gradePracticeItem','revealPracticeItem','advancePracticeItem','recordPracticeHint','savePracticeDraft','finishChatPractice','setPracticeReview','listPracticeReviews','disputePracticeItem','searchConversations']);
 let serial = Promise.resolve();
 let generation = 0;
 
@@ -39,9 +39,9 @@ self.onmessage = ({ data }) => {
       }
       const result = await target[method](...args);
       if (method === 'commitImport' || method === 'clearDatabase') generation += 1;
-      if (['claimNextJob','createPracticeRun','appendPracticeItems','loadActivePractice','loadPracticeItem','gradePracticeItem','revealPracticeItem','advancePracticeItem'].includes(method) && result) result.generation = generation;
+      if (['claimNextJob','createPracticeRun','appendPracticeItems','loadActivePractice','loadPracticeItem','gradePracticeItem','revealPracticeItem','advancePracticeItem','recordPracticeHint','finishChatPractice','setPracticeReview','disputePracticeItem'].includes(method) && result) result.generation = generation;
       self.postMessage({ id, ok: true, result, generation });
-      if (['saveChanges','deleteConversation','checkpointJob','completeJob','failJob','retryQuestionRoutes','commitImport','clearDatabase','gradePracticeItem','revealPracticeItem','savePersonalNote','deletePersonalNote','setQuestionStar','removeStarredQuestion','requestMessageQuestionClassification'].includes(method)) {
+      if (['saveChanges','deleteConversation','checkpointJob','completeJob','failJob','retryQuestionRoutes','commitImport','clearDatabase','gradePracticeItem','revealPracticeItem','recordPracticeHint','finishChatPractice','setPracticeReview','disputePracticeItem','savePersonalNote','deletePersonalNote','setQuestionStar','removeStarredQuestion','requestMessageQuestionClassification'].includes(method)) {
         self.postMessage({ type: 'changed', method, generation });
       }
     } catch (error) {

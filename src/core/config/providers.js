@@ -54,6 +54,28 @@ export const providers = [
     verifiedAt: '2026-10-08',
   },
   {
+    id: 'volcano',
+    name: '火山引擎',
+    apiBase: 'https://ark.cn-beijing.volces.com/api/v3',
+    defaultModel: 'doubao-seed-2-0-lite-260428',
+    // Ark 的模型名既可以是模型 ID，也可以是自建的推理接入点（ep-…），
+    // 所以图片能力无法由一个固定预设断定，交给用户勾选。
+    imageCapability: null,
+    imageHint: '模型名填模型 ID 或推理接入点 ID（ep-…）；是否支持图片按所填模型确认。',
+    sourceUrl: 'https://www.volcengine.com/docs/82379/1298454',
+    verifiedAt: '2026-10-27',
+  },
+  {
+    id: 'tokenrhythm',
+    name: 'Token Rhythm',
+    apiBase: 'https://tokenrhythm.studio/v1',
+    defaultModel: 'deepseek-v4-flash',
+    imageCapability: null,
+    imageHint: 'OpenAI 兼容网关；模型名可用右侧“查询可用模型”从列表里选。',
+    sourceUrl: 'https://tokenrhythm.studio/docs/api-integration',
+    verifiedAt: '2026-10-27',
+  },
+  {
     id: 'custom',
     name: '自定义',
     apiBase: '',
@@ -80,6 +102,7 @@ export function createDefaultModelConfig() {
 }
 
 export function validateModelConfig(config = {}) {
+  if (!config || typeof config !== 'object' || Array.isArray(config)) config = {};
   const errors = {};
   const apiBase = String(config.apiBase ?? '').trim();
 

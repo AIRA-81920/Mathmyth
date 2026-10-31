@@ -31,6 +31,31 @@ async function setup(sourceConversation = conversation, modelConfig = config) {
   return { engine, disk };
 }
 
+test('a foreground change during skeleton loading returns the claimed lease without spending an attempt', async (t) => {
+  const { engine } = await setup();
+  t.after(() => engine.close());
+  const store = createStore(() => ({ storageInitialized: true, onboarded: true, dataOperation: null,
+    storageStatus: 'ready', route: 'main', modelConfig: config, conversations: [] }));
+  let loaded, release, failed;
+  const loading = new Promise(resolve => { loaded = resolve; });
+  const skeleton = new Promise(resolve => { release = resolve; });
+  const returned = new Promise(resolve => { failed = resolve; });
+  let calls = 0;
+  const stop = startQueue({ store, database: { onDatabaseChange: () => () => {},
+    claimNextJob: () => engine.claimNextJob(),
+    failJob: async (claim, options) => { await engine.failJob(claim, options); failed(options); } },
+    getSkeleton: () => { loaded(); return skeleton; },
+    blocks: async () => { calls++; return []; }, pollDelay: 60_000 });
+  t.after(stop);
+  await loading;
+  store.setState({ route: 'settings' });
+  release({});
+  assert.deepEqual(await returned, { cancelled: true });
+  assert.equal(calls, 0);
+  const claim = await engine.claimNextJob();
+  assert.equal(claim.attempts, 1, '取消的那次认领不能消耗重试机会');
+});
+
 test('completed answer runs two background phases and writes exposure without practice success', async () => {
   const { engine } = await setup();
   const store = createStore(() => ({ storageInitialized: true, onboarded: true, dataOperation: null, storageStatus: 'ready',
@@ -99,10 +124,11 @@ test('practice foreground signals preempt background work independently of chat 
   assert.equal(engine.db.exec('SELECT attempts FROM queue_job')[0].values[0][0],0);assert.equal(engine.loadTrail().encounters.length,0);engine.close();
 });
 
-test('image-only answer is classified asynchronously from its stored original without frontend transcription', async () => {
+test('image answer is classified asynchronously from its transcribed text and never sends the image again', async () => {
   const encoded = 'iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAEklEQVR4nGNUUFBgYGBgYgADAASqAGThstxZAAAAAElFTkSuQmCC';
   const image = { id: 'original-photo', mime: 'image/png', name: '题目.png', bytes: new Uint8Array(Buffer.from(encoded, 'base64')) };
-  const photoConversation = { ...conversation, messages: [{ ...conversation.messages[0], content: '', image }, conversation.messages[1]] };
+  // D6 把转写题面写进用户消息正文，D7 让后台归位只吃这段文本。
+  const photoConversation = { ...conversation, messages: [{ ...conversation.messages[0], content: '<mathmyth_question>求 $\\lim_{x\\to0}\\sin x/x$。</mathmyth_question>\n\n请解第一题', image }, conversation.messages[1]] };
   const visionConfig = { ...config, supportsImage: true };
   const { engine } = await setup(photoConversation, visionConfig);
   const directory = new URL('../../skeleton/', import.meta.url);
@@ -114,13 +140,14 @@ test('image-only answer is classified asynchronously from its stored original wi
   const done = new Promise((resolve) => { finish = resolve; });
   globalThis.fetch = async (_url, options) => {
     const messages = JSON.parse(options.body).messages;
-    const parts = messages[1].content;
-    assert.equal(parts[1].image_url.url, `data:image/png;base64,${encoded}`);
-    const payload = JSON.parse(parts[0].text.split('\n')[0]);
-    assert.equal(payload.source.question, '');
+    // D7：请求体里不再有 image_url 分片，后台任务不再为图片付 token。
+    assert.equal(typeof messages[1].content, 'string');
+    assert.ok(!JSON.stringify(messages).includes('image_url'));
+    const payload = JSON.parse(messages[1].content.split('\n')[0]);
+    assert.ok(payload.source.question.includes('sin x/x'));
     assert.equal(payload.source.imageId, undefined);
     calls += 1;
-    return Response.json({ choices: [{ message: { content: JSON.stringify(calls === 1 ? { block_ids: ['B.limit'], is_math_question: true, recognized_question: '求 sin(x)/x 的极限。' } : { encounters: entries }) }, finish_reason: 'stop' }] });
+    return Response.json({ choices: [{ message: { content: JSON.stringify(calls === 1 ? { block_ids: ['B.limit'], is_math_question: true, recognized_question: null } : { encounters: entries }) }, finish_reason: 'stop' }] });
   };
   const database = { onDatabaseChange: () => () => {}, claimNextJob: () => engine.claimNextJob(), loadImage: (id) => engine.loadImage(id),
     checkpointJob: (...args) => engine.checkpointJob(...args), failJob: (...args) => engine.failJob(...args),

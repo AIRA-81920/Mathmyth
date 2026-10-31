@@ -64,14 +64,43 @@ const presentationSkeleton = {
 };
 const stage = (scenario_id, method_id) => ({ scenario_id, method_id, evidence: '解答' });
 
-test('one scenario appears once and branches into only the methods recorded for this question', () => {
-  for (const input of [ { steps: [stage('A','m1'), stage('A','m2')] },
-    { paths: [{ steps: [stage('A','m1')] }, { steps: [stage('A','m2')] }] } ]) {
-    const view = routePresentation(input, presentationSkeleton);
-    assert.equal(view.kind,'single');assert.equal(view.paths.length,1);
-    assert.deepEqual(view.paths[0].stages,[{scenarioId:'A',scenario:'情景A',methods:['方法m1','方法m2']}]);
-    assert.ok(!view.paths[0].stages[0].methods.includes('方法m3'));
-  }
+test('a legacy method list shows only recorded associations without inventing an operation order', () => {
+  const view = routePresentation({ steps: [stage('A','m1'), stage('A','m2')] }, presentationSkeleton);
+  assert.equal(view.kind,'single');assert.equal(view.paths.length,1);
+  assert.deepEqual(view.paths[0].stages,[{scenarioId:'A',scenario:'情景A',methods:['方法m1','方法m2']}]);
+  assert.ok(!view.paths[0].stages[0].methods.includes('方法m3'));
+  assert.equal(view.paths[0].stages[0].operations, undefined);
+});
+
+test('explicit independent solutions stay separate even when both use the same scenario', () => {
+  const view = routePresentation({ paths: [{ steps: [stage('A','m1')] }, { steps: [stage('A','m2')] }] }, presentationSkeleton);
+  assert.equal(view.kind,'parallel');assert.equal(view.paths.length,2);
+  assert.deepEqual(view.paths.map(path => path.stages.map(item => item.scenarioId)), [['A'], ['A']]);
+  assert.deepEqual(view.paths.map(path => path.stages[0].operations.map(item => item.method)), [['方法m1'], ['方法m2']]);
+});
+
+test('an explicit same-scene chain preserves each operation, order and literal evidence without inventing scenes', () => {
+  const scenario = 'S.limit.0over0';
+  const skeleton = { scenarioById: new Map([[scenario, { name: '0/0 型未定式' }]]),
+    methodById: new Map([['M.rationalization', { name: '有理化' }], ['M.important_limit', { name: '重要极限' }]]) };
+  const steps = [{ scenario_id: scenario, method_id: 'M.rationalization', evidence: '先同乘共轭式。' },
+    { scenario_id: scenario, method_id: 'M.important_limit', evidence: '再配成 sin(2x)/(2x)。' }];
+  const view = routePresentation({ paths: [{ steps }] }, skeleton);
+  assert.equal(view.kind, 'chain');assert.equal(view.paths.length, 1);
+  assert.equal(view.paths[0].stages.length, 1);
+  assert.equal(view.paths[0].stages[0].scenarioId, scenario);
+  assert.deepEqual(view.paths[0].stages[0].operations, [
+    { method: '有理化', evidence: '先同乘共轭式。' }, { method: '重要极限', evidence: '再配成 sin(2x)/(2x)。' },
+  ]);
+  const unordered = routePresentation({ paths: [{ steps }] }, skeleton, false);
+  assert.equal(unordered.kind, 'single');
+  assert.equal(unordered.paths[0].stages[0].operations, undefined);
+});
+
+test('repeated explicit operations do not disappear when their method IDs match', () => {
+  const view = routePresentation({ paths: [{ steps: [stage('A', 'm1'), { ...stage('A', 'm1'), evidence: '再次应用' }] }] }, presentationSkeleton);
+  assert.equal(view.paths[0].stages[0].operations.length, 2);
+  assert.equal(view.paths[0].stages[0].operations[1].evidence, '再次应用');
 });
 
 test('genuine cross-scenario stages keep methods, while alternative solutions stay in separate paths', () => {
@@ -146,7 +175,11 @@ test('foreground thinking uses provider switches without changing auxiliary sett
   assert.deepEqual(answerRequest(config,'enabled').parameters,{thinking:{type:'enabled'}});
   assert.equal(answerRequest(config,'enabled').config.auxiliaryThinking,'none');
   assert.equal(answerRequest({...config,model:'deepseek-chat'},'enabled').config.model,'deepseek-reasoner');
-  assert.deepEqual(answerRequest({...config,apiBase:'https://gateway.example'},'enabled').parameters,{});
+  // 契约变更（2026-10-29）：文档没写的网关不再直接锁死，改为按 OpenAI 标准
+  // reasoning_effort 试一次；被拒后由 sendWithReasoningFallback 自动退回并记住。
+  assert.deepEqual(answerRequest({...config,apiBase:'https://gateway.example'},'enabled').parameters,{reasoning_effort:'high'});
+  assert.deepEqual(answerRequest({...config,apiBase:'https://gateway.example'},'disabled').parameters,{reasoning_effort:'none'});
+  assert.deepEqual(answerRequest({...config,apiBase:'https://gateway.example'},'auto').parameters,{});
   assert.equal(thinkingCapability({apiBase:'https://api.moonshot.cn/v1',model:'kimi-k3'}).switchable,false);
   assert.equal(thinkingCapability({apiBase:'https://api.moonshot.cn/v1',model:'kimi-k2.5'}).switchable,true);
   assert.equal(normalizePreferences({answerThinking:'enabled'}).answerThinking,'enabled');

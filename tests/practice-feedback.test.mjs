@@ -42,7 +42,7 @@ test('plain-language important-limit operation has a real zero-over-zero edge an
     const db = new DatabaseEngine({ SQL, schemaSql, storage: { load: async () => null, commit: async (_bytes, revision) => revision+1 } });
     await db.initializeDatabase();
     try {
-      const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true });
+      const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
       await db.gradePracticeItem(run.id, run.items[0].id, { mode: 'steps', steps, assessment });
       assert.equal(db.loadTrail().mastery.find((m) => m.targetId === 'M.important_limit').successCount, 1);
     } finally { db.close(); }
@@ -75,7 +75,7 @@ test('mathematical success without mapped execution evidence can be saved withou
   const db = new DatabaseEngine({ SQL, schemaSql, storage: { load: async () => null, commit: async (_bytes, revision) => revision+1 } });
   await db.initializeDatabase();
   try {
-    const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true });
+    const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
     const assessment = { outcome: 'right', methodIds: [], executedEdges: [], mathematicalEvidence: [{ studentExcerpt: steps, explanation: '正确恒等改写后使用重要极限。' }], mathematicallyValid: true, feedback: '这条路线正确。' };
     const graded = await db.gradePracticeItem(run.id, run.items[0].id, { mode: 'steps', steps, assessment });
     assert.equal(graded.items[0].result, 'right'); assert.equal(db.loadTrail().mastery.length, 0);

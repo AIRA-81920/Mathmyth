@@ -18,7 +18,7 @@ export function routeQuestionError(message = '题目的路线与条件不完整�
 export function validateRouteQuestion(question, skeleton) {
   if (!isRouteQuestion(question) || !nonempty(question.question) || !nonempty(question.solution)
     || !practiceLevels.some((level) => level.id === question.selectionMode)
-    || !Array.isArray(question.routes) || question.routes.length < 3 || question.routes.length > 5
+    || !Array.isArray(question.routes) || question.routes.length < (question.metadata?.reviewStatus === 'model_unverified' ? 1 : 3) || question.routes.length > 5
     || !skeleton.scenarioById.has(question.entranceScenarioId)
     || !nonempty(question.metadata?.motherId) || !nonempty(question.metadata?.trainingGoal)
     || !nonempty(question.metadata?.source?.kind) || !nonempty(question.metadata?.reviewStatus)
@@ -30,7 +30,8 @@ export function validateRouteQuestion(question, skeleton) {
     || question.variables.some((variable) => !/^[A-Za-z]$/.test(variable))
     || new Set(question.variables).size !== question.variables.length
     || !nonempty(question.comparisonCriterion)) throw routeQuestionError();
-  canonicalStructure(question.structure);
+  // structure 只用于认身份；AI 草稿可以没有它（见 fingerprintQuestion）。
+  if (question.structure != null) canonicalStructure(question.structure);
   if (question.task != null) validateTaskDimensions(question);
   const ids = new Set();
   for (const route of question.routes) {
@@ -48,7 +49,9 @@ export function validateRouteQuestion(question, skeleton) {
     if (route.steps[0].scenarioId !== question.entranceScenarioId) throw routeQuestionError('路线的入口情景与题面不一致。');
   }
   const valid = question.routes.filter((route) => route.valid);
-  if (!valid.length || valid.length > 3 || !question.routes.some((route) => !route.valid)
+  // AI 草稿只需要一条正确路线（选路线玩法只用在人工库题上，那里仍要求一条错路线）。
+  const draft = question.metadata?.reviewStatus === 'model_unverified';
+  if (!valid.length || valid.length > 3 || (!draft && !question.routes.some((route) => !route.valid))
     || valid.filter((route) => route.preferred).length !== 1
     || question.routes.some((route) => route.preferred && !route.valid)) throw routeQuestionError();
   return question;

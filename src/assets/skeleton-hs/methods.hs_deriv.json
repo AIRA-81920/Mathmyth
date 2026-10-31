@@ -1,0 +1,1289 @@
+{
+  "block_id": "B.hs_deriv",
+  "methods": [
+    {
+      "id": "M.hs_derivative_def",
+      "name": "导数定义法",
+      "aliases": [
+        "导数定义",
+        "凑增量比"
+      ],
+      "one_liner": "把给出的极限式凑成标准增量比，读出它等于某点导数值或其倍数。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.definition",
+        "S.hs_deriv.calc"
+      ],
+      "triggers": [
+        "出现增量比形式的极限",
+        "出现瞬时变化率",
+        "含抽象函数并要求某点导数",
+        "分段点无法套求导公式"
+      ],
+      "steps": [
+        "把目标式与标准增量比对照，找出差的倍数或符号",
+        "通过乘除常数把式子配成标准形式",
+        "读出导数值并写出倍数关系",
+        "涉及物理意义时说明单位与含义"
+      ],
+      "preconditions": [
+        "函数在该点导数存在",
+        "增量比的极限可识别"
+      ],
+      "not_applicable": [
+        "导数不存在（如尖点）",
+        "式子无法配成增量比"
+      ],
+      "pitfalls": [
+        "对称增量差商的系数忘记乘 2",
+        "把增量比的极限直接当成函数值"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_derivative_rules",
+          "note": "能直接求导时优先用公式，定义法用于关键点与抽象函数"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_derivative_rules",
+          "note": "求导的两条路径：解析式明确用公式，极限式或分段点用定义。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 f'(1)=2，求 lim(h→0)[f(1+h)-f(1-h)]/h。",
+          "answer_sketch": "把式子写成 2 倍的对称增量比，结果为 2f'(1)=4。",
+          "scenario_id": "S.hs_deriv.definition"
+        },
+        {
+          "statement": "用定义求 f(x)=x^2 在 x=1 处的导数。",
+          "answer_sketch": "写出增量比 (1+h)^2-1 除以 h，化简得 2+h，令 h 趋于零得 2。",
+          "scenario_id": "S.hs_deriv.definition"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_derivative_rules",
+      "name": "求导公式与复合求导",
+      "aliases": [
+        "链式法则",
+        "四则求导法则",
+        "基本求导公式"
+      ],
+      "one_liner": "按基本公式、四则法则与链式法则，由外到内逐层求导再相乘。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.definition",
+        "S.hs_deriv.calc",
+        "S.hs_deriv.tangent",
+        "S.hs_deriv.extremum",
+        "S.hs_deriv.construct"
+      ],
+      "triggers": [
+        "函数是复合结构",
+        "出现乘积或商",
+        "需要先求导函数再代点"
+      ],
+      "steps": [
+        "识别最外层函数并写出其导数",
+        "对内层继续求导，逐层相乘",
+        "乘积用乘积法则，商用商法则",
+        "化简结果并检查定义域"
+      ],
+      "preconditions": [
+        "各层函数在讨论点可导",
+        "内层函数值落在外层定义域内"
+      ],
+      "not_applicable": [
+        "分段点需用定义处理",
+        "幂指式需先取对数"
+      ],
+      "pitfalls": [
+        "复合求导漏乘内层导数",
+        "商的法则分子符号写反"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_tangent",
+          "note": "求出导函数后代入切点横坐标得斜率"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_derivative_def",
+          "note": "求导的两条路径：解析式明确用公式，极限式或分段点用定义。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 y=sin(2x+π/3) 的导数。",
+          "answer_sketch": "外层正弦导数为余弦，内层导数为 2，得 y'=2cos(2x+π/3)。",
+          "scenario_id": "S.hs_deriv.calc"
+        },
+        {
+          "statement": "求 y=x^2·e^x 的导数。",
+          "answer_sketch": "用乘积法则得 y'=2x·e^x+x^2·e^x=x(x+2)e^x。",
+          "scenario_id": "S.hs_deriv.calc"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_tangent",
+      "name": "切线方程",
+      "aliases": [
+        "在点切线",
+        "过点切线",
+        "设切点法"
+      ],
+      "one_liner": "在点处切线斜率等于该点导数值，过点处切线先设切点再解方程。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.tangent"
+      ],
+      "triggers": [
+        "出现某点处的切线",
+        "出现过某点的切线",
+        "出现切线与直线平行或垂直"
+      ],
+      "steps": [
+        "在点处：求出该点导数作为斜率，点斜式写出",
+        "过点处：设切点坐标，用斜率等于导数且过已知点列方程",
+        "平行或垂直时用斜率关系补条件",
+        "检验切点是否在原曲线上"
+      ],
+      "preconditions": [
+        "函数在该点可导",
+        "曲线方程已知"
+      ],
+      "not_applicable": [
+        "曲线在竖直方向不可导",
+        "曲线由参数式给出且未转换"
+      ],
+      "pitfalls": [
+        "把过点当成切点直接代导数",
+        "忘记处斜率不存在时的竖直线"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_derivative_rules",
+          "note": "先求导函数才能得到斜率"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求曲线 y=x^3-2x 在点 (1,-1) 处的切线方程。",
+          "answer_sketch": "导数为 3x^2-2，在 x=1 处为 1，切线为 y=x-2。",
+          "scenario_id": "S.hs_deriv.tangent"
+        },
+        {
+          "statement": "求过点 (0,-1) 且与曲线 y=x^2 相切的直线方程。",
+          "answer_sketch": "设切点为 (t,t^2)，由斜率 2t 且过 (0,-1) 得 t^2-2t^2=-1，解得 t=±1，得两条切线。",
+          "scenario_id": "S.hs_deriv.tangent"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_graph_derivative",
+      "name": "函数与导函数图象互推",
+      "aliases": [
+        "导数图象读符号",
+        "图象对应"
+      ],
+      "one_liner": "导函数图象在横轴上下决定原函数增减，导函数变号处对应原函数的极值点。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.geometric"
+      ],
+      "triggers": [
+        "给出导函数图象要求判断原函数",
+        "给出原函数图象要求判断导数符号",
+        "要求确定极值点位置"
+      ],
+      "steps": [
+        "读导函数图象在哪些区间为正、为负",
+        "把符号翻译成原函数的增减区间",
+        "找导数由正变负或由负变正的位置",
+        "按变号方向判定极大或极小"
+      ],
+      "preconditions": [
+        "图象清晰可读出零点与符号",
+        "函数在讨论区间可导"
+      ],
+      "not_applicable": [
+        "图象只给部分区间",
+        "函数在个别点不可导"
+      ],
+      "pitfalls": [
+        "把导数为零当成极值点而不检验变号",
+        "把导函数图象的纵坐标当成原函数值"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_extremum",
+          "note": "极值判定需要结合变号信息"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "由 f'(x) 的图象判断 f(x) 的单调区间与极值点。",
+          "answer_sketch": "导数为正的区间递增，为负的递减，变号点为极值点。",
+          "scenario_id": "S.hs_deriv.geometric"
+        },
+        {
+          "statement": "若 f'(x) 的图象如图，求 f(x) 的极大值点。",
+          "answer_sketch": "找导数由正转负的位置，该处为极大值点。",
+          "scenario_id": "S.hs_deriv.geometric"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_monotone_deriv",
+      "name": "求导定号判单调",
+      "aliases": [
+        "导数判单调",
+        "单调区间求法"
+      ],
+      "one_liner": "求出导函数并解其大于零或小于零的不等式，解集就是原函数的单调区间。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.geometric",
+        "S.hs_deriv.monotonicity",
+        "S.hs_deriv.extremum",
+        "S.hs_deriv.ineq_proof"
+      ],
+      "triggers": [
+        "要求求单调区间",
+        "含参讨论单调性",
+        "证明不等式需要先说明增减"
+      ],
+      "steps": [
+        "求导并把导函数通分或因式分解",
+        "解导函数大于零与小于零的不等式",
+        "写出单调区间，注意区间不能跨定义域断点",
+        "含参时按导函数零点的位置分类讨论"
+      ],
+      "preconditions": [
+        "函数在讨论区间可导",
+        "导函数可因式分解或定号"
+      ],
+      "not_applicable": [
+        "导函数符号无法确定",
+        "区间跨定义域断点"
+      ],
+      "pitfalls": [
+        "把定义域断点并入单调区间",
+        "含参时漏掉导函数恒正或恒负的情形"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_extremum",
+          "note": "单调性确定后才能判定极值类型"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 f(x)=x^3-3ax 的单调区间。",
+          "answer_sketch": "f'(x)=3(x^2-a)，按 a≤0 与 a>0 分类，后者得两个单调区间。",
+          "scenario_id": "S.hs_deriv.monotonicity"
+        },
+        {
+          "statement": "若 f(x)=ln x-ax 在 (0,+∞) 上单调递减，求 a 的范围。",
+          "answer_sketch": "f'(x)=1/x-a≤0 恒成立，故 a≥1。",
+          "scenario_id": "S.hs_deriv.monotonicity"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_extremum",
+      "name": "极值与闭区间最值",
+      "aliases": [
+        "极值判定",
+        "端点比较",
+        "最值"
+      ],
+      "one_liner": "由导数变号定极值点，再把极值点值与区间端点值一起比较得到最值。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.geometric",
+        "S.hs_deriv.extremum",
+        "S.hs_deriv.zero",
+        "S.hs_deriv.param_range"
+      ],
+      "triggers": [
+        "要求求极值或最值",
+        "给出闭区间",
+        "出现某点处取得极值求参数"
+      ],
+      "steps": [
+        "求驻点并检验两侧导数是否变号",
+        "按变号方向判定极大或极小",
+        "闭区间上把驻点值与端点值一并比较",
+        "含参时按参数范围列出全部候选值"
+      ],
+      "preconditions": [
+        "函数在讨论区间连续",
+        "驻点与端点可枚举"
+      ],
+      "not_applicable": [
+        "区间开区间且最值在端点趋于无穷",
+        "驻点无法求出"
+      ],
+      "pitfalls": [
+        "只比较驻点而漏掉端点",
+        "驻点不变号仍当作极值点"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_monotone_deriv",
+          "note": "先由单调性确定候选点位置"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 f(x)=x^3-3x 在 [-2,2] 上的最值。",
+          "answer_sketch": "驻点 ±1，计算 f(-2)=-2、f(-1)=2、f(1)=-2、f(2)=2，最大 2 最小 -2。",
+          "scenario_id": "S.hs_deriv.extremum"
+        },
+        {
+          "statement": "若 f(x)=x^3+ax^2+bx 在 x=1 处有极小值 -2，求 a、b。",
+          "answer_sketch": "由 f'(1)=0 与 f(1)=-2 列两方程解得 a=0、b=-3，并验证变号。",
+          "scenario_id": "S.hs_deriv.extremum"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_zero_discuss",
+      "name": "导数作图讨论零点",
+      "aliases": [
+        "零点个数讨论",
+        "函数形态作图"
+      ],
+      "one_liner": "用导数画出函数的单调区间、极值与端点趋势，再按水平线位置数出零点个数。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.zero"
+      ],
+      "triggers": [
+        "要求讨论方程实根个数",
+        "出现恰有几个零点的条件",
+        "需要确定参数临界值"
+      ],
+      "steps": [
+        "求导确定单调区间与极值",
+        "计算极值大小与两端趋势",
+        "画出函数草图并标出极值高度",
+        "按参数所在的区间数出交点个数"
+      ],
+      "preconditions": [
+        "函数可导且极值可求",
+        "两端趋势可判断"
+      ],
+      "not_applicable": [
+        "函数含振荡项无法画出形态",
+        "极值无法解析求出"
+      ],
+      "pitfalls": [
+        "只看极值符号而不看端点趋势",
+        "参数分区时遗漏相切的情形"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_separate_param",
+          "note": "能分离参数时比直接作图更省"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_separate_param",
+          "note": "讨论零点个数的两条路径：作函数图象数交点，或分离参数看水平线。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "讨论方程 x^3-3x=a 的实根个数。",
+          "answer_sketch": "由导数得极大值 2、极小值 -2，按 a<-2、a=-2、-2<a<2、a=2、a>2 五类讨论。",
+          "scenario_id": "S.hs_deriv.zero"
+        },
+        {
+          "statement": "若 f(x)=ln x-ax 有两个零点，求 a 的范围。",
+          "answer_sketch": "极大值点为 1/a，要求该处函数值大于零，得 0<a<1/e。",
+          "scenario_id": "S.hs_deriv.zero"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_separate_param",
+      "name": "分离参数",
+      "aliases": [
+        "参数分离",
+        "变量分离"
+      ],
+      "one_liner": "把参数移到不等式或等式一侧，另一侧成为单变量函数，问题转为求该函数的最值或值域。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.monotonicity",
+        "S.hs_deriv.zero",
+        "S.hs_deriv.param_range"
+      ],
+      "triggers": [
+        "恒成立或存在性含单参数",
+        "参数可单独提出",
+        "要求参数范围"
+      ],
+      "steps": [
+        "把含参项与不含参项分到两侧",
+        "确认分离时除式符号不变号",
+        "对新函数求最值或值域",
+        "按恒成立方向或存在方向写出参数范围"
+      ],
+      "preconditions": [
+        "参数能被分离出来",
+        "分离时除式符号确定"
+      ],
+      "not_applicable": [
+        "参数与自变量无法分离",
+        "分离需要除以可能为零的式子而未讨论"
+      ],
+      "pitfalls": [
+        "除以含参式子时未讨论其符号",
+        "恒成立与存在性对应最值方向搞反"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_extremum",
+          "note": "分离后必须求新函数的最值"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_zero_discuss",
+          "note": "讨论零点个数的两条路径：作函数图象数交点，或分离参数看水平线。"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_always_true",
+          "note": "恒成立问题的两条路径：分离参数求最值，或直接对差函数求最值。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "若对任意 x>0，ln x≤ax 恒成立，求 a 的范围。",
+          "answer_sketch": "分离得 a≥ln x/x，右边最大值为 1/e，故 a≥1/e。",
+          "scenario_id": "S.hs_deriv.param_range"
+        },
+        {
+          "statement": "若 f(x)=ln x-ax 有两个零点，求 a 的范围。",
+          "answer_sketch": "化为 a=ln x/x，研究右侧函数的值域与水平线交点个数，得 0<a<1/e。",
+          "scenario_id": "S.hs_deriv.zero"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_always_true",
+      "name": "恒成立与存在性转最值",
+      "aliases": [
+        "恒成立问题",
+        "存在性问题",
+        "最值转化"
+      ],
+      "one_liner": "恒成立等价于最小值满足条件，存在性等价于最大值满足条件，据此把命题转成最值问题。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.param_range"
+      ],
+      "triggers": [
+        "出现对任意自变量成立",
+        "出现存在某点使不等式成立",
+        "要求参数范围"
+      ],
+      "steps": [
+        "判断命题是恒成立还是存在性",
+        "恒成立取最小值、存在性取最大值",
+        "求出该最值或上界下界",
+        "解出参数并检验等号情形"
+      ],
+      "preconditions": [
+        "最值在给定区间存在",
+        "命题可写成不等式形式"
+      ],
+      "not_applicable": [
+        "最值不存在",
+        "命题含两个量词嵌套且无法化简"
+      ],
+      "pitfalls": [
+        "恒成立误用最大值",
+        "忽略等号可取导致端点漏掉"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_separate_param",
+          "note": "能分离参数时不必先求最值再解不等式"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_separate_param",
+          "note": "恒成立问题的两条路径：分离参数求最值，或直接对差函数求最值。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "若 f(x)≥0 在 [1,2] 上恒成立，求 a 的范围。",
+          "answer_sketch": "化为求 f 在 [1,2] 上的最小值不小于零，按极小值点位置分情况讨论。",
+          "scenario_id": "S.hs_deriv.param_range"
+        },
+        {
+          "statement": "若存在 x 属于 [1,e]，使 x^2-ax+1<0，求 a 的范围。",
+          "answer_sketch": "存在性取 a>x+1/x 的最小值，得 a>2。",
+          "scenario_id": "S.hs_deriv.param_range"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_construct_function",
+      "name": "构造函数证不等式",
+      "aliases": [
+        "作差构造函数",
+        "辅助函数"
+      ],
+      "one_liner": "把不等式两侧之差设为新函数，求导定其最小值，最小值非负即证。",
+      "block_ids": [
+        "B.hs_deriv",
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.param_range",
+        "S.hs_deriv.ineq_proof",
+        "S.hs_deriv.ineq_two_var",
+        "S.hs_deriv.construct",
+        "S.hs_deriv.series_bound",
+        "S.hs_seq.inequality"
+      ],
+      "triggers": [
+        "要求证明函数不等式",
+        "参数无法分离",
+        "数列不等式的通项界需先由导数给出"
+      ],
+      "steps": [
+        "设差函数并明确其定义域",
+        "求导并找出最小值点",
+        "计算最小值并判断符号",
+        "写出结论并说明取等条件"
+      ],
+      "preconditions": [
+        "差函数可导",
+        "最小值可求或可估计"
+      ],
+      "not_applicable": [
+        "差函数形态过于复杂无法定号",
+        "不等式只在离散点成立"
+      ],
+      "pitfalls": [
+        "构造后忘记写定义域",
+        "只说明单调不给出最小值"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_monotone_deriv",
+          "note": "构造后通常先判单调再定最小值"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_taylor",
+          "note": "证明精细化不等式的两条路径：先用展开找阶数再构造函数，或直接构造差函数。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "证明当 x>0 时 e^x>1+x。",
+          "answer_sketch": "设 F=e^x-1-x，F'=e^x-1>0，F 在 x>0 递增且 F(0)=0，故 F>0。",
+          "scenario_id": "S.hs_deriv.ineq_proof"
+        },
+        {
+          "statement": "证明 1/2+1/3+…+1/(n+1)<ln(n+1)。",
+          "answer_sketch": "先证 ln(1+t)<t，取 t=1/k 累加，左端裂项为 ln(n+1)。",
+          "scenario_id": "S.hs_deriv.series_bound"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_two_variable",
+      "name": "双变量处理（主元与比值代换）",
+      "aliases": [
+        "主元法",
+        "比值代换",
+        "极值点偏移"
+      ],
+      "one_liner": "固定一个变量或把两变量之比设为新变量，把双变量问题降为一元问题。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.ineq_two_var"
+      ],
+      "triggers": [
+        "出现两点函数值相等",
+        "要求证明两变量之和的不等式",
+        "出现对任意两变量成立"
+      ],
+      "steps": [
+        "判断用主元法还是比值代换",
+        "通过已知关系消去一个变量",
+        "对剩余一元问题构造函数求最值",
+        "还原为原变量的结论并检验范围"
+      ],
+      "preconditions": [
+        "两变量之间存在可用的等式关系",
+        "消元后一元问题可解"
+      ],
+      "not_applicable": [
+        "两变量相互独立无约束",
+        "消元后仍含两个未知"
+      ],
+      "pitfalls": [
+        "比值代换未写出新变量的范围",
+        "主元法选错主元导致更难"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_construct_function",
+          "note": "降为一元后仍需构造函数求最值"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_lagrange_mvt",
+          "note": "双变量差商估计的两条路径：消元后构造函数，或直接用中值定理（拓展）。"
+        }
+      ],
+      "difficulty": 5,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "已知 f(x)=ln x-x，若 f(x1)=f(x2) 且 x1≠x2，证明 x1+x2>2。",
+          "answer_sketch": "令 t=x2/x1>1，由等式消元后构造函数证明 t 满足的不等式，再回推 x1+x2>2。",
+          "scenario_id": "S.hs_deriv.ineq_two_var"
+        },
+        {
+          "statement": "若 f(x)=xe^x，证明对任意 x1>x2>0 有 f(x1)-f(x2)>x1-x2。",
+          "answer_sketch": "构造 g(x)=f(x)-x 并证明其在 x>0 上单调递增，由 x1>x2 得结论。",
+          "scenario_id": "S.hs_deriv.ineq_two_var"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_isomorphic",
+      "name": "同构变形",
+      "aliases": [
+        "同构式",
+        "结构统一"
+      ],
+      "one_liner": "把等式或不等式两侧改写为同一个母函数在两个点的取值，再用该函数单调性比较。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.ineq_two_var",
+        "S.hs_deriv.construct"
+      ],
+      "triggers": [
+        "指数与对数成对出现",
+        "两侧结构相似但变量不同",
+        "不等式可整理成同一函数的两点比较"
+      ],
+      "steps": [
+        "识别可共用的母函数形式",
+        "用指对互化把不同形式统一",
+        "构造母函数并判断其单调性",
+        "由单调性把函数值关系还原为自变量关系"
+      ],
+      "preconditions": [
+        "两侧可化为同一函数形式",
+        "母函数在相关区间单调"
+      ],
+      "not_applicable": [
+        "两侧结构差异过大无法统一",
+        "母函数非单调"
+      ],
+      "pitfalls": [
+        "指对互化时把 x 与 ln x 的对应关系写错",
+        "忽略母函数的定义域导致比较区间不符"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_monotone_deriv",
+          "note": "同构后必须证明母函数的单调性"
+        }
+      ],
+      "difficulty": 5,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "若 e^a·a=b·ln b（a,b>0），比较 a 与 ln b 的大小。",
+          "answer_sketch": "把左侧写成 a·e^a=ln b·e^(ln b)，由 x·e^x 在 x>0 上递增得 a=ln b。",
+          "scenario_id": "S.hs_deriv.construct"
+        },
+        {
+          "statement": "证明若 0<a<b，则 a·ln b>b·ln a。",
+          "answer_sketch": "两边同除 ab 化为 ln b/b>ln a/a，构造 ln x/x 并证明其在 (0,e) 上递增。",
+          "scenario_id": "S.hs_deriv.construct"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_lhopital",
+      "scope": "extension",
+      "name": "洛必达法则（拓展）",
+      "aliases": [
+        "洛必达",
+        "上下求导"
+      ],
+      "one_liner": "在零比零或无穷比无穷的极限中，用分子分母分别求导后的比值代替原比值。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.definition",
+        "S.hs_deriv.param_range"
+      ],
+      "triggers": [
+        "极限式代入后为零比零",
+        "代入后为无穷比无穷",
+        "需要快速估计端点临界值"
+      ],
+      "steps": [
+        "确认是零比零或无穷比无穷",
+        "对分子分母分别求导",
+        "计算新比值的极限",
+        "把结果作为验算，解答另写课内过程"
+      ],
+      "preconditions": [
+        "分子分母在去心邻域可导",
+        "导数之比的极限存在"
+      ],
+      "not_applicable": [
+        "不是未定式",
+        "导数之比震荡无极限"
+      ],
+      "pitfalls": [
+        "在不是未定式时强行使用",
+        "把结果直接写进解答导致超纲"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_separate_param",
+          "note": "课内解答应优先用分离参数与端点分析"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_equiv_infinitesimal",
+          "note": "算极限的两条速算路径：未定式用洛必达，乘除结构的标准无穷小用等价替换。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "求 lim(x→0)(e^x-1)/x。",
+          "answer_sketch": "零比零型，上下求导得 e^x/1，极限为 1；课内可用导数定义说明。",
+          "scenario_id": "S.hs_deriv.definition"
+        },
+        {
+          "statement": "若对任意 x>0 有 ln x≤ax，探路求 a 的临界值。",
+          "answer_sketch": "考虑 ln x/x 在 x 趋于无穷与趋于零的极限，均趋于零，临界值在导数零点处取得。",
+          "scenario_id": "S.hs_deriv.param_range"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_taylor",
+      "scope": "extension",
+      "name": "泰勒公式（有限阶，拓展）",
+      "aliases": [
+        "泰勒展开",
+        "高阶近似"
+      ],
+      "one_liner": "把常见函数在零点展开到二阶或三阶，用多项式近似估计函数值的界。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.ineq_proof",
+        "S.hs_deriv.series_bound"
+      ],
+      "triggers": [
+        "需要精确到二阶项的不等式",
+        "指数或对数与多项式的比较",
+        "估计通项的高阶小量"
+      ],
+      "steps": [
+        "写出所需阶数的展开形式",
+        "判断余项符号以确定近似方向",
+        "把展开代入目标不等式",
+        "换成课内的构造函数写法完成证明"
+      ],
+      "preconditions": [
+        "函数在展开点足够次可导",
+        "展开点附近讨论"
+      ],
+      "not_applicable": [
+        "离展开点过远",
+        "需要精确值而非估计"
+      ],
+      "pitfalls": [
+        "忽略余项符号导致不等号方向错误",
+        "直接写展开而不补证明过程"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_construct_function",
+          "note": "展开给出方向后必须用构造函数严格化"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_construct_function",
+          "note": "证明精细化不等式的两条路径：先用展开找阶数再构造函数，或直接构造差函数。"
+        }
+      ],
+      "difficulty": 5,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "证明对 x>0 有 e^x>1+x+x^2/2。",
+          "answer_sketch": "构造 F=e^x-1-x-x^2/2，F'=e^x-1-x>0（由 e^x>1+x），故 F 递增且 F(0)=0。",
+          "scenario_id": "S.hs_deriv.ineq_proof"
+        },
+        {
+          "statement": "证明对 x>0 有 ln(1+x)<x-x^2/2+x^3/3。",
+          "answer_sketch": "构造差函数并求导，利用导数的符号在 x>0 上为正完成证明。",
+          "scenario_id": "S.hs_deriv.ineq_proof"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_equiv_infinitesimal",
+      "scope": "extension",
+      "name": "等价无穷小替换（拓展）",
+      "aliases": [
+        "等价替换",
+        "无穷小等价"
+      ],
+      "one_liner": "在乘除结构中把趋于零的因子换成等价的简单无穷小，快速化简极限或增量比。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.definition"
+      ],
+      "triggers": [
+        "极限式中出现正弦、指数减一、对数加一等标准无穷小",
+        "处于乘除结构",
+        "需要快速估算比值"
+      ],
+      "steps": [
+        "确认因子趋于零",
+        "确认它在乘除位置",
+        "用标准等价式替换",
+        "对替换后式子求极限并说明依据"
+      ],
+      "preconditions": [
+        "替换对象确实趋于零",
+        "替换对象不在加减结构中作为整体加项"
+      ],
+      "not_applicable": [
+        "加减结构中两项同阶相减",
+        "非无穷小量"
+      ],
+      "pitfalls": [
+        "把 tan x - sin x 整体替换成 x-x 得零",
+        "对趋于无穷的量误用无穷小替换"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_derivative_def",
+          "note": "导数定义式应优先按定义凑形，替换只作速算"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_lhopital",
+          "note": "算极限的两条速算路径：未定式用洛必达，乘除结构的标准无穷小用等价替换。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "求 lim(x→0)sin(3x)/x。",
+          "answer_sketch": "由 sin(3x)~3x 得极限为 3；课内可用重要极限说明。",
+          "scenario_id": "S.hs_deriv.definition"
+        },
+        {
+          "statement": "求 lim(x→0)(1-cos x)/x^2。",
+          "answer_sketch": "由 1-cos x~x^2/2 得极限为 1/2。",
+          "scenario_id": "S.hs_deriv.definition"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_lagrange_mvt",
+      "scope": "extension",
+      "name": "拉格朗日中值定理（拓展）",
+      "aliases": [
+        "中值定理",
+        "差商估计"
+      ],
+      "one_liner": "把两点函数值之差写成某中间点导数与区间长度之积，用于估计差商或证明不等式。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.ineq_proof",
+        "S.hs_deriv.ineq_two_var"
+      ],
+      "triggers": [
+        "结论含 f(b)-f(a) 结构",
+        "需要估计差商的范围",
+        "两个变量以差的形式出现"
+      ],
+      "steps": [
+        "确认函数在闭区间连续、开区间可导",
+        "写出存在中间点使差商等于该点导数",
+        "利用导数的界估计差商",
+        "把结论换成构造函数写法或注明属拓展"
+      ],
+      "preconditions": [
+        "区间上连续且内部可导",
+        "导数有可用的界"
+      ],
+      "not_applicable": [
+        "函数在区间内不可导",
+        "结论不涉及两点差"
+      ],
+      "pitfalls": [
+        "直接使用而不说明定理条件",
+        "把中间点当作可求出的具体值"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_construct_function",
+          "note": "课内应优先构造函数，中值定理只作思路来源"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_two_variable",
+          "note": "双变量差商估计的两条路径：消元后构造函数，或直接用中值定理（拓展）。"
+        }
+      ],
+      "difficulty": 5,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "证明对任意 x1>x2>0 有 ln x1-ln x2<x1-x2。",
+          "answer_sketch": "对 ln x 用中值定理得差商等于 1/ξ，由 ξ>1 得小于 x1-x2；课内可构造函数证明。",
+          "scenario_id": "S.hs_deriv.ineq_two_var"
+        },
+        {
+          "statement": "证明对任意实数 a、b 有 |sin a-sin b|≤|a-b|。",
+          "answer_sketch": "对 sin x 用中值定理，导数余弦的绝对值不超过 1，故差商绝对值不超过 1。",
+          "scenario_id": "S.hs_deriv.ineq_proof"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_implicit_derivative",
+      "scope": "extension",
+      "name": "隐函数求导（拓展）",
+      "aliases": [
+        "隐式求导",
+        "两边对 x 求导"
+      ],
+      "one_liner": "对方程两边同时对自变量求导，把未知斜率作为代数未知量解出。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.tangent"
+      ],
+      "triggers": [
+        "曲线由隐式方程给出",
+        "方程不易解出显式函数",
+        "要求某点切线斜率"
+      ],
+      "steps": [
+        "把方程看成关于 x 的恒等式",
+        "两边对 x 求导，含 y 的项乘上 y'",
+        "代入已知点坐标解出 y'",
+        "按拓展方法书写并给出课内替代路径"
+      ],
+      "preconditions": [
+        "在该点附近存在可导的隐函数",
+        "方程两边可导"
+      ],
+      "not_applicable": [
+        "该点处切线竖直（导数不存在）",
+        "无法在该点附近确定函数"
+      ],
+      "pitfalls": [
+        "对含 y 的项求导时漏乘 y'",
+        "代入点坐标时把 x、y 混用"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_tangent",
+          "note": "课内应改用设切点与判别式的写法"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_parametric_derivative",
+          "note": "非显式曲线求斜率的两条路径：隐式方程两边求导，或参数式两导数作商。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "求圆 x^2+y^2=25 在点 (3,4) 处的切线斜率。",
+          "answer_sketch": "两边求导得 2x+2y·y'=0，代入得 y'=-3/4。",
+          "scenario_id": "S.hs_deriv.tangent"
+        },
+        {
+          "statement": "求椭圆 x^2/4+y^2=1 在点 (1,√3/2) 处的切线斜率。",
+          "answer_sketch": "两边求导得 x/2+2y·y'=0，代入得 y'=-√3/6。",
+          "scenario_id": "S.hs_deriv.tangent"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_parametric_derivative",
+      "scope": "extension",
+      "name": "参数方程求导（拓展）",
+      "aliases": [
+        "参数式求导",
+        "dy 比 dx"
+      ],
+      "one_liner": "分别求两个参数方程的导数，再作商得到曲线斜率。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.tangent"
+      ],
+      "triggers": [
+        "曲线以参数形式给出",
+        "要求该曲线的切线斜率",
+        "需要求参数式曲线的切点"
+      ],
+      "steps": [
+        "分别求 x 对参数与 y 对参数的导数",
+        "两式作商得到斜率",
+        "代入参数值求该点斜率",
+        "写出切线方程并检验参数范围"
+      ],
+      "preconditions": [
+        "两函数对参数可导",
+        "x 对参数的导数不为零"
+      ],
+      "not_applicable": [
+        "参数在该点使 x 导数为零（切线竖直）",
+        "参数式不可导"
+      ],
+      "pitfalls": [
+        "把 dy/dt 直接当成斜率",
+        "忽略参数取值对应的点是否在曲线上"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_tangent",
+          "note": "若曲线可化为显式，优先用显式求导"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_implicit_derivative",
+          "note": "非显式曲线求斜率的两条路径：隐式方程两边求导，或参数式两导数作商。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "曲线由 x=t^2、y=t^3 给出，求 t=1 处的切线斜率。",
+          "answer_sketch": "dx/dt=2t、dy/dt=3t^2，作商得 3t/2，t=1 时为 3/2。",
+          "scenario_id": "S.hs_deriv.tangent"
+        },
+        {
+          "statement": "曲线由 x=cos t、y=sin t 给出，求 t=π/4 处的切线斜率。",
+          "answer_sketch": "两导数作商得 -cot t，代入得 -1。",
+          "scenario_id": "S.hs_deriv.tangent"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    },
+    {
+      "id": "M.hs_definite_integral",
+      "scope": "extension",
+      "name": "定积分与牛顿-莱布尼茨公式（拓展）",
+      "aliases": [
+        "定积分",
+        "原函数作差"
+      ],
+      "one_liner": "用原函数在区间两端的差计算定积分，可用于面积与和式估计的验证。",
+      "block_ids": [
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_deriv.series_bound"
+      ],
+      "triggers": [
+        "需要验证和式的界",
+        "面积或累积量问题",
+        "和式可看成积分近似"
+      ],
+      "steps": [
+        "写出被积函数与积分区间",
+        "求原函数",
+        "用原函数在端点作差",
+        "把结果作为验算，解答仍用课内方法"
+      ],
+      "preconditions": [
+        "被积函数在区间上连续",
+        "原函数可求"
+      ],
+      "not_applicable": [
+        "原函数无法用初等函数表示",
+        "区间无界且积分发散"
+      ],
+      "pitfalls": [
+        "把定积分当作不定积分忘记代端点",
+        "上下限顺序颠倒未变号"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_scaling",
+          "note": "课内数列不等式应优先用放缩，不用定积分"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "用积分估计验证 Σ1/k^2<2。",
+          "answer_sketch": "由 1/k^2<∫(k-1→k)1/x^2 dx 累加得界小于 2，课内写法用裂项放缩。",
+          "scenario_id": "S.hs_deriv.series_bound"
+        },
+        {
+          "statement": "计算 ∫(0→1)x^2 dx，用于核对和式估计的量级。",
+          "answer_sketch": "原函数为 x^3/3，两端作差得 1/3。",
+          "scenario_id": "S.hs_deriv.series_bound"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_deriv"
+      ]
+    }
+  ]
+}

@@ -11,6 +11,8 @@ export default function PersonalNotes({ showTitle = true }) {
   const initialized = useAppStore((state) => state.storageInitialized);
   const learner = useAppStore((state) => state.learnerId);
   const dataOperation = useAppStore((state) => state.dataOperation);
+  // 学科切换后，易错点关联的知识节点名称要按新骨架重新解析。
+  const subjectEpoch = useAppStore((state) => state.subjectEpoch);
   const [notes, setNotes] = useState([]), [skeleton, setSkeleton] = useState(null);
   const [draft, setDraft] = useState(null), [deleting, setDeleting] = useState(null);
   const [loading, setLoading] = useState(true), [busy, setBusy] = useState(false), [error, setError] = useState('');
@@ -34,7 +36,7 @@ export default function PersonalNotes({ showTitle = true }) {
     });
     refresh();
     return () => { version.current++; unsubscribe(); };
-  }, [initialized, learner, dataOperation]);
+  }, [initialized, learner, dataOperation, subjectEpoch]);
   useEffect(() => { if (draft) editingRef.current?.focus(); }, [draft?.id, Boolean(draft)]);
   const unavailable = !initialized || Boolean(dataOperation) || busy;
   async function commit(action) {

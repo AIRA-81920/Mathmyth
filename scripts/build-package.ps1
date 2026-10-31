@@ -3,7 +3,8 @@ param(
   [ValidateSet('desktop', 'android', 'all')]
   [string]$Target,
   [string]$Version,
-  [switch]$NoPrompt
+  [switch]$NoPrompt,
+  [switch]$Release
 )
 
 $ErrorActionPreference = 'Stop'
@@ -30,16 +31,29 @@ try {
   if ($LASTEXITCODE -ne 0) { throw 'Invalid version; packaging stopped.' }
   Write-Host "Building $Target, version $Version. Credential checks are enabled."
   if ($Target -eq 'android' -or $Target -eq 'all') {
-    & "$PSScriptRoot/build-android.ps1" -Version $Version -VersionCode $nextCode -NoPrompt
+    & "$PSScriptRoot/build-android.ps1" -Version $Version -VersionCode $nextCode -NoPrompt -Release:$Release
     if ($LASTEXITCODE -ne 0) { throw 'Android packaging failed.' }
   }
   if ($Target -eq 'desktop' -or $Target -eq 'all') {
+    # A running Mathmyth.exe holds win-unpacked\resources\app.asar, so electron-builder
+    # fails with EPERM when overwriting it. Detect and refuse; never kill anything here.
+    # Keep this block ASCII: PowerShell 5.1 decodes this file with the ANSI code page.
+    $runningApp = @(Get-Process -Name 'Mathmyth' -ErrorAction SilentlyContinue | Where-Object {
+      $_.Path -and $_.Path.StartsWith($projectRoot, [StringComparison]::OrdinalIgnoreCase)
+    })
+    if ($runningApp.Count -gt 0) {
+      $pids = ($runningApp | ForEach-Object { $_.Id }) -join ', '
+      throw "Mathmyth.exe is still running (PID $pids) and locks win-unpacked resources app.asar. Close it, then run packaging again."
+    }
     & npm.cmd run desktop:build
     if ($LASTEXITCODE -ne 0) { throw 'Desktop packaging failed.' }
   }
   Write-Host ''
   Write-Host 'BUILD SUCCEEDED'
-  if ($Target -eq 'android' -or $Target -eq 'all') { Write-Host "APK: $projectRoot/artifacts/Mathmyth-v$Version-debug.apk" }
+  if ($Target -eq 'android' -or $Target -eq 'all') {
+    $kind = if ($Release) { 'release' } else { 'debug' }
+    Write-Host "APK: $projectRoot/artifacts/Mathmyth-v$Version-$kind.apk"
+  }
   if ($Target -eq 'desktop' -or $Target -eq 'all') { Write-Host "EXE: $projectRoot/artifacts/desktop/Mathmyth-v$Version-Setup.exe" }
   exit 0
 } catch {

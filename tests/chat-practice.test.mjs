@@ -11,7 +11,7 @@ import { chatPracticeContext } from '../src/core/chat/practice.js';
 
 const SQL = await initSqlJs(), skeleton = await readActiveSkeleton();
 const schemaSql = await readFile(new URL('../src/core/db/schema.sql', import.meta.url), 'utf8');
-const target = localTargets(skeleton).find(t => t.scenarioId === 'S.limit.0over0');
+const target = (await localTargets(skeleton)).find(t => t.scenarioId === 'S.limit.0over0');
 const questions = await prepareLocalRound(target, skeleton);
 const timestamp = '2026-10-13T00:00:00Z';
 async function setup(bytes) {
@@ -26,7 +26,7 @@ async function setup(bytes) {
   ] }] });
   return db;
 }
-const createCard = db => db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: [questions[0]], localPrepared: true,
+const createCard = db => db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: [questions[0]], localPrepared: true, preparedTarget: target,
   chat: { conversationId: 'chat', messageId: 'card', sourceMessageId: 'source' } });
 const right = { mode: 'selection', selectedIds: [questions[0].routes.find(r => r.valid).id] };
 
@@ -74,7 +74,7 @@ test('a known topic selects a real bank question in one request and supplies no 
 });
 test('chat cards survive restart/backup, use normal grading, and never replace the practice-page run', async () => {
   const db = await setup();
-  const regular = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: questions, localPrepared: true });
+  const regular = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: questions, localPrepared: true, preparedTarget: target });
   const card = await createCard(db);
   assert.equal(db.loadActivePractice().id, regular.id); assert.equal(card.origin, 'chat');
   await db.gradePracticeItem(card.id, card.items[0].id, right);
@@ -106,7 +106,7 @@ test('deleting only chat retains practice; deleting both removes its independent
 });
 test('shared question credit survives deletion of a chat card when another practice earned it', async () => {
   const db = await setup();
-  const regular = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: questions, localPrepared: true });
+  const regular = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: questions, localPrepared: true, preparedTarget: target });
   await db.gradePracticeItem(regular.id, regular.items[0].id, right);
   const card = await createCard(db); await db.gradePracticeItem(card.id, card.items[0].id, right);
   await db.deleteConversation('chat', true);
@@ -116,6 +116,6 @@ test('version 8 migrates without changing messages and rejects linking a card to
   const db = await setup(); db.db.run('DROP TABLE chat_practice; PRAGMA user_version=8');
   const old = await db.exportDatabase(); db.close();
   const migrated = await setup(old); assert.equal(migrated.loadConversation('chat').messages[0].content, '求 sin(3x)/x 的极限');
-  await assert.rejects(migrated.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: [questions[0]], localPrepared: true, chat: { conversationId: 'chat', messageId: 'source' } }));
+  await assert.rejects(migrated.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: [questions[0]], localPrepared: true, preparedTarget: target, chat: { conversationId: 'chat', messageId: 'source' } }));
   migrated.close();
 });

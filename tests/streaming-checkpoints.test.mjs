@@ -29,11 +29,11 @@ test('JSON checkpoints require closed objects and preserve quotes, braces and La
   const value = `{"items":[${JSON.stringify(item)},{"question":"未完成`;
   assert.deepEqual(completeJsonItems(value), [item]);
 });
-test('practice choices merge methods of one scenario and count a source question once', () => {
+test('practice choices merge methods of one scenario and count a source question once', async () => {
   const skeleton = { scenarioById: new Map([['s',{ name:'同一个情景', methods:[{method_id:'m1',priority:1},{method_id:'m2',priority:2}] }]]) };
   const data = { mastery:[], encounters:[{id:'a',scenarioId:'s',methodId:'m1',messageId:'q',question:'题',occurredAt:'2026-10-10'},
     {id:'b',scenarioId:'s',methodId:'m2',messageId:'q',question:'题',occurredAt:'2026-10-10'}] };
-  const choices = practiceChoices(skeleton,data); assert.equal(choices.length,1); assert.equal(choices[0].count,1);
+  const choices = await practiceChoices(skeleton,data); assert.equal(choices.length,1); assert.equal(choices[0].count,1);
 });
 test('APK guard rejects keys and data assets, while public field names and empty settings pass', () => {
   assert.doesNotThrow(() => inspectAsset('assets/app.js', Buffer.from('apiKey:"",Authorization:`Bearer ${config.apiKey}`')));

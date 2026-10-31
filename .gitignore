@@ -4,8 +4,20 @@ node_modules/
 /.vite/
 /public/pdf/
 
-# Local Android project, SDK, and build caches
-/android/
+# Android 原生工程要进仓库：APK 的清单（CAMERA 权限）和 proguard 规则都在里面，
+# 不进仓库的话，别人 clone 下来既打不出包，今天的相机闪退修复也会丢。
+# 只挡本地产物、生成文件和签名材料。
+/android/app/build/
+/android/build/
+/android/.gradle/
+/android/local.properties
+/android/keystore/
+/android/keystore.properties
+/android/app/src/main/assets/public/
+/android/app/src/main/assets/capacitor.config.json
+/android/app/src/main/assets/capacitor.plugins.json
+
+# Local Android SDK and build caches
 /.android-sdk/
 /.gradle-cache/
 /.gradle/

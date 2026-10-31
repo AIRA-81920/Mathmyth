@@ -1,7 +1,9 @@
-import { preparedRouteTargets } from '../../assets/practice/route-bank.js';
+import { loadRouteBank } from './bank-data.js';
 import { prepareRouteQuestion } from './routes.js';
 
-export function localTargets(skeleton) {
+// 题库改为按需动态加载：调用方必须先 await loadRouteBank() 取得 preparedRouteTargets。
+export async function localTargets(skeleton) {
+  const { preparedRouteTargets } = await loadRouteBank();
   const covered = new Set(preparedRouteTargets.filter((target) => target.batchId).map((target) => target.scenarioId));
   return preparedRouteTargets.filter((target) => skeleton.scenarioById.has(target.scenarioId)
     && (target.batchId || !covered.has(target.scenarioId))).map((target) => ({
@@ -9,9 +11,28 @@ export function localTargets(skeleton) {
   }));
 }
 
+function findLocalTarget(target, targets) {
+  const group = target?.id
+    ? targets.find((entry) => entry.id === target.id)
+    : targets.find((entry) => entry.scenarioId === target?.scenarioId);
+  return group && (!target.scenarioId || group.scenarioId === target.scenarioId) ? group : null;
+}
+
+// Practice choices contain summaries, not question arrays. Recover the exact
+// installed pool before crossing the Worker boundary; only this pool travels.
+export async function prepareLocalPracticeInput(target, skeleton, level = 'single', history = []) {
+  const { preparedRouteTargets } = await loadRouteBank();
+  const preparedTarget = findLocalTarget(target, preparedRouteTargets);
+  if (!preparedTarget) return null;
+  const items = await prepareLocalRound(preparedTarget, skeleton, level, history);
+  return { scenarioId: preparedTarget.scenarioId,
+    methodId: skeleton.aliases.get(preparedTarget.methodId) || preparedTarget.methodId,
+    items, localPrepared: true, preparedTarget };
+}
+
 export async function prepareLocalRound(target, skeleton, level = 'single', history = []) {
-  const group = preparedRouteTargets.find((entry) => entry.id === target.id)
-    ?? preparedRouteTargets.find((entry) => entry.scenarioId === target.scenarioId);
+  const { preparedRouteTargets } = await loadRouteBank();
+  const group = findLocalTarget(target, preparedRouteTargets);
   if (!group) return null;
   // Keep original mother identities stable across levels and presentations so
   // replay cannot produce another independent mastery credit.

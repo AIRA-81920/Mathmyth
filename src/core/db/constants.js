@@ -1,5 +1,6 @@
 export const APPLICATION_ID = 0x4d4d5954;
-export const SCHEMA_VERSION = 9;
+// v12：会话与练习轮次带上学科；旧数据默认属于高等数学。
+export const SCHEMA_VERSION = 12;
 
 export const V1_REQUIRED_COLUMNS = {
   learner: ['id', 'display_name', 'created_at'],
@@ -41,8 +42,19 @@ export const V8_REQUIRED_COLUMNS = {
   starred_question: ['id', 'learner_id', 'question_key', 'source_message_id', 'content', 'recognized_question', 'created_at'],
   starred_question_image: ['starred_question_id', 'seq', 'image_ref'],
 };
-export const REQUIRED_COLUMNS = { ...V8_REQUIRED_COLUMNS,
+export const V9_REQUIRED_COLUMNS = { ...V8_REQUIRED_COLUMNS,
   chat_practice: ['run_id', 'item_id', 'conversation_id', 'message_id', 'source_message_id', 'created_at'] };
+export const V10_REQUIRED_COLUMNS = { ...V9_REQUIRED_COLUMNS,
+  classification_result: ['job_id', 'conversation_id', 'source_message_id', 'status', 'payload', 'created_at'] };
+export const V11_REQUIRED_COLUMNS = { ...V10_REQUIRED_COLUMNS,
+  practice_review: ['id', 'learner_id', 'source_item_id', 'status', 'due_at', 'created_at', 'updated_at', 'completed_item_id'] };
+// v12：两处“入口级”记录加学科。情景/方法级记录靠 ID 的 hs_ 命名空间区分，不重复加列。
+export const V12_REQUIRED_COLUMNS = {
+  ...V11_REQUIRED_COLUMNS,
+  conversation: [...V11_REQUIRED_COLUMNS.conversation, 'subject'],
+  practice_run: [...V11_REQUIRED_COLUMNS.practice_run, 'subject'],
+};
+export const REQUIRED_COLUMNS = V12_REQUIRED_COLUMNS;
 
 export const LEGACY_CORE_COLUMNS = Object.fromEntries(
   Object.entries(V1_REQUIRED_COLUMNS).filter(([table]) => ['learner', 'setting', 'conversation', 'message', 'image'].includes(table))

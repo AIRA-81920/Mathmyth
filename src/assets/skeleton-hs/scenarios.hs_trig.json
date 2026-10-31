@@ -1,0 +1,673 @@
+{
+  "block_id": "B.hs_trig",
+  "scenarios": [
+    {
+      "id": "S.hs_trig.identity_eval",
+      "block_id": "B.hs_trig",
+      "name": "给值求值（同角关系与诱导公式）",
+      "definition": "题面给出某个角的三角函数值，要求求同角其他三角函数值，或经诱导公式化简后求值。",
+      "signals": [
+        "已知某个角的正弦、余弦或正切值并给出象限",
+        "出现诱导公式形式的角变换",
+        "要求求同角的正弦与余弦之和",
+        "出现平方关系"
+      ],
+      "recognition_examples": [
+        "已知 $\\sin\\alpha=\\frac{3}{5}$ 且 $\\alpha$ 为第二象限角，求 $\\tan\\alpha$。",
+        "化简 $\\dfrac{\\sin(\\pi-\\alpha)\\cos(2\\pi-\\alpha)}{\\tan(-\\alpha-\\pi)}$。",
+        "已知 $\\tan\\alpha=2$，求 $\\dfrac{\\sin\\alpha+\\cos\\alpha}{\\sin\\alpha-\\cos\\alpha}$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.identity_transform",
+          "how": "这里由已知角求值，那里是把复杂式子化简或证明恒等式，题面落点不同。"
+        },
+        {
+          "scenario_id": "S.hs_trig.angle_relation",
+          "how": "这里由已给出的角直接求值；若所求角要先由已知角拆分凑出，归角的拆分与凑角情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_trig_identity",
+          "priority": 1,
+          "when_to_prefer": "先按象限定符号，再用平方关系与商数关系把未知量逐个求出。"
+        },
+        {
+          "method_id": "M.hs_trig_addition",
+          "priority": 2,
+          "when_to_prefer": "式子含两角和差或二倍角结构时，展开后用同角关系收束。"
+        },
+        {
+          "method_id": "M.hs_angle_combination",
+          "priority": 3,
+          "when_to_prefer": "所求角可写成已知角的和或差时，先凑角再套和差角公式。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.identity_transform",
+      "block_id": "B.hs_trig",
+      "name": "三角恒等变换与化简证明",
+      "definition": "题面要求化简三角式、证明三角恒等式或求非特殊角的乘积型三角函数值。",
+      "signals": [
+        "出现两角和差、二倍角或平方结构",
+        "要求化简或证明恒等式",
+        "出现正弦与余弦的线性组合",
+        "需要用 1 的代换"
+      ],
+      "recognition_examples": [
+        "化简 $\\sin 15^{\\circ}\\cos 15^{\\circ}$。",
+        "证明 $\\dfrac{1+\\sin 2\\alpha}{\\cos^{2}\\alpha}=\\tan\\alpha+1$。",
+        "求 $\\cos 20^{\\circ}\\cos 40^{\\circ}\\cos 80^{\\circ}$ 的值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.auxiliary_angle",
+          "how": "那里目标是把两项合成一项再求性质，这里目标是化简或恒等证明。"
+        },
+        {
+          "scenario_id": "S.hs_trig.identity_eval",
+          "how": "那里由已知角求值，这里是把复杂式子化简或证明恒等式，题面落点不同。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_trig_addition",
+          "priority": 1,
+          "when_to_prefer": "见到两角和差或二倍角结构，先展开或逆用公式统一角与函数名。"
+        },
+        {
+          "method_id": "M.hs_auxiliary_angle",
+          "priority": 2,
+          "when_to_prefer": "式子含正弦余弦线性组合时，用辅助角把两项并成一项再化简。"
+        },
+        {
+          "method_id": "M.hs_trig_identity",
+          "priority": 3,
+          "when_to_prefer": "出现同名函数的分式时，用平方关系或商数关系把它齐次化。"
+        },
+        {
+          "method_id": "M.hs_angle_combination",
+          "priority": 4,
+          "when_to_prefer": "非特殊角的乘积型求值，先凑出可约的角再逐项消去。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.auxiliary_angle",
+      "block_id": "B.hs_trig",
+      "name": "辅助角公式与化一",
+      "definition": "题面出现正弦与余弦的线性组合，要求化为一个三角函数后求周期、最值、单调区间或值域。",
+      "signals": [
+        "出现形如 sin x 加根号三倍 cos x 的两项",
+        "要求求最大值、最小值或周期",
+        "式子是二次齐次三角式",
+        "要求求给定区间上的值域"
+      ],
+      "recognition_examples": [
+        "求 $f(x)=\\sin x+\\sqrt{3}\\cos x$ 的最大值与最小正周期。",
+        "求 $f(x)=2\\sin^{2}x+2\\sqrt{3}\\sin x\\cos x$ 的单调递增区间。",
+        "求 $f(x)=\\sin\\left(2x+\\frac{\\pi}{6}\\right)+\\cos 2x$ 在 $\\left[0,\\frac{\\pi}{2}\\right]$ 上的值域。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.graph_property",
+          "how": "那里已给出标准正弦型形式，这里必须先降幂与化一才能求性质。"
+        },
+        {
+          "scenario_id": "S.hs_trig.identity_transform",
+          "how": "这里目标是把两项合成一项再求性质，那里目标是化简或恒等证明。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_auxiliary_angle",
+          "priority": 1,
+          "when_to_prefer": "先降幂把二次式化为一次，再用辅助角合并成单一正弦型。"
+        },
+        {
+          "method_id": "M.hs_trig_addition",
+          "priority": 2,
+          "when_to_prefer": "化一前若角度不统一，先用和差角或二倍角把角统一成同一个。"
+        },
+        {
+          "method_id": "M.hs_trig_global",
+          "priority": 3,
+          "when_to_prefer": "化成标准型后把整体相位看作一个变量，再按区间端点求值域。"
+        },
+        {
+          "method_id": "M.hs_trig_equation",
+          "priority": 4,
+          "when_to_prefer": "要求取得最值的自变量集合时，令相位等于最值对应的角再写通解。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.angle_relation",
+      "block_id": "B.hs_trig",
+      "name": "角的拆分与凑角求值",
+      "definition": "题面给出两个角的三角函数值，要求求这两角的和、差或倍角的函数值，角之间有可凑配的关系。",
+      "signals": [
+        "已知两个角的三角函数值",
+        "所求角可写成已知角的和或差",
+        "出现凑角提示",
+        "给出角的范围用于定号"
+      ],
+      "recognition_examples": [
+        "已知 $\\sin\\alpha=\\frac{3}{5}$，$\\cos\\beta=\\frac{5}{13}$，且 $\\alpha,\\beta$ 为锐角，求 $\\cos(\\alpha+\\beta)$。",
+        "已知 $\\tan(\\alpha+\\beta)=\\frac{1}{3}$，$\\tan\\beta=\\frac{1}{2}$，求 $\\tan\\alpha$。",
+        "已知 $\\cos\\left(\\alpha-\\frac{\\pi}{6}\\right)=\\frac{3}{5}$，求 $\\sin\\alpha$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.identity_eval",
+          "how": "这里角度本身未知，要先拆分再结合范围定号；求值情景的角是直接给出的。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_angle_combination",
+          "priority": 1,
+          "when_to_prefer": "先把所求角写成已知角的和差（如 alpha 等于 alpha 加 beta 再减 beta）。"
+        },
+        {
+          "method_id": "M.hs_trig_addition",
+          "priority": 2,
+          "when_to_prefer": "凑角完成后直接套和差角公式，展开时注意函数名与符号。"
+        },
+        {
+          "method_id": "M.hs_trig_identity",
+          "priority": 3,
+          "when_to_prefer": "已知一个函数值求同角另一个值时，用平方关系补齐并靠范围定号。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.graph_property",
+      "block_id": "B.hs_trig",
+      "name": "三角函数的周期、单调、对称与最值",
+      "definition": "题面给出三角函数解析式，要求求周期、单调区间、对称轴或对称中心、最值。",
+      "signals": [
+        "要求求最小正周期",
+        "要求求单调递增区间",
+        "要求求对称轴方程或对称中心",
+        "要求求最值及取得最值时的自变量"
+      ],
+      "recognition_examples": [
+        "求 $f(x)=2\\sin\\left(2x-\\frac{\\pi}{3}\\right)$ 的最小正周期与单调递增区间。",
+        "求 $f(x)=\\cos\\left(3x+\\frac{\\pi}{4}\\right)$ 的对称轴方程。",
+        "求 $f(x)=\\tan\\left(2x-\\frac{\\pi}{6}\\right)$ 的定义域与周期。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.omega_param",
+          "how": "这里解析式已确定只求区间，那里参数未知且受区间内性质反约束。"
+        },
+        {
+          "scenario_id": "S.hs_trig.auxiliary_angle",
+          "how": "这里已给出标准正弦型形式，那里必须先降幂与化一才能求性质。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_trig_global",
+          "priority": 1,
+          "when_to_prefer": "把相位整体看作一个变量，套标准正弦或余弦的区间结论再反解自变量。"
+        },
+        {
+          "method_id": "M.hs_auxiliary_angle",
+          "priority": 2,
+          "when_to_prefer": "解析式不是标准型时，先化一整理成单一正弦型再求性质。"
+        },
+        {
+          "method_id": "M.hs_trig_equation",
+          "priority": 3,
+          "when_to_prefer": "求对称轴或最值点时，令相位等于相应特殊角再写含整数 k 的通解。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.graph_transform",
+      "block_id": "B.hs_trig",
+      "name": "三角函数图象变换与解析式确定",
+      "definition": "题面要求由正弦函数经平移伸缩得到目标图象，或由图象反求正弦型函数的解析式。",
+      "signals": [
+        "出现平移或横坐标伸缩的描述",
+        "给出图象要求写解析式",
+        "要求求频率参数与初相",
+        "比较先平移后伸缩与先伸缩后平移"
+      ],
+      "recognition_examples": [
+        "把 $y=\\sin x$ 图象上各点横坐标缩短为原来的 $\\frac{1}{2}$，再向左平移 $\\frac{\\pi}{6}$，求所得函数。",
+        "由图象的最高点与相邻零点求 $y=A\\sin(\\omega x+\\varphi)$ 的解析式。",
+        "判断先平移后伸缩与先伸缩后平移所得函数是否相同。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.graph_transform",
+          "how": "这里要处理频率对平移量的影响，且需确定振幅、频率、初相三个参数。"
+        },
+        {
+          "scenario_id": "S.hs_trig.trig_model",
+          "how": "这里是纯图象变换，那里要从实际数据反推振幅、频率、初相与竖直偏移的含义。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_trig_graph_transform",
+          "priority": 1,
+          "when_to_prefer": "先确定先伸缩还是先平移，再按对应顺序逐步改写解析式，顺序不同结果不同。"
+        },
+        {
+          "method_id": "M.hs_trig_global",
+          "priority": 2,
+          "when_to_prefer": "由图象求参数时，先读周期定频率，再读最值定振幅，最后代点定初相。"
+        },
+        {
+          "method_id": "M.hs_omega_range",
+          "priority": 3,
+          "when_to_prefer": "图象给的是相邻零点或对称轴间距时，由该距离反推周期进而定频率。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.omega_param",
+      "block_id": "B.hs_trig",
+      "name": "含参数频率与初相的性质讨论",
+      "definition": "题面中频率或初相含参数，且给定单调性、零点个数或最值条件，要求求参数取值范围。",
+      "signals": [
+        "解析式中频率参数未知",
+        "出现「在区间上单调」或「恰有几个零点」",
+        "要求求参数的最大值",
+        "出现图象关于某直线对称但含参"
+      ],
+      "recognition_examples": [
+        "若 $f(x)=\\sin\\left(\\omega x+\\frac{\\pi}{3}\\right)$ 在 $\\left[0,\\frac{\\pi}{2}\\right]$ 上单调递增，求 $\\omega$ 的取值范围。",
+        "若 $f(x)=2\\sin(\\omega x)$ 在 $[0,\\pi]$ 上恰有两个零点，求 $\\omega$ 的范围。",
+        "若 $f(x)=\\cos(\\omega x+\\varphi)$ 的图象关于直线 $x=\\frac{\\pi}{3}$ 对称，求 $\\varphi$ 的一个值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.graph_property",
+          "how": "那里参数已定只求区间，这里是参数受区间内性质约束，要反解参数范围。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_omega_range",
+          "priority": 1,
+          "when_to_prefer": "把单调或零点条件翻译成相位落在某区间内，再由区间包含关系解参数。"
+        },
+        {
+          "method_id": "M.hs_trig_global",
+          "priority": 2,
+          "when_to_prefer": "先算出相位在给定自变量范围内的取值范围，再与标准结论比对。"
+        },
+        {
+          "method_id": "M.hs_trig_graph_transform",
+          "priority": 3,
+          "when_to_prefer": "由对称条件反求初相时，先按平移关系写出相位再代对称轴。"
+        },
+        {
+          "method_id": "M.hs_trig_equation",
+          "priority": 4,
+          "when_to_prefer": "零点个数问题先写出通解，再数落在区间内的解的个数。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.trig_equation",
+      "block_id": "B.hs_trig",
+      "name": "三角方程与三角不等式",
+      "definition": "题面要求解简单三角方程或三角不等式，或由方程在给定区间内解的个数求参数。",
+      "signals": [
+        "出现正弦、余弦等于某个常数的方程",
+        "要求求解集",
+        "出现给定区间内解的个数",
+        "含参数并讨论解的个数"
+      ],
+      "recognition_examples": [
+        "解方程 $2\\sin x-1=0\\ (x\\in[0,2\\pi))$。",
+        "解不等式 $\\cos x\\ge\\frac{1}{2}$。",
+        "若方程 $\\sin x=a$ 在 $[0,\\pi]$ 上有两解，求 $a$ 的范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.zero_point",
+          "how": "这里先化为基本三角形式再用单位圆写解集，不涉及超越函数零点讨论。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_trig_equation",
+          "priority": 1,
+          "when_to_prefer": "先化成正弦或余弦等于常数的基本形式，再用单位圆或图象写通解。"
+        },
+        {
+          "method_id": "M.hs_trig_global",
+          "priority": 2,
+          "when_to_prefer": "含复合相位时把整体看成一个变量，解出后再反解自变量。"
+        },
+        {
+          "method_id": "M.hs_auxiliary_angle",
+          "priority": 3,
+          "when_to_prefer": "方程含正弦余弦混合项时，先化一成一个三角函数再解。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.sine_cosine_rule",
+      "block_id": "B.hs_trig",
+      "name": "正余弦定理求边角",
+      "definition": "题面给出三角形的边角条件，要求求未知边、未知角，或判断三角形解的个数。",
+      "signals": [
+        "出现边与角的混合条件",
+        "出现已知两边及夹角求第三边",
+        "出现已知两角及一边",
+        "出现判断有几个解"
+      ],
+      "recognition_examples": [
+        "在 $\\triangle ABC$ 中，$a=2$，$b=3$，$C=60^{\\circ}$，求 $c$。",
+        "已知 $A=30^{\\circ}$，$B=45^{\\circ}$，$a=2$，求 $b$。",
+        "已知 $a=2$，$b=3$，$A=30^{\\circ}$，判断三角形解的个数。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.triangle_shape",
+          "how": "这里求具体量，那里由边角关系判断形状，落点不同。"
+        },
+        {
+          "scenario_id": "S.hs_trig.multi_triangle",
+          "how": "这里在单个三角形内求边角；若图形由两个三角形拼接、需要传递公共边或公共角，归多三角形拼接情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_sine_rule",
+          "priority": 1,
+          "when_to_prefer": "已知两角一边或两边及其中一边的对角时，用正弦定理求其余边角。"
+        },
+        {
+          "method_id": "M.hs_cosine_rule",
+          "priority": 2,
+          "when_to_prefer": "已知两边及夹角或三边时，用余弦定理直接求第三边或角。"
+        },
+        {
+          "method_id": "M.hs_side_angle",
+          "priority": 3,
+          "when_to_prefer": "条件混合边与角时，先统一成角或统一成边，再套对应定理。"
+        },
+        {
+          "method_id": "M.hs_triangle_area",
+          "priority": 4,
+          "when_to_prefer": "已知两边及夹角的求值题常顺带求面积，可直接用面积公式收尾。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.triangle_shape",
+      "block_id": "B.hs_trig",
+      "name": "三角形形状判断与边角互化",
+      "definition": "题面给出含边角混合的等式，要求判断三角形形状或证明某个边角恒等式。",
+      "signals": [
+        "出现边与三角函数混合的等式",
+        "要求判断三角形形状",
+        "出现三边平方关系等式",
+        "要求证明等腰、直角或等边"
+      ],
+      "recognition_examples": [
+        "在 $\\triangle ABC$ 中，若 $a\\cos A=b\\cos B$，判断三角形形状。",
+        "若 $a^{2}+b^{2}-c^{2}=ab$，求 $C$。",
+        "若 $(a+b+c)(a+b-c)=3ab$，求 $C$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.sine_cosine_rule",
+          "how": "那里求具体边角数值，这里落点是定性判断，结论是形状或恒等关系。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_side_angle",
+          "priority": 1,
+          "when_to_prefer": "把边统一成角或把角统一成边，使等式只含一种量后再因式分解。"
+        },
+        {
+          "method_id": "M.hs_sine_rule",
+          "priority": 2,
+          "when_to_prefer": "等式中出现边与角的正弦成比例时，用正弦定理把边换成角的正弦。"
+        },
+        {
+          "method_id": "M.hs_cosine_rule",
+          "priority": 3,
+          "when_to_prefer": "等式是三条边的平方组合时，直接套余弦定理形式读出对应角。"
+        },
+        {
+          "method_id": "M.hs_triangle_area",
+          "priority": 4,
+          "when_to_prefer": "若等式含面积或可化为面积形式，用面积公式与边角关系联立判断。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.area",
+      "block_id": "B.hs_trig",
+      "name": "三角形面积与周长计算",
+      "definition": "题面要求求三角形面积、周长，或由面积反求边角。",
+      "signals": [
+        "要求求面积或周长",
+        "给出角与两边",
+        "给出面积并反求边或角",
+        "出现内切圆半径或高"
+      ],
+      "recognition_examples": [
+        "在 $\\triangle ABC$ 中，$a=3$，$b=4$，$C=60^{\\circ}$，求面积。",
+        "已知 $\\triangle ABC$ 面积为 $2\\sqrt{3}$，$a=2$，$B=60^{\\circ}$，求 $b$。",
+        "若三角形周长为 12，内切圆半径为 1，求面积。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.triangle_extremum",
+          "how": "这里是定点定值的计算，那里随参数变化求范围或最值。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_triangle_area",
+          "priority": 1,
+          "when_to_prefer": "已知两边及夹角或已知底与高时，直接代面积公式求值。"
+        },
+        {
+          "method_id": "M.hs_cosine_rule",
+          "priority": 2,
+          "when_to_prefer": "只给三边或两边一角时，先用余弦定理补齐缺的边再求面积。"
+        },
+        {
+          "method_id": "M.hs_sine_rule",
+          "priority": 3,
+          "when_to_prefer": "给的是两角一边时，用正弦定理补齐边再代面积公式。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.triangle_extremum",
+      "block_id": "B.hs_trig",
+      "name": "解三角形中的最值与范围",
+      "definition": "题面在给定边角约束下，要求周长、面积或某边的最大值、最小值或取值范围。",
+      "signals": [
+        "要求求面积的最大值或周长的取值范围",
+        "给定一角和一边",
+        "出现锐角三角形约束",
+        "要求求某两边的和的范围"
+      ],
+      "recognition_examples": [
+        "在 $\\triangle ABC$ 中，$A=60^{\\circ}$，$a=2$，求面积的最大值。",
+        "已知 $a=2$，$A=\\frac{\\pi}{3}$，求 $b+c$ 的取值范围。",
+        "在锐角三角形中，$B=\\frac{\\pi}{4}$，求 $\\frac{a}{c}$ 的取值范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.area",
+          "how": "那里是具体数值，这里存在自由度需要用基本不等式或三角函数有界性求范围。"
+        },
+        {
+          "scenario_id": "S.hs_trig.measurement",
+          "how": "这里在边角约束下求最值或范围；若目标是实际情境中的确定距离或高度，归实际测量情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_triangle_extremum",
+          "priority": 1,
+          "when_to_prefer": "把目标量写成关于某个角的三角函数式，再用有界性求范围；或化为一正二定用不等式。"
+        },
+        {
+          "method_id": "M.hs_cosine_rule",
+          "priority": 2,
+          "when_to_prefer": "平方关系可用余弦定理给出约束时，配合基本不等式得到目标的范围。"
+        },
+        {
+          "method_id": "M.hs_sine_rule",
+          "priority": 3,
+          "when_to_prefer": "把边化成角的函数后，角度范围成为唯一变量，便于化一求值域。"
+        },
+        {
+          "method_id": "M.hs_triangle_area",
+          "priority": 4,
+          "when_to_prefer": "目标量含面积时，先写出面积关于角的表达式再求最值。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.multi_triangle",
+      "block_id": "B.hs_trig",
+      "name": "多三角形拼接（公共边与公共角）",
+      "definition": "题面图形由两个及以上三角形拼接而成，共边、共角或共线分点，要求求长度、角或面积。",
+      "signals": [
+        "图形中出现公共边或公共角",
+        "出现四边形的对角线分割",
+        "要求求某条线段的长或某个角",
+        "两个三角形共用一条边且各自给出条件"
+      ],
+      "recognition_examples": [
+        "在四边形 $ABCD$ 中，已知 $AB$、$BC$、$\\angle ABC$ 与 $\\angle ADC$，求 $CD$。",
+        "$\\triangle ABD$ 与 $\\triangle BCD$ 共边 $BD$，已知两侧条件，求 $AC$。",
+        "在 $\\triangle ABC$ 中，$D$ 为 $BC$ 上一点且 $AD$ 平分 $\\angle BAC$，求 $AD$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.sine_cosine_rule",
+          "how": "这里要在两个三角形之间传递公共边或公共角，单三角形的公式不够。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_sine_rule",
+          "priority": 1,
+          "when_to_prefer": "先在一个已知条件较全的三角形里用正弦定理求出公共边。"
+        },
+        {
+          "method_id": "M.hs_cosine_rule",
+          "priority": 2,
+          "when_to_prefer": "公共边作为夹边时，用余弦定理把两个三角形串起来。"
+        },
+        {
+          "method_id": "M.hs_side_angle",
+          "priority": 3,
+          "when_to_prefer": "公共角与补角关系给出时，先把角的关系统一再代公式。"
+        },
+        {
+          "method_id": "M.hs_triangle_area",
+          "priority": 4,
+          "when_to_prefer": "两三角形共高或共角时，用面积比替代长度比可减少计算。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.measurement",
+      "block_id": "B.hs_trig",
+      "name": "实际测量与方位角问题",
+      "definition": "题面给出实际测量情境（仰角、俯角、方位角、河宽、塔高），要求求不可直接测量的距离或高度。",
+      "signals": [
+        "出现仰角、俯角、方位角或北偏东等描述",
+        "出现不可到达的两点距离",
+        "给出示意图与已知长度",
+        "要求求塔高、河宽或距离"
+      ],
+      "recognition_examples": [
+        "在 $A$ 点测得塔顶仰角 $30^{\\circ}$，向塔走 50 m 后测得仰角 $45^{\\circ}$，求塔高。",
+        "在河岸测两点到对岸某点的距离与夹角，求河宽。",
+        "某船按给定方位角航行，两次观测后求两观测点间距离。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.triangle_extremum",
+          "how": "这里没有最值问题，目标是把实际情境抽象成三角形后求确定量。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_measure",
+          "priority": 1,
+          "when_to_prefer": "先把文字情境画成带直角的三角形，标注已知角与已知边再选定理。"
+        },
+        {
+          "method_id": "M.hs_sine_rule",
+          "priority": 2,
+          "when_to_prefer": "已知两角一边时，正弦定理是求不可达距离的最短路径。"
+        },
+        {
+          "method_id": "M.hs_cosine_rule",
+          "priority": 3,
+          "when_to_prefer": "已知两边及夹角求第三边（如两次观测点间距）时用余弦定理。"
+        },
+        {
+          "method_id": "M.hs_triangle_area",
+          "priority": 4,
+          "when_to_prefer": "题目顺带求占地或覆盖面积时，用面积公式收尾。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_trig.trig_model",
+      "block_id": "B.hs_trig",
+      "name": "周期现象的三角函数建模",
+      "definition": "题面给出周期性实际现象（简谐运动、摩天轮、潮汐），要求用正弦型函数建模或求某时刻的值。",
+      "signals": [
+        "出现随时间周期性变化或匀速转动的描述",
+        "给出最大最小值与周期",
+        "要求求解析式或求某时刻的高度",
+        "出现转一圈所需时间"
+      ],
+      "recognition_examples": [
+        "摩天轮半径 10 m、中心高 15 m、12 min 转一圈，求座舱高度 $h$ 与时间 $t$ 的关系。",
+        "某港口水深随时间满足 $y=3\\sin\\frac{\\pi t}{6}+5$，求水深最大的时刻。",
+        "由简谐运动的图象求其解析式。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.graph_transform",
+          "how": "那里是纯图象变换，这里要从实际数据反推振幅、频率、初相与竖直偏移的含义。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_trig_model",
+          "priority": 1,
+          "when_to_prefer": "按最大值与最小值定振幅与竖直偏移，按周期定频率，再代初始位置定初相。"
+        },
+        {
+          "method_id": "M.hs_trig_graph_transform",
+          "priority": 2,
+          "when_to_prefer": "把模型看作出正弦曲线平移伸缩得到，用变换关系校验参数是否自洽。"
+        },
+        {
+          "method_id": "M.hs_trig_global",
+          "priority": 3,
+          "when_to_prefer": "求某时刻的值或最值时刻时，把相位整体代入再解方程。"
+        }
+      ]
+    }
+  ]
+}

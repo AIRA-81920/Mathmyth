@@ -1,3 +1,5 @@
+import { compressImage } from './resize.js';
+
 const DEFAULT_MAX_BYTES = 20 * 1024 * 1024;
 const MIME_EXTENSIONS = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/gif': 'gif', 'image/webp': 'webp' };
 
@@ -101,7 +103,7 @@ function imageId() {
 
 // 20 MiB is an app input guard, not a claim about any provider's upload limit.
 // Camera Blobs may have no type/name; their byte headers still determine MIME.
-export async function readImageFile(file, { maxBytes = DEFAULT_MAX_BYTES, signal } = {}) {
+export async function readImageFile(file, { maxBytes = DEFAULT_MAX_BYTES, signal, compress = compressImage } = {}) {
   checkAbort(signal);
   if (!Number.isFinite(maxBytes) || maxBytes <= 0) {
     throw new ImageInputError('图片大小限制无效，请重试。', 'invalid_limit');
@@ -124,10 +126,26 @@ export async function readImageFile(file, { maxBytes = DEFAULT_MAX_BYTES, signal
   const mime = detectedMime(bytes);
   const id = imageId();
   const givenName = typeof file.name === 'string' ? file.name.trim().split(/[\\/]/).pop() : '';
-  const name = givenName || `图片-${id.slice(0, 8)}.${MIME_EXTENSIONS[mime]}`;
-  const dataUrl = await imageDataUrl(file, bytes, mime, signal);
+
+  // 入库前压缩（D1）：长边 >1600px 时降采样并重新编码为真实 JPEG q0.85。
+  // 环境不支持、解码失败或长边已达标时 compressImage 返回 null，此处保持原图
+  // 原格式入库——上传/裁切/文档取图三条路径都经过本函数，压缩点唯一。
+  let storedBytes = bytes, storedMime = mime, storedBlob = file;
+  const encoded = compress && typeof Blob === 'function'
+    ? await compress(file instanceof Blob ? file : new Blob([bytes], { type: mime }), { signal, mime })
+    : null;
+  if (encoded?.blob) {
+    const replaced = new Uint8Array(await encoded.blob.arrayBuffer());
+    if (replaced.length) { storedBytes = replaced; storedMime = encoded.mime; storedBlob = encoded.blob; }
+  }
   checkAbort(signal);
-  return { id, name, mime, bytes, dataUrl };
+  // 仅在格式真被改变时才跟随新扩展名；未压缩时保留用户原文件名。
+  const name = givenName
+    ? (storedMime === mime ? givenName : givenName.replace(/(\.[^.]+)?$/, `.${MIME_EXTENSIONS[storedMime]}`))
+    : `图片-${id.slice(0, 8)}.${MIME_EXTENSIONS[storedMime]}`;
+  const dataUrl = await imageDataUrl(storedBlob, storedBytes, storedMime, signal);
+  checkAbort(signal);
+  return { id, name, mime: storedMime, bytes: storedBytes, dataUrl };
 }
 
 // Storage can persist bytes rather than a larger base64 string. Only the four

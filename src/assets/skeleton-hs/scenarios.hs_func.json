@@ -1,0 +1,1044 @@
+{
+  "block_id": "B.hs_func",
+  "scenarios": [
+    {
+      "id": "S.hs_func.set_operation",
+      "block_id": "B.hs_func",
+      "name": "集合的基本运算与包含关系",
+      "definition": "题面给出用列举法、描述法或不等式区间表示的集合（常含参数），要求求交集、并集、补集、子集个数，或判断包含关系。",
+      "signals": [
+        "出现交集、并集、补集或包含符号",
+        "集合以不等式区间或描述法给出",
+        "出现「若 A⊆B，求 a 的取值范围」",
+        "问「满足条件的集合个数」或「子集个数」",
+        "与函数定义域、值域交汇出现"
+      ],
+      "recognition_examples": [
+        "设 $A=\\{x\\mid x^{2}-3x+2\\le 0\\}$，$B=\\{x\\mid a\\le x\\le a+1\\}$，若 $A\\cap B=\\varnothing$，求 $a$ 的取值范围。",
+        "设全集 $U=\\mathbb{R}$，$A=\\{x\\mid x<-1\\ \\text{或}\\ x\\ge 2\\}$，$B=\\{x\\mid 0<x<3\\}$，求 $(\\complement_U A)\\cap B$。",
+        "集合 $M=\\{1,2,3\\}$ 的所有含 2 的子集有哪些？"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.inequality_solve",
+          "how": "本题落点是集合关系与运算结果，解不等式只是中间步骤；若只要求解集本身则归不等式求解。"
+        },
+        {
+          "scenario_id": "S.hs_func.condition_judge",
+          "how": "这里求集合的运算结果；若问命题之间的推出方向（充分、必要、充要），归充分必要条件的判定。"
+        },
+        {
+          "scenario_id": "S.hs_func.new_definition_set",
+          "how": "这里按常规集合规则运算；若题面先给出新定义，必须先读懂并套用新规则，归新定义集合情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_set_operation",
+          "priority": 1,
+          "when_to_prefer": "集合用列举法或可化为区间时，先把两个集合化成最简区间形式再在数轴上比对端点。"
+        },
+        {
+          "method_id": "M.hs_quadratic_inequality",
+          "priority": 2,
+          "when_to_prefer": "集合由一元二次不等式给出时，先解出精确区间再作集合运算。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 3,
+          "when_to_prefer": "含参集合的端点可跨越固定集合端点时，按参数位置分段讨论。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 4,
+          "when_to_prefer": "抽象集合关系题用韦恩图或数轴示意，能快速排除错误选项。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.condition_judge",
+      "block_id": "B.hs_func",
+      "name": "充分必要条件的判定",
+      "definition": "题面要求判断「p 是 q 的充分/必要/充要条件」，或由条件关系反求参数范围。",
+      "signals": [
+        "出现「充分条件」「必要条件」「充要条件」字样",
+        "出现「若 p 则 q」的真假判断",
+        "条件可分别写成集合 A、B",
+        "出现「p 是 q 的充分不必要条件，求 a 的范围」"
+      ],
+      "recognition_examples": [
+        "判断「$x>1$」是「$x^{2}>1$」的什么条件。",
+        "已知 $p:|x-1|<2$，$q:x^{2}-5x+6<0$，判断 $p$ 是 $q$ 的什么条件。",
+        "若「$a>b$」是「$ac^{2}>bc^{2}$」的必要条件，求 $c$ 应满足的条件。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.set_operation",
+          "how": "这里问命题之间的推出方向，不是求集合运算结果；解集只是判断推出关系的中间工具。"
+        },
+        {
+          "scenario_id": "S.hs_func.quantifier_negation",
+          "how": "这里判断两个命题之间的推出关系；若处理全称、存在量词的结构或恒成立与有解，归量词否定情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_condition_judge",
+          "priority": 1,
+          "when_to_prefer": "直接按定义验证「p 成立能否推出 q 成立」与反向是否成立，两步定四种关系。"
+        },
+        {
+          "method_id": "M.hs_quadratic_inequality",
+          "priority": 2,
+          "when_to_prefer": "条件是以不等式给出的取值范围时，先解出 p、q 各自对应的集合。"
+        },
+        {
+          "method_id": "M.hs_inequality_compare",
+          "priority": 3,
+          "when_to_prefer": "条件含字母不等关系时，用代特殊值举反例可快速否定某个方向。"
+        },
+        {
+          "method_id": "M.hs_set_operation",
+          "priority": 4,
+          "when_to_prefer": "把 p、q 写成集合后，用子集包含关系反推参数范围最直接。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.quantifier_negation",
+      "block_id": "B.hs_func",
+      "name": "全称量词与存在量词命题的否定",
+      "definition": "题面出现全称量词或存在量词，要求写否定、判真假，或把「恒成立/有解」转化为参数范围。",
+      "signals": [
+        "出现全称量词或存在量词符号，或「对任意」「存在」",
+        "要求「写出命题的否定」",
+        "出现「恒成立」「有解」「至少存在一个」",
+        "含参数并求取值范围"
+      ],
+      "recognition_examples": [
+        "写出「$\\forall x\\in\\mathbb{R},\\ x^{2}+x+1>0$」的否定。",
+        "若「$\\exists x\\in[1,2],\\ x^{2}-a<0$」为真命题，求 $a$ 的取值范围。",
+        "判断「$\\forall x\\in\\mathbb{R},\\ x^{2}-2x+3\\ge 0$」的真假并说明理由。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.condition_judge",
+          "how": "这里处理量词结构与恒成立/有解，不是判断两个命题之间的推出关系。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_quantifier",
+          "priority": 1,
+          "when_to_prefer": "写否定时把全称与存在互换并否定结论，量词后的范围保持不变。"
+        },
+        {
+          "method_id": "M.hs_quadratic_inequality",
+          "priority": 2,
+          "when_to_prefer": "恒成立条件落在二次式上时，用判别式或端点值直接转成参数不等式。"
+        },
+        {
+          "method_id": "M.hs_root_distribution",
+          "priority": 3,
+          "when_to_prefer": "存在性命题可转化为方程在给定区间内有解，用根的分布条件求解。"
+        },
+        {
+          "method_id": "M.hs_basic_inequality",
+          "priority": 4,
+          "when_to_prefer": "存在性问题化为求最值时，用基本不等式或配凑直接得到临界值。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.new_definition_set",
+      "block_id": "B.hs_func",
+      "name": "新定义集合的代入检验",
+      "definition": "题面先给出一个新定义的集合运算或集合属性，要求按定义判断元素归属或求集合。",
+      "signals": [
+        "题面先给出新定义式",
+        "出现「按上述定义」或「若 x 属于该新集合」",
+        "选项是集合或元素个数",
+        "常与不等式解集、整数集结合"
+      ],
+      "recognition_examples": [
+        "定义 $A\\odot B=\\{z\\mid z=xy,\\ x\\in A,\\ y\\in B\\}$，若 $A=\\{1,2\\}$，$B=\\{0,2\\}$，求 $A\\odot B$。",
+        "定义「集合 $A$ 的好元素为满足 $x^{2}\\in A$ 的元素 $x$」，判断给定元素是否为好元素。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.set_operation",
+          "how": "常规集合运算有固定规则，本题必须先读懂并套用新规则，再落到普通集合运算上。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_set_operation",
+          "priority": 1,
+          "when_to_prefer": "把新定义翻译成普通集合语言后，按常规交并补规则计算或比对。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 2,
+          "when_to_prefer": "新定义按元素属性分类时，按符号或区间逐类列举元素再合并。"
+        },
+        {
+          "method_id": "M.hs_quadratic_inequality",
+          "priority": 3,
+          "when_to_prefer": "新集合的成员条件可化为一元二次不等式时，先解出范围再取整或取交。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.inequality_solve",
+      "block_id": "B.hs_func",
+      "name": "一元二次、分式与绝对值不等式的求解",
+      "definition": "题面要求解一元二次、分式或含绝对值的不等式，解集常需写成区间或集合。",
+      "signals": [
+        "出现一元二次不等式并含参数",
+        "出现分式不等式，分母含 x",
+        "出现绝对值小于或大于某个量的不等式",
+        "解集需写成区间或集合形式"
+      ],
+      "recognition_examples": [
+        "解不等式 $x^{2}-(a+1)x+a<0$。",
+        "解不等式 $\\dfrac{x-1}{x+2}\\ge 0$。",
+        "解不等式 $|2x-1|<3$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.quadratic_root_dist",
+          "how": "这里求解集，那里研究根在数轴上的位置；两者都用二次函数图象但落点不同。"
+        },
+        {
+          "scenario_id": "S.hs_func.set_operation",
+          "how": "这里只求解集本身；若落点是集合关系与运算结果（含参数求范围），归集合的运算与包含关系。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_quadratic_inequality",
+          "priority": 1,
+          "when_to_prefer": "二次项系数与判别式已知时，先求根再按开口方向写解集，是最短路径。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 2,
+          "when_to_prefer": "二次项系数含参数或两根大小不确定时，按参数分段讨论开口与根的次序。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "分式或高次不等式用数轴标根法作图定号，比逐段代数讨论更快。"
+        },
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 4,
+          "when_to_prefer": "含绝对值或指数结构的二次型不等式，先整体换元化为标准一元二次不等式。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.quadratic_root_dist",
+      "block_id": "B.hs_func",
+      "name": "一元二次方程根的分布",
+      "definition": "题面讨论一元二次方程根的正负、大小或是否落在某区间内，通常含参数。",
+      "signals": [
+        "出现「两根都大于 1」「一正一负」「在 (0,1) 内有解」",
+        "含参数",
+        "出现「方程有实根」并附加位置条件",
+        "题面给出二次函数图象或单调性提示"
+      ],
+      "recognition_examples": [
+        "若方程 $x^{2}-2mx+m+2=0$ 的两根都大于 1，求 $m$ 的取值范围。",
+        "若 $x^{2}+ax+1=0$ 在 $(0,2)$ 内有解，求 $a$ 的范围。",
+        "关于 $x$ 的方程 $x^{2}-(k+1)x+k=0$ 有两异号实根，求 $k$ 的范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.zero",
+          "how": "那里用导数研究零点个数，这里只用判别式、对称轴与端点值，不需求导。"
+        },
+        {
+          "scenario_id": "S.hs_func.inequality_solve",
+          "how": "那里求解集，这里研究根在数轴上的位置；两者都用二次函数图象但落点不同。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_root_distribution",
+          "priority": 1,
+          "when_to_prefer": "把根的位置条件同时翻译成判别式、对称轴与端点函数值三组不等式。"
+        },
+        {
+          "method_id": "M.hs_quadratic_inequality",
+          "priority": 2,
+          "when_to_prefer": "条件翻译后的三组不等式多为二次或一次式，逐组求解再取交。"
+        },
+        {
+          "method_id": "M.hs_zero_point",
+          "priority": 3,
+          "when_to_prefer": "区间内有解可先用零点存在定理保证存在，再补单调性保证唯一。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 4,
+          "when_to_prefer": "两根与某常数的大小关系不明确时，按判别式符号与根区间分段。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.basic_inequality",
+      "block_id": "B.hs_func",
+      "name": "基本不等式求最值",
+      "definition": "题面在正数条件下求积的最大值或和的最小值，结构上能凑出定值。",
+      "signals": [
+        "出现两个变量均为正的条件",
+        "出现和、积、平方和或倒数和组合",
+        "出现「和为定值求积最大」「积为定值求和最小」",
+        "要求最小值或最大值并追问等号成立条件"
+      ],
+      "recognition_examples": [
+        "若 $x>0$，$y>0$ 且 $x+y=1$，求 $\\dfrac{1}{x}+\\dfrac{4}{y}$ 的最小值。",
+        "求 $y=x+\\dfrac{1}{x-1}\\ (x>1)$ 的最小值。",
+        "若 $0<x<1$，求 $x(1-x)$ 的最大值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.extremum",
+          "how": "这里靠代数凑定值，不需求导；等号条件不成立或结构凑不出定值时改用导数。"
+        },
+        {
+          "scenario_id": "S.hs_func.inequality_property",
+          "how": "这里求最值且需定值结构，那里只作大小判断或性质推理，不设等号条件。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_basic_inequality",
+          "priority": 1,
+          "when_to_prefer": "和为定值求积最大或积为定值求和最小时，验证一正二定三相等后直接套用。"
+        },
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 2,
+          "when_to_prefer": "分母含 x-1、根号或整体结构重复时，先换元把式子整理成标准型。"
+        },
+        {
+          "method_id": "M.hs_cauchy_inequality",
+          "priority": 3,
+          "when_to_prefer": "求线性组合在平方和约束下的最值，柯西不等式一步给出界与取等条件。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 4,
+          "when_to_prefer": "能用对勾函数或图象看出单调性时，画图确认最值点比纯代数更稳。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.inequality_property",
+      "block_id": "B.hs_func",
+      "name": "不等式性质与比较大小",
+      "definition": "题面要求比较两个代数式的大小，或由不等式的性质推断某个式子的取值范围。",
+      "signals": [
+        "出现「比较大小」「判断大小关系」",
+        "出现 a>b>0、c<d<0 等符号条件",
+        "要求「求 2a-b 的取值范围」",
+        "选项是不等式链"
+      ],
+      "recognition_examples": [
+        "已知 $a>b>0$，$c<d<0$，比较 $ac$ 与 $bd$ 的大小。",
+        "若 $-1<a<b<3$，求 $2a-b$ 的取值范围。",
+        "证明：若 $a>b>0$，则 $a^{2}>b^{2}$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.basic_inequality",
+          "how": "那里求最值且需定值结构，这里只作大小判断或性质推理，不设等号条件。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_inequality_compare",
+          "priority": 1,
+          "when_to_prefer": "能作差且差式易因式分解时，作差判号是最通用的比较手段。"
+        },
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 2,
+          "when_to_prefer": "两个式子结构相似时，作商或换元后比较同一个函数值的大小。"
+        },
+        {
+          "method_id": "M.hs_basic_inequality",
+          "priority": 3,
+          "when_to_prefer": "结论可化为一正二定的最值形式时，用基本不等式给出下界或上界。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.domain",
+      "block_id": "B.hs_func",
+      "name": "求函数的定义域",
+      "definition": "题面给出含分母、偶次根式、对数或零次幂的函数式，要求求自变量的取值范围。",
+      "signals": [
+        "函数式中含分母、偶次根号、对数真数或零次幂",
+        "出现「求定义域」",
+        "含参数并要求「定义域为 R」",
+        "复合函数内外层限制同时出现"
+      ],
+      "recognition_examples": [
+        "求 $f(x)=\\sqrt{x-1}+\\dfrac{1}{x-3}$ 的定义域。",
+        "求 $f(x)=\\log_2(x^{2}-2x-3)$ 的定义域。",
+        "若 $f(x)=\\sqrt{ax^{2}+ax+1}$ 的定义域为 $\\mathbb{R}$，求 $a$ 的范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.value_range",
+          "how": "定义域限制的是自变量，值域限制的是函数值；两者求的是不同方向的范围。"
+        },
+        {
+          "scenario_id": "S.hs_func.piecewise",
+          "how": "这里求整体定义域；若题面直接给出分段表达式，关键动作是先判断自变量落在哪一段，归分段函数情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_domain",
+          "priority": 1,
+          "when_to_prefer": "先把分母非零、偶次根号内非负、真数为正三条限制并列，再取交集。"
+        },
+        {
+          "method_id": "M.hs_quadratic_inequality",
+          "priority": 2,
+          "when_to_prefer": "限制条件落到一元二次式上时，解出区间后取交，必要时按判别式分段。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 3,
+          "when_to_prefer": "二次项系数含参数并要求恒非负时，按系数为零与不为零分两类讨论。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.expression",
+      "block_id": "B.hs_func",
+      "name": "求函数解析式",
+      "definition": "题面给出函数类型或函数方程，要求求 f(x) 的解析式。",
+      "signals": [
+        "出现「求 f(x) 的解析式」",
+        "已知 f 是一次或二次函数并给条件",
+        "给出 f(x)+f(-x) 型或 f(g(x)) 型关系",
+        "给出图象过点、对称轴或最值"
+      ],
+      "recognition_examples": [
+        "已知 $f(x)$ 是一次函数且 $f(f(x))=4x+3$，求 $f(x)$。",
+        "已知 $f(x)+2f(-x)=3x$，求 $f(x)$。",
+        "已知 $f(x+1)=x^{2}+2x$，求 $f(x)$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.abstract_function",
+          "how": "那里只讨论性质不给解析式，这里最终必须写出具体解析式。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_undetermined_coeff",
+          "priority": 1,
+          "when_to_prefer": "已知函数类型（一次、二次、指数型）时，设出含参形式再代条件定系数。"
+        },
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 2,
+          "when_to_prefer": "给出 f(g(x)) 的表达式时，令 t=g(x) 反解 x 后代入，即得 f(t)。"
+        },
+        {
+          "method_id": "M.hs_assignment",
+          "priority": 3,
+          "when_to_prefer": "出现 f(x) 与 f(-x) 或 f(1/x) 成对时，用赋值构造第二个方程后联立消元。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.value_range",
+      "block_id": "B.hs_func",
+      "name": "求函数的值域",
+      "definition": "题面要求求函数值的取值范围，常含参数或限定区间。",
+      "signals": [
+        "出现「求值域」或「求 y 的取值范围」",
+        "给出闭区间或定义域限制",
+        "含参数并要求「值域为 R」",
+        "函数式含根式、分式或二次结构"
+      ],
+      "recognition_examples": [
+        "求 $y=x^{2}-2x+3\\ (0\\le x\\le 3)$ 的值域。",
+        "求 $y=\\dfrac{2x+1}{x-1}$ 的值域。",
+        "若 $y=\\sqrt{x^{2}-2x+3}$ 的值域为 $[m,+\\infty)$，求 $m$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.extremum",
+          "how": "这里靠代数变形与单调性直接定范围，只有含超越式的复杂情形才转导数。"
+        },
+        {
+          "scenario_id": "S.hs_func.domain",
+          "how": "这里求函数值的范围；若求的是自变量的取值范围（分母、根号、真数的限制），归求定义域情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 1,
+          "when_to_prefer": "含根式或分式时先换元（如令 t 为根式整体），把函数化成熟悉的标准型。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 2,
+          "when_to_prefer": "已能判断函数在给定区间单调时，把端点值代入即得值域两端。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "二次型或对勾型函数直接画图读出最高最低点，最省计算。"
+        },
+        {
+          "method_id": "M.hs_inequality_compare",
+          "priority": 4,
+          "when_to_prefer": "分式型可反解出 x 关于 y 的表达式，用 x 的定义域反推 y 的范围。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.piecewise",
+      "block_id": "B.hs_func",
+      "name": "分段函数",
+      "definition": "题面给出分段函数，要求求值、解方程或不等式，或讨论分界点处的性质。",
+      "signals": [
+        "函数式写成两段以上并标注区间",
+        "出现嵌套求值",
+        "分界点处要求讨论连续或可导",
+        "含绝对值被改写成分段形式"
+      ],
+      "recognition_examples": [
+        "设 $f(x)$ 在 $x<0$ 时为 $x+1$、在 $x\\ge 0$ 时为 $2^{x}$，求 $f(f(-2))$。",
+        "解方程 $f(x)=2$（$f$ 由上题给出）。",
+        "若 $f(x)=|x-1|+|x-2|$，求 $f(x)$ 的最小值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.domain",
+          "how": "分段函数的关键动作是判断自变量落在哪一段，而不是求整体定义域。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_piecewise",
+          "priority": 1,
+          "when_to_prefer": "求值或解方程时先判断自变量所在段，再只在该段内使用对应表达式。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 2,
+          "when_to_prefer": "含参或嵌套时，按自变量落段与参数取值分类，逐类给结论后合并。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "求分段函数最值或比较大小，先画出各段图象再读交点与端点。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 4,
+          "when_to_prefer": "需要比较两处函数值时，先判断各段单调性再定大小，避免逐段代入。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.abstract_function",
+      "block_id": "B.hs_func",
+      "name": "抽象函数与函数方程",
+      "definition": "题面只给抽象函数的若干等式或性质，要求判断奇偶性、单调性或求值。",
+      "signals": [
+        "函数无具体解析式，只给加法或乘法型关系",
+        "出现「对任意 x、y 成立」",
+        "要求判断奇偶性、单调性或比较大小",
+        "常给某个初值"
+      ],
+      "recognition_examples": [
+        "已知 $f(x+y)=f(x)+f(y)$ 对任意 $x,y$ 成立，判断 $f(x)$ 的奇偶性。",
+        "已知 $f(x+y)=f(x)+f(y)$ 且 $x>0$ 时 $f(x)<0$，判断 $f(x)$ 的单调性。",
+        "已知 $f(xy)=f(x)+f(y)$ 且 $f(2)=1$，求 $f(8)$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.expression",
+          "how": "这里目标是用赋值推出性质，不要求写出解析式；若题面要解析式则归求解析式。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_assignment",
+          "priority": 1,
+          "when_to_prefer": "取 x=y=0、x=-y、x=y 等特殊值代入，先得到 f(0) 或对称关系。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 2,
+          "when_to_prefer": "证单调时取 x1<x2，用赋值把 f(x2)-f(x1) 化成已知符号的项。"
+        },
+        {
+          "method_id": "M.hs_parity_period",
+          "priority": 3,
+          "when_to_prefer": "证奇偶性时用赋值得到 f(-x) 与 f(x) 的关系，再按定义判定。"
+        },
+        {
+          "method_id": "M.hs_symmetry",
+          "priority": 4,
+          "when_to_prefer": "关系式形如 f(a+x)=f(a-x) 时，先翻译成对称轴再推性质。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.parity_period",
+      "block_id": "B.hs_func",
+      "name": "奇偶性与周期性",
+      "definition": "题面讨论函数的奇偶性、周期性，或由奇偶与周期推值、求解析式、比较大小。",
+      "signals": [
+        "出现「奇函数」「偶函数」「周期为 T」",
+        "给出 f(x+a)=-f(x) 或倒数型关系",
+        "要求求大自变量的函数值",
+        "对称轴与对称中心同时出现"
+      ],
+      "recognition_examples": [
+        "已知 $f(x)$ 是定义在 $\\mathbb{R}$ 上的奇函数，且 $f(x+2)=-f(x)$，求 $f(2026)$。",
+        "判断 $f(x)=\\ln\\dfrac{1-x}{1+x}$ 的奇偶性。",
+        "已知 $f(x)$ 为偶函数且在 $[0,+\\infty)$ 上单调递增，比较 $f(-2)$ 与 $f(3)$ 的大小。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.symmetry",
+          "how": "这里关注奇偶与周期的代数判定，对称性情景关注图象轴/中心对称及其互相推出。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_parity_period",
+          "priority": 1,
+          "when_to_prefer": "先按定义验证 f(-x) 与 f(x) 的关系，再用递推式把大自变量折回已知区间。"
+        },
+        {
+          "method_id": "M.hs_symmetry",
+          "priority": 2,
+          "when_to_prefer": "出现对称轴或对称中心时，先翻译成 f 的等式再与周期关系合成。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 3,
+          "when_to_prefer": "比较大小要把负数或大数折回单调区间，再用单调性定序。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 4,
+          "when_to_prefer": "抽象关系推不出时，画一个满足条件的示意图象帮助判断结论方向。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.monotonicity",
+      "block_id": "B.hs_func",
+      "name": "单调性的判定与比较",
+      "definition": "题面要求判断或证明单调性、求单调区间，或利用单调性比较大小、解不等式。",
+      "signals": [
+        "出现「判断单调性」「求单调区间」",
+        "出现已知函数值大小求自变量范围",
+        "给出抽象函数单调性并要求解抽象不等式",
+        "含参数并要求在区间上单调"
+      ],
+      "recognition_examples": [
+        "用定义证明 $f(x)=x+\\dfrac{1}{x}$ 在 $(1,+\\infty)$ 上单调递增。",
+        "已知 $f(x)$ 在 $\\mathbb{R}$ 上单调递增且 $f(2a-1)>f(a+1)$，求 $a$ 的范围。",
+        "讨论 $f(x)=x^{2}-2ax+3$ 在 $[1,2]$ 上的单调性。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.monotonicity",
+          "how": "这里用定义或基本初等函数性质，那里用导数符号；含超越式时转导数。"
+        },
+        {
+          "scenario_id": "S.hs_seq.property",
+          "how": "这里自变量连续，那里项数取正整数，最值只能靠相邻项比较确定。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 1,
+          "when_to_prefer": "证单调时作差并因式分解判号，是最稳的通用写法。"
+        },
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 2,
+          "when_to_prefer": "复合结构先用同增异减判断，必要时换元把内层化为基本初等函数。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 3,
+          "when_to_prefer": "二次函数对称轴位置随参数移动时，按对称轴与区间的关系分段。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 4,
+          "when_to_prefer": "抽象不等式解集难算时，画出满足条件的图象示意确定取值范围。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.graph_transform",
+      "block_id": "B.hs_func",
+      "name": "图象变换与识图",
+      "definition": "题面要求由已知函数图象经平移、伸缩、翻折得到新图象，或由图象判断解析式与参数。",
+      "signals": [
+        "出现平移或伸缩的描述",
+        "出现 y=f(x+a)、y=f(|x|)、y=|f(x)| 型",
+        "给出图象要求选解析式",
+        "出现关于某直线对称后的解析式"
+      ],
+      "recognition_examples": [
+        "把 $y=2^{x}$ 的图象向右平移 1 个单位再向上平移 2 个单位，求所得图象对应的函数。",
+        "由 $y=\\log_2 x$ 的图象作出 $y=|\\log_2 x|$ 的图象。",
+        "给出函数图象，判断其解析式。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_trig.graph_transform",
+          "how": "那里对象是正弦型函数，要同时处理相位与频率；这里是一般函数的平移翻折。"
+        },
+        {
+          "scenario_id": "S.hs_func.symmetry",
+          "how": "这里关注图象如何平移翻折得到；若关注两条图象或两组点的对称对应关系，归对称性情景。"
+        },
+        {
+          "scenario_id": "S.hs_func.exp_log_graph",
+          "how": "这里是一般函数的平移翻折；若只用指对函数自身的图象性质（底数、定点、单调），归指对函数图象情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_graph_transform",
+          "priority": 1,
+          "when_to_prefer": "平移按左加右减、上加下减直接改写解析式，翻折按绝对值位置分情形。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 2,
+          "when_to_prefer": "由图象定解析式时，先取顶点、零点、渐近线等特征点再代形式。"
+        },
+        {
+          "method_id": "M.hs_symmetry",
+          "priority": 3,
+          "when_to_prefer": "涉及关于坐标轴或原点的对称图象时，用对称代换改写解析式。"
+        },
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 4,
+          "when_to_prefer": "含复合或带绝对值的结构，先换元化简再判断变换顺序。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.symmetry",
+      "block_id": "B.hs_func",
+      "name": "对称性与图象对称",
+      "definition": "题面给出函数图象的对称轴、对称中心或两函数图象的对称关系，要求求参数、求解析式或求和。",
+      "signals": [
+        "出现关于直线对称或关于点中心对称",
+        "给出 f(a+x)=f(a-x) 型等式",
+        "出现两函数图象关于 y=x 对称",
+        "要求一串对称点函数值之和"
+      ],
+      "recognition_examples": [
+        "已知 $f(x)$ 的图象关于直线 $x=1$ 对称且 $f(0)=2$，求 $f(2)$。",
+        "若 $f(x)$ 满足 $f(1+x)=f(1-x)$，判断其对称轴。",
+        "求 $y=\\dfrac{x+1}{x-1}$ 的对称中心。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.graph_transform",
+          "how": "变换关注怎么移动得到新图象，对称关注两个图象或两组点的对应关系。"
+        },
+        {
+          "scenario_id": "S.hs_func.parity_period",
+          "how": "这里用对称轴、对称中心改写函数值；若落点是奇偶性与周期的代数判定，归奇偶性与周期情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_symmetry",
+          "priority": 1,
+          "when_to_prefer": "把对称条件翻译成 f(2a-x)=2b-f(x) 或 f(2a-x)=f(x)，再逐点代入。"
+        },
+        {
+          "method_id": "M.hs_parity_period",
+          "priority": 2,
+          "when_to_prefer": "对称轴与对称中心同时给出时，可由两条对称推出周期再折回求值。"
+        },
+        {
+          "method_id": "M.hs_graph_transform",
+          "priority": 3,
+          "when_to_prefer": "求关于某直线对称的解析式时，用代换把对称关系转成平移翻折链。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 4,
+          "when_to_prefer": "分式或无理函数求对称中心，用图象特征或分离常数观察更直观。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.exp_log_calc",
+      "block_id": "B.hs_func",
+      "name": "指数与对数式的运算",
+      "definition": "题面要求化简指数式、对数式或求值，含换底与指数对数互化。",
+      "signals": [
+        "出现幂、对数、常用对数、自然对数的混合运算",
+        "出现用已知量表示某个对数",
+        "出现对数连乘",
+        "出现 a 的 log_a N 次幂型"
+      ],
+      "recognition_examples": [
+        "计算 $\\log_2 8+\\lg 25+\\lg 4$。",
+        "已知 $\\log_2 3=a$，用 $a$ 表示 $\\log_3 12$。",
+        "计算 $(\\lg 5)^{2}+\\lg 2\\cdot\\lg 50$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.exp_log_compare",
+          "how": "这里求具体值，那里比较不同函数值的大小，目标不同。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_exp_log",
+          "priority": 1,
+          "when_to_prefer": "先统一底数或统一成同底的对数，再用运算法则合并，是最直接的路径。"
+        },
+        {
+          "method_id": "M.hs_substitution",
+          "priority": 2,
+          "when_to_prefer": "出现重复结构（如 lg2 与 lg5）时设 t 整体代换，可化为整式运算。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "数值估算类题用图象或已知特殊值定位，避免展开计算。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.exp_log_compare",
+      "block_id": "B.hs_func",
+      "name": "指对幂大小比较",
+      "definition": "题面要求比较幂、指数式、对数式的大小，通常底数或指数不同。",
+      "signals": [
+        "出现幂、指数式、对数式的混合",
+        "选项是大小排序",
+        "底数不同或指数不同",
+        "存在 0 与 1 等中间量可用"
+      ],
+      "recognition_examples": [
+        "比较 $2^{0.3}$、$0.3^{2}$、$\\log_2 0.3$ 的大小。",
+        "比较 $\\log_2 3$ 与 $\\log_3 4$ 的大小。",
+        "若 $a=\\log_3 2$，$b=\\ln 2$，$c=5^{-1/2}$，比较三者大小。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.exp_log_graph",
+          "how": "那里用图象求性质或解不等式，这里只作数值大小比较。"
+        },
+        {
+          "scenario_id": "S.hs_func.exp_log_calc",
+          "how": "那里求具体值，这里比较不同函数值的大小，目标不同。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_exp_log_compare",
+          "priority": 1,
+          "when_to_prefer": "先与 0、1 两个中间量比较分档，再在同档内用单调性细分。"
+        },
+        {
+          "method_id": "M.hs_exp_log",
+          "priority": 2,
+          "when_to_prefer": "底数不同时用换底公式统一底数，把比较转化为同一函数的两点比较。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "几个量分别落在不同函数图象上时，画图读交点与位置最快。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 4,
+          "when_to_prefer": "能构造同一个递增或递减函数时，用单调性把函数值大小转为自变量大小。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.exp_log_graph",
+      "block_id": "B.hs_func",
+      "name": "指对函数图象与性质",
+      "definition": "题面给出指数或对数函数的图象，要求求底数范围、解不等式或判断图象位置关系。",
+      "signals": [
+        "给出指数函数或对数函数的图象",
+        "要求求底数的取值范围",
+        "出现图象恒过定点",
+        "要求解指数与对数混合的不等式"
+      ],
+      "recognition_examples": [
+        "若 $y=a^{x}$ 在 $\\mathbb{R}$ 上单调递减，求 $a$ 的范围。",
+        "函数 $f(x)=a^{x-1}+2$ 的图象恒过定点，求该定点。",
+        "由图象判断 $a$、$b$ 的大小关系。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.graph_transform",
+          "how": "这里用指对函数自身的图象性质，不涉及平移伸缩；含平移时才与图象变换交汇。"
+        },
+        {
+          "scenario_id": "S.hs_func.exp_log_compare",
+          "how": "这里用图象求性质或解不等式，那里只作数值大小比较。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_exp_log_compare",
+          "priority": 1,
+          "when_to_prefer": "由图象位置判断底数大小时，取同一自变量比较函数值即可定序。"
+        },
+        {
+          "method_id": "M.hs_exp_log",
+          "priority": 2,
+          "when_to_prefer": "求定点或化简解析式时，先把指数式整理成标准形式再用互化。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "混合不等式无法代数求解时，画两条曲线找交点再读区间。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 4,
+          "when_to_prefer": "底数含参时，按底数大于 1 与介于 0、1 之间两类分别讨论单调性。"
+        },
+        {
+          "method_id": "M.hs_graph_transform",
+          "priority": 5,
+          "when_to_prefer": "解析式含平移时，先化成 a 的 x 减 h 次幂再加 k 的形式定平移量。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.zero_point",
+      "block_id": "B.hs_func",
+      "name": "函数零点与零点个数",
+      "definition": "题面要求判断函数零点个数、所在区间，或由零点存在反求参数范围。",
+      "signals": [
+        "出现「零点」「方程的根」「图象交点」",
+        "要求判断零点个数",
+        "出现「在 (a,b) 内存在零点」",
+        "含参数并求恰有几个零点的范围"
+      ],
+      "recognition_examples": [
+        "求函数 $f(x)=2^{x}+x-4$ 的零点所在区间。",
+        "若 $f(x)=x^{2}-2x+a$ 在 $(0,3)$ 内有两个零点，求 $a$ 的范围。",
+        "讨论方程 $|x^{2}-2x|=a$ 的实根个数。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.zero",
+          "how": "这里的函数以初等结构为主可用图象或零点存在定理，那里必须先用导数刻画函数形态。"
+        },
+        {
+          "scenario_id": "S.hs_trig.trig_equation",
+          "how": "这里研究一般函数的零点个数；若方程已化为基本三角形式、用单位圆写解集，归三角方程情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_zero_point",
+          "priority": 1,
+          "when_to_prefer": "判断区间内是否有零点时，端点函数值异号可直接用零点存在定理。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 2,
+          "when_to_prefer": "零点个数问题把方程拆成两个函数求交点，画图数交点最直观。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 3,
+          "when_to_prefer": "含参零点问题按参数区间分段，逐段讨论交点个数再合并。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 4,
+          "when_to_prefer": "证明零点唯一时，先说明函数在该区间严格单调，再补存在性。"
+        },
+        {
+          "method_id": "M.hs_root_distribution",
+          "priority": 5,
+          "when_to_prefer": "零点条件落在二次式上时，直接用判别式与端点值定参数范围更快。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_func.function_model",
+      "block_id": "B.hs_func",
+      "name": "函数模型与建模应用",
+      "definition": "题面给出实际情境（成本、增长、温度等），要求建立函数模型并求最值或作预测。",
+      "signals": [
+        "出现实际背景描述与数据表",
+        "要求建立函数关系式",
+        "要求求最大利润或最小成本",
+        "出现增长率、衰减率、半衰期等关键词"
+      ],
+      "recognition_examples": [
+        "某商品售价与销量的关系已给出，求利润最大时的售价。",
+        "某放射性物质按指数衰减，求其半衰期。",
+        "给出散点图，要求选择合适的函数模型。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.regression",
+          "how": "那里用统计方法拟合线性回归，这里按函数类型（一次、二次、指数、对数）建模。"
+        },
+        {
+          "scenario_id": "S.hs_seq.model",
+          "how": "这里用连续函数模型，那里按年或按期离散推进，用递推与等比求和。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_function_model",
+          "priority": 1,
+          "when_to_prefer": "先按数据形态选定模型类型，再设参代入已知点，最后回到实际约束。"
+        },
+        {
+          "method_id": "M.hs_undetermined_coeff",
+          "priority": 2,
+          "when_to_prefer": "模型类型已定、参数未知时，用已知数据点列方程定系数。"
+        },
+        {
+          "method_id": "M.hs_basic_inequality",
+          "priority": 3,
+          "when_to_prefer": "目标函数化成和与积的定值结构时，用基本不等式直接给出最优值。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 4,
+          "when_to_prefer": "模型在可行域内单调时，最优点一定落在端点，代入端点比较即可。"
+        }
+      ]
+    }
+  ]
+}

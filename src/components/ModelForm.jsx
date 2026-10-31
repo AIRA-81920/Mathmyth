@@ -1,19 +1,23 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { providers, validateModelConfig } from '../core/config/providers';
-import { testConnection as requestConnectionTest } from '../core/ai/client';
+import { listModels as requestModelList, testConnection as requestConnectionTest } from '../core/ai/client';
 import { useAppStore } from '../store/appStore';
 
-export default function ModelForm({ onStart }) {
+export default function ModelForm({ onStart, startDisabled = false }) {
   const modelConfig = useAppStore((state) => state.modelConfig);
   const setModelConfig = useAppStore((state) => state.setModelConfig);
   const selectProvider = useAppStore((state) => state.selectProvider);
   const [showKey, setShowKey] = useState(false);
+  const [auxOpen, setAuxOpen] = useState(false);
+  const [modelOptions, setModelOptions] = useState([]);
+  const [listing, setListing] = useState(false);
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState(null);
   const formRef = useRef(null);
   const testVersionRef = useRef(0);
   const testControllerRef = useRef(null);
+  const listVersionRef = useRef(0);
   const id = useId();
   const configSignature = JSON.stringify(modelConfig);
   const currentSignatureRef = useRef(configSignature);
@@ -28,6 +32,13 @@ export default function ModelForm({ onStart }) {
       testControllerRef.current?.abort();
     };
   }, [configSignature]);
+
+  // 换了地址就没有"上次查到的列表"这回事了，先清掉，省得选到别的服务商的模型。
+  useEffect(() => {
+    listVersionRef.current += 1;
+    setModelOptions([]);
+    setListing(false);
+  }, [modelConfig.providerId, modelConfig.apiBase]);
 
   const provider = providers.find((item) => item.id === modelConfig.providerId);
   let imageHint = '图片能力请按所填模型确认';
@@ -79,8 +90,29 @@ export default function ModelForm({ onStart }) {
     }
   }
 
+  async function queryModels() {
+    if (listing) return;
+    const version = ++listVersionRef.current;
+    setListing(true);
+    setFeedback({ status: 'listing', message: '正在查询模型列表…' });
+    try {
+      const result = await requestModelList({ ...modelConfig });
+      if (version !== listVersionRef.current) return;
+      setModelOptions(result.models);
+      setFeedback({ status: 'success', message: '找到 ' + result.models.length + ' 个模型，从下面的列表里选一个。' });
+    } catch (error) {
+      if (version !== listVersionRef.current) return;
+      setModelOptions([]);
+      setFeedback({ status: 'error', message: error.userMessage || '查询失败，请检查地址和 Key 后重试。' });
+    } finally {
+      if (version === listVersionRef.current) setListing(false);
+    }
+  }
+
   function start(event) {
     event.preventDefault();
+    // 首启页未选学科时也要挡住回车提交，不能只靠按钮 disabled。
+    if (startDisabled) return;
     if (onStart && checkFields()) onStart();
   }
 
@@ -126,7 +158,10 @@ export default function ModelForm({ onStart }) {
       )}
 
       <div className="form-field">
-        <label className="field-label" htmlFor={`${id}-model`}>模型名</label>
+        <div className="field-label-row">
+          <label className="field-label" htmlFor={`${id}-model`}>模型名</label>
+          <button type="button" className="link-button" disabled={listing} onClick={() => { if (modelOptions.length) { setModelOptions([]); return; } queryModels(); }}>{listing ? '查询中…' : modelOptions.length ? '收起列表' : '查询可用模型'}</button>
+        </div>
         <input
           className="field-control"
           id={`${id}-model`}
@@ -139,6 +174,10 @@ export default function ModelForm({ onStart }) {
           aria-describedby={`${id}-image-hint${errors.model ? ` ${id}-model-error` : ''}`}
           onChange={(event) => updateConfig({ model: event.target.value })}
         />
+        {modelOptions.length > 0 && <select className="field-control model-choices" aria-label="选择模型" value="" onChange={(event) => { const picked = event.target.value; setModelOptions([]); if (picked) updateConfig({ model: picked }); }}>
+          <option value="">选择一个（共 {modelOptions.length} 个）</option>
+          {modelOptions.map((name) => <option key={name} value={name}>{name}</option>)}
+        </select>}
         <p className="field-hint muted" id={`${id}-image-hint`}>{imageHint}</p>
         {errors.model && <p className="field-error" id={`${id}-model-error`}>{errors.model}</p>}
       </div>
@@ -187,8 +226,9 @@ export default function ModelForm({ onStart }) {
         <span className="switch-track" aria-hidden="true"><span className="switch-thumb" /></span>
       </label>
 
-      {!onStart && <details className="auxiliary-settings">
-        <summary>标题与归类</summary>
+      {!onStart && <div className="auxiliary-settings">
+        <button type="button" className={'auxiliary-summary' + (auxOpen ? ' fold-open' : '')} aria-expanded={auxOpen} onClick={() => setAuxOpen((value) => !value)}>标题与归类<span className="fold-chevron" aria-hidden="true">›</span></button>
+        <div className={'fold' + (auxOpen ? ' is-open' : '')}><div>
         <div className="form-field">
           <label className="field-label" htmlFor={`${id}-auxiliary-model`}>辅助模型（可选）</label>
           <input id={`${id}-auxiliary-model`} className="field-control" value={modelConfig.auxiliaryModel || ''} placeholder="留空则自动选择" autoComplete="off" spellCheck={false} onChange={(event) => updateConfig({ auxiliaryModel: event.target.value })} />
@@ -202,9 +242,10 @@ export default function ModelForm({ onStart }) {
           </select>
           <p className="field-hint muted">网关或自定义地址可按其文档选择；纯思考模型可能无法关闭。</p>
         </div>
-      </details>}
+        </div></div>
+      </div>}
       <div className="form-actions">
-        {onStart && <button className="button button-primary" type="submit">开始使用</button>}
+        {onStart && <button className="button button-primary" type="submit" disabled={startDisabled}>开始使用</button>}
         <button
           className="button button-secondary"
           type="button"

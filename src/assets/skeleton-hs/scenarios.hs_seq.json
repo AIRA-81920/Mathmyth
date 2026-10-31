@@ -1,0 +1,475 @@
+{
+  "block_id": "B.hs_seq",
+  "scenarios": [
+    {
+      "id": "S.hs_seq.arithmetic_geometric",
+      "block_id": "B.hs_seq",
+      "name": "等差与等比数列基本量计算",
+      "definition": "题面给出等差或等比数列的部分基本量（首项、公差、公比、项数、前 n 项和），要求求其余量或判断数列类型。",
+      "signals": [
+        "出现「等差数列」「等比数列」",
+        "给出首项、公差、通项、前 n 项和中的若干",
+        "出现两项之和或之积的条件",
+        "出现「三个数成等差或等比」"
+      ],
+      "recognition_examples": [
+        "等差数列中 $a_3=5$，$a_7=13$，求 $a_1$ 与 $d$。",
+        "等比数列中 $a_2=6$，$a_5=48$，求 $q$ 与前 5 项和。",
+        "已知三数成等差且和为 15、积为 80，求这三数。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.an_sn",
+          "how": "那里焦点是通项与前 n 项和的互化，这里只用等差等比的基本公式与中项性质。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_basic_quantity",
+          "priority": 1,
+          "when_to_prefer": "把条件全部翻译成基本量（首项与公差或公比）的方程，联立求解最稳。"
+        },
+        {
+          "method_id": "M.hs_sum_group",
+          "priority": 2,
+          "when_to_prefer": "条件落在前 n 项和上时，直接用求和公式把它化为基本量方程。"
+        },
+        {
+          "method_id": "M.hs_seq_monotone",
+          "priority": 3,
+          "when_to_prefer": "题目要求判定数列类型或比较项大小时，用相邻项比较与中项性质定论。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.an_sn",
+      "block_id": "B.hs_seq",
+      "name": "通项与前 n 项和的关系",
+      "definition": "题面给出前 n 项和的表达式，或给出含通项与前 n 项和的混合关系式，要求求通项。",
+      "signals": [
+        "出现前 n 项和的表达式",
+        "提示使用相邻和相减",
+        "出现首项需单独检验的坑",
+        "出现通项与前 n 项和的混合式"
+      ],
+      "recognition_examples": [
+        "已知 $S_n=n^{2}+2n$，求 $a_n$。",
+        "已知 $a_n+2S_n=1$，求 $a_n$。",
+        "已知 $S_n=2^{n}-1$，求 $a_n$ 并验证 $n=1$ 的情形。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.recurrence",
+          "how": "这里给的是前 n 项和，那里给的是相邻项递推；两者的入口公式不同。"
+        },
+        {
+          "scenario_id": "S.hs_seq.arithmetic_geometric",
+          "how": "这里焦点是通项与前 n 项和的互化，那里只用等差等比的基本公式与中项性质。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_an_sn",
+          "priority": 1,
+          "when_to_prefer": "用 n 大于等于 2 时的相邻和相减求通项，再单独检验首项是否吻合。"
+        },
+        {
+          "method_id": "M.hs_construct_seq",
+          "priority": 2,
+          "when_to_prefer": "混合式不好直接相减时，先消去和或消去通项，构造出等差或等比数列。"
+        },
+        {
+          "method_id": "M.hs_basic_quantity",
+          "priority": 3,
+          "when_to_prefer": "算出通项后需要确认是等差或等比时，用基本量关系验证。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.recurrence",
+      "block_id": "B.hs_seq",
+      "name": "递推数列求通项",
+      "definition": "题面给出相邻项的递推关系，要求求通项公式。",
+      "signals": [
+        "出现形如后项等于两倍前项加常数的递推",
+        "出现后项等于前项加关于 n 的式子",
+        "出现分式型递推",
+        "要求求数列的通项公式"
+      ],
+      "recognition_examples": [
+        "已知 $a_1=1$，$a_{n+1}=2a_n+3$，求 $a_n$。",
+        "已知 $a_1=1$，$a_{n+1}=a_n+2n$，求 $a_n$。",
+        "已知 $a_1=1$，$a_{n+1}=\\dfrac{a_n}{1+2a_n}$，求 $a_n$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.construct_seq",
+          "how": "这里的递推形式对应固定套路，那里的重点是自行判断该构造什么形式并先证明新数列性质。"
+        },
+        {
+          "scenario_id": "S.hs_seq.an_sn",
+          "how": "那里给的是前 n 项和，这里给的是相邻项递推；两者的入口公式不同。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_accumulate",
+          "priority": 1,
+          "when_to_prefer": "递推写成后项减前项等于关于 n 的式子时用累加，写成比值形式时用累乘。"
+        },
+        {
+          "method_id": "M.hs_construct_seq",
+          "priority": 2,
+          "when_to_prefer": "后项等于常数倍前项加常数时，两边同加一个常数构造等比数列。"
+        },
+        {
+          "method_id": "M.hs_undetermined_coeff",
+          "priority": 3,
+          "when_to_prefer": "构造等比时所需常数未知，设出参数再代回验证即可定值。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.construct_seq",
+      "block_id": "B.hs_seq",
+      "name": "构造新数列（等差化与等比化）",
+      "definition": "题面要求在递推式两边作变形，构造出等差或等比数列后再求通项。",
+      "signals": [
+        "递推式中含相邻项的乘积或商",
+        "要求证明某个组合是等比数列",
+        "要求证明某个倒数是等差数列",
+        "递推式是分式型的后项等于前项除以线性式"
+      ],
+      "recognition_examples": [
+        "已知 $a_{n+1}=2a_n+1$，证明 $\\{a_n+1\\}$ 是等比数列并求 $a_n$。",
+        "已知 $a_1=1$，$2a_{n+1}a_n=a_n-a_{n+1}$，证明 $\\left\\{\\frac{1}{a_n}\\right\\}$ 为等差数列。",
+        "已知 $a_{n+1}=\\dfrac{3a_n}{a_n+3}$，求 $a_n$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.recurrence",
+          "how": "那里套用已验证的固定套路，这里需要自己判断构造目标并先证新数列类型。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_construct_seq",
+          "priority": 1,
+          "when_to_prefer": "按递推结构选择同加常数、同除某式或取倒数，把递推化成等比或等差。"
+        },
+        {
+          "method_id": "M.hs_accumulate",
+          "priority": 2,
+          "when_to_prefer": "构造出等比或等差后，用累加或累乘把通项显式写出。"
+        },
+        {
+          "method_id": "M.hs_undetermined_coeff",
+          "priority": 3,
+          "when_to_prefer": "构造目标含待定常数时，设参后代入原递推比对系数定值。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.sum_formula",
+      "block_id": "B.hs_seq",
+      "name": "公式法、分组求和与并项求和",
+      "definition": "题面要求求前 n 项和，通项是等差、等比或可分组、可并项的结构。",
+      "signals": [
+        "要求求前 n 项和",
+        "通项是等差与等比的和",
+        "出现分奇偶求和",
+        "通项含负一的 n 次幂"
+      ],
+      "recognition_examples": [
+        "求数列 $\\{n+2^{n}\\}$ 的前 $n$ 项和。",
+        "求数列 $\\{(-1)^{n}\\cdot n\\}$ 的前 $n$ 项和。",
+        "求数列 $1,\\ 1+2,\\ 1+2+2^{2},\\ \\cdots$ 的前 $n$ 项和。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.sum_telescoping",
+          "how": "裂项靠把通项拆成两项之差；这里靠分组、并项或直接套求和公式。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_sum_group",
+          "priority": 1,
+          "when_to_prefer": "通项可拆成等差部分与等比部分时，分组分别求和再相加。"
+        },
+        {
+          "method_id": "M.hs_basic_quantity",
+          "priority": 2,
+          "when_to_prefer": "分组后每一组都是等差或等比时，直接代对应求和公式。"
+        },
+        {
+          "method_id": "M.hs_mismatch",
+          "priority": 3,
+          "when_to_prefer": "并项后若出现等差乘等比结构，改用错位相减求该部分。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.sum_telescoping",
+      "block_id": "B.hs_seq",
+      "name": "裂项相消求和",
+      "definition": "题面要求求和的通项可拆成两项之差，求和时中间项相消。",
+      "signals": [
+        "通项是连续整数乘积的倒数",
+        "出现含根式和差的倒数",
+        "出现裂项提示",
+        "要求求前 n 项和"
+      ],
+      "recognition_examples": [
+        "求 $\\dfrac{1}{1\\cdot 2}+\\dfrac{1}{2\\cdot 3}+\\cdots+\\dfrac{1}{n(n+1)}$。",
+        "求数列 $\\left\\{\\dfrac{1}{\\sqrt{n}+\\sqrt{n+1}}\\right\\}$ 的前 $n$ 项和。",
+        "求数列 $\\left\\{\\dfrac{1}{(2n-1)(2n+1)}\\right\\}$ 的前 $n$ 项和。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.sum_mismatch",
+          "how": "错位相减的通项是乘积而非可拆差，相减后转为等比求和，结构完全不同。"
+        },
+        {
+          "scenario_id": "S.hs_seq.sum_formula",
+          "how": "这里把通项拆成两项之差相消；若通项可直接分组、并项或套公式，归公式法与分组求和。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_telescoping",
+          "priority": 1,
+          "when_to_prefer": "把通项拆成两项之差，求和后只保留首项与末项，是最短路径。"
+        },
+        {
+          "method_id": "M.hs_sum_group",
+          "priority": 2,
+          "when_to_prefer": "裂项前若通项含可分离的常数因子，先提出常数再逐项相消。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 3,
+          "when_to_prefer": "分母因子间隔不统一时，按间隔分类写出不同的裂项系数。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.sum_mismatch",
+      "block_id": "B.hs_seq",
+      "name": "错位相减求和",
+      "definition": "题面求和的通项是等差乘等比结构，需要乘公比后错位相减。",
+      "signals": [
+        "通项是 n 乘等比项",
+        "出现「等差乘等比」",
+        "要求求前 n 项和",
+        "直接用公式无法求和"
+      ],
+      "recognition_examples": [
+        "求数列 $\\{n\\cdot 2^{n}\\}$ 的前 $n$ 项和。",
+        "求数列 $\\left\\{(2n-1)\\left(\\frac{1}{3}\\right)^{n}\\right\\}$ 的前 $n$ 项和。",
+        "求 $1+3x+5x^{2}+\\cdots+(2n-1)x^{n-1}$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.sum_telescoping",
+          "how": "裂项的结构是两项之差；这里的结构是等差与等比相乘，靠乘公比后作差。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_mismatch",
+          "priority": 1,
+          "when_to_prefer": "设和为 S，两边乘公比后与原式相减，把问题化为等比求和。"
+        },
+        {
+          "method_id": "M.hs_sum_group",
+          "priority": 2,
+          "when_to_prefer": "相减后得到的式子需按等比公式求和，必要时分组处理。"
+        },
+        {
+          "method_id": "M.hs_basic_quantity",
+          "priority": 3,
+          "when_to_prefer": "相减后出现等比数列，用等比求和公式并检验公比是否等于 1。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.property",
+      "block_id": "B.hs_seq",
+      "name": "数列单调性、最值项与等差等比性质",
+      "definition": "题面要求判断数列单调性、求最大或最小项，或利用等差中项、等比中项等性质求值。",
+      "signals": [
+        "出现最大项、最小项或单调递增数列",
+        "出现等差中项或等比中项条件",
+        "要求比较相邻两项",
+        "出现前 n 项和最大时求项数"
+      ],
+      "recognition_examples": [
+        "求数列 $a_n=n^{2}-10n+3$ 的最小项。",
+        "等差数列中 $S_n$ 最大时，求 $n$。",
+        "已知等比数列中 $a_3a_5=16$，求 $a_4$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.monotonicity",
+          "how": "那里自变量连续，这里项数取正整数，最值只能靠相邻项比较确定。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_seq_monotone",
+          "priority": 1,
+          "when_to_prefer": "作差比较相邻两项的符号判断增减，最值项出现在变号处。"
+        },
+        {
+          "method_id": "M.hs_basic_quantity",
+          "priority": 2,
+          "when_to_prefer": "利用等差中项、等比中项把条件化为基本量方程，快速求出特定项。"
+        },
+        {
+          "method_id": "M.hs_monotone_def",
+          "priority": 3,
+          "when_to_prefer": "通项是二次型时可借用函数单调性视角，但要回到正整数点取值。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.inequality",
+      "block_id": "B.hs_seq",
+      "name": "数列不等式与放缩",
+      "definition": "题面要求证明数列型不等式，或比较数列和与某常数、函数的大小。",
+      "signals": [
+        "出现证明前 n 项和小于某个常数",
+        "不等式一侧是数列和",
+        "出现「对任意正整数成立」",
+        "通项含分式、指数或对数"
+      ],
+      "recognition_examples": [
+        "证明 $\\dfrac{1}{1^{2}}+\\dfrac{1}{2^{2}}+\\cdots+\\dfrac{1}{n^{2}}<2$。",
+        "已知 $a_n=2^{n}-1$，证明 $a_1+a_2+\\cdots+a_n>n^{2}$。",
+        "证明 $\\ln(n+1)<1+\\dfrac{1}{2}+\\cdots+\\dfrac{1}{n}$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.ineq_proof",
+          "how": "那里自变量连续用导数，这里对象是离散的正整数，需归纳、放缩或单调性。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.series_bound",
+          "how": "这里用归纳或直接放缩，那里必须先用导数造出通项不等式再逐项累加。"
+        },
+        {
+          "scenario_id": "S.hs_seq.induction",
+          "how": "这里用放缩、裂项等直接估计；若题面明确要求用数学归纳法，必须走两步框架，归归纳法证明情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_scaling",
+          "priority": 1,
+          "when_to_prefer": "把通项放大或缩小成可求和的式子，再对和作估计，是最通用的入口。"
+        },
+        {
+          "method_id": "M.hs_induction",
+          "priority": 2,
+          "when_to_prefer": "结论随 n 递推累积且不易直接求和时，用归纳法两步完成。"
+        },
+        {
+          "method_id": "M.hs_telescoping",
+          "priority": 3,
+          "when_to_prefer": "放缩后若能裂项，则求和可精确算出，比粗略估计更紧。"
+        },
+        {
+          "method_id": "M.hs_construct_function",
+          "priority": 4,
+          "when_to_prefer": "通项含对数或指数时，先用导数造出函数不等式再逐项代入累加。"
+        },
+        {
+          "method_id": "M.hs_stolz",
+          "priority": 5,
+          "when_to_prefer": "遇到和式比项数的极限型问题时，可作速算验证，但不作为解答书写依据。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.induction",
+      "block_id": "B.hs_seq",
+      "name": "数学归纳法证明",
+      "definition": "题面要求用数学归纳法证明与正整数有关的等式、不等式或整除性命题。",
+      "signals": [
+        "命题含「对任意正整数成立」",
+        "出现「用数学归纳法证明」字样",
+        "结论随 n 递推累积",
+        "结论类型为整除、不等式或恒等式"
+      ],
+      "recognition_examples": [
+        "用数学归纳法证明 $1+3+\\cdots+(2n-1)=n^{2}$。",
+        "用数学归纳法证明 $2^{n}>n^{2}\\ (n\\ge 5)$。",
+        "用数学归纳法证明 $n^{3}+5n$ 能被 6 整除。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.inequality",
+          "how": "归纳法是一种证明手段；但当题面明确要求用归纳法时，必须走两步框架而非直接放缩。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_induction",
+          "priority": 1,
+          "when_to_prefer": "先验证初始情形，再由 k 成立推出 k+1 成立，两步缺一不可。"
+        },
+        {
+          "method_id": "M.hs_scaling",
+          "priority": 2,
+          "when_to_prefer": "从 k 到 k+1 的过渡需要估计时，用放缩把新增项控制住。"
+        },
+        {
+          "method_id": "M.hs_accumulate",
+          "priority": 3,
+          "when_to_prefer": "递推型结论可先把相邻项的差写出，再与归纳假设对接。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_seq.model",
+      "block_id": "B.hs_seq",
+      "name": "数列建模应用",
+      "definition": "题面给出增长、分期付款、存款等实际情境，要求建立数列模型并求解。",
+      "signals": [
+        "出现每年增长、每期还款或复利的描述",
+        "要求求第 n 年的量或还款总额",
+        "数据按年或按月离散给出",
+        "出现至少需要多少年"
+      ],
+      "recognition_examples": [
+        "某企业年产值每年增长 $10\\%$，求 $n$ 年后的产值。",
+        "贷款 10 万元、年利率 $5\\%$、分 10 年等额还款，求每年还款额。",
+        "某种细菌每小时分裂一次，求 $n$ 小时后的数量。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.function_model",
+          "how": "那里用连续函数模型，这里按年或按期离散推进，用递推与等比求和。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_seq_model",
+          "priority": 1,
+          "when_to_prefer": "先写出相邻两期的递推关系，再判断是等比型还是等差型模型。"
+        },
+        {
+          "method_id": "M.hs_basic_quantity",
+          "priority": 2,
+          "when_to_prefer": "递推确认是等比数列后，用通项公式直接算第 n 期的量。"
+        },
+        {
+          "method_id": "M.hs_sum_group",
+          "priority": 3,
+          "when_to_prefer": "要求累计总额（如还款总额）时，对等比或等差部分分别求和。"
+        }
+      ]
+    }
+  ]
+}

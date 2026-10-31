@@ -10,13 +10,13 @@ import QuestionSnapshot from '../components/QuestionSnapshot.jsx';
 import MathMarkdown from '../components/MathMarkdown.jsx';
 import KnowledgePatterns from '../components/KnowledgePatterns.jsx';
 import useKnowledgeExposure from '../components/useKnowledgeExposure.js';
+import PracticeShortcut from '../components/PracticeShortcut.jsx';
 import { methodConnections } from '../core/knowledge/index.js';
 import { patternsForMethod } from '../core/knowledge/patterns.js';
 import { knowledgeMarkdown, methodLearningContent } from '../core/skeleton/content.js';
 import { readKnowledgeView, saveKnowledgeView } from '../core/skeleton/viewState.js';
 import '../styles/scenario-content.css';
 
-const label = { exposed: '巩固中', consolidating: '巩固中', mastered: '已掌握' };
 export default function Method({ onScenario }) {
   const exposure = useKnowledgeExposure();
   const exposureClass = (kind, id) => exposure.ready && !(kind === 'method' ? exposure.methods : exposure.scenarios).has(id) ? ' knowledge-unseen' : '';
@@ -75,7 +75,8 @@ export default function Method({ onScenario }) {
   const wide = content && (content.applies.length >= 4 || new Set(content.applies.map((scenario) => scenario.block_id)).size >= 2);
   return <div className="method-page">
     <header className="page-header"><button type="button" className="icon-button" aria-label="返回足迹" onClick={close}><ArrowLeft size={20} /></button>
-      <h1 className="page-title">{content?.method.name || '方法'}</h1><div className="header-spacer" /></header>
+      <h1 className="page-title">{content?.method.name || '方法'}</h1>
+      {content?.method.scope === 'extension' ? <span className="muted">高中拓展</span> : <span className="header-spacer" />}</header>
     <main ref={body} className="method-content" onScroll={(event) => { if (content?.method.id === methodId && event.currentTarget.clientHeight > 0 && route === 'method') saveKnowledgeView(viewKey, viewEpoch, { scroll: event.currentTarget.scrollTop }); }}>
       {error ? <p className="muted" role="status">{error}</p> : !content ? <p className="muted">正在读取…</p> : <>
         <section className="method-section method-learning"><h2>它做什么</h2><MathMarkdown>{knowledgeMarkdown(learning.definition)}</MathMarkdown></section>
@@ -86,7 +87,8 @@ export default function Method({ onScenario }) {
           {learning.basis && <p className="knowledge-note">{learning.basis}</p>}
           {learning.source && <a className="knowledge-source" href={learning.source.url} target="_blank" rel="noreferrer">{learning.source.title} · 通俗转述</a>}</section>}
         {!!learning.conditions.length && <section className="method-section method-learning"><h2>使用前先检查</h2><ul>{learning.conditions.map((condition, index) => <li key={index}><MathMarkdown>{knowledgeMarkdown(condition)}</MathMarkdown></li>)}</ul></section>}
-        <section className="method-section method-execution"><h2>用得出</h2><span className={`trail-${execution || 'exposed'}`}>{execution === 'mastered' && content.patterns.length ? '已有独立成功记录' : label[execution] || '未接触'}</span></section>
+        <section className="method-section method-execution"><h2>用得出</h2><span className={`trail-${execution === 'mastered' ? 'mastered' : 'exposed'}`}>{execution === 'mastered' ? (content.patterns.length ? '已有独立成功记录' : '独立做对过') : execution ? '做过' : '未接触'}</span></section>
+        {exposure.methods.has(methodId) && <PracticeShortcut key={methodId} methodId={methodId} scenarioIds={content.applies.map(scenario => scenario.id)}>练相关情景</PracticeShortcut>}
         <section className="method-section"><h2>接触过的情景</h2><div className="method-scenarios">
           {content.applies.filter((scenario) => content.touched.has(scenario.id)).map((scenario) => <button key={scenario.id} type="button" className="knowledge-link" onClick={() => explore({ id: scenario.id, kind: 'scenario' })}><span>{scenario.name}</span><ArrowUpRight size={15} aria-hidden="true" /></button>)}
         </div></section>

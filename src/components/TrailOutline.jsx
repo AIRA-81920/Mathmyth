@@ -13,7 +13,8 @@ function Branch({ node, onMethod, onQuestion, onScenario, active, parentPath = '
   const open = useAppStore((state) => Boolean(state.preferences.trailExpanded[key]));
   const toggle = useAppStore((state) => state.toggleTrailNode);
   const state = node.mastery?.state;
-  const intensity = node.kind === 'block' || node.kind === 'group' ? 'structure' : state || 'exposed';
+  // 两态：独立做对过 → mastered；其余（含历史上的 consolidating）都算"做过"。
+  const intensity = node.kind === 'block' || node.kind === 'group' ? 'structure' : state === 'mastered' ? 'mastered' : 'exposed';
   const isMethod = node.kind === 'method';
   const items = isMethod ? node.encounters : node.children;
   const actionable = items.length > 0 || Boolean(isMethod && onMethod);

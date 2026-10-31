@@ -1,0 +1,6 @@
+.learning-continuations { width: 100%; max-width: 680px; margin: 0 auto 24px; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-card); text-align: left; }
+.learning-continuations h2 { font-size: 16px; margin: 0 0 8px; }
+.learning-continuation { padding: 12px 0; border-top: 1px solid var(--border); }
+.learning-continuation p { margin: 0 0 4px; }
+.learning-continuation-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.trail-scroll > .learning-continuations { width: calc(100% - 32px); margin-top: 16px; }

@@ -9,7 +9,7 @@ import { readActiveSkeleton } from '../scripts/compile-question-bank.mjs';
 import { DatabaseEngine } from '../src/core/db/engine.js';
 
 const skeleton = await readActiveSkeleton();
-const targets = localTargets(skeleton);
+const targets = await localTargets(skeleton);
 const SQL = await initSqlJs(), schemaSql = await readFile(new URL('../src/core/db/schema.sql', import.meta.url), 'utf8');
 async function db() { const engine = new DatabaseEngine({ SQL, schemaSql, storage: { load: async () => null, commit: async (_bytes, revision) => revision + 1 } }); await engine.initializeDatabase(); return engine; }
 
@@ -46,7 +46,7 @@ test('a real one/two-question reviewed local pool finishes instead of waiting fo
   const engine = await db();
   try {
     const items = await prepareLocalRound(target, skeleton);
-    let run = await engine.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true });
+    let run = await engine.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
     assert.equal(run.generationStatus, 'complete');
     for (const item of run.items) run = await engine.advancePracticeItem(run.id, item.id);
     assert.ok(run.finishedAt);

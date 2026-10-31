@@ -13,11 +13,16 @@ export async function extractLegacyWord(bytes) {
     }
     throw new Error('旧版 Word 格式无法读取，请另存为 .docx 或 PDF。');
   }
-  const file = CFB.read(bytes, { type: 'buffer' });
+  let file;
+  try { file = CFB.read(bytes, { type: 'buffer' }); }
+  catch { throw new Error('旧版 Word 文档损坏，请另存为 .docx 或 PDF 后发送。'); }
   const stream = (name) => { const value = file.FileIndex.find((entry) => entry.name === name)?.content; return value ? Uint8Array.from(value) : null; };
   const word = stream('WordDocument');
-  if (!word) throw new Error('不是有效的 Word 文档。');
+  if (!word || word.length < 34) throw new Error('Word 文档内容不完整，请另存为 .docx 或 PDF 后发送。');
   const data = new DataView(word.buffer, word.byteOffset, word.byteLength);
+  const check = (view, offset, length) => {
+    if (!Number.isInteger(offset) || offset < 0 || offset + length > view.byteLength) throw new Error('Word 文本索引损坏，请另存为 .docx 或 PDF 后发送。');
+  };
   if (data.getUint16(0, true) !== 0xa5ec || data.getUint16(2, true) < 0xc1) throw new Error('请将此旧版 Word 另存为 .docx 或 PDF。');
   const flags = data.getUint16(10, true);
   if (flags & 0x8100) throw new Error('Word 文件已加密，请先解除密码保护。');
@@ -25,16 +30,21 @@ export async function extractLegacyWord(bytes) {
   if (!table) throw new Error('Word 文件缺少文本索引。');
   let position = 32;
   const words = data.getUint16(position, true); position += 2 + words * 2;
+  check(data, position, 2);
   const longs = data.getUint16(position, true); position += 2;
+  check(data, position, Math.max(16, longs * 4 + 2));
   const textLength = data.getUint32(position + 3 * 4, true);
   position += longs * 4;
   const count = data.getUint16(position, true); position += 2;
   if (count <= 33) throw new Error('Word 文本索引不完整。');
+  check(data, position + 33 * 8, 8);
   const fcClx = data.getUint32(position + 33 * 8, true), lcbClx = data.getUint32(position + 33 * 8 + 4, true);
   const td = new DataView(table.buffer, table.byteOffset, table.byteLength);
   let cursor = fcClx;
-  while (cursor < fcClx + lcbClx && table[cursor] === 1) cursor += 3 + td.getUint16(cursor + 1, true);
+  check(td, fcClx, lcbClx);
+  while (cursor < fcClx + lcbClx && table[cursor] === 1) { check(td, cursor + 1, 2); cursor += 3 + td.getUint16(cursor + 1, true); }
   if (table[cursor] !== 2) throw new Error('Word 文本索引损坏。');
+  check(td, cursor + 1, 4);
   const size = td.getUint32(cursor + 1, true), pieces = (size - 4) / 12;
   cursor += 5;
   if (!Number.isInteger(pieces) || pieces < 0 || cursor + size > table.length) throw new Error('Word 文本索引损坏。');

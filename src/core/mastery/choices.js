@@ -8,7 +8,8 @@ export function nextPreparedChoiceIndex(choices, currentIndex, random = Math.ran
   return candidates[Math.min(candidates.length - 1, Math.max(0, Math.floor(random() * candidates.length)))];
 }
 
-export function practiceChoices(skeleton, data, { includePrepared = false } = {}) {
+// includePrepared 为真时才需要 await 加载题库；否则（未进练习页）不触发题库下载。
+export async function practiceChoices(skeleton, data, { includePrepared = false } = {}) {
   const states = new Map(data.mastery.map((row) => [`${row.targetType}:${row.targetId}`, row.state]));
   const groups = new Map();
   for (const entry of data.encounters) {
@@ -33,7 +34,7 @@ export function practiceChoices(skeleton, data, { includePrepared = false } = {}
   });
   // A prepared bank supplies questions; it does not prove the learner studied
   // its topics. Unlock targets from actual encounters only.
-  const local = (includePrepared ? localTargets(skeleton).filter((target) => groups.has(target.scenarioId)) : []).map((target) => {
+  const local = (includePrepared ? (await localTargets(skeleton)).filter((target) => groups.has(target.scenarioId)) : []).map((target) => {
     const seen = encountered.find((choice) => choice.scenarioId === target.scenarioId);
     return { ...target, questions: undefined, key: target.id, scenarioName: skeleton.scenarioById.get(target.scenarioId).name,
       scenarioState: states.get(`scenario:${target.scenarioId}`) ?? 'unseen', methodState: states.get(`method:${target.methodId}`) ?? 'unseen',

@@ -9,3 +9,6 @@
 .chat-practice-attempt, .chat-practice-feedback { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); }
 .chat-practice-attempt > span { font-size: 12px; }
 .chat-practice-card .math-markdown { overflow-wrap: anywhere; }
+.chat-practice-hints, .chat-practice-summary { margin-top: 16px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; }
+.chat-practice-summary p { margin: 8px 0; font-size: 13px; line-height: 1.7; }
+.chat-practice-card button { max-width: 100%; white-space: normal; }

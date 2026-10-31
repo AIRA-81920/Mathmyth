@@ -54,6 +54,15 @@ export default function SavedQuestions({ showTitle = true }) {
     } catch (failure) { if (generation.current === owner && detailRequest.current === request) setError(failure.userMessage || '题目图片暂时未能读取，请重新打开。'); }
     finally { if (generation.current === owner && detailRequest.current === request) setDetailLoading(false); }
   }
+  async function openSource() {
+    if (busy || dataOperation) return;
+    setBusy(true); setError('');
+    try {
+      if (await useAppStore.getState().openQuestionSource(selected)) closeSelected();
+      else setError('原解答暂时无法打开，收藏的题面仍保留。');
+    } catch { setError('原解答暂时无法打开，请重试。'); }
+    finally { setBusy(false); }
+  }
   return <section className="saved-questions" aria-label="收藏的题">
     {showTitle && <h2>收藏的题</h2>}
     {!questions.length && <p className="muted saved-questions-empty">{loading ? '正在读取…' : '长按问答中的数学题，点 Star 收藏。'}</p>}
@@ -70,7 +79,9 @@ export default function SavedQuestions({ showTitle = true }) {
         {selected.recognizedQuestion && selected.content && selected.content !== selected.recognizedQuestion && <MathMarkdown>{selected.content}</MathMarkdown>}
       </div>
       {error && <p className="muted field-hint" role="status">{error}</p>}
-      <div className="dialog-actions"><button type="button" className="button button-secondary" disabled={busy || Boolean(dataOperation)} onClick={() => remove(selected)}>取消 Star 收藏</button></div>
+      {!selected.sourceConversationId && <p className="muted field-hint">原对话已删除，收藏的题面仍保留。</p>}
+      <div className="dialog-actions"><button type="button" className="button button-secondary" disabled={busy || Boolean(dataOperation)} onClick={() => remove(selected)}>取消 Star 收藏</button>
+        {selected.sourceConversationId && <button type="button" className="button button-primary" disabled={busy || Boolean(dataOperation)} onClick={openSource}>查看原解答</button>}</div>
     </ModalFrame>}
   </section>;
 }

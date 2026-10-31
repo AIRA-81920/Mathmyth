@@ -1,4 +1,4 @@
-import { Fragment, lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Fragment, lazy, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState, memo } from 'react'
 import { ArrowUp, Camera, Plus, ChevronLeft, ChevronRight, ChevronUp, ChevronDown, Image as ImageIcon, Paperclip, Square, X, FileText } from 'lucide-react'
 import { useAppStore } from '../store/appStore.js'
 import MathMarkdown from '../components/MathMarkdown.jsx'
@@ -6,14 +6,16 @@ import MessageMenu from '../components/MessageMenu.jsx'
 import ThinkingIndicator from '../components/ThinkingIndicator.jsx'
 import ChatPracticeCard from '../components/ChatPracticeCard.jsx'
 import AnimatedDisclosure from '../components/AnimatedDisclosure.jsx'
-import QuestionRoutePanel from '../components/QuestionRoutePanel.jsx'
+import AnswerLearningFooter from '../components/AnswerLearningFooter.jsx'
 import ThinkingSwitch from '../components/ThinkingSwitch.jsx'
 import useQuestionScroll from '../app/useQuestionScroll.js'
+import useMessageWindow from '../app/useMessageWindow.js'
 import { thinkingCapability } from '../core/ai/answerThinking.js'
 import { loadSkeleton } from '../core/skeleton/load.js'
 import { useChatPracticeStore } from '../store/chatPracticeStore.js'
-import { visibleMessages, revisionVersions } from '../core/chat/revisions.js'
-import { getMessageQuestionClassification, requestMessageQuestionClassification, setQuestionStar, onDatabaseChange, loadQuestionRoutes } from '../core/db/database.js'
+import { visibleMessages, revisionIndex } from '../core/chat/revisions.js'
+import { wantsChatPractice } from '../core/chat/practiceIntent.js'
+import { getMessageQuestionClassification, requestMessageQuestionClassification, setQuestionStar, onDatabaseChange, loadAnswerQuestionRoutes } from '../core/db/database.js'
 import '../styles/message-actions.css'
 import { readAttachment, FILE_ACCEPT } from '../core/files/input.js'
 import { isNative, pickNativePhoto, photoToFile, onRestoredPhoto } from '../core/platform/photos.js'
@@ -23,8 +25,9 @@ import '../styles/image-crop.css'
 const CameraCapture = lazy(() => import('../components/CameraCapture.jsx'))
 const ImageCrop = lazy(() => import('../components/ImageCrop.jsx'))
 
-export default function Ask({ active = true }) {
+function Ask({ active = true }) {
   const currentId = useAppStore((state) => state.currentConversationId)
+  const questionFocus = useAppStore((state) => state.questionFocus)
   const conversation = useAppStore((state) => state.conversations.find((item) => item.id === state.currentConversationId))
   const supportsImage = useAppStore((state) => state.modelConfig.supportsImage)
   const modelConfig = useAppStore((state) => state.modelConfig)
@@ -33,15 +36,21 @@ export default function Ask({ active = true }) {
   const sendMessage = useAppStore((state) => state.sendMessage)
   const stopGenerating = useAppStore((state) => state.stopGenerating)
   const selectMessageRevision = useAppStore((state) => state.selectMessageRevision)
+  const repairAnswer = useAppStore((state) => state.repairAnswer)
+  const regenerateAnswer = useAppStore((state) => state.regenerateAnswer)
   const reviseUserMessage = useAppStore((state) => state.reviseUserMessage)
   const conversationLoading = useAppStore((state) => state.conversationLoading)
   const dataOperation = useAppStore((state) => state.dataOperation)
   const storageError = useAppStore((state) => state.storageError)
+  // 学科切换后，用于知识点对照的骨架索引需要整体重读。
+  const subjectEpoch = useAppStore((state) => state.subjectEpoch)
   const [draft, setDraft] = useState('')
+  const updateDraft = (text) => { setDraft(text); useAppStore.getState().setChatDraft(currentId, text) }
   const [menu, setMenu] = useState(null)
   const [editing, setEditing] = useState(null)
   const [answering, setAnswering] = useState(null)
   const practiceBusy = useChatPracticeStore((state) => Boolean(state.busy[answering?.id]))
+  const answeringFinished = useChatPracticeStore((state) => Boolean(state.items[answering?.id]?.finishedAt))
   const [classifications, setClassifications] = useState({})
   const [questionRoutes, setQuestionRoutes] = useState({})
   const [skeleton, setSkeleton] = useState(null)
@@ -51,6 +60,7 @@ export default function Ask({ active = true }) {
   const [cameraOpen, setCameraOpen] = useState(false)
   const [crop, setCrop] = useState(null)
   const [recentPhotos, setRecentPhotos] = useState([])
+  const [recentDenied, setRecentDenied] = useState(false)
   const [readProgress, setReadProgress] = useState('')
   const [readingImage, setReadingImage] = useState(false)
   const [inputError, setInputError] = useState('')
@@ -65,14 +75,33 @@ export default function Ask({ active = true }) {
   const longPressRef = useRef(null)
   const restoredHandler = useRef(null)
   const allMessages = conversation?.messages ?? []
-  const messages = visibleMessages(allMessages)
+  // P5：会话内容没变时消息列表保持同一引用，下面的 userIds / 定位签名才不会每次都重建。
+  const messages = useMemo(() => visibleMessages(allMessages), [allMessages])
+  const userIds = useMemo(() => messages.filter((item) => item.role === 'user').map((item) => item.id), [messages])
+  // E3：整会话一次建索引，渲染期只查表。原来对每条 user 消息各调用一次
+  // revisionVersions（合计 O(n·u)），流式期间每次重渲染都要重算一遍。
+  const revisionLookup = useMemo(() => revisionIndex(allMessages), [allMessages])
   const editingMessage = editing && messages.find((message) => message.id === editing.id)
   const writing = editing || answering
   const composerText = writing ? writing.text : draft
   const canSubmit = editing ? Boolean(editingMessage && (editing.text.trim() || editingMessage.image || editingMessage.attachments?.length)) : answering ? Boolean(answering.text.trim()) : Boolean(draft.trim() || attachments.length)
   const busy = messages.some((message) => message.status === 'streaming') || practiceBusy
   const blocked = Boolean(conversationLoading || conversation?.loaded === false || dataOperation)
-  const questionScroll = useQuestionScroll({ flowRef, contentRef, currentId, userIds: messages.filter(item => item.role === 'user').map(item => item.id), active, ready: !blocked })
+  // 出题分流：措辞像出题时，在输入框上方给一个「用题库」的显式入口；
+  // 直接发送则交给模型随手出题（不再由关键词劫持）。
+  const bankOffer = !writing && !blocked && !readingImage && attachments.length === 0 && Boolean(draft.trim()) && wantsChatPractice(draft)
+  useEffect(() => { if (answeringFinished) setAnswering(null) }, [answeringFinished])
+  const questionScroll = useQuestionScroll({ flowRef, contentRef, currentId, userIds, active, ready: !blocked, focus: questionFocus,
+    onFocused: focus => { if (useAppStore.getState().questionFocus === focus) useAppStore.setState({ questionFocus: null }) } })
+  // P1：长会话先只渲染最近 4 轮，向上滚到窗口上沿再分批补出更早的消息。
+  const messageWindow = useMessageWindow({ flowRef, messages, currentId, focus: questionFocus })
+  const [pendingNav, setPendingNav] = useState(0)
+  // 补全窗口的那一帧渲染完成后才定位，避免在只有后几轮的 DOM 上算出"没有上一个输入"。
+  useLayoutEffect(() => {
+    if (!pendingNav) return
+    setPendingNav(0)
+    questionScroll.navigate(pendingNav)
+  }, [pendingNav])
   const thinking = thinkingCapability(modelConfig)
   const thinkingOn = thinking.switchable ? (thinkingMode === 'auto' ? thinking.defaultOn : thinkingMode === 'enabled') : thinking.defaultOn
   const imageReason = supportsImage ? '拍照或选择题目图片。' : '尚未开启图片支持，请在设置中确认模型能力后勾选。'
@@ -85,7 +114,7 @@ export default function Ask({ active = true }) {
   useEffect(() => onRestoredPhoto((result) => restoredHandler.current?.(result)), [])
 
   useLayoutEffect(() => {
-    setDraft('')
+    setDraft(useAppStore.getState().chatDrafts[currentId] ?? '')
     setMenu(null)
     setEditing(null)
     setAnswering(null)
@@ -99,8 +128,8 @@ export default function Ask({ active = true }) {
     setCrop(null)
     setReadingImage(false)
     setInputError('')
-    const frame = requestAnimationFrame(() => { if (active) inputRef.current?.focus({ preventScroll: true }) })
-    return () => cancelAnimationFrame(frame)
+    // 切换会话不再自动聚焦输入框：手机上一聚焦就弹键盘，而用户切会话的第一件事
+    // 往往是看内容或传图片，不是打字。想输入时点一下输入框即可（桌面同理）。
   }, [currentId])
 
   useLayoutEffect(() => () => {
@@ -112,23 +141,37 @@ export default function Ask({ active = true }) {
     let live = true;
     loadSkeleton().then(value => { if (live) setSkeleton(value) }).catch(() => {});
     return () => { live = false };
-  }, [])
+  }, [subjectEpoch])
   useEffect(() => {
     if (!currentId) return;
-    let live = true, request = 0;
+    // 路径整理是后台任务：完成时只会广播一次变更。那一次通知一旦没接住
+    // （正好在数据操作里、或正赶上页面重挂载），以前就永远停在"整理中"，
+    // 只能切会话才好。这里补两层：被挡住就稍后重试，没定下来就自己轮询。
+    const POLL_MS = 2500, RETRY_MS = 800, MAX_POLLS = 48; // 最多盯约 2 分钟
+    let live = true, request = 0, timer = 0, polls = 0;
+    const stopTimer = () => { if (timer) { clearTimeout(timer); timer = 0 } };
+    const later = (delay, run) => { stopTimer(); if (live && polls < MAX_POLLS) { polls += 1; timer = setTimeout(run, delay) } };
     async function refresh() {
-      if (!useAppStore.getState().storageInitialized || useAppStore.getState().dataOperation) return;
+      stopTimer();
+      const state = useAppStore.getState();
+      if (!state.storageInitialized || state.dataOperation) { later(RETRY_MS, refresh); return }
       const sequence = ++request;
       try {
-        const results = await loadQuestionRoutes(currentId);
-        if (live && sequence === request) setQuestionRoutes(Object.fromEntries(results.map(item => [item.messageId, item])));
+        const results = await loadAnswerQuestionRoutes(currentId);
+        if (!live || sequence !== request) return;
+        const grouped = {};
+        for (const item of results) (grouped[item.answerId] ??= []).push(item);
+        setQuestionRoutes(grouped);
+        if (results.some(item => item.status !== 'done' && item.status !== 'failed')) later(POLL_MS, refresh);
       } catch { /* Background routes never interrupt reading or answering. */ }
     }
     refresh();
     const unsubscribe = onDatabaseChange(({ method }) => {
-      if (['saveChanges','checkpointJob','completeJob','failJob','retryQuestionRoutes','commitImport','clearDatabase'].includes(method)) refresh();
+      if (!['saveChanges','checkpointJob','completeJob','failJob','retryQuestionRoutes','commitImport','clearDatabase'].includes(method)) return;
+      polls = 0;   // 有真事件进来就重置预算，说明确实有进展
+      refresh();
     });
-    return () => { live = false; unsubscribe() };
+    return () => { live = false; stopTimer(); unsubscribe() };
   }, [currentId])
 
   useEffect(() => () => clearTimeout(longPressRef.current?.timer), [])
@@ -153,11 +196,8 @@ export default function Ask({ active = true }) {
     })
   }, [menu?.messageId, currentId])
 
-  useLayoutEffect(() => {
-    if (blocked || !active) return
-    const frame = requestAnimationFrame(() => inputRef.current?.focus({ preventScroll: true }))
-    return () => cancelAnimationFrame(frame)
-  }, [blocked, currentId])
+  // 这里原本还有一条「blocked/currentId 变化就把焦点塞进输入框」的 layout effect，
+  // 已删除：它会让每次切换会话或解除阻塞时都弹出键盘。
 
   useLayoutEffect(() => {
     const input = inputRef.current
@@ -175,16 +215,53 @@ export default function Ask({ active = true }) {
     }
     if (answering) {
       const current = answering
+      await useChatPracticeStore.getState().flushDraft(current.id)
       const saved = await useChatPracticeStore.getState().submit(current.id, { mode: 'steps', steps: current.text })
       if (saved && useAppStore.getState().currentConversationId === currentId) setAnswering(value => value?.id === current.id ? null : value)
       return
     }
     setInputError('')
-    sendMessage(draft, attachments.length ? { attachments: attachments.map(submissionAttachment) } : undefined)
-    setDraft('')
+    // 压缩推迟到这一刻：选图与拍照只出预览，真正要上传前才把还没压过的图片压成 JPEG。
+    // 裁切过的图在裁切那一步已经压好，这里不会重复压第二次。
+    let finalAttachments = attachments
+    if (attachments.some((item) => item.pendingCompress)) {
+      const ownerId = useAppStore.getState().currentConversationId
+      setReadingImage(true)
+      setReadProgress('正在准备图片…')
+      try { finalAttachments = await compressPending(attachments) }
+      catch { setReadingImage(false); setReadProgress(''); setInputError('图片暂时没能准备好，请重试。'); return }
+      setReadingImage(false)
+      setReadProgress('')
+      if (!active || useAppStore.getState().currentConversationId !== ownerId) return
+    }
+    // 显式的 /练习 仍然直达题库；其余一律交给模型。
+    const explicitBank = /^(?:\/练习|\/practice)(?:\s|$)/i.test(draft.trim())
+    sendMessage(draft, {
+      ...(explicitBank ? { useBank: true } : {}),
+      ...(finalAttachments.length ? { attachments: finalAttachments.map(submissionAttachment) } : {}),
+    })
+    updateDraft('')
     setAttachments([])
     setPickerOpen(false)
     inputRef.current.focus({ preventScroll: true })
+  }
+
+  // 把「选图时跳过压缩」的图片在发送前统一压一次。环境不支持或无需压缩时保持原图，
+  // 绝不因为压缩失败而让消息发不出去。
+  async function compressPending(items) {
+    const { compressImage } = await import('../core/images/resize.js')
+    const done = []
+    for (const item of items) {
+      const { pendingCompress, ...rest } = item
+      if (!pendingCompress) { done.push(item); continue }
+      let encoded = null
+      try { encoded = await compressImage(new File([item.bytes], item.name, { type: item.mime }), { mime: item.mime }) }
+      catch { encoded = null }
+      if (!encoded?.blob?.size) { done.push(rest); continue }
+      const name = encoded.mime === 'image/jpeg' ? item.name.replace(/\.[^.]+$/, '.jpg') : item.name
+      done.push({ ...rest, bytes: new Uint8Array(await encoded.blob.arrayBuffer()), mime: encoded.mime, name })
+    }
+    return done
   }
 
   function openMenu(event, message) {
@@ -251,7 +328,7 @@ export default function Ask({ active = true }) {
     imageTaskRef.current.controller?.abort()
     setAttachments((items) => items.filter((item) => item.id !== id))
     setReadingImage(false)
-    requestAnimationFrame(() => inputRef.current?.focus())
+    // 移除附件同样不抢焦点：手机上会立刻弹出键盘，打断「换一张图」的操作。
   }
 
   async function openCrop(attachment) {
@@ -282,14 +359,16 @@ export default function Ask({ active = true }) {
     setReadingImage(true)
     setReadProgress('正在读取附件…')
     try {
-      const result = await readAttachment(file, { signal: controller.signal, supportsImage, onProgress: (progress) => {
+      // 选图/拍照只做解码与预览，压缩推迟到点发送之后（见 submit）：图片能立刻出现，
+      // 用户若再裁切也不会白压一次大图，且全程只压最终要用的那一块。
+      const result = await readAttachment(file, { signal: controller.signal, supportsImage, compress: null, onProgress: (progress) => {
         if (imageTaskRef.current.version === version) setReadProgress(progress)
       } })
       if (imageTaskRef.current.version !== version) return
       const current = useAppStore.getState()
       if (current.currentConversationId !== ownerId || current.route !== 'main' || current.activeArea !== 'ask') return
       const documentImages = result.some((item) => item.kind === 'document')
-      const prepared = result.map((item) => ({ ...item, ...(sourceUri ? { sourceUri } : {}), ...(documentImages && item.kind === 'image' ? { documentImage: true } : {}) }))
+      const prepared = result.map((item) => ({ ...item, ...(sourceUri ? { sourceUri } : {}), ...(documentImages && item.kind === 'image' ? { documentImage: true } : {}), ...(item.kind === 'image' ? { pendingCompress: true } : {}) }))
       setAttachments((items) => [...items, ...prepared])
       if (!isNative()) setRecentPhotos((items) => [...prepared.filter((item) => item.kind === 'image' && !item.documentImage), ...items].slice(0,12))
     } catch (error) {
@@ -314,12 +393,13 @@ export default function Ask({ active = true }) {
   async function openPicker() {
     if (pickerOpen) { setPickerOpen(false); return }
     setInputError('')
-    await hideInputKeyboard(inputRef.current).catch(() => {})
+    // 收键盘只是顺手一步：原生调用若卡住，不能连带把本地面板也一起卡死（＋ 点了没反应）。
+    await Promise.race([hideInputKeyboard(inputRef.current).catch(() => {}), new Promise((resolve) => setTimeout(resolve, 400))])
     setPickerOpen(true)
     if (isNative() && supportsImage) {
       const owner = useAppStore.getState().currentConversationId
-      const photos = await recentNativePhotos().catch(() => [])
-      if (useAppStore.getState().currentConversationId === owner) setRecentPhotos(photos)
+      const access = await recentNativePhotos().catch(() => ({ photos: [], denied: false }))
+      if (useAppStore.getState().currentConversationId === owner) { setRecentPhotos(access.photos); setRecentDenied(access.denied) }
     }
   }
 
@@ -330,14 +410,22 @@ export default function Ask({ active = true }) {
     return () => document.removeEventListener('keydown', close)
   }, [pickerOpen])
 
+  // P1：窗口外的更早输入还不在 DOM 里，先把窗口补全，再在下一帧定位。
+  function goToQuestion(direction) {
+    if (direction < 0 && messageWindow.start > 0) { messageWindow.revealAll(); setPendingNav(-1); return }
+    questionScroll.navigate(direction)
+  }
+
   return (
     <div className="ask-page flex min-h-0 flex-1 flex-col">
       <div ref={flowRef} className="conversation-flow" role="log" aria-label="对话" aria-live="polite" aria-relevant="additions"
         onScroll={questionScroll.onScroll}>
         <div ref={contentRef} className="conversation-content">
+        {/* P1 哨兵：贴住内容区顶部，-22 抵消 .conversation-content 的 gap，渲染窗口外消息时不留空白 */}
+        <div ref={messageWindow.sentinelRef} aria-hidden="true" style={{ height: 1, marginBottom: -22 }} />
         {conversationLoading && <p className="muted message-status" role="status">正在读取会话…</p>}
-        {messages.map((message) => {
-          const versions = message.role === 'user' ? revisionVersions(allMessages, message.id) : []
+        {messages.slice(messageWindow.start).map((message) => {
+          const versions = message.role === 'user' ? revisionLookup.versionsOf(message.id) : []
           const versionIndex = versions.findIndex(item => item.id === message.id)
           const switchVersion = (offset) => { if (selectMessageRevision(versions[versionIndex + offset]?.id)) { setMenu(null); setEditing(null); setAnswering(null) } }
           return <Fragment key={message.id}><article className={`message message-${message.role}`} aria-label={message.role === 'user' ? '你的消息' : '助手的消息'}
@@ -358,14 +446,23 @@ export default function Ask({ active = true }) {
             onPointerMove={(event) => { if (longPressRef.current && (Math.abs(event.clientX - longPressRef.current.x) > 10 || Math.abs(event.clientY - longPressRef.current.y) > 10)) clearLongPress() }}
             onPointerUp={clearLongPress} onPointerCancel={clearLongPress}>
             {(message.attachments ?? (message.image ? [{ ...message.image, kind: 'image' }] : [])).map((attachment) => attachment.kind === 'image'
-              ? <img key={attachment.id} className="message-image" src={attachment.dataUrl} alt="题目原图" />
+              ? <img key={attachment.id} className="message-image" src={attachment.dataUrl} alt="题目原图" loading="lazy" decoding="async" />
               : <div key={attachment.id} className="message-document"><FileText size={20} /><span>{attachment.name}</span></div>)}
-            {message.practiceItemId ? <ChatPracticeCard itemId={message.practiceItemId} onWrite={(id) => { setEditing(null); setPickerOpen(false); setAnswering({ id, text: useChatPracticeStore.getState().items[id]?.answer?.steps || '' }) }} />
-              : message.content && <MathMarkdown streaming={message.status === 'streaming'}>{message.content}</MathMarkdown>}
+            {message.practiceItemId ? <ChatPracticeCard itemId={message.practiceItemId} onWrite={(id) => { const practice = useChatPracticeStore.getState(); setEditing(null); setPickerOpen(false); setAnswering({ id, text: practice.drafts[id] ?? practice.items[id]?.answer?.draft ?? practice.items[id]?.answer?.steps ?? '' }) }} />
+              : message.partial
+                // 题面还在流里（JSON 未收尾）：纯文本显示，半截 $…$ 不进 KaTeX
+                ? <p className="message-partial">{message.content}{message.pendingDetail && <span className="muted field-hint"> · {message.pendingDetail}</span>}</p>
+                : message.content && <MathMarkdown streaming={message.status === 'streaming'}>{message.content}</MathMarkdown>}
             {!message.content && message.status === 'streaming' && <ThinkingIndicator />}
             {message.error && <p className="muted message-status" role="status">{message.error}</p>}
+            {message.repaired && !message.error && <p className="muted message-status">已从上次中断处继续</p>}
+            {message.canRepair && !busy && <div className="message-repair-actions">
+              <button type="button" className="practice-text-button" disabled={blocked} onClick={() => repairAnswer(currentId, message.id, { manual: true })}>继续</button>
+              <button type="button" className="practice-text-button" disabled={blocked} onClick={() => regenerateAnswer(currentId, message.id)}>重新生成</button>
+            </div>}
+            {message.role === 'assistant' && message.status === 'complete' && !message.practiceItemId && questionRoutes[message.id]?.map(result =>
+              <AnswerLearningFooter key={`${message.id}:${result.messageId}`} result={result} skeleton={skeleton} disabled={busy || blocked} />)}
           </article>
-          {message.role === 'user' && questionRoutes[message.id] && <QuestionRoutePanel key={`${message.id}:route`} result={questionRoutes[message.id]} skeleton={skeleton} />}
           {versions.length > 1 && <nav className="message-version-controls" aria-label="消息版本" data-no-area-swipe>
             <button type="button" className="icon-button" aria-label="上一版问答" disabled={busy || blocked || versionIndex <= 0} onClick={() => switchVersion(-1)}><ChevronLeft size={17} /></button>
             <span aria-live="polite">{versionIndex + 1} / {versions.length}</span>
@@ -376,8 +473,17 @@ export default function Ask({ active = true }) {
         <div className="conversation-tail" aria-hidden="true" style={{ height: questionScroll.space }} />
       </div>
       <form className="composer" onSubmit={submit} aria-label={editing ? '编辑消息' : answering ? '聊天练习作答' : '题目输入'}>
-        {editing && <div className="composer-edit-heading"><span className="muted">正在编辑消息 · 发送后重新回答</span><button type="button" className="icon-button" aria-label="取消编辑" onClick={() => setEditing(null)}><X size={16} /></button></div>}
-        {answering && <div className="composer-edit-heading"><span className="muted">正在写这道题的关键步骤</span><button type="button" className="icon-button" disabled={practiceBusy} aria-label="取消作答" onClick={() => setAnswering(null)}><X size={16} /></button></div>}
+        {busy && thinkingOn && <div className="composer-hint">切后台可能会中断，稍等它说完</div>}
+        {bankOffer && <div className="composer-bank-offer">
+          <span className="muted">题库题更难，做完记掌握度</span>
+          <button type="button" className="button button-secondary" disabled={busy || blocked} onClick={() => {
+            const text = draft
+            updateDraft(''); setPickerOpen(false)
+            sendMessage(text, { useBank: true })
+          }}>用题库，拔高练</button>
+        </div>}
+        {editing && <div className="composer-edit-heading"><span className="muted">正在编辑消息</span><button type="button" className="icon-button" aria-label="取消编辑" onClick={() => setEditing(null)}><X size={16} /></button></div>}
+        {answering && <div className="composer-edit-heading"><span className="muted">正在写这道题的关键步骤</span><button type="button" className="icon-button" disabled={practiceBusy} aria-label="返回聊天，保留作答" onClick={() => { useChatPracticeStore.getState().flushDraft(answering.id); setAnswering(null) }}><X size={16} /></button></div>}
         {!writing && (attachments.length > 0 || readingImage) && <div className="composer-attachments">
           {attachments.map((attachment) => <div className="composer-attachment" key={attachment.id}>
             {attachment.kind === 'image' ? (attachment.documentImage ? <img src={attachment.dataUrl} alt="待发送的文档图片" />
@@ -393,7 +499,12 @@ export default function Ask({ active = true }) {
             <Plus className={`attachment-plus${pickerOpen ? ' is-open' : ''}`} size={20} strokeWidth={1.6} aria-hidden="true" />
           </button>
         </span>
-        <textarea ref={inputRef} value={composerText} onChange={(event) => editing ? setEditing({ ...editing, text: event.target.value }) : answering ? setAnswering({ ...answering, text: event.target.value }) : setDraft(event.target.value)}
+        <textarea ref={inputRef} value={composerText} onChange={(event) => {
+          const text = event.target.value
+          if (editing) setEditing({ ...editing, text })
+          else if (answering) { useChatPracticeStore.getState().setDraft(answering.id, text); setAnswering({ ...answering, text }) }
+          else updateDraft(text)
+        }}
           onFocus={() => setPickerOpen(false)}
           rows={1} aria-label={editing ? '修改题目' : answering ? '你的关键步骤' : '输入题目'} placeholder={editing ? '修改内容后发送…' : answering ? '写下关键变形和使用条件…' : '输入题目…'} disabled={blocked || practiceBusy}
           onPaste={(event) => {
@@ -402,7 +513,7 @@ export default function Ask({ active = true }) {
           }}
           onKeyDown={(event) => {
             if (event.key === 'Escape' && editing) { event.preventDefault(); setEditing(null); return }
-            if (event.key === 'Escape' && answering && !practiceBusy) { event.preventDefault(); setAnswering(null); return }
+            if (event.key === 'Escape' && answering && !practiceBusy) { event.preventDefault(); useChatPracticeStore.getState().flushDraft(answering.id); setAnswering(null); return }
             if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing && event.nativeEvent.keyCode !== 229) submit(event)
           }} />
         {busy ? <button key="stop" className="send-button" type="button" aria-label={practiceBusy ? '停止检查' : '停止回答'} onClick={(event) => { event.preventDefault(); practiceBusy ? useChatPracticeStore.getState().cancel(answering.id) : stopGenerating() }}><Square size={14} strokeWidth={1.8} aria-hidden="true" /></button>
@@ -414,9 +525,9 @@ export default function Ask({ active = true }) {
             description={thinking.switchable ? '控制下一次问答的思考模式；可点击或左右拨动' : thinking.reason}
             status={thinking.switchable ? '' : thinking.defaultOn ? '固定开启' : '不可切换'}
             onChange={enabled => setAnswerThinking(enabled ? 'enabled' : 'disabled')} /></div>}
-          {messages.filter(item => item.role === 'user').length > 1 && <nav className="question-navigation" aria-label="定位用户输入" data-no-area-swipe>
-        <button type="button" className="icon-button" aria-label="上一个输入" disabled={!questionScroll.navigation.previous} onClick={() => questionScroll.navigate(-1)}><ChevronUp size={17} /></button>
-        <button type="button" className="icon-button" aria-label="下一个输入" disabled={!questionScroll.navigation.next} onClick={() => questionScroll.navigate(1)}><ChevronDown size={17} /></button>
+          {userIds.length > 1 && <nav className="question-navigation" aria-label="定位用户输入" data-no-area-swipe>
+        <button type="button" className="icon-button" aria-label="上一个输入" disabled={!questionScroll.navigation.previous} onClick={() => goToQuestion(-1)}><ChevronUp size={17} /></button>
+        <button type="button" className="icon-button" aria-label="下一个输入" disabled={!questionScroll.navigation.next} onClick={() => goToQuestion(1)}><ChevronDown size={17} /></button>
       </nav>}
         </div>
         {(inputError || (conversation?.loaded === false && !conversationLoading && storageError)) && <p className="composer-feedback muted" role="status">{inputError || storageError}</p>}
@@ -425,7 +536,11 @@ export default function Ask({ active = true }) {
         <input ref={fileRef} type="file" accept={FILE_ACCEPT} hidden onChange={(event) => { chooseFile(event.target.files?.[0]); event.target.value = '' }} />
       </form>
       <AnimatedDisclosure open={pickerOpen} id="attachment-panel" className="attachment-disclosure"><section className="attachment-panel" aria-label="添加附件面板">
-        <div className="attachment-panel-heading"><span className="muted">{isNative() ? '最近图片' : '最近选用的图片'}</span><button type="button" className="icon-button" aria-label="关闭附件面板" onClick={() => setPickerOpen(false)}><X size={18} /></button></div>
+        <div className="attachment-panel-heading"><span className="muted">最近图片</span><button type="button" className="icon-button" aria-label="关闭附件面板" onClick={() => setPickerOpen(false)}><X size={18} /></button></div>
+        {recentDenied && <p className="muted field-hint attachment-access">没有相册访问权限，最近图片暂不显示。<button type="button" className="link-button" onClick={async () => {
+          const access = await recentNativePhotos().catch(() => ({ photos: [], denied: false }))
+          setRecentPhotos(access.photos); setRecentDenied(access.denied)
+        }}>去允许</button></p>}
         {recentPhotos.length > 0 && <div className="recent-photo-row">{recentPhotos.map((photo) => {
           const selected = attachments.some((item) => matchesPendingPhoto(item, photo))
           return <button type="button" key={photo.uri || photo.id} className={`recent-photo${selected ? ' is-selected' : ''}`} disabled={readingImage} aria-label={`选择图片 ${photo.name || ''}`} aria-pressed={selected}
@@ -447,3 +562,6 @@ export default function Ask({ active = true }) {
     </div>
   )
 }
+
+// 抽屉开关会让 MainShell 重渲染；页面不 memo 的话，整棵会话树每次都要重新 diff。
+export default memo(Ask)

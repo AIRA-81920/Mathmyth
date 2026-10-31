@@ -1,0 +1,1044 @@
+{
+  "block_id": "B.hs_geom",
+  "methods": [
+    {
+      "id": "M.hs_parallel_proof",
+      "name": "平行判定（线面与面面）",
+      "aliases": [
+        "线面平行判定",
+        "面面平行判定",
+        "线线平行传递"
+      ],
+      "one_liner": "在平面内找一条与已知直线平行的直线完成线面平行，再用两条相交直线完成面面平行。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.line_plane_parallel"
+      ],
+      "triggers": [
+        "要求证明线面平行",
+        "要求证明面面平行",
+        "图形中出现中位线或平行四边形"
+      ],
+      "steps": [
+        "在目标平面内找一条候选直线",
+        "证明这两条直线平行（中位线、平行四边形或比例）",
+        "说明候选直线在平面内且已知直线不在平面内",
+        "面面平行时再用两条相交直线各自平行于另一平面"
+      ],
+      "preconditions": [
+        "目标平面内有可用的直线",
+        "平行关系可通过几何性质证明"
+      ],
+      "not_applicable": [
+        "已知直线在平面内时谈线面平行无意义",
+        "找不到任何平行候选线"
+      ],
+      "pitfalls": [
+        "只证明线线平行就下结论，漏写线在平面内的条件",
+        "面面平行只用一条直线"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_auxiliary_line",
+          "note": "缺平行线时先作辅助线造出平行"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_normal_vector",
+          "note": "证线面平行的两条路径：找平面内平行线，或证方向向量与法向量垂直。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在正方体中证明 A1B 平行于平面 AD1C。",
+          "answer_sketch": "由 A1B 与 D1C 平行且 D1C 在平面 AD1C 内，得线面平行。",
+          "scenario_id": "S.hs_geom.line_plane_parallel"
+        },
+        {
+          "statement": "在三棱柱中 D 为 AC 中点，证明 A1D 平行于平面 B1C1C。",
+          "answer_sketch": "取 B1C1 中点并连中位线，构造平行四边形得 A1D 与其平行。",
+          "scenario_id": "S.hs_geom.line_plane_parallel"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_perp_proof",
+      "name": "垂直判定（线面与面面）",
+      "aliases": [
+        "线面垂直判定",
+        "面面垂直判定"
+      ],
+      "one_liner": "证明直线垂直于平面内两条相交直线得线面垂直，再借这条垂线得面面垂直。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.line_plane_perp"
+      ],
+      "triggers": [
+        "要求证明线面垂直",
+        "要求证明面面垂直",
+        "图形含直角或等腰三角形"
+      ],
+      "steps": [
+        "在目标平面内选两条相交直线",
+        "分别证明已知直线与它们垂直",
+        "由判定定理得线面垂直",
+        "面面垂直时说明另一平面过这条垂线"
+      ],
+      "preconditions": [
+        "平面内存在两条相交直线可验证垂直",
+        "垂直关系可计算或可证明"
+      ],
+      "not_applicable": [
+        "平面内只有一条可用直线",
+        "垂直关系无法验证"
+      ],
+      "pitfalls": [
+        "只证垂直一条直线就下结论",
+        "把面面垂直与线面垂直的判定条件互换"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_auxiliary_line",
+          "note": "缺垂直条件时用等腰中线或勾股逆定理造出"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_normal_vector",
+          "note": "证线面垂直的两条路径：找平面内两条相交垂线，或证方向向量与法向量平行。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在三棱锥 P-ABC 中 PA 垂直底面，证明平面 PAB 垂直平面 PBC。",
+          "answer_sketch": "先证 BC 垂直平面 PAB，再由面面垂直判定得结论。",
+          "scenario_id": "S.hs_geom.line_plane_perp"
+        },
+        {
+          "statement": "在正方体中证明 AC 垂直平面 BDD1B1。",
+          "answer_sketch": "证 AC 垂直 BD 与 BB1 两条相交直线，由判定定理得线面垂直。",
+          "scenario_id": "S.hs_geom.line_plane_perp"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_auxiliary_line",
+      "name": "辅助线与比例构造",
+      "aliases": [
+        "作中位线",
+        "构造平行四边形",
+        "比例分点"
+      ],
+      "one_liner": "通过取中点、连中位线、作平行线或按比例分点，把题面缺的平行或垂直关系造出来。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.line_plane_parallel",
+        "S.hs_geom.line_plane_perp",
+        "S.hs_geom.special_point",
+        "S.hs_geom.section"
+      ],
+      "triggers": [
+        "题面给出中点或比例分点",
+        "缺少可用的平行或垂直直线",
+        "截面作图需要补出交点"
+      ],
+      "steps": [
+        "按条件选取中点或分点",
+        "连接得到中位线或平行四边形",
+        "由中位线定理或平行四边形性质得平行或相等",
+        "回到目标关系完成证明"
+      ],
+      "preconditions": [
+        "图形中存在可用的中点或分点",
+        "辅助线不破坏已知条件"
+      ],
+      "not_applicable": [
+        "图形无对称结构可用",
+        "辅助线引入的条件无法证明"
+      ],
+      "pitfalls": [
+        "辅助线作在平面外导致反而不共面",
+        "用未证明的平行关系继续推理"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_coordinate_system",
+          "note": "能建系时用坐标法可省去辅助线的构造"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在正方体中 E 为 A1C1 中点，证明 E 在平面 AB1D 上。",
+          "answer_sketch": "连 AC 交 BD 于 O，证明 E、O 连线与某平面内直线平行，从而 E 在该平面上。",
+          "scenario_id": "S.hs_geom.special_point"
+        },
+        {
+          "statement": "过各棱中点作截面，判断截面是几边形。",
+          "answer_sketch": "依次连接相邻棱中点，利用平行面交线平行的规律补全，得六边形。",
+          "scenario_id": "S.hs_geom.section"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_contradiction",
+      "name": "反证法",
+      "aliases": [
+        "归谬法",
+        "假设矛盾"
+      ],
+      "one_liner": "先假设结论的反面成立，推出与已知条件或定理矛盾，从而原结论成立。",
+      "block_ids": [
+        "B.hs_geom",
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.line_plane_parallel",
+        "S.hs_geom.special_point",
+        "S.hs_geom.existence",
+        "S.hs_analytic.existence"
+      ],
+      "triggers": [
+        "结论是否定形式或唯一性",
+        "直接证明缺少可用条件",
+        "存在性问题结论应为不存在"
+      ],
+      "steps": [
+        "明确写出结论的反面",
+        "由反面出发结合已知条件推理",
+        "推出与定理、条件或图形性质矛盾",
+        "否定反面，确认原结论成立"
+      ],
+      "preconditions": [
+        "结论的反面表述清楚",
+        "推理链条可闭合到矛盾"
+      ],
+      "not_applicable": [
+        "结论不是否定或唯一性命题",
+        "反面的情形过于宽泛无法逐一处理"
+      ],
+      "pitfalls": [
+        "假设的反面写错（否定不彻底）",
+        "推出矛盾后未回到原结论"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_parallel_proof",
+          "note": "常在平行或共面论证中作为补充手段"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "证明若一条直线与平面内一条直线平行，则它平行于该平面或在该平面内。",
+          "answer_sketch": "假设既不平行也不在平面内，则与平面相交，推出与平行条件矛盾。",
+          "scenario_id": "S.hs_geom.line_plane_parallel"
+        },
+        {
+          "statement": "在正方体中判断棱上是否存在点 M 使 BM 平行于平面 AB1C，若不存在说明理由。",
+          "answer_sketch": "假设存在，建立坐标方程，发现无解，故不存在。",
+          "scenario_id": "S.hs_geom.existence"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_equal_volume",
+      "name": "等体积法",
+      "aliases": [
+        "换顶点法",
+        "体积求高"
+      ],
+      "one_liner": "同一个三棱锥换一个顶点算两次体积，用体积相等反解所求的高或距离。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.distance",
+        "S.hs_geom.volume"
+      ],
+      "triggers": [
+        "要求求点到平面的距离",
+        "要求求三棱锥的高",
+        "直接作垂线困难"
+      ],
+      "steps": [
+        "选一个便于计算体积的顶点作底面",
+        "算出该三棱锥体积",
+        "换用目标点作顶点，设所求高为 h",
+        "由体积相等解出 h"
+      ],
+      "preconditions": [
+        "三棱锥体积可以算出",
+        "另一组底面积可求"
+      ],
+      "not_applicable": [
+        "几何体不是三棱锥且无法分割",
+        "底面积与高都无法确定"
+      ],
+      "pitfalls": [
+        "两次计算使用的体积不是同一个三棱锥",
+        "底面积算错导致高偏差"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_volume_formula",
+          "note": "两次体积都要用锥体公式计算"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_space_vector_metric",
+          "note": "求点面距离的两条路径：体积相等反解高，或代点面距离公式。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在正方体中求点 B1 到平面 ABD1 的距离。",
+          "answer_sketch": "用三棱锥 B1-ABD1 与 A-BB1D1 体积相等，解出高即为所求距离。",
+          "scenario_id": "S.hs_geom.distance"
+        },
+        {
+          "statement": "三棱锥 P-ABC 中 PA 垂直底面，求点 A 到平面 PBC 的距离。",
+          "answer_sketch": "用 A-PBC 与 P-ABC 体积相等，底面积与体积均可求，解得距离。",
+          "scenario_id": "S.hs_geom.distance"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_geometric_perp",
+      "name": "几何作垂线法",
+      "aliases": [
+        "作垂线段",
+        "射影法",
+        "平面角作法"
+      ],
+      "one_liner": "在图形中作出垂线段或平面角，再用解直角三角形求距离或角度。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.distance",
+        "S.hs_geom.angle",
+        "S.hs_geom.volume",
+        "S.hs_geom.sphere",
+        "S.hs_geom.combination"
+      ],
+      "triggers": [
+        "图形规则且便于作垂线",
+        "要求求线面角或二面角",
+        "要求先证某线段是高"
+      ],
+      "steps": [
+        "过目标点作平面的垂线，确定垂足",
+        "连斜足与垂足得射影",
+        "在直角三角形中求长度或角",
+        "二面角情形作棱的垂线得平面角"
+      ],
+      "preconditions": [
+        "垂足位置可确定",
+        "相关三角形可解"
+      ],
+      "not_applicable": [
+        "图形过于一般无法确定垂足",
+        "垂线落在图形外部且无法延展"
+      ],
+      "pitfalls": [
+        "垂足位置判断错误",
+        "把线段与平面的夹角当成其与法向量的夹角"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_space_vector_metric",
+          "note": "能建系时用向量法更稳定"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_space_vector_metric",
+          "note": "求角与距离的两条路径：作垂线解三角形，或建系用向量公式。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "三棱锥 P-ABC 中求 PA 与底面 ABC 所成角。",
+          "answer_sketch": "过 P 作底面垂线得垂足，连 A 与垂足，在直角三角形中求角。",
+          "scenario_id": "S.hs_geom.angle"
+        },
+        {
+          "statement": "求二面角 A-BD-C 的余弦值。",
+          "answer_sketch": "在 BD 上取一点，分别在两面内作 BD 的垂线，得平面角后在三角形中求余弦。",
+          "scenario_id": "S.hs_geom.angle"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_space_vector_metric",
+      "name": "空间向量法求角与距离",
+      "aliases": [
+        "向量法求角",
+        "点到平面距离公式",
+        "法向量夹角"
+      ],
+      "one_liner": "用方向向量与法向量的夹角公式求线线角、线面角与二面角，用投影求点面距离。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.line_plane_parallel",
+        "S.hs_geom.line_plane_perp",
+        "S.hs_geom.existence",
+        "S.hs_geom.distance",
+        "S.hs_geom.angle",
+        "S.hs_geom.basis",
+        "S.hs_geom.coordinate",
+        "S.hs_geom.normal_vector"
+      ],
+      "triggers": [
+        "要求求角度或距离",
+        "图形便于建系",
+        "已求出方向向量或法向量"
+      ],
+      "steps": [
+        "建系并写出相关点与向量坐标",
+        "求所需平面的法向量",
+        "按对象套用夹角公式：线线取余弦绝对值，线面取正弦，二面角需判锐钝",
+        "点面距离用斜向量与法向量数量积的绝对值除以法向量模"
+      ],
+      "preconditions": [
+        "坐标系已建立且点坐标可写",
+        "法向量可求出"
+      ],
+      "not_applicable": [
+        "图形无互相垂直的三线且不便建系",
+        "法向量不存在（退化）"
+      ],
+      "pitfalls": [
+        "线面角误用余弦而不是正弦",
+        "二面角未按图形判断锐角或钝角"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_normal_vector",
+          "note": "角度与距离计算都以法向量为前提"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_equal_volume",
+          "note": "求点面距离的两条路径：体积相等反解高，或代点面距离公式。"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_geometric_perp",
+          "note": "求角与距离的两条路径：作垂线解三角形，或建系用向量公式。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在正方体中求异面直线 AB1 与 BC1 所成角。",
+          "answer_sketch": "建系写出两方向向量，求夹角余弦绝对值为 1/2，故所成角 60°。",
+          "scenario_id": "S.hs_geom.angle"
+        },
+        {
+          "statement": "在正方体中求点 B1 到平面 ABD1 的距离。",
+          "answer_sketch": "求平面法向量与斜向量，代入距离公式得 √3/3 倍棱长。",
+          "scenario_id": "S.hs_geom.distance"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_volume_formula",
+      "name": "体积与表面积公式",
+      "aliases": [
+        "锥体体积",
+        "台体体积",
+        "表面积展开"
+      ],
+      "one_liner": "按几何体类型套对应体积与表面积公式，先求底面积与高再代入。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.volume",
+        "S.hs_geom.sphere",
+        "S.hs_geom.solid_graph",
+        "S.hs_geom.combination"
+      ],
+      "triggers": [
+        "要求求体积或表面积",
+        "图形是锥、柱、台或球",
+        "需要先求高或母线"
+      ],
+      "steps": [
+        "识别几何体类型并写出对应公式",
+        "求底面积与高（或母线、半径）",
+        "代入公式计算",
+        "组合体按整体减部分或部分相加处理"
+      ],
+      "preconditions": [
+        "几何体类型明确",
+        "底面积与高可求"
+      ],
+      "not_applicable": [
+        "不规则几何体无法用公式",
+        "缺少求高所需的条件"
+      ],
+      "pitfalls": [
+        "锥体体积漏乘三分之一",
+        "旋转体侧面积与全面积混淆"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_geometric_perp",
+          "note": "求高时常需先作垂线并证明"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求棱长为 2 的正四面体的体积。",
+          "answer_sketch": "底面积为 √3，高为 2√6/3，体积为 2√2/3。",
+          "scenario_id": "S.hs_geom.volume"
+        },
+        {
+          "statement": "求底面半径为 3、高为 4 的圆锥的侧面积与体积。",
+          "answer_sketch": "母线为 5，侧面积为 15π，体积为 12π。",
+          "scenario_id": "S.hs_geom.volume"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_sphere",
+      "name": "外接球与内切球定位",
+      "aliases": [
+        "外接球球心",
+        "内切球半径",
+        "补形法"
+      ],
+      "one_liner": "外接球找到底面外心且垂直底面的直线上的等距点，内切球用体积等于三分之一半径乘表面积。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.sphere",
+        "S.hs_geom.combination"
+      ],
+      "triggers": [
+        "出现外接球或内切球",
+        "要求求球的半径或表面积",
+        "图形为正四面体、长方体或直角三棱锥"
+      ],
+      "steps": [
+        "确定底面外心并作垂直底面的直线",
+        "在直线上设球心并令到各顶点距离相等",
+        "列方程解出半径；能补成长方体时直接用体对角线的一半",
+        "内切球用体积等于三分之一半径乘全面积解出半径"
+      ],
+      "preconditions": [
+        "外心可定位",
+        "至少一个顶点可用于列等距方程"
+      ],
+      "not_applicable": [
+        "几何体不对称且无外心",
+        "内切球不存在"
+      ],
+      "pitfalls": [
+        "把球心放在底面而不是垂直底面的直线上",
+        "补形时误把任意三棱锥补成长方体"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_volume_formula",
+          "note": "内切球半径依赖体积与表面积"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求棱长为 2 的正方体的外接球半径。",
+          "answer_sketch": "体对角线为 2√3，外接球半径为其一半，即 √3。",
+          "scenario_id": "S.hs_geom.sphere"
+        },
+        {
+          "statement": "正四面体棱长为 a，求外接球与内切球半径之比。",
+          "answer_sketch": "外接球半径为 √6a/4，内切球半径为 √6a/12，比值为 3。",
+          "scenario_id": "S.hs_geom.sphere"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_coordinate_system",
+      "name": "建系与坐标运算",
+      "aliases": [
+        "空间直角坐标系",
+        "建系策略",
+        "坐标定位"
+      ],
+      "one_liner": "选共点且两两垂直的三条线作坐标轴，把点与向量写成坐标后用代数运算代替几何推理。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.special_point",
+        "S.hs_geom.existence",
+        "S.hs_geom.basis",
+        "S.hs_geom.coordinate",
+        "S.hs_geom.normal_vector"
+      ],
+      "triggers": [
+        "图形中有三条互相垂直的棱",
+        "要求求点的坐标",
+        "需要设带参数的点"
+      ],
+      "steps": [
+        "选公共顶点作原点，三条两两垂直的线作坐标轴",
+        "按投影关系写出各点坐标",
+        "把向量写成坐标差",
+        "用坐标完成后续运算"
+      ],
+      "preconditions": [
+        "存在三条两两垂直的直线",
+        "点坐标可确定"
+      ],
+      "not_applicable": [
+        "找不到互相垂直的三条线",
+        "图形过于一般无法定位"
+      ],
+      "pitfalls": [
+        "坐标轴方向搞错导致符号错误",
+        "点坐标按长度直接写而忽略方向"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_normal_vector",
+          "note": "建系后下一步通常是求法向量"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_space_basis",
+          "note": "空间运算的两条路径：有垂直三线就建系用坐标，否则用基底作符号运算。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在正方体中建系并写出各顶点坐标。",
+          "answer_sketch": "以 A 为原点，三条棱为轴，各顶点坐标即为棱长的组合。",
+          "scenario_id": "S.hs_geom.coordinate"
+        },
+        {
+          "statement": "三棱锥 P-ABC 中 PA 垂直底面且 AB 垂直 AC，建系求各点坐标。",
+          "answer_sketch": "以 A 为原点，AB、AC、AP 为三轴，按已知长度写坐标。",
+          "scenario_id": "S.hs_geom.coordinate"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_normal_vector",
+      "name": "法向量求法",
+      "aliases": [
+        "求平面法向量",
+        "数量积为零解方程"
+      ],
+      "one_liner": "设法向量为三元组，令它与平面内两个不共线向量的数量积都为零，解出一组整数解。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.line_plane_parallel",
+        "S.hs_geom.line_plane_perp",
+        "S.hs_geom.distance",
+        "S.hs_geom.angle",
+        "S.hs_geom.coordinate",
+        "S.hs_geom.normal_vector",
+        "S.hs_geom.section"
+      ],
+      "triggers": [
+        "要求求平面的法向量",
+        "需要用法向量判平行垂直",
+        "求角或距离前必须先有法向量"
+      ],
+      "steps": [
+        "在平面内取两个不共线向量",
+        "设 n=(x,y,z) 并列出两个数量积为零的方程",
+        "取一个自由变量赋整数解",
+        "检验所得向量与两向量都垂直"
+      ],
+      "preconditions": [
+        "平面内有可写出坐标的两个不共线向量",
+        "方程组有非零解"
+      ],
+      "not_applicable": [
+        "平面内两向量共线",
+        "尚未建系"
+      ],
+      "pitfalls": [
+        "取的两个向量共线导致解不唯一",
+        "赋值时全取零得到零向量"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_coordinate_system",
+          "note": "求法向量前必须先建系"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_parallel_proof",
+          "note": "证线面平行的两条路径：找平面内平行线，或证方向向量与法向量垂直。"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_perp_proof",
+          "note": "证线面垂直的两条路径：找平面内两条相交垂线，或证方向向量与法向量平行。"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_cross_product",
+          "note": "求法向量的两条路径：解两个数量积为零的方程，或用叉积（拓展）。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知平面内两向量，求该平面的一个法向量。",
+          "answer_sketch": "设 n=(x,y,z) 与两向量数量积为零，取一组整数解得法向量。",
+          "scenario_id": "S.hs_geom.normal_vector"
+        },
+        {
+          "statement": "用法向量证明线面平行。",
+          "answer_sketch": "证直线的方向向量与平面法向量垂直且直线不在平面内。",
+          "scenario_id": "S.hs_geom.line_plane_parallel"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_space_basis",
+      "name": "空间向量基本定理与基底表示",
+      "aliases": [
+        "基底表示",
+        "共面条件",
+        "系数和为一"
+      ],
+      "one_liner": "用一组不共面的基向量线性表示目标向量，并用系数关系判定共线与共面。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.special_point",
+        "S.hs_geom.basis"
+      ],
+      "triggers": [
+        "要求用基底表示向量",
+        "要求证明四点共面",
+        "出现位置向量系数和为一的条件"
+      ],
+      "steps": [
+        "选取三个不共面的向量作基底",
+        "按多边形法则把目标向量拆到基向量方向",
+        "合并同基底系数得到表示",
+        "共面判定用其中一个向量可由另两个线性表示或系数和为一"
+      ],
+      "preconditions": [
+        "基底三个向量不共面",
+        "目标向量可用基向量表示"
+      ],
+      "not_applicable": [
+        "图形含四点共面退化情形",
+        "所取基底共面"
+      ],
+      "pitfalls": [
+        "基底取成共面向量导致表示不唯一",
+        "共面条件漏写系数和为一"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_coordinate_system",
+          "note": "能建系时坐标法比基底法更不易出错"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_coordinate_system",
+          "note": "空间运算的两条路径：有垂直三线就建系用坐标，否则用基底作符号运算。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "在平行六面体中用三个棱向量表示体对角线向量。",
+          "answer_sketch": "沿三条棱依次相加，得三向量之和。",
+          "scenario_id": "S.hs_geom.basis"
+        },
+        {
+          "statement": "若 OP=x·OA+y·OB+z·OC，求 P 在平面 ABC 内的条件。",
+          "answer_sketch": "由共面条件得 x+y+z=1。",
+          "scenario_id": "S.hs_geom.basis"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_section",
+      "name": "截面作法",
+      "aliases": [
+        "作截面",
+        "截面形状判断",
+        "交线法"
+      ],
+      "one_liner": "利用同一平面内两点连线与平行面交线平行的规律，逐步补全截面并判断边数。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.existence",
+        "S.hs_geom.section"
+      ],
+      "triggers": [
+        "要求过三点作截面",
+        "要求判断截面形状",
+        "要求求截面面积或截面角"
+      ],
+      "steps": [
+        "先连同一平面内的两个已知点",
+        "在与已知面平行的面上作平行交线",
+        "延长交线求与棱的交点补齐截面",
+        "数出边数并计算面积或角"
+      ],
+      "preconditions": [
+        "已知点在几何体表面或棱上",
+        "存在可用的平行面"
+      ],
+      "not_applicable": [
+        "已知点不在同一几何体内",
+        "截面退化为点或线"
+      ],
+      "pitfalls": [
+        "把不同面上的点直接相连",
+        "补全截面时漏掉一条边导致形状判断错误"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_auxiliary_line",
+          "note": "补全截面常需要延长线求交点"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "在正方体中过 A、C、B1 作截面，判断形状并求面积。",
+          "answer_sketch": "三边为面对角线，截面为正三角形，面积为 √3/2 倍棱长平方。",
+          "scenario_id": "S.hs_geom.section"
+        },
+        {
+          "statement": "过各棱中点作截面，判断截面是几边形。",
+          "answer_sketch": "按平行面交线规律补全，得六边形。",
+          "scenario_id": "S.hs_geom.section"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_unfold_folding",
+      "name": "展开与翻折不变量",
+      "aliases": [
+        "侧面展开",
+        "最短路径",
+        "翻折不变量"
+      ],
+      "one_liner": "展开成平面求最短路径，翻折时保留同一平面内的长度与角度作不变量。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.solid_graph",
+        "S.hs_geom.combination"
+      ],
+      "triggers": [
+        "要求求表面最短路径",
+        "出现折叠或翻折",
+        "出现展开图还原"
+      ],
+      "steps": [
+        "把相关面展开到同一平面",
+        "在展开图上用两点之间线段最短求长度",
+        "翻折问题先标出翻折前共面的长度与角",
+        "在翻折后的空间图形中用这些不变量求目标量"
+      ],
+      "preconditions": [
+        "展开后各面能拼成同一平面",
+        "翻折轴与不变量明确"
+      ],
+      "not_applicable": [
+        "曲面不可展开（如球面）",
+        "翻折后位置关系无法确定"
+      ],
+      "pitfalls": [
+        "展开时选错面导致路径不直",
+        "把翻折前后不共面的长度也当作不变"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_volume_formula",
+          "note": "展开图得到的尺寸常用于后续体积计算"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "蚂蚁沿长方体表面从 A 到 C1 的最短路程。",
+          "answer_sketch": "把相邻两面展开成矩形，用体对角线的平面长度求最短。",
+          "scenario_id": "S.hs_geom.solid_graph"
+        },
+        {
+          "statement": "正方形沿对角线折成直二面角，求折后两顶点的距离。",
+          "answer_sketch": "标出折前对角线长度与折后角，用余弦定理求空间距离。",
+          "scenario_id": "S.hs_geom.combination"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    },
+    {
+      "id": "M.hs_cross_product",
+      "scope": "extension",
+      "name": "向量叉积（拓展）",
+      "aliases": [
+        "叉积",
+        "行列式求法向量"
+      ],
+      "one_liner": "用两个方向向量的叉积直接得到平面的法向量，或求平行四边形面积。",
+      "block_ids": [
+        "B.hs_geom"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_geom.angle",
+        "S.hs_geom.normal_vector",
+        "S.hs_geom.section"
+      ],
+      "triggers": [
+        "需要快速求平面法向量",
+        "要求求三角形或平行四边形面积",
+        "两向量坐标已知"
+      ],
+      "steps": [
+        "写出两个向量的坐标",
+        "按叉积公式或行列式展开计算",
+        "所得向量即为法向量（或面积的倍数）",
+        "书写时说明来源或改用解方程组"
+      ],
+      "preconditions": [
+        "两向量不共线",
+        "坐标已建立"
+      ],
+      "not_applicable": [
+        "两向量共线时叉积为零向量",
+        "未建系"
+      ],
+      "pitfalls": [
+        "行列式展开时分量符号写错",
+        "直接把叉积模当成面积而忘记三角形要除以 2"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_normal_vector",
+          "note": "课内应优先用数量积为零解方程求法向量"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_normal_vector",
+          "note": "求法向量的两条路径：解两个数量积为零的方程，或用叉积（拓展）。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "已知平面内两向量，用叉积求该平面的法向量。",
+          "answer_sketch": "两向量作叉积，所得向量与二者都垂直，即为法向量。",
+          "scenario_id": "S.hs_geom.normal_vector"
+        },
+        {
+          "statement": "求以两向量为邻边的三角形面积。",
+          "answer_sketch": "叉积的模为平行四边形面积，三角形面积取其一半。",
+          "scenario_id": "S.hs_geom.section"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_geom"
+      ]
+    }
+  ]
+}

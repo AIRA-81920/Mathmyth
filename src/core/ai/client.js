@@ -1,6 +1,6 @@
 import { ASK_SYSTEM_PROMPT } from './prompts.js';
 import { readSseStream } from './sse.js';
-import { AiRequestError, httpError, requestCompletion, throwIfAborted, waitWithSignal } from './transport.js';
+import { AiRequestError, httpError, requestCompletion, requestModelList, throwIfAborted, waitWithSignal } from './transport.js';
 
 function publicText(content) {
   if (typeof content === 'string') return content;
@@ -76,9 +76,12 @@ async function jsonPayload(result, signal) {
   }
 }
 
-async function readAnswer(result, signal, onDelta = () => {}, onReasoning = () => {}) {
+// onActivity 供传输层做空闲超时重置（D10）：只在"真实数据帧"上回调，
+// SSE 心跳/空帧不算活动。
+async function readAnswer(result, signal, onDelta = () => {}, onReasoning = () => {}, onActivity = () => {}) {
   if (result.native || !/text\/event-stream/i.test(result.contentType)) {
     const data = await jsonPayload(result, signal);
+    onActivity();
     if (data?.error) throw providerError(data.error);
     const choice = data?.choices?.[0];
     const answer = ensureAnswer(publicText(choice?.message?.content));
@@ -101,6 +104,7 @@ async function readAnswer(result, signal, onDelta = () => {}, onReasoning = () =
         return false;
       }
       if (!data.trim()) return;
+      onActivity();
       let chunk;
       try {
         chunk = JSON.parse(data);
@@ -138,16 +142,48 @@ export async function streamAnswer({
   signal,
   systemPrompt = ASK_SYSTEM_PROMPT,
   parameters = {},
-  timeoutMs,
+  connectTimeoutMs,
+  idleTimeoutMs,
 }) {
   const prepared = prepareMessages(messages, config, systemPrompt);
   return requestCompletion({
     config,
     payload: { ...parameters, model: String(config.model).trim(), messages: prepared, stream: true },
     signal,
-    ...(timeoutMs ? { timeoutMs } : {}),
-    readResponse: (result, activeSignal) => readAnswer(result, activeSignal, onDelta, onReasoning),
+    ...(connectTimeoutMs ? { connectTimeoutMs } : {}),
+    ...(idleTimeoutMs ? { idleTimeoutMs } : {}),
+    readResponse: (result, activeSignal, onActivity) => readAnswer(result, activeSignal, onDelta, onReasoning, onActivity),
   });
+}
+
+function modelIds(payload) {
+  const list = Array.isArray(payload?.data) ? payload.data
+    : Array.isArray(payload?.models) ? payload.models
+      : Array.isArray(payload) ? payload : [];
+  const ids = list
+    .map((item) => (typeof item === 'string' ? item : item?.id))
+    .filter((id) => typeof id === 'string' && id.trim())
+    .map((id) => id.trim());
+  return [...new Set(ids)].sort();
+}
+
+// 服务商没有模型列表接口时，httpError 给的是"模型名不存在"，对这一步是误导。
+export async function listModels(config = {}, { signal, request = requestModelList } = {}) {
+  let payload;
+  try {
+    payload = await request({ config, signal });
+  } catch (error) {
+    if (error instanceof AiRequestError && ['authentication', 'permission'].includes(error.code) && !String(config.apiKey ?? '').trim()) {
+      throw new AiRequestError('这个服务商的模型列表要先填 API Key。', 'api_key_required');
+    }
+    if (error instanceof AiRequestError && ['not_found', 'invalid_request', 'http_error'].includes(error.code)) {
+      throw new AiRequestError('这个地址没有提供模型列表，请手动填写模型名。', 'no_model_list');
+    }
+    throw error;
+  }
+  const models = modelIds(payload);
+  if (!models.length) throw new AiRequestError('这个地址没有返回模型列表，请手动填写模型名。', 'empty_model_list');
+  return { models };
 }
 
 export async function testConnection(config = {}, { signal } = {}) {

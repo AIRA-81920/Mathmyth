@@ -192,7 +192,7 @@ test('abort before sending prevents a request; abort during a pending read emits
   assert.ok(cancelled);
 });
 
-test('network and timeout errors are friendly; a timeout aborts the browser request', async () => {
+test('network errors are friendly; a stalled connect aborts the browser request', async () => {
   globalThis.fetch = async () => { throw new TypeError('Failed to fetch secret-test-key'); };
   await assert.rejects(streamAnswer({ config, messages }), (error) => {
     assert.equal(error.code, 'network');
@@ -205,8 +205,29 @@ test('network and timeout errors are friendly; a timeout aborts the browser requ
     requestSignal = options.signal;
     return new Promise(() => {});
   } });
-  await assert.rejects(transport({ config, payload: { stream: true }, timeoutMs: 5, readResponse: () => '' }), (error) => error.code === 'timeout');
+  // D10：不再有 120s 总时长超时；连接阶段建不上就报"连接失败"。
+  await assert.rejects(transport({ config, payload: { stream: true }, connectTimeoutMs: 5, readResponse: () => '' }), (error) => error.code === 'network');
   assert.ok(requestSignal.aborted);
+});
+
+test('long silence only matters after the idle window, and every real data frame resets it', async () => {
+  const transport = createHttpTransport({ isNativePlatform: () => false, fetchImpl: () => responseFromChunks([new Uint8Array()]) });
+  // 有活动：每 20ms 一个真实数据帧，累计远超 40ms 的空闲窗口，也不应激杀。
+  const kept = await transport({
+    config, payload: { stream: true }, connectTimeoutMs: 1000, idleTimeoutMs: 40,
+    readResponse: async (result, signal, onActivity) => {
+      for (let index = 0; index < 6; index += 1) { await new Promise((resolve) => setTimeout(resolve, 20)); onActivity(); }
+      return 'ok';
+    },
+  });
+  assert.equal(kept, 'ok');
+  // 无活动：一直沉默超过空闲窗口 → 以 timeout 中止（且连接已建立）。
+  let idleSignal;
+  await assert.rejects(transport({
+    config, payload: { stream: true }, connectTimeoutMs: 1000, idleTimeoutMs: 40,
+    readResponse: (result, signal) => { idleSignal = signal; return new Promise(() => {}); },
+  }), (error) => error.code === 'timeout');
+  assert.ok(idleSignal.aborted);
 });
 
 test('native transport uses direct JSON HTTP and forces non-streaming', async () => {

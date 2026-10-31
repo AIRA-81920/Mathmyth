@@ -1,5 +1,6 @@
 import { DatabaseError } from './errors.js';
 import { dataUrlToBytes } from '../images/input.js';
+import { getActiveSubject } from '../config/subject.js';
 
 let worker;
 let nextRequest = 0;
@@ -65,6 +66,7 @@ export const completeJob = (claim, entries) => rpcAt(claim.generation, 'complete
 export const failJob = (claim, options) => rpcAt(claim.generation, 'failJob', claim, options);
 export const loadTrail = () => rpc('loadTrail');
 export const loadQuestionRoutes = (conversationId) => rpc('loadQuestionRoutes', conversationId);
+export const loadAnswerQuestionRoutes = (conversationId) => rpc('loadAnswerQuestionRoutes', conversationId);
 export const retryQuestionRoutes = (messageId) => rpc('retryQuestionRoutes', messageId);
 export const loadPatternProgress = () => rpc('loadPatternProgress');
 export const listPersonalNotes = () => rpc('listPersonalNotes');
@@ -92,14 +94,21 @@ export async function deleteConversation(id, includeLearning) {
   knownImages.clear();
   return result;
 }
-export const loadActivePractice = () => rpc('loadActivePractice');
+export const loadActivePractice = (subject = getActiveSubject()) => rpc('loadActivePractice', subject);
 export const loadPracticeItem = (id) => rpc('loadPracticeItem', id);
-export const listPracticeHistory = (options) => rpc('listPracticeHistory', options);
-export const loadPracticeUsage = () => rpc('loadPracticeUsage');
-export const searchConversations = (query) => rpc('searchConversations', query);
+export const listPracticeHistory = (options = {}) => rpc('listPracticeHistory', { ...options, subject: options.subject ?? getActiveSubject() });
+export const loadPracticeUsage = (subject = getActiveSubject()) => rpc('loadPracticeUsage', subject);
+export const searchConversations = (query, subject = getActiveSubject()) => rpc('searchConversations', query, subject);
+export const listConversations = (subject = getActiveSubject()) => rpc('listConversations', subject);
 export const gradePracticeItem = (run, itemId, attempt) => rpcAt(run.generation, 'gradePracticeItem', run.id, itemId, attempt);
 export const revealPracticeItem = (run, itemId, options) => rpcAt(run.generation, 'revealPracticeItem', run.id, itemId, options);
 export const advancePracticeItem = (run, itemId) => rpcAt(run.generation, 'advancePracticeItem', run.id, itemId);
+export const recordPracticeHint = (run, itemId, level) => rpcAt(run.generation, 'recordPracticeHint', run.id, itemId, level);
+export const savePracticeDraft = (run, itemId, text) => rpcAt(run.generation, 'savePracticeDraft', run.id, itemId, text);
+export const finishChatPractice = (run, itemId) => rpcAt(run.generation, 'finishChatPractice', run.id, itemId);
+export const setPracticeReview = (run, itemId, enabled) => rpcAt(run.generation, 'setPracticeReview', run.id, itemId, enabled);
+export const listPracticeReviews = (subject = getActiveSubject()) => rpc('listPracticeReviews', subject);
+export const disputePracticeItem = (run, itemId) => rpcAt(run.generation, 'disputePracticeItem', run.id, itemId);
 
 function rememberImages(conversation) {
   for (const message of conversation.messages ?? []) if (message.image?.id) knownImages.add(message.image.id);
@@ -115,13 +124,19 @@ function prepareChanges(changes) {
   if (changes.conversations !== undefined) prepared.conversations = changes.conversations.map((conversation) => ({
     id: conversation.id, title: conversation.title, createdAt: conversation.createdAt, updatedAt: conversation.updatedAt, pinned: conversation.pinned,
     methodId: conversation.methodId, titleStatus: conversation.titleStatus,
+    // 学科必须跟着会话走：历史列表与搜索都按它过滤，缺字段会退回高数。
+    subject: conversation.subject,
     revisionPaths: conversation.revisionPaths, revisionViewOnly: conversation.revisionViewOnly,
+    // D9：增量保存协议。persistence 只在 messages 里带脏消息，每条消息用 seq 标明
+    // 它在会话消息数组里的下标，RPC 负载因此不再随会话总长度增长。
+    ...(conversation.incremental ? { incremental: true } : {}),
     messages: (conversation.messages ?? []).map((message) => {
       const result = {
         id: message.id, role: message.role, content: message.content, createdAt: message.createdAt,
         status: message.status, error: message.error, recheckOf: message.recheckOf, imageCorrected: message.imageCorrected,
         reasoningContent: message.reasoningContent,
         superseded: message.superseded, revisionOf: message.revisionOf, revisionAction: message.revisionAction,
+        ...(Number.isInteger(message.seq) ? { seq: message.seq } : {}),
       };
       if (message.image) {
         const image = message.image;
@@ -162,8 +177,8 @@ export async function saveChanges(changes = {}) {
 export const exportDatabase = () => rpc('exportBackup');
 export const prepareImport = (bytes) => rpc('prepareImport', bytes);
 export const cancelImport = (token) => rpc('cancelImport', token);
-export async function commitImport(token) {
-  const result = await rpc('commitImport', token);
+export async function commitImport(token, options = {}) {
+  const result = await rpc('commitImport', token, options);
   knownImages.clear();
   return result;
 }

@@ -1,0 +1,1027 @@
+{
+  "block_id": "B.hs_prob",
+  "methods": [
+    {
+      "id": "M.hs_counting_principle",
+      "name": "分类加法与分步乘法原理",
+      "aliases": [
+        "两个基本原理",
+        "加法原理",
+        "乘法原理"
+      ],
+      "one_liner": "互斥类别之间用加法，依次步骤之间用乘法，先判断结构再选原理。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.counting_principle",
+        "S.hs_prob.permutation",
+        "S.hs_prob.combination",
+        "S.hs_prob.classical"
+      ],
+      "triggers": [
+        "要求求完成一件事的方法数",
+        "事件可分为互斥几类",
+        "需依次完成若干步骤"
+      ],
+      "steps": [
+        "判断完成方式：分类还是分步",
+        "分类时各类方法数相加",
+        "分步时各步方法数相乘",
+        "检查是否有重复计数或遗漏"
+      ],
+      "preconditions": [
+        "各类互斥或各步独立",
+        "计数对象有限"
+      ],
+      "not_applicable": [
+        "类别之间有重叠",
+        "步骤之间不独立"
+      ],
+      "pitfalls": [
+        "分类时把重叠部分重复计数",
+        "分步时漏掉某一步"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_permutation",
+          "note": "分步中涉及排序的步骤改用排列数"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "从甲到乙有 3 条路、乙到丙有 4 条路，共有多少种走法？",
+          "answer_sketch": "两步依次完成，用乘法得 12 种。",
+          "scenario_id": "S.hs_prob.counting_principle"
+        },
+        {
+          "statement": "用 0 到 9 组成没有重复数字的三位数有多少个？",
+          "answer_sketch": "首位不能为零，分步得 9×9×8=648。",
+          "scenario_id": "S.hs_prob.counting_principle"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_permutation",
+      "name": "排列与排列数",
+      "aliases": [
+        "排列数",
+        "捆绑法",
+        "插空法"
+      ],
+      "one_liner": "顺序有意义时用排列数，相邻用捆绑、不相邻用插空、特殊位置优先安排。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.counting_principle",
+        "S.hs_prob.permutation",
+        "S.hs_prob.combination",
+        "S.hs_prob.classical"
+      ],
+      "triggers": [
+        "出现排成一排或排队",
+        "顺序不同算不同",
+        "有相邻或不相邻限制"
+      ],
+      "steps": [
+        "确认顺序有意义",
+        "识别限制类型并选方法：捆绑、插空或特殊位置优先",
+        "逐步计算各步方法数",
+        "对限制复杂的情形改用间接法"
+      ],
+      "preconditions": [
+        "元素可区分",
+        "顺序影响结果"
+      ],
+      "not_applicable": [
+        "只选取不排序",
+        "元素不可区分"
+      ],
+      "pitfalls": [
+        "插空时把两端漏掉或多算",
+        "捆绑后忘记内部还可排列"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_combination",
+          "note": "先组合选出再排列往往更省"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_combination",
+          "note": "计数时先判顺序：有序用排列，无序用组合。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "5 人排成一排且甲不站两端，有多少种排法？",
+          "answer_sketch": "先安排甲有 3 个位置，其余全排列，得 3×24=72。",
+          "scenario_id": "S.hs_prob.permutation"
+        },
+        {
+          "statement": "3 男 3 女排成一排且男女相间，有多少种排法？",
+          "answer_sketch": "先排男生再插空排女生，得 2×6×6=72。",
+          "scenario_id": "S.hs_prob.permutation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_combination",
+      "name": "组合、分组与分配",
+      "aliases": [
+        "组合数",
+        "分组分配",
+        "隔板法"
+      ],
+      "one_liner": "只选不排时用组合数，均分分组要除以组数阶乘，分配问题先分组再排列。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.counting_principle",
+        "S.hs_prob.permutation",
+        "S.hs_prob.combination",
+        "S.hs_prob.binomial",
+        "S.hs_prob.classical",
+        "S.hs_prob.distribution",
+        "S.hs_prob.binomial_dist"
+      ],
+      "triggers": [
+        "出现选出或任取",
+        "顺序不影响结果",
+        "出现分组均分或分配",
+        "需要把名额分给不同对象"
+      ],
+      "steps": [
+        "确认只是选取",
+        "按类别逐次选取并相乘",
+        "均分分组时除以组数阶乘消除组序",
+        "分配问题先分组再对组作排列"
+      ],
+      "preconditions": [
+        "元素可区分",
+        "选取不涉及顺序"
+      ],
+      "not_applicable": [
+        "顺序有意义",
+        "元素不可区分"
+      ],
+      "pitfalls": [
+        "均分分组忘记除以组数阶乘",
+        "分配与分组混为一谈"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_counting_principle",
+          "note": "复杂情形可回到两个基本原理分步计算"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_permutation",
+          "note": "计数时先判顺序：有序用排列，无序用组合。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "将 6 人分成 3 组（每组 2 人），有多少种分法？",
+          "answer_sketch": "先按组选取再除以 3 的阶乘，得 15 种。",
+          "scenario_id": "S.hs_prob.combination"
+        },
+        {
+          "statement": "从 7 件产品（含 2 件次品）中取 3 件恰有 1 件次品，有多少种取法？",
+          "answer_sketch": "次品取 1 件、正品取 2 件，相乘得 10。",
+          "scenario_id": "S.hs_prob.combination"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_binomial",
+      "name": "二项展开通项与赋值",
+      "aliases": [
+        "二项式定理",
+        "通项公式",
+        "赋值法"
+      ],
+      "one_liner": "写出通项公式定位所求项，再用赋值法求系数和或反解参数。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.binomial"
+      ],
+      "triggers": [
+        "出现二项式展开",
+        "要求求某次幂的系数",
+        "要求求常数项",
+        "要求求系数之和"
+      ],
+      "steps": [
+        "写出通项并整理出幂次",
+        "令幂次等于目标值解出项序号",
+        "把序号代回通项算出系数",
+        "求系数和时对变量赋 0、1 或 -1"
+      ],
+      "preconditions": [
+        "指数为正整数",
+        "展开式形式明确"
+      ],
+      "not_applicable": [
+        "指数非整数",
+        "需要展开无穷项"
+      ],
+      "pitfalls": [
+        "通项中组合数的上标写错",
+        "赋值求系数和时混淆二项式系数与各项系数"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_combination",
+          "note": "通项中的组合数需要按组合公式计算"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 (x+2)^6 展开式中 x^3 的系数。",
+          "answer_sketch": "通项中 x 的次数为 6-r，令其为 3 得 r=3，系数为 C(6,3)·2^3=160。",
+          "scenario_id": "S.hs_prob.binomial"
+        },
+        {
+          "statement": "求 (2x-1/x)^6 的常数项。",
+          "answer_sketch": "通项整理后令幂次为零解出 r，再算系数。",
+          "scenario_id": "S.hs_prob.binomial"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_classical",
+      "name": "古典概型",
+      "aliases": [
+        "等可能概率",
+        "基本事件",
+        "对立事件"
+      ],
+      "one_liner": "数清等可能的样本点总数与事件包含的样本点数，两者作商得到概率。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.classical",
+        "S.hs_prob.independent",
+        "S.hs_prob.conditional",
+        "S.hs_prob.geometric",
+        "S.hs_prob.distribution"
+      ],
+      "triggers": [
+        "出现任取或随机抽取",
+        "样本点有限且等可能",
+        "要求求概率"
+      ],
+      "steps": [
+        "列举或计算样本点总数",
+        "数出事件包含的样本点数",
+        "作商得到概率",
+        "正难则反时改用对立事件"
+      ],
+      "preconditions": [
+        "样本点有限",
+        "各样本点等可能"
+      ],
+      "not_applicable": [
+        "样本点无限（转几何概型）",
+        "各结果不等可能"
+      ],
+      "pitfalls": [
+        "分子分母计数口径不一致（一个用排列一个用组合）",
+        "把不等可能结果当作等可能"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_combination",
+          "note": "样本点计数常用组合数"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_geometric",
+          "note": "求概率的两条路径：样本点有限可数用古典概型，连续区域用几何度量比。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "从 5 个球（3 红 2 白）中任取 2 个，求恰有 1 个白球的概率。",
+          "answer_sketch": "总数为 C(5,2)=10，符合条件为 3×2=6，概率 3/5。",
+          "scenario_id": "S.hs_prob.classical"
+        },
+        {
+          "statement": "掷两颗骰子，求点数之和为 7 的概率。",
+          "answer_sketch": "总数为 36，和为 7 的 6 种，概率 1/6。",
+          "scenario_id": "S.hs_prob.classical"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_independent",
+      "name": "独立事件与对立事件",
+      "aliases": [
+        "独立乘法",
+        "至少一个发生"
+      ],
+      "one_liner": "独立事件同时发生概率相乘，至少一个发生用对立事件一减。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.independent",
+        "S.hs_prob.conditional",
+        "S.hs_prob.distribution"
+      ],
+      "triggers": [
+        "出现相互独立或互不影响",
+        "出现至少有一个发生",
+        "要求求同时发生的概率"
+      ],
+      "steps": [
+        "确认事件相互独立",
+        "同时发生用概率相乘",
+        "至少一个发生用 1 减去全不发生",
+        "多个环节的系统可靠性按串并联组合"
+      ],
+      "preconditions": [
+        "事件之间确实独立",
+        "各事件概率已知"
+      ],
+      "not_applicable": [
+        "事件之间相关（需条件概率）",
+        "事件互斥时不能相乘"
+      ],
+      "pitfalls": [
+        "把互斥当成独立",
+        "至少一个发生直接相加导致重复计算"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_classical",
+          "note": "各事件概率多由古典概型算出"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_conditional",
+          "note": "多事件概率的两条路径：相互独立直接相乘，有前提条件用条件概率。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "甲、乙独立射击命中率分别 0.8、0.7，求两人都命中的概率。",
+          "answer_sketch": "独立相乘得 0.56。",
+          "scenario_id": "S.hs_prob.independent"
+        },
+        {
+          "statement": "求至少一人命中的概率。",
+          "answer_sketch": "用对立事件 1-0.2×0.3=0.94。",
+          "scenario_id": "S.hs_prob.independent"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_conditional",
+      "name": "条件概率与全概率",
+      "aliases": [
+        "条件概率",
+        "全概率公式",
+        "贝叶斯"
+      ],
+      "one_liner": "用交事件概率除以条件事件概率得条件概率，按来源分层加权得全概率。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.conditional"
+      ],
+      "triggers": [
+        "出现已知某事件发生的条件下",
+        "要求求条件概率",
+        "出现分批次或分来源",
+        "要求由结果反推来源"
+      ],
+      "steps": [
+        "写出条件事件与被求事件的交",
+        "按定义作商得条件概率",
+        "多来源时按占比加权求和得全概率",
+        "反推来源时用贝叶斯公式"
+      ],
+      "preconditions": [
+        "条件事件概率不为零",
+        "各来源互斥且完备"
+      ],
+      "not_applicable": [
+        "条件事件概率为零",
+        "来源之间不互斥"
+      ],
+      "pitfalls": [
+        "分母用了无关事件的概率",
+        "全概率漏乘占比权重"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_independent",
+          "note": "分层内若独立可直接相乘简化计算"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_independent",
+          "note": "多事件概率的两条路径：相互独立直接相乘，有前提条件用条件概率。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 P(A)=0.5、P(AB)=0.2，求 P(B|A)。",
+          "answer_sketch": "作商得 0.4。",
+          "scenario_id": "S.hs_prob.conditional"
+        },
+        {
+          "statement": "三条生产线次品率与产量占比已给出，求总体次品率。",
+          "answer_sketch": "各线次品率乘占比后相加，即全概率公式。",
+          "scenario_id": "S.hs_prob.conditional"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_geometric",
+      "name": "几何概型",
+      "aliases": [
+        "区域度量比",
+        "长度面积比"
+      ],
+      "one_liner": "把条件翻译成区域，用满足条件的区域度量除以总区域度量得到概率。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.geometric"
+      ],
+      "triggers": [
+        "出现区间内随机取点",
+        "出现随机到达或等待时间",
+        "样本点不可数"
+      ],
+      "steps": [
+        "确定全部结果对应的区域",
+        "把条件翻译成子区域",
+        "计算两者度量（长度、面积或体积）",
+        "作商得概率并检验区域边界"
+      ],
+      "preconditions": [
+        "结果在区域内均匀分布",
+        "区域度量可计算"
+      ],
+      "not_applicable": [
+        "分布不均匀",
+        "结果可数（转古典概型）"
+      ],
+      "pitfalls": [
+        "子区域边界取错导致度量偏差",
+        "把一维问题误按二维计算"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_number_shape",
+          "note": "二维条件需画区域图确定边界"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_classical",
+          "note": "求概率的两条路径：样本点有限可数用古典概型，连续区域用几何度量比。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "在 [0,1] 上随机取一点，求它大于 0.7 的概率。",
+          "answer_sketch": "区间长度为 0.3，总长度为 1，概率 0.3。",
+          "scenario_id": "S.hs_prob.geometric"
+        },
+        {
+          "statement": "在圆内随机取点，求它到圆心距离小于半径一半的概率。",
+          "answer_sketch": "面积比为 (1/2)^2=1/4。",
+          "scenario_id": "S.hs_prob.geometric"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_distribution",
+      "name": "分布列",
+      "aliases": [
+        "分布列",
+        "随机变量取值",
+        "归一性"
+      ],
+      "one_liner": "列全随机变量的所有取值，逐个算概率，并用概率之和为一检验。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.distribution",
+        "S.hs_prob.expectation",
+        "S.hs_prob.binomial_dist"
+      ],
+      "triggers": [
+        "要求求分布列",
+        "给出取值规则",
+        "出现含参数的分布列"
+      ],
+      "steps": [
+        "列出随机变量的全部可能取值",
+        "对每个取值计算对应概率",
+        "检验概率之和是否为一",
+        "按题目要求求某区间上的概率"
+      ],
+      "preconditions": [
+        "取值有限可列",
+        "每个取值的概率可算"
+      ],
+      "not_applicable": [
+        "随机变量连续（转正态等连续分布）",
+        "取值不可列"
+      ],
+      "pitfalls": [
+        "漏掉某个取值导致概率和不为 1",
+        "取值重复计算"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_classical",
+          "note": "各取值概率多由古典概型算出"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_binomial_dist",
+          "note": "写分布的两条路径：一般规则逐点列分布列，独立重复直接套二项公式。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "袋中 3 红 2 白，取 2 球，求红球数 X 的分布列。",
+          "answer_sketch": "X 取 0、1、2，分别用组合数算概率，和为 1。",
+          "scenario_id": "S.hs_prob.distribution"
+        },
+        {
+          "statement": "已知分布列 P(X=k)=ak，求 a。",
+          "answer_sketch": "由概率之和为一解出 a。",
+          "scenario_id": "S.hs_prob.distribution"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_expectation",
+      "name": "期望与方差",
+      "aliases": [
+        "数学期望",
+        "方差公式",
+        "决策比较"
+      ],
+      "one_liner": "期望按取值乘概率求和，方差用平方的期望减期望的平方。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.expectation",
+        "S.hs_prob.binomial_dist"
+      ],
+      "triggers": [
+        "要求求期望或方差",
+        "给出分布列",
+        "出现方案比较",
+        "要求由期望反求参数"
+      ],
+      "steps": [
+        "确认分布列已写出",
+        "期望用取值乘概率求和",
+        "方差用平方期望减期望平方",
+        "比较方案时同时看期望与方差"
+      ],
+      "preconditions": [
+        "分布列已知",
+        "取值有限"
+      ],
+      "not_applicable": [
+        "分布未知",
+        "连续型分布需用积分（高中不要求）"
+      ],
+      "pitfalls": [
+        "方差公式忘减期望平方",
+        "只比期望不比稳定性"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_distribution",
+          "note": "计算前必须先有分布列"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知分布列，求 E(X) 与 D(X)。",
+          "answer_sketch": "按定义求期望，再用平方期望减期望平方求方差。",
+          "scenario_id": "S.hs_prob.expectation"
+        },
+        {
+          "statement": "比较两种投资方案的期望收益。",
+          "answer_sketch": "分别算两方案期望，若接近再比较方差判断风险。",
+          "scenario_id": "S.hs_prob.expectation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_binomial_dist",
+      "name": "二项分布",
+      "aliases": [
+        "独立重复试验",
+        "二项分布公式"
+      ],
+      "one_liner": "确认独立、重复、每次概率相同三条件后，用二项分布通项或期望方差公式。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.expectation",
+        "S.hs_prob.binomial_dist"
+      ],
+      "triggers": [
+        "出现独立重复试验",
+        "要求求恰有若干次成功的概率",
+        "出现二项分布记号"
+      ],
+      "steps": [
+        "验证三个前提条件",
+        "写出成功次数为 k 的概率公式",
+        "需要时求期望与方差",
+        "至少一次之类的问题用对立事件"
+      ],
+      "preconditions": [
+        "试验独立重复",
+        "每次成功概率相同"
+      ],
+      "not_applicable": [
+        "试验不独立",
+        "成功概率逐次改变"
+      ],
+      "pitfalls": [
+        "把不放回抽样当作二项分布",
+        "组合数与成功次数对应错位"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_distribution",
+          "note": "题目若要求完整分布列，仍按分布列逐个写出"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_distribution",
+          "note": "写分布的两条路径：一般规则逐点列分布列，独立重复直接套二项公式。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "命中率 0.6，投 5 次，求恰中 3 次的概率。",
+          "answer_sketch": "C(5,3)·0.6^3·0.4^2≈0.3456。",
+          "scenario_id": "S.hs_prob.binomial_dist"
+        },
+        {
+          "statement": "若 X~B(10,0.3)，求 E(X) 与 D(X)。",
+          "answer_sketch": "期望 3，方差 2.1。",
+          "scenario_id": "S.hs_prob.binomial_dist"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_normal",
+      "name": "正态分布对称性",
+      "aliases": [
+        "正态曲线",
+        "三段标准差",
+        "标准化"
+      ],
+      "one_liner": "用正态曲线关于均值对称，把区间折到同一侧，再用给定的三段标准差概率求值。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.normal"
+      ],
+      "triggers": [
+        "出现正态分布记号",
+        "要求求区间概率",
+        "出现对称性或三段标准差原则"
+      ],
+      "steps": [
+        "标出均值与标准差",
+        "用对称性把区间折到均值同一侧",
+        "按三段标准差原则给出的概率拆分区间",
+        "用 1 减去补区间求剩余概率"
+      ],
+      "preconditions": [
+        "分布确为正态",
+        "均值和标准差已知"
+      ],
+      "not_applicable": [
+        "分布非正态",
+        "需要精确数值而未给概率表"
+      ],
+      "pitfalls": [
+        "对称中心写成 0 而不是均值",
+        "区间两端符号处理错误"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_number_shape",
+          "note": "画曲线标区间可避免方向错误"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "若 X~N(0,1)，求 P(-1<X<1)。",
+          "answer_sketch": "用对称性得 2×P(0<X<1)，按给定数据得 0.6826。",
+          "scenario_id": "S.hs_prob.normal"
+        },
+        {
+          "statement": "成绩服从 N(80,25)，求及格率。",
+          "answer_sketch": "标准化后化为标准正态，用对称性求 P(X≥60)。",
+          "scenario_id": "S.hs_prob.normal"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_sampling",
+      "name": "抽样与样本估计",
+      "aliases": [
+        "分层抽样",
+        "样本均值",
+        "百分位数"
+      ],
+      "one_liner": "分层抽样按人数比例分配名额，样本特征按定义或简化公式计算。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.sampling",
+        "S.hs_prob.regression",
+        "S.hs_prob.contingency"
+      ],
+      "triggers": [
+        "出现分层抽样",
+        "要求求样本均值或方差",
+        "要求求百分位数",
+        "出现按比例分配"
+      ],
+      "steps": [
+        "按各层人数占总体的比例分配样本量",
+        "用定义或简化公式算均值与方差",
+        "百分位数按累积频率定位",
+        "读直方图时按组中值加权"
+      ],
+      "preconditions": [
+        "分层信息已知",
+        "样本数据完整"
+      ],
+      "not_applicable": [
+        "层内差异极大需重新分层",
+        "数据缺失严重"
+      ],
+      "pitfalls": [
+        "分层抽样按层数平均分配而非按人数比例",
+        "方差公式分母用错（n 与 n-1）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_number_shape",
+          "note": "直方图与累积频率需要作图定位"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "高一 600 人、高二 400 人，用分层抽样抽 50 人，求各层人数。",
+          "answer_sketch": "按 3:2 分配得 30 人与 20 人。",
+          "scenario_id": "S.hs_prob.sampling"
+        },
+        {
+          "statement": "求一组数据的第 75 百分位数。",
+          "answer_sketch": "按从小到大排序后按累积位置定位并必要时插值。",
+          "scenario_id": "S.hs_prob.sampling"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_regression",
+      "name": "一元线性回归",
+      "aliases": [
+        "最小二乘",
+        "回归方程",
+        "相关系数"
+      ],
+      "one_liner": "算均值与离差和，按最小二乘公式求斜率与截距，回归直线必过样本中心。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.regression",
+        "S.hs_prob.contingency"
+      ],
+      "triggers": [
+        "要求求回归方程",
+        "出现散点图或线性相关",
+        "要求预测某点的因变量"
+      ],
+      "steps": [
+        "算出两个变量的均值",
+        "算离差乘积和与离差平方和",
+        "按公式求斜率与截距",
+        "用回归方程预测并说明适用范围"
+      ],
+      "preconditions": [
+        "两变量均为定量变量",
+        "数据量足够"
+      ],
+      "not_applicable": [
+        "变量为分类变量",
+        "关系明显非线性"
+      ],
+      "pitfalls": [
+        "预测值超出样本范围仍强行使用",
+        "截距公式用错导致直线不过样本中心"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_sampling",
+          "note": "回归计算前先算样本均值"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_contingency",
+          "note": "两变量关系的两条路径：定量变量用回归，分类变量用列联表检验。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "给出 5 组数据，求 y 关于 x 的回归方程。",
+          "answer_sketch": "先算均值，再算离差和，按公式求斜率与截距。",
+          "scenario_id": "S.hs_prob.regression"
+        },
+        {
+          "statement": "用回归方程预测 x=10 时的 y 值。",
+          "answer_sketch": "代入回归方程计算，并说明 x=10 是否在样本范围内。",
+          "scenario_id": "S.hs_prob.regression"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    },
+    {
+      "id": "M.hs_contingency",
+      "name": "列联表与独立性检验",
+      "aliases": [
+        "卡方检验",
+        "独立性检验",
+        "临界值比较"
+      ],
+      "one_liner": "补全列联表后代入统计量公式，再与临界值比较得出结论。",
+      "block_ids": [
+        "B.hs_prob"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_prob.contingency"
+      ],
+      "triggers": [
+        "出现二乘二列联表",
+        "要求判断两分类变量是否相关",
+        "给出临界值表"
+      ],
+      "steps": [
+        "补全列联表四个格与合计",
+        "代入统计量公式计算观测值",
+        "按自由度查临界值表",
+        "比较后写出规范结论（不能写绝对化表述）"
+      ],
+      "preconditions": [
+        "两个变量均为分类变量",
+        "数据来自随机抽样"
+      ],
+      "not_applicable": [
+        "变量为定量变量",
+        "样本量过小"
+      ],
+      "pitfalls": [
+        "统计量公式中分母写错",
+        "结论写成两变量必有关系"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_regression",
+          "note": "两个变量都是定量时应改用回归分析"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_regression",
+          "note": "两变量关系的两条路径：定量变量用回归，分类变量用列联表检验。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "由列联表计算卡方并判断性别与偏好是否有关。",
+          "answer_sketch": "补全表格后代入公式，与临界值比较，按给定把握程度下结论。",
+          "scenario_id": "S.hs_prob.contingency"
+        },
+        {
+          "statement": "给出观测值与临界值，判断能否认为两变量独立。",
+          "answer_sketch": "比较观测值与临界值大小，若不超过临界值则不能认为两者有关。",
+          "scenario_id": "S.hs_prob.contingency"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_prob"
+      ]
+    }
+  ]
+}

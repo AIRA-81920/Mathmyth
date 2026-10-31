@@ -15,7 +15,12 @@ export function startQueue({ store, database, getSkeleton, blocks = locateBlocks
     return state.storageInitialized && state.onboarded && !state.dataOperation && state.route !== 'settings'
       && state.storageStatus !== 'error' && validateModelConfig(state.modelConfig).valid;
   };
-  const foregroundBusy = () => isForegroundBusy() || store.getState().conversations.some((conversation) => conversation.messages.some((message) => !message.superseded && message.status === 'streaming'));
+  // D12：优先读 store 上 O(1) 的 streamingCount，取代"遍历所有会话的所有消息"。
+  // 只有完全没有这个字段的旧/测试 store 才退回遍历，保证既有行为不丢。
+  const storeStreaming = (state) => (typeof state.streamingCount === 'number'
+    ? state.streamingCount > 0
+    : state.conversations.some((conversation) => conversation.messages.some((message) => !message.superseded && message.status === 'streaming')));
+  const foregroundBusy = () => isForegroundBusy() || storeStreaming(store.getState());
   function schedule(delay = 0) {
     if (stopped || timer || running) return;
     timer = setTimeout(() => { timer = undefined; pump(); }, delay);
@@ -31,23 +36,23 @@ export function startQueue({ store, database, getSkeleton, blocks = locateBlocks
     controller = new AbortController();
     let claim;
     try {
-      const skeleton = await getSkeleton();
-      if (stopped || owner !== session || !usable()) return;
+      // E6：先取任务，确有任务时才加载骨架 JSON（25 个 chunk）。反过来会让
+      // 冷启动就为"可能并没有的后台工作"付出加载代价。
       claim = await database.claimNextJob();
       if (!claim) return;
+      const skeleton = await getSkeleton();
+      if (stopped || owner !== session || !usable()) throw new DOMException('Aborted', 'AbortError');
       if (owner !== session || controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
-      const image = claim.payload.source.imageId && config.supportsImage
-        ? await database.loadImage(claim.payload.source.imageId) : undefined;
-      if (owner !== session || controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
+      // D7：后台分类只吃文本。图片题的用户消息正文已含转写题面，不再加载原图。
       let blockIds = claim.payload.blockIds;
       if (claim.payload.phase !== 'edges') {
-        const location = await blocks({ config, source: claim.payload.source, image, skeleton, signal: controller.signal });
+        const location = await blocks({ config, source: claim.payload.source, skeleton, signal: controller.signal });
         blockIds = Array.isArray(location) ? location : location.blockIds;
         if (owner !== session || controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
         await database.checkpointJob(claim, blockIds, Array.isArray(location) ? undefined : location);
       }
       if (foregroundBusy()) throw new DOMException('Aborted', 'AbortError');
-      const entries = claim.payload.classificationOnly ? [] : await edges({ config, source: claim.payload.source, image, skeleton, blockIds, signal: controller.signal });
+      const entries = claim.payload.classificationOnly ? [] : await edges({ config, source: claim.payload.source, skeleton, blockIds, signal: controller.signal });
       if (owner !== session || controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
       await database.completeJob(claim, entries);
     } catch (error) {
@@ -65,8 +70,10 @@ export function startQueue({ store, database, getSkeleton, blocks = locateBlocks
   const unsubscribeStore = store.subscribe((state, previous) => {
     if ((state.dataOperation && !previous.dataOperation)
       || state.learnerId !== previous.learnerId || state.modelConfig !== previous.modelConfig
+      // 学科切换后正在跑的后台归位任务必须放弃：它拿到的是上一学科的骨架 ID。
+      || state.subjectEpoch !== previous.subjectEpoch
       || !state.onboarded) invalidate();
-    const wasBusy = previous.conversations.some((conversation) => conversation.messages.some((message) => !message.superseded && message.status === 'streaming'));
+    const wasBusy = storeStreaming(previous);
     if (!wasBusy && foregroundBusy()) invalidate();
     if (usable()) schedule();
   });

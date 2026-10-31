@@ -8,7 +8,9 @@ import { DatabaseError } from '../src/core/db/errors.js';
 
 const SQL = await initSqlJs();
 const schemaSql = await readFile(new URL('../src/core/db/schema.sql', import.meta.url), 'utf8');
-const timestamp = '2026-10-09T01:00:00.000Z';
+// 固定日期会踩到图片 14 天 TTL：机器时钟一旦越过 2026-10-23，这些图片就会被启动清理删掉，
+// 与本用例的意图（验证往返读写）无关。改成相对当前时间，测试才不会随时间腐坏。
+const timestamp = new Date(Date.now() - 2 * 86400000).toISOString();
 const imageBytes = Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAEklEQVR4nGNUUFBgYGBgYgADAASqAGThstxZAAAAAElFTkSuQmCC'), (value) => value.charCodeAt(0));
 const image = { id: 'image-one', name: '题目.png', mime: 'image/png', bytes: imageBytes };
 const modelConfig = { providerId: 'custom', apiBase: 'https://model.example/v1', apiKey: 'private-key', model: 'math-model', supportsImage: true };

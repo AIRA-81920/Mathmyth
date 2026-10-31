@@ -20,7 +20,7 @@ async function setup(bytes) {
 }
 test('new-bank review preserves raw source, bank402 and training identities; incomplete gate stays unpublished',async()=>{
   const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-  assert.equal(hash(await readFile(new URL('../src/assets/practice/question-banks/bank402.json',import.meta.url))),'3a8be37923273c3507432983946d9072d73bdde799d9416bdb1be05b473949b2');
+  assert.equal(hash(await readFile(new URL('../src/assets/practice/question-banks/bank402.json',import.meta.url))),'74eee6b3a070cd367b993e253d5353b11be1aa43421df0adc22269c40594472b');
   assert.equal(hash(await readFile(new URL('../../题库整理/bank2027a/source/question-bank.jsonl',import.meta.url))),bank.sourceSha256);
   assert.equal(bank.questions.length,77);assert.ok(!bank.questions.some(q=>q.metadata.originalId===77));
   for(const q of bank.questions) {
@@ -31,24 +31,24 @@ test('new-bank review preserves raw source, bank402 and training identities; inc
   }
 });
 test('new questions grade, unlock only their encountered topic and deduplicate credit across levels after restart',async()=>{
-  const db=await setup(),target=localTargets(skeleton).find(t=>t.scenarioId==='S.limit.power_indeterminate');
+  const db=await setup(),target=(await localTargets(skeleton)).find(t=>t.scenarioId==='S.limit.power_indeterminate');
   try {
-    assert.deepEqual(practiceChoices(skeleton,db.loadTrail(),{includePrepared:true}),[]);
+    assert.deepEqual(await practiceChoices(skeleton,db.loadTrail(),{includePrepared:true}),[]);
     const items=await prepareLocalRound(target,skeleton,'single');
     assert.ok(items.every(q=>q.metadata.bankId==='bank2027a'));
-    let run=await db.createPracticeRun({scenarioId:target.scenarioId,methodId:target.methodId,items,localPrepared:true});
+    let run=await db.createPracticeRun({scenarioId:target.scenarioId,methodId:target.methodId,items,localPrepared:true,preparedTarget:target,preparedTarget:target});
     run=await db.gradePracticeItem(run.id,run.items[0].id,{mode:'selection',selectedIds:[items[0].routes.find(r=>r.valid).id]});
     assert.equal(run.items[0].answer.outcome,'right');
     run=await db.gradePracticeItem(run.id,run.items[1].id,{mode:'selection',selectedIds:[items[1].routes.find(r=>!r.valid).id]});
     assert.equal(run.items[1].answer.outcome,'wrong');
-    const choices=practiceChoices(skeleton,db.loadTrail(),{includePrepared:true});
+    const choices=await practiceChoices(skeleton,db.loadTrail(),{includePrepared:true});
     assert.ok(choices.some(c=>c.localReady&&c.scenarioId===target.scenarioId));
     assert.ok(choices.every(c=>!c.scenarioName.includes('傅里叶')));
     const restored=await setup(await db.exportBackup());
     try {
       const oldCounts=restored.loadTrail().mastery.map(m=>[m.targetType,m.targetId,m.successCount]);
       const q=await prepareRouteQuestion(items[0],skeleton,'multi');
-      const repeat=await restored.createPracticeRun({scenarioId:target.scenarioId,methodId:target.methodId,items:[q],localPrepared:true});
+      const repeat=await restored.createPracticeRun({scenarioId:target.scenarioId,methodId:target.methodId,items:[q],localPrepared:true,preparedTarget:target,preparedTarget:target});
       await restored.gradePracticeItem(repeat.id,repeat.items[0].id,{mode:'selection',selectedIds:q.routes.filter(r=>r.valid).map(r=>r.id)});
       assert.deepEqual(restored.loadTrail().mastery.map(m=>[m.targetType,m.targetId,m.successCount]),oldCounts);
       assert.equal(restored.loadPracticeItem(run.items[0].id).answer.outcome,'right');
@@ -61,8 +61,8 @@ test('a revised route does not rewrite an old exercise snapshot on backup/restar
   try {
     const old=await prepareRouteQuestion(before.questions.find(q=>q.metadata.originalId===47),skeleton);
     const current=await prepareRouteQuestion(bank.questions.find(q=>q.metadata.originalId===47),skeleton);
-    const target=localTargets(skeleton).find(t=>t.scenarioId===old.entranceScenarioId);
-    const run=await db.createPracticeRun({scenarioId:target.scenarioId,methodId:target.methodId,items:[current],localPrepared:true});
+    const target=(await localTargets(skeleton)).find(t=>t.scenarioId===old.entranceScenarioId);
+    const run=await db.createPracticeRun({scenarioId:target.scenarioId,methodId:target.methodId,items:[current],localPrepared:true,preparedTarget:target,preparedTarget:target});
     // 模拟更新前已保存的快照；新版创建入口应拒绝主动提交过时加工稿。
     db.ensureOpen().run('UPDATE practice_item SET question=? WHERE id=?',[JSON.stringify(old),run.items[0].id]);
     const restored=await setup(await db.exportBackup());

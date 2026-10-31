@@ -1,0 +1,927 @@
+{
+  "block_id": "B.hs_analytic",
+  "scenarios": [
+    {
+      "id": "S.hs_analytic.vector_calc",
+      "block_id": "B.hs_analytic",
+      "name": "向量线性运算与坐标运算",
+      "definition": "题面要求进行向量的加减、数乘、坐标运算，或由条件求某向量的表示。",
+      "signals": [
+        "出现向量的加法、减法或数乘",
+        "给出向量坐标",
+        "出现用基底表示的指令",
+        "要求求某个向量的坐标"
+      ],
+      "recognition_examples": [
+        "已知 $\\vec{a}=(1,2)$，$\\vec{b}=(-3,1)$，求 $2\\vec{a}-\\vec{b}$。",
+        "用基底 $\\vec{e}_1,\\vec{e}_2$ 表示 $\\vec{a}=3\\vec{e}_1-2\\vec{e}_2$。",
+        "已知 $A(1,2)$、$B(3,5)$，求向量 $\\overrightarrow{AB}$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.vector_product",
+          "how": "那里做数量积得到数值，这里只做线性运算得到向量。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_vector_calc",
+          "priority": 1,
+          "when_to_prefer": "坐标给出的向量按分量逐一加减与数乘，几乎不会出错。"
+        },
+        {
+          "method_id": "M.hs_vector_relation",
+          "priority": 2,
+          "when_to_prefer": "题目隐含共线或用终点减起点表示向量时，先写出向量关系再代坐标。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "向量首尾相接的关系不易看出时，画出向量三角形再确定加减方向。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.vector_product",
+      "block_id": "B.hs_analytic",
+      "name": "数量积、夹角与投影",
+      "definition": "题面要求求数量积、夹角、投影或模长。",
+      "signals": [
+        "出现数量积符号",
+        "要求求夹角或模长",
+        "要求求某向量在另一向量方向上的投影",
+        "给出模长与夹角"
+      ],
+      "recognition_examples": [
+        "已知 $|\\vec{a}|=2$，$|\\vec{b}|=3$，夹角 $60^{\\circ}$，求 $\\vec{a}\\cdot\\vec{b}$ 与 $|\\vec{a}+\\vec{b}|$。",
+        "求 $\\vec{a}=(1,1)$ 与 $\\vec{b}=(1,-1)$ 的夹角。",
+        "求 $\\vec{a}$ 在 $\\vec{b}$ 方向上的投影。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.vector_parallel_perp",
+          "how": "那里只判平行垂直并反求参数，这里必须算出具体数值。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.vector_calc",
+          "how": "这里做数量积得到数值，那里只做线性运算得到向量。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_dot_product",
+          "priority": 1,
+          "when_to_prefer": "求数量积优先用坐标公式；求模长把平方展开成数量积。"
+        },
+        {
+          "method_id": "M.hs_vector_relation",
+          "priority": 2,
+          "when_to_prefer": "题目给出垂直或共线条件时，先用关系式把参数定出再算数值。"
+        },
+        {
+          "method_id": "M.hs_vector_calc",
+          "priority": 3,
+          "when_to_prefer": "需要先算出和向量或差向量的坐标，再套模长与夹角公式。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.vector_parallel_perp",
+      "block_id": "B.hs_analytic",
+      "name": "共线与垂直的判定",
+      "definition": "题面要求判断或利用向量的共线、垂直关系，通常含参数。",
+      "signals": [
+        "出现向量平行或垂直符号",
+        "要求求使两向量平行的参数",
+        "条件以坐标形式给出",
+        "与三点共线或垂直平分线结合"
+      ],
+      "recognition_examples": [
+        "已知 $\\vec{a}=(1,2)$，$\\vec{b}=(x,4)$，若 $\\vec{a}\\parallel\\vec{b}$，求 $x$。",
+        "若 $\\vec{a}=(1,-1)$，$\\vec{b}=(2,m)$，$\\vec{a}\\perp\\vec{b}$，求 $m$。",
+        "判断 $A,B,C$ 三点是否共线。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.vector_product",
+          "how": "那里算数值，这里只判关系并反求参数，结论是等式或参数值。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_vector_relation",
+          "priority": 1,
+          "when_to_prefer": "平行用坐标交叉积为零，垂直用对应分量乘积之和为零，一步得方程。"
+        },
+        {
+          "method_id": "M.hs_vector_calc",
+          "priority": 2,
+          "when_to_prefer": "三点共线先化成两个向量，再用共线条件列式。"
+        },
+        {
+          "method_id": "M.hs_dot_product",
+          "priority": 3,
+          "when_to_prefer": "垂直条件也可用数量积为零表达，含模长时更好用。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.vector_geometry",
+      "block_id": "B.hs_analytic",
+      "name": "向量与几何图形（重心、系数和、轨迹）",
+      "definition": "题面把向量与几何图形结合，要求求系数或位置关系。",
+      "signals": [
+        "出现重心或中线的向量条件",
+        "出现位置向量系数和为一的条件",
+        "要求求系数之和",
+        "轨迹条件以向量形式给出"
+      ],
+      "recognition_examples": [
+        "若 $G$ 为 $\\triangle ABC$ 的重心，用 $\\overrightarrow{AB}$、$\\overrightarrow{AC}$ 表示 $\\overrightarrow{AG}$。",
+        "若 $\\overrightarrow{OP}=x\\overrightarrow{OA}+y\\overrightarrow{OB}$ 且 $x+y=1$，判断 $P$ 的轨迹。",
+        "已知 $|\\overrightarrow{PA}|=2|\\overrightarrow{PB}|$，求 $P$ 的轨迹。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.locus",
+          "how": "那里用坐标方程求轨迹，这里用向量关系直接刻画几何位置。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_vector_geometry",
+          "priority": 1,
+          "when_to_prefer": "重心用三条位置向量之和为零，共线用系数和为一，是把几何条件翻译成向量式的通用入口。"
+        },
+        {
+          "method_id": "M.hs_dot_product",
+          "priority": 2,
+          "when_to_prefer": "条件含模长或夹角时，平方后展开成数量积，可消去未知向量。"
+        },
+        {
+          "method_id": "M.hs_locus",
+          "priority": 3,
+          "when_to_prefer": "向量条件最终要写成坐标方程时，设点坐标代入后按轨迹方程流程处理。"
+        },
+        {
+          "method_id": "M.hs_vector_calc",
+          "priority": 4,
+          "when_to_prefer": "需要把目标向量用已知基底表示时，先做线性运算再代关系。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.complex_calc",
+      "block_id": "B.hs_analytic",
+      "name": "复数运算与化简",
+      "definition": "题面要求复数代数形式的四则运算、求模或化简。",
+      "signals": [
+        "出现复数乘法或除法",
+        "要求求复数的模",
+        "出现复数乘共轭",
+        "要求求共轭复数"
+      ],
+      "recognition_examples": [
+        "计算 $(1+2i)(3-i)$。",
+        "计算 $\\dfrac{1+i}{1-i}$。",
+        "已知 $z=3+4i$，求 $|z|$ 与 $\\bar{z}$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.complex_geometry",
+          "how": "那里用几何意义或模的几何解释，这里是纯代数运算。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.complex_quadratic",
+          "how": "这里只做代数化简与求模；若要去解方程并利用共轭虚根性质，归复数与实系数方程情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_complex_calc",
+          "priority": 1,
+          "when_to_prefer": "分母含虚数时分子分母同乘共轭，把除法化为实数分母再合并。"
+        },
+        {
+          "method_id": "M.hs_complex_geometry",
+          "priority": 2,
+          "when_to_prefer": "求模时可用模的乘积性质化简，比先算实虚部更快。"
+        },
+        {
+          "method_id": "M.hs_complex_trig",
+          "priority": 3,
+          "when_to_prefer": "乘除次数较多时用三角形式按模相乘、辐角相加处理，属拓展理解方式。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.complex_geometry",
+      "block_id": "B.hs_analytic",
+      "name": "复数的几何意义与模",
+      "definition": "题面要求用复数的几何意义（对应点、向量、模）解决问题。",
+      "signals": [
+        "出现复数对应点的说法",
+        "出现模等于定值的条件",
+        "要求求复平面内对应点的轨迹",
+        "出现模的几何意义"
+      ],
+      "recognition_examples": [
+        "求满足 $|z-1|=2$ 的 $z$ 在复平面内对应点的轨迹。",
+        "若 $z$ 对应点在第一象限，判断 $z$ 的实部与虚部的符号。",
+        "求 $|z-i|+|z+i|=4$ 所表示的轨迹。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.complex_calc",
+          "how": "那里算数，这里把复数当点或向量用几何解释，落点是轨迹或位置。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_complex_geometry",
+          "priority": 1,
+          "when_to_prefer": "把模解释为两点间距离，模等于定值即圆，两距离之和为定值即椭圆。"
+        },
+        {
+          "method_id": "M.hs_complex_calc",
+          "priority": 2,
+          "when_to_prefer": "先把复数化成实部加虚部乘 i 的形式，才能读出对应点坐标。"
+        },
+        {
+          "method_id": "M.hs_locus",
+          "priority": 3,
+          "when_to_prefer": "几何意义明显后仍需写出轨迹方程时，设 z 等于 x 加 yi 代入化简。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.complex_quadratic",
+      "block_id": "B.hs_analytic",
+      "name": "复数与实系数方程",
+      "definition": "题面涉及实系数一元二次方程的虚根、复数相等或复系数方程。",
+      "signals": [
+        "出现方程有虚根的说明",
+        "出现两虚根共轭",
+        "出现复数相等的条件",
+        "要求求方程的根或参数"
+      ],
+      "recognition_examples": [
+        "解方程 $x^{2}+2x+5=0$。",
+        "若实系数方程 $x^{2}+px+q=0$ 有一根为 $1+i$，求 $p,q$。",
+        "已知 $z_1=z_2$（复数相等），求 $x,y$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.complex_calc",
+          "how": "这里解方程并利用共轭根性质，不是单纯化简一个复数式。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_complex_calc",
+          "priority": 1,
+          "when_to_prefer": "判别式为负时按求根公式写出共轭虚根。"
+        },
+        {
+          "method_id": "M.hs_complex_geometry",
+          "priority": 2,
+          "when_to_prefer": "虚根在复平面内关于实轴对称，可用对称性快速写出另一根。"
+        },
+        {
+          "method_id": "M.hs_vieta",
+          "priority": 3,
+          "when_to_prefer": "已知一根求另一根或求系数时，用两根之和与两根之积列式最快。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.line_equation",
+      "block_id": "B.hs_analytic",
+      "name": "直线方程与两直线位置关系",
+      "definition": "题面要求求直线方程、判断两直线位置关系或求参数。",
+      "signals": [
+        "给出两点或一点一斜率",
+        "要求求直线方程",
+        "出现两直线平行或垂直",
+        "出现直线过定点"
+      ],
+      "recognition_examples": [
+        "求过点 $(1,2)$ 且斜率为 $-1$ 的直线方程。",
+        "判断 $l_1:2x-y+1=0$ 与 $l_2:x+2y-3=0$ 的位置关系。",
+        "若直线 $(m+1)x+y-2=0$ 与 $x-y+1=0$ 垂直，求 $m$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.circle_equation",
+          "how": "对象是直线还是圆，方程形式与位置关系判据不同。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_line_equation",
+          "priority": 1,
+          "when_to_prefer": "一点一斜率用点斜式，两点用两点式，注意验证斜率不存在的情形。"
+        },
+        {
+          "method_id": "M.hs_vector_relation",
+          "priority": 2,
+          "when_to_prefer": "判断平行或垂直时，用两直线方向向量的共线或数量积为零更快。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 3,
+          "when_to_prefer": "含参直线要按斜率是否存在、系数是否为零分类讨论。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.circle_equation",
+      "block_id": "B.hs_analytic",
+      "name": "圆的方程",
+      "definition": "题面要求求圆的方程，或由方程表示圆求参数范围。",
+      "signals": [
+        "给出圆心与半径",
+        "出现圆过三点",
+        "出现圆的一般式方程",
+        "要求求圆的方程"
+      ],
+      "recognition_examples": [
+        "求以 $(1,-2)$ 为圆心、半径为 3 的圆的标准方程。",
+        "求过三点 $A,B,C$ 的圆的方程。",
+        "若 $x^{2}+y^{2}+2x-4y+m=0$ 表示圆，求 $m$ 的范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.line_circle_position",
+          "how": "那里讨论直线与圆的关系，这里先确定圆的方程本身。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.line_equation",
+          "how": "这里确定圆的方程；若对象是直线方程或两直线的位置关系，归直线方程情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_circle_equation",
+          "priority": 1,
+          "when_to_prefer": "圆心半径已知用标准式；三点或一般式条件用待定系数解三参数。"
+        },
+        {
+          "method_id": "M.hs_undetermined_coeff",
+          "priority": 2,
+          "when_to_prefer": "过三点的圆设一般式，代入三点坐标解三元一次方程组。"
+        },
+        {
+          "method_id": "M.hs_line_equation",
+          "priority": 3,
+          "when_to_prefer": "条件与弦的中垂线有关时，先求两条中垂线方程，交点即圆心。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.line_circle_position",
+      "block_id": "B.hs_analytic",
+      "name": "直线与圆的位置关系（弦长与切线）",
+      "definition": "题面讨论直线与圆的位置关系，要求求弦长、切线方程或参数范围。",
+      "signals": [
+        "出现直线与圆相交、相切或相离",
+        "要求求弦长或切线方程",
+        "出现圆心到直线距离与半径比较",
+        "含参数求有两个交点"
+      ],
+      "recognition_examples": [
+        "求直线 $3x+4y-5=0$ 被圆 $x^{2}+y^{2}=25$ 截得的弦长。",
+        "求过点 $(3,4)$ 且与圆 $x^{2}+y^{2}=25$ 相切的直线方程。",
+        "若直线 $y=x+b$ 与圆 $x^{2}+y^{2}=1$ 相交，求 $b$ 的范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.circle_circle",
+          "how": "那里比较对象是两个圆，判据是圆心距与半径的和差。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.circle_equation",
+          "how": "这里讨论直线与圆的关系，那里先确定圆的方程本身。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.intersection",
+          "how": "这里用圆心到直线距离与半径比较、有垂径定理可用；圆锥曲线没有这一简化，必须联立后用韦达定理。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_line_circle",
+          "priority": 1,
+          "when_to_prefer": "一律先算圆心到直线距离，与半径比较定位置关系；弦长用勾股定理。"
+        },
+        {
+          "method_id": "M.hs_circle_equation",
+          "priority": 2,
+          "when_to_prefer": "求切线前先把圆的方程化成标准式，读出圆心与半径。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "含参判断交点个数时，画出圆与直线族的位置关系比纯代数更直观。"
+        },
+        {
+          "method_id": "M.hs_line_equation",
+          "priority": 4,
+          "when_to_prefer": "求切线方程时先设点斜式，注意验证斜率不存在的那条切线。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.circle_circle",
+      "block_id": "B.hs_analytic",
+      "name": "圆与圆的位置关系",
+      "definition": "题面讨论两圆的位置关系，要求求公共弦、公切线或参数。",
+      "signals": [
+        "给出两个圆的方程",
+        "要求判断两圆位置关系",
+        "要求求公共弦方程或长度",
+        "出现两圆相切求参数"
+      ],
+      "recognition_examples": [
+        "判断 $C_1:x^{2}+y^{2}=4$ 与 $C_2:(x-3)^{2}+y^{2}=1$ 的位置关系。",
+        "求两圆公共弦所在直线方程。",
+        "若两圆外切，求半径应满足的关系。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.line_circle_position",
+          "how": "这里比较两个圆，判据是圆心距与半径和、半径差的大小关系。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_line_circle",
+          "priority": 1,
+          "when_to_prefer": "把两圆位置关系归结为圆心距与半径和差比较，是统一判据。"
+        },
+        {
+          "method_id": "M.hs_circle_equation",
+          "priority": 2,
+          "when_to_prefer": "先把两个方程都化成标准式，才能读出两个圆心与两个半径。"
+        },
+        {
+          "method_id": "M.hs_line_equation",
+          "priority": 3,
+          "when_to_prefer": "公共弦方程由两圆方程相减直接得到，不必联立求交点。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.locus",
+      "block_id": "B.hs_analytic",
+      "name": "轨迹方程",
+      "definition": "题面要求求动点的轨迹方程，或判断轨迹类型。",
+      "signals": [
+        "要求求动点的轨迹方程",
+        "给出动点满足的几何条件",
+        "出现相关点法或定义法",
+        "要求说明轨迹是什么图形"
+      ],
+      "recognition_examples": [
+        "动点 $P$ 到 $A(0,2)$ 的距离与到 $x$ 轴的距离相等，求 $P$ 的轨迹方程。",
+        "已知 $P$ 在圆上运动，$Q$ 满足 $\\overrightarrow{OQ}=2\\overrightarrow{OP}$，求 $Q$ 的轨迹。",
+        "求到两定点距离之比为 2 的点 $P$ 的轨迹。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.conic_equation",
+          "how": "那里已知是哪种圆锥曲线求标准方程，这里连曲线类型都要先判断。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.vector_geometry",
+          "how": "这里用坐标方程求轨迹，那里用向量关系直接刻画几何位置。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_locus",
+          "priority": 1,
+          "when_to_prefer": "设动点坐标后按几何条件列式；能套定义时直接用定义法；有从动点用相关点法。"
+        },
+        {
+          "method_id": "M.hs_conic_def",
+          "priority": 2,
+          "when_to_prefer": "条件正好是到焦点与准线等距或到两定点距离和为定值时，直接认出圆锥曲线。"
+        },
+        {
+          "method_id": "M.hs_vector_geometry",
+          "priority": 3,
+          "when_to_prefer": "条件以向量等式给出时，先用向量关系化简再转坐标。"
+        },
+        {
+          "method_id": "M.hs_polar",
+          "priority": 4,
+          "when_to_prefer": "轨迹在极坐标下形式更简单时可用极坐标表示，属拓展写法。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.ellipse",
+      "block_id": "B.hs_analytic",
+      "name": "椭圆的定义与性质",
+      "definition": "题面围绕椭圆的定义、标准方程与几何性质求解。",
+      "signals": [
+        "出现椭圆与到两焦点距离和为定值",
+        "要求求离心率",
+        "出现三参数平方关系",
+        "要求求椭圆上点到焦点距离的范围"
+      ],
+      "recognition_examples": [
+        "求椭圆 $\\dfrac{x^{2}}{25}+\\dfrac{y^{2}}{9}=1$ 的焦点坐标与离心率。",
+        "若椭圆上一点到两焦点距离之和为 10、焦距为 6，求椭圆方程。",
+        "求椭圆 $\\dfrac{x^{2}}{4}+y^{2}=1$ 上的点到右焦点距离的最大值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.conic_equation",
+          "how": "那里统一求标准方程，这里的重点是椭圆的特有性质与参数关系。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.hyperbola",
+          "how": "这里研究椭圆的定义与参数关系；若出现渐近线或距离差的绝对值，归双曲线情景。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.parabola",
+          "how": "这里研究椭圆；若定义是到焦点与准线距离相等、只有单个参数，归抛物线情景。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.conic_focal",
+          "how": "这里是整体性质，那里聚焦与焦点相关的三角形、半径与弦。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_ellipse",
+          "priority": 1,
+          "when_to_prefer": "先由定义写出到两焦点距离和等于长轴长，再配合平方关系求离心率与范围。"
+        },
+        {
+          "method_id": "M.hs_conic_def",
+          "priority": 2,
+          "when_to_prefer": "题目只给几何条件时，先判断是否满足椭圆定义再写标准方程。"
+        },
+        {
+          "method_id": "M.hs_dot_product",
+          "priority": 3,
+          "when_to_prefer": "涉及焦点三角形中的垂直或夹角时，用数量积为零或夹角公式转化。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.hyperbola",
+      "block_id": "B.hs_analytic",
+      "name": "双曲线的定义、渐近线与离心率",
+      "definition": "题面围绕双曲线的定义、标准方程、渐近线与离心率求解。",
+      "signals": [
+        "出现双曲线与到两焦点距离差的绝对值为定值",
+        "要求求渐近线方程",
+        "要求求离心率",
+        "出现实轴与虚轴"
+      ],
+      "recognition_examples": [
+        "求双曲线 $\\dfrac{x^{2}}{4}-\\dfrac{y^{2}}{9}=1$ 的渐近线与离心率。",
+        "若双曲线的渐近线为 $y=\\pm\\frac{1}{2}x$ 且过点 $(4,\\sqrt{3})$，求其方程。",
+        "求双曲线上的点到焦点距离的最小值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.ellipse",
+          "how": "双曲线有渐近线且参数关系是 c 方等于 a 方加 b 方，定义是差的绝对值。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_hyperbola",
+          "priority": 1,
+          "when_to_prefer": "由渐近线斜率反推 a 与 b 之比，再配合离心率或过点条件定参数。"
+        },
+        {
+          "method_id": "M.hs_conic_def",
+          "priority": 2,
+          "when_to_prefer": "题目给的是距离差条件时，先归到双曲线定义再写方程。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.parabola",
+      "block_id": "B.hs_analytic",
+      "name": "抛物线的定义、准线与焦点弦",
+      "definition": "题面围绕抛物线的定义、标准方程、焦点弦与准线求解。",
+      "signals": [
+        "出现抛物线与焦点、准线",
+        "要求求焦点弦长",
+        "出现标准形式 y 方等于二 p x",
+        "出现到焦点距离等于到准线距离"
+      ],
+      "recognition_examples": [
+        "求抛物线 $y^{2}=8x$ 的焦点坐标与准线方程。",
+        "过抛物线 $y^{2}=4x$ 焦点的弦长为 8，求该弦的倾斜角。",
+        "求抛物线 $y^{2}=2x$ 上到点 $A(3,2)$ 距离最小的点。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.ellipse",
+          "how": "抛物线只有单个参数，定义是到焦点与准线距离相等，没有第二个焦点。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_parabola",
+          "priority": 1,
+          "when_to_prefer": "定义法把到焦点距离换成到准线距离，焦点弦用通径与焦半径公式。"
+        },
+        {
+          "method_id": "M.hs_conic_def",
+          "priority": 2,
+          "when_to_prefer": "题目只给距离相等条件时，先认出抛物线再写标准方程求参数。"
+        },
+        {
+          "method_id": "M.hs_param_line",
+          "priority": 3,
+          "when_to_prefer": "焦点弦问题设直线的参数方程，用参数 t 的几何意义表示两交点间距，属拓展写法。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.conic_equation",
+      "block_id": "B.hs_analytic",
+      "name": "圆锥曲线标准方程的确定",
+      "definition": "题面要求根据条件求椭圆、双曲线或抛物线的标准方程。",
+      "signals": [
+        "要求求标准方程",
+        "给出焦点位置与三参数中的若干",
+        "出现经过某点且某条件的组合",
+        "出现焦点在横轴或纵轴上的限定"
+      ],
+      "recognition_examples": [
+        "求焦点在 $x$ 轴上、经过 $(2,-\\sqrt{2})$ 且离心率为 $\\frac{\\sqrt{2}}{2}$ 的椭圆方程。",
+        "求与已知双曲线共渐近线且过某点的双曲线方程。",
+        "求顶点在原点、焦点为 $(0,2)$ 的抛物线方程。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.locus",
+          "how": "那里轨迹类型未知，这里已确定是哪种圆锥曲线，只需求标准形式。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.ellipse",
+          "how": "这里统一求标准方程，那里的重点是椭圆的特有性质与参数关系。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_conic_def",
+          "priority": 1,
+          "when_to_prefer": "先按定义或焦点位置确定曲线类型与开口方向，再设对应标准形式。"
+        },
+        {
+          "method_id": "M.hs_undetermined_coeff",
+          "priority": 2,
+          "when_to_prefer": "设出带参标准式后，用给定的点与离心率条件解方程组定系数。"
+        },
+        {
+          "method_id": "M.hs_ellipse",
+          "priority": 3,
+          "when_to_prefer": "椭圆题中离心率与平方关系是两个独立条件，配合过点条件即可定参。"
+        },
+        {
+          "method_id": "M.hs_hyperbola",
+          "priority": 4,
+          "when_to_prefer": "共渐近线的双曲线题设统一形式再代点，可省去讨论焦点位置。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.conic_focal",
+      "block_id": "B.hs_analytic",
+      "name": "焦点三角形与焦半径",
+      "definition": "题面围绕焦点三角形、焦半径、焦点弦的性质求解。",
+      "signals": [
+        "出现焦点三角形",
+        "要求求焦点处的角",
+        "出现焦半径",
+        "出现过焦点的弦"
+      ],
+      "recognition_examples": [
+        "椭圆 $\\dfrac{x^{2}}{9}+\\dfrac{y^{2}}{4}=1$ 上一点 $P$ 满足 $\\angle F_1PF_2=90^{\\circ}$，求 $\\triangle PF_1F_2$ 的面积。",
+        "求椭圆焦半径的取值范围。",
+        "过抛物线焦点的弦 $AB$，求 $\\dfrac{1}{|AF|}+\\dfrac{1}{|BF|}$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.ellipse",
+          "how": "那里是整体性质，这里聚焦与焦点相关的三角形、半径与弦。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_ellipse",
+          "priority": 1,
+          "when_to_prefer": "椭圆焦点三角形同时用定义（和为定值）与余弦定理，可解出角或面积。"
+        },
+        {
+          "method_id": "M.hs_hyperbola",
+          "priority": 2,
+          "when_to_prefer": "双曲线焦点三角形用距离差配合余弦定理，注意取绝对值。"
+        },
+        {
+          "method_id": "M.hs_parabola",
+          "priority": 3,
+          "when_to_prefer": "抛物线焦点弦把焦半径换成到准线距离，倒数和为定值可一步得出。"
+        },
+        {
+          "method_id": "M.hs_conic_def",
+          "priority": 4,
+          "when_to_prefer": "条件只给距离关系时，先用定义把两个焦半径联系起来再计算。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.intersection",
+      "block_id": "B.hs_analytic",
+      "name": "联立与韦达定理（弦长与中点）",
+      "definition": "题面要求把直线与圆锥曲线联立，用韦达定理求弦长、中点或参数。",
+      "signals": [
+        "出现直线与曲线交于两点的说明",
+        "要求求弦长",
+        "出现弦的中点",
+        "要求求斜率的值"
+      ],
+      "recognition_examples": [
+        "直线 $y=x+1$ 与椭圆 $\\dfrac{x^{2}}{4}+y^{2}=1$ 交于 $A,B$，求 $|AB|$。",
+        "求直线被抛物线截得的弦中点坐标。",
+        "若弦 $AB$ 的中点为 $(1,1)$，求直线 $AB$ 的斜率。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.line_circle_position",
+          "how": "圆有垂径定理的几何简化，圆锥曲线必须联立后用韦达定理。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.fixed_point",
+          "how": "这里求具体弦长或中点，那里要证明结论与参数无关，需要消参或定值化。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_vieta",
+          "priority": 1,
+          "when_to_prefer": "联立消元得二次方程后，用两根之和与两根之积表示弦长与中点，不必解出根。"
+        },
+        {
+          "method_id": "M.hs_conic_def",
+          "priority": 2,
+          "when_to_prefer": "交点满足曲线定义时，先用定义把几何量转成参数关系再联立。"
+        },
+        {
+          "method_id": "M.hs_param_line",
+          "priority": 3,
+          "when_to_prefer": "直线过定点且需两点间距离时，用直线参数方程把弦长转成参数差，属拓展写法。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.fixed_point",
+      "block_id": "B.hs_analytic",
+      "name": "定点与定值问题",
+      "definition": "题面在直线与圆锥曲线的运动中，要求证明某点或某值恒定，或求定点。",
+      "signals": [
+        "要求证明直线过定点",
+        "要求证明某量为定值",
+        "出现含参数的直线族",
+        "结论与参数无关"
+      ],
+      "recognition_examples": [
+        "直线 $l:y=kx+m$ 与椭圆交于 $A,B$，且 $OA\\perp OB$，证明 $l$ 过定点。",
+        "证明弦 $AB$ 的中点在某定直线上。",
+        "证明 $|PA|\\cdot|PB|$ 为定值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.intersection",
+          "how": "那里求具体弦长或中点，这里要证明结论与参数无关，需要消参或定值化。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.range_extremum",
+          "how": "这里结论恒定，那里结论随参数变化，需要建目标函数求最优。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_fixed_value",
+          "priority": 1,
+          "when_to_prefer": "设而不求写出韦达关系，再把条件化成含参数的恒等式，令参数系数为零定出定点。"
+        },
+        {
+          "method_id": "M.hs_vieta",
+          "priority": 2,
+          "when_to_prefer": "联立后用两根之和与积替换所有交点坐标，是消参的基础操作。"
+        },
+        {
+          "method_id": "M.hs_vector_relation",
+          "priority": 3,
+          "when_to_prefer": "垂直或共线条件用向量数量积与共线式表达，可避免写出斜率。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.range_extremum",
+      "block_id": "B.hs_analytic",
+      "name": "范围与最值问题",
+      "definition": "题面要求求圆锥曲线中某量（弦长、面积、斜率、距离）的范围或最值。",
+      "signals": [
+        "要求求面积的取值范围",
+        "要求求弦长的最大值",
+        "含参数并受判别式约束",
+        "出现存在某参数使条件成立的范围"
+      ],
+      "recognition_examples": [
+        "直线与椭圆相交，求 $\\triangle OAB$ 面积的最大值。",
+        "求椭圆上的点到直线 $x+y-4=0$ 距离的最小值。",
+        "求 $k$ 的范围使直线与双曲线有两个交点。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.fixed_point",
+          "how": "那里结论恒定，这里结论随参数变化，需要建目标函数求最优。"
+        },
+        {
+          "scenario_id": "S.hs_analytic.existence",
+          "how": "这里求范围，那里先判断存在再求解，可能结论为不存在。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_range",
+          "priority": 1,
+          "when_to_prefer": "先把目标量写成参数的函数，再由判别式大于零给出参数定义域，最后求最值。"
+        },
+        {
+          "method_id": "M.hs_vieta",
+          "priority": 2,
+          "when_to_prefer": "弦长与面积都要用两根之和与积表示，联立后统一替换。"
+        },
+        {
+          "method_id": "M.hs_basic_inequality",
+          "priority": 3,
+          "when_to_prefer": "目标函数化成和与积的定值结构时，用基本不等式一步给出上下界。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 4,
+          "when_to_prefer": "几何最值（如点到直线距离）用图形位置或对称点判断更直接。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_analytic.existence",
+      "block_id": "B.hs_analytic",
+      "name": "存在性与探究性问题",
+      "definition": "题面问是否存在某点、某直线或某斜率使条件成立，要求判断并求值。",
+      "signals": [
+        "出现是否存在的问法",
+        "要求若存在求出、若不存在说明理由",
+        "含参数并要求存在某参数使条件成立",
+        "常与定点定值、垂直条件结合"
+      ],
+      "recognition_examples": [
+        "是否存在直线 $l$ 使 $OA\\perp OB$？若存在，求其方程。",
+        "是否存在点 $P$ 使 $\\triangle PAB$ 为等边三角形？",
+        "若存在 $k$ 使弦长为 2，求 $k$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_analytic.range_extremum",
+          "how": "那里求范围，这里先判断存在再求解，可能结论为不存在。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_existence",
+          "priority": 1,
+          "when_to_prefer": "假设存在并把条件化为方程，再由判别式或参数范围判断是否有解。"
+        },
+        {
+          "method_id": "M.hs_fixed_value",
+          "priority": 2,
+          "when_to_prefer": "存在性与定点定值常同时出现，先算定值部分可简化存在性判断。"
+        },
+        {
+          "method_id": "M.hs_vieta",
+          "priority": 3,
+          "when_to_prefer": "存在两点满足条件时，用韦达定理给出参数需满足的等式与判别式条件。"
+        },
+        {
+          "method_id": "M.hs_contradiction",
+          "priority": 4,
+          "when_to_prefer": "结论应为不存在时，反证法能给出最简洁的说明。"
+        }
+      ]
+    }
+  ]
+}

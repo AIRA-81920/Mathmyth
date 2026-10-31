@@ -1,7 +1,7 @@
 {
   "name": "mathmyth-frontend",
   "private": true,
-  "version": "3.5.0",
+  "version": "4.2.1",
   "type": "module",
   "main": "electron/main.cjs",
   "overrides": {
@@ -20,7 +20,8 @@
     "android:build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-android.ps1",
     "predesktop:build": "node scripts/copy-pdf-assets.mjs",
     "desktop:build": "node scripts/build-desktop.mjs",
-    "desktop:run": "electron ."
+    "desktop:run": "electron .",
+    "bank:manifest": "node scripts/build-reviewed-manifest.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",

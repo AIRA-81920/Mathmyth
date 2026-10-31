@@ -1,0 +1,1019 @@
+{
+  "block_id": "B.hs_trig",
+  "methods": [
+    {
+      "id": "M.hs_trig_identity",
+      "name": "同角关系与诱导公式",
+      "aliases": [
+        "平方关系",
+        "商数关系",
+        "诱导公式"
+      ],
+      "one_liner": "用平方关系、商数关系与诱导公式，在同一个角的不同三角函数之间互相转化。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.identity_eval",
+        "S.hs_trig.identity_transform",
+        "S.hs_trig.angle_relation"
+      ],
+      "triggers": [
+        "已知一个三角函数值求其余",
+        "出现 π 加减或 π/2 加减的角变换",
+        "出现正弦与余弦的平方和",
+        "需要按象限定符号"
+      ],
+      "steps": [
+        "先按象限定出所求函数的符号",
+        "用平方关系补齐另一个同名函数",
+        "用商数关系把正弦余弦比化为正切",
+        "用诱导公式把大角或负角化到锐角区间"
+      ],
+      "preconditions": [
+        "角所在象限已知或可由条件推出",
+        "函数值在合法范围内"
+      ],
+      "not_applicable": [
+        "象限未定且无法从条件推出",
+        "涉及非特殊角的高精度近似"
+      ],
+      "pitfalls": [
+        "开平方时漏掉正负两种可能",
+        "诱导公式的符号记错"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_trig_addition",
+          "note": "若式子含和差角结构，应先用和差公式再收束"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 sin α=3/5 且 α 为第二象限角，求 tan α。",
+          "answer_sketch": "由平方关系得 cos α=-4/5，再由商数关系得 tan α=-3/4。",
+          "scenario_id": "S.hs_trig.identity_eval"
+        },
+        {
+          "statement": "已知 tan α=2，求 (sin α+cos α)/(sin α-cos α)。",
+          "answer_sketch": "分子分母同除 cos α 化为正切式，得 (2+1)/(2-1)=3。",
+          "scenario_id": "S.hs_trig.identity_eval"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_trig_addition",
+      "name": "和差角与二倍角公式",
+      "aliases": [
+        "两角和差公式",
+        "二倍角公式",
+        "降幂公式"
+      ],
+      "one_liner": "按角的关系展开或收缩三角函数式，把陌生的角化为已知角，把二次项降为一次项。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.identity_eval",
+        "S.hs_trig.identity_transform",
+        "S.hs_trig.auxiliary_angle",
+        "S.hs_trig.angle_relation"
+      ],
+      "triggers": [
+        "出现两角之和或之差",
+        "出现二倍角的正弦余弦",
+        "出现正弦或余弦的平方需要降幂",
+        "需要把非特殊角拆成特殊角组合"
+      ],
+      "steps": [
+        "判断该展开还是该收缩：求值多展开，化简多收缩",
+        "用和差角公式把目标角拆成已知角的组合",
+        "用二倍角与降幂公式统一函数次数",
+        "合并同类项并化简到最简形式"
+      ],
+      "preconditions": [
+        "涉及的角都在定义域内",
+        "已知角的函数值可获得"
+      ],
+      "not_applicable": [
+        "角之间无和差或倍角关系",
+        "需要在极高精度下数值计算"
+      ],
+      "pitfalls": [
+        "和角公式中余弦的符号写成加号",
+        "降幂公式漏掉系数 1/2"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_auxiliary_angle",
+          "note": "降幂后往往还要化一才能求性质"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_angle_combination",
+          "note": "三角求值的两条路径：直接展开和差角，或先凑角再展开。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 cos 20°·cos 40°·cos 80° 的值。",
+          "answer_sketch": "分子分母同乘 sin20°，连续用二倍角公式收缩，最终得 1/8。",
+          "scenario_id": "S.hs_trig.identity_transform"
+        },
+        {
+          "statement": "已知 sin α=3/5、cos β=5/13 且 α、β 为锐角，求 cos(α+β)。",
+          "answer_sketch": "先补齐 cos α 与 sin β，再按和角余弦公式展开代入，得 16/65。",
+          "scenario_id": "S.hs_trig.angle_relation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_angle_combination",
+      "name": "凑角法",
+      "aliases": [
+        "角的拆分",
+        "凑配角"
+      ],
+      "one_liner": "把所求角写成已知角的和或差，使未知角的函数值可由已知角的公式算出。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.identity_eval",
+        "S.hs_trig.identity_transform",
+        "S.hs_trig.angle_relation"
+      ],
+      "triggers": [
+        "所求角与已知角存在和差关系",
+        "出现整体角如 α-π/6 的已知值",
+        "直接求目标角缺少条件"
+      ],
+      "steps": [
+        "写出目标角与已知角的加减关系",
+        "用和差角公式把目标展开为已知量",
+        "结合角的范围确定符号",
+        "合并结果并检验是否落在合理区间"
+      ],
+      "preconditions": [
+        "目标角能由已知角线性表示",
+        "角的范围足以定号"
+      ],
+      "not_applicable": [
+        "目标角与已知角无线性关系",
+        "角的范围完全未知"
+      ],
+      "pitfalls": [
+        "凑角方向写反导致符号错误",
+        "忽略范围导致多解未舍去"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_trig_addition",
+          "note": "凑角完成后必须用和差角公式展开"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_trig_addition",
+          "note": "三角求值的两条路径：直接展开和差角，或先凑角再展开。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 tan(α+β)=1/3、tan β=1/2，求 tan α。",
+          "answer_sketch": "把 α 写成 (α+β)-β，用差角正切公式代入得 1/7。",
+          "scenario_id": "S.hs_trig.angle_relation"
+        },
+        {
+          "statement": "已知 cos(α-π/6)=3/5，求 sin α。",
+          "answer_sketch": "把 α 写成 (α-π/6)+π/6，展开后代入已知值并定号。",
+          "scenario_id": "S.hs_trig.angle_relation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_auxiliary_angle",
+      "name": "降幂与辅助角（化一）",
+      "aliases": [
+        "辅助角公式",
+        "化一公式",
+        "合一变形"
+      ],
+      "one_liner": "把正弦与余弦的线性组合合并成一个正弦型函数，便于统一求周期、单调与最值。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.identity_transform",
+        "S.hs_trig.auxiliary_angle",
+        "S.hs_trig.graph_property",
+        "S.hs_trig.trig_equation"
+      ],
+      "triggers": [
+        "出现正弦与余弦的线性组合",
+        "出现二次齐次三角式",
+        "需要求周期或最值但式子非标准型"
+      ],
+      "steps": [
+        "先用降幂与二倍角把二次式化为一次",
+        "提取根号下平方和作为振幅",
+        "写成振幅乘以正弦（或余弦）的相位形式",
+        "由标准型读出周期、单调区间与最值"
+      ],
+      "preconditions": [
+        "两项的自变量相同",
+        "系数为实数"
+      ],
+      "not_applicable": [
+        "两项自变量不同且无法统一",
+        "含非正弦余弦的三角函数"
+      ],
+      "pitfalls": [
+        "振幅漏开根号",
+        "初相角用错象限导致相位偏移"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_trig_addition",
+          "note": "化一前通常先降幂统一次数"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 f(x)=sin x+√3cos x 的最大值与最小正周期。",
+          "answer_sketch": "化一为 2sin(x+π/3)，最大值 2，周期 2π。",
+          "scenario_id": "S.hs_trig.auxiliary_angle"
+        },
+        {
+          "statement": "求 f(x)=2sin^2 x+2√3sin x cos x 的单调递增区间。",
+          "answer_sketch": "降幂后化一为 1+2sin(2x-π/6)，再解相位落在递增区间内的不等式。",
+          "scenario_id": "S.hs_trig.auxiliary_angle"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_trig_global",
+      "name": "整体代换求性质",
+      "aliases": [
+        "相位整体化",
+        "整体法"
+      ],
+      "one_liner": "把相位整体看作一个新变量，按标准正弦或余弦的结论反解自变量范围。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.auxiliary_angle",
+        "S.hs_trig.graph_property",
+        "S.hs_trig.graph_transform",
+        "S.hs_trig.omega_param",
+        "S.hs_trig.trig_equation",
+        "S.hs_trig.trig_model"
+      ],
+      "triggers": [
+        "函数已是标准正弦型",
+        "求单调区间或对称轴",
+        "求给定区间上的值域",
+        "含参数频率需要讨论"
+      ],
+      "steps": [
+        "令 t 等于相位，写出 t 的取值范围",
+        "把问题转化为标准正弦或余弦在区间上的性质",
+        "在 t 的范围内解出满足条件的 t 集合",
+        "反解 x 并写含整数 k 的通解"
+      ],
+      "preconditions": [
+        "函数能写成单一正弦或余弦型",
+        "自变量区间已知"
+      ],
+      "not_applicable": [
+        "函数无法化为单一三角函数",
+        "区间边界含未知参数且未讨论"
+      ],
+      "pitfalls": [
+        "忘记相位在新变量下的范围随 x 变化",
+        "通解中漏写整数 k"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_auxiliary_angle",
+          "note": "非标准型先化一，再用整体代换"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 f(x)=2sin(2x-π/3) 的最小正周期与单调递增区间。",
+          "answer_sketch": "周期 π；令 t=2x-π/3 落在 [-π/2+2kπ, π/2+2kπ] 内反解 x。",
+          "scenario_id": "S.hs_trig.graph_property"
+        },
+        {
+          "statement": "求 f(x)=cos(3x+π/4) 的对称轴方程。",
+          "answer_sketch": "令相位等于 kπ，解出 x 即得对称轴。",
+          "scenario_id": "S.hs_trig.graph_property"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_trig_equation",
+      "name": "三角方程与解集",
+      "aliases": [
+        "基本三角方程",
+        "单位圆写解集"
+      ],
+      "one_liner": "把方程化为正弦或余弦等于常数的基本形式，用单位圆或图象写出通解并限定区间。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.auxiliary_angle",
+        "S.hs_trig.graph_property",
+        "S.hs_trig.omega_param",
+        "S.hs_trig.trig_equation"
+      ],
+      "triggers": [
+        "出现三角函数等于常数",
+        "要求求解集",
+        "要求数区间内解的个数",
+        "出现三角不等式"
+      ],
+      "steps": [
+        "先化为基本形式 sin t=a 或 cos t=a",
+        "用单位圆找出一个特解",
+        "按对称性写出全部通解",
+        "用给定区间筛选并数出解的个数"
+      ],
+      "preconditions": [
+        "常数的绝对值不超过 1",
+        "区间已明确"
+      ],
+      "not_applicable": [
+        "常数超出函数值域",
+        "方程含两个不同频率且无法化一"
+      ],
+      "pitfalls": [
+        "只写一个特解漏掉另一支",
+        "区间端点是否含等号判断错误"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_trig_global",
+          "note": "含复合相位时先整体代换再解"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "解方程 2sin x-1=0（x 属于 [0,2π)）。",
+          "answer_sketch": "sin x=1/2，特解 π/6，另一支 5π/6，均在区间内。",
+          "scenario_id": "S.hs_trig.trig_equation"
+        },
+        {
+          "statement": "若方程 sin x=a 在 [0,π] 上有两解，求 a 的范围。",
+          "answer_sketch": "由正弦在 [0,π] 上的对称性，需 0≤a<1。",
+          "scenario_id": "S.hs_trig.trig_equation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_trig_graph_transform",
+      "name": "三角函数图象变换",
+      "aliases": [
+        "先平移后伸缩",
+        "五点法"
+      ],
+      "one_liner": "按平移与伸缩的先后顺序逐步改写解析式，或用五点法由图象反求三个参数。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.graph_transform",
+        "S.hs_trig.omega_param",
+        "S.hs_trig.trig_model"
+      ],
+      "triggers": [
+        "出现平移或横坐标伸缩",
+        "给出图象要求写解析式",
+        "要求求频率与初相",
+        "比较两种变换顺序"
+      ],
+      "steps": [
+        "明确先平移还是先伸缩，两种顺序不可混用",
+        "先平移时平移量直接作用在 x 上，先伸缩时平移量要除以频率",
+        "由图象读周期定频率、读最值定振幅",
+        "代入特殊点求初相并检验"
+      ],
+      "preconditions": [
+        "原函数为标准正弦型",
+        "变换方向与量已明确"
+      ],
+      "not_applicable": [
+        "只有部分图象且周期不可读",
+        "变换量以参数形式给出且未讨论"
+      ],
+      "pitfalls": [
+        "先伸缩后平移时平移量未除以频率",
+        "初相取值未按图象单调趋势筛选"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_omega_range",
+          "note": "由图象间距反求频率时用频率范围约束"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_omega_range",
+          "note": "由图象定参数的两条路径：按变换顺序改写，或由周期与区间约束反解频率。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "把 y=sin x 的图象横坐标缩短为原来的 1/2，再向左平移 π/6，求所得函数。",
+          "answer_sketch": "先伸缩得 sin2x，再左移 π/6 得 sin(2x+π/3)。",
+          "scenario_id": "S.hs_trig.graph_transform"
+        },
+        {
+          "statement": "由图象的最高点与相邻零点求 y=Asin(ωx+φ) 的解析式。",
+          "answer_sketch": "最高点纵坐标定 A，相邻零点间距为半周期定 ω，再代点定 φ。",
+          "scenario_id": "S.hs_trig.graph_transform"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_omega_range",
+      "name": "含参频率的范围讨论",
+      "aliases": [
+        "ω 的取值范围",
+        "区间包含法"
+      ],
+      "one_liner": "把单调、零点、对称等条件翻译成相位区间，再由区间包含关系解出频率的范围。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.graph_transform",
+        "S.hs_trig.omega_param"
+      ],
+      "triggers": [
+        "解析式中频率未知",
+        "出现区间上单调的条件",
+        "出现区间内零点个数的条件",
+        "要求频率的最大值"
+      ],
+      "steps": [
+        "写出相位在给定自变量区间内的取值范围（含频率）",
+        "把条件翻译成相位区间落在某个标准区间内",
+        "由区间包含关系列出关于频率的不等式",
+        "解不等式并按正整数或正数约束取范围"
+      ],
+      "preconditions": [
+        "频率为正",
+        "给定区间有限"
+      ],
+      "not_applicable": [
+        "区间无限且条件为全局性质",
+        "频率与其他参数同时未知且无法分离"
+      ],
+      "pitfalls": [
+        "用端点值代入而不检验区间内部",
+        "忽略频率必须为正"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_trig_global",
+          "note": "整体代换是写出相位区间的必要步骤"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_trig_graph_transform",
+          "note": "由图象定参数的两条路径：按变换顺序改写，或由周期与区间约束反解频率。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "若 f(x)=sin(ωx+π/3) 在 [0,π/2] 上单调递增，求 ω 的范围。",
+          "answer_sketch": "相位从 π/3 增到 πω/2+π/3，需整体不超过 π/2，得 0<ω≤1/3。",
+          "scenario_id": "S.hs_trig.omega_param"
+        },
+        {
+          "statement": "若 f(x)=2sin(ωx) 在 [0,π] 上恰有两个零点，求 ω 的范围。",
+          "answer_sketch": "零点位于 kπ/ω，要求 π/ω 落在 (1,2] 之间，得 1/2≤ω<1。",
+          "scenario_id": "S.hs_trig.omega_param"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_sine_rule",
+      "name": "正弦定理",
+      "aliases": [
+        "正弦定理",
+        "边角正弦比"
+      ],
+      "one_liner": "用边与对角正弦成正比，把已知两角一边或两边一对角的条件转化为可解的方程。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.sine_cosine_rule",
+        "S.hs_trig.triangle_shape",
+        "S.hs_trig.area",
+        "S.hs_trig.triangle_extremum",
+        "S.hs_trig.multi_triangle",
+        "S.hs_trig.measurement"
+      ],
+      "triggers": [
+        "已知两角及一边",
+        "已知两边及其中一边的对角",
+        "出现边与对角正弦成比例",
+        "要求把边化成角的正弦"
+      ],
+      "steps": [
+        "写出边与对角正弦的比值等式",
+        "代入已知量求出未知边或角",
+        "两边一对角时按大边对大角判断解个数",
+        "必要时把边统一化为角的正弦再化简"
+      ],
+      "preconditions": [
+        "已知条件含至少一组边与对角",
+        "三角形内角和为 π"
+      ],
+      "not_applicable": [
+        "只给三边而不给任何角",
+        "只给两边及夹角"
+      ],
+      "pitfalls": [
+        "两边一对角时漏掉第二种解",
+        "正弦值相同但角互补未讨论"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_cosine_rule",
+          "note": "已知两边及夹角时余弦定理更直接"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_cosine_rule",
+          "note": "解三角形的两条主路径：已知两角一边用正弦定理，已知两边夹角或三边用余弦定理。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 A=30°、B=45°、a=2，求 b。",
+          "answer_sketch": "由正弦定理 b/sin B=a/sin A，得 b=2√2。",
+          "scenario_id": "S.hs_trig.sine_cosine_rule"
+        },
+        {
+          "statement": "已知 a=2、b=3、A=30°，判断三角形解的个数。",
+          "answer_sketch": "由正弦定理求 sin B=3/4，B 有锐角与钝角两解且都使内角和合法，故两解。",
+          "scenario_id": "S.hs_trig.sine_cosine_rule"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_cosine_rule",
+      "name": "余弦定理",
+      "aliases": [
+        "余弦定理",
+        "三边求角"
+      ],
+      "one_liner": "用三边与夹角的关系式，在已知两边及夹角或三边时直接求出第三边或角。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.sine_cosine_rule",
+        "S.hs_trig.triangle_shape",
+        "S.hs_trig.area",
+        "S.hs_trig.triangle_extremum",
+        "S.hs_trig.multi_triangle",
+        "S.hs_trig.measurement"
+      ],
+      "triggers": [
+        "已知两边及夹角求第三边",
+        "已知三边求角",
+        "出现三边平方组合的等式",
+        "需要把角化为边的等式"
+      ],
+      "steps": [
+        "按所求对象选择余弦定理的三种写法之一",
+        "代入已知量求边或角",
+        "三边求角时先求最大边对应的角以判断形状",
+        "把结果代回检验三角形不等式"
+      ],
+      "preconditions": [
+        "至少已知三边或两边一夹角",
+        "三角形存在（任意两边之和大于第三边）"
+      ],
+      "not_applicable": [
+        "已知两角一边且无夹角信息",
+        "条件不足以确定三角形"
+      ],
+      "pitfalls": [
+        "夹角对应关系搞错，把非夹角代入公式",
+        "求角后未检验是否为钝角"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_triangle_area",
+          "note": "求面积前常先用余弦定理补齐边长"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_sine_rule",
+          "note": "解三角形的两条主路径：已知两角一边用正弦定理，已知两边夹角或三边用余弦定理。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在三角形中 a=2、b=3、C=60°，求 c。",
+          "answer_sketch": "c^2=4+9-2·2·3·cos60°=7，故 c=√7。",
+          "scenario_id": "S.hs_trig.sine_cosine_rule"
+        },
+        {
+          "statement": "若 a^2+b^2-c^2=ab，求 C。",
+          "answer_sketch": "由余弦定理 cos C=1/2，故 C=60°。",
+          "scenario_id": "S.hs_trig.triangle_shape"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_side_angle",
+      "name": "边角互化",
+      "aliases": [
+        "化边为角",
+        "化角为边",
+        "统一形式"
+      ],
+      "one_liner": "把条件中的边与角统一成同一种量，使等式变为可因式分解的代数式。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.sine_cosine_rule",
+        "S.hs_trig.triangle_shape",
+        "S.hs_trig.multi_triangle"
+      ],
+      "triggers": [
+        "条件混合边与三角函数",
+        "要求判断三角形形状",
+        "等式两边量纲不一致"
+      ],
+      "steps": [
+        "判断化边为角还是化角为边更简单",
+        "用正弦定理把边换成对角的正弦，或用余弦定理把角换成边",
+        "整理成可因式分解的形式",
+        "由因式为零得出关系并判断形状"
+      ],
+      "preconditions": [
+        "存在可用的边角关系式",
+        "统一后等式可分解"
+      ],
+      "not_applicable": [
+        "条件已完全只含一种量",
+        "统一后次数过高无法处理"
+      ],
+      "pitfalls": [
+        "化角为边时把 sin A 直接换成 a 而漏掉公共系数",
+        "因式分解后丢掉一个因子对应的情形"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_sine_rule",
+          "note": "化边为角需要正弦定理作为桥梁"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "若 a·cos A=b·cos B，判断三角形形状。",
+          "answer_sketch": "化边为角得 sinAcosA=sinBcosB，即 sin2A=sin2B，故为等腰或直角三角形。",
+          "scenario_id": "S.hs_trig.triangle_shape"
+        },
+        {
+          "statement": "若 (a+b+c)(a+b-c)=3ab，求 C。",
+          "answer_sketch": "展开化简得 a^2+b^2-c^2=ab，再用余弦定理得 C=60°。",
+          "scenario_id": "S.hs_trig.triangle_shape"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_triangle_area",
+      "name": "三角形面积公式",
+      "aliases": [
+        "两边夹角面积",
+        "内切圆面积关系"
+      ],
+      "one_liner": "用两边及其夹角正弦的一半求面积，或用面积等于半周长乘内切圆半径。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.sine_cosine_rule",
+        "S.hs_trig.triangle_shape",
+        "S.hs_trig.area",
+        "S.hs_trig.triangle_extremum",
+        "S.hs_trig.multi_triangle",
+        "S.hs_trig.measurement"
+      ],
+      "triggers": [
+        "要求求三角形面积",
+        "给出角与两边",
+        "出现内切圆半径",
+        "面积用于替代长度比"
+      ],
+      "steps": [
+        "选择合适的两边与夹角代入面积公式",
+        "缺边或缺角时先用正余弦定理补齐",
+        "涉及内切圆时用面积等于半周长乘半径",
+        "检验结果是否为正且符合实际量级"
+      ],
+      "preconditions": [
+        "至少已知两边及其夹角或三边",
+        "内切圆半径需与三边同时已知"
+      ],
+      "not_applicable": [
+        "只知道三个角而不知任何边",
+        "图形不是三角形"
+      ],
+      "pitfalls": [
+        "夹角取成了非两边的夹角",
+        "内切圆公式漏掉 1/2"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_cosine_rule",
+          "note": "缺边时先用余弦定理补边"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "在三角形中 a=3、b=4、C=60°，求面积。",
+          "answer_sketch": "S=1/2·3·4·sin60°=3√3。",
+          "scenario_id": "S.hs_trig.area"
+        },
+        {
+          "statement": "若三角形周长为 12、内切圆半径为 1，求面积。",
+          "answer_sketch": "由 S=1/2·周长·r 得 S=6。",
+          "scenario_id": "S.hs_trig.area"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_triangle_extremum",
+      "name": "解三角形最值（函数化与不等式）",
+      "aliases": [
+        "三角形最值",
+        "范围问题"
+      ],
+      "one_liner": "把目标量写成关于某个角的三角函数，或用余弦定理配基本不等式，再求范围。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.triangle_extremum"
+      ],
+      "triggers": [
+        "要求面积或周长的最值",
+        "给定一角和一边",
+        "出现锐角三角形的限制",
+        "要求某两边之和的范围"
+      ],
+      "steps": [
+        "用正弦定理把目标量化为关于角的表达式",
+        "确定角的允许范围（内角和或锐角约束）",
+        "用化一公式或有界性求值域",
+        "若目标含平方关系，改用余弦定理配基本不等式"
+      ],
+      "preconditions": [
+        "三角形由给定条件可确定一族",
+        "角的范围可写出"
+      ],
+      "not_applicable": [
+        "三角形被完全确定无自由度",
+        "条件互相矛盾无法构成三角形"
+      ],
+      "pitfalls": [
+        "漏掉锐角条件导致角的范围放宽",
+        "取等条件对应的角不在允许范围内"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_sine_rule",
+          "note": "函数化依赖正弦定理把边换成角"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "在三角形中 A=60°、a=2，求面积的最大值。",
+          "answer_sketch": "由余弦定理 4=b^2+c^2-bc≥bc，得 bc≤4，面积最大为 √3。",
+          "scenario_id": "S.hs_trig.triangle_extremum"
+        },
+        {
+          "statement": "已知 a=2、A=π/3，求 b+c 的取值范围。",
+          "answer_sketch": "用正弦定理把 b+c 化为关于 B 的正弦型，B 在 (0,2π/3) 内，得 (√3,2√3]。",
+          "scenario_id": "S.hs_trig.triangle_extremum"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_measure",
+      "name": "实际测量建模",
+      "aliases": [
+        "仰角俯角",
+        "方位角换算"
+      ],
+      "one_liner": "把测量情境画成含直角或可解三角形，再用正余弦定理求不可直接测量的距离。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.measurement"
+      ],
+      "triggers": [
+        "出现仰角、俯角、方位角",
+        "出现不可到达的两点距离",
+        "给出示意图与已知长度",
+        "要求求塔高或河宽"
+      ],
+      "steps": [
+        "按文字画出点与视线，标出所有已知角与已知边",
+        "把方位角换算成三角形内角",
+        "选择合适的直角三角形或斜三角形",
+        "用正余弦定理求解并检验合理性"
+      ],
+      "preconditions": [
+        "情境可以抽象成平面三角形",
+        "已知量足以确定目标量"
+      ],
+      "not_applicable": [
+        "地形起伏导致必须用三维处理",
+        "已知量不足以确定图形"
+      ],
+      "pitfalls": [
+        "方位角与内角混用",
+        "仰角基准取错导致高度算错"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_sine_rule",
+          "note": "不可达距离多用正弦定理求解"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "在 A 点测得塔顶仰角 30°，向塔走 50 m 后测得仰角 45°，求塔高。",
+          "answer_sketch": "设塔高 h，由两直角三角形得 h/tan30°-h/tan45°=50，解得 h=25(√3+1)。",
+          "scenario_id": "S.hs_trig.measurement"
+        },
+        {
+          "statement": "在河岸测两点到对岸某点的距离与夹角，求河宽。",
+          "answer_sketch": "把河宽作为三角形的高，先由余弦定理求第三边，再用面积或正弦求高。",
+          "scenario_id": "S.hs_trig.measurement"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    },
+    {
+      "id": "M.hs_trig_model",
+      "name": "三角函数建模",
+      "aliases": [
+        "周期现象建模",
+        "正弦型拟合"
+      ],
+      "one_liner": "由最大值与最小值定振幅与竖直偏移，由周期定频率，再由初始位置定初相。",
+      "block_ids": [
+        "B.hs_trig"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_trig.trig_model"
+      ],
+      "triggers": [
+        "出现随时间周期性变化的现象",
+        "给出最大最小值与周期",
+        "要求求解析式或某时刻的值",
+        "出现转一圈所需时间"
+      ],
+      "steps": [
+        "振幅取最大值与最小值之差的一半",
+        "竖直偏移取最大值与最小值之和的一半",
+        "频率由周期倒推",
+        "代入初始时刻的位置求初相并检验"
+      ],
+      "preconditions": [
+        "现象可视为简谐型变化",
+        "最大最小值与周期已知或可读"
+      ],
+      "not_applicable": [
+        "变化非周期",
+        "振幅随时间衰减"
+      ],
+      "pitfalls": [
+        "初相未按初始位置的正负筛选",
+        "频率与周期的换算写反"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_trig_global",
+          "note": "求某时刻值时用整体代换解方程"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "摩天轮半径 10 m、中心高 15 m、12 min 转一圈，求座舱高度与时间的关系。",
+          "answer_sketch": "振幅 10、偏移 15、频率 π/6，再由初始最低点定初相为 -π/2。",
+          "scenario_id": "S.hs_trig.trig_model"
+        },
+        {
+          "statement": "某港口水深满足 y=3sin(πt/6)+5，求水深最大的时刻。",
+          "answer_sketch": "令相位等于 π/2 加 2kπ，解得 t=3+12k，即每 12 小时一次。",
+          "scenario_id": "S.hs_trig.trig_model"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_trig"
+      ]
+    }
+  ]
+}

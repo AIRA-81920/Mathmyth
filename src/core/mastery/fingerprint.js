@@ -22,6 +22,9 @@ async function hash(value) {
 }
 
 export async function fingerprintQuestion(item) {
-  return { questionKey: await hash(normalizedQuestion(item.question, item.variables)),
-    faceKey: await hash(JSON.stringify(canonicalStructure(item.structure))) };
+  // AI 草稿没有"题面结构"（结构族白名单已删）：这时按规范化题面认身份，
+  // 人工核对过的库题仍然按结构认身份，两边的键永远是 64 位十六进制。
+  const normalized = normalizedQuestion(item.question, item.variables);
+  return { questionKey: await hash(normalized),
+    faceKey: await hash(item.structure == null ? 'unstructured:' + normalized : JSON.stringify(canonicalStructure(item.structure))) };
 }

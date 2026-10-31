@@ -2,6 +2,7 @@ import { streamAnswer } from './client.js';
 import { completeJsonItems } from './partialJson.js';
 import { isRouteQuestion, prepareRouteQuestion, routeQuestionError } from '../practice/routes.js';
 import { reviewedPatternLinks, validPatternEvidence, patternsForScenario } from '../knowledge/patterns.js';
+import { getActiveSubject, subjectName } from '../config/subject.js';
 export { assessSelection } from '../mastery/selection.js';
 
 const nonempty = (value) => typeof value === 'string' && value.trim();
@@ -13,9 +14,13 @@ function json(text) {
 export async function generatePractice({ config, skeleton, scenarioId, methodId, signal, anchor = '', level = 'single', onItem = () => {}, onProgress = () => {} }) {
   const scenario = skeleton.scenarioById.get(scenarioId);
   if (!scenario?.methods.some((edge) => edge.method_id === methodId)) throw routeQuestionError();
-  const systemPrompt = String.raw`你是 Mathmyth 的高数路线练习编写助手。以训练目标和原题为依据，生成恰好三道题：第一道有较短的完整路线；第二道体现方法转化后产生新情景；第三道包含条件变化、相消、分支或替代思路。三题目标一致，不能仅换数字；不要求每条正确路线都包含某个指定方法。不要泄露训练目标到题干、选项标题或提示中。
+  // 条件核查清单按学科取：高中数学不把大学微积分工具当成默认检查项。
+  const checks = getActiveSubject() === 'high_school'
+    ? '分类讨论是否不重不漏、三角函数的角的范围与多解、基本不等式的取等条件、数列首项与递推起点、导数问题的定义域与端点、圆锥曲线的焦点位置与判别式'
+    : '等价替换在相消减法中的失效、洛必达每次使用前的未定式、除以未知函数时丢失的特殊解、换元定义域和上下限';
+  const systemPrompt = String.raw`你是 Mathmyth 的${subjectName()}路线练习编写助手。以训练目标和原题为依据，生成恰好三道题：第一道有较短的完整路线；第二道体现方法转化后产生新情景；第三道包含条件变化、相消、分支或替代思路。三题目标一致，不能仅换数字；不要求每条正确路线都包含某个指定方法。不要泄露训练目标到题干、选项标题或提示中。
 每道题保留一条主路线、一至两条有效替代路线、一至两条伪路线。每个选项是完整路线摘要，不是单个方法名。多条正确路线允许独立成立，不能把正确但较长的路线判成数学错误。主路线应对应comparisonCriterion中的明确比较标准，例如少求导、少展开、少引入分支；不要笼统说“最好”。伪路线必须有确切失效条件和failedStep，不能只是无关方法。
-逐条独立求解并核查所有条件，尤其等价替换在相消减法中的失效、洛必达每次使用前的未定式、除以未知函数时丢失的特殊解、换元定义域和上下限。题目不依赖外部图片或工具。你生成的是尚未人工核对的变式草稿，不得声称教材原题、用户审定或已验证经典题。来源由程序记录。
+逐条独立求解并核查所有条件，尤其${checks}。题目不依赖外部图片或工具。你生成的是尚未人工核对的变式草稿，不得声称教材原题、用户审定或已验证经典题。来源由程序记录。
 逐步给出state、scenarioId、methodId、transformedState、condition。每一对scenarioId与methodId必须对应给定骨架连线。第一步scenarioId必须是训练入口情景，后续可进入不同情景。不要用空洞的“识别”步骤伪装某个方法已实际使用；可在真实操作中包含必要代数整理，不编造ID。routes所有字段必填，valid/preferred为布尔；伪路线另加failedStep（从0开始）。
 简洁中文Markdown和KaTeX的$...$、$$...$$，JSON中的反斜杠正确转义。variables为实际单字母变量列表。structure为真实运算树{op:"小写英文运算名",args:[子节点]}，变量叶{op:"var"}、常数叶{op:"const"}，不写数值、变量名、题目ID。
 仅返回JSON：{"items":[{"question":"题面","solution":"关键推导与结论","variables":["x"],"structure":{"op":"divide","args":[{"op":"var"},{"op":"var"}]},"comparisonCriterion":"明确比较目标","routes":[{"id":"r1","summary":"完整路线摘要","valid":true,"preferred":true,"condition":"总适用条件","reason":"具体可行或失效依据","steps":[{"state":"当前结构","scenarioId":"S.xxx","methodId":"M.xxx","transformedState":"新结构或结论","condition":"本步骤前提"}]}],"invariants":["不可改变的条件"],"allowedVariations":["相对母题改变了什么"]}]}。每个题对象完整结束后再输出下一个，以便先交付第一题。`;
@@ -68,7 +73,7 @@ export async function generatePractice({ config, skeleton, scenarioId, methodId,
   return items;
 }
 
-export async function assessSteps({ config, question, steps, skeleton, signal }) {
+export async function assessSteps({ config, question, steps, skeleton, signal, learningContext }) {
   if (!nonempty(steps)) return { outcome: 'uncertain', feedback: '先写下你打算怎么做。', methodIds: [] };
   const routeBased = isRouteQuestion(question);
   const patternLinks = reviewedPatternLinks(question);
@@ -81,15 +86,24 @@ export async function assessSteps({ config, question, steps, skeleton, signal })
   const blocks = new Set((question.allowedEdges ?? []).map((edge) => skeleton.scenarioById.get(edge.scenarioId)?.block_id));
   const methods = [...skeleton.methodById.values()].filter((method) => question.candidateMethodIds.includes(method.id)
     || method.block_ids?.some((block) => blocks.has(block)));
-  const systemPrompt = `你是高数关键步骤批改助手。先判断学生的数学操作是否成立，再整理能记录的执行证据。这两个判断分开：参考路线不是全部正确解法，allowed_edges也不是数学正确性的白名单。正确思路即使暂时没有对应连线，也应判right，不能因此判uncertain或wrong。
-支持大白话、口头运算和不规范但意思明确的公式。结合题目与上下文判断分子、分母和括号，不按代码运算符的左结合规则机械解释。比如学生说“分母凑成3x，前面乘3，用sinx/x的重要极限，3乘1等于3”，已经描述了sin(3x)/x=3·sin(3x)/(3x)，在x→0时是正确关键步骤；可以提醒给3x加括号，但不能说没有实际操作。不要求学生重复题目已给的x→0等条件，也不要求把每行推导、每个符号都写全。
-只写方法名或照抄路线标题而无具体操作仍不算会用。不要从标准答案替学生补缺失操作；若缺失会影响判断，明确指出需要补哪一步，而非笼统说“不足”。忽略不影响路线的小算术笔误，但指出关键恒等变形、结论、适用范围或遗漏解的错误。反馈简洁，用学生能理解的数学理由，不暴露内部ID或连线限制。信息确实不足才返回uncertain。
+  // 大白话示例按学科给：高中版不引用大学“重要极限”的写法，避免把判分口径带偏。
+  const highSchool = getActiveSubject() === 'high_school';
+  const colloquialExample = highSchool
+    ? '比如学生说“把分母配方成(x-1)²+1，最小值在x=1取到”，已经描述了配方与最值判断，是正确关键步骤；可以提醒补写取等条件，但不能说没有实际操作。'
+    : '比如学生说“分母凑成3x，前面乘3，用sinx/x的重要极限，3乘1等于3”，已经描述了sin(3x)/x=3·sin(3x)/(3x)，在x→0时是正确关键步骤；可以提醒给3x加括号，但不能说没有实际操作。';
+  const givenConditions = highSchool ? '定义域、参数范围' : 'x→0';
+  const systemPrompt = `你是${subjectName()}关键步骤批改助手。先判断学生的数学操作是否成立，再整理能记录的执行证据。这两个判断分开：参考路线不是全部正确解法，allowed_edges也不是数学正确性的白名单。正确思路即使暂时没有对应连线，也应判right，不能因此判uncertain或wrong。
+支持大白话、口头运算和不规范但意思明确的公式。结合题目与上下文判断分子、分母和括号，不按代码运算符的左结合规则机械解释。${colloquialExample}不要求学生重复题目已给的${givenConditions}等条件，也不要求把每行推导、每个符号都写全。
+只写方法名或照抄路线标题而无具体操作仍不算会用。只写最后结果时，即使数值正确，也以uncertain、scope=result、result_correct=true记录，并明确请求一处需要补充的关键变形；不据结果替学生推断过程。不要从标准答案替学生补缺失操作；若缺失会影响判断，明确指出需要补哪一步，而非笼统说“不足”。忽略不影响路线的小算术笔误，但指出关键恒等变形、结论、适用范围或遗漏解的错误。反馈简洁，用学生能理解的数学理由，不暴露内部ID或连线限制。信息确实不足才返回uncertain。
+current_learning_context提供这道题实际看过的提示与之前的作答。用它定位当前卡点，优先指出第一个需要修改或补充的地方，不重复学生已完成的操作。保留正确替代解法的数学判断；若没有实施目标思路，在反馈里说明这条思路尚未检验。不要从提示、参考答案或历史作答中给当前原文补造执行证据；本次evidence只引用本次steps。feedback_help为布尔：反馈只要求补写已有操作或澄清括号时为false；如果给出了解题方向、具体变形或正确系数，则为true，这会作为下一次尝试的帮助背景。不要自行声称独立完成、稳定掌握或已经安排复习。
 ${routeBased ? 'mathematical_evidence记录支持数学判断的具体原文和理由，student_excerpt必须从学生原文逐字摘出。evidence则用于掌握度：每个方法必须有method_id、scenario_id及具体原文，并只能使用allowed_edges的真实配对。缺少配对时method_ids和evidence可为空，只影响是否记录执行成绩，不改变数学判断。未执行的后续方法不能记证据。' : ''}
 ${patternContext.length ? 'available_patterns列出本题已核对的具体结构和参考步骤。只有学生原文实际实施了该结构的关键操作，才可在pattern_evidence中记录pattern_id、route_id、step_index、student_excerpt、explanation。不要因为选过路线、写了方法名或参考答案中有后续操作就记结构执行；不能确定则留空。不为结构标签改变数学判断，也不在反馈中暴露这些编号。' : ''}
-仅返回JSON：{"outcome":"right|wrong|uncertain","method_ids":["M.xxx"],"feedback":"一句或两句","mathematical_evidence":[{"student_excerpt":"实际操作原文","explanation":"该操作为什么成立或失效"}],"evidence":[{"method_id":"M.xxx","scenario_id":"S.xxx","student_excerpt":"实际操作原文"}],"pattern_evidence":[]}。`;
+仅返回JSON：{"outcome":"right|wrong|uncertain","scope":"operation|result|insufficient","result_correct":false,"feedback_help":false,"method_ids":["M.xxx"],"feedback":"一句或两句","mathematical_evidence":[{"student_excerpt":"实际操作原文","explanation":"该操作为什么成立或失效"}],"evidence":[{"method_id":"M.xxx","scenario_id":"S.xxx","student_excerpt":"实际操作原文"}],"pattern_evidence":[]}。`;
   const output = json(await streamAnswer({ config, systemPrompt, signal,
     messages: [{ role: 'user', content: JSON.stringify({ question: question.question, reference_solution: question.solution, routes: question.routes,
-      allowed_edges: question.allowedEdges, available_patterns: patternContext, steps, methods }) }] }));
+      allowed_edges: question.allowedEdges, available_patterns: patternContext, steps, methods,
+      current_learning_context: learningContext ?? null }) }] }));
+  if (output?.scope === 'result' && output.outcome === 'right') output.outcome = 'uncertain';
   if (!['right', 'wrong', 'uncertain'].includes(output?.outcome) || !nonempty(output.feedback) || !Array.isArray(output.method_ids)
     || output.method_ids.some((id) => typeof id !== 'string') || new Set(output.method_ids).size !== output.method_ids.length) throw routeQuestionError();
   if (!routeBased && output.outcome === 'right' && (!output.method_ids.length || output.method_ids.some((id) => !question.applicableMethodIds.includes(id)))) throw routeQuestionError();
@@ -121,6 +135,9 @@ ${patternContext.length ? 'available_patterns列出本题已核对的具体结�
   })), executedEdges, steps);
   if (routeBased && output.outcome !== 'uncertain' && !methodIds.length && !mathematicalEvidence.length)
     throw routeQuestionError('模型没有给出数学判断的具体依据，请重试。');
-  return { outcome: output.outcome, methodIds, executedEdges, mathematicalEvidence, patternEvidence,
+  const outcome = output.scope === 'result' && output.outcome === 'right' ? 'uncertain' : output.outcome;
+  return { outcome, methodIds: output.scope === 'result' ? [] : methodIds,
+    executedEdges: output.scope === 'result' ? [] : executedEdges, mathematicalEvidence, patternEvidence: output.scope === 'result' ? [] : patternEvidence,
+    scope: output.scope, resultCorrect: output.result_correct === true, feedbackAssists: output.feedback_help === true,
     mathematicallyValid: output.outcome === 'right', feedback: output.feedback.trim() };
 }

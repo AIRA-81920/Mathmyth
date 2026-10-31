@@ -1,0 +1,251 @@
+[
+  {
+    "id": "B.hs_func",
+    "name": "集合、不等式与函数",
+    "aliases": [
+      "函数与不等式",
+      "集合与函数",
+      "函数基础"
+    ],
+    "order": 1,
+    "chapter_ref": [
+      "人教A版2019 必修第一册 第一章 集合与常用逻辑用语",
+      "人教A版2019 必修第一册 第二章 一元二次函数、方程和不等式",
+      "人教A版2019 必修第一册 第三章 函数概念与性质",
+      "人教A版2019 必修第一册 第四章 指数函数与对数函数"
+    ],
+    "summary": "研究「给一个集合、一个不等式、一个函数」时如何求范围、判性质、读图象；学生遇到定义域、值域、单调性、奇偶性、指对比大小、零点个数时首先进入这里。",
+    "prerequisites": [],
+    "scenario_ids": [
+      "S.hs_func.set_operation",
+      "S.hs_func.condition_judge",
+      "S.hs_func.quantifier_negation",
+      "S.hs_func.new_definition_set",
+      "S.hs_func.inequality_solve",
+      "S.hs_func.quadratic_root_dist",
+      "S.hs_func.basic_inequality",
+      "S.hs_func.inequality_property",
+      "S.hs_func.domain",
+      "S.hs_func.expression",
+      "S.hs_func.value_range",
+      "S.hs_func.piecewise",
+      "S.hs_func.abstract_function",
+      "S.hs_func.parity_period",
+      "S.hs_func.monotonicity",
+      "S.hs_func.graph_transform",
+      "S.hs_func.symmetry",
+      "S.hs_func.exp_log_calc",
+      "S.hs_func.exp_log_compare",
+      "S.hs_func.exp_log_graph",
+      "S.hs_func.zero_point",
+      "S.hs_func.function_model"
+    ]
+  },
+  {
+    "id": "B.hs_trig",
+    "name": "三角函数与解三角形",
+    "aliases": [
+      "三角",
+      "三角与解三角形"
+    ],
+    "order": 2,
+    "chapter_ref": [
+      "人教A版2019 必修第一册 第五章 三角函数",
+      "人教A版2019 必修第二册 第六章 6.4.3 余弦定理、正弦定理"
+    ],
+    "summary": "研究角的运算、三角函数图象性质与三角形的边角关系；学生遇到「给角求值、给图求解析式、给边角求三角形」时进入这里。",
+    "prerequisites": [
+      "B.hs_func"
+    ],
+    "scenario_ids": [
+      "S.hs_trig.identity_eval",
+      "S.hs_trig.identity_transform",
+      "S.hs_trig.auxiliary_angle",
+      "S.hs_trig.angle_relation",
+      "S.hs_trig.graph_property",
+      "S.hs_trig.graph_transform",
+      "S.hs_trig.omega_param",
+      "S.hs_trig.trig_equation",
+      "S.hs_trig.sine_cosine_rule",
+      "S.hs_trig.triangle_shape",
+      "S.hs_trig.area",
+      "S.hs_trig.triangle_extremum",
+      "S.hs_trig.multi_triangle",
+      "S.hs_trig.measurement",
+      "S.hs_trig.trig_model"
+    ]
+  },
+  {
+    "id": "B.hs_seq",
+    "name": "数列",
+    "aliases": [
+      "数列与求和",
+      "等差等比数列"
+    ],
+    "order": 3,
+    "chapter_ref": [
+      "人教A版2019 选择性必修第二册 第四章 数列（4.1–4.3；4.4* 数学归纳法按选学处理）"
+    ],
+    "summary": "研究离散序列的通项、求和与大小关系；学生遇到递推式、S_n 表达式、「求前 n 项和」时进入这里。",
+    "prerequisites": [
+      "B.hs_func"
+    ],
+    "scenario_ids": [
+      "S.hs_seq.arithmetic_geometric",
+      "S.hs_seq.an_sn",
+      "S.hs_seq.recurrence",
+      "S.hs_seq.construct_seq",
+      "S.hs_seq.sum_formula",
+      "S.hs_seq.sum_telescoping",
+      "S.hs_seq.sum_mismatch",
+      "S.hs_seq.property",
+      "S.hs_seq.inequality",
+      "S.hs_seq.induction",
+      "S.hs_seq.model"
+    ]
+  },
+  {
+    "id": "B.hs_deriv",
+    "name": "导数及其应用",
+    "aliases": [
+      "导数",
+      "函数与导数"
+    ],
+    "order": 4,
+    "chapter_ref": [
+      "人教A版2019 选择性必修第二册 第五章 一元函数的导数及其应用（5.1–5.3）"
+    ],
+    "summary": "用导数研究函数的局部变化率与整体性态，并据此证明不等式、讨论零点与参数范围；学生遇到切线、单调区间、极值最值、恒成立时进入这里。",
+    "prerequisites": [
+      "B.hs_func"
+    ],
+    "scenario_ids": [
+      "S.hs_deriv.definition",
+      "S.hs_deriv.calc",
+      "S.hs_deriv.tangent",
+      "S.hs_deriv.geometric",
+      "S.hs_deriv.monotonicity",
+      "S.hs_deriv.extremum",
+      "S.hs_deriv.zero",
+      "S.hs_deriv.param_range",
+      "S.hs_deriv.ineq_proof",
+      "S.hs_deriv.ineq_two_var",
+      "S.hs_deriv.construct",
+      "S.hs_deriv.series_bound"
+    ]
+  },
+  {
+    "id": "B.hs_geom",
+    "name": "立体几何与空间向量",
+    "aliases": [
+      "立体几何",
+      "空间几何"
+    ],
+    "order": 5,
+    "chapter_ref": [
+      "人教A版2019 必修第二册 第八章 立体几何初步",
+      "人教A版2019 选择性必修第一册 第一章 空间向量与立体几何"
+    ],
+    "summary": "研究空间图形的位置关系与度量；学生遇到「证明平行垂直、求二面角、求距离体积、外接球」时进入这里。",
+    "prerequisites": [
+      "B.hs_func",
+      "B.hs_trig"
+    ],
+    "scenario_ids": [
+      "S.hs_geom.line_plane_parallel",
+      "S.hs_geom.line_plane_perp",
+      "S.hs_geom.special_point",
+      "S.hs_geom.existence",
+      "S.hs_geom.distance",
+      "S.hs_geom.angle",
+      "S.hs_geom.volume",
+      "S.hs_geom.sphere",
+      "S.hs_geom.basis",
+      "S.hs_geom.coordinate",
+      "S.hs_geom.normal_vector",
+      "S.hs_geom.solid_graph",
+      "S.hs_geom.section",
+      "S.hs_geom.combination"
+    ]
+  },
+  {
+    "id": "B.hs_analytic",
+    "name": "解析几何、平面向量与复数",
+    "aliases": [
+      "解析几何",
+      "平面向量与解析几何"
+    ],
+    "order": 6,
+    "chapter_ref": [
+      "人教A版2019 必修第二册 第六章 6.1–6.3 平面向量",
+      "人教A版2019 必修第二册 第七章 7.1–7.2 复数",
+      "人教A版2019 选择性必修第一册 第二章 直线和圆的方程",
+      "人教A版2019 选择性必修第一册 第三章 圆锥曲线的方程"
+    ],
+    "summary": "用坐标与方程研究平面几何对象；学生遇到向量运算、复数运算、直线圆的位置关系、圆锥曲线与定点定值问题时进入这里。",
+    "prerequisites": [
+      "B.hs_func",
+      "B.hs_trig"
+    ],
+    "scenario_ids": [
+      "S.hs_analytic.vector_calc",
+      "S.hs_analytic.vector_product",
+      "S.hs_analytic.vector_parallel_perp",
+      "S.hs_analytic.vector_geometry",
+      "S.hs_analytic.complex_calc",
+      "S.hs_analytic.complex_geometry",
+      "S.hs_analytic.complex_quadratic",
+      "S.hs_analytic.line_equation",
+      "S.hs_analytic.circle_equation",
+      "S.hs_analytic.line_circle_position",
+      "S.hs_analytic.circle_circle",
+      "S.hs_analytic.locus",
+      "S.hs_analytic.ellipse",
+      "S.hs_analytic.hyperbola",
+      "S.hs_analytic.parabola",
+      "S.hs_analytic.conic_equation",
+      "S.hs_analytic.conic_focal",
+      "S.hs_analytic.intersection",
+      "S.hs_analytic.fixed_point",
+      "S.hs_analytic.range_extremum",
+      "S.hs_analytic.existence"
+    ]
+  },
+  {
+    "id": "B.hs_prob",
+    "name": "概率统计与计数原理",
+    "aliases": [
+      "概率统计",
+      "计数与概率"
+    ],
+    "order": 7,
+    "chapter_ref": [
+      "人教A版2019 必修第二册 第九章 统计",
+      "人教A版2019 必修第二册 第十章 概率",
+      "人教A版2019 选择性必修第三册 第六章 计数原理",
+      "人教A版2019 选择性必修第三册 第七章 随机变量及其分布",
+      "人教A版2019 选择性必修第三册 第八章 成对数据的统计分析"
+    ],
+    "summary": "研究计数方案、随机事件的概率、随机变量的分布与数据的统计推断；学生遇到「有多少种、求概率、求分布列与期望、判断相关性」时进入这里。",
+    "prerequisites": [
+      "B.hs_func"
+    ],
+    "scenario_ids": [
+      "S.hs_prob.counting_principle",
+      "S.hs_prob.permutation",
+      "S.hs_prob.combination",
+      "S.hs_prob.binomial",
+      "S.hs_prob.classical",
+      "S.hs_prob.independent",
+      "S.hs_prob.conditional",
+      "S.hs_prob.geometric",
+      "S.hs_prob.distribution",
+      "S.hs_prob.expectation",
+      "S.hs_prob.binomial_dist",
+      "S.hs_prob.normal",
+      "S.hs_prob.sampling",
+      "S.hs_prob.regression",
+      "S.hs_prob.contingency"
+    ]
+  }
+]

@@ -1,0 +1,371 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "name": "高中数学骨架 · 情景组映射",
+    "purpose": "在「板块」与「情景」之间插入「情景组」一层，保证每一层分支数都很小，用户不会在几十条分支里挣扎。",
+    "structure": "板块 → 情景组 → 情景 → 方法 →（点开）题目",
+    "hard_limit": "板块 ≤7、组 ≤5、情景 ≤5、方法 ≤6（阶段一已说明板块 7 的理由）",
+    "ui_rule": "如果一个情景组下面只有 1 个情景，界面自动跳过这一层，直接显示那个情景",
+    "relation_rule": "以情景为准，方法跟在情景后面；一个情景下可挂多个方法，方法不独立于情景存在",
+    "not_included": "本文件只定义「分组」，不重复定义情景与方法本体（本体在 scenarios.hs_*.json / methods.hs_*.json）"
+  },
+  "blocks": [
+    {
+      "block_id": "B.hs_func",
+      "name": "集合、不等式与函数",
+      "groups": [
+        {
+          "id": "G.hs_func.set_logic",
+          "name": "集合与常用逻辑用语",
+          "order": 1,
+          "scenario_ids": [
+            "S.hs_func.set_operation",
+            "S.hs_func.condition_judge",
+            "S.hs_func.quantifier_negation",
+            "S.hs_func.new_definition_set"
+          ]
+        },
+        {
+          "id": "G.hs_func.inequality",
+          "name": "不等式与二次关系",
+          "order": 2,
+          "scenario_ids": [
+            "S.hs_func.inequality_solve",
+            "S.hs_func.quadratic_root_dist",
+            "S.hs_func.basic_inequality",
+            "S.hs_func.inequality_property"
+          ]
+        },
+        {
+          "id": "G.hs_func.concept",
+          "name": "函数概念与表示",
+          "order": 3,
+          "scenario_ids": [
+            "S.hs_func.domain",
+            "S.hs_func.expression",
+            "S.hs_func.value_range",
+            "S.hs_func.piecewise",
+            "S.hs_func.abstract_function"
+          ]
+        },
+        {
+          "id": "G.hs_func.properties",
+          "name": "函数性质与图象",
+          "order": 4,
+          "scenario_ids": [
+            "S.hs_func.parity_period",
+            "S.hs_func.monotonicity",
+            "S.hs_func.graph_transform",
+            "S.hs_func.symmetry"
+          ]
+        },
+        {
+          "id": "G.hs_func.elementary",
+          "name": "指对幂与函数零点",
+          "order": 5,
+          "scenario_ids": [
+            "S.hs_func.exp_log_calc",
+            "S.hs_func.exp_log_compare",
+            "S.hs_func.exp_log_graph",
+            "S.hs_func.zero_point",
+            "S.hs_func.function_model"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.hs_trig",
+      "name": "三角函数与解三角形",
+      "groups": [
+        {
+          "id": "G.hs_trig.identity",
+          "name": "三角恒等变换",
+          "order": 1,
+          "scenario_ids": [
+            "S.hs_trig.identity_eval",
+            "S.hs_trig.identity_transform",
+            "S.hs_trig.auxiliary_angle",
+            "S.hs_trig.angle_relation"
+          ]
+        },
+        {
+          "id": "G.hs_trig.graph",
+          "name": "三角函数的图象与性质",
+          "order": 2,
+          "scenario_ids": [
+            "S.hs_trig.graph_property",
+            "S.hs_trig.graph_transform",
+            "S.hs_trig.omega_param",
+            "S.hs_trig.trig_equation"
+          ]
+        },
+        {
+          "id": "G.hs_trig.triangle",
+          "name": "解三角形",
+          "order": 3,
+          "scenario_ids": [
+            "S.hs_trig.sine_cosine_rule",
+            "S.hs_trig.triangle_shape",
+            "S.hs_trig.area",
+            "S.hs_trig.triangle_extremum",
+            "S.hs_trig.multi_triangle"
+          ]
+        },
+        {
+          "id": "G.hs_trig.application",
+          "name": "三角应用与建模",
+          "order": 4,
+          "scenario_ids": [
+            "S.hs_trig.measurement",
+            "S.hs_trig.trig_model"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.hs_seq",
+      "name": "数列",
+      "groups": [
+        {
+          "id": "G.hs_seq.term",
+          "name": "通项与递推",
+          "order": 1,
+          "scenario_ids": [
+            "S.hs_seq.arithmetic_geometric",
+            "S.hs_seq.an_sn",
+            "S.hs_seq.recurrence",
+            "S.hs_seq.construct_seq"
+          ]
+        },
+        {
+          "id": "G.hs_seq.sum",
+          "name": "数列求和",
+          "order": 2,
+          "scenario_ids": [
+            "S.hs_seq.sum_formula",
+            "S.hs_seq.sum_telescoping",
+            "S.hs_seq.sum_mismatch"
+          ]
+        },
+        {
+          "id": "G.hs_seq.property",
+          "name": "数列性质与不等式",
+          "order": 3,
+          "scenario_ids": [
+            "S.hs_seq.property",
+            "S.hs_seq.inequality",
+            "S.hs_seq.induction",
+            "S.hs_seq.model"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.hs_deriv",
+      "name": "导数及其应用",
+      "groups": [
+        {
+          "id": "G.hs_deriv.concept",
+          "name": "导数概念与运算",
+          "order": 1,
+          "scenario_ids": [
+            "S.hs_deriv.definition",
+            "S.hs_deriv.calc",
+            "S.hs_deriv.tangent",
+            "S.hs_deriv.geometric"
+          ]
+        },
+        {
+          "id": "G.hs_deriv.behavior",
+          "name": "用导数研究函数",
+          "order": 2,
+          "scenario_ids": [
+            "S.hs_deriv.monotonicity",
+            "S.hs_deriv.extremum",
+            "S.hs_deriv.zero",
+            "S.hs_deriv.param_range"
+          ]
+        },
+        {
+          "id": "G.hs_deriv.proof",
+          "name": "导数与不等式证明",
+          "order": 3,
+          "scenario_ids": [
+            "S.hs_deriv.ineq_proof",
+            "S.hs_deriv.ineq_two_var",
+            "S.hs_deriv.construct",
+            "S.hs_deriv.series_bound"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.hs_geom",
+      "name": "立体几何与空间向量",
+      "groups": [
+        {
+          "id": "G.hs_geom.position",
+          "name": "空间位置关系与证明",
+          "order": 1,
+          "scenario_ids": [
+            "S.hs_geom.line_plane_parallel",
+            "S.hs_geom.line_plane_perp",
+            "S.hs_geom.special_point",
+            "S.hs_geom.existence"
+          ]
+        },
+        {
+          "id": "G.hs_geom.metric",
+          "name": "空间度量",
+          "order": 2,
+          "scenario_ids": [
+            "S.hs_geom.distance",
+            "S.hs_geom.angle",
+            "S.hs_geom.volume",
+            "S.hs_geom.sphere"
+          ]
+        },
+        {
+          "id": "G.hs_geom.vector",
+          "name": "空间向量法",
+          "order": 3,
+          "scenario_ids": [
+            "S.hs_geom.basis",
+            "S.hs_geom.coordinate",
+            "S.hs_geom.normal_vector"
+          ]
+        },
+        {
+          "id": "G.hs_geom.solid",
+          "name": "基本立体图形、截面与翻折",
+          "order": 4,
+          "scenario_ids": [
+            "S.hs_geom.solid_graph",
+            "S.hs_geom.section",
+            "S.hs_geom.combination"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.hs_analytic",
+      "name": "解析几何、平面向量与复数",
+      "groups": [
+        {
+          "id": "G.hs_analytic.vector",
+          "name": "平面向量",
+          "order": 1,
+          "scenario_ids": [
+            "S.hs_analytic.vector_calc",
+            "S.hs_analytic.vector_product",
+            "S.hs_analytic.vector_parallel_perp",
+            "S.hs_analytic.vector_geometry"
+          ]
+        },
+        {
+          "id": "G.hs_analytic.complex",
+          "name": "复数",
+          "order": 2,
+          "scenario_ids": [
+            "S.hs_analytic.complex_calc",
+            "S.hs_analytic.complex_geometry",
+            "S.hs_analytic.complex_quadratic"
+          ]
+        },
+        {
+          "id": "G.hs_analytic.line_circle",
+          "name": "直线与圆",
+          "order": 3,
+          "scenario_ids": [
+            "S.hs_analytic.line_equation",
+            "S.hs_analytic.circle_equation",
+            "S.hs_analytic.line_circle_position",
+            "S.hs_analytic.circle_circle",
+            "S.hs_analytic.locus"
+          ]
+        },
+        {
+          "id": "G.hs_analytic.conic",
+          "name": "圆锥曲线",
+          "order": 4,
+          "scenario_ids": [
+            "S.hs_analytic.ellipse",
+            "S.hs_analytic.hyperbola",
+            "S.hs_analytic.parabola",
+            "S.hs_analytic.conic_equation",
+            "S.hs_analytic.conic_focal"
+          ]
+        },
+        {
+          "id": "G.hs_analytic.line_conic",
+          "name": "直线与圆锥曲线综合",
+          "order": 5,
+          "scenario_ids": [
+            "S.hs_analytic.intersection",
+            "S.hs_analytic.fixed_point",
+            "S.hs_analytic.range_extremum",
+            "S.hs_analytic.existence"
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "B.hs_prob",
+      "name": "概率统计与计数原理",
+      "groups": [
+        {
+          "id": "G.hs_prob.counting",
+          "name": "计数原理",
+          "order": 1,
+          "scenario_ids": [
+            "S.hs_prob.counting_principle",
+            "S.hs_prob.permutation",
+            "S.hs_prob.combination",
+            "S.hs_prob.binomial"
+          ]
+        },
+        {
+          "id": "G.hs_prob.classical",
+          "name": "概率模型",
+          "order": 2,
+          "scenario_ids": [
+            "S.hs_prob.classical",
+            "S.hs_prob.independent",
+            "S.hs_prob.conditional",
+            "S.hs_prob.geometric"
+          ]
+        },
+        {
+          "id": "G.hs_prob.random_var",
+          "name": "随机变量与分布",
+          "order": 3,
+          "scenario_ids": [
+            "S.hs_prob.distribution",
+            "S.hs_prob.expectation",
+            "S.hs_prob.binomial_dist",
+            "S.hs_prob.normal"
+          ]
+        },
+        {
+          "id": "G.hs_prob.statistics",
+          "name": "统计与成对数据",
+          "order": 4,
+          "scenario_ids": [
+            "S.hs_prob.sampling",
+            "S.hs_prob.regression",
+            "S.hs_prob.contingency"
+          ]
+        }
+      ]
+    }
+  ],
+  "adjustments": {
+    "note": "高中数学骨架首版，无历史遗留的待加入节点。本字段保留以与运行时加载器兼容。",
+    "added_scenarios": [],
+    "methods_to_add": [],
+    "id_normalization": {
+      "note": "高中数学为独立命名空间，不使用任何别名归一；M. 开头的 alias 一律不设。",
+      "map": []
+    }
+  }
+}

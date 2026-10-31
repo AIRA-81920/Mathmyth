@@ -67,7 +67,7 @@
       },
       {
         "id": "G.limit.sequence",
-        "name": "数列极限",
+        "name": "数列与含参极限",
         "order": 2,
         "scenario_ids": [
           "S.limit.recurrence_sequence",
@@ -92,7 +92,8 @@
         "order": 4,
         "scenario_ids": [
           "S.limit.piecewise_continuity",
-          "S.limit.discontinuity_classification"
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
         ],
         "block_id": "B.limit"
       },
@@ -728,8 +729,8 @@
       },
       {
         "id": "S.limit.n_term_sum",
-        "name": "n 项和 / 连乘的数列极限",
-        "definition": "数列的通项是 n 项之和或 n 项之积（连乘），需在 n→∞ 时求极限。",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
         "block_id": "B.limit"
       },
       {
@@ -752,8 +753,8 @@
       },
       {
         "id": "S.limit.function_sequence_limit",
-        "name": "函数列的点态极限",
-        "definition": "表达式同时含x和n；先固定x求n的极限，得到随x变化的新函数。",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
         "block_id": "B.limit"
       },
       {

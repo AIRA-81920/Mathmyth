@@ -19,10 +19,22 @@ async function setup(level = 'single') {
   const engine = new DatabaseEngine({ SQL, schemaSql, storage: { load: async () => null, commit: async (_bytes, revision) => revision + 1 } });
   await engine.initializeDatabase();
   const items = await prepareLocalRound(target, skeleton, level);
-  const run = await engine.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true });
+  const run = await engine.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
   return { engine, run, items };
 }
 const attempt = (id) => ({ mode: 'selection', selectedIds: [id] });
+
+test('preparedTarget 经过 worker 的 structured clone 仍然有效，而伪造的 target 会被拒', async () => {
+  const engine = new DatabaseEngine({ SQL, schemaSql, storage: { load: async () => null, commit: async (_bytes, revision) => revision + 1 } });
+  await engine.initializeDatabase();
+  const items = await prepareLocalRound(target, skeleton);
+  // 主线程 → worker 走的是 target.postMessage({ args })，等价于 structured clone。
+  const args = structuredClone({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
+  const run = await engine.createPracticeRun(args);
+  assert.ok(run.items.length >= 1, '克隆后的 target 必须仍能通过校验');
+  // 护栏仍在：拿一个“看起来像 target、但题目对不上”的对象必须被拒。
+  await assert.rejects(engine.createPracticeRun(structuredClone({ ...args, preparedTarget: { ...target, questions: [] } })));
+});
 
 test('all prepared questions resolve real paired edges and render formulae, with honest sample provenance', async () => {
   let questions = 0, transitions = 0;
@@ -67,7 +79,7 @@ test('choosing a route credits only entrance recognition; repeated mother across
     assert.ok(mastery.filter((m) => m.targetType === 'method').every((m) => m.successCount === 0));
     const items = await prepareLocalRound(target, skeleton, 'multi');
     assert.equal(items[1].questionKey, item.question.questionKey);
-    const again = await engine.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true });
+    const again = await engine.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
     await engine.gradePracticeItem(again.id, again.items[1].id, { mode: 'selection', selectedIds: items[1].routes.filter((r) => r.valid).map((r) => r.id) });
     assert.equal(engine.loadTrail().mastery.find((m) => m.targetType === 'scenario').successCount, 1);
   } finally { engine.close(); }

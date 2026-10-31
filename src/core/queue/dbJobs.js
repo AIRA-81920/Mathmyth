@@ -2,6 +2,8 @@ import { rows } from '../db/validation.js';
 import { DatabaseError } from '../db/errors.js';
 import { wantsChatPractice, chatRouteLetters } from '../chat/practiceIntent.js';
 import { validateQuestionRoutes, mergeQuestionRoute } from '../chat/questionRoutes.js';
+import { archiveClassification, archiveClassifications } from './classificationResults.js';
+import { answerRouteSnapshots } from '../chat/answerRoutes.js';
 
 export const MAX_ATTEMPTS = 3;
 export function sourceQuestion(db, message) {
@@ -10,14 +12,16 @@ export function sourceQuestion(db, message) {
   return [message.content, ...documents.filter((item) => item.text.trim()).map((item) => `附件《${item.name}》：\n${item.text}`)].filter(Boolean).join('\n\n');
 }
 
-export function enqueueAnswers(db, conversationIds) {
+export function enqueueAnswers(db, conversationIds, { retryAnswerIds = [] } = {}) {
   if (conversationIds?.length === 0) return 0;
   const condition = conversationIds ? ` AND m.conversation_id IN (${conversationIds.map(() => '?').join(',')})` : '';
+  const retry = retryAnswerIds.length ? ` OR m.id IN (${retryAnswerIds.map(() => '?').join(',')})` : '';
   const answers = rows(db, `SELECT m.* FROM message m LEFT JOIN queue_job q
     ON q.source_message_id=m.id AND q.kind='locate'
     WHERE m.role='assistant' AND m.superseded=0 AND m.status='complete' AND trim(m.content)<>'' AND q.id IS NULL
+    AND (NOT EXISTS(SELECT 1 FROM classification_result r WHERE r.source_message_id=m.id)${retry})
     AND NOT EXISTS(SELECT 1 FROM chat_practice cp WHERE cp.message_id=m.id)
-    AND EXISTS(SELECT 1 FROM conversation c WHERE c.id=m.conversation_id AND c.method_id IS NULL)${condition}`, conversationIds ?? []);
+    AND EXISTS(SELECT 1 FROM conversation c WHERE c.id=m.conversation_id AND c.method_id IS NULL)${condition}`, [...retryAnswerIds, ...(conversationIds ?? [])]);
   let added = 0;
   for (const answer of answers) {
     const history = rows(db, 'SELECT * FROM message WHERE conversation_id=? AND superseded=0 AND seq<=? ORDER BY seq', [answer.conversation_id, answer.seq]);
@@ -33,7 +37,9 @@ export function enqueueAnswers(db, conversationIds) {
         userMessageId: last.id, userQuestion: sourceQuestion(db, last),
         questionMessages: users.filter(message => message.is_math_question !== 0).slice(-8)
           .map(message => ({ messageId: message.id, question: sourceQuestion(db, message).slice(0, 1200) })),
-        ...((last.image_ref || users[0].image_ref) ? { imageId: last.image_ref || users[0].image_ref } : {}),
+        // D7：后台分类改为纯文本。图片题的用户消息正文在转写完成后已含完整题面
+        // （appStore 把 <mathmyth_question> 内容写进正文），再带图片只是白付 token，
+        // 也让"删图"与后台任务互相牵制。这里不再附加 imageId。
         ...(selectedAnswer ? { selectedAnswer } : {}),
         context: history.filter((message) => message.status !== 'error' && message.status !== 'streaming')
           .slice(-6).map(({ id, role, content }) => ({ messageId: id, role, content })),
@@ -64,9 +70,9 @@ export function requestMessageQuestionClassification(db, id) {
     AND NOT EXISTS(SELECT 1 FROM message u WHERE u.conversation_id=a.conversation_id AND u.superseded=0 AND u.role='user' AND u.seq>? AND u.seq<a.seq)
     ORDER BY a.seq LIMIT 1`, [message.conversation_id, message.seq, message.seq])[0];
   if (!answer) return false;
-  enqueueAnswers(db, [message.conversation_id]);
+  const added = enqueueAnswers(db, [message.conversation_id], { retryAnswerIds: [answer.id] });
   const job = rows(db, "SELECT * FROM queue_job WHERE source_message_id=? AND kind='locate'", [answer.id])[0];
-  if (!job || ['running','pending'].includes(job.status)) return false;
+  if (!job || job.status === 'running' || (job.status === 'pending' && !added)) return false;
   const payload = JSON.parse(job.payload);
   payload.phase = 'blocks'; payload.blockIds = [];
   payload.source.userMessageId = message.id; payload.source.userQuestion = sourceQuestion(db, message);
@@ -75,11 +81,27 @@ export function requestMessageQuestionClassification(db, id) {
   return true;
 }
 
+// 卡在 pending 超过这么久就判失败：给用户一个"重新整理"的出口，
+// 免得重建库之后界面永远显示"整理中"（以前只有切会话才能救）。
+export const STALE_JOB_MINUTES = 30;
+export function staleJobCutoff(now = Date.now()) {
+  return new Date(now - STALE_JOB_MINUTES * 60000).toISOString();
+}
 export function recoverJobs(db) {
   const cancelled = cancelSupersededJobs(db);
   db.run(`UPDATE queue_job SET status=CASE WHEN attempts>=? THEN 'failed' ELSE 'pending' END,lease_token=NULL
     WHERE kind='locate' AND (status='running' OR (status='pending' AND attempts>=?))`, [MAX_ATTEMPTS, MAX_ATTEMPTS]);
   return db.getRowsModified() > 0 || cancelled > 0;
+}
+
+// D8 启动清理：只删除"已完成/已失败且创建超过 7 天"的历史任务。
+// 运行中（running）与待执行（pending）的任务永不删除，避免误伤在跑的工作。
+export const JOB_RETENTION_DAYS = 7;
+export function pruneJobs(db, now = new Date()) {
+  archiveClassifications(db);
+  const cutoff = new Date(now.getTime() - JOB_RETENTION_DAYS * 86400000).toISOString();
+  db.run("DELETE FROM queue_job WHERE status IN ('done','failed') AND created_at < ?", [cutoff]);
+  return db.getRowsModified();
 }
 
 function claimRow(engine, claim) {
@@ -110,7 +132,9 @@ export async function claimNextJob(engine, now = new Date().toISOString()) {
     const leaseToken = globalThis.crypto.randomUUID();
     db.run("UPDATE queue_job SET status='running',attempts=attempts+1,lease_token=?,next_attempt_at=NULL,payload=? WHERE id=?", [leaseToken, JSON.stringify(payload), job.id]);
     return { id: job.id, leaseToken, attempts: job.attempts + 1, payload };
-  });
+    // E2：claim 不是恢复锚点，只在内存提交即可——checkpoint（携带 attempts 与 phase）
+    // 才是崩溃后用来判断"是否已花过一次模型调用"的落盘点。
+  }, { durable: false });
 }
 
 export function checkpointJob(engine, claim, blockIds, classification) {
@@ -159,25 +183,47 @@ export function completeJob(engine, claim, entries) {
           VALUES(?,?,?,?,'exposed',0,'[]',?)`, [`${learnerId}:${type}:${id}`, learnerId, type, id, now]);
       }
     }
-    // Keep existing schema/backup compatibility: route evidence belongs to the
-    // specific answer job, and is invalidated with that answer's revision.
+    // Keep answer-specific route evidence independently of the execution lease.
     payload.questionRoutes = routes;
     db.run("UPDATE queue_job SET status='done',lease_token=NULL,next_attempt_at=NULL,payload=? WHERE id=?", [JSON.stringify(payload), job.id]);
+    archiveClassification(db, { ...job, status: 'done', payload: JSON.stringify(payload) });
     return { recorded: JSON.parse(job.payload).classificationOnly ? 0 : entries.length };
   });
 }
 
+export function loadAnswerQuestionRoutes(engine, conversationId) {
+  const db = engine.ensureOpen();
+  const records = rows(db, `SELECT r.job_id AS id,r.*,m.seq FROM classification_result r JOIN message m ON m.id=r.source_message_id
+    WHERE r.conversation_id=? AND m.superseded=0`, [conversationId]);
+  const byId = new Map(records.map(record => [record.id, record]));
+  for (const job of rows(db, `SELECT q.*,m.seq FROM queue_job q JOIN message m ON m.id=q.source_message_id
+    WHERE q.conversation_id=? AND q.kind='locate' AND m.superseded=0`, [conversationId])) {
+    let payload; try { payload = JSON.parse(job.payload); } catch { continue; }
+    if (!payload.classificationOnly) byId.set(job.id, job);
+  }
+  const users = rows(db, "SELECT id,is_math_question FROM message WHERE conversation_id=? AND role='user' AND superseded=0", [conversationId]);
+  const encounters = rows(db, 'SELECT message_id,scenario_id,method_id FROM encounter WHERE conversation_id=? ORDER BY rowid', [conversationId]);
+  return answerRouteSnapshots([...byId.values()], users, encounters);
+}
+
 export function loadQuestionRoutes(engine, conversationId) {
   const db = engine.ensureOpen();
-  const jobs = rows(db, `SELECT q.*,m.seq FROM queue_job q JOIN message m ON m.id=q.source_message_id
-    WHERE q.conversation_id=? AND q.kind='locate' AND m.superseded=0 ORDER BY m.seq`, [conversationId]);
+  const records = rows(db, `SELECT r.job_id AS id,r.*,m.seq FROM classification_result r JOIN message m ON m.id=r.source_message_id
+    WHERE r.conversation_id=? AND m.superseded=0`, [conversationId]);
+  const byId = new Map(records.map(record => [record.id, record]));
+  for (const job of rows(db, `SELECT q.*,m.seq FROM queue_job q JOIN message m ON m.id=q.source_message_id
+    WHERE q.conversation_id=? AND q.kind='locate' AND m.superseded=0`, [conversationId])) {
+    let classificationOnly = false; try { classificationOnly = JSON.parse(job.payload)?.classificationOnly; } catch { /* handled below */ }
+    if (!classificationOnly || !byId.has(job.id)) byId.set(job.id, job);
+  }
+  const jobs = [...byId.values()].sort((a,b) => a.seq-b.seq);
   const userRows = rows(db, "SELECT id,is_math_question,image_ref FROM message WHERE conversation_id=? AND role='user' AND superseded=0", [conversationId]);
   const validUsers = new Set(userRows.map(row => row.id));
   const grouped = new Map();
   for (const job of jobs) {
     let payload; try { payload = JSON.parse(job.payload); } catch { continue; }
-    if (payload.classificationOnly) continue;
-    const userId = payload.source.userMessageId;
+    if (!payload || payload.classificationOnly) continue;
+    const userId = payload.source?.userMessageId;
     if (!validUsers.has(userId)) continue;
     if (job.status !== 'done') {
       const user = userRows.find(row => row.id === userId);
@@ -205,28 +251,62 @@ export function loadQuestionRoutes(engine, conversationId) {
 }
 
 export function retryQuestionRoutes(engine, messageId) {
-  const db = engine.ensureOpen();
-  const jobs = rows(db, `SELECT q.* FROM queue_job q JOIN message a ON a.id=q.source_message_id
-    JOIN message u ON u.conversation_id=a.conversation_id WHERE u.id=? AND u.role='user'
-    AND u.superseded=0 AND a.superseded=0 AND q.status='failed' AND q.kind='locate'`, [messageId]);
-  const eligible = jobs.filter(job => {
-    const payload = JSON.parse(job.payload);
-    return !payload.classificationOnly && payload.source.userMessageId === messageId;
-  });
   return engine.transaction(database => {
-    for (const job of eligible) database.run("UPDATE queue_job SET status='pending',attempts=0,lease_token=NULL,next_attempt_at=NULL WHERE id=?", [job.id]);
-    return { retried: eligible.length };
+    let recreated = 0;
+    const archived = rows(database, `SELECT DISTINCT r.source_message_id,r.conversation_id FROM classification_result r
+    JOIN message a ON a.id=r.source_message_id JOIN message u ON u.conversation_id=a.conversation_id
+    WHERE u.id=? AND u.role='user' AND u.superseded=0 AND a.superseded=0 AND r.status='failed'
+    AND json_extract(r.payload,'$.source.userMessageId')=? AND COALESCE(json_extract(r.payload,'$.classificationOnly'),0)=0`, [messageId, messageId]);
+    // 先查"卡住的旧任务"，再重建——顺序反了会把刚重建出来的任务当成旧的，
+    // 因为重建的任务继承了原答案的 created_at。
+    // 除了 failed，也认"pending 卡太久"的：界面在 stalled 时给的就是这个按钮，
+    // 点下去必须真能重新排上，否则按钮等于装饰。
+    const jobs = rows(database, `SELECT q.* FROM queue_job q JOIN message a ON a.id=q.source_message_id
+    JOIN message u ON u.conversation_id=a.conversation_id WHERE u.id=? AND u.role='user'
+    AND u.superseded=0 AND a.superseded=0 AND q.kind='locate'
+    AND (q.status='failed' OR (q.status='pending' AND q.created_at < ?))`, [messageId, staleJobCutoff()]);
+    const eligible = jobs.filter(job => {
+      const payload = JSON.parse(job.payload);
+      return !payload.classificationOnly && payload.source?.userMessageId === messageId;
+    });
+    for (const record of archived) {
+      recreated += enqueueAnswers(database, [record.conversation_id], { retryAnswerIds: [record.source_message_id] });
+      database.run("DELETE FROM classification_result WHERE source_message_id=? AND status='failed'", [record.source_message_id]);
+    }
+    for (const job of eligible) database.run("UPDATE queue_job SET status='pending',attempts=0,lease_token=NULL,next_attempt_at=NULL,payload=json_remove(payload,'$.cancels') WHERE id=?", [job.id]);
+    return { retried: eligible.length + recreated };
   });
 }
 
+// 取消（界面正忙、切会话等）不该消耗"模型调用"次数——那 3 次留给真失败。
+// 但以前取消会把 attempts 减回去，于是 task 可以无限 pending，界面永远"整理中"。
+// 现在取消单独计数，超过 MAX_CANCELS 就判为 failed，让用户能点"重新整理"。
+export const MAX_CANCELS = 6;
 export function failJob(engine, claim, { cancelled = false } = {}) {
   const job = claimRow(engine, claim);
-  const terminal = !cancelled && job.attempts >= MAX_ATTEMPTS;
-  const attempts = cancelled ? Math.max(0, job.attempts - 1) : job.attempts;
-  const nextAttempt = cancelled ? null : new Date(Date.now() + 5000 * 2 ** (job.attempts - 1)).toISOString();
+  if (cancelled) {
+    let payload = {};
+    try { payload = JSON.parse(job.payload) ?? {}; } catch { payload = {}; }
+    const cancels = Number(payload.cancels ?? 0) + 1;
+    const terminal = cancels >= MAX_CANCELS;
+    payload.cancels = cancels;
+    // 取消仍然把 attempts 还回去：那 3 次是留给"真的调用失败"的预算。
+    // 以前少了取消计数，于是回滚让任务可以无限 pending——那才是界面永远"整理中"的根。
+    const attempts = Math.max(0, job.attempts - 1);
+    return engine.transaction((db) => {
+      // 取消后立刻可以重新排（队列自己每 pollDelay 才轮询一次，不需要额外退避）。
+      db.run('UPDATE queue_job SET status=?,attempts=?,lease_token=NULL,next_attempt_at=NULL,payload=? WHERE id=?',
+        [terminal ? 'failed' : 'pending', attempts, JSON.stringify(payload), job.id]);
+      if (terminal) archiveClassification(db, { ...job, status: 'failed', payload: JSON.stringify(payload) });
+      return { terminal, cancels };
+    });
+  }
+  const terminal = job.attempts >= MAX_ATTEMPTS;
+  const nextAttempt = new Date(Date.now() + 5000 * 2 ** (job.attempts - 1)).toISOString();
   return engine.transaction((db) => {
     db.run('UPDATE queue_job SET status=?,attempts=?,lease_token=NULL,next_attempt_at=? WHERE id=?',
-      [terminal ? 'failed' : 'pending', attempts, terminal ? null : nextAttempt, job.id]);
+      [terminal ? 'failed' : 'pending', job.attempts, terminal ? null : nextAttempt, job.id]);
+    if (terminal) archiveClassification(db, { ...job, status: 'failed' });
     return { terminal };
   });
 }

@@ -41,6 +41,7 @@ export default function PracticeReview({ itemId, onClose }) {
       {item.answer?.steps && <><p className="muted">你的关键步骤</p><MathMarkdown>{item.answer.steps}</MathMarkdown></>}
       {item.answer?.selectedIds?.length > 0 && <div className="muted"><p>{isRouteQuestion(item.question) ? '你选的路线' : '你选的方法'}</p><MathMarkdown>{item.question.options.filter((option) => item.answer.selectedIds.includes(option.id)).map((option) => option.name).join('\n\n')}</MathMarkdown></div>}
       {item.answer?.feedback && <MathMarkdown>{item.answer.feedback}</MathMarkdown>}
+      {item.answer?.assessmentScope === 'result' && item.answer?.resultCorrect && <p className="muted field-hint">已记录结果正确；关键步骤尚未检验。</p>}
       {isRouteQuestion(item.question) && expanded && <RouteReview question={item.question} revealed />}
       {expanded && <div className="practice-solution"><MathMarkdown>{item.question.solution}</MathMarkdown></div>}
     </div> : !error && <p className="muted">正在读取…</p>}

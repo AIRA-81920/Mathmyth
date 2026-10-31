@@ -3,7 +3,9 @@ export const SWIPE_SETTLE_MS = 180;
 
 // History is the neighbor before Ask, never a shortcut from another area.
 export function swipeMode(index, dx) { return index === 0 && dx > 0 ? 'drawer' : 'area'; }
-export function commitsHistory(dx, width) { return dx >= Math.max(64, Math.min(96, width * .2)); }
+// 抽屉是否算「拉开」：只按参考宽度的比例判定。原先还要夹在 64–96 绝对像素之间，
+// 于是同一个手势在不同宽度的窗口上代表的比例并不一致 —— 展开程度应当按比例来算。
+export function commitsHistory(dx, width) { return dx >= width * .2; }
 
 // Waiting for a clear horizontal direction lets normal page scrolling continue.
 export function swipeIntent(dx, dy) {
@@ -17,6 +19,16 @@ export function swipeCommitIndex(index, count, dx, width) {
   const threshold = Math.max(64, Math.min(112, width * .22));
   if (Math.abs(dx) < threshold) return index;
   return Math.max(0, Math.min(count - 1, index + (dx < 0 ? 1 : -1)));
+}
+
+// 顶部那条线的跟手行程：拖到「会换区」的那个距离时，正好走完一格。
+// 若按视口宽度折算，手指走了 22% 屏宽而线才挪了几像素，抬手换区就会突然跳过去。
+export function swipeTravel(index, count, dx, width) {
+  if (!dx) return index;
+  const target = index + (dx < 0 ? 1 : -1);
+  if (target < 0 || target >= count) return index;
+  const span = Math.max(64, Math.min(112, width * .22));
+  return index - Math.sign(dx) * Math.min(1, Math.abs(dx) / span);
 }
 
 export function swipeOffset(index, count, dx) {

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><color name="splash_background">#FAFAFA</color><color name="app_surface">#FAFAFA</color><color name="app_text">#1C1C1C</color><bool name="light_system_bars">true</bool></resources>

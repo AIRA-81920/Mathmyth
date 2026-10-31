@@ -5,6 +5,7 @@ export async function hideInputKeyboard(input) {
   if (Capacitor.isNativePlatform() && Capacitor.isPluginAvailable('MathmythMedia')) await media.hideKeyboard();
 }
 export async function recentNativePhotos() {
-  if (!Capacitor.isNativePlatform() || !Capacitor.isPluginAvailable('MathmythMedia')) return [];
-  return (await media.recentPhotos()).photos ?? [];
+  if (!Capacitor.isNativePlatform() || !Capacitor.isPluginAvailable('MathmythMedia')) return { photos: [], denied: false };
+  const result = await media.recentPhotos();
+  return { photos: result?.photos ?? [], denied: result?.denied === true };
 }

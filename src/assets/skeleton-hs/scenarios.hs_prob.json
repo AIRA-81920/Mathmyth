@@ -1,0 +1,642 @@
+{
+  "block_id": "B.hs_prob",
+  "scenarios": [
+    {
+      "id": "S.hs_prob.counting_principle",
+      "block_id": "B.hs_prob",
+      "name": "分类加法与分步乘法原理",
+      "definition": "题面要求完成一件事的方法数，需判断该用分类加法还是分步乘法。",
+      "signals": [
+        "出现有多少种不同方法的问法",
+        "事件可分成若干互斥类别",
+        "需依次完成若干步骤",
+        "出现至少或至多需要分类"
+      ],
+      "recognition_examples": [
+        "从甲地到乙地有 3 条路，从乙地到丙地有 4 条路，共有多少种走法？",
+        "用 0 到 9 组成没有重复数字的三位数，有多少个？",
+        "从 5 名男生、4 名女生中选 3 人且至少 1 名女生，有多少种选法？"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.permutation",
+          "how": "那里已确定用排列（有序），这里要先判断分类还是分步、有序还是无序。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_counting_principle",
+          "priority": 1,
+          "when_to_prefer": "先判断各步骤是否互相独立：能分步就用乘法，只能分类就用加法。"
+        },
+        {
+          "method_id": "M.hs_permutation",
+          "priority": 2,
+          "when_to_prefer": "分步中某一步涉及排成一列且顺序有意义时，改用排列数计算该步。"
+        },
+        {
+          "method_id": "M.hs_combination",
+          "priority": 3,
+          "when_to_prefer": "分步中某一步只是选取而不排序时，改用组合数计算该步。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 4,
+          "when_to_prefer": "出现至少或至多时，按满足条件的类别分档，或改用对立事件剔除。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.permutation",
+      "block_id": "B.hs_prob",
+      "name": "排列与排列数",
+      "definition": "题面要求计数且元素顺序有关，如排队、排列、数字排列。",
+      "signals": [
+        "出现排成一排或顺序不同算不同",
+        "出现站队或排列字样",
+        "有相邻或不相邻限制",
+        "要求求有多少种排法"
+      ],
+      "recognition_examples": [
+        "5 人排成一排，甲不站两端，有多少种排法？",
+        "3 男 3 女排成一排且男女相间，有多少种排法？",
+        "用 1,2,3,4,5 组成无重复数字的四位偶数，有多少个？"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.combination",
+          "how": "那里只选不排，这里顺序有意义，两者的计数公式不同。"
+        },
+        {
+          "scenario_id": "S.hs_prob.counting_principle",
+          "how": "这里已确定用排列（有序），那里要先判断分类还是分步、有序还是无序。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_permutation",
+          "priority": 1,
+          "when_to_prefer": "无限制时直接排列数；有相邻用捆绑，有不相邻用插空，特殊位置优先安排。"
+        },
+        {
+          "method_id": "M.hs_counting_principle",
+          "priority": 2,
+          "when_to_prefer": "带附加限制时把限制拆成若干分步，逐位置安排再相乘。"
+        },
+        {
+          "method_id": "M.hs_combination",
+          "priority": 3,
+          "when_to_prefer": "先选出参与排列的元素集合，再对该集合作全排列，两步相乘。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.combination",
+      "block_id": "B.hs_prob",
+      "name": "组合、分组与分配",
+      "definition": "题面要求计数且只选不排，如选组、抽样、分组分配。",
+      "signals": [
+        "出现选出、任取或组成一组",
+        "顺序不影响结果",
+        "出现分组或分配",
+        "要求求有多少种选法"
+      ],
+      "recognition_examples": [
+        "从 10 人中选 3 人组成小组，有多少种选法？",
+        "将 6 人分成 3 组（每组 2 人），有多少种分法？",
+        "从 7 件产品（含 2 件次品）中取 3 件恰有 1 件次品，有多少种取法？"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.permutation",
+          "how": "那里顺序有意义，这里只是选取；分组问题还要除以组数的阶乘。"
+        },
+        {
+          "scenario_id": "S.hs_prob.binomial",
+          "how": "这里数方案个数，那里算展开式系数，靠通项公式而非直接枚举。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_combination",
+          "priority": 1,
+          "when_to_prefer": "分组均分时先按组依次选取，再除以组数的阶乘以消除组的顺序。"
+        },
+        {
+          "method_id": "M.hs_counting_principle",
+          "priority": 2,
+          "when_to_prefer": "涉及多类元素搭配时，按类别分步选取再相乘。"
+        },
+        {
+          "method_id": "M.hs_permutation",
+          "priority": 3,
+          "when_to_prefer": "分组后还要把组分配给不同对象时，先分组再对组作排列。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.binomial",
+      "block_id": "B.hs_prob",
+      "name": "二项式定理与系数",
+      "definition": "题面围绕二项展开式的通项、特定项系数、系数和或系数最大项。",
+      "signals": [
+        "出现二项式展开",
+        "要求求某次幂的系数",
+        "出现常数项",
+        "要求求各项系数之和或二项式系数最大项"
+      ],
+      "recognition_examples": [
+        "求 $(x+2)^{6}$ 展开式中 $x^{3}$ 的系数。",
+        "求 $\\left(2x-\\dfrac{1}{x}\\right)^{6}$ 的常数项。",
+        "求 $(1+x)^{n}$ 展开式各项系数之和，并求 $n$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.combination",
+          "how": "那里数方案个数，这里算展开式系数，靠通项公式而非直接枚举。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_binomial",
+          "priority": 1,
+          "when_to_prefer": "写出通项后令指数等于目标次数，解出项序号再算系数。"
+        },
+        {
+          "method_id": "M.hs_combination",
+          "priority": 2,
+          "when_to_prefer": "通项中的组合数是系数的一部分，需与幂的系数相乘。"
+        },
+        {
+          "method_id": "M.hs_undetermined_coeff",
+          "priority": 3,
+          "when_to_prefer": "求系数和时对变量赋特殊值构造方程，用待定思路反解参数。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.classical",
+      "block_id": "B.hs_prob",
+      "name": "古典概型",
+      "definition": "题面要求求古典概型的概率，通常给出样本空间与事件。",
+      "signals": [
+        "出现任取或随机抽取",
+        "要求求概率",
+        "样本空间有限且可计数",
+        "事件描述含至少或恰有"
+      ],
+      "recognition_examples": [
+        "从 5 个球（3 红 2 白）中任取 2 个，求恰有 1 个白球的概率。",
+        "掷两颗骰子，求点数之和为 7 的概率。",
+        "从 1 到 9 中任取两数，求两数之和为偶数的概率。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.conditional",
+          "how": "那里有条件限制改变样本空间，这里是无条件的等可能概率。"
+        },
+        {
+          "scenario_id": "S.hs_prob.geometric",
+          "how": "这里样本点有限可数，那里用连续区域的度量比，不能数点只能算长度或面积。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_classical",
+          "priority": 1,
+          "when_to_prefer": "先数清等可能的样本点总数，再数符合事件的基本事件数，两者作商。"
+        },
+        {
+          "method_id": "M.hs_counting_principle",
+          "priority": 2,
+          "when_to_prefer": "样本点多到无法逐个列举时，用计数原理算出总数与事件数。"
+        },
+        {
+          "method_id": "M.hs_combination",
+          "priority": 3,
+          "when_to_prefer": "任取若干个且无序时，用组合数计数分子分母。"
+        },
+        {
+          "method_id": "M.hs_permutation",
+          "priority": 4,
+          "when_to_prefer": "抽取结果与顺序有关时，分子分母都必须用排列数，不能混用。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.independent",
+      "block_id": "B.hs_prob",
+      "name": "相互独立事件",
+      "definition": "题面涉及多个事件同时发生或相互独立，要求求概率。",
+      "signals": [
+        "出现相互独立或互不影响",
+        "出现至少有一个发生",
+        "要求求同时发生的概率",
+        "出现两事件概率之积的表达式"
+      ],
+      "recognition_examples": [
+        "甲、乙独立射击，命中率分别 0.8、0.7，求两人都命中的概率。",
+        "求至少一人命中的概率。",
+        "三个元件独立工作，求系统正常工作的概率。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.conditional",
+          "how": "那里已知某事件发生求条件概率，这里事件之间无影响关系。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_independent",
+          "priority": 1,
+          "when_to_prefer": "相互独立的事件同时发生直接相乘；至少一个发生用对立事件一减。"
+        },
+        {
+          "method_id": "M.hs_classical",
+          "priority": 2,
+          "when_to_prefer": "若每个事件本身是古典概型，先用古典方法算出各自的概率。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.conditional",
+      "block_id": "B.hs_prob",
+      "name": "条件概率、全概率与贝叶斯",
+      "definition": "题面给出条件概率、全概率或由结果反推来源的问题。",
+      "signals": [
+        "出现已知某事件发生的条件下",
+        "要求求条件概率",
+        "出现分若干批次或来源并求总体概率",
+        "出现已知结果反求来源"
+      ],
+      "recognition_examples": [
+        "已知 $P(A)=0.5$，$P(AB)=0.2$，求 $P(B\\mid A)$。",
+        "某厂三条生产线的次品率与产量占比已给出，求总体次品率。",
+        "检出次品，求它来自第二条生产线的概率。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.independent",
+          "how": "那里假设独立直接相乘，这里必须用条件概率定义或全概率公式分层加权。"
+        },
+        {
+          "scenario_id": "S.hs_prob.classical",
+          "how": "这里有条件限制改变样本空间，那里是无条件的等可能概率。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_conditional",
+          "priority": 1,
+          "when_to_prefer": "两事件交叉概率除以条件事件概率即得条件概率，是最基础的一步。"
+        },
+        {
+          "method_id": "M.hs_classical",
+          "priority": 2,
+          "when_to_prefer": "条件事件的概率本身要用古典概型计算时，先分别数清分子分母。"
+        },
+        {
+          "method_id": "M.hs_independent",
+          "priority": 3,
+          "when_to_prefer": "分层之间相互独立时，各层概率可直接相乘，简化全概率计算。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.geometric",
+      "block_id": "B.hs_prob",
+      "name": "几何概型",
+      "definition": "题面求几何概型的概率，即长度、面积或体积之比。",
+      "signals": [
+        "出现区间内随机取点",
+        "出现随机到达或等待时间",
+        "概率与区域度量成比例",
+        "没有有限个样本点可数"
+      ],
+      "recognition_examples": [
+        "在 $[0,1]$ 上随机取一点，求它大于 0.7 的概率。",
+        "在圆内随机取点，求它到圆心距离小于半径一半的概率。",
+        "两人约定在 0 到 1 时之间到达，求能相遇的概率。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.classical",
+          "how": "那里样本点有限可数，这里用连续区域的度量比，不能数点只能算长度或面积。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_geometric",
+          "priority": 1,
+          "when_to_prefer": "先把条件翻译成区域，再用满足条件的区域度量除以总区域度量。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 2,
+          "when_to_prefer": "二维条件的区域边界要画出来，图形一画，分子分母的度量就清楚了。"
+        },
+        {
+          "method_id": "M.hs_classical",
+          "priority": 3,
+          "when_to_prefer": "若问题实际是离散等可能情形，应回到古典概型而不是强行套区域。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.distribution",
+      "block_id": "B.hs_prob",
+      "name": "离散型随机变量分布列",
+      "definition": "题面要求求离散型随机变量的分布列及其性质。",
+      "signals": [
+        "要求求分布列",
+        "给出随机变量的取值规则",
+        "要求验证概率之和为一",
+        "出现含参数的分布列"
+      ],
+      "recognition_examples": [
+        "袋中 3 红 2 白，取 2 球，求红球数 $X$ 的分布列。",
+        "已知分布列 $P(X=k)=ak$，求 $a$。",
+        "求 $P(X\\ge 2)$ 并写出分布列。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.expectation",
+          "how": "那里算数字特征，这里要先写出完整的分布列作为基础。"
+        },
+        {
+          "scenario_id": "S.hs_prob.binomial_dist",
+          "how": "这里按任意规则列分布列；若试验是独立重复且每次概率相同，应直接套二项分布。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_distribution",
+          "priority": 1,
+          "when_to_prefer": "先列全随机变量的所有可能取值，再逐个算概率并验证和为一。"
+        },
+        {
+          "method_id": "M.hs_classical",
+          "priority": 2,
+          "when_to_prefer": "每个取值对应的概率多为古典概型，用组合数计数分子分母。"
+        },
+        {
+          "method_id": "M.hs_independent",
+          "priority": 3,
+          "when_to_prefer": "取值由多个独立环节决定时，各环节概率相乘再按取值合并。"
+        },
+        {
+          "method_id": "M.hs_combination",
+          "priority": 4,
+          "when_to_prefer": "从有限个对象中抽取时，用组合数写出各个取值的概率。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.expectation",
+      "block_id": "B.hs_prob",
+      "name": "期望与方差",
+      "definition": "题面要求求期望、方差，或由期望反求参数、比较方案。",
+      "signals": [
+        "要求求期望或方差",
+        "给出分布列",
+        "要求求参数使期望等于某值",
+        "出现决策比较"
+      ],
+      "recognition_examples": [
+        "已知 $X$ 的分布列，求 $E(X)$ 与 $D(X)$。",
+        "若 $E(X)=2$ 且分布列含参数 $a$，求 $a$。",
+        "比较两种投资方案的期望收益。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.distribution",
+          "how": "那里写出分布，这里在其上做加权求和与离差平方和，是分布列的后续运算。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_expectation",
+          "priority": 1,
+          "when_to_prefer": "期望按取值乘概率求和；方差用平方的期望减期望的平方，避免大数运算。"
+        },
+        {
+          "method_id": "M.hs_distribution",
+          "priority": 2,
+          "when_to_prefer": "分布列还没写出时，先补全分布列再算数字特征。"
+        },
+        {
+          "method_id": "M.hs_binomial_dist",
+          "priority": 3,
+          "when_to_prefer": "若分布已识别为二项分布，直接用项数乘概率与相应方差公式。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.binomial_dist",
+      "block_id": "B.hs_prob",
+      "name": "二项分布",
+      "definition": "题面是若干次独立重复试验，要求求恰好若干次成功的概率或分布。",
+      "signals": [
+        "出现独立重复或每次成功概率为常数的描述",
+        "要求求恰有若干次成功的概率",
+        "出现二项分布记号",
+        "要求求期望与方差"
+      ],
+      "recognition_examples": [
+        "某人投篮命中率 0.6，投 5 次，求恰中 3 次的概率。",
+        "若 $X\\sim B(10,0.3)$，求 $E(X)$ 与 $D(X)$。",
+        "求 $n$ 次试验中至少成功一次的概率。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.distribution",
+          "how": "一般分布列按任意规则取值，二项分布必须有固定的独立重复结构。"
+        },
+        {
+          "scenario_id": "S.hs_prob.normal",
+          "how": "这里是离散的独立重复试验；若变量连续且服从正态，靠对称性与标准化求概率，不能逐点列分布。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_binomial_dist",
+          "priority": 1,
+          "when_to_prefer": "先确认独立、重复、每次概率相同三条件，再套通项或期望方差公式。"
+        },
+        {
+          "method_id": "M.hs_distribution",
+          "priority": 2,
+          "when_to_prefer": "需要完整分布列时，对每个取值逐一代二项分布公式。"
+        },
+        {
+          "method_id": "M.hs_expectation",
+          "priority": 3,
+          "when_to_prefer": "要求期望方差但忘了专用公式时，用定义式也可算出同一结果。"
+        },
+        {
+          "method_id": "M.hs_combination",
+          "priority": 4,
+          "when_to_prefer": "二项分布通项中的组合数需要按选取次数计算，注意与成功次数对应。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.normal",
+      "block_id": "B.hs_prob",
+      "name": "正态分布",
+      "definition": "题面涉及正态分布曲线、对称性求概率或三段标准差原则。",
+      "signals": [
+        "出现正态分布记号",
+        "要求求某区间上的概率",
+        "出现对称性或三段标准差原则",
+        "给出总体估计问题"
+      ],
+      "recognition_examples": [
+        "若 $X\\sim N(0,1)$，求 $P(-1<X<1)$。",
+        "某次考试成绩服从 $N(80,25)$，求及格率。",
+        "利用三段标准差原则估计产品质量的合格范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.binomial_dist",
+          "how": "正态是连续型，靠对称性与标准化求概率，不能逐点列分布。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_normal",
+          "priority": 1,
+          "when_to_prefer": "先按对称性把区间折到同一侧，再用三段标准差原则给出的固定概率。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 2,
+          "when_to_prefer": "画出正态曲线并标出均值与所求区间，可避免区间方向搞错。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.sampling",
+      "block_id": "B.hs_prob",
+      "name": "抽样方法与样本估计",
+      "definition": "题面要求选择抽样方法，或由样本估计总体的均值、方差、百分位数。",
+      "signals": [
+        "出现简单随机抽样或分层抽样",
+        "要求求样本均值或方差",
+        "出现按比例分配样本",
+        "要求估计总体"
+      ],
+      "recognition_examples": [
+        "某校高一 600 人、高二 400 人，用分层抽样抽 50 人，求各层人数。",
+        "给出样本数据，求平均数与方差。",
+        "求一组数据的第 75 百分位数。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.regression",
+          "how": "那里研究两个变量的相关关系，这里只描述单一变量的分布特征。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_sampling",
+          "priority": 1,
+          "when_to_prefer": "分层抽样按各层人数比例分配名额；均值方差按定义或简化公式计算。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 2,
+          "when_to_prefer": "百分位数与直方图读图要按累积频率定位，画图或列表更不易错。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.regression",
+      "block_id": "B.hs_prob",
+      "name": "一元线性回归",
+      "definition": "题面给出成对数据，要求求相关系数、回归方程并作预测。",
+      "signals": [
+        "出现散点图或线性相关",
+        "要求求回归方程",
+        "给出均值与求和式",
+        "要求预测某个自变量对应的因变量"
+      ],
+      "recognition_examples": [
+        "给出 5 组数据，求 $y$ 关于 $x$ 的回归方程。",
+        "判断相关系数 $r$ 的符号与强弱。",
+        "用回归方程预测 $x=10$ 时的 $y$ 值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.contingency",
+          "how": "那里是分类变量的独立性检验，这里是两个定量变量的线性关系。"
+        },
+        {
+          "scenario_id": "S.hs_func.function_model",
+          "how": "这里用统计方法拟合线性回归，那里按函数类型（一次、二次、指数、对数）建模。"
+        },
+        {
+          "scenario_id": "S.hs_prob.sampling",
+          "how": "这里研究两个变量的相关关系，那里只描述单一变量的分布特征。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_regression",
+          "priority": 1,
+          "when_to_prefer": "先算两个均值与离差和，再按最小二乘公式求斜率与截距，回归线必过样本中心。"
+        },
+        {
+          "method_id": "M.hs_sampling",
+          "priority": 2,
+          "when_to_prefer": "求回归前需先算样本均值，用均值公式把中间量准备好。"
+        },
+        {
+          "method_id": "M.hs_function_model",
+          "priority": 3,
+          "when_to_prefer": "数据明显不是线性时，应先考虑按函数类型建模而不是强行线性回归。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_prob.contingency",
+      "block_id": "B.hs_prob",
+      "name": "列联表与独立性检验",
+      "definition": "题面给出列联表，要求判断两个分类变量是否相关。",
+      "signals": [
+        "出现二乘二列联表",
+        "要求判断有多大把握认为两变量有关",
+        "给出临界值表",
+        "出现独立性检验字样"
+      ],
+      "recognition_examples": [
+        "由列联表计算卡方并判断性别与偏好是否有关。",
+        "给出观测值与临界值，判断能否认为两变量独立。",
+        "补全列联表后作检验。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_prob.regression",
+          "how": "那里是定量变量的线性回归，这里是分类变量的独立性检验。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_contingency",
+          "priority": 1,
+          "when_to_prefer": "先补全列联表四个格，代入统计量公式，再与临界值比较下结论。"
+        },
+        {
+          "method_id": "M.hs_sampling",
+          "priority": 2,
+          "when_to_prefer": "数据来自抽样时，先说明样本与总体的关系，再作推断表述。"
+        },
+        {
+          "method_id": "M.hs_regression",
+          "priority": 3,
+          "when_to_prefer": "若两个变量本身是定量的，应改用回归分析而不是列联表检验。"
+        }
+      ]
+    }
+  ]
+}

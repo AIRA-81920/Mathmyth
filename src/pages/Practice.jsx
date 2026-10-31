@@ -1,9 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, memo } from 'react';
 import { ArrowLeft, Check } from 'lucide-react';
 import MathMarkdown from '../components/MathMarkdown.jsx';
 import PracticeReview from '../components/PracticeReview.jsx';
 import RouteReview from '../components/RouteReview.jsx';
 import PracticeTargetPicker from '../components/PracticeTargetPicker.jsx';
+import PracticeContinuations from '../components/PracticeContinuations.jsx';
+import ConfirmDialog from '../components/ConfirmDialog.jsx';
+import { practiceEvidenceSummary } from '../core/learning/practiceSummary.js';
 import { usePracticeStore } from '../store/practiceStore.js';
 import { useAppStore } from '../store/appStore.js';
 import { isRouteQuestion, practiceLevels, selectionPrompt } from '../core/practice/routes.js';
@@ -13,11 +16,12 @@ import { onDatabaseChange } from '../core/db/database.js';
 import '../styles/practice-routes.css';
 
 const dateLabel = (value) => new Date(value).toLocaleString('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-export default function Practice({ active = true }) {
+function Practice({ active = true }) {
   const state = usePracticeStore();
   const initialized = useAppStore((app) => app.storageInitialized);
   const learnerId = useAppStore((app) => app.learnerId);
   const dataOperation = useAppStore((app) => app.dataOperation);
+  const subjectEpoch = useAppStore((app) => app.subjectEpoch);
   const [reviewId, setReviewId] = useState(null);
   const [expandedItemId, setExpandedItemId] = useState(null);
   const closeReview = useCallback(() => setReviewId(null), []);
@@ -27,7 +31,7 @@ export default function Practice({ active = true }) {
     return onDatabaseChange(({ method }) => {
       if (['completeJob', 'deleteConversation', 'gradePracticeItem'].includes(method)) state.initialize();
     });
-  }, [initialized, learnerId, dataOperation, active, state.initialize]);
+  }, [initialized, learnerId, dataOperation, active, subjectEpoch, state.initialize]);
   useEffect(() => { setReviewId(null); setExpandedItemId(null); }, [learnerId, dataOperation]);
   const edge = state.choices[state.choiceIndex];
   if (state.screen === 'history') return <div className="practice-page">
@@ -93,32 +97,38 @@ export default function Practice({ active = true }) {
         </div>
         {state.busy && <button type="button" className="practice-text-button" onClick={state.cancel}>取消检查</button>}
       </main>
+      <ConfirmDialog open={state.pendingNext} title="跳过这一题？" description="这一题还没提交。确认跳过后这道题会记为已跳过，不能回退；已写的输入会保留为草稿。"
+        confirmLabel="跳过这一题" onConfirm={state.confirmNext} onCancel={state.cancelNext} />
     </div>;
   }
-  if (state.screen === 'finished') return <div className="practice-entry"><p>这一轮结束了，题面、你的作答和反馈已保存。</p><button type="button" className="button button-secondary" onClick={state.showEntry}>返回练习</button><button type="button" className="practice-text-button" onClick={() => state.showHistory()}>查看练习记录</button></div>;
-  if (!edge) return <div className="practice-entry"><p className="muted" role="status">{state.error || '还没有接触过的练习情景。先在问答里问一道题，归类完成后，这里会出现相关练习。'}</p>
+  if (state.screen === 'finished') return <div className="practice-entry"><h1>这次练习</h1>{state.session?.items.map(item => { const summary = practiceEvidenceSummary(item); return <div className="practice-finish-item" key={item.id}><p>第 {item.seq} 题：{summary.done}</p><p className="muted field-hint">{summary.pending}</p></div>; })}<p className="muted">题面、作答和反馈已保存，可以随时回看。</p><button type="button" className="button button-secondary" onClick={state.showEntry}>返回练习</button><button type="button" className="practice-text-button" onClick={() => state.showHistory()}>查看练习记录</button></div>;
+  if (!edge) return <div className="practice-entry"><PracticeContinuations active={active} /><p className="muted" role="status">{state.error || '还没有接触过的练习情景。先在问答里问一道题，归类完成后，这里会出现相关练习。'}</p>
     {state.session && !state.session.finishedAt && <button type="button" className="practice-text-button" onClick={state.resume}>继续上次这一轮</button>}
     <button type="button" className="practice-text-button" onClick={() => state.showHistory()}>练习记录</button></div>;
   const goal = practicePresentation(edge);
   return <div className="practice-entry">
+    <PracticeContinuations active={active} />
     <h1>选一组题来练</h1>
     <PracticeTargetPicker choices={state.choices} selected={edge} disabled={state.busy || state.generating} onSelect={state.selectChoice} />
     <div className="practice-goal-description"><MathMarkdown>{goal.description}</MathMarkdown></div>
     {goal.example && <div className="muted practice-goal-example"><MathMarkdown>{`例如：${goal.example}`}</MathMarkdown></div>}
-    <p className="muted">{edge.count ? `你已经见过 ${edge.count} 道这类题。` : '可以先从这类题开始练。'}</p>
+    {edge.count > 0 && <p className="muted">见过 {edge.count} 道这类题</p>}
     <div className="practice-levels" role="group" aria-label="训练方式">{practiceLevels.map((level) => <button type="button" key={level.id} className={state.level === level.id ? 'is-active' : ''} disabled={state.busy || state.generating} onClick={() => state.setLevel(level.id)}>{level.name}</button>)}</div>
-    <p className="muted practice-round-hint">{edge.localReady && edge.questionCount < 3 ? `本轮 ${edge.questionCount} 道题，先练已核对的题，后续继续补充。` : '一轮三道题，先做较容易的，再做需要多次变形或换一种做法的题。'}</p>
-    {edge.localReady && <p className="muted field-hint">{edge.primaryScenarioId && edge.primaryQuestionCount < 3 && edge.questionCount >= 3
-      ? `这类题已整理 ${edge.primaryQuestionCount} 道，每轮配合同组的其他情景练三题。`
-      : `已有 ${edge.questionCount} 道本地题，每轮选${Math.min(3, edge.questionCount)}题，优先未做题。`}</p>}
-    {!edge.localReady && <p className="muted field-hint practice-unprepared">这类题还没有本地题组。可从上面的列表选择已有题组，或主动让 AI 出题。</p>}
+    <p className="muted practice-round-hint">{edge.localReady && edge.questionCount < 3 ? `每轮 ${edge.questionCount} 道题` : '每轮 3 道题'}</p>
+    {edge.localReady && <p className="muted field-hint">已有 {edge.questionCount} 道本地题，优先未做的。</p>}
+    {!edge.localReady && <p className="muted field-hint practice-unprepared">还没有这类题的本地题组。</p>}
     {state.error && <p className="muted field-hint" role="status">{state.error}</p>}
     <div className="practice-actions"><button type="button" className="button button-secondary" disabled={state.busy || state.generating || !state.choices.some((choice, index) => choice.localReady && index !== state.choiceIndex)} onClick={state.changeEdge}>换一组</button>
       <button type="button" className="button button-primary" disabled={state.busy || state.generating || !edge.localReady} onClick={() => state.start()}>{state.busy ? '正在准备…' : state.generating ? '正在出题…' : edge.localReady ? '开练' : '本地题未准备'}</button></div>
     {!edge.localReady && !state.generating && <button type="button" className="practice-text-button" disabled={state.busy} onClick={() => state.start({ ai: true })}>让 AI 编写路线变式</button>}
-    {state.generating && <p className="muted field-hint" role="status">{state.generationProgress}第一道准备好后即可开始。</p>}
+    {state.generating && <p className="muted field-hint" role="status">{state.generationProgress}</p>}
     {state.busy || state.generating ? <button type="button" className="practice-text-button" onClick={state.cancel}>取消</button>
       : state.session && !state.session.finishedAt && <button type="button" className="practice-text-button" onClick={state.resume}>继续上次这一轮</button>}
     <button type="button" className="practice-text-button practice-history-link" disabled={state.busy} onClick={() => state.showHistory()}>练习记录</button>
+    <ConfirmDialog open={Boolean(state.pendingStart)} title="开新的一轮？" description="这一轮还没练完。开新的一轮会结束它，未提交的输入会保留为草稿。"
+      confirmLabel="开新的一轮" onConfirm={state.confirmStart} onCancel={state.cancelStart} />
   </div>;
 }
+
+// 抽屉开关会让 MainShell 重渲染；页面不 memo 的话，整棵会话树每次都要重新 diff。
+export default memo(Practice)

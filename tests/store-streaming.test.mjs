@@ -31,8 +31,52 @@ async function createHarness() {
     state().setModelConfig({ apiKey: 'test-key' });
     assert.equal(state().completeOnboarding().valid, true);
   };
-  return { jobs, state, conversation, start };
+  return { jobs, state, conversation, start, set: (patch) => store.setState(patch) };
 }
+
+test('a network-killed answer is resumed exactly once on returning to the foreground', async () => {
+  const { jobs, state, conversation, start, set } = await createHarness(); start();
+  set({ storageInitialized: true, storageStatus: 'ready' });
+  const first = state().sendMessage('求极限');
+  jobs[0].onDelta('先看未定式，');
+  jobs[0].reject(Object.assign(new Error('连接失败'), { code: 'network' }));
+  await first;
+  const killed = conversation().messages.at(-1);
+  assert.equal(killed.status, 'error');
+  assert.equal(killed.errorCode, 'network');
+  assert.equal(killed.content, '先看未定式，', '断连前收到的正文要保留');
+  assert.equal(killed.canRepair, true, '有产出才有续写可言');
+
+  // 续写补救：回到前台自动补一次——材料注入、并入同一条回答、不产生新版本。
+  assert.equal(state().resumeInterruptedRequests(), true);
+  assert.equal(jobs.length, 2, '补一次请求，而不是重放整段');
+  const repairUser = jobs[1].messages.at(-1);
+  assert.equal(repairUser.role, 'user');
+  assert.ok(repairUser.content.includes('求极限'), '原提问仍在');
+  assert.ok(repairUser.content.includes('先看未定式'), '已写出的正文作为材料带上');
+  const resumed = conversation().messages.filter((message) => !message.superseded);
+  assert.equal(resumed.length, 2, '不新增消息');
+  assert.equal(resumed.at(-1).id, killed.id, '还是同一条回答');
+  assert.equal(resumed.at(-1).status, 'streaming');
+  // 同一个回答不会被反复补救；用户手动停止过的回答也绝不补救。
+  assert.equal(state().resumeInterruptedRequests(), false);
+
+  // 真实模型常把已有结尾再抄一遍：这次故意重复开头，验证"去重后接缝无缝"。
+  jobs[1].onDelta('先看未定式，接着写完的部分');
+  jobs[1].resolve('先看未定式，重连后的完整回答');
+  await Promise.resolve();
+  const done = conversation().messages.filter((message) => !message.superseded).at(-1);
+  assert.equal(done.status, 'complete');
+  assert.equal(done.repaired, true, '标记为"已从上次中断处继续"');
+  assert.equal(done.content, '先看未定式，重连后的完整回答', '续写接在原文之后');
+  assert.equal(conversation().messages.some((message) => message.superseded || message.revisionOf), false, '补救不产生新版本');
+
+  const stopped = state().sendMessage('第二题');
+  state().stopGenerating();
+  assert.equal(conversation().messages.at(-1).status, 'stopped');
+  assert.equal(state().resumeInterruptedRequests(), false, '手动停止不重连');
+  jobs[2].resolve('迟到的回答'); await stopped;
+});
 
 test('version switching makes no model call, blocks while streaming and supplies only the selected continuation on the next question', async () => {
   const { jobs,state,conversation,start } = await createHarness(); start();

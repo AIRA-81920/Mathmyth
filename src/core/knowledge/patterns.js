@@ -45,7 +45,7 @@ export function summarizePatternProgress(records, links = data.questionLinks) {
       // A preloaded round is not an encounter. Selection only concerns its entrance.
       if (answer.revealed || answer.assisted || attempts.some((attempt) => link.stepIndex === 0 && ['selection', 'steps'].includes(attempt.mode))) item.seen = true;
       for (const attempt of attempts) {
-        if (attempt.independent !== true || attempt.revealed || attempt.assisted || attempt.outcome !== 'right') continue;
+        if (attempt.disputed || attempt.independent !== true || attempt.revealed || attempt.assisted || attempt.outcome !== 'right') continue;
         if (attempt.mode === 'selection' && link.stepIndex === 0 && attempt.selectedIds?.includes(link.routeId)) {
           item.seen = true; item.recognitionKeys.add(question.questionKey);
         }

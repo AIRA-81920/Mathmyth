@@ -66,7 +66,7 @@ test('four-question selection prioritizes an unused fourth item and retains prog
   assert.ok(second.some((q) => q.metadata.source.originalId === 13));
   assert.deepEqual(second.map((q) => q.metadata.complexity), [1, 2, 4]);
   assert.equal(second.filter((q) => !q.metadata.repeated).length, 1);
-  const visible = localTargets(skeleton);
+  const visible = await localTargets(skeleton);
   assert.equal(visible.filter((t) => t.scenarioId === target.scenarioId).length, 1);
 });
 
@@ -75,7 +75,7 @@ test('mixed entrance rounds persist, credit the actual question entrance and sur
   try {
     const target = firstBatchTargets.find((t) => t.id.endsWith('.expression'));
     const pool = await Promise.all(target.questions.map((q) => prepareRouteQuestion(q, skeleton)));
-    const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: pool.slice(1), localPrepared: true });
+    const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: pool.slice(1), localPrepared: true, preparedTarget: target });
     const item = run.items[2];
     const correct = item.question.routes.find((r) => r.valid);
     await db.gradePracticeItem(run.id, item.id, { mode: 'selection', selectedIds: [correct.id] });
@@ -94,7 +94,7 @@ test('forged checked local routes cannot authorize an untouched mixed-entrance r
     const target = firstBatchTargets.find((t) => t.id.endsWith('.expression'));
     const pool = await prepareLocalRound(target, skeleton);
     pool[0].routes[0].valid = false;
-    await assert.rejects(db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: pool, localPrepared: true }));
+    await assert.rejects(db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: pool, localPrepared: true, preparedTarget: target }));
   } finally { db.close(); }
 });
 
@@ -103,7 +103,7 @@ test('correcting a failed route does not turn into an independent success', asyn
   try {
     const target = firstBatchTargets[0];
     const items = await prepareLocalRound(target, skeleton);
-    const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true });
+    const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
     const item = run.items[0];
     const bad = item.question.routes.find((r) => !r.valid), good = item.question.routes.find((r) => r.valid);
     await db.gradePracticeItem(run.id, item.id, { mode: 'selection', selectedIds: [bad.id] });

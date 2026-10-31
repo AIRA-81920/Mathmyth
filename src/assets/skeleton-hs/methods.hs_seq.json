@@ -1,0 +1,822 @@
+{
+  "block_id": "B.hs_seq",
+  "methods": [
+    {
+      "id": "M.hs_basic_quantity",
+      "name": "等差等比基本量法",
+      "aliases": [
+        "基本量法",
+        "首项与公差",
+        "中项性质"
+      ],
+      "one_liner": "把条件全部翻译成首项、公差或公比的方程，联立求解后再回答题目所问。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.arithmetic_geometric",
+        "S.hs_seq.an_sn",
+        "S.hs_seq.sum_formula",
+        "S.hs_seq.sum_mismatch",
+        "S.hs_seq.property",
+        "S.hs_seq.model"
+      ],
+      "triggers": [
+        "出现等差数列或等比数列",
+        "给出两项的关系或前 n 项和",
+        "出现等差中项或等比中项",
+        "要求求某个特定项"
+      ],
+      "steps": [
+        "设出首项与公差（或公比）作为基本量",
+        "把每个条件写成关于基本量的方程",
+        "联立求解基本量",
+        "回代求出题目要求的项、和或参数"
+      ],
+      "preconditions": [
+        "数列被确认为等差或等比",
+        "条件数量足以确定基本量"
+      ],
+      "not_applicable": [
+        "递推关系不是等差等比型",
+        "条件不足以确定基本量"
+      ],
+      "pitfalls": [
+        "等比数列求公比时忽略零与负值情形",
+        "把中项条件写成乘积等于中间项的平方却不检验符号"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_sum_group",
+          "note": "条件落在和上时用求和公式化成基本量方程"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_seq_monotone",
+          "note": "等差等比题的两条路径：条件可列方程用基本量，问最大最小项用邻项比较。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "等差数列中 a3=5、a7=13，求 a1 与 d。",
+          "answer_sketch": "两式相减得 4d=8，d=2，再回代得 a1=1。",
+          "scenario_id": "S.hs_seq.arithmetic_geometric"
+        },
+        {
+          "statement": "已知等比数列中 a3·a5=16，求 a4。",
+          "answer_sketch": "由等比中项 a3·a5=a4^2 得 a4=±4，需由条件符号确定。",
+          "scenario_id": "S.hs_seq.property"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_an_sn",
+      "name": "通项与前 n 项和互化",
+      "aliases": [
+        "相邻和相减",
+        "首项单独检验"
+      ],
+      "one_liner": "用 n 大于等于 2 时相邻两个和相减得到通项，再单独检验首项是否吻合。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.an_sn"
+      ],
+      "triggers": [
+        "给出前 n 项和的表达式",
+        "出现通项与和的混合关系",
+        "题面提示用相邻和相减"
+      ],
+      "steps": [
+        "写出 S(n) 与 S(n-1) 两式并相减",
+        "得到 n 大于等于 2 时的通项",
+        "单独计算 n 等于 1 时的首项",
+        "比较首项是否符合通项公式，不符则写分段形式"
+      ],
+      "preconditions": [
+        "已知前 n 项和的表达式或可求",
+        "数列从正整数项开始"
+      ],
+      "not_applicable": [
+        "只给递推关系而未给和",
+        "和式含未知参数且无法消元"
+      ],
+      "pitfalls": [
+        "忘记检验 n=1，导致通项缺少首项情形",
+        "把 S(0) 当作文本给出并参与运算"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_construct_seq",
+          "note": "混合式先消元构造新数列更简便"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 Sn=n^2+2n，求 an。",
+          "answer_sketch": "相减得 an=2n+1，且 a1=3 也符合，故 an=2n+1。",
+          "scenario_id": "S.hs_seq.an_sn"
+        },
+        {
+          "statement": "已知 an+2Sn=1，求 an。",
+          "answer_sketch": "对 n 与 n-1 两式相减消去 Sn，得 an 与 a(n-1) 的等比关系，再用 a1=1/3 写出通项。",
+          "scenario_id": "S.hs_seq.an_sn"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_accumulate",
+      "name": "累加法与累乘法",
+      "aliases": [
+        "累加",
+        "累乘",
+        "逐项叠加"
+      ],
+      "one_liner": "当递推写成相邻项之差或之比的形式时，把从首项到第 n 项的式子全部加起来或乘起来。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.recurrence",
+        "S.hs_seq.construct_seq",
+        "S.hs_seq.induction"
+      ],
+      "triggers": [
+        "递推写成后项减前项等于 f(n)",
+        "递推写成后项比前项等于 f(n)",
+        "要求求通项"
+      ],
+      "steps": [
+        "把递推写成差或比的标准形式",
+        "从第 2 项到第 n 项列出全部式子",
+        "相加或相乘，左端中间项相消",
+        "解出通项并检验首项"
+      ],
+      "preconditions": [
+        "累加时右侧可求和",
+        "累乘时各项不为零"
+      ],
+      "not_applicable": [
+        "右侧和式无法求出",
+        "存在零项导致累乘失效"
+      ],
+      "pitfalls": [
+        "累加时漏掉首项带入",
+        "累乘时未检验是否存在零项"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_construct_seq",
+          "note": "能构造等比时比累加更简"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_construct_seq",
+          "note": "递推求通项的两条路径：能写成差或比用累加累乘，能同加同除用构造法。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 a1=1、a(n+1)=an+2n，求 an。",
+          "answer_sketch": "累加右侧得 n(n-1)，加上首项得 an=n^2-n+1。",
+          "scenario_id": "S.hs_seq.recurrence"
+        },
+        {
+          "statement": "已知 a1=1、a(n+1)=2an+3，求 an。",
+          "answer_sketch": "两边加 3 构造等比，得到 an+3=4·2^(n-1)，故 an=2^(n+1)-3。",
+          "scenario_id": "S.hs_seq.recurrence"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_construct_seq",
+      "name": "构造等差或等比数列",
+      "aliases": [
+        "构造新数列",
+        "取倒数法",
+        "同除法"
+      ],
+      "one_liner": "在递推式两边作同加、同除或取倒数，把原数列变成等差或等比数列再求通项。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.an_sn",
+        "S.hs_seq.recurrence",
+        "S.hs_seq.construct_seq"
+      ],
+      "triggers": [
+        "递推含相邻项乘积或商",
+        "题面要求证明某组合是等比或等差",
+        "递推为分式型"
+      ],
+      "steps": [
+        "判断该同加常数、同除某式还是取倒数",
+        "对新数列写出等差或等比的证明",
+        "用基本量法或累加求出新数列通项",
+        "回代还原原数列通项"
+      ],
+      "preconditions": [
+        "递推式可作恒等变形",
+        "新数列的首项可算出"
+      ],
+      "not_applicable": [
+        "递推式中出现无法消去的非线性项",
+        "新数列首项不存在"
+      ],
+      "pitfalls": [
+        "构造目标选错导致无法化归",
+        "回代时把新数列的首项当作原数列首项"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_basic_quantity",
+          "note": "构造完成后用基本量法求新数列通项"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_accumulate",
+          "note": "递推求通项的两条路径：能写成差或比用累加累乘，能同加同除用构造法。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 a(n+1)=2an+1，证明 {an+1} 是等比数列并求 an。",
+          "answer_sketch": "两边加 1 得 a(n+1)+1=2(an+1)，故 an+1=2^n，an=2^n-1。",
+          "scenario_id": "S.hs_seq.construct_seq"
+        },
+        {
+          "statement": "已知 a1=1、2a(n+1)an=an-a(n+1)，证明 {1/an} 为等差数列。",
+          "answer_sketch": "两边同除 a(n+1)an 得 1/a(n+1)-1/an=2，故 1/an=2n-1。",
+          "scenario_id": "S.hs_seq.construct_seq"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_sum_group",
+      "name": "公式法、分组与并项求和",
+      "aliases": [
+        "分组求和",
+        "并项求和",
+        "分奇偶求和"
+      ],
+      "one_liner": "把通项拆成若干可求和的组成部分，分别求和后合并；含符号项按奇偶并项。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.arithmetic_geometric",
+        "S.hs_seq.sum_formula",
+        "S.hs_seq.sum_telescoping",
+        "S.hs_seq.sum_mismatch",
+        "S.hs_seq.model"
+      ],
+      "triggers": [
+        "通项是等差与等比之和",
+        "通项含负一的 n 次幂",
+        "要求分奇偶求和",
+        "通项可拆成若干标准部分"
+      ],
+      "steps": [
+        "把通项拆成若干个可求和的部分",
+        "对每部分分别套对应求和公式",
+        "含符号项按奇偶分组，先算一组再乘组数",
+        "合并结果并检验 n 为 1 时的特殊情形"
+      ],
+      "preconditions": [
+        "各部分都能求和",
+        "拆分的各部分互不干扰"
+      ],
+      "not_applicable": [
+        "通项无法拆成可求和部分",
+        "部分含无法求和的超越项"
+      ],
+      "pitfalls": [
+        "并项时奇偶项数不一致导致漏一项",
+        "拆分后忘记乘以对应系数"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_basic_quantity",
+          "note": "各部分求和都用等差等比公式"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求数列 {n+2^n} 的前 n 项和。",
+          "answer_sketch": "分为等差与等比两部分，分别求和后相加得 n(n+1)/2+2^(n+1)-2。",
+          "scenario_id": "S.hs_seq.sum_formula"
+        },
+        {
+          "statement": "求数列 {(-1)^n·n} 的前 n 项和。",
+          "answer_sketch": "按 n 的奇偶并项，奇数项得 -(n+1)/2，偶数项得 n/2。",
+          "scenario_id": "S.hs_seq.sum_formula"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_telescoping",
+      "name": "裂项相消",
+      "aliases": [
+        "裂项",
+        "相消求和"
+      ],
+      "one_liner": "把通项拆成两项之差，求和时中间项成对消去，只剩首末少数项。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.sum_telescoping",
+        "S.hs_seq.inequality"
+      ],
+      "triggers": [
+        "通项是两个连续整数乘积的倒数",
+        "出现根式和差的倒数",
+        "出现裂项提示",
+        "放缩后希望精确求和"
+      ],
+      "steps": [
+        "把通项写成两项之差并配平系数",
+        "从第 1 项写到第 n 项并展开",
+        "消去中间项，保留首末项",
+        "化简结果并检验 n=1"
+      ],
+      "preconditions": [
+        "分母可分解为成等差的两因子",
+        "拆分后系数可配平"
+      ],
+      "not_applicable": [
+        "分母因子间隔不等且无法配平",
+        "通项是乘积而非可拆差"
+      ],
+      "pitfalls": [
+        "拆分系数漏乘导致结果差常数倍",
+        "消项时把剩余项数数错"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_mismatch",
+          "note": "通项是等差乘等比时应改用错位相减"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_mismatch",
+          "note": "求和的两条路径：通项可拆差用裂项，通项是等差乘等比用错位相减。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求 1/(1·2)+1/(2·3)+…+1/(n(n+1))。",
+          "answer_sketch": "拆为 1/k-1/(k+1)，相消后得 1-1/(n+1)=n/(n+1)。",
+          "scenario_id": "S.hs_seq.sum_telescoping"
+        },
+        {
+          "statement": "求数列 {1/((2n-1)(2n+1))} 的前 n 项和。",
+          "answer_sketch": "拆为 1/2[1/(2k-1)-1/(2k+1)]，相消得 n/(2n+1)。",
+          "scenario_id": "S.hs_seq.sum_telescoping"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_mismatch",
+      "name": "错位相减法",
+      "aliases": [
+        "乘公比作差",
+        "错位相减"
+      ],
+      "one_liner": "对等差乘等比的通项，设和式并乘公比后与原式相减，把问题化为等比求和。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.sum_formula",
+        "S.hs_seq.sum_mismatch"
+      ],
+      "triggers": [
+        "通项是 n 乘等比项",
+        "出现等差乘等比",
+        "直接套公式无法求和"
+      ],
+      "steps": [
+        "设 Sn 并写出展开式",
+        "两边同乘公比得到第二式",
+        "两式错位相减",
+        "对右侧等比部分求和并解出 Sn"
+      ],
+      "preconditions": [
+        "通项确实是等差因子乘等比因子",
+        "公比不等于零"
+      ],
+      "not_applicable": [
+        "公比等于 1 时退化为等差数列求和",
+        "通项不是乘积结构"
+      ],
+      "pitfalls": [
+        "相减时末项符号写错",
+        "公比不为 1 却直接用等比公式的 n 项却少算一项"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_sum_group",
+          "note": "相减后的等比部分用分组求和收尾"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_telescoping",
+          "note": "求和的两条路径：通项可拆差用裂项，通项是等差乘等比用错位相减。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求数列 {n·2^n} 的前 n 项和。",
+          "answer_sketch": "设 Sn，乘 2 后相减得 -Sn=2+2^2+…+2^n-n·2^(n+1)，化简得 Sn=(n-1)2^(n+1)+2。",
+          "scenario_id": "S.hs_seq.sum_mismatch"
+        },
+        {
+          "statement": "求 1+3x+5x^2+…+(2n-1)x^(n-1)。",
+          "answer_sketch": "按 x=1 与 x≠1 分类，后者乘 x 错位相减后解出和式。",
+          "scenario_id": "S.hs_seq.sum_mismatch"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_seq_monotone",
+      "name": "数列单调性与最值项",
+      "aliases": [
+        "邻项比较",
+        "最大最小项"
+      ],
+      "one_liner": "作差比较相邻两项的符号判断增减，最值项一定出现在符号改变的位置。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.arithmetic_geometric",
+        "S.hs_seq.property"
+      ],
+      "triggers": [
+        "要求最大项或最小项",
+        "出现单调递增数列",
+        "要求前 n 项和最大时的项数"
+      ],
+      "steps": [
+        "写出 a(n+1)-an 或 a(n+1)/an 的表达式",
+        "判断其在正整数范围内的符号变化",
+        "找出符号由正转负或由负转正的位置",
+        "结合首项确定最大项或最小项"
+      ],
+      "preconditions": [
+        "相邻项之差或比可化简",
+        "数列项均为正（用比时）"
+      ],
+      "not_applicable": [
+        "通项含剧烈振荡且无单调段",
+        "含参数使符号无法判断"
+      ],
+      "pitfalls": [
+        "把连续变量的极值点直接当作正整数项",
+        "用比法时未验证各项为正"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_monotone_def",
+          "note": "可借助函数单调性视角，但须回到整数点"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_basic_quantity",
+          "note": "等差等比题的两条路径：条件可列方程用基本量，问最大最小项用邻项比较。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "求数列 an=n^2-10n+3 的最小项。",
+          "answer_sketch": "作差得 2n-9，故 n≤4 递减、n≥5 递增，最小项为 a5=-22。",
+          "scenario_id": "S.hs_seq.property"
+        },
+        {
+          "statement": "等差数列中 Sn 最大时，求 n。",
+          "answer_sketch": "由 an 的符号变化确定最后一个正项的位置，该位置即为 Sn 最大时的 n。",
+          "scenario_id": "S.hs_seq.property"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_scaling",
+      "name": "放缩法",
+      "aliases": [
+        "放大缩小",
+        "舍项放缩",
+        "裂项放缩"
+      ],
+      "one_liner": "把通项放大或缩小成可求和的式子，从而给和式一个可控的上界或下界。",
+      "block_ids": [
+        "B.hs_seq",
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.inequality",
+        "S.hs_seq.induction",
+        "S.hs_deriv.ineq_proof",
+        "S.hs_deriv.series_bound"
+      ],
+      "triggers": [
+        "要求证明和式小于某个常数",
+        "通项含分式或根式难以直接求和",
+        "归纳过渡需要估计新增项"
+      ],
+      "steps": [
+        "确定要证的界的方向，决定放大还是缩小",
+        "寻找可求和的标准形式（如裂项或等比）",
+        "逐项放缩后求和",
+        "检验放缩是否过松导致界不成立"
+      ],
+      "preconditions": [
+        "通项在讨论范围内有统一的大小关系",
+        "放缩后的和式可计算"
+      ],
+      "not_applicable": [
+        "放缩会改变不等号方向",
+        "放缩后仍不可求和"
+      ],
+      "pitfalls": [
+        "放缩过头导致界比目标还大",
+        "只对部分项放缩造成前后不一致"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_telescoping",
+          "note": "放缩成裂项形式可精确求和"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_induction",
+          "note": "数列不等式的两条路径：通项可放缩用放缩求和，命题随 n 递推用归纳法。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "证明 1/1^2+1/2^2+…+1/n^2<2。",
+          "answer_sketch": "对 k≥2 有 1/k^2<1/(k(k-1))，裂项相消后总和小于 2。",
+          "scenario_id": "S.hs_seq.inequality"
+        },
+        {
+          "statement": "证明 ln(n+1)<1+1/2+…+1/n。",
+          "answer_sketch": "由 ln(1+1/k)<1/k 逐项累加，左端裂项为 ln(n+1)。",
+          "scenario_id": "S.hs_seq.inequality"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_induction",
+      "name": "数学归纳法",
+      "aliases": [
+        "归纳法",
+        "两步证明"
+      ],
+      "one_liner": "先验证初始情形成立，再由第 k 项成立推出第 k+1 项成立，从而对全部正整数成立。",
+      "block_ids": [
+        "B.hs_seq",
+        "B.hs_deriv"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.inequality",
+        "S.hs_seq.induction",
+        "S.hs_deriv.series_bound"
+      ],
+      "triggers": [
+        "命题含对任意正整数成立",
+        "题面明确要求用数学归纳法",
+        "结论随 n 递推累积"
+      ],
+      "steps": [
+        "验证 n 取初始值（常为 1 或 5）时命题成立",
+        "假设 n=k 时成立并写出该假设",
+        "利用假设证明 n=k+1 时成立",
+        "写出结论并注明归纳法完成"
+      ],
+      "preconditions": [
+        "命题对正整数有定义",
+        "从 k 到 k+1 的过渡可借助假设"
+      ],
+      "not_applicable": [
+        "命题只对有限个 n 成立",
+        "过渡步骤无法使用归纳假设"
+      ],
+      "pitfalls": [
+        "第二步没有真正使用归纳假设",
+        "初始值取错导致基础不成立"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_scaling",
+          "note": "过渡步骤常需要放缩估计"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_scaling",
+          "note": "数列不等式的两条路径：通项可放缩用放缩求和，命题随 n 递推用归纳法。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "用数学归纳法证明 1+3+…+(2n-1)=n^2。",
+          "answer_sketch": "n=1 时成立；假设 n=k 成立，两边加 2k+1 得 (k+1)^2，完成过渡。",
+          "scenario_id": "S.hs_seq.induction"
+        },
+        {
+          "statement": "用数学归纳法证明 2^n>n^2（n≥5）。",
+          "answer_sketch": "n=5 时成立；由 2^(k+1)=2·2^k>2k^2，再证 2k^2≥(k+1)^2（k≥3）即可。",
+          "scenario_id": "S.hs_seq.induction"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_seq_model",
+      "name": "数列建模应用",
+      "aliases": [
+        "分期付款模型",
+        "增长模型",
+        "复利模型"
+      ],
+      "one_liner": "把按年或按期的变化写成相邻两期的递推关系，再判断是等差型还是等比型并求解。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.model"
+      ],
+      "triggers": [
+        "出现每年增长或每期还款",
+        "数据按年或按月离散给出",
+        "要求求第 n 期的量或总额"
+      ],
+      "steps": [
+        "设出第 n 期的量并写出与前一期的关系",
+        "判断递推是等差型、等比型还是一阶线性型",
+        "用通项公式或求和公式求解",
+        "回到实际情境检验单位与范围"
+      ],
+      "preconditions": [
+        "变化按固定周期发生",
+        "增长率或利率为常数"
+      ],
+      "not_applicable": [
+        "变化率随时间改变且无规律",
+        "情境无法离散化"
+      ],
+      "pitfalls": [
+        "把年利率直接用于月还款而未换算",
+        "期数从 0 还是从 1 开始搞错"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_basic_quantity",
+          "note": "确认等比后用通项公式求第 n 期"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "某企业年产值每年增长 10%，求 n 年后的产值。",
+          "answer_sketch": "设初始产值为 a，则第 n 年为 a·1.1^n，属等比模型。",
+          "scenario_id": "S.hs_seq.model"
+        },
+        {
+          "statement": "贷款 10 万元、年利率 5%、分 10 年等额还款，求每年还款额。",
+          "answer_sketch": "设每年还款 x，写出剩余本金递推，令第 10 年末余额为零解出 x。",
+          "scenario_id": "S.hs_seq.model"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    },
+    {
+      "id": "M.hs_stolz",
+      "scope": "extension",
+      "name": "施托尔茨定理（拓展）",
+      "aliases": [
+        "Stolz 定理",
+        "数列极限比较"
+      ],
+      "one_liner": "当分母单调趋于无穷时，用相邻项之差的比值代替原比值的极限，用于快速判断和式型数列的极限。",
+      "block_ids": [
+        "B.hs_seq"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_seq.inequality"
+      ],
+      "triggers": [
+        "出现和式除以项数的极限",
+        "分母单调趋于无穷",
+        "需要快速估计数列增长阶"
+      ],
+      "steps": [
+        "确认分母严格单调且趋于正无穷",
+        "计算相邻两项之差的比值",
+        "若该比值极限存在则原极限相同",
+        "把结论作为验算，不作为解答书写依据"
+      ],
+      "preconditions": [
+        "分母单调趋于正无穷",
+        "相邻差之比存在极限"
+      ],
+      "not_applicable": [
+        "分母不单调",
+        "差的比值不存在"
+      ],
+      "pitfalls": [
+        "在分母非无穷时误用",
+        "直接写进解答导致超纲"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_scaling",
+          "note": "课内应优先用放缩与夹逼完成证明"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "估计数列 (1+2+…+n)/n^2 的极限。",
+          "answer_sketch": "用定理得相邻差之比趋于 1/2，故极限为 1/2，可再用求和公式验证。",
+          "scenario_id": "S.hs_seq.inequality"
+        },
+        {
+          "statement": "估计数列 (1^2+2^2+…+n^2)/n^3 的极限。",
+          "answer_sketch": "相邻差之比趋于 1/3，故极限为 1/3，可用平方和公式核对。",
+          "scenario_id": "S.hs_seq.inequality"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_seq"
+      ]
+    }
+  ]
+}

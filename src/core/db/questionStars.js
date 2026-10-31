@@ -11,6 +11,7 @@ function pruneImages(db) {
 function decode(engine, row, includeImages = true) {
   const imageIds = rows(engine.ensureOpen(), 'SELECT image_ref FROM starred_question_image WHERE starred_question_id=? ORDER BY seq', [row.id]).map((image) => image.image_ref);
   return { id: row.id, questionKey: row.question_key, sourceMessageId: row.source_message_id,
+    sourceConversationId: row.source_conversation_id ?? null,
     content: row.content, recognizedQuestion: row.recognized_question, createdAt: row.created_at,
     imageIds, hasImages: imageIds.length > 0,
     images: includeImages ? imageIds.map((imageId) => engine.loadImage(imageId)) : [] };
@@ -18,12 +19,14 @@ function decode(engine, row, includeImages = true) {
 
 export function listStarredQuestions(engine, { includeImages = true } = {}) {
   const db = engine.ensureOpen();
-  return rows(db, 'SELECT * FROM starred_question WHERE learner_id=? ORDER BY created_at DESC,id', [learner(db)]).map((row) => decode(engine, row, includeImages));
+  return rows(db, `SELECT s.*,m.conversation_id AS source_conversation_id FROM starred_question s LEFT JOIN message m ON m.id=s.source_message_id
+    WHERE s.learner_id=? ORDER BY s.created_at DESC,s.id`, [learner(db)]).map((row) => decode(engine, row, includeImages));
 }
 
 export function loadStarredQuestion(engine, id) {
   const db = engine.ensureOpen();
-  const row = rows(db, 'SELECT * FROM starred_question WHERE id=? AND learner_id=?', [id, learner(db)])[0];
+  const row = rows(db, `SELECT s.*,m.conversation_id AS source_conversation_id FROM starred_question s LEFT JOIN message m ON m.id=s.source_message_id
+    WHERE s.id=? AND s.learner_id=?`, [id, learner(db)])[0];
   if (!row) throw new DatabaseError('这道收藏题目已不存在。', 'question_star_not_found');
   return decode(engine, row);
 }
@@ -87,7 +90,7 @@ export async function setQuestionStar(engine, { messageId, starred = true } = {}
     db.run('UPDATE message SET question_key=? WHERE id=?', [questionKey, messageId]);
     return star.id;
   });
-  const row = rows(engine.ensureOpen(), 'SELECT * FROM starred_question WHERE id=?', [id])[0];
+  const row = rows(engine.ensureOpen(), `SELECT s.*,m.conversation_id AS source_conversation_id FROM starred_question s LEFT JOIN message m ON m.id=s.source_message_id WHERE s.id=?`, [id])[0];
   return { starred: true, messageId, ...decode(engine, row) };
 }
 

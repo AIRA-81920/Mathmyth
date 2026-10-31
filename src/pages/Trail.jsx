@@ -1,7 +1,8 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, memo } from 'react';
 import TrailOutline from '../components/TrailOutline.jsx';
 import PersonalNotes from '../components/PersonalNotes.jsx';
 import SavedQuestions from '../components/SavedQuestions.jsx';
+import PracticeContinuations from '../components/PracticeContinuations.jsx';
 import TrailBottomShelf from '../components/TrailBottomShelf.jsx';
 import { loadSkeleton } from '../core/skeleton/load.js';
 import { buildTrail } from '../core/skeleton/trail.js';
@@ -11,7 +12,7 @@ import { useAppStore } from '../store/appStore.js';
 // 2026-10-09: user confirmed that exposed nodes appear in the trail too.
 // buildTrail already limits nodes to actual encounters.
 const includeTouched = () => true;
-export default function Trail({ includeNode = includeTouched, onMethod, onScenario, active = true, savedQuestions = <SavedQuestions showTitle={false} /> }) {
+function Trail({ includeNode = includeTouched, onMethod, onScenario, active = true, savedQuestions = <SavedQuestions showTitle={false} /> }) {
   const [nodes, setNodes] = useState([]);
   const [error, setError] = useState('');
   const selectConversation = useAppStore((state) => state.selectConversation);
@@ -21,6 +22,8 @@ export default function Trail({ includeNode = includeTouched, onMethod, onScenar
   const scrollEpoch = useRef(useAppStore.getState().trailEpoch);
   const restored = useRef(false);
   const epoch = useAppStore((state) => state.trailEpoch);
+  // 学科切换会让当前骨架索引整体失效，足迹树必须按新学科重新构建。
+  const subjectEpoch = useAppStore((state) => state.subjectEpoch);
   useLayoutEffect(() => {
     if (epoch !== scrollEpoch.current) { scrollEpoch.current = epoch; restored.current = false; }
     if (ref.current && !restored.current) { ref.current.scrollTop = useAppStore.getState().preferences.trailScroll; restored.current = true; }
@@ -43,7 +46,7 @@ export default function Trail({ includeNode = includeTouched, onMethod, onScenar
     });
     refresh();
     return () => { live = false; unsubscribe(); };
-  }, [includeNode]);
+  }, [includeNode, subjectEpoch]);
   useLayoutEffect(() => {
     if (!active || !trailFocus || !nodes.length || !ref.current) return;
     const frame = requestAnimationFrame(() => {
@@ -59,7 +62,8 @@ export default function Trail({ includeNode = includeTouched, onMethod, onScenar
     });
     return () => cancelAnimationFrame(frame);
   }, [active, nodes, trailFocus]);
-  return <div className="trail-page">{trailFocus && <button type="button" className="trail-return" onClick={returnToQuestion}>← 回到题目</button>}<div ref={ref} className="trail-scroll" onScroll={(event) => useAppStore.getState().setTrailScroll(event.currentTarget.scrollTop, scrollEpoch.current)}>
+  return <div className="trail-page">{trailFocus && <button type="button" className="trail-return" onClick={returnToQuestion} aria-label="回到题目">回到题目</button>}<div ref={ref} className="trail-scroll" onScroll={(event) => useAppStore.getState().setTrailScroll(event.currentTarget.scrollTop, scrollEpoch.current)}>
+    <PracticeContinuations active={active} />
     {nodes.length ? <TrailOutline active={active} nodes={nodes} onMethod={onMethod} onScenario={onScenario ?? ((node) => useAppStore.getState().openScenario(node))} onQuestion={(item) => selectConversation(item.conversationId)} />
       : <div className="trail-empty"><p className="muted" role={error ? 'status' : undefined}>{error || '你还没走过任何地方。去问一道题吧。'}</p></div>}
   </div><TrailBottomShelf active={active} items={[
@@ -67,3 +71,6 @@ export default function Trail({ includeNode = includeTouched, onMethod, onScenar
     { key: 'saved', title: '收藏的题', content: savedQuestions },
   ]} /></div>;
 }
+
+// 抽屉开关会让 MainShell 重渲染；页面不 memo 的话，整棵会话树每次都要重新 diff。
+export default memo(Trail)

@@ -7,6 +7,7 @@ import { useAppStore } from '../store/appStore.js';
 import MathMarkdown from '../components/MathMarkdown.jsx';
 import KnowledgePatterns from '../components/KnowledgePatterns.jsx';
 import useKnowledgeExposure from '../components/useKnowledgeExposure.js';
+import PracticeShortcut from '../components/PracticeShortcut.jsx';
 import '../styles/scenario-content.css';
 
 const kinds = { scenario: '情景', group: '情景组', block: '板块' };
@@ -44,6 +45,7 @@ export default function Scenario({ nodeRef, onBack, onMethod, onScenario }) {
         </nav>}
         <section className="knowledge-section"><h2>这是什么</h2><MathMarkdown>{knowledgeMarkdown(node.definition)}</MathMarkdown>
           {node.note && <div className="knowledge-note"><MathMarkdown>{knowledgeMarkdown(node.note)}</MathMarkdown></div>}</section>
+        {node.kind === 'scenario' && exposure.scenarios.has(node.id) && <PracticeShortcut key={node.id} scenarioId={node.id}>练这个情景</PracticeShortcut>}
         {!!node.patterns?.length && <KnowledgePatterns key={`${viewEpoch}:${viewKey}`} patterns={node.patterns} skeleton={skeleton} viewKey={viewKey} viewEpoch={viewEpoch} onScenario={openScenario} onMethod={openMethod} />}
         {!!node.signals.length && <section className="knowledge-section"><h2>看到哪些特征可以想到它</h2><ul>{node.signals.map((signal, index) => <li key={index}><MathMarkdown>{knowledgeMarkdown(signal)}</MathMarkdown></li>)}</ul></section>}
         {!!node.examples.length && <section className="knowledge-section"><h2>常见长相</h2>{node.examples.map((example, index) => <div className="knowledge-item" key={index}><MathMarkdown>{knowledgeMarkdown(example)}</MathMarkdown></div>)}</section>}

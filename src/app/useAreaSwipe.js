@@ -1,9 +1,9 @@
 import { useLayoutEffect, useRef } from 'react';
-import { blocksAreaSwipe, swipeCommitIndex, swipeIntent, swipeOffset, swipeMode, commitsHistory, SWIPE_SETTLE_MS } from '../core/ui/areaSwipe.js';
+import { blocksAreaSwipe, swipeCommitIndex, swipeIntent, swipeOffset, swipeMode, swipeTravel, commitsHistory, SWIPE_SETTLE_MS } from '../core/ui/areaSwipe.js';
 
-export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, count, disabled, onChange, onDrawer }) {
-  const config = useRef({ index, count, disabled, onChange, onDrawer });
-  config.current = { index, count, disabled, onChange, onDrawer };
+export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, count, disabled, onChange, onDrawer, onProgress, onAreaProgress }) {
+  const config = useRef({ index, count, disabled, onChange, onDrawer, onProgress, onAreaProgress });
+  config.current = { index, count, disabled, onChange, onDrawer, onProgress, onAreaProgress };
   const reset = useRef(null);
   const animate = useRef(null);
   const previousIndex = useRef(index);
@@ -13,19 +13,18 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
     if (!viewport || !track) return;
     let gesture = null, settling = null, peekTimer = null, width = viewport.clientWidth;
     const layer = drawerRef.current;
-    function clearPeek() {
-      clearTimeout(peekTimer); layer?.classList.remove('is-peeking', 'is-dragging');
-      layer?.style.removeProperty('--drawer-offset'); layer?.style.removeProperty('--drawer-progress');
-    }
+    // 抽屉手势的实时进度以抽屉自身宽度为分母，与 CSS 里的 --drawer-w 保持一致。
+    function drawerWidth() { return layer?.querySelector?.('.history-drawer')?.clientWidth || layer?.clientWidth || 1; }
+    function clearPeek() { clearTimeout(peekTimer); layer?.classList.remove('is-peeking', 'is-dragging'); }
+    // 拉出抽屉时只推进 --p：卡片缩放、抽屉滑出、遮罩变暗全部由 CSS 里的 --p 驱动，
+    // 内容轨道（.area-swipe-track）一点都不位移 —— 这是「两个图层、只遮住不挤压」的关键，
+    // 也是旧实现把轨道一起拖走造成「顶栏与内容撕裂」的根因所在。
     function peek(dx, dragging = true) {
       if (!layer) return;
       clearTimeout(peekTimer);
-      const drawerWidth = layer.querySelector('.history-drawer').clientWidth;
-      const offset = Math.max(0, Math.min(drawerWidth, dx));
-      layer.classList.add('is-peeking'); layer.classList.toggle('is-dragging', dragging);
-      layer.style.setProperty('--drawer-offset', `${offset}px`);
-      layer.style.setProperty('--drawer-progress', `${offset / drawerWidth}`);
-      return offset;
+      layer.classList.add('is-peeking');
+      layer.classList.toggle('is-dragging', dragging);
+      config.current.onProgress?.(Math.max(0, Math.min(1, dx / drawerWidth())), dragging);
     }
     function position(next, dx = 0) { track.style.transform = `translate3d(${-next * width + dx}px, 0, 0)`; }
     function settled() { clearTimeout(settling); pendingIndex.current = null; viewport.classList.remove('is-swiping', 'is-settling'); }
@@ -57,9 +56,13 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
       if (!event.cancelable) { cancel(); return; }
       event.preventDefault(); gesture.dx = dx;
       if (gesture.mode === 'area') {
-        viewport.classList.add('is-swiping'); position(gesture.index, swipeOffset(gesture.index, config.current.count, dx));
+        const offset = swipeOffset(gesture.index, config.current.count, dx);
+        viewport.classList.add('is-swiping'); position(gesture.index, offset);
+        // 顶部那条线要跟着手指走：给出去的是连续下标（1.37 = 从第 1 个往第 2 个走了 37%）。
+        config.current.onAreaProgress?.(swipeTravel(gesture.index, config.current.count, dx, width));
       } else {
-        viewport.classList.add('is-swiping'); position(0, peek(dx) ?? Math.max(0, dx));
+        // 抽屉路径：只写 --p，不碰轨道
+        peek(dx);
       }
     }
     function end(event) {
@@ -67,15 +70,25 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
       const current = gesture, touch = event.changedTouches[0];
       const dx = touch ? touch.clientX - current.x : current.dx;
       if (current.mode === 'drawer') {
-        settle();
-        if (commitsHistory(dx, width)) { layer?.classList.remove('is-dragging', 'is-peeking'); config.current.onDrawer(); }
-        else { peek(0, false); peekTimer = setTimeout(clearPeek, SWIPE_SETTLE_MS + 30); }
+        gesture = null;
+        // 顺序很重要：先把 is-dragging 摘掉（恢复过渡），再设目标值；
+        // 过渡中途绝不改类，落定动画才不会被浏览器撤销（旧实现抬手闪现的另一半原因）。
+        layer?.classList.remove('is-dragging');
+        if (commitsHistory(dx, width)) { config.current.onProgress?.(1, false); config.current.onDrawer(); }
+        else { config.current.onProgress?.(0, false); peekTimer = setTimeout(clearPeek, SWIPE_SETTLE_MS + 30); }
         return;
       }
       const next = current.mode === 'area' ? swipeCommitIndex(current.index, config.current.count, dx, width) : current.index;
+      // 先告诉线的持有者"手指松了、落在 next"，再切区（切区后的 layout effect 要用这个结果决定直接落位）。
+      if (current.mode === 'area') config.current.onAreaProgress?.(null, next);
       settle(next); if (next !== current.index) config.current.onChange(next);
     }
-    const cancel = () => { settle(); if (layer?.classList.contains('is-peeking')) { peek(0, false); peekTimer = setTimeout(clearPeek, SWIPE_SETTLE_MS + 30); } };
+    const cancel = () => {
+      const wasArea = gesture?.mode === 'area';
+      settle();
+      if (wasArea) config.current.onAreaProgress?.(null, config.current.index);
+      if (layer?.classList.contains('is-peeking')) { config.current.onProgress?.(0, false); peekTimer = setTimeout(clearPeek, SWIPE_SETTLE_MS + 30); }
+    };
     viewport.addEventListener('touchstart', start, { passive: true });
     viewport.addEventListener('touchmove', move, { passive: false });
     viewport.addEventListener('touchend', end, { passive: true });
@@ -97,7 +110,9 @@ export default function useAreaSwipe({ viewportRef, trackRef, drawerRef, index, 
     if (!viewport || !track) return;
     const changed = previousIndex.current !== index;
     previousIndex.current = index;
-    if (disabled) { reset.current?.(); return; }
+    // 抽屉打开时区页手势被禁用（disabled）：这里绝不能 reset()，否则会在同一帧把
+    // 卡片与抽屉拽回原位，落定过渡被撤销 —— 也就是旧实现抬手「闪现」的根因。
+    if (disabled) return;
     if (changed && pendingIndex.current !== index) { animate.current?.(); return; }
     // The committing touch already supplied the correct animation start point.
     if (!viewport.classList.contains('is-settling') || pendingIndex.current !== index) reset.current?.();

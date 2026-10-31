@@ -23,7 +23,13 @@ ipcMain.handle('mathmyth:stream-start', (event, options) => {
   const url = new URL(options.url);
   if (!['https:','http:'].includes(url.protocol) || url.username || url.password || pending.has(options.id)) throw new Error('Invalid request');
   const controller = new AbortController(); pending.set(options.id, controller);
-  const timeout = setTimeout(() => controller.abort(), Math.min(options.readTimeout || 120000,120000));
+  // D10：空闲超时，而不是总时长。每收到一段数据就重置；只有累计 readTimeout
+  //（默认 180s）没有任何字节才中止。原先的 Math.min(..., 120000) 硬顶会把思考模式
+  // 的长回答直接掐死，是"切后台回来显示连接失败"的桌面端同源原因。
+  const idleWindow = Number(options.readTimeout) > 0 ? Number(options.readTimeout) : 180000;
+  let idleTimer;
+  const restartIdle = () => { clearTimeout(idleTimer); idleTimer = setTimeout(() => controller.abort(), idleWindow); };
+  restartIdle();
   const send = (type, fields={}) => { if (pending.get(options.id) === controller && !window?.webContents.isDestroyed()) event.sender.send('mathmyth:stream', {id:options.id,type,...fields}); };
   (async () => {
     try {
@@ -31,11 +37,11 @@ ipcMain.handle('mathmyth:stream-start', (event, options) => {
         signal:controller.signal, credentials:'omit', redirect:'error' });
       send('start',{status:response.status,contentType:response.headers.get('content-type') || ''});
       const reader = response.body.getReader(), decoder = new TextDecoder();
-      try { while (true) { const {done,value} = await reader.read(); if (done) break; const text = decoder.decode(value,{stream:true}); if (text) send('chunk',{text}); } const text=decoder.decode(); if(text)send('chunk',{text}); }
+      try { while (true) { const {done,value} = await reader.read(); if (done) break; const text = decoder.decode(value,{stream:true}); if (text) { restartIdle(); send('chunk',{text}); } } const text=decoder.decode(); if(text){restartIdle();send('chunk',{text});} }
       finally { await reader.cancel().catch(()=>{}); reader.releaseLock(); }
       send('end');
     } catch { send('error',{code:controller.signal.aborted ? 'timeout' : 'network'}); }
-    finally { clearTimeout(timeout); if(pending.get(options.id)===controller)pending.delete(options.id); }
+    finally { clearTimeout(idleTimer); if(pending.get(options.id)===controller)pending.delete(options.id); }
   })();
   return { started:true };
 });
@@ -76,7 +82,7 @@ app.whenReady().then(async () => {
   window.webContents.on('will-navigate',(event,url) => { if(!url.startsWith('mathmyth://app/')) {event.preventDefault();if(/^https?:\/\//.test(url))shell.openExternal(url);} });
   window.webContents.session.webRequest.onHeadersReceived((details,callback) => {
     if (!details.url.startsWith('mathmyth://app/')) { callback({responseHeaders:details.responseHeaders}); return; }
-    callback({responseHeaders:{...details.responseHeaders,'Content-Security-Policy':["default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; worker-src 'self' blob:; connect-src 'self' https: http:; media-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-src 'none'"]}});
+    callback({responseHeaders:{...details.responseHeaders,'Content-Security-Policy':["default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; worker-src 'self' blob:; connect-src 'self' https: http:; media-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-src 'none'"]}});
   });
   await window.loadURL('mathmyth://app/');
 });

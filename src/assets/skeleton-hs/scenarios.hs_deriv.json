@@ -1,0 +1,583 @@
+{
+  "block_id": "B.hs_deriv",
+  "scenarios": [
+    {
+      "id": "S.hs_deriv.definition",
+      "block_id": "B.hs_deriv",
+      "name": "导数定义与瞬时变化率",
+      "definition": "题面出现函数增量比、瞬时变化率或极限形式的式子，要求求导数值或识别导数定义。",
+      "signals": [
+        "出现增量比形式的极限式",
+        "出现瞬时速度或瞬时变化率",
+        "出现对称增量差商的变形",
+        "含抽象函数并要求某点导数值"
+      ],
+      "recognition_examples": [
+        "已知 $f'(1)=2$，求 $\\lim\\limits_{h\\to 0}\\dfrac{f(1+h)-f(1-h)}{h}$。",
+        "用定义求 $f(x)=x^{2}$ 在 $x=1$ 处的导数。",
+        "某物体位移 $s(t)=t^{2}+1$，求 $t=2$ 时的瞬时速度。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.calc",
+          "how": "那里用公式表直接求导，这里的式子是导数定义的变形，需先凑成标准增量比。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_derivative_def",
+          "priority": 1,
+          "when_to_prefer": "先把式子凑成标准增量比，把多余倍数或符号提到外面，再读出导数值。"
+        },
+        {
+          "method_id": "M.hs_equiv_infinitesimal",
+          "priority": 2,
+          "when_to_prefer": "增量比中出现正弦、指数等标准无穷小结构时，可快速估出比值。"
+        },
+        {
+          "method_id": "M.hs_lhopital",
+          "priority": 3,
+          "when_to_prefer": "极限式显然是零比零型时，可作验算，但解答须回到定义书写。"
+        },
+        {
+          "method_id": "M.hs_derivative_rules",
+          "priority": 4,
+          "when_to_prefer": "已知函数可导且解析式明确时，可先求导函数再代点，用于核对定义法结果。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.calc",
+      "block_id": "B.hs_deriv",
+      "name": "复合结构与幂指式的求导",
+      "definition": "题面给出具体函数（含复合、幂指、分式、乘积），要求求导函数或某点导数值。",
+      "signals": [
+        "函数含复合结构如正弦套一次式、指数套二次式",
+        "出现幂指式",
+        "出现乘积结构",
+        "要求求导函数"
+      ],
+      "recognition_examples": [
+        "求 $y=\\sin\\left(2x+\\frac{\\pi}{3}\\right)$ 的导数。",
+        "求 $y=x^{2}e^{x}$ 的导数。",
+        "求 $y=x^{x}\\ (x>0)$ 的导数。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.definition",
+          "how": "那里处理极限式，这里套求导公式与运算法则，不回到定义。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_derivative_rules",
+          "priority": 1,
+          "when_to_prefer": "复合结构由外到内逐层求导再相乘；乘积与商按对应法则展开。"
+        },
+        {
+          "method_id": "M.hs_derivative_def",
+          "priority": 2,
+          "when_to_prefer": "分段点或绝对值点不能直接套公式时，回到定义在关键点求导。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.tangent",
+      "block_id": "B.hs_deriv",
+      "name": "切线方程（在点与过点）",
+      "definition": "题面要求求曲线在某点或过某点的切线方程，或由切线条件反求参数。",
+      "signals": [
+        "出现「在点处的切线」",
+        "出现「过某点的切线」",
+        "要求求切线方程",
+        "出现切线与某直线平行或垂直并求参数"
+      ],
+      "recognition_examples": [
+        "求曲线 $y=x^{3}-2x$ 在点 $(1,-1)$ 处的切线方程。",
+        "求过点 $(0,-1)$ 且与曲线 $y=x^{2}$ 相切的直线方程。",
+        "若曲线 $y=\\ln x$ 的切线与 $y=2x$ 平行，求切点坐标。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.geometric",
+          "how": "那里由函数与导函数图象互相推断，这里落点是写出切线方程。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_tangent",
+          "priority": 1,
+          "when_to_prefer": "在点处：斜率等于该点导数值，直接点斜式写出；过点处：先设切点再解方程。"
+        },
+        {
+          "method_id": "M.hs_derivative_rules",
+          "priority": 2,
+          "when_to_prefer": "先按求导法则算出导函数，再代入切点横坐标得到斜率。"
+        },
+        {
+          "method_id": "M.hs_implicit_derivative",
+          "priority": 3,
+          "when_to_prefer": "曲线由隐式方程给出时，两边对 x 求导解出斜率，属拓展手段。"
+        },
+        {
+          "method_id": "M.hs_parametric_derivative",
+          "priority": 4,
+          "when_to_prefer": "曲线由参数式给出时，先分别求两个导数再作商，属拓展手段。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.geometric",
+      "block_id": "B.hs_deriv",
+      "name": "导数几何意义与函数、导函数图象互推",
+      "definition": "题面给出函数与导函数的图象之一，要求判断另一个、比较大小或求参数。",
+      "signals": [
+        "给出导函数图象要求判断原函数单调性与极值",
+        "给出原函数图象要求判断导函数符号",
+        "出现导函数图象在横轴上方或下方的描述",
+        "要求比较两点的导数值"
+      ],
+      "recognition_examples": [
+        "由 $f'(x)$ 的图象判断 $f(x)$ 的单调区间与极值点。",
+        "已知 $f(x)$ 的图象，画出 $f'(x)$ 的示意图。",
+        "若 $f'(x)$ 的图象如图，求 $f(x)$ 的极大值点。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.monotonicity",
+          "how": "那里给解析式求单调区间，这里给图象读符号，是「由图到性质」。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.tangent",
+          "how": "这里由函数与导函数图象互相推断，那里落点是写出切线方程。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_graph_derivative",
+          "priority": 1,
+          "when_to_prefer": "导函数符号变正负的位置就是极值点，符号所在的区间就是单调区间。"
+        },
+        {
+          "method_id": "M.hs_monotone_deriv",
+          "priority": 2,
+          "when_to_prefer": "把图象上的符号翻译成导数不等式后，按求导定号的标准流程书写。"
+        },
+        {
+          "method_id": "M.hs_extremum",
+          "priority": 3,
+          "when_to_prefer": "判定极大或极小要看导数在驻点两侧是否变号，不能只看导数为零。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 4,
+          "when_to_prefer": "图象信息零散时，先画出导数符号表，再对照原函数走向。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.monotonicity",
+      "block_id": "B.hs_deriv",
+      "name": "单调区间与含参单调性讨论",
+      "definition": "题面要求求含参函数的单调区间，或由在某区间单调反求参数范围。",
+      "signals": [
+        "函数解析式含参数",
+        "要求求单调区间",
+        "出现「在某区间上单调递增，求参数范围」",
+        "需按判别式或根的大小分类"
+      ],
+      "recognition_examples": [
+        "求 $f(x)=x^{3}-3ax$ 的单调区间。",
+        "若 $f(x)=\\ln x-ax$ 在 $(0,+\\infty)$ 上单调递减，求 $a$ 的范围。",
+        "讨论 $f(x)=x^{2}-2a\\ln x$ 的单调性。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.monotonicity",
+          "how": "那里用定义或基本初等函数性质，这里先求导再定导函数符号，含参时必须分类。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.geometric",
+          "how": "这里给解析式求单调区间，那里给图象读符号，是「由图到性质」。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.extremum",
+          "how": "这里只求单调区间，那里要在单调性基础上定极值点并与端点值比较。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_monotone_deriv",
+          "priority": 1,
+          "when_to_prefer": "求导后解导函数大于零或小于零的不等式，解集就是单调区间。"
+        },
+        {
+          "method_id": "M.hs_separate_param",
+          "priority": 2,
+          "when_to_prefer": "已知区间上单调时，把参数分离到一侧，转成求另一侧函数的最值。"
+        },
+        {
+          "method_id": "M.hs_classification",
+          "priority": 3,
+          "when_to_prefer": "导函数的零点随参数移动时，按零点与给定区间的相对位置分段讨论。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.extremum",
+      "block_id": "B.hs_deriv",
+      "name": "极值与闭区间最值",
+      "definition": "题面要求求极值、闭区间上的最值，或由极值条件反求参数。",
+      "signals": [
+        "要求求极值或最值",
+        "给出闭区间",
+        "出现某点处取得极值并求参数",
+        "需要比较端点值与极值点值"
+      ],
+      "recognition_examples": [
+        "求 $f(x)=x^{3}-3x$ 在 $[-2,2]$ 上的最值。",
+        "若 $f(x)=x^{3}+ax^{2}+bx$ 在 $x=1$ 处有极小值 $-2$，求 $a,b$。",
+        "求 $f(x)=xe^{x}$ 的极值。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.monotonicity",
+          "how": "那里只求单调区间，这里要在单调性基础上定极值点并与端点值比较。"
+        },
+        {
+          "scenario_id": "S.hs_func.basic_inequality",
+          "how": "这里用导数求极值与最值；若条件满足一正二定且能凑出定值，改用基本不等式更快。"
+        },
+        {
+          "scenario_id": "S.hs_func.value_range",
+          "how": "这里求极值与最值；若只需一个函数在给定区间上的取值范围且结构简单，归求值域情景。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_extremum",
+          "priority": 1,
+          "when_to_prefer": "闭区间最值：先求内部驻点函数值，再与两个端点值比较取最大最小。"
+        },
+        {
+          "method_id": "M.hs_monotone_deriv",
+          "priority": 2,
+          "when_to_prefer": "先由导数符号确定增减结构，才能判断驻点是极大还是极小。"
+        },
+        {
+          "method_id": "M.hs_derivative_rules",
+          "priority": 3,
+          "when_to_prefer": "反求参数时先按求导法则写出导函数，再由极值点导数为零列方程。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.zero",
+      "block_id": "B.hs_deriv",
+      "name": "零点个数与方程根的讨论",
+      "definition": "题面要求讨论方程根的个数或函数零点个数，通常含参数。",
+      "signals": [
+        "出现讨论方程实根个数",
+        "出现恰有几个零点并求参数范围",
+        "参数出现在常数项或系数",
+        "需要借助单调性与极值确定图象形态"
+      ],
+      "recognition_examples": [
+        "讨论方程 $x^{3}-3x=a$ 的实根个数。",
+        "若 $f(x)=\\ln x-ax$ 有两个零点，求 $a$ 的范围。",
+        "若 $f(x)=e^{x}-ax$ 没有零点，求 $a$ 的范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_func.zero_point",
+          "how": "那里的函数以初等结构为主可用图象法，这里必须先用导数刻画函数形态。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.param_range",
+          "how": "这里讨论零点个数，那里是恒成立或存在性约束，通常转成最值或分离参数。"
+        },
+        {
+          "scenario_id": "S.hs_func.quadratic_root_dist",
+          "how": "这里用导数研究零点个数，那里只用判别式、对称轴与端点值，不需求导。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_zero_discuss",
+          "priority": 1,
+          "when_to_prefer": "先用导数画出函数走向（单调区间、极值、端点趋势），再按水平线位置数交点。"
+        },
+        {
+          "method_id": "M.hs_separate_param",
+          "priority": 2,
+          "when_to_prefer": "把参数分离到等式一侧后，问题变成某函数值域与常数比较，最省讨论。"
+        },
+        {
+          "method_id": "M.hs_number_shape",
+          "priority": 3,
+          "when_to_prefer": "函数形态已定时，画图数交点比逐段代数讨论更快且不易漏解。"
+        },
+        {
+          "method_id": "M.hs_extremum",
+          "priority": 4,
+          "when_to_prefer": "零点的临界值一定出现在极值点，先用极值定出参数分界。"
+        },
+        {
+          "method_id": "M.hs_zero_point",
+          "priority": 5,
+          "when_to_prefer": "需要严格说明零点存在时，用端点函数值异号补上存在性论证。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.param_range",
+      "block_id": "B.hs_deriv",
+      "name": "恒成立与存在性求参数范围",
+      "definition": "题面要求在恒成立或存在某点使条件成立的条件下求参数范围。",
+      "signals": [
+        "出现对任意自变量成立的不等式",
+        "出现存在某点使不等式成立",
+        "要求求参数取值范围",
+        "不等式中参数可分离"
+      ],
+      "recognition_examples": [
+        "若对任意 $x>0$，$\\ln x\\le ax$ 恒成立，求 $a$ 的范围。",
+        "若存在 $x\\in[1,e]$，使 $x^{2}-ax+1<0$，求 $a$ 的范围。",
+        "若 $f(x)\\ge 0$ 在 $[1,2]$ 上恒成立，求 $a$ 的范围。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.zero",
+          "how": "那里讨论零点个数，这里是恒成立或存在性约束，通常转成最值或分离参数。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.ineq_proof",
+          "how": "这里参数未知要求范围，那里不等式已完全确定，只要求证明成立。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_separate_param",
+          "priority": 1,
+          "when_to_prefer": "参数能单独分离到一侧时，转成求另一侧函数的最大值或最小值。"
+        },
+        {
+          "method_id": "M.hs_always_true",
+          "priority": 2,
+          "when_to_prefer": "恒成立转最小值不小于零，存在性转最大值大于零，方向不能搞反。"
+        },
+        {
+          "method_id": "M.hs_construct_function",
+          "priority": 3,
+          "when_to_prefer": "参数无法分离时，把差式整体构造成一个函数再求其最值。"
+        },
+        {
+          "method_id": "M.hs_extremum",
+          "priority": 4,
+          "when_to_prefer": "构造出的函数需要求最值，闭区间情形直接比较驻点与端点。"
+        },
+        {
+          "method_id": "M.hs_lhopital",
+          "priority": 5,
+          "when_to_prefer": "探路时可用它快速估计端点处的临界值，但解答须用课内方法书写。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.ineq_proof",
+      "block_id": "B.hs_deriv",
+      "name": "单变量不等式证明",
+      "definition": "题面要求证明一个含单变量的函数不等式，例如指数函数与一次式、对数与一次式的大小关系及其推广。",
+      "signals": [
+        "要求证明某函数在区间上大于另一函数",
+        "不等式含指数或对数",
+        "出现当自变量大于某值时证明的限定",
+        "结论含需精确到二次项的结构"
+      ],
+      "recognition_examples": [
+        "证明：当 $x>0$ 时，$e^{x}>1+x$。",
+        "证明：当 $x>1$ 时，$\\ln x<\\dfrac{x-1}{2}$。",
+        "证明：对任意 $x>0$，$x-\\ln x>1$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.param_range",
+          "how": "那里参数未知要求范围，这里不等式已完全确定，只要求证明成立。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.ineq_two_var",
+          "how": "这里只有一个变量，可直接构造一个函数；若不等式含两个变量或极值点偏移，需先消元或作比值代换。"
+        },
+        {
+          "scenario_id": "S.hs_deriv.construct",
+          "how": "这里的函数已给定，那里的关键动作是先识别并构造出同一个母函数。"
+        },
+        {
+          "scenario_id": "S.hs_seq.inequality",
+          "how": "这里自变量连续用导数，那里对象是离散的正整数，需归纳、放缩或单调性。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_construct_function",
+          "priority": 1,
+          "when_to_prefer": "令差式为新函数，求导定其最小值，最小值非负即证，是最通用的写法。"
+        },
+        {
+          "method_id": "M.hs_scaling",
+          "priority": 2,
+          "when_to_prefer": "一侧有明显上界或下界（如正弦不超过自变量）时，放缩一步到位。"
+        },
+        {
+          "method_id": "M.hs_taylor",
+          "priority": 3,
+          "when_to_prefer": "需要精确到二阶项时可用有限阶展开找思路，但解答须用构造函数写法。"
+        },
+        {
+          "method_id": "M.hs_lagrange_mvt",
+          "priority": 4,
+          "when_to_prefer": "结论含两点函数值之差时可用它估计，但属拓展，解答风险高。"
+        },
+        {
+          "method_id": "M.hs_monotone_deriv",
+          "priority": 5,
+          "when_to_prefer": "构造的函数显然单调时，直接用单调性代替求最值过程更简洁。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.ineq_two_var",
+      "block_id": "B.hs_deriv",
+      "name": "双变量不等式与极值点偏移",
+      "definition": "题面不等式涉及两个变量，或要求证明与极值点对称位置有关的结论。",
+      "signals": [
+        "出现两个不同点函数值相等",
+        "要求证明两变量之和大于某个值",
+        "出现对任意两自变量成立的结论",
+        "需要构造函数比较两变量"
+      ],
+      "recognition_examples": [
+        "已知 $f(x)=\\ln x-x$，若 $f(x_1)=f(x_2)$ 且 $x_1\\ne x_2$，证明 $x_1+x_2>2$。",
+        "若 $f(x)=xe^{x}$，证明对任意 $x_1>x_2>0$，有 $f(x_1)-f(x_2)>x_1-x_2$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.ineq_proof",
+          "how": "单变量可直接构造一个函数；双变量必须先消元、固定一个变量或用比值代换。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_two_variable",
+          "priority": 1,
+          "when_to_prefer": "把一个变量视为主元、另一个视为参数，或令两变量之比为新变量，先降为一元。"
+        },
+        {
+          "method_id": "M.hs_construct_function",
+          "priority": 2,
+          "when_to_prefer": "消元后按单变量不等式处理，构造差函数并求最值。"
+        },
+        {
+          "method_id": "M.hs_isomorphic",
+          "priority": 3,
+          "when_to_prefer": "两变量分别出现在结构相同的两侧时，先统一成同一母函数再比单调性。"
+        },
+        {
+          "method_id": "M.hs_lagrange_mvt",
+          "priority": 4,
+          "when_to_prefer": "结论是两点差商估计时可用它找思路，但属拓展，解答须改用构造函数。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.construct",
+      "block_id": "B.hs_deriv",
+      "name": "构造函数与同构变形",
+      "definition": "题面不等式或等式两边结构相似但变量不同，需要通过构造同一母函数来处理。",
+      "signals": [
+        "出现指数与对数配对的不等式",
+        "两边结构对称且变量不同",
+        "不等式可整理成同一个函数的两点比较",
+        "含对数与指数的混合"
+      ],
+      "recognition_examples": [
+        "若 $e^{a}\\cdot a=b\\ln b\\ (a,b>0)$，比较 $a$ 与 $\\ln b$ 的大小。",
+        "若 $2^{x}\\cdot x=3^{y}\\cdot y$，比较 $x$ 与 $y$。",
+        "证明：若 $0<a<b$，则 $a\\ln b>b\\ln a$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_deriv.ineq_proof",
+          "how": "那里的函数已给定，这里的关键动作是先识别并构造出同一个母函数。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_isomorphic",
+          "priority": 1,
+          "when_to_prefer": "把一侧改写成另一侧同构的形式（如把 x 写成 e 的 ln x 次幂），再比母函数。"
+        },
+        {
+          "method_id": "M.hs_construct_function",
+          "priority": 2,
+          "when_to_prefer": "同构完成后仍需用母函数的单调性或最值给出严格结论。"
+        },
+        {
+          "method_id": "M.hs_derivative_rules",
+          "priority": 3,
+          "when_to_prefer": "构造母函数后需要求导判单调，按运算法则算出导函数再定号。"
+        }
+      ]
+    },
+    {
+      "id": "S.hs_deriv.series_bound",
+      "block_id": "B.hs_deriv",
+      "name": "导数造不等式再累加（数列型）",
+      "definition": "题面要求证明与正整数有关、且通项的界由导数给出的数列不等式。",
+      "signals": [
+        "结论是前 n 项和小于某个常数",
+        "通项含以 n 为变量的对数或平方倒数",
+        "出现由上一问结论提示的衔接",
+        "需要先用导数证一个函数不等式"
+      ],
+      "recognition_examples": [
+        "已知 $\\ln(1+x)<x\\ (x>0)$，证明 $\\dfrac{1}{2}+\\dfrac{1}{3}+\\cdots+\\dfrac{1}{n+1}<\\ln(n+1)$。",
+        "证明 $\\sum\\limits_{k=1}^{n}\\dfrac{1}{k^{2}}<2$。",
+        "已知 $e^{x}>1+x$，证明 $\\sum\\limits_{k=0}^{n}\\dfrac{1}{k!}<3$。"
+      ],
+      "distinguish_from": [
+        {
+          "scenario_id": "S.hs_seq.inequality",
+          "how": "那里用归纳或直接放缩，这里必须先用导数造出通项不等式再逐项累加。"
+        }
+      ],
+      "methods": [
+        {
+          "method_id": "M.hs_construct_function",
+          "priority": 1,
+          "when_to_prefer": "先用导数证明一个含 n 的函数不等式，再把 n 换成各项的取值逐项相加。"
+        },
+        {
+          "method_id": "M.hs_scaling",
+          "priority": 2,
+          "when_to_prefer": "把通项放大成可裂项或可求和的形式，是累加前的关键一步。"
+        },
+        {
+          "method_id": "M.hs_taylor",
+          "priority": 3,
+          "when_to_prefer": "需要更紧的二阶界时可用有限阶展开找通项上界，属拓展。"
+        },
+        {
+          "method_id": "M.hs_induction",
+          "priority": 4,
+          "when_to_prefer": "若题面要求归纳书写，则按两步框架完成，避免只做放缩。"
+        },
+        {
+          "method_id": "M.hs_definite_integral",
+          "priority": 5,
+          "when_to_prefer": "把和式看成积分近似可快速判断界的方向，但高中课内不作解答依据。"
+        }
+      ]
+    }
+  ]
+}

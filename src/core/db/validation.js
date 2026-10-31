@@ -1,4 +1,4 @@
-import { APPLICATION_ID, LEGACY_CORE_COLUMNS, REQUIRED_COLUMNS, V1_REQUIRED_COLUMNS, V2_REQUIRED_COLUMNS, V3_REQUIRED_COLUMNS, V4_REQUIRED_COLUMNS, V5_REQUIRED_COLUMNS, V6_REQUIRED_COLUMNS, V7_REQUIRED_COLUMNS, V8_REQUIRED_COLUMNS, SCHEMA_VERSION } from './constants.js';
+import { APPLICATION_ID, LEGACY_CORE_COLUMNS, REQUIRED_COLUMNS, V1_REQUIRED_COLUMNS, V2_REQUIRED_COLUMNS, V3_REQUIRED_COLUMNS, V4_REQUIRED_COLUMNS, V5_REQUIRED_COLUMNS, V6_REQUIRED_COLUMNS, V7_REQUIRED_COLUMNS, V8_REQUIRED_COLUMNS, V9_REQUIRED_COLUMNS, V10_REQUIRED_COLUMNS, V11_REQUIRED_COLUMNS, SCHEMA_VERSION } from './constants.js';
 import { DatabaseError } from './errors.js';
 
 export function rows(db, sql, params = []) {
@@ -32,8 +32,16 @@ export function validateIdentity(db) {
   return version;
 }
 
+// 版本 → 该版本必须存在的列。升级前的备份只校验它那个版本应有的列，
+// 校验通过后再由引擎按顺序补齐后续迁移；否则旧备份会被新列误判为损坏。
+const EXPECTED_COLUMNS = {
+  true: LEGACY_CORE_COLUMNS, 0: LEGACY_CORE_COLUMNS, 1: V1_REQUIRED_COLUMNS, 2: V2_REQUIRED_COLUMNS,
+  3: V3_REQUIRED_COLUMNS, 4: V4_REQUIRED_COLUMNS, 5: V5_REQUIRED_COLUMNS, 6: V6_REQUIRED_COLUMNS,
+  7: V7_REQUIRED_COLUMNS, 8: V8_REQUIRED_COLUMNS, 9: V9_REQUIRED_COLUMNS, 10: V10_REQUIRED_COLUMNS,
+  11: V11_REQUIRED_COLUMNS,
+};
 export function validateColumns(db, legacy = false) {
-  const expected = legacy === true || legacy === 0 ? LEGACY_CORE_COLUMNS : legacy === 1 ? V1_REQUIRED_COLUMNS : legacy === 2 ? V2_REQUIRED_COLUMNS : legacy === 3 ? V3_REQUIRED_COLUMNS : legacy === 4 ? V4_REQUIRED_COLUMNS : legacy === 5 ? V5_REQUIRED_COLUMNS : legacy === 6 ? V6_REQUIRED_COLUMNS : legacy === 7 ? V7_REQUIRED_COLUMNS : legacy === 8 ? V8_REQUIRED_COLUMNS : REQUIRED_COLUMNS;
+  const expected = EXPECTED_COLUMNS[legacy] ?? REQUIRED_COLUMNS;
   for (const [table, required] of Object.entries(expected)) {
     if (rows(db, 'SELECT type FROM sqlite_master WHERE name = ?', [table])[0]?.type !== 'table') throw invalid();
     const names = new Set(rows(db, `PRAGMA table_info(${table})`).map((row) => row.name));
@@ -68,6 +76,14 @@ export function inferImageMime(bytes, actualSize = bytes?.length) {
 }
 
 const INVALID_ROW_QUERIES = [
+  `SELECT 1 FROM practice_review v LEFT JOIN practice_item i ON i.id=v.source_item_id
+    LEFT JOIN practice_run r ON r.id=i.run_id LEFT JOIN practice_item c ON c.id=v.completed_item_id
+    LEFT JOIN practice_run cr ON cr.id=c.run_id WHERE i.id IS NULL OR r.learner_id<>v.learner_id
+    OR typeof(v.id)<>'text' OR trim(v.id)='' OR v.status NOT IN ('pending','cancelled','completed')
+    OR (v.completed_item_id IS NOT NULL AND (c.id IS NULL OR cr.learner_id<>v.learner_id)) LIMIT 1`,
+  `SELECT 1 FROM classification_result r LEFT JOIN message m ON m.id=r.source_message_id
+    WHERE m.id IS NULL OR m.role<>'assistant' OR m.conversation_id<>r.conversation_id
+    OR r.status NOT IN ('done','failed') OR typeof(r.job_id)<>'text' OR trim(r.job_id)='' LIMIT 1`,
   `SELECT 1 FROM chat_practice cp LEFT JOIN practice_item i ON i.id=cp.item_id LEFT JOIN practice_run r ON r.id=cp.run_id
     LEFT JOIN message m ON m.id=cp.message_id LEFT JOIN conversation c ON c.id=cp.conversation_id
     LEFT JOIN message s ON s.id=cp.source_message_id
@@ -117,6 +133,8 @@ const INVALID_ROW_QUERIES = [
   'SELECT 1 FROM encounter e LEFT JOIN message m ON e.message_id=m.id WHERE e.message_id IS NOT NULL AND (m.id IS NULL OR m.conversation_id <> e.conversation_id) LIMIT 1',
   'SELECT 1 FROM encounter e LEFT JOIN practice_item i ON e.practice_item_id=i.id WHERE e.practice_item_id IS NOT NULL AND i.id IS NULL LIMIT 1',
   "SELECT 1 FROM practice_credit WHERE target_type NOT IN ('scenario','method') OR typeof(question_key)<>'text' OR trim(question_key)='' LIMIT 1",
+  "SELECT 1 FROM conversation WHERE typeof(subject)<>'text' OR subject NOT IN ('advanced','high_school') LIMIT 1",
+  "SELECT 1 FROM practice_run WHERE typeof(subject)<>'text' OR subject NOT IN ('advanced','high_school') LIMIT 1",
 ];
 
 export function validateContents(db) {
@@ -128,8 +146,9 @@ export function validateContents(db) {
   for (const query of INVALID_ROW_QUERIES) if (rows(db, query).length) throw invalid();
   const dates = {
     learner: ['created_at'], conversation: ['created_at','updated_at'], message: ['created_at'], image: ['created_at'], document: ['created_at'],
-    encounter: ['occurred_at'], mastery: ['updated_at'], practice_run: ['started_at','finished_at'],
+    encounter: ['occurred_at'], mastery: ['updated_at'], practice_run: ['started_at','finished_at'], classification_result: ['created_at'],
     practice_item: ['created_at'], queue_job: ['created_at'], practice_credit: ['created_at'], personal_note: ['created_at', 'updated_at'], starred_question: ['created_at'],
+    practice_review: ['created_at', 'updated_at', 'due_at'],
   };
   for (const [table, columns] of Object.entries(dates)) {
     for (const row of rows(db, `SELECT ${columns.join(',')} FROM ${table}`)) {
@@ -148,6 +167,7 @@ export function validateContents(db) {
     if (!isJson(row.question) || (row.answer !== null && !isJson(row.answer))) throw invalid();
   }
   for (const row of rows(db, 'SELECT payload FROM queue_job')) if (row.payload !== null && !isJson(row.payload)) throw invalid();
+  for (const row of rows(db, 'SELECT payload FROM classification_result')) if (!isJson(row.payload)) throw invalid();
   for (const note of rows(db, 'SELECT content,target_type,target_id FROM personal_note')) {
     if (typeof note.content !== 'string' || !note.content.trim() || note.content.length > 5000) throw invalid();
     if (note.target_type === null && note.target_id === null) continue;

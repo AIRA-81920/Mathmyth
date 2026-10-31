@@ -1,0 +1,1428 @@
+{
+  "block_id": "B.hs_analytic",
+  "methods": [
+    {
+      "id": "M.hs_vector_calc",
+      "name": "向量线性运算与坐标运算",
+      "aliases": [
+        "向量加减",
+        "数乘",
+        "坐标运算"
+      ],
+      "one_liner": "按分量相加、相减或数乘，把向量运算化为坐标的算术运算。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.vector_calc",
+        "S.hs_analytic.vector_product",
+        "S.hs_analytic.vector_parallel_perp",
+        "S.hs_analytic.vector_geometry"
+      ],
+      "triggers": [
+        "给出向量坐标",
+        "出现加减或数乘",
+        "出现用基底表示",
+        "需要先求某向量的坐标"
+      ],
+      "steps": [
+        "把已知向量写成坐标或基底形式",
+        "按分量逐一加减与数乘",
+        "用终点减起点求待定向量的坐标",
+        "合并结果并检查维数一致"
+      ],
+      "preconditions": [
+        "向量已用坐标或基底表示",
+        "维数一致"
+      ],
+      "not_applicable": [
+        "向量以纯几何形式给出且未建系",
+        "维数不同无法运算"
+      ],
+      "pitfalls": [
+        "终点减起点顺序写反",
+        "数乘时只乘一个分量"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_dot_product",
+          "note": "线性运算完成后才能算数量积"
+        }
+      ],
+      "difficulty": 1,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 a=(1,2)、b=(-3,1)，求 2a-b。",
+          "answer_sketch": "按分量计算得 (5,3)。",
+          "scenario_id": "S.hs_analytic.vector_calc"
+        },
+        {
+          "statement": "已知 A(1,2)、B(3,5)，求向量 AB。",
+          "answer_sketch": "终点减起点得 (2,3)。",
+          "scenario_id": "S.hs_analytic.vector_calc"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_vector_relation",
+      "name": "共线与垂直条件",
+      "aliases": [
+        "平行条件",
+        "垂直条件",
+        "三点共线"
+      ],
+      "one_liner": "平行用坐标交叉积为零，垂直用对应分量乘积之和为零，一步得到方程。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.vector_calc",
+        "S.hs_analytic.vector_product",
+        "S.hs_analytic.vector_parallel_perp",
+        "S.hs_analytic.line_equation",
+        "S.hs_analytic.fixed_point"
+      ],
+      "triggers": [
+        "出现向量平行或垂直",
+        "要求反求参数",
+        "出现三点共线",
+        "出现两直线平行或垂直"
+      ],
+      "steps": [
+        "写出两向量坐标",
+        "平行用 x1y2-x2y1=0，垂直用 x1x2+y1y2=0",
+        "解出参数",
+        "回代检验是否满足非零等隐含条件"
+      ],
+      "preconditions": [
+        "两向量坐标已知",
+        "平行情形下两向量非零"
+      ],
+      "not_applicable": [
+        "零向量参与平行判定（零向量与任何向量平行）",
+        "条件以几何形式给出且未建系"
+      ],
+      "pitfalls": [
+        "把平行与垂直的判据写反",
+        "三点共线未先化成两个向量"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_dot_product",
+          "note": "垂直条件也可用数量积为零表达"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 a=(1,2)、b=(x,4) 且 a 平行 b，求 x。",
+          "answer_sketch": "由 1·4-2x=0 得 x=2。",
+          "scenario_id": "S.hs_analytic.vector_parallel_perp"
+        },
+        {
+          "statement": "若 a=(1,-1)、b=(2,m) 且 a 垂直 b，求 m。",
+          "answer_sketch": "由 2-m=0 得 m=2。",
+          "scenario_id": "S.hs_analytic.vector_parallel_perp"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_dot_product",
+      "name": "数量积、模长与夹角",
+      "aliases": [
+        "点积",
+        "夹角公式",
+        "投影"
+      ],
+      "one_liner": "用坐标或定义计算数量积，再由数量积求模长、夹角与投影。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.vector_product",
+        "S.hs_analytic.vector_parallel_perp",
+        "S.hs_analytic.vector_geometry",
+        "S.hs_analytic.ellipse"
+      ],
+      "triggers": [
+        "出现数量积符号",
+        "要求求夹角或模长",
+        "要求求投影",
+        "出现两向量垂直"
+      ],
+      "steps": [
+        "按坐标公式或定义算数量积",
+        "模长用自身数量积开方",
+        "夹角用数量积除以两模之积",
+        "投影用数量积除以被投影向量的模"
+      ],
+      "preconditions": [
+        "两向量已知",
+        "求夹角时两向量非零"
+      ],
+      "not_applicable": [
+        "向量含未知参数且未定",
+        "涉及高维向量而题面未给坐标"
+      ],
+      "pitfalls": [
+        "把数量积结果当成向量",
+        "投影忘记除以方向向量的模"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_vector_calc",
+          "note": "先做线性运算得到向量再算数量积"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "已知 |a|=2、|b|=3、夹角 60°，求 a·b 与 |a+b|。",
+          "answer_sketch": "a·b=3；|a+b|^2=4+9+6=19，故模为 √19。",
+          "scenario_id": "S.hs_analytic.vector_product"
+        },
+        {
+          "statement": "求 a=(1,1) 与 b=(1,-1) 的夹角。",
+          "answer_sketch": "数量积为 0，故夹角为 90°。",
+          "scenario_id": "S.hs_analytic.vector_product"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_vector_geometry",
+      "name": "向量与几何图形",
+      "aliases": [
+        "重心向量式",
+        "系数和判共线",
+        "向量法求轨迹"
+      ],
+      "one_liner": "把重心、中线、共线等几何条件翻译成向量等式，再用系数关系求解。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.vector_geometry",
+        "S.hs_analytic.locus"
+      ],
+      "triggers": [
+        "出现重心或中线",
+        "出现位置向量系数和为一",
+        "轨迹条件以向量形式给出"
+      ],
+      "steps": [
+        "把几何条件写成向量等式",
+        "用基底表示目标向量并比较系数",
+        "共线用系数和为一、重心用三向量和为零",
+        "需要轨迹方程时再设坐标转写"
+      ],
+      "preconditions": [
+        "几何条件可向量化",
+        "基底或坐标已选定"
+      ],
+      "not_applicable": [
+        "条件本质是度量而非位置关系",
+        "图形无明确的向量表示"
+      ],
+      "pitfalls": [
+        "重心条件写成两向量之和为零",
+        "共线条件漏掉系数和为一的前提"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_vector_calc",
+          "note": "化简要靠线性运算完成"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "若 G 为三角形 ABC 的重心，用 AB、AC 表示 AG。",
+          "answer_sketch": "由重心性质得 AG=(AB+AC)/3。",
+          "scenario_id": "S.hs_analytic.vector_geometry"
+        },
+        {
+          "statement": "若 OP=xOA+yOB 且 x+y=1，判断 P 的轨迹。",
+          "answer_sketch": "系数和为一说明 P 在直线 AB 上。",
+          "scenario_id": "S.hs_analytic.vector_geometry"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_locus",
+      "name": "轨迹方程（直接、定义与相关点）",
+      "aliases": [
+        "直接法",
+        "定义法",
+        "相关点法"
+      ],
+      "one_liner": "按条件设点列式、套用曲线定义，或用从动点代换求动点轨迹方程。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.vector_geometry",
+        "S.hs_analytic.complex_geometry",
+        "S.hs_analytic.locus"
+      ],
+      "triggers": [
+        "要求求动点轨迹方程",
+        "给出动点满足的几何条件",
+        "出现从动点与主动点的关系"
+      ],
+      "steps": [
+        "设动点坐标并写出条件等式",
+        "判断能否套用现成定义（圆、椭圆、双曲线、抛物线）",
+        "从动点时用主点坐标代入主轨迹方程",
+        "化简并检验轨迹的纯粹性与完备性"
+      ],
+      "preconditions": [
+        "动点条件可写成坐标关系",
+        "主轨迹方程已知或可求"
+      ],
+      "not_applicable": [
+        "条件含不可代数化的几何关系",
+        "轨迹退化为点或空集"
+      ],
+      "pitfalls": [
+        "化简时平方引入增根未剔除",
+        "相关点法忘记把主点限制代入"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_conic_def",
+          "note": "条件符合定义时直接用定义写方程更快"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_conic_def",
+          "note": "求轨迹的两条路径：条件符合定义直接用定义写方程，否则设点列式化简。"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_polar",
+          "note": "求轨迹方程的两条路径：直角坐标设点列式，或极坐标写方程后再互化（拓展）。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "动点 P 到 A(0,2) 的距离与到 x 轴距离相等，求轨迹方程。",
+          "answer_sketch": "列式平方化简得 x^2=4(y-1)，为抛物线。",
+          "scenario_id": "S.hs_analytic.locus"
+        },
+        {
+          "statement": "已知 P 在圆上运动，Q 满足 OQ=2OP，求 Q 的轨迹。",
+          "answer_sketch": "由 Q 坐标等于 P 坐标的两倍，把 P 坐标用 Q 表示后代入圆方程。",
+          "scenario_id": "S.hs_analytic.locus"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_complex_calc",
+      "name": "复数代数运算",
+      "aliases": [
+        "复数四则运算",
+        "分母实数化",
+        "共轭与模"
+      ],
+      "one_liner": "按实部虚部分别运算，除法同乘共轭把分母化为实数，模用共轭乘积开方。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.complex_calc",
+        "S.hs_analytic.complex_geometry",
+        "S.hs_analytic.complex_quadratic"
+      ],
+      "triggers": [
+        "出现复数乘法或除法",
+        "要求求模或共轭",
+        "出现复数相等"
+      ],
+      "steps": [
+        "把复数写成 a+bi 形式",
+        "乘除按多项式法则运算，i^2 换成 -1",
+        "除法分子分母同乘共轭",
+        "模用与共轭的乘积开方"
+      ],
+      "preconditions": [
+        "复数已写成标准形式",
+        "除法时分母不为零"
+      ],
+      "not_applicable": [
+        "涉及复数三角形式运算而未转换",
+        "含复变函数内容"
+      ],
+      "pitfalls": [
+        "i^2 忘记换成 -1",
+        "除法共轭乘在分子而漏乘分母"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_complex_geometry",
+          "note": "算出的实虚部即为复平面内坐标"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_complex_trig",
+          "note": "复数乘除的两条路径：代数形式分母实数化，或三角形式模乘辐角加（拓展）。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "计算 (1+2i)(3-i)。",
+          "answer_sketch": "展开得 3-i+6i-2i^2=5+5i。",
+          "scenario_id": "S.hs_analytic.complex_calc"
+        },
+        {
+          "statement": "计算 (1+i)/(1-i)。",
+          "answer_sketch": "分子分母同乘 1+i，得 2i/2=i。",
+          "scenario_id": "S.hs_analytic.complex_calc"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_complex_geometry",
+      "name": "复数几何意义",
+      "aliases": [
+        "复平面",
+        "模的几何意义",
+        "复数与向量"
+      ],
+      "one_liner": "把复数看作复平面内的点或向量，模解释为距离，从而把条件翻译成几何图形。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.complex_calc",
+        "S.hs_analytic.complex_geometry",
+        "S.hs_analytic.complex_quadratic"
+      ],
+      "triggers": [
+        "出现复数对应点",
+        "出现模等于定值",
+        "要求求复平面内轨迹",
+        "出现两复数之差的模"
+      ],
+      "steps": [
+        "把复数写成 a+bi 得到点坐标 (a,b)",
+        "把模解释为两点距离",
+        "模等于定值对应圆，距离和为定值对应椭圆",
+        "需要方程时设 z=x+yi 代入化简"
+      ],
+      "preconditions": [
+        "复数已写成代数形式",
+        "几何对应关系清晰"
+      ],
+      "not_applicable": [
+        "涉及复数乘法旋转的细节（需三角形式）",
+        "题目只要求纯数值计算"
+      ],
+      "pitfalls": [
+        "把 |z-a| 当成到原点距离",
+        "轨迹类型判断错误（圆与椭圆混淆）"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_locus",
+          "note": "几何意义明确后用轨迹方程流程写出结果"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求满足 |z-1|=2 的 z 对应点的轨迹。",
+          "answer_sketch": "到点 (1,0) 距离为 2，轨迹是以 (1,0) 为圆心、半径 2 的圆。",
+          "scenario_id": "S.hs_analytic.complex_geometry"
+        },
+        {
+          "statement": "求 |z-i|+|z+i|=4 所表示的轨迹。",
+          "answer_sketch": "到 (0,1) 与 (0,-1) 距离之和为 4，是焦点在 y 轴上的椭圆。",
+          "scenario_id": "S.hs_analytic.complex_geometry"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_complex_trig",
+      "scope": "extension",
+      "name": "复数三角表示（拓展）",
+      "aliases": [
+        "三角形式",
+        "模与辐角"
+      ],
+      "one_liner": "把复数写成模乘（余弦加正弦乘 i）的形式，用模相乘、辐角相加处理乘除。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.complex_calc"
+      ],
+      "triggers": [
+        "复数乘除次数较多",
+        "需要说明旋转与伸缩的几何意义",
+        "模与辐角分别给出"
+      ],
+      "steps": [
+        "求出模与辐角",
+        "写成三角形式",
+        "乘法模相乘辐角相加，除法模相除辐角相减",
+        "把结果转回代数形式"
+      ],
+      "preconditions": [
+        "模与辐角可求",
+        "辐角主值范围已约定"
+      ],
+      "not_applicable": [
+        "教材未要求三角形式的情形",
+        "辐角多值导致结论不唯一"
+      ],
+      "pitfalls": [
+        "辐角未统一到主值范围",
+        "把模相加而不是相乘"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_complex_calc",
+          "note": "课内应优先用代数形式运算"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_complex_calc",
+          "note": "复数乘除的两条路径：代数形式分母实数化，或三角形式模乘辐角加（拓展）。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "用三角形式计算 (1+i)^4。",
+          "answer_sketch": "1+i 的模为 √2、辐角 π/4，四次方后模为 4、辐角 π，结果为 -4。",
+          "scenario_id": "S.hs_analytic.complex_calc"
+        },
+        {
+          "statement": "计算 (1-i)^6 的模。",
+          "answer_sketch": "1-i 的模为 √2，六次方后模为 (√2)^6=8。",
+          "scenario_id": "S.hs_analytic.complex_calc"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_vieta",
+      "name": "联立与韦达定理",
+      "aliases": [
+        "设而不求",
+        "两根之和与积",
+        "弦长公式"
+      ],
+      "one_liner": "把直线与曲线联立消元得到二次方程，用两根之和与积表示交点相关量而不解出根。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.complex_quadratic",
+        "S.hs_analytic.intersection",
+        "S.hs_analytic.fixed_point",
+        "S.hs_analytic.range_extremum",
+        "S.hs_analytic.existence"
+      ],
+      "triggers": [
+        "直线与曲线交于两点",
+        "要求求弦长或中点",
+        "要求求含参的定值与范围",
+        "已知一根求另一根"
+      ],
+      "steps": [
+        "联立消去一个变量得到二次方程",
+        "写出判别式大于零的条件",
+        "用两根之和与积表示目标量",
+        "把目标量写成参数函数后求解"
+      ],
+      "preconditions": [
+        "消元后确实得到二次方程",
+        "交点存在（判别式非负）"
+      ],
+      "not_applicable": [
+        "直线与曲线只有一个交点或相切退化",
+        "消元后不是二次方程"
+      ],
+      "pitfalls": [
+        "忘记写判别式条件导致多解",
+        "弦长公式漏乘根号下 1+k^2"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_fixed_value",
+          "note": "定点定值问题以设而不求为基础"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_param_line",
+          "note": "求弦长的两条路径：联立后用韦达与弦长公式，或设直线参数方程用参数差（拓展）。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "直线 y=x+1 与椭圆 x^2/4+y^2=1 交于 A、B，求 |AB|。",
+          "answer_sketch": "联立得 5x^2+8x=0，用韦达与弦长公式算得 |AB|=8√2/5。",
+          "scenario_id": "S.hs_analytic.intersection"
+        },
+        {
+          "statement": "若弦 AB 的中点为 (1,1)，求直线 AB 的斜率。",
+          "answer_sketch": "设两端点坐标作差，用平方差分解得斜率与中点关系，代入得斜率。",
+          "scenario_id": "S.hs_analytic.intersection"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_line_equation",
+      "name": "直线方程与位置关系",
+      "aliases": [
+        "点斜式",
+        "一般式",
+        "斜率与倾斜角"
+      ],
+      "one_liner": "按已知条件选点斜式、两点式或一般式写方程，再用斜率或方向向量判断位置关系。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.line_equation",
+        "S.hs_analytic.circle_equation",
+        "S.hs_analytic.line_circle_position",
+        "S.hs_analytic.circle_circle"
+      ],
+      "triggers": [
+        "给出一点与斜率或两点",
+        "要求求直线方程",
+        "出现两直线平行或垂直",
+        "出现直线过定点"
+      ],
+      "steps": [
+        "判断斜率是否存在并分类",
+        "按条件选合适方程形式写出",
+        "比较两直线斜率或方向向量判断位置关系",
+        "含参时按参数取值讨论"
+      ],
+      "preconditions": [
+        "至少已知一点与一个方向信息",
+        "坐标已知"
+      ],
+      "not_applicable": [
+        "只知直线过一点而无方向信息",
+        "条件无法确定唯一直线"
+      ],
+      "pitfalls": [
+        "斜率不存在的情形遗漏",
+        "平行与重合未区分"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_vector_relation",
+          "note": "用方向向量判断平行垂直可避免斜率不存在的讨论"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求过点 (1,2) 且斜率为 -1 的直线方程。",
+          "answer_sketch": "点斜式得 y-2=-(x-1)，即 x+y-3=0。",
+          "scenario_id": "S.hs_analytic.line_equation"
+        },
+        {
+          "statement": "若直线 (m+1)x+y-2=0 与 x-y+1=0 垂直，求 m。",
+          "answer_sketch": "由两方向向量数量积为零得 (m+1)-1=0，故 m=0。",
+          "scenario_id": "S.hs_analytic.line_equation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_circle_equation",
+      "name": "圆的方程",
+      "aliases": [
+        "标准方程",
+        "一般方程",
+        "三点定圆"
+      ],
+      "one_liner": "圆心半径已知用标准式，条件散乱时设一般式用待定系数定三个参数。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.circle_equation",
+        "S.hs_analytic.line_circle_position",
+        "S.hs_analytic.circle_circle"
+      ],
+      "triggers": [
+        "给出圆心与半径",
+        "出现圆过三点",
+        "出现圆的一般式方程",
+        "要求判断方程是否表示圆"
+      ],
+      "steps": [
+        "圆心半径已知直接写标准式",
+        "条件为三点时设一般式代入解方程组",
+        "用一般式表示圆的判别条件确定参数范围",
+        "需要时配方化回标准式读圆心半径"
+      ],
+      "preconditions": [
+        "圆心半径或三个独立条件已知",
+        "二次项系数相等且无 xy 项"
+      ],
+      "not_applicable": [
+        "条件不足三个",
+        "方程含 xy 项（不是圆）"
+      ],
+      "pitfalls": [
+        "一般式配方时漏掉常数项的一半平方",
+        "表示圆的判别式方向写反"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_undetermined_coeff",
+          "note": "三点定圆本质是待定系数"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求以 (1,-2) 为圆心、半径为 3 的圆的标准方程。",
+          "answer_sketch": "直接写出 (x-1)^2+(y+2)^2=9。",
+          "scenario_id": "S.hs_analytic.circle_equation"
+        },
+        {
+          "statement": "若 x^2+y^2+2x-4y+m=0 表示圆，求 m 的范围。",
+          "answer_sketch": "配方后半径平方为 5-m，需大于零，得 m<5。",
+          "scenario_id": "S.hs_analytic.circle_equation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_line_circle",
+      "name": "圆心距法（直线与圆、圆与圆）",
+      "aliases": [
+        "圆心到直线距离",
+        "垂径定理",
+        "圆心距比较"
+      ],
+      "one_liner": "用圆心到直线的距离与半径比较判断位置关系，弦长用勾股，两圆用圆心距与半径和差比较。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.line_circle_position",
+        "S.hs_analytic.circle_circle"
+      ],
+      "triggers": [
+        "判断直线与圆的位置关系",
+        "要求求弦长或切线",
+        "判断两圆位置关系",
+        "要求求公共弦"
+      ],
+      "steps": [
+        "把圆的方程化成标准式读出圆心与半径",
+        "算圆心到直线的距离或两圆心之间的距离",
+        "与半径（或半径和差）比较定位置关系",
+        "弦长用半径平方减距离平方再开方乘 2"
+      ],
+      "preconditions": [
+        "圆心与半径可读出",
+        "距离公式可用"
+      ],
+      "not_applicable": [
+        "圆方程含参无法读出圆心",
+        "两圆重合"
+      ],
+      "pitfalls": [
+        "弦长公式漏乘 2",
+        "两圆内含与内切混淆"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_circle_equation",
+          "note": "先化标准式才能读圆心半径"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求直线 3x+4y-5=0 被圆 x^2+y^2=25 截得的弦长。",
+          "answer_sketch": "圆心到直线距离为 1，弦长为 2√(25-1)=4√6。",
+          "scenario_id": "S.hs_analytic.line_circle_position"
+        },
+        {
+          "statement": "求两圆 x^2+y^2=4 与 (x-3)^2+y^2=1 的公共弦方程。",
+          "answer_sketch": "两方程相减得 x=... 的直线，即公共弦所在直线。",
+          "scenario_id": "S.hs_analytic.circle_circle"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_conic_def",
+      "name": "圆锥曲线定义法",
+      "aliases": [
+        "定义法",
+        "距离和差",
+        "焦点准线等价"
+      ],
+      "one_liner": "先判断条件是否满足椭圆、双曲线或抛物线的定义，再据此写出方程或转化距离。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.locus",
+        "S.hs_analytic.ellipse",
+        "S.hs_analytic.hyperbola",
+        "S.hs_analytic.parabola",
+        "S.hs_analytic.conic_equation",
+        "S.hs_analytic.conic_focal",
+        "S.hs_analytic.intersection"
+      ],
+      "triggers": [
+        "出现到两定点距离之和或差为定值",
+        "出现到定点与定直线距离相等",
+        "要求判断曲线类型"
+      ],
+      "steps": [
+        "读出定点、定直线与定值",
+        "对照三种定义判断曲线类型",
+        "由定值写出参数 a 或 p",
+        "把定义用于后续的距离转化"
+      ],
+      "preconditions": [
+        "定点、定直线与定值明确",
+        "定值满足定义成立的约束（如和大于焦距）"
+      ],
+      "not_applicable": [
+        "定值不满足定义约束（如和小于焦距）",
+        "条件不足以确定类型"
+      ],
+      "pitfalls": [
+        "距离差忘记取绝对值导致只得到一支",
+        "和小于焦距仍当作椭圆"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_locus",
+          "note": "定义法求轨迹是轨迹方程的一种特例"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_locus",
+          "note": "求轨迹的两条路径：条件符合定义直接用定义写方程，否则设点列式化简。"
+        }
+      ],
+      "difficulty": 2,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "若动点到两定点距离之和为 10、两定点间距为 6，求轨迹方程。",
+          "answer_sketch": "满足椭圆定义，a=5、c=3、b=4，写出标准方程。",
+          "scenario_id": "S.hs_analytic.locus"
+        },
+        {
+          "statement": "求抛物线 y^2=2x 上到点 A(3,2) 距离最小的点。",
+          "answer_sketch": "用定义把到焦点距离换成到准线距离，转化为点到直线距离问题。",
+          "scenario_id": "S.hs_analytic.parabola"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_polar",
+      "scope": "extension",
+      "name": "极坐标（拓展）",
+      "aliases": [
+        "极坐标方程",
+        "极坐标与直角坐标互化"
+      ],
+      "one_liner": "用极径与极角表示点，把某些曲线或最值问题化到更简单的形式。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.locus"
+      ],
+      "triggers": [
+        "轨迹在极坐标下形式更简单",
+        "出现极径与极角",
+        "需要与直角坐标互化"
+      ],
+      "steps": [
+        "选定极点与极轴",
+        "用极径极角写出条件",
+        "必要时用互化公式转回直角坐标",
+        "检验极径非负或允许负值的约定"
+      ],
+      "preconditions": [
+        "极点与极轴已明确",
+        "互化公式适用"
+      ],
+      "not_applicable": [
+        "曲线在极坐标下反而更复杂",
+        "极点选取影响结论"
+      ],
+      "pitfalls": [
+        "极径为负时未按约定处理",
+        "互化时漏掉 ρ 乘在右侧"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_locus",
+          "note": "课内应优先用直角坐标求轨迹"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_locus",
+          "note": "求轨迹方程的两条路径：直角坐标设点列式，或极坐标写方程后再互化（拓展）。"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "把极坐标方程 ρ=2cosθ 化为直角坐标方程。",
+          "answer_sketch": "两边乘 ρ 得 ρ^2=2ρcosθ，即 x^2+y^2=2x，为圆。",
+          "scenario_id": "S.hs_analytic.locus"
+        },
+        {
+          "statement": "把直角坐标方程 x^2+y^2=4x 化为极坐标方程。",
+          "answer_sketch": "代入 x=ρcosθ、x^2+y^2=ρ^2，化简得 ρ=4cosθ。",
+          "scenario_id": "S.hs_analytic.locus"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_ellipse",
+      "name": "椭圆性质与离心率",
+      "aliases": [
+        "离心率",
+        "长轴短轴",
+        "焦点三角形"
+      ],
+      "one_liner": "用距离和定义配合三参数平方关系，求离心率、焦点坐标与范围。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.ellipse",
+        "S.hs_analytic.conic_equation",
+        "S.hs_analytic.conic_focal"
+      ],
+      "triggers": [
+        "出现椭圆与距离和",
+        "要求求离心率",
+        "要求求焦点或顶点",
+        "要求求椭圆上点到焦点距离范围"
+      ],
+      "steps": [
+        "由定义确定长轴长",
+        "用 a^2=b^2+c^2 求另一参数",
+        "离心率用 c/a 计算并检查小于 1",
+        "焦半径范围用 a±c 得到"
+      ],
+      "preconditions": [
+        "椭圆的标准方程或等价条件已知",
+        "焦点在坐标轴上"
+      ],
+      "not_applicable": [
+        "焦点不在坐标轴上且未平移",
+        "条件不足确定三参数"
+      ],
+      "pitfalls": [
+        "把 a、b 与长短轴关系搞反",
+        "离心率公式写成 a/c"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_conic_def",
+          "note": "参数关系由定义中的距离和给出"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求椭圆 x^2/25+y^2/9=1 的焦点坐标与离心率。",
+          "answer_sketch": "c=4，焦点为 (±4,0)，离心率为 4/5。",
+          "scenario_id": "S.hs_analytic.ellipse"
+        },
+        {
+          "statement": "求椭圆 x^2/4+y^2=1 上的点到右焦点距离的最大值。",
+          "answer_sketch": "焦半径最大值为 a+c=2+√3。",
+          "scenario_id": "S.hs_analytic.ellipse"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_hyperbola",
+      "name": "双曲线与渐近线",
+      "aliases": [
+        "渐近线",
+        "实轴虚轴",
+        "离心率与斜率"
+      ],
+      "one_liner": "用距离差定义与渐近线斜率反推参数，再求离心率或标准方程。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.hyperbola",
+        "S.hs_analytic.conic_equation",
+        "S.hs_analytic.conic_focal"
+      ],
+      "triggers": [
+        "出现双曲线与距离差",
+        "要求求渐近线",
+        "要求求离心率",
+        "出现共渐近线条件"
+      ],
+      "steps": [
+        "由定义确定实轴长",
+        "用 c^2=a^2+b^2 与渐近线斜率联立",
+        "离心率用 c/a 计算并检查大于 1",
+        "共渐近线时设统一形式再代点"
+      ],
+      "preconditions": [
+        "双曲线标准形式或等价条件已知",
+        "焦点位置明确"
+      ],
+      "not_applicable": [
+        "条件不足确定 a、b",
+        "焦点位置未定且未讨论"
+      ],
+      "pitfalls": [
+        "渐近线斜率与 a、b 的对应写反",
+        "离心率范围写成小于 1"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_conic_def",
+          "note": "距离差定义决定实轴长"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求双曲线 x^2/4-y^2/9=1 的渐近线与离心率。",
+          "answer_sketch": "渐近线为 y=±3x/2，c=√13，离心率为 √13/2。",
+          "scenario_id": "S.hs_analytic.hyperbola"
+        },
+        {
+          "statement": "若渐近线为 y=±x/2 且过点 (4,√3)，求双曲线方程。",
+          "answer_sketch": "设 x^2/4-y^2=λ，代入点得 λ=... 后写出方程。",
+          "scenario_id": "S.hs_analytic.conic_equation"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_parabola",
+      "name": "抛物线焦点弦与准线",
+      "aliases": [
+        "焦点弦",
+        "准线",
+        "通径"
+      ],
+      "one_liner": "用定义把到焦点距离换成到准线距离，焦点弦用焦半径之和与通径公式处理。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.parabola",
+        "S.hs_analytic.conic_focal"
+      ],
+      "triggers": [
+        "出现抛物线与焦点准线",
+        "要求求焦点弦长",
+        "要求求倒数和为定值",
+        "要求求最短距离"
+      ],
+      "steps": [
+        "写出标准形式读出 p",
+        "焦点坐标与准线方程直接写出",
+        "把到焦点距离换成到准线距离",
+        "焦点弦用两焦半径之和或通径公式"
+      ],
+      "preconditions": [
+        "抛物线标准形式已知",
+        "焦点在坐标轴上"
+      ],
+      "not_applicable": [
+        "抛物线已平移且未转换",
+        "条件不足确定 p"
+      ],
+      "pitfalls": [
+        "把 2p 当作 p",
+        "焦点弦长的倒数和公式记错"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_conic_def",
+          "note": "定义是距离转换的依据"
+        }
+      ],
+      "difficulty": 3,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "求抛物线 y^2=8x 的焦点坐标与准线方程。",
+          "answer_sketch": "2p=8 得 p=4，焦点 (2,0)，准线 x=-2。",
+          "scenario_id": "S.hs_analytic.parabola"
+        },
+        {
+          "statement": "过抛物线 y^2=4x 焦点的弦长为 8，求该弦的倾斜角。",
+          "answer_sketch": "由焦点弦长公式用倾斜角表示，解方程得 60° 或 120°。",
+          "scenario_id": "S.hs_analytic.parabola"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_param_line",
+      "scope": "extension",
+      "name": "直线参数方程（拓展）",
+      "aliases": [
+        "参数 t 的几何意义",
+        "有向距离"
+      ],
+      "one_liner": "把直线写成带参数的方程，用参数之差直接表示两点间距离。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.parabola",
+        "S.hs_analytic.intersection"
+      ],
+      "triggers": [
+        "直线过定点且求两点间距",
+        "需要把弦长转为参数差",
+        "出现与倾斜角相关的距离"
+      ],
+      "steps": [
+        "把直线写成标准参数形式",
+        "代入曲线方程得到关于参数的二次方程",
+        "用韦达定理得参数之和与积",
+        "弦长等于参数之差的绝对值"
+      ],
+      "preconditions": [
+        "直线过已知点且方向已知",
+        "曲线方程可代入"
+      ],
+      "not_applicable": [
+        "方向未知",
+        "参数形式与题面坐标系不一致"
+      ],
+      "pitfalls": [
+        "参数之差忘记取绝对值",
+        "把参数直接当成 x 的差"
+      ],
+      "relations": [
+        {
+          "type": "prefer",
+          "target": "M.hs_vieta",
+          "note": "课内多直接联立求弦长，参数方程属拓展"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_vieta",
+          "note": "求弦长的两条路径：联立后用韦达与弦长公式，或设直线参数方程用参数差（拓展）。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "low",
+      "example_problems": [
+        {
+          "statement": "过抛物线焦点的弦长为 8，用参数法求倾斜角。",
+          "answer_sketch": "设参数式代入抛物线，弦长等于参数差绝对值，解出倾斜角。",
+          "scenario_id": "S.hs_analytic.parabola"
+        },
+        {
+          "statement": "直线过点 (1,1)、倾斜角 45°，与圆交于 A、B，用参数法求弦长。",
+          "answer_sketch": "把参数式代入圆方程得关于 t 的二次方程，弦长等于两根之差的绝对值。",
+          "scenario_id": "S.hs_analytic.intersection"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_fixed_value",
+      "name": "定点定值（设而不求）",
+      "aliases": [
+        "定点问题",
+        "定值问题",
+        "参数分离"
+      ],
+      "one_liner": "用设而不求把条件写成含参数的恒等式，令参数系数为零得到定点或定值。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.fixed_point",
+        "S.hs_analytic.existence"
+      ],
+      "triggers": [
+        "要求证明直线过定点",
+        "要求证明某量为定值",
+        "出现含参数的直线族"
+      ],
+      "steps": [
+        "设交点坐标并联立得韦达关系",
+        "把几何条件代数化并代入韦达",
+        "整理成关于参数的恒等式",
+        "令各次项系数为零解出定点或读出定值"
+      ],
+      "preconditions": [
+        "条件可代数化",
+        "联立后韦达关系可用"
+      ],
+      "not_applicable": [
+        "条件与参数无关而结论非定值",
+        "交点不存在"
+      ],
+      "pitfalls": [
+        "只对特殊参数验证就断言定值",
+        "恒等式整理时漏掉常数项"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_vieta",
+          "note": "设而不求的基础是韦达定理"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_range",
+          "note": "直线与曲线综合的两条路径：结论恒定用设而不求证定值，结论随参数变化用目标函数求范围。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "直线 y=kx+m 与椭圆交于 A、B 且 OA 垂直 OB，证明该直线过定点。",
+          "answer_sketch": "用韦达把垂直条件化为 k 与 m 的关系，整理成恒等式读出定点。",
+          "scenario_id": "S.hs_analytic.fixed_point"
+        },
+        {
+          "statement": "证明弦 AB 的中点在某定直线上。",
+          "answer_sketch": "写出中点坐标与斜率关系，消去参数得定直线方程。",
+          "scenario_id": "S.hs_analytic.fixed_point"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_range",
+      "name": "范围与最值（目标函数化）",
+      "aliases": [
+        "目标函数法",
+        "参数范围",
+        "几何最值"
+      ],
+      "one_liner": "把所求量写成参数的函数，用判别式给出定义域，再求该函数的最值或值域。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.range_extremum"
+      ],
+      "triggers": [
+        "要求求弦长、面积或距离的范围",
+        "出现含参数并受交点条件约束",
+        "要求求最大值或最小值"
+      ],
+      "steps": [
+        "用参数表示目标量",
+        "由判别式大于零写出参数范围",
+        "在范围内求目标函数的最值",
+        "检验取到最值时交点是否确实存在"
+      ],
+      "preconditions": [
+        "目标量可用参数表示",
+        "参数范围可写出"
+      ],
+      "not_applicable": [
+        "目标量无法参数化",
+        "参数范围为空"
+      ],
+      "pitfalls": [
+        "忽略判别式导致最值点不在允许范围",
+        "取等条件与交点存在性冲突"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_vieta",
+          "note": "目标量的参数表达式来自韦达关系"
+        },
+        {
+          "type": "alternative",
+          "target": "M.hs_fixed_value",
+          "note": "直线与曲线综合的两条路径：结论恒定用设而不求证定值，结论随参数变化用目标函数求范围。"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "high",
+      "example_problems": [
+        {
+          "statement": "直线与椭圆相交，求三角形 OAB 面积的最大值。",
+          "answer_sketch": "面积写成斜率 k 的函数，由判别式限定范围，再求该函数最值。",
+          "scenario_id": "S.hs_analytic.range_extremum"
+        },
+        {
+          "statement": "求椭圆上的点到直线 x+y-4=0 距离的最小值。",
+          "answer_sketch": "用参数设椭圆上的点，写出距离函数后求最值，或用作平行切线的方法。",
+          "scenario_id": "S.hs_analytic.range_extremum"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    },
+    {
+      "id": "M.hs_existence",
+      "name": "存在性假设验证",
+      "aliases": [
+        "假设存在",
+        "存在性探究"
+      ],
+      "one_liner": "先假设满足条件的对象存在，把条件化为方程，再由方程是否有解判断存在性。",
+      "block_ids": [
+        "B.hs_analytic"
+      ],
+      "applies_to_scenarios": [
+        "S.hs_analytic.existence"
+      ],
+      "triggers": [
+        "出现是否存在某对象的问法",
+        "要求若存在求出、若不存在说明理由",
+        "含参数的存在性条件"
+      ],
+      "steps": [
+        "假设对象存在并设出参数",
+        "把全部条件化为方程或不等式组",
+        "判断方程组在允许范围内是否有解",
+        "有解则给出具体值，无解则说明理由"
+      ],
+      "preconditions": [
+        "条件可完全代数化",
+        "参数范围已明确"
+      ],
+      "not_applicable": [
+        "条件含无法代数化的几何关系",
+        "存在性依赖于未给出的数据"
+      ],
+      "pitfalls": [
+        "求出参数就断言存在而未检验交点",
+        "只验证特殊情形"
+      ],
+      "relations": [
+        {
+          "type": "compose",
+          "target": "M.hs_fixed_value",
+          "note": "存在性问题常需先算定点定值部分"
+        }
+      ],
+      "difficulty": 4,
+      "frequency": "medium",
+      "example_problems": [
+        {
+          "statement": "是否存在直线使 OA 垂直 OB？若存在求其方程。",
+          "answer_sketch": "设直线方程，用韦达把垂直条件化为参数方程，判断是否有解。",
+          "scenario_id": "S.hs_analytic.existence"
+        },
+        {
+          "statement": "若存在 k 使弦长为 2，求 k。",
+          "answer_sketch": "把弦长写成 k 的函数等于 2，解方程并检验判别式条件。",
+          "scenario_id": "S.hs_analytic.existence"
+        }
+      ],
+      "origin_block_ids": [
+        "B.hs_analytic"
+      ]
+    }
+  ]
+}

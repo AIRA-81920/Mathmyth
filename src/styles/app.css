@@ -12,9 +12,18 @@ button { touch-action: manipulation; }
 p, h1, h2 { margin: 0; }
 svg { flex-shrink: 0; }
 .muted { color: var(--text-muted); }
-.app-canvas { width: 100%; max-width: var(--content-width); margin: 0 auto; height: 100vh; height: 100dvh; position: relative; }
-.app-shell { display: flex; height: 100%; min-height: 0; padding-top: env(safe-area-inset-top); }
+/* 外壳满屏铺开（原来 max-width: var(--content-width) 把整个应用锁在 640px 居中列里，
+   横屏平板上抽屉与卡片都贴不到视口边缘）。阅读宽度下放到正文列，见下方 reading-column。 */
+.app-canvas { width: 100%; max-width: none; margin: 0; height: 100vh; height: 100dvh; position: relative; }
+/* --p：抽屉进度的**静态兜底**（0 = 全关，1 = 全开）。P2 之后开合动画不再写它 ——
+   --p 一变，整棵子树都要重算样式（卡片缩放、遮罩、抽屉位移全靠继承），逐帧写就是开合卡顿的
+   来源；现在由 App.jsx 的 setDrawerProgress 直接写三个元素的内联样式，点击开合走下面
+   is-drawer-tween 的 CSS 过渡。声明与三条 calc 规则保留，纯 CSS 下抽屉仍能正确就位。 */
+@property --p { syntax: '<number>'; initial-value: 0; inherits: true; }
+.app-shell { display: flex; height: 100%; min-height: 0; padding-top: env(safe-area-inset-top); --p: 0; }
 .main-frame, .area-panel, .ask-page { min-width: 0; }
+/* 正文阅读列：宽屏上文字不跟着视口无限拉长，但外壳与抽屉仍然贴住屏幕边缘。 */
+.conversation-flow, .settings-content, .practice-content, .method-content, .trail-outline, .practice-entry { width: 100%; max-width: var(--reading-width); margin-inline: auto; }
 .area-swipe-viewport { overflow: hidden; position: relative; }
 .area-swipe-track { display: flex; height: 100%; min-height: 0; width: 100%; }
 .area-swipe-page { flex: 0 0 100%; min-width: 0; min-height: 0; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
@@ -23,11 +32,17 @@ svg { flex-shrink: 0; }
 .top-bar, .page-header { height: 56px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-bottom: 1px solid var(--border); background: var(--surface); }
 .icon-button { width: 40px; height: 40px; display: inline-flex; justify-content: center; align-items: center; border: 0; border-radius: var(--radius-control); background: transparent; color: var(--text-muted); flex-shrink: 0; transition: background var(--motion-duration) var(--motion-ease); }
 @media (hover: hover) { .icon-button:hover:not(:disabled), .drawer-new:hover, .history-item:hover, .drawer-settings:hover { background: var(--surface-muted); } }
-.area-tabs { display: flex; align-self: stretch; align-items: center; gap: 28px; }
-.area-tab { height: 100%; position: relative; padding: 0; border: 0; background: transparent; color: var(--text); font-weight: 400; }
-.area-tab::after { content: ''; position: absolute; bottom: 10px; height: 1px; left: 0; right: 0; background: transparent; }
+/* 标签左右各留 8px 内边距：三个字的触摸盒从 28px 撑到 44px（超过 44px 的触摸下限）。
+   间距同步从 28/22 收到 12/6，视觉上两个字之间的空隙仍是 28/22 —— 只有可点区域变大。
+   指示线量的是文字墨迹，内边距不会把它带偏。 */
+.area-tabs { position: relative; display: flex; align-self: stretch; align-items: center; gap: 12px; }
+@media (max-width: 480px) { .area-tabs { gap: 6px; } }
+.area-tab { height: 100%; position: relative; padding: 0 8px; border: 0; background: transparent; color: var(--text); font-weight: 400; }
 .area-tab.is-active { font-weight: 600; }
-.area-tab.is-active::after { background: var(--text); }
+/* 一条线在标签之间滑动：与设置页「外观」那条线同款（2px 高、量墨迹定位、滑到中点压到一半）。
+   这里写 transform+width 而不是 left+width —— 位移数学等价，但 transform 从元素自身盒起算，
+   不会被包含块的内边距/边框带偏。不要给它加 transition：会自动跟 JS 每帧的写入打架。 */
+.area-tab-indicator { position: absolute; top: 0; left: 0; height: 2px; width: 0; background: var(--text); pointer-events: none; border-radius: 2px; will-change: transform, width; }
 .placeholder-page { text-align: center; }
 .placeholder-page p { max-width: 290px; font-size: 13px; }
 .conversation-flow { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 22px; scrollbar-width: thin; }
@@ -59,6 +74,15 @@ svg { flex-shrink: 0; }
 .composer-attachment { position: relative; align-self: flex-start; margin: 4px 4px 0; min-width: 86px; min-height: 72px; padding-right: 28px; display: flex; align-items: center; font-size: 12px; }
 .composer-attachment img { width: 86px; height: 86px; object-fit: contain; background: var(--surface-muted); border: 1px solid var(--border); border-radius: var(--radius-control); }
 .attachment-remove { position: absolute; right: -4px; top: -4px; width: 28px; height: 28px; min-height: 28px; }
+/* 思考模式下的断连提醒：只在"正在回答 + 开了思考"时出现一行，其它时候不占位。 */
+.composer-hint { padding: 0 2px 4px; font-size: 11.5px; color: var(--text-muted); }
+/* 中断后的两个动作：继续（再补救一次）与重新生成（整段重来，版本 +1）。 */
+.message-repair-actions { display: flex; gap: 14px; margin-top: 6px; }
+.message-repair-actions .practice-text-button { margin-top: 0; }
+/* 出题分流入口：只在措辞像出题时出现，一行高度，不挤压输入框。 */
+.composer-bank-offer { display: flex; align-items: center; gap: 10px; padding: 2px 2px 6px; }
+.composer-bank-offer span { flex: 1; min-width: 0; font-size: 12px; }
+.composer-bank-offer .button { flex-shrink: 0; min-height: 32px; padding: 6px 12px; font-size: 12px; }
 .composer-feedback { width: 100%; padding: 0 8px 4px; font-size: 12px; }
 .composer textarea { resize: none; flex: 1; min-width: 0; max-height: 160px; background: transparent; border: 0; line-height: 24px; padding: 8px 0; overflow-y: auto; border-radius: 0; }
 .composer textarea:focus { outline: none; }
@@ -66,17 +90,48 @@ svg { flex-shrink: 0; }
 .composer textarea::placeholder { color: var(--text-faint); }
 .attachment-action { display: flex; border-radius: var(--radius-control); }
 .send-button { width: 36px; height: 36px; margin: 2px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 0; border-radius: var(--radius-full); background: var(--text); color: var(--surface); }
-.drawer-layer { position: absolute; inset: 0; z-index: 10; visibility: hidden; pointer-events: none; transition: visibility 200ms ease-out; }
-.drawer-layer.is-open { visibility: visible; pointer-events: auto; touch-action: pan-y pinch-zoom; }
-.history-list { touch-action: pan-y pinch-zoom; }
-.drawer-scrim { position: absolute; inset: 0; opacity: 0; background: var(--scrim); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); transition: opacity 180ms ease-out; }
-.is-open .drawer-scrim { opacity: 1; }
-.history-drawer { position: absolute; inset: 0 auto 0 0; width: min(82%, 320px); display: flex; flex-direction: column; background: var(--surface); border-right: 1px solid var(--border); transform: translateX(-100%); padding: calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom)); transition: transform 200ms ease-out; }
-.is-open .history-drawer { transform: translateX(0); }
-.drawer-layer.is-peeking { visibility: visible; }
-.drawer-layer.is-peeking .history-drawer { transform: translateX(calc(-100% + var(--drawer-offset, 0px))); }
-.drawer-layer.is-peeking .drawer-scrim { opacity: var(--drawer-progress, 0); }
-.drawer-layer.is-dragging .history-drawer, .drawer-layer.is-dragging .drawer-scrim { transition: none; }
+/* ---------------------- 3D 景深抽屉：两个图层的层次感 ----------------------
+   下层卡片在自己的图层里只缩小、不位移；上层抽屉是另一个图层，滑出时把下层遮住，
+   不存在「互相挤压」。层次感由整体缩小与遮罩变暗承担；卡片圆角与投影都不做。 */
+/* 卡片默认不常驻合成层：will-change 或 contain:paint 一旦常驻，抽屉打开期间整个内容区
+   会被当作一个 GPU 图层维持着，切换会话时这个图层必须整体重新光栅化 —— 对话越长越贵，
+   这正是"开着抽屉切到大对话就卡"的根因。只在真正拖拽的那几帧临时开 will-change。 */
+.base-card { transform-origin: left center; background: var(--surface); transform: scale(calc(1 - var(--drawer-scale) * var(--p, 0))); }
+.app-shell.is-drawer-dragging .base-card { will-change: transform; }
+/* 点击开合的补间改由 App.jsx 用 Web Animations 直接驱动（见 setDrawerProgress）：
+   不再靠 is-drawer-tween 临时类 + CSS 过渡 + transitionend 兜底，因为「加类/摘类」
+   本身会触发一次整页重新光栅化，而那一下正好落在动画首尾，观感就是起手/收尾各卡一次。
+   transform/opacity 的 WAAPI 动画由合成器执行，动画结束再一次性落到内联样式。 */
+.drawer-layer { position: absolute; inset: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left); z-index: 10; visibility: hidden; pointer-events: none; transition: visibility 200ms ease-out; }
+/* 横向拖拽期间禁止选中文字：鼠标拖抽屉时会先起一个选区，除了难看还会干扰手势判定。 */
+.app-shell.is-drawer-dragging .drawer-layer { user-select: none; -webkit-user-select: none; }
+.drawer-layer.is-open, .drawer-layer.is-peeking { visibility: visible; }
+.drawer-layer.is-open { pointer-events: auto; touch-action: pan-y pinch-zoom; }
+/* 遮罩：变暗 + 毛玻璃。模糊不再"全程常驻"，而是挂在「已落定且全开」这个状态上
+   （App.jsx 在补间真正结束、或拖拽松手落定之后才加这个类）。
+   为什么要这么挂：模糊源是整个视口，卡片一边缩放背景就每帧都在变，模糊只能逐帧重算。
+   实测 60 段正文时，带模糊最大帧间隔 67ms、不带 5ms；静止时模糊只栅格化一次，几乎免费。
+   想连开合动画期间也保留毛玻璃：document.documentElement.dataset.glass = 'always'。 */
+/* v3.6.3：遮罩模糊回到「全程固定半径」——对齐候选样片的观感。
+   只有半径恒定，浏览器才有机会复用模糊结果；随进度变化的是 opacity（合成器动画），
+   所以视觉上呈现为"模糊随拉伸线性浮现"。半径本身绝不逐帧改（那会让卷积核每帧重建）。
+   想回到「落定才模糊」：document.documentElement.dataset.glass = 'settled'；
+   想彻底关掉：'off'。半径可用 --scrim-blur 调。 */
+.drawer-scrim {
+  position: absolute; inset: 0; background: var(--scrim); opacity: var(--p, 0);
+  backdrop-filter: blur(var(--scrim-blur, 6px)); -webkit-backdrop-filter: blur(var(--scrim-blur, 6px));
+}
+:root[data-glass='settled'] .drawer-scrim { backdrop-filter: none; -webkit-backdrop-filter: none; }
+:root[data-glass='settled'] .app-shell.is-drawer-settled .drawer-scrim {
+  backdrop-filter: blur(var(--scrim-blur, 6px)); -webkit-backdrop-filter: blur(var(--scrim-blur, 6px));
+}
+:root[data-glass='off'] .drawer-scrim,
+:root[data-glass='off'] .composer { backdrop-filter: none; -webkit-backdrop-filter: none; }
+/* 抽屉位移按「自身宽度的比例」算：p=0 完全移出，p=1 时它的左缘正好落在容器左边界，
+   也就是与卡片左边界重合。这里是本次修正的关键 —— transform 里的百分比基准是元素
+   自身宽度，不能和固定像素混算（之前的写法混进了 min(82%, …)，位移量因此少于实际
+   宽度，抽屉永远差一截拉不开，看起来就是整体偏左）。 */
+.history-drawer { position: absolute; inset: 0 auto 0 0; width: min(82%, var(--drawer-w)); display: flex; flex-direction: column; background: var(--surface); border-right: 1px solid var(--border); padding: calc(12px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom)); transform: translateX(calc(100% * (var(--p, 0) - 1))); }
 .light-temperature-dialog h2 { margin-bottom: 20px; }
 .light-temperature-labels { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 12px; }
 .light-temperature-dialog input[type='range'] { width: 100%; margin: 14px 0; accent-color: var(--text); }
@@ -91,30 +146,96 @@ svg { flex-shrink: 0; }
 .history-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
 .history-copy { flex: 1; min-width: 0; }
 .history-match { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; color: var(--text-muted); font-weight: 400; }
+.history-title-row { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.history-title-row .history-title { min-width: 0; }
+/* 讨论留档后的标记：和普通问答区分，不占标题宽度 */
+.history-mark { flex: none; font-size: 10px; line-height: 1.5; padding: 0 5px; border: 1px solid var(--border); border-radius: var(--radius-full); color: var(--text-muted); }
 .history-search { display: flex; align-items: center; gap: 8px; margin: 12px 4px 0; padding: 0 10px; min-height: 40px; border: 1px solid var(--border); border-radius: var(--radius-control); color: var(--text-muted); background: var(--surface-elevated); }
 .history-search input { flex: 1; min-width: 0; padding: 8px 0; border: 0; background: transparent; outline: none; font-size: 13px; }
 .history-search .icon-button { height: 28px; width: 28px; }
-.theme-options { display: flex; gap: 12px; justify-content: space-between; }
-.theme-options button { border: 0; background: transparent; min-height: 40px; padding: 4px 8px; position: relative; font-size: 13px; }
+.theme-options { position: relative; display: flex; gap: 12px; justify-content: space-between; }
+/* touch-action + user-select + touch-callout：不然安卓的长按/文本选择会打断按住手势 */
+.theme-options button { border: 0; background: transparent; min-height: 40px; padding: 4px 8px; position: relative; font-size: 13px;
+  touch-action: manipulation; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .theme-options button.is-selected { font-weight: 600; }
-.theme-options button.is-selected::after { content: ''; position: absolute; bottom: 3px; left: 8px; right: 8px; height: 1px; background: var(--text); }
+/* 长按改色温：留着 pan 的话，手指一点点纵向漂移就被浏览器接管去滚动，
+   pointercancel 一响，按住计时就作废了。这一格只认按住，不认滚动。 */
+.theme-options button[data-theme-value='light'] { touch-action: none; }
+/* 一条指示线滑到被选中的格子：只有 transform（位移 + 横向缩放），不产生布局。
+   基准宽 1px，scaleX 直接等于像素宽；长度贴合文字，滑动中收到 0.5、抵达后展开。 */
+.theme-indicator { position: absolute; left: 0; top: 0; width: 0; height: 2px; background: var(--text); pointer-events: none; }
+/* 折叠块：grid 0fr → 1fr，内容变高也自动适应，不用量高度 */
+.fold { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 200ms var(--motion-ease); }
+.fold.is-open { grid-template-rows: 1fr; }
+.fold > div { overflow: hidden; }
+.fold-chevron { display: inline-block; margin-left: 6px; color: var(--text-muted); transition: transform 200ms var(--motion-ease); }
+.is-open > .fold-chevron, .fold-open .fold-chevron { transform: rotate(90deg); }
+@media (prefers-reduced-motion: reduce) { .fold { transition: none; } .fold-chevron { transition: none; } }
 .auxiliary-settings summary { cursor: pointer; font-size: 13px; }
+.field-label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+/* 模型名旁边的次要动作：不抢字段的视觉重量，但手指要按得到 */
+.link-button { border: 0; background: transparent; padding: 4px 0; min-height: 36px; font: inherit; font-size: 12px; color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px; }
+.link-button:disabled { opacity: .5; }
+.model-choices { margin-top: 2px; }
+.auxiliary-summary { display: flex; align-items: center; width: 100%; padding: 0; border: 0; background: transparent; font: inherit; font-size: 13px; color: var(--text); cursor: pointer; text-align: left; }
 .auxiliary-settings .form-field { margin-top: 14px; }
 .question-link-label { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
 .trail-scroll { overflow-y: auto; min-height: 0; flex: 1; scrollbar-width: thin; }
 .method-chat-trigger { position: absolute; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom)); width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: var(--radius-full); background: var(--surface-elevated); color: var(--text); box-shadow: 0 3px 16px rgb(0 0 0 / 12%); }
-.method-chat-window { position: fixed; right: max(16px, calc((100vw - var(--content-width)) / 2 + 16px)); bottom: calc(16px + env(safe-area-inset-bottom)); width: min(440px, calc(100vw - 32px)); height: min(560px, calc(100dvh - 96px)); max-height: calc(100dvh - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); min-height: 160px; display: flex; flex-direction: column; padding: 0; overflow: hidden; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: 0 8px 36px rgb(0 0 0 / 20%); animation: appear var(--motion-duration) var(--motion-ease); }
+/* 浮窗下沿要停在触发按钮（20px + 48px 高）上方：按钮随时能再点一次收起/展开。 */
+/* 尺寸是定死的：四边 inset 一给，宽高就不再跟着内容走（这也是"输入长文时窗口被撑破"的根因之一）。 */
+.method-chat-window { position: fixed; inset: 0; margin: auto; width: min(760px, calc(100vw - 48px)); height: min(760px, calc(100dvh - 48px)); max-height: none; min-height: 0; display: flex; flex-direction: column; padding: 0; overflow: hidden; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: 0 8px 36px rgb(0 0 0 / 20%); animation: appear var(--motion-duration) var(--motion-ease); }
+/* .modal-frame 在文件后面还有一条 position: relative（同权重、后出现者胜），
+   不显式盖回来的话，上面那套 fixed + inset 全部失效，浮窗会退化成流内盒子：
+   inset 白写、宽高按内容长、消息区永远不触发滚动 —— 小窗 + 膨胀 + 没滚动条是同一个原因。 */
+.modal-frame.method-chat-window { position: fixed; }
 .method-chat-header { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; padding: 8px 12px 8px 16px; border-bottom: 1px solid var(--border); background: var(--surface-elevated); }
 .method-chat-header h2 { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.method-chat-flow { padding: 18px 16px; gap: 18px; }
+.method-chat-header .method-chat-save { flex: none; margin-right: 6px; font: inherit; font-size: 12px; padding: 3px 10px; border: 1px solid var(--border); border-radius: var(--radius-full); background: var(--surface); color: var(--text-muted); }
+.method-chat-header .method-chat-save:disabled { opacity: .5; }
+/* 窄屏：浮窗直接顶到安全区，只在下沿给触发按钮留位。
+   手机上没有空间浪费在背后的页面标题上——用户已经知道自己在看哪个方法。 */
+@media (max-width: 560px) {
+  .method-chat-window { left: 12px; right: 12px; top: calc(12px + env(safe-area-inset-top)); bottom: calc(78px + env(safe-area-inset-bottom)); width: auto; height: auto; margin: 0; max-height: none; }
+}
+/* 常驻细滚动条：安卓默认不画滚动条，能滚也看不出来，只会觉得"点不动了"。 */
+.method-chat-flow { padding: 18px 16px; gap: 14px; flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: thin; }
+.method-chat-flow::-webkit-scrollbar { width: 3px; }
+.method-chat-flow::-webkit-scrollbar-track { background: transparent; }
+.method-chat-flow::-webkit-scrollbar-thumb { background: var(--text-faint); border-radius: var(--radius-full); }
 .method-chat-flow .message { font-size: 14px; }
+/* 方法讨论浮层只有约 560px 高：只收消息间距与段落间距，正文行高（1.8）保持与主问答一致。 */
+.method-chat-flow .math-markdown > * + *, .method-chat-flow .math-markdown p + p { margin-top: 8px; }
+/* 三个胶囊只负责“省掉想措辞”，不吃内容高度。 */
+.method-chat-chips { display: flex; gap: 6px; padding: 0 12px 8px; flex-shrink: 0; overflow-x: auto; scrollbar-width: none; }
+.method-chat-chips::-webkit-scrollbar { display: none; }
+.method-chat-chips button { flex-shrink: 0; font: inherit; font-size: 12px; padding: 5px 10px; border: 1px solid var(--border); border-radius: var(--radius-full); background: var(--surface); color: var(--text-muted); }
+.method-chat-chips button:disabled { opacity: .45; }
 .method-chat-composer { margin: 0 12px 12px; }
+.method-chat-composer textarea { max-height: 88px; }
 .history-empty { font-size: 13px; padding: 24px 12px; }
 .drawer-settings { width: 100%; padding: 16px 12px; min-height: 52px; border: 0; border-top: 1px solid var(--border); background: transparent; text-align: left; font-weight: 500; }
+/* 设置页外壳：变形动画期间它盖在抽屉之上（z-index 高于 .drawer-layer 的 10），
+   动画结束后就是普通的一页，两者几何一致，所以切换时看不出接缝。 */
+.settings-layer { position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column; background: var(--surface); }
+/* 变形用的填充层：插在抽屉之下、遮罩之上，颜色与抽屉一致，靠横向缩放从抽屉右缘推出去。
+   只有 transform，没有 width，所以动画期间不产生任何布局。 */
+.settings-morph-filler { position: absolute; top: 0; bottom: 0; right: 0; background: var(--surface); transform: translateX(-100%); will-change: transform; pointer-events: none; }
 .page { height: 100%; min-height: 0; }
 .onboarding-page { overflow-y: auto; display: flex; align-items: center; justify-content: center; padding: calc(36px + env(safe-area-inset-top)) 28px calc(28px + env(safe-area-inset-bottom)); }
 .onboarding-content { width: 100%; max-width: 360px; margin: auto; }
 .onboarding-header { margin-bottom: 30px; }
+/* 首启学科选择：两张整行卡片，选中后加粗并加深边框。 */
+.onboarding-subject { margin-bottom: 30px; }
+.onboarding-section-title { font-size: 14px; font-weight: 600; margin: 0 0 10px; }
+.onboarding-model-header { margin-top: 4px; }
+.onboarding-subject-options { display: grid; gap: 10px; }
+.onboarding-subject-option { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-card); background: var(--surface-elevated); color: var(--text); text-align: left; }
+.onboarding-subject-option.is-selected { border-color: var(--text-muted); }
+.onboarding-subject-name { font-size: 14px; font-weight: 500; }
+.onboarding-subject-option.is-selected .onboarding-subject-name { font-weight: 600; }
+.onboarding-subject-desc { font-size: 12px; color: var(--text-muted); }
+.onboarding-subject-hint { margin: 8px 2px 0; }
 .page-title { font-size: 20px; line-height: 1.5; font-weight: 600; }
 .page-subtitle { color: var(--text-muted); margin-top: 8px; font-size: 13px; }
 .model-form { display: flex; flex-direction: column; gap: 20px; }
@@ -157,23 +278,35 @@ select.field-control { appearance: none; padding-right: 38px; background-image: 
 .settings-group-title { color: var(--text-muted); font-size: 12px; font-weight: 500; margin: 0 12px 8px; }
 .settings-card { background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 20px 16px; }
 .settings-group > .field-hint { margin: 8px 12px 0; }
+/* 更新说明：最多四行，长文不把设置页撑开 */
+.update-notes { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; margin: 10px 16px 4px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .settings-list { padding: 0; overflow: hidden; }
 .settings-row { display: flex; width: 100%; gap: 12px; align-items: center; min-height: 52px; padding: 12px 16px; text-align: left; border: 0; background: transparent; font-size: 14px; }
 .settings-row + .settings-row { border-top: 1px solid var(--border); }
 .settings-row-value { margin-left: auto; }
+/* 当前学科行：沿用主题选项的“加粗表示选中”约定。 */
+.settings-row.is-selected { font-weight: 600; }
 .settings-about-summary { cursor: pointer; list-style: none; }
 .settings-about-summary::-webkit-details-marker { display: none; }
-.settings-about:not([open]) .settings-about-details { display: none; }
-.settings-about-details { border-top: 1px solid var(--border); animation: appear var(--motion-duration) var(--motion-ease); }
+/* 显隐交给 .fold（grid 0fr → 1fr）：原来这里按 details[open] 判 display，
+   换成 div 之后 :not([open]) 恒成立，内容会永远不显示。 */
+.settings-about-details { border-top: 1px solid var(--border); }
 .settings-about-link { color: inherit; text-decoration: none; }
 .settings-about-link .settings-row-value { text-decoration: underline; text-underline-offset: 4px; }
 .model-settings-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .storage-retry { margin: 12px 12px 0; }
 .storage-page { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 32px; text-align: center; }
 .storage-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.storage-close-error.confirm-dialog { position: fixed; top: calc(16px + env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); z-index: 100; width: calc(100% - 32px); }
 .trail-outline, .trail-children { list-style: none; margin: 0; padding: 0; }
-.trail-outline { overflow-y: auto; padding: 24px 20px; scrollbar-width: thin; }
-.trail-children { margin-left: 20px; animation: appear var(--motion-duration) var(--motion-ease); }
+.trail-outline { overflow-y: auto; padding: 16px 14px 24px 24px; scrollbar-width: thin; }
+/* 回到题目竖排在左边那条空着的缩进带里：不再占掉一行高度，也不把树往右挤。 */
+.trail-page { position: relative; }
+.trail-return { position: absolute; left: 0; top: 6px; z-index: 2; writing-mode: vertical-rl; text-orientation: upright;
+  letter-spacing: 1px; font-size: 12px; line-height: 1.1; padding: 12px 7px; border: 0; border-radius: 8px; min-width: 30px;
+  background: transparent; color: var(--text-muted); }
+.trail-return:active { background: var(--surface-muted); }
+.trail-children { margin-left: 12px; animation: appear var(--motion-duration) var(--motion-ease); }
 .trail-row { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; border: 0; border-radius: var(--radius-control); padding: 8px 4px; background: transparent; text-align: left; color: inherit; }
 .trail-row.is-open { font-weight: 600; }
 .trail-row:disabled { opacity: 1; }
@@ -182,7 +315,7 @@ select.field-control { appearance: none; padding-right: 38px; background-image: 
 .trail-structure, .trail-consolidating { color: var(--g1); }
 .trail-exposed { color: var(--g2); }
 .trail-mastered { color: var(--g0); }
-.trail-condition { padding: 0 4px 10px 27px; font-size: 12px; }
+.trail-condition { padding: 0 4px 10px 18px; font-size: 12px; }
 .trail-question { width: 100%; text-align: left; padding: 10px 12px; margin-bottom: 8px; border: 1px solid var(--border); border-radius: var(--radius-control); background: transparent; color: var(--text-muted); font-size: 13px; }
 .practice-page { display: flex; flex-direction: column; min-height: 0; height: 100%; }
 .practice-content { min-height: 0; overflow-y: auto; padding: 28px 24px calc(28px + env(safe-area-inset-bottom)); }
@@ -209,7 +342,10 @@ select.field-control { appearance: none; padding-right: 38px; background-image: 
 .history-thumbnail { overflow: hidden; }
 .history-thumbnail img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
 .danger-text { color: var(--danger); }
-.dialog-layer { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 24px; }
+/* 必须高于 .settings-layer(40)：设置页是一层铺满屏幕的不透明外壳，
+   对话框若排在它下面就会被整页盖住——DOM 里存在、屏幕上什么都没有。
+   "长按浅色没反应"就是这么来的：面板其实一直在，只是被设置页压在底下。 */
+.dialog-layer { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 24px; }
 .dialog-backdrop { position: absolute; inset: 0; background: var(--scrim); animation: fade-in var(--motion-duration) var(--motion-ease); }
 .modal-frame { position: relative; z-index: 1; }
 .confirm-dialog { width: 100%; max-width: 360px; position: relative; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 24px; animation: appear var(--motion-duration) var(--motion-ease); }
@@ -260,4 +396,101 @@ select.field-control { appearance: none; padding-right: 38px; background-image: 
   .conversation-flow { padding-left: 16px; padding-right: 16px; }
   .composer { margin-left: 12px; margin-right: 12px; gap: 4px; }
   .settings-content { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ---------------------- 横屏 / 宽屏 ----------------------
+   这个应用此前没有任何 orientation / min-width 媒体查询：横屏平板和桌面只是"刚好还能看"。
+   外壳已满屏（见 .app-canvas），这里再补三件正事：
+   1) 宽屏抽屉不再吃 82% 的百分比上限，按封顶宽度稳定停住；
+   2) 矮屏（手机横屏）收紧纵向节奏，否则顶栏 + 输入框会把对话区挤没；
+   3) 正文列居中，宽屏上不贴着左边缘读。 */
+@media (min-width: 760px) {
+  .history-drawer { width: var(--drawer-w); }
+  .top-bar, .page-header { padding-left: 24px; padding-right: 24px; }
+  .conversation-flow { padding-left: 28px; padding-right: 28px; }
+  /* 输入框跟着正文列一起居中。注意必须给 width: 100% —— 只写 margin: auto 时，
+     flex 子项会被 auto 外边距压成 shrink-to-fit（实测塌到 275px，比正文窄一半）。 */
+  .composer { width: 100%; max-width: var(--reading-width); margin-left: auto; margin-right: auto; }
+}
+@media (orientation: landscape) and (max-height: 560px) {
+  .top-bar, .page-header { height: 48px; }
+  .conversation-flow { padding-top: 16px; padding-bottom: 18px; gap: 16px; }
+  .composer { margin-bottom: calc(10px + env(safe-area-inset-bottom)); }
+  .attachment-panel { max-height: 32dvh; }
+  .practice-content, .method-content { padding-top: 16px; }
+}
+/* 极高密度（200% 缩放或分屏）时把抽屉再收一点，避免遮住整个正文列 */
+@media (max-width: 420px) {
+  .app-shell { --drawer-w: min(78vw, 300px); }
+}
+
+/* ---------------------- 宽屏常驻侧栏（≥1100px）----------------------
+   手机/竖屏是「抽屉盖住卡片」，宽屏不该继续这么用：那会把正文挤成中间一条 640px，
+   两边各空几百像素，输入框还比正文窄一半。
+   这里改成桌面级布局：抽屉进入文档流当左侧栏，卡片不再缩放、不再有遮罩，
+   内容区占满剩余宽度，正文列与输入框在「内容区」内居中。
+   断点数字必须和 src/core/ui/layout.js 里的 WIDE_QUERY 一致。 */
+@media (min-width: 1100px) {
+  .app-shell { flex-direction: row; }
+  .drawer-layer {
+    order: -1;                       /* 抽屉在文档流里排到卡片左侧 */
+    position: static;
+    flex: 0 0 var(--drawer-w);
+    width: var(--drawer-w);
+    /* JS 会往这两个属性写内联样式，这里必须 !important 才能压住 */
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  .drawer-scrim { display: none; }  /* 常驻栏不需要遮罩 */
+  .history-drawer {
+    position: static;
+    width: 100%;
+    height: 100%;
+    transform: none !important;      /* 抵消 JS 写入的 translateX */
+    border-right: 1px solid var(--border);
+  }
+  .main-frame { transform: none !important; }  /* 抵消 JS 写入的 scale */
+
+  /* 常驻之后「关闭抽屉」「打开抽屉」都没有意义：X 直接不显示，
+     汉堡保留占位（visibility 而非 display，才能让顶部 tab 继续居中）。 */
+  .drawer-header > .icon-button[aria-label='关闭抽屉'] { display: none; }
+  .top-bar > .icon-button[aria-label='历史与设置'] { visibility: hidden; pointer-events: none; }
+
+  /* 宽屏给正文多留一点：760 比 640 更接近桌面阅读舒适区，但仍然是列而非满屏 */
+  .conversation-flow,
+  .composer { max-width: 760px; }
+}
+
+/* ---- 新手引导（聚光 + 气泡） --------------------------------------------- */
+/* 一层遮罩吞掉误点，聚光圈与气泡都在它上面：不用给单个控件调层级，
+   也就不会再出现"被设置页盖住"那类问题。 */
+/* 引导里的"足迹示例"：只展示，不写入任何数据 */
+.tour-demo { position: fixed; left: 12px; right: 12px; top: 96px; z-index: 90; padding: 14px 16px;
+  background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); }
+.tour-demo-tag { margin: 0 0 10px; font-size: 11.5px; color: var(--muted); letter-spacing: .04em; }
+.tour-demo-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; font-size: 13px; }
+.tour-demo-row span { padding: 3px 8px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-muted); }
+.tour-demo-note { margin: 0; font-size: 12px; color: var(--muted); }
+
+/* 题面还在流里时用纯文本：半截 LaTeX 不能交给 KaTeX */
+.message-partial { margin: 0; white-space: pre-wrap; word-break: break-word; }
+.tour-root { position: fixed; inset: 0; z-index: 90; }
+.tour-blocker { position: absolute; inset: 0; }
+.tour-ring { position: absolute; border-radius: 14px; pointer-events: none; border: 2px solid var(--ink);
+  box-shadow: 0 0 0 9999px rgba(18, 16, 12, 0.55); }
+/* 颜色全部走主题变量：浅色/深色下气泡都读得清，不会出现"白字写在米色卡上"。 */
+.tour-callout { position: absolute; z-index: 91; width: 320px; max-width: calc(100vw - 24px);
+  padding: 14px 16px 12px; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(10, 8, 6, 0.28); }
+.tour-progress { margin: 0 0 6px; font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
+.tour-callout h2 { margin: 0 0 6px; font-size: 15px; line-height: 1.4; color: var(--ink); }
+.tour-body { margin: 0 0 6px; font-size: 13px; line-height: 1.6; color: var(--ink); opacity: .88; }
+.tour-note { margin: 0; font-size: 12px; line-height: 1.55; color: var(--muted); }
+.tour-actions { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.tour-actions .practice-text-button { margin-right: auto; }
+.tour-nav { display: flex; gap: 6px; }
+.tour-nav .button { padding: 6px 14px; font-size: 12.5px; }
+@media (prefers-reduced-motion: no-preference) {
+  .tour-ring { transition: left .18s var(--ease), top .18s var(--ease), width .18s var(--ease), height .18s var(--ease); }
 }
