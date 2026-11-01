@@ -3,7 +3,7 @@ import { DatabaseError } from '../db/errors.js';
 import { wantsChatPractice, chatRouteLetters } from '../chat/practiceIntent.js';
 import { validateQuestionRoutes, mergeQuestionRoute } from '../chat/questionRoutes.js';
 import { archiveClassification, archiveClassifications } from './classificationResults.js';
-import { answerRouteSnapshots } from '../chat/answerRoutes.js';
+import { answerRouteSnapshots, STALL_MS } from '../chat/answerRoutes.js';
 
 export const MAX_ATTEMPTS = 3;
 export function sourceQuestion(db, message) {
@@ -83,7 +83,7 @@ export function requestMessageQuestionClassification(db, id) {
 
 // 卡在 pending 超过这么久就判失败：给用户一个"重新整理"的出口，
 // 免得重建库之后界面永远显示"整理中"（以前只有切会话才能救）。
-export const STALE_JOB_MINUTES = 30;
+export const STALE_JOB_MINUTES = STALL_MS / 60000;
 export function staleJobCutoff(now = Date.now()) {
   return new Date(now - STALE_JOB_MINUTES * 60000).toISOString();
 }
@@ -112,9 +112,11 @@ function claimRow(engine, claim) {
   return job;
 }
 
-export async function claimNextJob(engine, now = new Date().toISOString()) {
+export async function claimNextJob(engine, now = new Date().toISOString(), { conversationId = null } = {}) {
   const job = rows(engine.ensureOpen(), `SELECT q.* FROM queue_job q JOIN message m ON q.source_message_id=m.id WHERE q.kind='locate' AND q.status='pending' AND m.superseded=0
-    AND q.attempts<? AND (q.next_attempt_at IS NULL OR q.next_attempt_at<=?) ORDER BY q.created_at,q.id LIMIT 1`, [MAX_ATTEMPTS, now])[0];
+    AND q.attempts<? AND (q.next_attempt_at IS NULL OR q.next_attempt_at<=?)
+    ORDER BY CASE WHEN q.conversation_id=? THEN 0 ELSE 1 END,
+      CASE WHEN q.conversation_id=? THEN m.seq END DESC,q.created_at,q.id LIMIT 1`, [MAX_ATTEMPTS, now, conversationId, conversationId])[0];
   if (!job) return null;
   return engine.transaction((db) => {
     const payload = JSON.parse(job.payload);
@@ -253,6 +255,7 @@ export function loadQuestionRoutes(engine, conversationId) {
 export function retryQuestionRoutes(engine, messageId) {
   return engine.transaction(database => {
     let recreated = 0;
+    const requeuedAt = new Date().toISOString();
     const archived = rows(database, `SELECT DISTINCT r.source_message_id,r.conversation_id FROM classification_result r
     JOIN message a ON a.id=r.source_message_id JOIN message u ON u.conversation_id=a.conversation_id
     WHERE u.id=? AND u.role='user' AND u.superseded=0 AND a.superseded=0 AND r.status='failed'
@@ -264,16 +267,18 @@ export function retryQuestionRoutes(engine, messageId) {
     const jobs = rows(database, `SELECT q.* FROM queue_job q JOIN message a ON a.id=q.source_message_id
     JOIN message u ON u.conversation_id=a.conversation_id WHERE u.id=? AND u.role='user'
     AND u.superseded=0 AND a.superseded=0 AND q.kind='locate'
-    AND (q.status='failed' OR (q.status='pending' AND q.created_at < ?))`, [messageId, staleJobCutoff()]);
+    AND (q.status='failed' OR (q.status IN ('pending','running')
+      AND COALESCE(json_extract(q.payload,'$.requeuedAt'),q.created_at) < ?))`, [messageId, staleJobCutoff()]);
     const eligible = jobs.filter(job => {
       const payload = JSON.parse(job.payload);
       return !payload.classificationOnly && payload.source?.userMessageId === messageId;
     });
     for (const record of archived) {
       recreated += enqueueAnswers(database, [record.conversation_id], { retryAnswerIds: [record.source_message_id] });
+      database.run("UPDATE queue_job SET payload=json_set(payload,'$.requeuedAt',?) WHERE source_message_id=? AND status='pending'", [requeuedAt, record.source_message_id]);
       database.run("DELETE FROM classification_result WHERE source_message_id=? AND status='failed'", [record.source_message_id]);
     }
-    for (const job of eligible) database.run("UPDATE queue_job SET status='pending',attempts=0,lease_token=NULL,next_attempt_at=NULL,payload=json_remove(payload,'$.cancels') WHERE id=?", [job.id]);
+    for (const job of eligible) database.run("UPDATE queue_job SET status='pending',attempts=0,lease_token=NULL,next_attempt_at=NULL,payload=json_set(json_remove(payload,'$.cancels'),'$.requeuedAt',?) WHERE id=?", [requeuedAt, job.id]);
     return { retried: eligible.length + recreated };
   });
 }
@@ -309,6 +314,27 @@ export function failJob(engine, claim, { cancelled = false } = {}) {
     if (terminal) archiveClassification(db, { ...job, status: 'failed' });
     return { terminal };
   });
+}
+
+// 诊断只读统计：给隐藏诊断页用。绝不写库，也不改任何任务状态。
+export function queueStats(engine, now = Date.now()) {
+  const db = engine.ensureOpen();
+  const counts = new Map();
+  for (const row of rows(db, 'SELECT status,count(*) AS total FROM queue_job GROUP BY status')) counts.set(row.status, row.total);
+  // claimable 用与 claimNextJob 完全相同的条件，只是取数量：能直接回答
+  // "任务都在排队却一个也领不到" 是不是 SQL 条件本身造成的。
+  const claimable = rows(db, `SELECT count(*) AS total FROM queue_job q JOIN message m ON q.source_message_id=m.id
+    WHERE q.kind='locate' AND q.status='pending' AND m.superseded=0 AND q.attempts<?
+    AND (q.next_attempt_at IS NULL OR q.next_attempt_at<=?)`, [MAX_ATTEMPTS, new Date(now).toISOString()])[0]?.total ?? 0;
+  const oldest = rows(db, "SELECT id,created_at FROM queue_job WHERE kind='locate' AND status='pending' ORDER BY created_at,id LIMIT 1")[0];
+  const createdAt = oldest?.created_at ?? null;
+  const parsed = createdAt ? Date.parse(createdAt) : NaN;
+  return {
+    pending: counts.get('pending') ?? 0, running: counts.get('running') ?? 0,
+    done: counts.get('done') ?? 0, failed: counts.get('failed') ?? 0,
+    claimable, createdAtOfOldestPending: createdAt,
+    ageOfOldestPendingMs: Number.isFinite(parsed) ? Math.max(0, now - parsed) : null,
+  };
 }
 
 export function loadTrail(engine) {

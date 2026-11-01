@@ -1,3 +1,5 @@
+import { publicEvidenceMatcher } from './routeEvidence.js';
+
 // Route labels are always resolved from canonical knowledge IDs by the UI.
 export function validateQuestionRoutes(routes, encounters, source) {
   if (routes == null) return [];
@@ -6,24 +8,28 @@ export function validateQuestionRoutes(routes, encounters, source) {
   const edges = new Set(encounters.map(e => `${e.scenario_id}:${e.method_id ?? ''}`));
   const seen = new Set();
   const publicAnswers = [source.answer, ...(source.context ?? []).filter(message => message.role === 'assistant').map(message => message.content)].filter(value => typeof value === 'string');
-  return routes.map(route => {
+  const matchEvidence = publicEvidenceMatcher(publicAnswers);
+  return routes.map((route, routeIndex) => {
     const anchor = route.user_message_id;
     if (!users.has(anchor) || !Number.isInteger(route.question_index) || route.question_index < 1 || route.question_index > 12) throw new Error('本题路径来源无效。');
     const key = `${anchor}:${route.question_index}`;
     if (seen.has(key)) throw new Error('本题路径重复。');
     seen.add(key);
-    function validateSteps(steps) {
+    function validateSteps(steps, pathIndex = 0) {
       if (!Array.isArray(steps) || !steps.length || steps.length > 16) throw new Error('本题路径步骤无效。');
-      return steps.map(step => {
-        const evidence = typeof step.evidence === 'string' ? step.evidence.trim() : '';
-        if (!edges.has(`${step.scenario_id}:${step.method_id ?? ''}`) || !evidence || evidence.length > 500
-          || !publicAnswers.some(answer => answer.includes(evidence))) throw new Error('本题路径缺少解答依据。');
+      return steps.map((step, stepIndex) => {
+        const supplied = typeof step?.evidence === 'string' ? step.evidence.trim() : '';
+        const evidence = matchEvidence(supplied);
+        const edgePresent = Boolean(step && edges.has(`${step.scenario_id}:${step.method_id ?? ''}`));
+        if (!edgePresent || !evidence) throw Object.assign(new Error('本题路径缺少解答依据。'), {
+          location: { routeIndex, pathIndex, stepIndex, edgePresent, evidenceMatched: Boolean(evidence), evidenceLength: supplied.length },
+        });
         return { scenario_id: step.scenario_id, method_id: step.method_id ?? null, evidence };
       });
     }
     if (route.paths != null) {
       if (!Array.isArray(route.paths) || !route.paths.length || route.paths.length > 6) throw new Error('并列解法无效。');
-      const paths = route.paths.map(path => ({ steps: validateSteps(path.steps) }));
+      const paths = route.paths.map((path, pathIndex) => ({ steps: validateSteps(path?.steps, pathIndex) }));
       return { user_message_id: anchor, question_index: route.question_index, steps: paths[0].steps, paths };
     }
     return { user_message_id: anchor, question_index: route.question_index, steps: validateSteps(route.steps) };

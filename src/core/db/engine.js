@@ -259,11 +259,12 @@ export class DatabaseEngine {
     } catch (error) { this.restoreCommitted(); throw safeDatabaseError(error); }
   }
 
-  claimNextJob(now) { return jobs.claimNextJob(this, now); }
+  claimNextJob(now, options) { return jobs.claimNextJob(this, now, options); }
   checkpointJob(claim, blockIds, classification) { return jobs.checkpointJob(this, claim, blockIds, classification); }
   completeJob(claim, entries) { return jobs.completeJob(this, claim, entries); }
   failJob(claim, options) { return jobs.failJob(this, claim, options); }
   loadTrail() { return jobs.loadTrail(this); }
+  queueStats() { return jobs.queueStats(this); }
   // 切换学科后，主线程需要按新学科重新取一次会话摘要（启动时 bootstrap 已按偏好过滤）。
   listConversations(subject) {
     const db = this.ensureOpen();

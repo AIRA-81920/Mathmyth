@@ -8,9 +8,9 @@ const signature = route => JSON.stringify([route.question_index,
 // 任务迟迟没有结论（pending/running 超过这个时间）就算"卡住"：
 // 界面据此给出"重新整理"，不再让用户永远看着"整理中"。
 export const STALL_MS = 2 * 60 * 1000;
-function isStalled(record, now) {
+function isStalled(record, now, payload) {
   if (record.status === 'done' || record.status === 'failed') return false;
-  const createdAt = Date.parse(record.created_at ?? '');
+  const createdAt = Date.parse(payload?.requeuedAt ?? record.created_at ?? '');
   return Number.isFinite(createdAt) ? now - createdAt > STALL_MS : false;
 }
 
@@ -46,7 +46,7 @@ export function answerRouteSnapshots(records, users, encounters = [], now = Date
       if (updated && (!ordered || previous?.key === key)) continue;
       const item = { answerId: record.source_message_id, messageId, status: record.status,
         isMathQuestion: user.is_math_question === null ? null : Boolean(user.is_math_question),
-        ordered, routes: structuredClone(visibleRoutes), updated, stalled: isStalled(record, now) };
+        ordered, routes: structuredClone(visibleRoutes), updated, stalled: isStalled(record, now, payload) };
       if (record.status === 'done' && visibleRoutes.length) {
         if (previous && previous.key !== key) previous.item.updatedBy = item.answerId;
         latest.set(messageId, { key, item });

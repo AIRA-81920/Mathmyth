@@ -161,20 +161,20 @@ export async function startRelatedPractice(store, options = {}, dependencies = {
     }
     store.setState(state => ({ conversations: state.conversations.map(entry => entry.id === destinationId
       ? { ...entry, messages: entry.messages.map(message => message.id === placeholderId
-        ? { ...message, content: question.question, status: 'complete', practiceItemId: run.items[0].id } : message) } : entry) }));
+        ? { ...message, content: question.question, status: 'complete', practiceItemId: run.items[0].id, pendingDetail: '' } : message) } : entry) }));
     await store.getState().flushStorage();
     return { ok: true, itemId: run.items[0].id, conversationId: destinationId };
   } catch (error) {
     if (linkedItemId && current()) return { ok: true, itemId: linkedItemId, conversationId: destinationId };
     if (placeholderId && current()) store.setState(state => ({ conversations: state.conversations.map(entry => entry.id === destinationId
       ? { ...entry, messages: entry.messages.map(message => message.id === placeholderId
-        ? { ...message, content: '这次练习尚未准备完成。', status: 'error', error: '请从原题重试，原有记录仍保留。' } : message) } : entry) }));
+        ? { ...message, content: '这次练习尚未准备完成。', status: 'error', error: '请从原题重试，原有记录仍保留。', pendingDetail: '' } : message) } : entry) }));
     return failure(error?.userMessage || '这次练习没有准备完成，请重试。');
   } finally {
     if (placeholderId && !linkedItemId && store.getState().learnerId === learnerId && !store.getState().dataOperation) {
       store.setState(state => ({ conversations: state.conversations.map(entry => entry.id === destinationId ? { ...entry,
         messages: entry.messages.map(message => message.id === placeholderId && message.status === 'streaming'
-          ? { ...message, status: 'error', error: '练习准备已停止，可从原题重试。' } : message) } : entry) }));
+          ? { ...message, status: 'error', error: '练习准备已停止，可从原题重试。', pendingDetail: '' } : message) } : entry) }));
     }
     if (requests.get(key) === request) requests.delete(key);
   }

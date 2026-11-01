@@ -54,7 +54,10 @@ function validQuestion(question, scenarioId, methodId, mixedPrepared = false) {
   return question.entranceScenarioId === entrance && Array.isArray(question.routes) && question.routes.length >= minRoutes
     && ['single', 'multi', 'best'].includes(question.selectionMode)
     && question.routes.every((route) => typeof route.valid === 'boolean' && route.steps?.length && route.steps[0].scenarioId === entrance)
-    && question.routes.some((route) => route.valid) && question.routes.some((route) => !route.valid);
+    && question.routes.some((route) => route.valid)
+    // AI 草稿按契约只给一条正确路线（见 routes.js 的 draft 豁免与 related.js 的提示词），
+    // "必须带一条错误路线"只适用于人工库题的选路线玩法；对草稿套用会让出题 100% 失败。
+    && (question.metadata?.reviewStatus === 'model_unverified' || question.routes.some((route) => !route.valid));
 }
 
 // all 为已加载的题库集合（prepareRouteTargets）；within 存在时只在该 target 内比对，

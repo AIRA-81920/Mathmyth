@@ -18,6 +18,8 @@ test('database Worker transport preserves preferences, method identity, title ow
     assert.deepEqual(changes.preferences,preferences);
     assert.equal(changes.conversations[0].methodId,'M.example');assert.equal(changes.conversations[0].titleStatus,'manual');
     assert.equal(changes.conversations[0].messages[0].reasoningContent,'私有上下文');assert.equal(changes.conversations[0].messages[0].content,'公开回答');
+    await database.claimNextJob({ conversationId: 'current-question' });
+    assert.deepEqual(calls.at(-1).args, [undefined, { conversationId: 'current-question' }]);
     await database.exportDatabase();
     assert.equal(calls.at(-1).method, 'exportBackup');
   } finally { globalThis.Worker=previous; }

@@ -19,7 +19,7 @@ function engine() {
 }
 
 const methods = new Set(['initializeDatabase','loadConversation','loadImage','saveChanges','exportBackup','prepareImport','commitImport','cancelImport','clearDatabase','listConversations',
-  'claimNextJob','checkpointJob','completeJob','failJob','loadTrail','loadQuestionRoutes','loadAnswerQuestionRoutes','retryQuestionRoutes','loadPatternProgress','listPersonalNotes','savePersonalNote','deletePersonalNote',
+  'claimNextJob','checkpointJob','completeJob','failJob','loadTrail','queueStats','loadQuestionRoutes','loadAnswerQuestionRoutes','retryQuestionRoutes','loadPatternProgress','listPersonalNotes','savePersonalNote','deletePersonalNote',
   'listStarredQuestions','loadStarredQuestion','setQuestionStar','removeStarredQuestion','getMessageQuestionClassification','requestMessageQuestionClassification',
   'createPracticeRun','appendPracticeItems','updateConversation','deleteConversation','loadActivePractice','loadPracticeItem','listPracticeHistory','loadPracticeUsage','gradePracticeItem','revealPracticeItem','advancePracticeItem','recordPracticeHint','savePracticeDraft','finishChatPractice','setPracticeReview','listPracticeReviews','disputePracticeItem','searchConversations']);
 let serial = Promise.resolve();

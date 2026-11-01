@@ -10,6 +10,7 @@ import { version } from '../../package.json';
 import { exportBackupFile } from '../core/platform/backup.js';
 import { transitionTheme } from '../core/ui/themeTransition.js';
 import { checkForUpdate, readPendingUpdate, savePendingUpdate } from '../core/update/check.js';
+import QueueDiagnostics from '../components/QueueDiagnostics.jsx';
 
 export default function Settings({ onClose }) {
   const closeSettings = useAppStore((state) => state.closeSettings);
@@ -26,6 +27,9 @@ export default function Settings({ onClose }) {
   const [pendingImport, setPendingImport] = useState(null);
   const [busy, setBusy] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  // 隐藏诊断入口：2 秒内在版本号那一行连点 5 次。只数点击，不改任何判定。
+  const [diagOpen, setDiagOpen] = useState(false);
+  const versionTaps = useRef({ count: 0, at: 0 });
   // 已知的新版本：启动时的静默检查会先落盘，这里一进设置就能看到，不必再联网。
   const [update, setUpdate] = useState(() => readPendingUpdate());
   const [checking, setChecking] = useState(false);
@@ -171,7 +175,15 @@ export default function Settings({ onClose }) {
               // 重看引导：先清标记再让外层打开引导层，设置页同时收起。
               resetTour(); closeSettings(); window.dispatchEvent(new Event('mathmyth:tour'))
             }}><span>重新观看使用引导</span></button>
-            <button type="button" className={'settings-row settings-about-summary' + (aboutOpen ? ' fold-open' : '')} aria-expanded={aboutOpen} aria-label="版本与开发者信息" onClick={() => setAboutOpen((value) => !value)}>
+            <button type="button" className={'settings-row settings-about-summary' + (aboutOpen ? ' fold-open' : '')} aria-expanded={aboutOpen} aria-label="版本与开发者信息" onClick={() => {
+              // 连点 5 次（每次间隔 <2s）打开队列诊断页；正常点一次仍然只是展开/收起。
+              const now = Date.now();
+              const taps = versionTaps.current;
+              taps.count = now - taps.at <= 2000 ? taps.count + 1 : 1;
+              taps.at = now;
+              if (taps.count >= 5) { taps.count = 0; setDiagOpen(true); return; }
+              setAboutOpen((value) => !value);
+            }}>
               <span>版本</span>
               <span className="muted settings-row-value">{version}{update ? ' · 可更新到 ' + update.version : ''}<span className="fold-chevron" aria-hidden="true">›</span></span>
             </button>
@@ -198,6 +210,8 @@ export default function Settings({ onClose }) {
         </section>
       </div>
 
+      {/* 诊断页不受 storageStatus 限制：存储错误时它更要能打开，只是数据库统计会显示读取失败。 */}
+      {diagOpen && <QueueDiagnostics onClose={() => setDiagOpen(false)} />}
       <ConfirmDialog
         open={confirmClear}
         title="清空所有数据？"

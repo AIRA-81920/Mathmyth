@@ -60,11 +60,13 @@ function rpcAt(epoch, method, ...args) {
 
 const rpc = (method, ...args) => rpcAt(generation, method, ...args);
 export function onDatabaseChange(listener) { listeners.add(listener); return () => listeners.delete(listener); }
-export const claimNextJob = () => rpc('claimNextJob');
+export const claimNextJob = (options) => rpc('claimNextJob', undefined, options);
 export const checkpointJob = (claim, blockIds, classification) => rpcAt(claim.generation, 'checkpointJob', claim, blockIds, classification);
 export const completeJob = (claim, entries) => rpcAt(claim.generation, 'completeJob', claim, entries);
 export const failJob = (claim, options) => rpcAt(claim.generation, 'failJob', claim, options);
 export const loadTrail = () => rpc('loadTrail');
+// 只读诊断统计（诊断页用）。
+export const queueStats = () => rpc('queueStats');
 export const loadQuestionRoutes = (conversationId) => rpc('loadQuestionRoutes', conversationId);
 export const loadAnswerQuestionRoutes = (conversationId) => rpc('loadAnswerQuestionRoutes', conversationId);
 export const retryQuestionRoutes = (messageId) => rpc('retryQuestionRoutes', messageId);

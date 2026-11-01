@@ -138,3 +138,35 @@ test('clicking the production practice-store start action persists a local run u
     assert.equal(engine.loadActivePractice().id, practice.getState().session.id);
   } finally { registry.delete(key); engine.close(); }
 });
+
+// 回归：AI 现场出题按契约只给一条正确路线。入库校验曾经错误地套用"人工库题必须
+// 带一条错误路线"，导致 AI 出题 100% 失败（invalid_practice）。这里同时钉住豁免的边界：
+// 只对 model_unverified 生效，伪装成人工库题的同一份数据仍然必须被拒。
+test('an AI draft with a single valid route can start a practice run, but the same data forged as a reviewed pool question is still rejected', async () => {
+  const engine = await freshEngine();
+  try {
+    const { prepareRouteQuestion } = await import('../src/core/practice/routes.js');
+    const input = await prepareLocalPracticeInput(await choiceFor('RT.batch1.cancellation'), skeleton);
+    const review = structuredClone(input.items[0]);
+    const validRoute = review.routes.find((route) => route.valid);
+    const draft = await prepareRouteQuestion({ ...structuredClone(review), routes: [structuredClone(validRoute)],
+      metadata: { ...review.metadata, reviewStatus: 'model_unverified',
+        source: { ...review.metadata.source, kind: 'ai_variant' },
+        learning: { ...(review.metadata.learning ?? {}), provenance: { userMessageId: 'user-1' } } } }, skeleton);
+    const learnerId = engine.db.exec('SELECT id FROM learner')[0].values[0][0];
+    await engine.transaction((db) => {
+      db.run('INSERT INTO conversation(id,learner_id,title,created_at,updated_at) VALUES(?,?,?,?,?)',
+        ['c1', learnerId, '原题', '2026-11-01', '2026-11-01']);
+      db.run("INSERT INTO message(id,conversation_id,role,content,created_at,seq,status) VALUES(?,?,'assistant',?,?,1,'complete')",
+        ['m1', 'c1', '解答正文', '2026-11-01']);
+    });
+    const run = await engine.createPracticeRun({ scenarioId: draft.entranceScenarioId, methodId: input.methodId,
+      items: [draft], chat: { conversationId: 'c1', messageId: 'm1' } });
+    assert.equal(run.items.length, 1, 'AI 草稿应当能建出练习轮');
+    assert.equal(run.items[0].question.metadata.reviewStatus, 'model_unverified');
+    const forged = structuredClone(draft);
+    forged.metadata.reviewStatus = 'worked_example_checked';
+    await assert.rejects(engine.createPracticeRun({ scenarioId: forged.entranceScenarioId, methodId: input.methodId,
+      items: [forged], chat: { conversationId: 'c1', messageId: 'm1' } }), (error) => error.code === 'invalid_practice');
+  } finally { engine.close(); }
+});
