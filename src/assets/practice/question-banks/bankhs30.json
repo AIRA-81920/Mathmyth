@@ -1,0 +1,3134 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankhs30",
+  "sourceSha256": "d24e5b596d0651a5729f02971475113367f7d8408c62dca3c7fee62905fcf194",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.hs_func",
+        "name": "集合、不等式与函数"
+      },
+      {
+        "id": "B.hs_trig",
+        "name": "三角函数与解三角形"
+      },
+      {
+        "id": "B.hs_seq",
+        "name": "数列"
+      },
+      {
+        "id": "B.hs_deriv",
+        "name": "导数及其应用"
+      },
+      {
+        "id": "B.hs_geom",
+        "name": "立体几何与空间向量"
+      },
+      {
+        "id": "B.hs_analytic",
+        "name": "解析几何、平面向量与复数"
+      },
+      {
+        "id": "B.hs_prob",
+        "name": "概率统计与计数原理"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.hs_func.set_logic",
+        "name": "集合与常用逻辑用语",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_func.set_operation",
+          "S.hs_func.condition_judge",
+          "S.hs_func.quantifier_negation",
+          "S.hs_func.new_definition_set"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.inequality",
+        "name": "不等式与二次关系",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_func.inequality_solve",
+          "S.hs_func.quadratic_root_dist",
+          "S.hs_func.basic_inequality",
+          "S.hs_func.inequality_property"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.concept",
+        "name": "函数概念与表示",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_func.domain",
+          "S.hs_func.expression",
+          "S.hs_func.value_range",
+          "S.hs_func.piecewise",
+          "S.hs_func.abstract_function"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.properties",
+        "name": "函数性质与图象",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_func.parity_period",
+          "S.hs_func.monotonicity",
+          "S.hs_func.graph_transform",
+          "S.hs_func.symmetry"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.elementary",
+        "name": "指对幂与函数零点",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_func.exp_log_calc",
+          "S.hs_func.exp_log_compare",
+          "S.hs_func.exp_log_graph",
+          "S.hs_func.zero_point",
+          "S.hs_func.function_model"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_trig.identity",
+        "name": "三角恒等变换",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_trig.identity_eval",
+          "S.hs_trig.identity_transform",
+          "S.hs_trig.auxiliary_angle",
+          "S.hs_trig.angle_relation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.graph",
+        "name": "三角函数的图象与性质",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_trig.graph_property",
+          "S.hs_trig.graph_transform",
+          "S.hs_trig.omega_param",
+          "S.hs_trig.trig_equation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.triangle",
+        "name": "解三角形",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_trig.sine_cosine_rule",
+          "S.hs_trig.triangle_shape",
+          "S.hs_trig.area",
+          "S.hs_trig.triangle_extremum",
+          "S.hs_trig.multi_triangle"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.application",
+        "name": "三角应用与建模",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_trig.measurement",
+          "S.hs_trig.trig_model"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_seq.term",
+        "name": "通项与递推",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_seq.arithmetic_geometric",
+          "S.hs_seq.an_sn",
+          "S.hs_seq.recurrence",
+          "S.hs_seq.construct_seq"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.sum",
+        "name": "数列求和",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_seq.sum_formula",
+          "S.hs_seq.sum_telescoping",
+          "S.hs_seq.sum_mismatch"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.property",
+        "name": "数列性质与不等式",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_seq.property",
+          "S.hs_seq.inequality",
+          "S.hs_seq.induction",
+          "S.hs_seq.model"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_deriv.concept",
+        "name": "导数概念与运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_deriv.definition",
+          "S.hs_deriv.calc",
+          "S.hs_deriv.tangent",
+          "S.hs_deriv.geometric"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.behavior",
+        "name": "用导数研究函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_deriv.monotonicity",
+          "S.hs_deriv.extremum",
+          "S.hs_deriv.zero",
+          "S.hs_deriv.param_range"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.proof",
+        "name": "导数与不等式证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_deriv.ineq_proof",
+          "S.hs_deriv.ineq_two_var",
+          "S.hs_deriv.construct",
+          "S.hs_deriv.series_bound"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_geom.position",
+        "name": "空间位置关系与证明",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_geom.line_plane_parallel",
+          "S.hs_geom.line_plane_perp",
+          "S.hs_geom.special_point",
+          "S.hs_geom.existence"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.metric",
+        "name": "空间度量",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_geom.distance",
+          "S.hs_geom.angle",
+          "S.hs_geom.volume",
+          "S.hs_geom.sphere"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.vector",
+        "name": "空间向量法",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_geom.basis",
+          "S.hs_geom.coordinate",
+          "S.hs_geom.normal_vector"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.solid",
+        "name": "基本立体图形、截面与翻折",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_geom.solid_graph",
+          "S.hs_geom.section",
+          "S.hs_geom.combination"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_analytic.vector",
+        "name": "平面向量",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_analytic.vector_calc",
+          "S.hs_analytic.vector_product",
+          "S.hs_analytic.vector_parallel_perp",
+          "S.hs_analytic.vector_geometry"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.complex",
+        "name": "复数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_analytic.complex_calc",
+          "S.hs_analytic.complex_geometry",
+          "S.hs_analytic.complex_quadratic"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_circle",
+        "name": "直线与圆",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_analytic.line_equation",
+          "S.hs_analytic.circle_equation",
+          "S.hs_analytic.line_circle_position",
+          "S.hs_analytic.circle_circle",
+          "S.hs_analytic.locus"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.conic",
+        "name": "圆锥曲线",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_analytic.ellipse",
+          "S.hs_analytic.hyperbola",
+          "S.hs_analytic.parabola",
+          "S.hs_analytic.conic_equation",
+          "S.hs_analytic.conic_focal"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_conic",
+        "name": "直线与圆锥曲线综合",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_analytic.intersection",
+          "S.hs_analytic.fixed_point",
+          "S.hs_analytic.range_extremum",
+          "S.hs_analytic.existence"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_prob.counting",
+        "name": "计数原理",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_prob.counting_principle",
+          "S.hs_prob.permutation",
+          "S.hs_prob.combination",
+          "S.hs_prob.binomial"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.classical",
+        "name": "概率模型",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_prob.classical",
+          "S.hs_prob.independent",
+          "S.hs_prob.conditional",
+          "S.hs_prob.geometric"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.random_var",
+        "name": "随机变量与分布",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_prob.distribution",
+          "S.hs_prob.expectation",
+          "S.hs_prob.binomial_dist",
+          "S.hs_prob.normal"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.statistics",
+        "name": "统计与成对数据",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_prob.sampling",
+          "S.hs_prob.regression",
+          "S.hs_prob.contingency"
+        ],
+        "block_id": "B.hs_prob"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.hs_analytic.vector_calc",
+        "name": "向量线性运算与坐标运算",
+        "definition": "题面要求进行向量的加减、数乘、坐标运算，或由条件求某向量的表示。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_product",
+        "name": "数量积、夹角与投影",
+        "definition": "题面要求求数量积、夹角、投影或模长。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_parallel_perp",
+        "name": "共线与垂直的判定",
+        "definition": "题面要求判断或利用向量的共线、垂直关系，通常含参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_geometry",
+        "name": "向量与几何图形（重心、系数和、轨迹）",
+        "definition": "题面把向量与几何图形结合，要求求系数或位置关系。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_calc",
+        "name": "复数运算与化简",
+        "definition": "题面要求复数代数形式的四则运算、求模或化简。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_geometry",
+        "name": "复数的几何意义与模",
+        "definition": "题面要求用复数的几何意义（对应点、向量、模）解决问题。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_quadratic",
+        "name": "复数与实系数方程",
+        "definition": "题面涉及实系数一元二次方程的虚根、复数相等或复系数方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_equation",
+        "name": "直线方程与两直线位置关系",
+        "definition": "题面要求求直线方程、判断两直线位置关系或求参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_equation",
+        "name": "圆的方程",
+        "definition": "题面要求求圆的方程，或由方程表示圆求参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_circle_position",
+        "name": "直线与圆的位置关系（弦长与切线）",
+        "definition": "题面讨论直线与圆的位置关系，要求求弦长、切线方程或参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_circle",
+        "name": "圆与圆的位置关系",
+        "definition": "题面讨论两圆的位置关系，要求求公共弦、公切线或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.locus",
+        "name": "轨迹方程",
+        "definition": "题面要求求动点的轨迹方程，或判断轨迹类型。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.ellipse",
+        "name": "椭圆的定义与性质",
+        "definition": "题面围绕椭圆的定义、标准方程与几何性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.hyperbola",
+        "name": "双曲线的定义、渐近线与离心率",
+        "definition": "题面围绕双曲线的定义、标准方程、渐近线与离心率求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.parabola",
+        "name": "抛物线的定义、准线与焦点弦",
+        "definition": "题面围绕抛物线的定义、标准方程、焦点弦与准线求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_equation",
+        "name": "圆锥曲线标准方程的确定",
+        "definition": "题面要求根据条件求椭圆、双曲线或抛物线的标准方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_focal",
+        "name": "焦点三角形与焦半径",
+        "definition": "题面围绕焦点三角形、焦半径、焦点弦的性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.intersection",
+        "name": "联立与韦达定理（弦长与中点）",
+        "definition": "题面要求把直线与圆锥曲线联立，用韦达定理求弦长、中点或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.fixed_point",
+        "name": "定点与定值问题",
+        "definition": "题面在直线与圆锥曲线的运动中，要求证明某点或某值恒定，或求定点。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.range_extremum",
+        "name": "范围与最值问题",
+        "definition": "题面要求求圆锥曲线中某量（弦长、面积、斜率、距离）的范围或最值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.existence",
+        "name": "存在性与探究性问题",
+        "definition": "题面问是否存在某点、某直线或某斜率使条件成立，要求判断并求值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_deriv.definition",
+        "name": "导数定义与瞬时变化率",
+        "definition": "题面出现函数增量比、瞬时变化率或极限形式的式子，要求求导数值或识别导数定义。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.calc",
+        "name": "复合结构与幂指式的求导",
+        "definition": "题面给出具体函数（含复合、幂指、分式、乘积），要求求导函数或某点导数值。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.tangent",
+        "name": "切线方程（在点与过点）",
+        "definition": "题面要求求曲线在某点或过某点的切线方程，或由切线条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.geometric",
+        "name": "导数几何意义与函数、导函数图象互推",
+        "definition": "题面给出函数与导函数的图象之一，要求判断另一个、比较大小或求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.monotonicity",
+        "name": "单调区间与含参单调性讨论",
+        "definition": "题面要求求含参函数的单调区间，或由在某区间单调反求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.extremum",
+        "name": "极值与闭区间最值",
+        "definition": "题面要求求极值、闭区间上的最值，或由极值条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.zero",
+        "name": "零点个数与方程根的讨论",
+        "definition": "题面要求讨论方程根的个数或函数零点个数，通常含参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.param_range",
+        "name": "恒成立与存在性求参数范围",
+        "definition": "题面要求在恒成立或存在某点使条件成立的条件下求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_proof",
+        "name": "单变量不等式证明",
+        "definition": "题面要求证明一个含单变量的函数不等式，例如指数函数与一次式、对数与一次式的大小关系及其推广。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_two_var",
+        "name": "双变量不等式与极值点偏移",
+        "definition": "题面不等式涉及两个变量，或要求证明与极值点对称位置有关的结论。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.construct",
+        "name": "构造函数与同构变形",
+        "definition": "题面不等式或等式两边结构相似但变量不同，需要通过构造同一母函数来处理。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.series_bound",
+        "name": "导数造不等式再累加（数列型）",
+        "definition": "题面要求证明与正整数有关、且通项的界由导数给出的数列不等式。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_func.set_operation",
+        "name": "集合的基本运算与包含关系",
+        "definition": "题面给出用列举法、描述法或不等式区间表示的集合（常含参数），要求求交集、并集、补集、子集个数，或判断包含关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.condition_judge",
+        "name": "充分必要条件的判定",
+        "definition": "题面要求判断「p 是 q 的充分/必要/充要条件」，或由条件关系反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quantifier_negation",
+        "name": "全称量词与存在量词命题的否定",
+        "definition": "题面出现全称量词或存在量词，要求写否定、判真假，或把「恒成立/有解」转化为参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.new_definition_set",
+        "name": "新定义集合的代入检验",
+        "definition": "题面先给出一个新定义的集合运算或集合属性，要求按定义判断元素归属或求集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_solve",
+        "name": "一元二次、分式与绝对值不等式的求解",
+        "definition": "题面要求解一元二次、分式或含绝对值的不等式，解集常需写成区间或集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quadratic_root_dist",
+        "name": "一元二次方程根的分布",
+        "definition": "题面讨论一元二次方程根的正负、大小或是否落在某区间内，通常含参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.basic_inequality",
+        "name": "基本不等式求最值",
+        "definition": "题面在正数条件下求积的最大值或和的最小值，结构上能凑出定值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_property",
+        "name": "不等式性质与比较大小",
+        "definition": "题面要求比较两个代数式的大小，或由不等式的性质推断某个式子的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.domain",
+        "name": "求函数的定义域",
+        "definition": "题面给出含分母、偶次根式、对数或零次幂的函数式，要求求自变量的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.expression",
+        "name": "求函数解析式",
+        "definition": "题面给出函数类型或函数方程，要求求 f(x) 的解析式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.value_range",
+        "name": "求函数的值域",
+        "definition": "题面要求求函数值的取值范围，常含参数或限定区间。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.piecewise",
+        "name": "分段函数",
+        "definition": "题面给出分段函数，要求求值、解方程或不等式，或讨论分界点处的性质。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.abstract_function",
+        "name": "抽象函数与函数方程",
+        "definition": "题面只给抽象函数的若干等式或性质，要求判断奇偶性、单调性或求值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.parity_period",
+        "name": "奇偶性与周期性",
+        "definition": "题面讨论函数的奇偶性、周期性，或由奇偶与周期推值、求解析式、比较大小。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.monotonicity",
+        "name": "单调性的判定与比较",
+        "definition": "题面要求判断或证明单调性、求单调区间，或利用单调性比较大小、解不等式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.graph_transform",
+        "name": "图象变换与识图",
+        "definition": "题面要求由已知函数图象经平移、伸缩、翻折得到新图象，或由图象判断解析式与参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.symmetry",
+        "name": "对称性与图象对称",
+        "definition": "题面给出函数图象的对称轴、对称中心或两函数图象的对称关系，要求求参数、求解析式或求和。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_calc",
+        "name": "指数与对数式的运算",
+        "definition": "题面要求化简指数式、对数式或求值，含换底与指数对数互化。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_compare",
+        "name": "指对幂大小比较",
+        "definition": "题面要求比较幂、指数式、对数式的大小，通常底数或指数不同。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_graph",
+        "name": "指对函数图象与性质",
+        "definition": "题面给出指数或对数函数的图象，要求求底数范围、解不等式或判断图象位置关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.zero_point",
+        "name": "函数零点与零点个数",
+        "definition": "题面要求判断函数零点个数、所在区间，或由零点存在反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.function_model",
+        "name": "函数模型与建模应用",
+        "definition": "题面给出实际情境（成本、增长、温度等），要求建立函数模型并求最值或作预测。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_geom.line_plane_parallel",
+        "name": "线面与面面平行证明",
+        "definition": "题面要求证明直线与平面平行，或两个平面平行。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.line_plane_perp",
+        "name": "线面与面面垂直证明",
+        "definition": "题面要求证明直线与平面垂直，或两个平面垂直。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.special_point",
+        "name": "特殊点定位与共面论证",
+        "definition": "题面要求确定中点、重心、垂足等特殊点的位置，或证明某点落在某平面内。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.existence",
+        "name": "位置关系存在性探究",
+        "definition": "题面问是否存在某点或某平面使条件成立，要求判断并说明理由。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.distance",
+        "name": "点到平面与异面直线距离",
+        "definition": "题面要求求点到平面的距离、两异面直线间的距离或两平行平面间的距离。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.angle",
+        "name": "线线角、线面角与二面角",
+        "definition": "题面要求求异面直线所成角、直线与平面所成角或二面角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.volume",
+        "name": "体积与表面积计算",
+        "definition": "题面要求求多面体或旋转体的体积、表面积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.sphere",
+        "name": "外接球与内切球",
+        "definition": "题面给出多面体与球的接切关系，要求求球的半径、表面积或体积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.basis",
+        "name": "空间向量基本定理与基底表示",
+        "definition": "题面要求用一组空间基底表示向量，或判断四点共面、三向量共面。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.coordinate",
+        "name": "建系与坐标运算",
+        "definition": "题面要求建立空间直角坐标系，用坐标表示点与向量并作运算。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.normal_vector",
+        "name": "法向量求法与向量法判位置关系",
+        "definition": "题面要求求平面的法向量，并用法向量解决平行、垂直、角度、距离问题。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.solid_graph",
+        "name": "直观图、展开图与最短路径",
+        "definition": "题面涉及基本立体图形、直观图或展开图，要求还原图形、求面积或最短路径。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.section",
+        "name": "截面作法与截面图形",
+        "definition": "题面要求作出或判断空间几何体的截面，并求截面面积或截面与某面所成角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.combination",
+        "name": "组合体与翻折问题",
+        "definition": "题面涉及两个几何体的组合或平面图形翻折成空间图形，要求求体积、距离或角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_prob.counting_principle",
+        "name": "分类加法与分步乘法原理",
+        "definition": "题面要求完成一件事的方法数，需判断该用分类加法还是分步乘法。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.permutation",
+        "name": "排列与排列数",
+        "definition": "题面要求计数且元素顺序有关，如排队、排列、数字排列。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.combination",
+        "name": "组合、分组与分配",
+        "definition": "题面要求计数且只选不排，如选组、抽样、分组分配。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial",
+        "name": "二项式定理与系数",
+        "definition": "题面围绕二项展开式的通项、特定项系数、系数和或系数最大项。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.classical",
+        "name": "古典概型",
+        "definition": "题面要求求古典概型的概率，通常给出样本空间与事件。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.independent",
+        "name": "相互独立事件",
+        "definition": "题面涉及多个事件同时发生或相互独立，要求求概率。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.conditional",
+        "name": "条件概率、全概率与贝叶斯",
+        "definition": "题面给出条件概率、全概率或由结果反推来源的问题。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.geometric",
+        "name": "几何概型",
+        "definition": "题面求几何概型的概率，即长度、面积或体积之比。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.distribution",
+        "name": "离散型随机变量分布列",
+        "definition": "题面要求求离散型随机变量的分布列及其性质。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.expectation",
+        "name": "期望与方差",
+        "definition": "题面要求求期望、方差，或由期望反求参数、比较方案。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial_dist",
+        "name": "二项分布",
+        "definition": "题面是若干次独立重复试验，要求求恰好若干次成功的概率或分布。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.normal",
+        "name": "正态分布",
+        "definition": "题面涉及正态分布曲线、对称性求概率或三段标准差原则。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.sampling",
+        "name": "抽样方法与样本估计",
+        "definition": "题面要求选择抽样方法，或由样本估计总体的均值、方差、百分位数。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.regression",
+        "name": "一元线性回归",
+        "definition": "题面给出成对数据，要求求相关系数、回归方程并作预测。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.contingency",
+        "name": "列联表与独立性检验",
+        "definition": "题面给出列联表，要求判断两个分类变量是否相关。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_seq.arithmetic_geometric",
+        "name": "等差与等比数列基本量计算",
+        "definition": "题面给出等差或等比数列的部分基本量（首项、公差、公比、项数、前 n 项和），要求求其余量或判断数列类型。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.an_sn",
+        "name": "通项与前 n 项和的关系",
+        "definition": "题面给出前 n 项和的表达式，或给出含通项与前 n 项和的混合关系式，要求求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.recurrence",
+        "name": "递推数列求通项",
+        "definition": "题面给出相邻项的递推关系，要求求通项公式。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.construct_seq",
+        "name": "构造新数列（等差化与等比化）",
+        "definition": "题面要求在递推式两边作变形，构造出等差或等比数列后再求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_formula",
+        "name": "公式法、分组求和与并项求和",
+        "definition": "题面要求求前 n 项和，通项是等差、等比或可分组、可并项的结构。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_telescoping",
+        "name": "裂项相消求和",
+        "definition": "题面要求求和的通项可拆成两项之差，求和时中间项相消。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_mismatch",
+        "name": "错位相减求和",
+        "definition": "题面求和的通项是等差乘等比结构，需要乘公比后错位相减。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.property",
+        "name": "数列单调性、最值项与等差等比性质",
+        "definition": "题面要求判断数列单调性、求最大或最小项，或利用等差中项、等比中项等性质求值。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.inequality",
+        "name": "数列不等式与放缩",
+        "definition": "题面要求证明数列型不等式，或比较数列和与某常数、函数的大小。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.induction",
+        "name": "数学归纳法证明",
+        "definition": "题面要求用数学归纳法证明与正整数有关的等式、不等式或整除性命题。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.model",
+        "name": "数列建模应用",
+        "definition": "题面给出增长、分期付款、存款等实际情境，要求建立数列模型并求解。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_trig.identity_eval",
+        "name": "给值求值（同角关系与诱导公式）",
+        "definition": "题面给出某个角的三角函数值，要求求同角其他三角函数值，或经诱导公式化简后求值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.identity_transform",
+        "name": "三角恒等变换与化简证明",
+        "definition": "题面要求化简三角式、证明三角恒等式或求非特殊角的乘积型三角函数值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.auxiliary_angle",
+        "name": "辅助角公式与化一",
+        "definition": "题面出现正弦与余弦的线性组合，要求化为一个三角函数后求周期、最值、单调区间或值域。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.angle_relation",
+        "name": "角的拆分与凑角求值",
+        "definition": "题面给出两个角的三角函数值，要求求这两角的和、差或倍角的函数值，角之间有可凑配的关系。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_property",
+        "name": "三角函数的周期、单调、对称与最值",
+        "definition": "题面给出三角函数解析式，要求求周期、单调区间、对称轴或对称中心、最值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_transform",
+        "name": "三角函数图象变换与解析式确定",
+        "definition": "题面要求由正弦函数经平移伸缩得到目标图象，或由图象反求正弦型函数的解析式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.omega_param",
+        "name": "含参数频率与初相的性质讨论",
+        "definition": "题面中频率或初相含参数，且给定单调性、零点个数或最值条件，要求求参数取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_equation",
+        "name": "三角方程与三角不等式",
+        "definition": "题面要求解简单三角方程或三角不等式，或由方程在给定区间内解的个数求参数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.sine_cosine_rule",
+        "name": "正余弦定理求边角",
+        "definition": "题面给出三角形的边角条件，要求求未知边、未知角，或判断三角形解的个数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_shape",
+        "name": "三角形形状判断与边角互化",
+        "definition": "题面给出含边角混合的等式，要求判断三角形形状或证明某个边角恒等式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.area",
+        "name": "三角形面积与周长计算",
+        "definition": "题面要求求三角形面积、周长，或由面积反求边角。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_extremum",
+        "name": "解三角形中的最值与范围",
+        "definition": "题面在给定边角约束下，要求周长、面积或某边的最大值、最小值或取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.multi_triangle",
+        "name": "多三角形拼接（公共边与公共角）",
+        "definition": "题面图形由两个及以上三角形拼接而成，共边、共角或共线分点，要求求长度、角或面积。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.measurement",
+        "name": "实际测量与方位角问题",
+        "definition": "题面给出实际测量情境（仰角、俯角、方位角、河宽、塔高），要求求不可直接测量的距离或高度。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_model",
+        "name": "周期现象的三角函数建模",
+        "definition": "题面给出周期性实际现象（简谐运动、摩天轮、潮汐），要求用正弦型函数建模或求某时刻的值。",
+        "block_id": "B.hs_trig"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.classical",
+      "question": "《西游记》《三国演义》《水淓传》和《红楼梦》是中国古典文学瑰宝，并称为中国古典小说四大名著。某中学为了解本校学生阅读四大名著的情况，随机调查了 100 学生，其中阅读过《西游记》或《红楼梦》的学生共有 90 位，阅读过《红楼梦》的学生共有 80 位，阅读过《西游记》且阅读过《红楼梦》的学生共有 60 位，则该校阅读过《西游记》的学生人数与该校学生总数比值的估计值为（　）\nA. 0.5\nB. 0.6\nC. 0.7\nD. 0.8",
+      "solution": "由 $|A|=|A\\cup B|-|B|+|A\\cap B|=90-80+60=70$，得估计值为 $\\frac{70}{100}=0.7$，选 C。",
+      "routes": [
+        {
+          "id": "r-inclusion",
+          "summary": "按容斥原理先求阅读过《西游记》的人数，再用样本频率估计比值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_counting_principle",
+              "state": "$|A\\cup B|=90$，$|B|=80$，$|A\\cap B|=60$",
+              "transformedState": "$|A|=90-80+60=70$（位）",
+              "condition": "容斥原理：$|A|=|A\\cup B|-|B|+|A\\cap B|$，其中 $A$ 是阅读过《西游记》的学生集合。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "样本中阅读过《西游记》的有 70 位，样本共 100 位",
+              "transformedState": "比值估计值为 $\\frac{70}{100}=0.7$，对应 C",
+              "condition": "用样本中该事件出现的频率估计总体比值。"
+            }
+          ],
+          "reason": "容斥一步求出人数，再用频率估计比值，计算最短且不会混淆两个集合。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-disjoint",
+          "summary": "把并集拆成只读《西游记》、只读《红楼梦》、两者都读三个互斥部分",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_counting_principle",
+              "state": "$|A\\cup B|=90$，$|B|=80$",
+              "transformedState": "只读《西游记》的有 $90-80=10$ 位",
+              "condition": "并集里去掉阅读过《红楼梦》的全部 80 位，剩下只读《西游记》的人，分类互斥。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "只读《西游记》10 位，两者都读 60 位",
+              "transformedState": "$10+60=70$ 位，比值为 $\\frac{70}{100}=0.7$",
+              "condition": "分类加法：只读《西游记》与两者都读两类互斥且合起来正好是阅读过《西游记》的全部学生。"
+            }
+          ],
+          "reason": "用韦恩图的三个互斥部分计数，结果与容斥法相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-set",
+          "summary": "把阅读过《红楼梦》的人数当作阅读过《西游记》的人数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "阅读过《红楼梦》的有 80 位，样本共 100 位",
+              "transformedState": "比值 $\\frac{80}{100}=0.8$，选 D",
+              "condition": "把《红楼梦》的 80 位直接当成《西游记》的人数，混淆了两个集合。"
+            }
+          ],
+          "reason": "题目问的是《西游记》，且 80 位中含有同时读两本书的人，不能直接当答案。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "优先用容斥 $|A|=|A\\cup B|-|B|+|A\\cap B|$ 求阅读过《西游记》的人数，再以样本频率 $\\frac{70}{100}$ 估计比值，避免把《红楼梦》的人数当答案",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_II_MCQs_153",
+        "trainingGoal": "用容斥原理求出事件人数，再用样本频率估计总体比值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2019 全国卷 第4题",
+          "reference": "rainewhk/gaokao 2019/全国卷/选择题",
+          "originalId": "rw:2010-2022_Math_II_MCQs_153"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "样本容量保持为 100",
+          "并集 90、红楼梦 80、交集 60 三个数据不变",
+          "比值由样本频率得出"
+        ],
+        "allowedVariations": [
+          "改变样本容量或三个已知人数",
+          "改问阅读过《红楼梦》的人数占比"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_153",
+          "text": "4. 《西游记》《三国演义》《水淓传》和《红楼梦》是中国古典文学瑰宝, 并称为中国古典小 说四大名著.某中学为了解本校学生阅读四大名著的情况, 随机调查了 100 学生, 其中阅读 过《西游记》或《红楼梦》的学生共有 90 位, 阅读过《红楼梦》的学生共有 80 位, 阅读过 《西游记》且阅读过《红楼梦》的学生共有 60 位, 则该校阅读过《西游记》的学生人数与 该校学生总数比值的估计值为（）\nA. 0.5\nB. 0.6\nC. 0.7\nD. 0.8\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2019\\全国卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "古典概型",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_II_MCQs_153",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "设 $A$ 为阅读过《西游记》的学生集合，$B$ 为阅读过《红楼梦》的学生集合。由 $|A\\cup B|=90$、$|B|=80$、$|A\\cap B|=60$，容斥得 $|A|=90-80+60=70$，于是比值的估计值为 $70\\div 100=0.7$，与选项 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_counting_principle",
+        "M.hs_classical"
+      ],
+      "applicableMethodIds": [
+        "M.hs_counting_principle",
+        "M.hs_classical"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_classical"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_counting_principle"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_permutation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_classical",
+        "M.hs_counting_principle",
+        "M.hs_combination",
+        "M.hs_permutation"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-set",
+          "name": "把阅读过《红楼梦》的人数当作阅读过《西游记》的人数"
+        },
+        {
+          "id": "r-inclusion",
+          "name": "按容斥原理先求阅读过《西游记》的人数，再用样本频率估计比值"
+        },
+        {
+          "id": "r-disjoint",
+          "name": "把并集拆成只读《西游记》、只读《红楼梦》、两者都读三个互斥部分"
+        }
+      ],
+      "questionKey": "e31c7ed714e421045ca2b4c344a8df9d34e834f5536f9d45fd5f16be1a1e6c03",
+      "faceKey": "bf96c348cc46a17f74ee76937ea6123e97d67ec808c4139853952d817a6242c1"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.binomial",
+      "question": "$\\left(x+\\frac{y^{2}}{x}\\right)(x+y)^{5}$ 的展开式中 $x^{3}y^{3}$ 的系数为（　）\nA. 5\nB. 10\nC. 15\nD. 20",
+      "solution": "第一因式的 $x$ 贡献 $C_5^3=10$，$\\frac{y^{2}}{x}$ 贡献 $C_5^1=5$，合计 $15$，选 C。",
+      "routes": [
+        {
+          "id": "r-term",
+          "summary": "用 $(x+y)^5$ 的通项，分别让第一因式的两项各贡献一次",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "$T_{r+1}=C_5^{r}x^{5-r}y^{r}$",
+              "transformedState": "取 $x$ 时 $x\\cdot C_5^{3}x^{2}y^{3}=10x^{3}y^{3}$",
+              "condition": "要与 $x$ 相乘得到 $x^{3}y^{3}$，$(x+y)^5$ 中须取 $x^{2}y^{3}$，即 $r=3$。"
+            },
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "取 $\\frac{y^{2}}{x}$ 时 $\\frac{y^{2}}{x}\\cdot C_5^{1}x^{4}y=5x^{3}y^{3}$",
+              "transformedState": "该项系数为 $5$",
+              "condition": "要与 $\\frac{y^{2}}{x}$ 相乘得到 $x^{3}y^{3}$，$(x+y)^5$ 中须取 $x^{4}y$，即 $r=1$。"
+            },
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "$10$ 与 $5$ 两条来源",
+              "transformedState": "$10+5=15$，选 C",
+              "condition": "两条来源对应不同的 $r$，互斥，按分类加法合并系数。"
+            }
+          ],
+          "reason": "通项法逐条找到 $r$，再用分类加法合并，步骤清楚且不易漏项。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-expand",
+          "summary": "把 $(x+y)^5$ 逐项写出后整体乘开，再收集 $x^{3}y^{3}$ 项",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_combination",
+              "state": "$(x+y)^{5}=\\sum_{k=0}^{5}C_5^{k}x^{5-k}y^{k}$",
+              "transformedState": "与 $x$、$\\frac{y^{2}}{x}$ 逐项相乘",
+              "condition": "用组合数表示 $(x+y)^5$ 的六个项。"
+            },
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "$k=3$ 得 $10x^{3}y^{3}$，$k=1$ 得 $5x^{3}y^{3}$",
+              "transformedState": "$15x^{3}y^{3}$，选 C",
+              "condition": "分别检查每个乘积的次数，恰好命中 $x^{3}y^{3}$ 的只有这两项。"
+            }
+          ],
+          "reason": "全部展开后收集同类项，结果与通项法一致，可作为验算。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-x-only",
+          "summary": "只算 $x$ 这一项的贡献，忽略 $\\frac{y^{2}}{x}$ 项",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "$x\\cdot C_5^{3}x^{2}y^{3}=10x^{3}y^{3}$",
+              "transformedState": "系数为 $10$，选 B",
+              "condition": "只让第一因式的 $x$ 参与，漏掉 $\\frac{y^{2}}{x}$ 也能产生 $x^{3}y^{3}$。"
+            }
+          ],
+          "reason": "第一因式的两项都会贡献 $x^{3}y^{3}$，只取一项会少算 5。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "优先用通项定出两次的 $r$，再按分类加法把两条来源的系数相加，不能只算 $x$ 一项",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_I_MCQs_169",
+        "trainingGoal": "用二项通项定位指定次项，并按分类加法合并多条来源的系数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2020 全国卷 第8题",
+          "reference": "rainewhk/gaokao 2020/全国卷/选择题",
+          "originalId": "rw:2010-2022_Math_I_MCQs_169"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "两个因式的内容与指数不变",
+          "目标项次数 $x^{3}y^{3}$ 不变"
+        ],
+        "allowedVariations": [
+          "改变两个因式或目标次数",
+          "改问常数项"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_169",
+          "text": "8. $\\left(x+\\frac{y^{2}}{x}\\right)(x+y)^{5}$ 的展开式中 $x^{3} y^{3}$ 的系数为 $(\\quad)$\nA. 5\nB. 10\nC. 15\nD. 20\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2020\\全国卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "二项式定理与系数",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_I_MCQs_169",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "第一因式取 $x$ 时，需 $(x+y)^5$ 中 $x^{2}y^{3}$ 项，$r=3$，系数 $C_5^3=10$；取 $\\frac{y^{2}}{x}$ 时，需 $x^{4}y$ 项，$r=1$，系数 $C_5^1=5$。两条来源互斥，相加 $10+5=15$，与选项 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_binomial"
+      ],
+      "applicableMethodIds": [
+        "M.hs_binomial",
+        "M.hs_combination"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_binomial"
+        },
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_undetermined_coeff"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_binomial",
+        "M.hs_combination",
+        "M.hs_undetermined_coeff"
+      ],
+      "options": [
+        {
+          "id": "r-expand",
+          "name": "把 $(x+y)^5$ 逐项写出后整体乘开，再收集 $x^{3}y^{3}$ 项"
+        },
+        {
+          "id": "r-x-only",
+          "name": "只算 $x$ 这一项的贡献，忽略 $\\frac{y^{2}}{x}$ 项"
+        },
+        {
+          "id": "r-term",
+          "name": "用 $(x+y)^5$ 的通项，分别让第一因式的两项各贡献一次"
+        }
+      ],
+      "questionKey": "b8f112448e3f0dca081931a823b76bde520ac3f52c88e835dacef5d1087b228e",
+      "faceKey": "5865415e83a0baaaa850c1e9bd7e63880d93080606c9755b4ccc487b1aff3d72"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.sampling",
+      "question": "在一组样本数据中，$1,2,3,4$ 出现的频率分别为 $p_{1},p_{2},p_{3},p_{4}$，且 $\\sum_{i=1}^{4}p_{i}=1$，则下面四种情形中，对应样本的标准差最大的一组是（　）\nA. $p_{1}=p_{4}=0.1,\\ p_{2}=p_{3}=0.4$\nB. $p_{1}=p_{4}=0.4,\\ p_{2}=p_{3}=0.1$\nC. $p_{1}=p_{4}=0.2,\\ p_{2}=p_{3}=0.3$\nD. $p_{1}=p_{4}=0.3,\\ p_{2}=p_{3}=0.2$",
+      "solution": "四组均值都是 $2.5$；方差最大的是 $s_B^2=1.85$，故标准差最大的为 B。",
+      "routes": [
+        {
+          "id": "r-variance",
+          "summary": "先由对称性算均值，再逐个算方差比较大小",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "$p_{1}=p_{4}$，$p_{2}=p_{3}$",
+              "transformedState": "各选项均值均为 $\\overline{x}=5(p_{1}+p_{2})=2.5$",
+              "condition": "均值 $=1\\cdot p_1+2\\cdot p_2+3\\cdot p_3+4\\cdot p_4=5(p_1+p_2)$，而 $p_1+p_2=0.5$。"
+            },
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "$s^{2}=\\sum_{i=1}^{4}(i-2.5)^{2}p_{i}$",
+              "transformedState": "A：$0.65$，B：$1.85$，C：$1.05$，D：$1.45$，B 最大",
+              "condition": "标准差是方差的算术平方根，方差越大标准差越大，只须比较方差。"
+            }
+          ],
+          "reason": "均值相同，方差直接决定标准差大小，逐项计算最可靠。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-shape",
+          "summary": "在数轴上比较概率质量向两端还是向中间集中",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_number_shape",
+              "state": "数轴上标出 $1,2,3,4$ 与中点 $2.5$",
+              "transformedState": "偏离均值为 $1.5$（对应 1、4）与 $0.5$（对应 2、3）",
+              "condition": "四个数据点关于 $2.5$ 对称，只需看概率落在哪一组。"
+            },
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_number_shape",
+              "state": "各选项把概率放在偏离 $1.5$ 还是 $0.5$ 处",
+              "transformedState": "B 把 $0.4$ 放在 1、4 上，偏离最大，标准差最大",
+              "condition": "概率质量越往离均值远的位置放，离散程度越大。"
+            }
+          ],
+          "reason": "图象法判断离散趋势，与逐项算方差的结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-middle",
+          "summary": "误以为中间两个数频率越大标准差越大",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "A 中 $p_{2}=p_{3}=0.4$ 最大",
+              "transformedState": "判为 A，其方差仅 $0.65$",
+              "condition": "把概率集中在均值附近当成离散程度大。"
+            }
+          ],
+          "reason": "概率集中在均值附近反而使方差最小，A 是四组中方差最小的。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "p"
+      ],
+      "comparisonCriterion": "优先用对称性确定均值相同，再比较方差；概率越向两端集中标准差越大，不能把集中在均值附近误判为离散",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_I_MCQs_156",
+        "trainingGoal": "由频率分布求均值与方差，并比较标准差大小",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2020 全国三卷 第3题",
+          "reference": "rainewhk/gaokao 2020/全国三卷/选择题",
+          "originalId": "rw:2010-2022_Math_I_MCQs_156"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "四个数据值 1,2,3,4 不变",
+          "四个频率之和为 1",
+          "四组分布关于 2.5 对称"
+        ],
+        "allowedVariations": [
+          "改变频率数值",
+          "改问方差最小的情形"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_156",
+          "text": "3. 在一组样本数据中, $1,2,3,4$ 出现的频率分别为 $p_{1}, p_{2}, p_{3}, p_{4}$, 且 $\\sum_{i=1}^{4} p_{i}=1$, 则下面四种 情形中，对应样本的标准差最大的一组是（）\nA. $p_{1}=p_{4}=0.1, p_{2}=p_{3}=0.4$\nB. $p_{1}=p_{4}=0.4, p_{2}=p_{3}=0.1$\nC. $p_{1}=p_{4}=0.2, p_{2}=p_{3}=0.3$\nD. $p_{1}=p_{4}=0.3, p_{2}=p_{3}=0.2$\n",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2020\\全国三卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "抽样方法与样本估计",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_I_MCQs_156",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "四组都关于 2.5 对称，均值均为 $5(p_1+p_2)=2.5$。方差 A 为 $0.65$，B 为 $1.85$，C 为 $1.05$，D 为 $1.45$，B 最大，与选项 B 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_sampling"
+      ],
+      "applicableMethodIds": [
+        "M.hs_sampling",
+        "M.hs_number_shape"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.sampling",
+          "methodId": "M.hs_sampling"
+        },
+        {
+          "scenarioId": "S.hs_prob.sampling",
+          "methodId": "M.hs_number_shape"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_sampling",
+        "M.hs_number_shape"
+      ],
+      "options": [
+        {
+          "id": "r-variance",
+          "name": "先由对称性算均值，再逐个算方差比较大小"
+        },
+        {
+          "id": "r-shape",
+          "name": "在数轴上比较概率质量向两端还是向中间集中"
+        },
+        {
+          "id": "r-middle",
+          "name": "误以为中间两个数频率越大标准差越大"
+        }
+      ],
+      "questionKey": "8a52395369490999db50274060cfcdea07c5870f25c5314fd6fba389686da474",
+      "faceKey": "50898e337883b7e910d264061f8b415c6893ee7972d14a1a0fd282528afd0d50"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.combination",
+      "question": "甲、乙两位同学从 6 种课外读物中各自选读 2 种，则这两人选读的课外读物中恰有 1 种相同的选法共有（　）\nA. 30 种\nB. 60 种\nC. 120 种\nD. 240 种",
+      "solution": "先选两人共有的一种 $C_6^1=6$，再让甲、乙各从余下选 1 种，$6\\times5\\times4=120$ 种，选 C。",
+      "routes": [
+        {
+          "id": "r-fix-shared",
+          "summary": "先定两人共有的那一种，再分步确定两人各自的另一种",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_combination",
+              "state": "6 种读物中确定两人共有的 1 种",
+              "transformedState": "$C_6^1=6$ 种",
+              "condition": "恰有 1 种相同，共同的那一种从 6 种里选 1 种。"
+            },
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_counting_principle",
+              "state": "甲的另一 1 种与乙的另一 1 种",
+              "transformedState": "$6\\times C_5^1\\times C_4^1=6\\times5\\times4=120$ 种，选 C",
+              "condition": "分步乘法：先定共有读物，再依次给甲、乙各补 1 种，且甲补完后乙只能从剩下的 4 种里选，保证不再相同。"
+            }
+          ],
+          "reason": "直接按“恰有 1 种相同”的结构分步，乘积式与本答案一致。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-complement",
+          "summary": "用补集法，把全部选法按相同种数分成三类",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_combination",
+              "state": "全部选法 $C_6^2\\times C_6^2=225$，完全不同 $C_6^2\\times C_4^2=90$，完全相同 $C_6^2=15$",
+              "transformedState": "三类互斥：0 种相同 90 种，2 种相同 15 种，1 种相同待求",
+              "condition": "按两人读物的相同种数分类，三类互斥且合计为全部选法。"
+            },
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_counting_principle",
+              "state": "$225-90-15$",
+              "transformedState": "$120$ 种，选 C",
+              "condition": "分类加法：三类之和等于全部选法，故 1 种相同的选法为 $225-90-15$。"
+            }
+          ],
+          "reason": "补集法只需分别求两类，结果与直接分步一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-one-each",
+          "summary": "把“各选 2 种”当作“各选 1 种”，用 $C_6^1\\cdot C_5^1$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_combination",
+              "state": "甲选 1 种、乙选 1 种且不同",
+              "transformedState": "$6\\times5=30$ 种，选 A",
+              "condition": "把每人选读 2 种误当成选读 1 种。"
+            }
+          ],
+          "reason": "每人要选 2 种，每人的组合数都应是 $C_6^2$ 一类，30 只是选 1 种的情形。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "优先固定两人共有的那 1 种再分步乘法，或用按相同种数分类的补集法，不能把选 2 种当成选 1 种",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:GAOKAO-Bench-2023_2023_Math_MCQs_27",
+        "trainingGoal": "用组合数与分步乘法处理带相同个数限制的分配计数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2023 全国乙卷 第7题",
+          "reference": "rainewhk/gaokao 2023/全国乙卷/选择题",
+          "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_27"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "读物共 6 种",
+          "两人各选 2 种",
+          "恰有 1 种相同"
+        ],
+        "allowedVariations": [
+          "改变读物种数与每人选读数量",
+          "改问恰有 2 种相同"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_27",
+          "text": "7. (2023. 全国乙卷) 甲乙两位同学从 6 种课外读物中各自选读 2 种, 则这两人选读的课外读物中恰有 1 种相同的选法共有（ ）\nA. 30 种\nB. 60 种\nC. 120 种\nD. 240 种",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2023\\全国乙卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "组合、分组与分配",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_27",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "先定两人共有的 1 种为 $C_6^1=6$ 种，甲再从余下 5 种选 1 种，乙从余下 4 种选 1 种，分步乘法得 $6\\times5\\times4=120$；补集法 $225-90-15=120$ 也一致，与选项 C 相符。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_combination",
+        "M.hs_counting_principle"
+      ],
+      "applicableMethodIds": [
+        "M.hs_combination",
+        "M.hs_counting_principle"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.combination",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.combination",
+          "methodId": "M.hs_counting_principle"
+        },
+        {
+          "scenarioId": "S.hs_prob.combination",
+          "methodId": "M.hs_permutation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_combination",
+        "M.hs_counting_principle",
+        "M.hs_permutation"
+      ],
+      "options": [
+        {
+          "id": "r-one-each",
+          "name": "把“各选 2 种”当作“各选 1 种”，用 $C_6^1\\cdot C_5^1$"
+        },
+        {
+          "id": "r-fix-shared",
+          "name": "先定两人共有的那一种，再分步确定两人各自的另一种"
+        },
+        {
+          "id": "r-complement",
+          "name": "用补集法，把全部选法按相同种数分成三类"
+        }
+      ],
+      "questionKey": "17a4c5b7bdbbb0928521fa8bd9b17802275c79471d45032235acddc0eadb63b4",
+      "faceKey": "0a15a926280548a74065fff38833637150743e5972264cc96a4fb6965a868e34"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.geometric",
+      "question": "设 $y=f(x)$ 为区间 $[0,1]$ 上的连续函数，且恒有 $0\\leqslant f(x)\\leqslant 1$，可以用随机模拟方法近似计算积分 $\\int_{0}^{1}f(x)\\,\\mathrm{d}x$。先产生两组（每组 $N$ 个）区间 $[0,1]$ 上的均匀随机数 $x_{1},x_{2},\\ldots,x_{N}$ 和 $y_{1},y_{2},\\ldots,y_{N}$，由此得到 $N$ 个点 $(x_{i},y_{i})$（$i=1,2,\\ldots,N$），再数出其中满足 $y_{i}\\leqslant f(x_{i})$（$i=1,2,\\ldots,N$）的点数 $N_{1}$，求由该随机模拟方案得到的积分 $\\int_{0}^{1}f(x)\\,\\mathrm{d}x$ 的近似值。",
+      "solution": "积分等于曲线下方区域面积，落在该区域的频率为 $\\frac{N_1}{N}$，故近似值为 $\\frac{N_1}{N}$。",
+      "routes": [
+        {
+          "id": "r-area",
+          "summary": "把积分看成单位正方形内曲线下方区域的面积，用落入频率估计",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.geometric",
+              "methodId": "M.hs_geometric",
+              "state": "$N$ 个均匀随机点落在单位正方形内",
+              "transformedState": "落在 $y\\leqslant f(x)$ 区域的频率为 $\\frac{N_1}{N}$",
+              "condition": "样本点均匀分布，落在某区域的频率逼近该区域的几何概率。"
+            },
+            {
+              "scenarioId": "S.hs_prob.geometric",
+              "methodId": "M.hs_geometric",
+              "state": "区域面积 $S=\\int_{0}^{1}f(x)\\,\\mathrm{d}x$，正方形面积 $1$",
+              "transformedState": "$P=\\frac{S}{1}=S$，故积分 $\\approx\\frac{N_1}{N}$",
+              "condition": "几何概型中概率等于面积之比；由 $0\\leqslant f(x)\\leqslant 1$，曲线下方区域完全落在正方形内。"
+            }
+          ],
+          "reason": "面积比即概率，频率估计概率，一步得到积分近似值。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-picture",
+          "summary": "画出单位正方形与曲线，用上下两块区域的面积关系核对",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.geometric",
+              "methodId": "M.hs_number_shape",
+              "state": "正方形内曲线 $y=f(x)$ 把区域分成下方与上方两块",
+              "transformedState": "下方区域面积就是积分值，上方区域面积为 $1-\\int_{0}^{1}f(x)\\,\\mathrm{d}x$",
+              "condition": "正方形总面积为 1，两块区域互不重叠且恰好铺满正方形。"
+            },
+            {
+              "scenarioId": "S.hs_prob.geometric",
+              "methodId": "M.hs_number_shape",
+              "state": "落到下方区域的点数 $N_1$，总点数 $N$",
+              "transformedState": "下方面积 $\\approx\\frac{N_1}{N}$，故积分 $\\approx\\frac{N_1}{N}$",
+              "condition": "用图形确认 $N_1$ 对应的是曲线下方区域，而不是上方区域。"
+            }
+          ],
+          "reason": "图象法把两块区域分清，可校验取的是下方而不是上方。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-upper",
+          "summary": "把曲线下方区域的补集面积当成积分值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.geometric",
+              "methodId": "M.hs_geometric",
+              "state": "满足 $y_{i}\\leqslant f(x_{i})$ 的点数 $N_{1}$",
+              "transformedState": "积分 $\\approx\\frac{N-N_{1}}{N}$",
+              "condition": "把 $N_1$ 对应的下方区域误当成上方区域，取了补集。"
+            }
+          ],
+          "reason": "$N_1$ 数的是落在曲线下方的点，其面积才是积分值，取补集会得到上方区域面积。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "N",
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "优先用几何概型的面积比：曲线下方区域面积即为积分值，频率 $\\frac{N_1}{N}$ 直接估计该面积，不能取补集",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_I_Fill-in-the-Blank_0",
+        "trainingGoal": "理解随机模拟中面积比与频率估计的关系，用几何概型求积分近似值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2010 新课标卷 第13题",
+          "reference": "rainewhk/gaokao 2010/新课标卷/填空题",
+          "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_0"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "函数在 $[0,1]$ 上连续且取值在 $[0,1]$ 内",
+          "$x_i,y_i$ 均为 $[0,1]$ 上的均匀随机数",
+          "计数条件为 $y_i\\leqslant f(x_i)$"
+        ],
+        "allowedVariations": [
+          "改变积分区间为 $[0,a]$",
+          "改变函数值域使区域不再铺满正方形"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_Fill-in-the-Blank_0",
+          "text": "13. (5 分) 设 $y=f(x)$ 为区间 $[0,1]$ 上的连续函数, 且恒有 $0 \\leqslant f(x) \\leqslant 1$, 可 以用随机模拟方法近似计算积分 $\\int_{0}^{1} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx}$, 先产生两组（每组 $\\mathrm{N}$ 个）区间 $[0$ ，1] 上的均匀随机数 $x_{1}, x_{2}, \\ldots x_{N}$ 和 $y_{1}, y_{2}, \\ldots y_{N}$, 由此得到 $N$ 个点 $\\left(x_{i}, y_{i}\\right)($ $i=1,2, \\ldots, N)$, 再数出其中满足 $y_{i} \\leqslant f\\left(x_{i}\\right) \\quad(i=1,2, \\ldots, N)$ 的点数 $N_{1}$, 那么由随机模拟方案可得积分 $\\int_{0}^{1} \\mathrm{f}(\\mathrm{x}) \\mathrm{dx}$ 的近似值为\n",
+          "answer": "$\\frac{\\mathrm{N}_{1}}{\\mathrm{~N}}$\n",
+          "source": "rainewhk-gaokao / 2010\\新课标卷\\填空题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "几何概型",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_0",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "点 $(x_i,y_i)$ 在单位正方形内均匀分布，落入 $y\\leqslant f(x)$ 区域的概率等于该区域面积，即积分值；频率 $\\frac{N_1}{N}$ 逼近该概率，故积分的近似值为 $\\frac{N_1}{N}$，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_geometric"
+      ],
+      "applicableMethodIds": [
+        "M.hs_geometric",
+        "M.hs_number_shape"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.geometric",
+          "methodId": "M.hs_geometric"
+        },
+        {
+          "scenarioId": "S.hs_prob.geometric",
+          "methodId": "M.hs_number_shape"
+        },
+        {
+          "scenarioId": "S.hs_prob.geometric",
+          "methodId": "M.hs_classical"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_geometric",
+        "M.hs_number_shape",
+        "M.hs_classical"
+      ],
+      "options": [
+        {
+          "id": "r-area",
+          "name": "把积分看成单位正方形内曲线下方区域的面积，用落入频率估计"
+        },
+        {
+          "id": "r-picture",
+          "name": "画出单位正方形与曲线，用上下两块区域的面积关系核对"
+        },
+        {
+          "id": "r-upper",
+          "name": "把曲线下方区域的补集面积当成积分值"
+        }
+      ],
+      "questionKey": "a51479b6b55d38d4951e49b54b2a81276bceb891e6583d0adf0e1893e1d17f28",
+      "faceKey": "af67bf0fd7e9b8e037c811e1d0b860d6e00d2ede53d92a844f77142ae5ed0bfc"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.permutation",
+      "question": "甲、乙、丙、丁四人排成一列，则丙不在排头，且甲或乙在排尾的概率是（　）\nA. $\\frac{1}{4}$\nB. $\\frac{1}{3}$\nC. $\\frac{1}{2}$\nD. $\\frac{2}{3}$",
+      "solution": "甲在排尾 4 种、乙在排尾 4 种，共 8 种；总排法 24 种，概率 $\\frac{8}{24}=\\frac{1}{3}$，选 B。",
+      "routes": [
+        {
+          "id": "r-cases",
+          "summary": "按排尾是甲还是乙分类，每类内用分步乘法并扣除丙在排头的情形",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.permutation",
+              "methodId": "M.hs_counting_principle",
+              "state": "甲固定在排尾，乙、丙、丁排在前三位",
+              "transformedState": "$3!-2!=6-2=4$ 种（减去丙在排头的 $2!=2$ 种）",
+              "condition": "先按分步乘法排其余三人，再减去丙在排头的排列。"
+            },
+            {
+              "scenarioId": "S.hs_prob.permutation",
+              "methodId": "M.hs_counting_principle",
+              "state": "甲在排尾 4 种，乙在排尾 4 种",
+              "transformedState": "分类加法得 $4+4=8$ 种",
+              "condition": "排尾只能站一人，两类互斥，按分类加法相加。"
+            },
+            {
+              "scenarioId": "S.hs_prob.permutation",
+              "methodId": "M.hs_permutation",
+              "state": "基本事件总数 $A_4^4=24$",
+              "transformedState": "$P=\\frac{8}{24}=\\frac{1}{3}$，选 B",
+              "condition": "每个排法等可能，用古典概型公式求比值。"
+            }
+          ],
+          "reason": "分类加法加上分步乘法，计数结构清楚，能直接看出 8 与 24 的来源。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-tail-first",
+          "summary": "先定排尾的人，再排其余三人并要求丙不在排头",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.permutation",
+              "methodId": "M.hs_permutation",
+              "state": "排尾由甲或乙担任",
+              "transformedState": "$2$ 种",
+              "condition": "“甲或乙在排尾”只需从甲、乙中选一人站排尾。"
+            },
+            {
+              "scenarioId": "S.hs_prob.permutation",
+              "methodId": "M.hs_permutation",
+              "state": "其余三人排前三位，丙不能站排头",
+              "transformedState": "$3!-2!=4$ 种，合计 $2\\times4=8$ 种",
+              "condition": "分步乘法：先定排尾，再排前三位，其中丙在排头的 $2$ 种要排除。"
+            }
+          ],
+          "reason": "先定排尾再排其余人，与分类法结论一致，更简洁。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-independent",
+          "summary": "把两个条件当独立事件直接相乘",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.permutation",
+              "methodId": "M.hs_permutation",
+              "state": "$P(\\text{丙不在排头})=\\frac{3}{4}$，$P(\\text{甲或乙在排尾})=\\frac{1}{2}$",
+              "transformedState": "$P=\\frac{3}{4}\\times\\frac{1}{2}=\\frac{3}{8}$",
+              "condition": "两个条件作用在同一排列上，并不独立。"
+            }
+          ],
+          "reason": "丙的位置与排尾人选相互影响，不能直接相乘，正确结果是 $\\frac{1}{3}$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "优先按排尾是甲还是乙分类，每类内先排其余三人再扣除丙在排头的情形，最后除以 $A_4^4$；不能把两个条件当独立事件相乘",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:GAOKAO-Bench-2024_2024_Math_MCQs_14",
+        "trainingGoal": "用排列数计数，并按互斥事件分类加法求古典概型概率",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2024 全国甲卷 第4题",
+          "reference": "rainewhk/gaokao 2024/全国甲卷/选择题",
+          "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_14"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "四人各占一个位置",
+          "丙不在排头",
+          "甲或乙在排尾"
+        ],
+        "allowedVariations": [
+          "改变人数或限制条件",
+          "改问丙在排头的概率"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_14",
+          "text": "4. 甲、乙、丙、丁四人排成一列，则丙不在排头，且甲或乙在排尾的概率是（）\nA $\\frac{1}{4}$\nB. $\\frac{1}{3}$\nC. $\\frac{1}{2}$\nD. $\\frac{2}{3}$",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2024\\全国甲卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "排列与排列数",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_14",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "总排法 $A_4^4=24$。甲在排尾时，丙不在排头有 $3!-2!=4$ 种，乙在排尾同理 4 种，两类互斥，共 8 种，概率 $\\frac{8}{24}=\\frac{1}{3}$，与选项 B 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_counting_principle",
+        "M.hs_permutation"
+      ],
+      "applicableMethodIds": [
+        "M.hs_counting_principle",
+        "M.hs_permutation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.permutation",
+          "methodId": "M.hs_permutation"
+        },
+        {
+          "scenarioId": "S.hs_prob.permutation",
+          "methodId": "M.hs_counting_principle"
+        },
+        {
+          "scenarioId": "S.hs_prob.permutation",
+          "methodId": "M.hs_combination"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_permutation",
+        "M.hs_counting_principle",
+        "M.hs_combination"
+      ],
+      "options": [
+        {
+          "id": "r-independent",
+          "name": "把两个条件当独立事件直接相乘"
+        },
+        {
+          "id": "r-cases",
+          "name": "按排尾是甲还是乙分类，每类内用分步乘法并扣除丙在排头的情形"
+        },
+        {
+          "id": "r-tail-first",
+          "name": "先定排尾的人，再排其余三人并要求丙不在排头"
+        }
+      ],
+      "questionKey": "11b3c474ffada7477bca8467bf71443a1fe9f27cac49aa6b2d7428de7f4f6b58",
+      "faceKey": "998b6a3a38c18276ba59a760735e64e1ab60a38ebd8f2b171221571459495917"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.classical",
+      "question": "在新冠肺炎疫情防控期间，某超市开通网上销售业务，每天能完成 1200 份订单的配货，由于订单量大幅增加，导致订单积压。为解决困难，许多志愿者踊跃报名参加配货工作。已知该超市某日积压 500 份订单末配货，预计第二天的新订单超过 1600 份的概率为 0.05，志愿者每人每天能完成 50 份订单的配货，为使第二天完成积压订单及当日订单的配货的概率不小于 0.95，则至少需要志愿者（　）\nA. 10 名\nB. 18 名\nC. 24 名\nD. 32 名",
+      "solution": "新订单不超过 1600 份的概率为 $1-0.05=0.95$，此时待配货 $500+1600=2100$ 份，缺口 $2100-1200=900$ 份，需志愿者 $900\\div50=18$ 名，选 B。",
+      "routes": [
+        {
+          "id": "r-complement",
+          "summary": "用对立事件把概率条件化成交付量条件，再算缺口人数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "$P(\\text{新订单}>1600)=0.05$",
+              "transformedState": "$P(\\text{新订单}\\leqslant1600)=1-0.05=0.95$",
+              "condition": "“不超过 1600 份”与“超过 1600 份”是互斥的对立事件，概率相加为 1。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_counting_principle",
+              "state": "积压 500 份，新订单至多 1600 份，原有能力 1200 份",
+              "transformedState": "缺口 $500+1600-1200=900$ 份，$900\\div50=18$ 名，选 B",
+              "condition": "分步乘法：先求临界待配货总量，再扣除每天能完成的 1200 份，最后按每人 50 份求人数并向上取整。"
+            }
+          ],
+          "reason": "把概率条件翻译成订单量条件，再用一次缺口计算，思路最短。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-critical-total",
+          "summary": "直接取临界情形：新订单恰为 1600 份，总量 2100 份",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "概率 0.95 对应的临界新订单量为 1600 份",
+              "transformedState": "待配货总量 $500+1600=2100$ 份",
+              "condition": "概率不小于 0.95 的临界点由 $P(\\text{新订单}>1600)=0.05$ 给出。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "每天原有能力 1200 份",
+              "transformedState": "需志愿者补足 $2100-1200=900$ 份",
+              "condition": "志愿者只补足原有能力不足的部分。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_counting_principle",
+              "state": "每人每天 50 份",
+              "transformedState": "$900\\div50=18$ 名，选 B",
+              "condition": "人数必须为整数，18 人恰好够，少 1 人则不足。"
+            }
+          ],
+          "reason": "从总量出发逐步扣除，与对立事件法结论一致，便于检查 2100 的来源。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-new-orders-only",
+          "summary": "只按 1600 份新订单算人数，忽略积压与原有能力",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_counting_principle",
+              "state": "新订单临界量 1600 份",
+              "transformedState": "$1600\\div50=32$ 名，选 D",
+              "condition": "既没减去每天能完成的 1200 份，也没加上积压的 500 份。"
+            }
+          ],
+          "reason": "积压的 500 份同样要配货，原有 1200 份的日能力也必须扣除，32 名明显偏大。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "优先用对立事件把“概率不小于 0.95”化成“新订单不超过 1600 份”，再按 $500+1600-1200$ 求缺口；不能只看新订单而忽略积压与原有能力",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_II_MCQs_177",
+        "trainingGoal": "把概率条件转化为临界订单量，再用分步计算求所需人力",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2020 全国卷 第4题",
+          "reference": "rainewhk/gaokao 2020/全国卷/选择题",
+          "originalId": "rw:2010-2022_Math_II_MCQs_177"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "每天原有配货能力 1200 份",
+          "积压 500 份",
+          "新订单超过 1600 份的概率为 0.05",
+          "每人每天 50 份"
+        ],
+        "allowedVariations": [
+          "改变积压量或每人效率",
+          "改问完成概率不小于 0.9"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_177",
+          "text": "4.在新冠肺炎疫情防控期间，某超市开通网上销售业务，每天能完成1200份订单的\n\n配货, 由于订单量大幅增加, 导致订单积压.为解决困难, 许多志愿者踊跃报名参加配货工作.已知该超市 某日积压 500 份订单末配货, 预计第二天的新订单超过 1600 份的概率为 0.05 , 志愿者每人每天能完成 50 份订 单的配货, 为使第二天完成积压订单及当日订单的配货的概率不小于 0.95 , 则至少需要志愿者（）\nA. 10 名\nB. 18 名\nC. 24名\nD. 32 名\n",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2020\\全国卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "古典概型",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_II_MCQs_177",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "要使第二天完成全部配货的概率不小于 0.95，需新订单不超过 1600 份（超过 1600 份的概率为 0.05，对立事件概率 0.95）。临界待配货量 $500+1600=2100$ 份，已有能力 1200 份，缺口 $2100-1200=900$ 份，$900\\div50=18$ 名，与选项 B 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_classical",
+        "M.hs_counting_principle"
+      ],
+      "applicableMethodIds": [
+        "M.hs_classical",
+        "M.hs_counting_principle"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_classical"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_counting_principle"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_permutation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_classical",
+        "M.hs_counting_principle",
+        "M.hs_combination",
+        "M.hs_permutation"
+      ],
+      "options": [
+        {
+          "id": "r-critical-total",
+          "name": "直接取临界情形：新订单恰为 1600 份，总量 2100 份"
+        },
+        {
+          "id": "r-new-orders-only",
+          "name": "只按 1600 份新订单算人数，忽略积压与原有能力"
+        },
+        {
+          "id": "r-complement",
+          "name": "用对立事件把概率条件化成交付量条件，再算缺口人数"
+        }
+      ],
+      "questionKey": "5e6b6853fce15ff64c701e48f1243ffe7b428e739d154e826c6a1581c4adc1d4",
+      "faceKey": "f69d3c6d692d7adcc5d041759479f6b8540cc957c943fc4d742b6a810ea9c21d"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.binomial",
+      "question": "设 $m$ 为正整数，$(x+y)^{2m}$ 展开式的二项式系数的最大值为 $a$，$(x+y)^{2m+1}$ 展开式的二项式系数的最大值为 $b$，若 $13a=7b$，则 $m=$（　）\nA. 5\nB. 6\nC. 7\nD. 8",
+      "solution": "$a=C_{2m}^{m}$，$b=C_{2m+1}^{m}$，由 $13a=7b$ 约分得 $13(m+1)=7(2m+1)$，解得 $m=6$，选 B。",
+      "routes": [
+        {
+          "id": "r-middle-term",
+          "summary": "先由二项式系数在中间项取最大定出 a、b，再用组合数比值列方程",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "$(x+y)^{2m}$ 与 $(x+y)^{2m+1}$ 的二项式系数",
+              "transformedState": "$a=C_{2m}^{m}$，$b=C_{2m+1}^{m}=C_{2m+1}^{m+1}$",
+              "condition": "偶数次时中间一项系数最大；奇数次时中间两项系数相等且最大。"
+            },
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_combination",
+              "state": "$\\frac{C_{2m+1}^{m}}{C_{2m}^{m}}$",
+              "transformedState": "$\\frac{2m+1}{m+1}$；由 $13a=7b$ 得 $13(m+1)=7(2m+1)$，$m=6$，选 B",
+              "condition": "用阶乘展开约去相同因式，再解一次方程，并结合 $m$ 为正整数。"
+            }
+          ],
+          "reason": "先定最大值再算比值，一步解出 m，是最标准的做法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-factorial",
+          "summary": "直接把两个组合数写成阶乘式代入 $13a=7b$ 化简",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_combination",
+              "state": "$a=\\frac{(2m)!}{m!m!}$，$b=\\frac{(2m+1)!}{m!(m+1)!}$",
+              "transformedState": "$13$ 与 $7$ 两边约去 $\\frac{(2m)!}{m!m!}$，得 $13=7\\cdot\\frac{2m+1}{m+1}$，$m=6$",
+              "condition": "两个组合数的阶乘表达式中相同因式可直接约去。"
+            }
+          ],
+          "reason": "阶乘式一步化简，结果与比值法相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-ratio",
+          "summary": "把组合数之比化简成 $\\frac{2m+1}{m}$，漏掉分母的 $m+1$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_combination",
+              "state": "$\\frac{C_{2m+1}^{m}}{C_{2m}^{m}}$",
+              "transformedState": "误写成 $\\frac{2m+1}{m}$，由 $13=7\\cdot\\frac{2m+1}{m}$ 得 $m=-7$",
+              "condition": "约分时把 $\\frac{(2m+1)!}{m!(m+1)!}$ 的分母误当成 $m!\\cdot m$。"
+            }
+          ],
+          "reason": "分母是 $m!(m+1)!$，比值应为 $\\frac{2m+1}{m+1}$；错误化简得到负数，与 $m$ 为正整数矛盾。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "m",
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "优先由二项式系数最大值的位置写出 $C_{2m}^{m}$ 与 $C_{2m+1}^{m}$，再用组合数比值 $\\frac{2m+1}{m+1}$ 列方程；约分不能漏掉 $m+1$",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_I_MCQs_28",
+        "trainingGoal": "用二项式系数的最大值位置与组合数比值建立方程求参数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2013 全国卷 第9题",
+          "reference": "rainewhk/gaokao 2013/全国卷/选择题",
+          "originalId": "rw:2010-2022_Math_I_MCQs_28"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$m$ 为正整数",
+          "$a$、$b$ 均为该展开式二项式系数的最大值",
+          "$13a=7b$ 的系数比不变"
+        ],
+        "allowedVariations": [
+          "改变等式的系数比",
+          "改变两个展开式的次数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_28",
+          "text": "9. （5 分) 设 $\\mathrm{m}$ 为正整数, $(x+y)^{2 m}$ 展开式的二项式系数的最大值为 $a,(x+y$ ) $2 m+1$ 展开式的二项式系数的最大值为 $b$, 若 $13 a=7 b$, 则 $m=(\\quad)$\nA. 5\nB. 6\nC. 7\nD. 8\n",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2013\\全国卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "二项式定理与系数",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_I_MCQs_28",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "$a=C_{2m}^{m}$，$b=C_{2m+1}^{m}$，且 $\\frac{C_{2m+1}^{m}}{C_{2m}^{m}}=\\frac{2m+1}{m+1}$。由 $13a=7b$ 得 $13=7\\cdot\\frac{2m+1}{m+1}$，即 $13(m+1)=7(2m+1)$，解得 $m=6$，与选项 B 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_binomial",
+        "M.hs_combination"
+      ],
+      "applicableMethodIds": [
+        "M.hs_binomial",
+        "M.hs_combination"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_binomial"
+        },
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_undetermined_coeff"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_binomial",
+        "M.hs_combination",
+        "M.hs_undetermined_coeff"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-ratio",
+          "name": "把组合数之比化简成 $\\frac{2m+1}{m}$，漏掉分母的 $m+1$"
+        },
+        {
+          "id": "r-middle-term",
+          "name": "先由二项式系数在中间项取最大定出 a、b，再用组合数比值列方程"
+        },
+        {
+          "id": "r-factorial",
+          "name": "直接把两个组合数写成阶乘式代入 $13a=7b$ 化简"
+        }
+      ],
+      "questionKey": "8f60ed6dbc0dd9c03b5c2444b6a762ec727f2a5f27291275d6283730a2a26a36",
+      "faceKey": "5aef2bcc214f09f33eebcced2cd60922c34671be447891fedb8cd69637cd667e"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.sampling",
+      "question": "为了解某地区中小学生的视力情况，拟从该地区的中小学生中抽取部分学生进行调查，事先已经了解到该地区小学、初中、高中三个学段学生的视力情况有较大差异，而男女生视力情况差异不大。在下面的抽样方法中，最合理的抽样方法是（　）\nA. 简单的随机抽样\nB. 按性别分层抽样\nC. 按学段分层抽样\nD. 系统抽样",
+      "solution": "学段之间差异明显、性别差异不大，应按学段分层抽样，选 C。",
+      "routes": [
+        {
+          "id": "r-stratify",
+          "summary": "按差异显著的属性分层，使层内差异小、层间差异大",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "总体分为小学、初中、高中三层，层间视力差异较大",
+              "transformedState": "应按学段分层抽样",
+              "condition": "分层抽样的分层标准应取差异明显的分类变量，保证每一层内部相对一致。"
+            },
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "男女生视力差异不大",
+              "transformedState": "按性别分层没有实际意义，排除 B",
+              "condition": "差异不明显的属性不适合作为分层依据。"
+            }
+          ],
+          "reason": "抓住“学段差异大、性别差异小”这一条就能直接判定。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-eliminate",
+          "summary": "逐个排除不利用学段差异的抽样方法",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "简单随机抽样、系统抽样",
+              "transformedState": "两种方法都不按学段分层，样本可能缺少某一学段，代表性差",
+              "condition": "总体存在三个差异明显的学段，等概率抽样容易造成学段比例失衡。"
+            },
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "按学段分层且按比例分配名额",
+              "transformedState": "各学段都有代表且比例接近总体，最合理，选 C",
+              "condition": "分层抽样需要保证层内有代表性，按比例分配可保持总体结构。"
+            }
+          ],
+          "reason": "排除法把三种不合适的方法逐一否掉，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-gender",
+          "summary": "抓住“分层抽样”字眼就按性别分层",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.sampling",
+              "methodId": "M.hs_sampling",
+              "state": "男女生视力差异不大",
+              "transformedState": "按性别分层抽样，选 B",
+              "condition": "只看“分层”二字，没有比较哪一个属性差异更大。"
+            }
+          ],
+          "reason": "分层的目的是隔离差异大的属性；性别差异不大，按性别分层收不到效果。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "优先按差异显著的属性（学段）分层，而不是按差异不大的属性（性别）分层",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_I_MCQs_25",
+        "trainingGoal": "根据总体内部差异选择合理的抽样方法",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2013 全国卷 第3题",
+          "reference": "rainewhk/gaokao 2013/全国卷/选择题",
+          "originalId": "rw:2010-2022_Math_I_MCQs_25"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "总体含小学、初中、高中三个学段",
+          "学段间视力差异大、性别间差异小"
+        ],
+        "allowedVariations": [
+          "改变差异明显的属性",
+          "改问哪种方法最不合理的概率"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_25",
+          "text": "3. (5 分) 为了解某地区中小学生的视力情况, 拟从该地区的中小学生中抽取 部分学生进行调查, 事先已经了解到该地区小学、初中、高中三个学段学生 的视力情况有较大差异, 而男女生视力情况差异不大. 在下面的抽样方法中, 最合理的抽样方法是（）\nA. 简单的随机抽样\nB. 按性别分层抽样\nC. 按学段分层抽样\nD. 系统抽样\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2013\\全国卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "抽样方法与样本估计",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_I_MCQs_25",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "总体按学段分为差异明显的三层，按差异大的属性分层能保证各层都有代表；性别差异不大，按性别分层没有意义；简单随机抽样与系统抽样都不利用学段信息，故选 C，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_sampling"
+      ],
+      "applicableMethodIds": [
+        "M.hs_sampling"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.sampling",
+          "methodId": "M.hs_sampling"
+        },
+        {
+          "scenarioId": "S.hs_prob.sampling",
+          "methodId": "M.hs_number_shape"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_sampling",
+        "M.hs_number_shape"
+      ],
+      "options": [
+        {
+          "id": "r-gender",
+          "name": "抓住“分层抽样”字眼就按性别分层"
+        },
+        {
+          "id": "r-stratify",
+          "name": "按差异显著的属性分层，使层内差异小、层间差异大"
+        },
+        {
+          "id": "r-eliminate",
+          "name": "逐个排除不利用学段差异的抽样方法"
+        }
+      ],
+      "questionKey": "f856d458f2deaab1266279fe950223f2cba524893cbb93f14fe0137cd02a484e",
+      "faceKey": "af414eb78451f9bb0720396779e5f4e9158b82182a422e6f657a0b305c34a91a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.combination",
+      "question": "某学校为了解学生参加体育运动的情况，用比例分配的分层随机抽样方法作抽样调查，拟从初中部和高中部两层共抽取 60 名学生，已知该校初中部和高中部分别有 400 名和 200 名学生，则不同的抽样结果共有（　）\nA. $\\mathrm{C}_{400}^{45}\\cdot\\mathrm{C}_{200}^{15}$ 种\nB. $\\mathrm{C}_{400}^{20}\\cdot\\mathrm{C}_{200}^{40}$ 种\nC. $\\mathrm{C}_{400}^{30}\\cdot\\mathrm{C}_{200}^{30}$ 种\nD. $\\mathrm{C}_{400}^{40}\\cdot\\mathrm{C}_{200}^{20}$ 种",
+      "solution": "初中部抽 $60\\times\\frac{400}{600}=40$ 人，高中部抽 $20$ 人，抽样结果为 $C_{400}^{40}\\cdot C_{200}^{20}$，选 D。",
+      "routes": [
+        {
+          "id": "r-proportion",
+          "summary": "先按比例分配名额，再分步从两层各取组合",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_counting_principle",
+              "state": "初中 400 人、高中 200 人，样本共 60 人",
+              "transformedState": "初中抽 $60\\times\\frac{400}{600}=40$ 人，高中抽 $60\\times\\frac{200}{600}=20$ 人",
+              "condition": "比例分配：各层名额等于样本量乘该层人数占总体人数的比例，$40+20=60$。"
+            },
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_combination",
+              "state": "初中取 40 人、高中取 20 人",
+              "transformedState": "$C_{400}^{40}\\cdot C_{200}^{20}$，选 D",
+              "condition": "分步乘法：两层的抽取相互独立，各自的取法数用组合数相乘。"
+            }
+          ],
+          "reason": "先定名额再算组合，相乘得总结果，与答案一致。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-check-options",
+          "summary": "用名额与总体比例核对四个选项的抽取人数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_combination",
+              "state": "四个选项中两层抽取人数之和与比值",
+              "transformedState": "只有 $40+20=60$ 且 $40:20=2:1$ 符合 400:200 的比例",
+              "condition": "比例分配要求初中与高中名额之比等于人数之比 $2:1$，且总和为 60。"
+            },
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_combination",
+              "state": "$C_{400}^{40}$ 与 $C_{200}^{20}$",
+              "transformedState": "选 D",
+              "condition": "确定名额后再按分步乘法写出组合数乘积。"
+            }
+          ],
+          "reason": "通过比例与总数两重核对，能快速排除其余三项。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-average",
+          "summary": "把两层平均分配，各抽 30 人",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.combination",
+              "methodId": "M.hs_combination",
+              "state": "样本 60 人",
+              "transformedState": "误取各 30 人，得 $C_{400}^{30}\\cdot C_{200}^{30}$，选 C",
+              "condition": "忽略“比例分配”，把分层抽样当成平均分配。"
+            }
+          ],
+          "reason": "初中与高中人数之比为 $2:1$，平均分配会破坏总体结构，与比例分配不符。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "优先按 $400:200=2:1$ 把 60 个名额分成 40 与 20，再用分步乘法相乘；不能平均分配",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:GAOKAO-Bench-2023_2023_Math_MCQs_43",
+        "trainingGoal": "按比例分配分层抽样名额，再用组合数与分步乘法计数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2023 新高考卷 第3题",
+          "reference": "rainewhk/gaokao 2023/新高考卷/选择题",
+          "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_43"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "初中部 400 人、高中部 200 人",
+          "共抽取 60 人",
+          "按比例分配名额"
+        ],
+        "allowedVariations": [
+          "改变两层人数或样本量",
+          "改问高中部抽取人数"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_43",
+          "text": "3. 某学校为了解学生参加体育运动的情况, 用比例分配的分层随机抽样方法作抽样调查, 拟从初中部和高中部两层共抽取 60 名学生, 已知该校初中部和高中部分别有 400 名和 200 名学生, 则不同的抽样结果共有 $()$.\nA. $\\mathrm{C}_{400}^{45} \\cdot \\mathrm{C}_{200}^{15}$ 种\nB. $\\mathrm{C}_{400}^{20} \\cdot \\mathrm{C}_{200}^{40}$ 种\nC. $\\mathrm{C}_{400}^{30} \\cdot \\mathrm{C}_{200}^{30}$ 种\nD. $\\mathrm{C}_{400}^{40} \\cdot \\mathrm{C}_{200}^{20}$ 种",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2023\\新高考卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "组合、分组与分配",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_43",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "初中部抽 $60\\times\\frac{400}{600}=40$ 人，高中部抽 $60\\times\\frac{200}{600}=20$ 人，两层分别抽取用分步乘法得 $C_{400}^{40}\\cdot C_{200}^{20}$，与选项 D 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_counting_principle",
+        "M.hs_combination"
+      ],
+      "applicableMethodIds": [
+        "M.hs_counting_principle",
+        "M.hs_combination"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.combination",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.combination",
+          "methodId": "M.hs_counting_principle"
+        },
+        {
+          "scenarioId": "S.hs_prob.combination",
+          "methodId": "M.hs_permutation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_combination",
+        "M.hs_counting_principle",
+        "M.hs_permutation"
+      ],
+      "options": [
+        {
+          "id": "r-average",
+          "name": "把两层平均分配，各抽 30 人"
+        },
+        {
+          "id": "r-proportion",
+          "name": "先按比例分配名额，再分步从两层各取组合"
+        },
+        {
+          "id": "r-check-options",
+          "name": "用名额与总体比例核对四个选项的抽取人数"
+        }
+      ],
+      "questionKey": "da634c06a6f268c4f646ac3369f353bc9c039df7c8a16153733e9fb1498e8d4c",
+      "faceKey": "d2ed8b0fb03023fa9daa364b6b10c394c1d7602904910d84debd9c97c7bb3f94"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.classical",
+      "question": "从分别写有 $1,2,3,4,5,6$ 的 6 张卡片中无放回随机抽取 2 张，则抽到的 2 张卡片上的数字之积是 4 的倍数的概率为（　）\nA. $\\frac{1}{5}$\nB. $\\frac{1}{3}$\nC. $\\frac{2}{5}$\nD. $\\frac{2}{3}$",
+      "solution": "基本事件共 $C_6^2=15$ 个，积为 4 的倍数的有 6 个，概率 $\\frac{6}{15}=\\frac{2}{5}$，选 C。",
+      "routes": [
+        {
+          "id": "r-enumerate",
+          "summary": "枚举 15 个基本事件，数出积为 4 的倍数的个数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "无放回抽 2 张，卡片数字 $1,2,3,4,5,6$",
+              "transformedState": "基本事件共 $C_6^2=15$ 个",
+              "condition": "无放回且不计顺序，用组合数作基本事件总数。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "逐个检验 15 个数对",
+              "transformedState": "$(1,4),(2,4),(2,6),(3,4),(4,5),(4,6)$ 共 6 个，$P=\\frac{6}{15}=\\frac{2}{5}$，选 C",
+              "condition": "积为 4 的倍数需含因子 4 或同时含 2 与偶数，逐个检验最多 15 次。"
+            }
+          ],
+          "reason": "样本空间只有 15 个基本事件，枚举最直接且不易误判。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-classify-four",
+          "summary": "按是否含 4 号卡片分类，用分类加法求符合条件的事件数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_counting_principle",
+              "state": "含 4 号卡片的数对",
+              "transformedState": "$(4,1),(4,2),(4,3),(4,5),(4,6)$ 共 $5$ 个，积均为 4 的倍数",
+              "condition": "4 与任一其他数字之积都是 4 的倍数，共 5 种。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_counting_principle",
+              "state": "不含 4 号卡片但积为 4 的倍数",
+              "transformedState": "只有 $(2,6)$ 这一种（$2\\times6=12$）",
+              "condition": "分类加法：两类互斥，合计 $5+1=6$ 个。"
+            },
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "$6$ 个符合条件，$15$ 个基本事件",
+              "transformedState": "$P=\\frac{6}{15}=\\frac{2}{5}$，选 C",
+              "condition": "基本事件等可能，用符合条件的个数除以总数。"
+            }
+          ],
+          "reason": "按是否含 4 分类加法，能解释 6 的构成，也可检查是否漏 $(2,6)$。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-only-four",
+          "summary": "只数含 4 号卡片的情形，漏掉 (2,6)",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.classical",
+              "methodId": "M.hs_classical",
+              "state": "含 4 的数对共 5 个",
+              "transformedState": "$P=\\frac{5}{15}=\\frac{1}{3}$，选 B",
+              "condition": "把“积为 4 的倍数”等同于“含 4 号卡片”。"
+            }
+          ],
+          "reason": "$2\\times6=12$ 也是 4 的倍数但不含 4，漏算会使概率偏小。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "优先枚举 15 个基本事件；若按是否含 4 分类，必须补上 $(2,6)$ 这一类，不能只看含 4 的情形",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_II_MCQs_214",
+        "trainingGoal": "用组合数确定基本事件总数，并分类计数满足整除条件的数对",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2022 全国甲卷 第6题",
+          "reference": "rainewhk/gaokao 2022/全国甲卷/选择题",
+          "originalId": "rw:2010-2022_Math_II_MCQs_214"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "卡片数字为 1 至 6",
+          "无放回抽 2 张",
+          "判断依据为两数之积是 4 的倍数"
+        ],
+        "allowedVariations": [
+          "改变卡片数字或抽取张数",
+          "改问积为 3 的倍数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_214",
+          "text": "6. 从分别写有 $1,2,3,4,5,6$ 的 6 张卡片中无放回随机抽取 2 张, 则抽到的 2 张卡片上 的数字之积是 4 的倍数的概率为 ()\nA. $\\frac{1}{5}$\nB. $\\frac{1}{3}$\nC. $\\frac{2}{5}$\nD. $\\frac{2}{3}$\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2022\\全国甲卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "古典概型",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_II_MCQs_214",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "无放回抽 2 张共 $C_6^2=15$ 个基本事件。积为 4 的倍数的有 $(1,4),(2,4),(2,6),(3,4),(4,5),(4,6)$ 共 6 个，概率 $\\frac{6}{15}=\\frac{2}{5}$，与选项 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_classical"
+      ],
+      "applicableMethodIds": [
+        "M.hs_classical",
+        "M.hs_counting_principle"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_classical"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_counting_principle"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.classical",
+          "methodId": "M.hs_permutation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_classical",
+        "M.hs_counting_principle",
+        "M.hs_combination",
+        "M.hs_permutation"
+      ],
+      "options": [
+        {
+          "id": "r-classify-four",
+          "name": "按是否含 4 号卡片分类，用分类加法求符合条件的事件数"
+        },
+        {
+          "id": "r-only-four",
+          "name": "只数含 4 号卡片的情形，漏掉 (2,6)"
+        },
+        {
+          "id": "r-enumerate",
+          "name": "枚举 15 个基本事件，数出积为 4 的倍数的个数"
+        }
+      ],
+      "questionKey": "be9d83fc6ec5e2594075123f66eef51bad20605cd38e6b9413d12ae269bce8bc",
+      "faceKey": "23c05fe86e2b2309d49504b891347fb1b528a3c17e3047b2e473b108f903a8a0"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_prob.binomial",
+      "question": "已知 $(1+ax)(1+x)^{5}$ 的展开式中 $x^{2}$ 的系数为 $5$，则 $a=$（　）\nA. $-4$\nB. $-3$\nC. $-2$\nD. $-1$",
+      "solution": "$x^{2}$ 的系数为 $C_5^2+aC_5^1=10+5a$，由 $10+5a=5$ 得 $a=-1$，选 D。",
+      "routes": [
+        {
+          "id": "r-two-sources",
+          "summary": "按第一因式的两项分类，分别找 $x^{2}$ 的两条来源再相加",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "第一因式的 $1$ 与 $(1+x)^5$ 相乘",
+              "transformedState": "取 $x^{2}$ 项得 $C_5^2=10$",
+              "condition": "常数项乘 $x^{2}$ 项，指数正好齐次。"
+            },
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "第一因式的 $ax$ 与 $(1+x)^5$ 相乘",
+              "transformedState": "取 $x$ 项得 $a\\cdot C_5^1=5a$",
+              "condition": "一次项乘一次项，两条来源互斥，按分类加法相加得 $10+5a$。"
+            },
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_undetermined_coeff",
+              "state": "$10+5a=5$",
+              "transformedState": "$a=-1$，选 D",
+              "condition": "比较同次项系数建立方程，解出待定参数。"
+            }
+          ],
+          "reason": "把两条来源分开算再相加，系数 10 与 5a 的来源清楚。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-expand",
+          "summary": "先展开 $(1+x)^5$ 的各项，再与 $(1+ax)$ 逐项相乘收集 $x^{2}$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_combination",
+              "state": "$(1+x)^{5}=1+5x+C_5^2x^{2}+\\cdots$",
+              "transformedState": "乘开后 $x^{2}$ 项为 $C_5^2x^{2}+ax\\cdot5x=(10+5a)x^{2}$",
+              "condition": "先用组合数写出展开式前三项，再逐项乘开合并同类项。"
+            },
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_undetermined_coeff",
+              "state": "$10+5a=5$",
+              "transformedState": "$a=-1$，选 D",
+              "condition": "用待定系数比较同次项，解一次方程。"
+            }
+          ],
+          "reason": "展开后收集同类项，与分类法的结果一致，可作验算。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-miss-constant",
+          "summary": "只算 $ax$ 与 $x$ 的乘积，漏掉 $1\\cdot x^{2}$ 这一项",
+          "steps": [
+            {
+              "scenarioId": "S.hs_prob.binomial",
+              "methodId": "M.hs_binomial",
+              "state": "$ax\\cdot C_5^1x=5ax^{2}$",
+              "transformedState": "$5a=5$，得 $a=1$",
+              "condition": "忽略了第一因式的常数项 $1$ 与 $(1+x)^5$ 中 $x^{2}$ 项相乘也产生 $x^{2}$。"
+            }
+          ],
+          "reason": "$1\\cdot C_5^2x^{2}=10x^{2}$ 这一项不能漏，漏掉后 $a=1$ 也不在选项中。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "x"
+      ],
+      "comparisonCriterion": "优先按第一因式的两项分两条来源，分别求 $C_5^2$ 与 $aC_5^1$ 后相加，不能漏掉常数项贡献的 $10$",
+      "metadata": {
+        "motherId": "candidate.bankhs30.rw:2010-2022_Math_I_MCQs_35",
+        "trainingGoal": "由展开式指定次项系数建立方程，求待定参数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2013 全国卷 第5题",
+          "reference": "rainewhk/gaokao 2013/全国卷/选择题",
+          "originalId": "rw:2010-2022_Math_I_MCQs_35"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$(1+x)^5$ 的指数与原式不变",
+          "$x^{2}$ 的系数为 5",
+          "参数 $a$ 为待定常数"
+        ],
+        "allowedVariations": [
+          "改变目标次数或系数值",
+          "改变一次因式为 $(1+ax+b)$"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_35",
+          "text": "5. (5 分) 已知 $(1+\\mathrm{ax})(1+\\mathrm{x}){ }^{5}$ 的展开式中 $\\mathrm{x}^{2}$ 的系数为 5 , 则 $a=(\\quad)$\nA. -4\nB. -3\nC. -2\nD. -1\n",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2013\\全国卷\\选择题.jsonl",
+          "category": "概率统计与计数原理",
+          "difficulty": "中",
+          "method": "二项式定理与系数",
+          "notes": "高中数学 bankhs30；原题来自公开题源。"
+        },
+        "bankId": "bankhs30",
+        "originalId": "rw:2010-2022_Math_I_MCQs_35",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "$x^{2}$ 的系数来自 $1\\cdot C_5^2 x^{2}$ 与 $ax\\cdot C_5^1 x$ 两部分，即 $10+5a=5$，解得 $a=-1$，与选项 D 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_binomial",
+        "M.hs_undetermined_coeff"
+      ],
+      "applicableMethodIds": [
+        "M.hs_binomial",
+        "M.hs_undetermined_coeff",
+        "M.hs_combination"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_binomial"
+        },
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_combination"
+        },
+        {
+          "scenarioId": "S.hs_prob.binomial",
+          "methodId": "M.hs_undetermined_coeff"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_binomial",
+        "M.hs_combination",
+        "M.hs_undetermined_coeff"
+      ],
+      "options": [
+        {
+          "id": "r-expand",
+          "name": "先展开 $(1+x)^5$ 的各项，再与 $(1+ax)$ 逐项相乘收集 $x^{2}$"
+        },
+        {
+          "id": "r-miss-constant",
+          "name": "只算 $ax$ 与 $x$ 的乘积，漏掉 $1\\cdot x^{2}$ 这一项"
+        },
+        {
+          "id": "r-two-sources",
+          "name": "按第一因式的两项分类，分别找 $x^{2}$ 的两条来源再相加"
+        }
+      ],
+      "questionKey": "437fb76a48c0d56ca9ec7d7f06cb7fb6f9b4d34ca2efe0079aab21332d17630a",
+      "faceKey": "4b943c9590a54c3af942663d93d2437a6c701f73161a7217e6b85006fef6a6e1"
+    }
+  ]
+}

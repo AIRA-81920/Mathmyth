@@ -1,0 +1,1903 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv19",
+  "sourceSha256": "a02658a2099d4503cc9c9519f3f8c292277047b7b3cc65e6db2592ac08b386d2",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.double_cartesian",
+      "question": "若 $f(x,y)$ 在 $D:\\ a\\le x\\le b,\\ c\\le y\\le d$ 上有二阶连续偏导数，则 $\\iint_{D}\\frac{\\partial^{2}f(x,y)}{\\partial x\\partial y}\\,\\mathrm{d}x\\,\\mathrm{d}y=$（　）。A. $f(a,d)-f(b,d)-f(b,c)+f(a,c)$；B. $f(b,d)-f(a,d)-f(b,c)+f(a,c)$；C. $f(a,d)-f(b,d)-f(a,c)+f(b,c)$；D. $f(b,d)-f(a,d)-f(a,c)+f(b,c)$。",
+      "solution": "矩形区域上直接化累次积分：$\\iint_D\\frac{\\partial^{2}f}{\\partial x\\partial y}\\,\\mathrm{d}x\\,\\mathrm{d}y=\\int_a^b\\mathrm{d}x\\int_c^d\\frac{\\partial^{2}f}{\\partial x\\partial y}\\,\\mathrm{d}y=\\int_a^b\\left[\\frac{\\partial f}{\\partial x}(x,d)-\\frac{\\partial f}{\\partial x}(x,c)\\right]\\mathrm{d}x=\\left[f(b,d)-f(a,d)\\right]-\\left[f(b,c)-f(a,c)\\right]=f(b,d)-f(a,d)-f(b,c)+f(a,c)$，故选 B。",
+      "routes": [
+        {
+          "id": "r-y-first",
+          "summary": "按给定的 X 型次序先对 $y$ 积出 $f_x(x,d)-f_x(x,c)$，再对 $x$ 积一次收尾",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "矩形区域 $D=[a,b]\\times[c,d]$，被积函数是混合二阶偏导 $\\frac{\\partial}{\\partial y}\\left(\\frac{\\partial f}{\\partial x}\\right)$",
+              "transformedState": "$\\int_a^b\\mathrm{d}x\\int_c^d\\frac{\\partial^{2}f}{\\partial x\\partial y}\\,\\mathrm{d}y=\\int_a^b\\left[\\frac{\\partial f}{\\partial x}(x,d)-\\frac{\\partial f}{\\partial x}(x,c)\\right]\\mathrm{d}x$",
+              "condition": "内层对 $y$ 积分时把 $x$ 当常数，原函数是 $\\frac{\\partial f}{\\partial x}$；$f$ 有二阶连续偏导，故可以对 $y$ 用牛顿-莱布尼茨。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "已化为只含 $x$ 的单积分，被积函数是 $f_x(x,d)-f_x(x,c)$",
+              "transformedState": "$=\\left[f(b,d)-f(a,d)\\right]-\\left[f(b,c)-f(a,c)\\right]=f(b,d)-f(a,d)-f(b,c)+f(a,c)$，对应选项 B",
+              "condition": "第二次用牛顿-莱布尼茨：$x=b$ 端取正号、$x=a$ 端取负号。"
+            }
+          ],
+          "reason": "两步牛顿-莱布尼茨就把二重积分拆成四个角点值的组合，顺序与题干 $\\mathrm{d}x\\,\\mathrm{d}y$ 一致，最省事。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在矩形区域 $[a,b]\\times[c,d]$ 上、$f$ 有二阶连续偏导时成立。"
+        },
+        {
+          "id": "r-swap-first",
+          "summary": "先把 $f_{xy}$ 看成 $f_{yx}$、交换次序成先 $x$ 后 $y$，同样得到四项角点组合",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.change_order",
+              "state": "被积函数连续，$\\frac{\\partial^{2}f}{\\partial x\\partial y}=\\frac{\\partial}{\\partial x}\\left(\\frac{\\partial f}{\\partial y}\\right)$，矩形既 X 型又 Y 型",
+              "transformedState": "$\\int_a^b\\mathrm{d}x\\int_c^d\\frac{\\partial^{2}f}{\\partial x\\partial y}\\,\\mathrm{d}y=\\int_c^d\\mathrm{d}y\\int_a^b\\frac{\\partial f}{\\partial y}\\,\\mathrm{d}x$ 的求导次序（等价于把内层原函数换成 $f_y$）",
+              "condition": "矩形不需要分块，交换次序只改变内层积分的变量和边界。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "先对 $x$ 积，内层原函数是 $f_y(b,y)$ 与 $f_y(a,y)$ 的差",
+              "transformedState": "$=\\int_c^d\\left[f_y(b,y)-f_y(a,y)\\right]\\mathrm{d}y=\\left[f(b,d)-f(b,c)\\right]-\\left[f(a,d)-f(a,c)\\right]=f(b,d)-f(a,d)-f(b,c)+f(a,c)$",
+              "condition": "第二次对 $y$ 用牛顿-莱布尼茨，$y=d$ 端取正、$y=c$ 端取负，结果与先 $y$ 后 $x$ 完全一致。"
+            }
+          ],
+          "reason": "换序是真正的另一种思路：把内层原函数换成一阶偏导的另一个分量，用 $f_{xy}=f_{yx}$ 保证结论不变。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在矩形区域上成立，混合偏导连续是可换序的前提。"
+        },
+        {
+          "id": "r-sign-flip",
+          "summary": "对 $y$ 积完后，把对 $x$ 的上下限方向写反，得到干扰项 A",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "已经得到 $\\int_a^b\\left[f_x(x,d)-f_x(x,c)\\right]\\mathrm{d}x$，还需再积一次 $x$",
+              "transformedState": "误写成 $f(a,d)-f(b,d)-f(b,c)+f(a,c)$，即选项 A（把 $x=b$ 的贡献记为负、$x=a$ 记为正）",
+              "condition": "错：$\\int_a^b g(x)\\,\\mathrm{d}x=g(b)-g(a)$，$x$ 上端 $b$ 取正、下端 $a$ 取负；方向写反会让 $x$ 方向的四项全部变号。"
+            }
+          ],
+          "reason": "真实的常见错法是把累次积分第二次的上下限方向弄反，四个角点的符号跟着全错，正好落进干扰项 A。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：对 $x$ 积分时把 $a$ 当成上限、$b$ 当成下限。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "答案必须是四个角点值的线性组合，且 $b$、$d$ 方向的端点取正号；可用 $f(x,y)=xy$ 代入核对，真值是矩形面积 $(b-a)(d-c)$。",
+      "metadata": {
+        "motherId": "candidate.bankadv19.xjtu-2018-dx2",
+        "trainingGoal": "识别矩形域上混合二阶偏导的二重积分，用两次牛顿-莱布尼茨把积分拆成角点值组合并正确判断每个端点的加减号。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2018 年高数下期末试题 一、单选题 第2题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2018-dx2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区域是矩形 $a\\le x\\le b$、$c\\le y\\le d$",
+          "$f$ 有二阶连续偏导，故 $f_{xy}=f_{yx}$、两种积分次序都合法",
+          "答案中上端点 $b$、$d$ 贡献为正号，下端点 $a$、$c$ 贡献为负号"
+        ],
+        "allowedVariations": [
+          "把被积函数换成 $\\frac{\\partial^{2}f}{\\partial x^{2}}$，考察是否退化为 $f_x(b,y)-f_x(a,y)$ 的积分",
+          "把矩形换成三角形区域 $\\{a\\le x\\le b,\\ c\\le y\\le \\varphi(x)\\}$",
+          "交换 $a$ 与 $b$ 的取值顺序，检查符号结论是否随之改变"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2018-dx2",
+          "text": "若 $f(x,y)$ 在 $D:\\ a\\le x\\le b,\\ c\\le y\\le d$ 上有二阶连续偏导数，则 $\\iint_{D}\\frac{\\partial^{2}f(x,y)}{\\partial x\\partial y}\\,\\mathrm{d}x\\,\\mathrm{d}y=$（　）。A. $f(a,d)-f(b,d)-f(b,c)+f(a,c)$；B. $f(b,d)-f(a,d)-f(b,c)+f(a,c)$；C. $f(a,d)-f(b,d)-f(a,c)+f(b,c)$；D. $f(b,d)-f(a,d)-f(a,c)+f(b,c)$。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "二重积分（直角坐标，X 型/Y 型区域）",
+          "notes": "高等数学 bankadv19；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv19",
+        "originalId": "xjtu-2018-dx2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：固定 $x$ 先对 $y$ 积分，$\\int_c^d\\frac{\\partial^{2}f}{\\partial x\\partial y}\\,\\mathrm{d}y=\\frac{\\partial f}{\\partial x}(x,d)-\\frac{\\partial f}{\\partial x}(x,c)$（对 $y$ 而言 $f_x$ 就是被积函数的原函数）；再对 $x$ 积分得 $[f(b,d)-f(a,d)]-[f(b,c)-f(a,c)]=f(b,d)-f(a,d)-f(b,c)+f(a,c)$，即 B。改用先 $x$ 后 $y$ 的次序复核得到同一结果。数值核对：取 $f(x,y)=xy$，则 $f_{xy}=1$，真值为矩形面积 $(b-a)(d-c)$；B 恰等于 $(b-a)(d-c)$，C 等于其相反数，A、D 等于 $-(b-a)(c+d)$，均不成立，故只有 B 正确。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.cartesian_iterated_integral"
+      ],
+      "applicableMethodIds": [
+        "M.cartesian_iterated_integral",
+        "M.change_order"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.cartesian_iterated_integral",
+        "M.change_order",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-swap-first",
+          "name": "先把 $f_{xy}$ 看成 $f_{yx}$、交换次序成先 $x$ 后 $y$，同样得到四项角点组合"
+        },
+        {
+          "id": "r-sign-flip",
+          "name": "对 $y$ 积完后，把对 $x$ 的上下限方向写反，得到干扰项 A"
+        },
+        {
+          "id": "r-y-first",
+          "name": "按给定的 X 型次序先对 $y$ 积出 $f_x(x,d)-f_x(x,c)$，再对 $x$ 积一次收尾"
+        }
+      ],
+      "questionKey": "f443d0e802c7c555128016a5cf8f78798f8f040113657e415dd866037a769c0f",
+      "faceKey": "1782dc6055d4fdf611bde5a68414180f07a341957e95d8f21860045a8d954649"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.change_order",
+      "question": "改变二次积分的积分次序：$\\int_1^2\\mathrm{d}x\\int_1^{x^2}f(x,y)\\,\\mathrm{d}y=$（　）。",
+      "solution": "由原积分限还原区域 $D=\\{(x,y)\\mid 1\\le x\\le2,\\ 1\\le y\\le x^2\\}$。当 $x$ 从 1 变到 2 时 $y=x^2$ 从 1 增到 4，故 $y\\in[1,4]$；固定 $y$ 时由 $y\\le x^2$（$x>0$）得 $\\sqrt y\\le x$，与 $1\\le x\\le2$ 合并得 $\\sqrt y\\le x\\le2$。所以 $\\int_1^2\\mathrm{d}x\\int_1^{x^2}f(x,y)\\,\\mathrm{d}y=\\int_1^4\\mathrm{d}y\\int_{\\sqrt y}^{2}f(x,y)\\,\\mathrm{d}x$。",
+      "routes": [
+        {
+          "id": "r-region-graphic",
+          "summary": "先画图确定区域是曲边梯形，再用水平切片读出 $x$ 的左右界",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "原积分是 X 型：$1\\le x\\le2$，内层 $1\\le y\\le x^2$",
+              "transformedState": "区域边界为 $x=1$、$x=2$、$y=1$、$y=x^2$；$x=1$ 时 $y=1$，$x=2$ 时 $y=4$，故区域的 $y$ 跨度是 $[1,4]$",
+              "condition": "先按给定次序画图：$x$ 从 1 到 2 时上边界 $y=x^2$ 单调上升，区域是曲边梯形。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "改用水平切片（Y 型）：$y\\in[1,4]$，左端在抛物线 $x=\\sqrt y$ 上，右端在直线 $x=2$ 上",
+              "transformedState": "$\\int_1^2\\mathrm{d}x\\int_1^{x^2}f(x,y)\\,\\mathrm{d}y=\\int_1^4\\mathrm{d}y\\int_{\\sqrt y}^{2}f(x,y)\\,\\mathrm{d}x$",
+              "condition": "水平切片时左界由 $y=x^2$ 反解为 $x=\\sqrt y$（取正支），右界始终是 $x=2$；$\\sqrt y\\le2$ 保证切片存在。"
+            }
+          ],
+          "reason": "几何法最直观：把曲边梯形的上下边界换左右边界，投影区间自然从 $[1,2]$ 变成 $[1,4]$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $D$ 上 $y=x^2$ 单调，故 $y$ 方向无需分块。"
+        },
+        {
+          "id": "r-algebra-inequality",
+          "summary": "不画图，直接对不等式组作代数消元，先定 $y$ 的范围再反解 $x$ 的区间",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "把积分限写成不等式组 $1\\le x\\le2$、$1\\le y\\le x^2$，不画图直接做消元",
+              "transformedState": "由 $1\\le x\\le2$ 得 $x^2\\in[1,4]$，而 $y$ 的下限固定为 1，故 $y\\in[1,4]$",
+              "condition": "上线 $y=x^2$ 在 $[1,2]$ 上单调，端点代入即得 $y$ 的取值区间。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "固定 $y\\in[1,4]$，把 $y\\le x^2$ 看成关于 $x$ 的不等式",
+              "transformedState": "开平方取正支得 $x\\ge\\sqrt y$，结合 $1\\le x\\le2$ 得 $\\sqrt y\\le x\\le2$，故原式 $=\\int_1^4\\mathrm{d}y\\int_{\\sqrt y}^{2}f(x,y)\\,\\mathrm{d}x$",
+              "condition": "$x$ 在区域内为正，开方只取正支；$\\sqrt y\\in[1,2]$ 与 $x\\le2$ 相容，不必按 $y$ 分段。"
+            }
+          ],
+          "reason": "纯代数路线：不做几何解释，只用单调性和不等式反解，得到的积分限与几何法完全一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "要求 $y=x^2$ 在 $x\\in[1,2]$ 上单调，否则 $y$ 方向须分段。"
+        },
+        {
+          "id": "r-endpoint-reverse",
+          "summary": "把 $y\\le x^2$ 解成 $x\\le\\sqrt y$，把 $x$ 的端点写反成 $1\\le x\\le\\sqrt y$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "已得到 $y\\in[1,4]$，需要反解出 $x$ 的范围",
+              "transformedState": "误把 $y\\le x^2$ 解成 $x\\le\\sqrt y$，写成 $\\int_1^4\\mathrm{d}y\\int_1^{\\sqrt y}f(x,y)\\,\\mathrm{d}x$",
+              "condition": "错：$y\\le x^2$ 且 $x>0$ 应得 $x\\ge\\sqrt y$，即 $x$ 从 $\\sqrt y$ 到 2；写成 $x\\le\\sqrt y$ 把区域换成了抛物线左上方，$f\\equiv1$ 时面积只得 $\\frac53$ 而非 $\\frac43$。"
+            }
+          ],
+          "reason": "真实错因是开方后不等式方向反了，端点一换区域就变成另一块图形，答案随之错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把 $y\\le x^2$ 的反解方向写反。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "换序后 $y$ 的范围来自 $y=x^2$ 在 $[1,2]$ 上的取值，$x$ 的左右界由 $x=\\sqrt y$ 与 $x=2$ 给出；可用 $f\\equiv1$ 核对面积 $\\frac43$。",
+      "metadata": {
+        "motherId": "candidate.bankadv19.xjtu-2023-10",
+        "trainingGoal": "由给定累次积分限还原区域，正确反解 $y\\le x^2$ 为 $x\\ge\\sqrt y$，写出以 $y$ 为外层的等价累次积分。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2023 年西安交通大学工科数学分析试题 二、填空题 第10题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2023-10"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "外层 $x$ 的积分限是常数 1 与 2，内层上限是 $x^2$、下限是 1",
+          "$x\\in[1,2]$ 时 $y=x^2$ 单调，故 $y$ 的范围是 $[1,4]$",
+          "$f$ 只要求可积，换序不涉及具体表达式"
+        ],
+        "allowedVariations": [
+          "把上限 $x^2$ 换成 $2x$，重算换序结果",
+          "把外层区间改成 $[0,1]$，此时 $y=x^2$ 与 $y$ 下限的关系是否需要分块",
+          "把被积函数换成具体的 $f(x,y)=xy$，用算出的数值核对两种次序"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2023-10",
+          "text": "改变二次积分的积分次序：$\\int_1^2\\mathrm{d}x\\int_1^{x^2}f(x,y)\\,\\mathrm{d}y=$ ____。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "交换积分次序",
+          "notes": "高等数学 bankadv19；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv19",
+        "originalId": "xjtu-2023-10",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：积分区域 $D=\\{(x,y)\\mid 1\\le x\\le2,\\ 1\\le y\\le x^2\\}$。$x\\in[1,2]$ 时 $y=x^2$ 从 1 单调增到 4，故 $y\\in[1,4]$；固定 $y$ 时由 $y\\le x^2$ 且 $x>0$ 得 $x\\ge\\sqrt y$，再配合 $1\\le x\\le2$ 得 $\\sqrt y\\le x\\le2$（$\\sqrt y\\in[1,2]$，与 $x\\le2$ 相容，无需分块）。答案 $\\int_1^4\\mathrm{d}y\\int_{\\sqrt y}^{2}f(x,y)\\,\\mathrm{d}x$。取 $f\\equiv1$ 核对：原式 $=\\int_1^2(x^2-1)\\,\\mathrm{d}x=\\frac43$，换序后 $=\\int_1^4(2-\\sqrt y)\\,\\mathrm{d}y=\\frac43$，两式一致；若把 $x$ 的端点写反成 $\\int_1^{\\sqrt y}$，同法只得 $\\frac53$，可见端点方向是关键。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.change_order"
+      ],
+      "applicableMethodIds": [
+        "M.change_order"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.cartesian_iterated_integral"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral"
+      ],
+      "options": [
+        {
+          "id": "r-region-graphic",
+          "name": "先画图确定区域是曲边梯形，再用水平切片读出 $x$ 的左右界"
+        },
+        {
+          "id": "r-algebra-inequality",
+          "name": "不画图，直接对不等式组作代数消元，先定 $y$ 的范围再反解 $x$ 的区间"
+        },
+        {
+          "id": "r-endpoint-reverse",
+          "name": "把 $y\\le x^2$ 解成 $x\\le\\sqrt y$，把 $x$ 的端点写反成 $1\\le x\\le\\sqrt y$"
+        }
+      ],
+      "questionKey": "c3ae357ea9093a2e86f51dcbb2c12221aa3ba69180570be3839406d7981bd516",
+      "faceKey": "161033ff84fdd0c5e34511c4a5616b72a0ca4afc40460fd21b4153411debf943"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.double_cartesian",
+      "question": "$I=\\iint_D\\sqrt{|y-x^2|}\\,\\mathrm{d}x\\,\\mathrm{d}y$，其中 $D=\\{(x,y)\\mid -1\\le x\\le1,\\ 0\\le y\\le1\\}$。",
+      "solution": "被积函数的符号由 $y-x^2$ 决定，用抛物线 $y=x^2$ 把 $D$ 分成 $D_1=\\{y\\ge x^2\\}$ 与 $D_2=\\{y<x^2\\}$。在 $D_1$ 上 $\\sqrt{|y-x^2|}=\\sqrt{y-x^2}$，$I_1=\\int_{-1}^1\\mathrm{d}x\\int_{x^2}^{1}\\sqrt{y-x^2}\\,\\mathrm{d}y=\\frac23\\int_{-1}^1(1-x^2)^{3/2}\\,\\mathrm{d}x=\\frac23\\cdot\\frac{3\\pi}{8}=\\frac{\\pi}{4}$。在 $D_2$ 上 $\\sqrt{|y-x^2|}=\\sqrt{x^2-y}$，$I_2=\\int_{-1}^1\\mathrm{d}x\\int_0^{x^2}\\sqrt{x^2-y}\\,\\mathrm{d}y=\\frac23\\int_{-1}^1|x|^3\\,\\mathrm{d}x=\\frac23\\cdot\\frac12=\\frac13$。故 $I=I_1+I_2=\\frac{\\pi}{4}+\\frac13$。",
+      "routes": [
+        {
+          "id": "r-partition-x-type",
+          "summary": "先按 $y=x^2$ 分块，再对每块按 X 型先对 $y$ 积分（内层是幂函数，直接积出）",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.partition_domain",
+              "state": "被积函数含 $|y-x^2|$，$y-x^2$ 的符号只在抛物线 $y=x^2$ 上改变",
+              "transformedState": "$D=D_1\\cup D_2$，$D_1=\\{(x,y)\\mid -1\\le x\\le1,\\ x^2\\le y\\le1\\}$、$D_2=\\{(x,y)\\mid -1\\le x\\le1,\\ 0\\le y<x^2\\}$",
+              "condition": "$x\\in[-1,1]$ 时 $0\\le x^2\\le1$，抛物线真的穿过矩形内部，$D_1$、$D_2$ 面积都为正，必须分块。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$D_1$ 上被积函数为 $\\sqrt{y-x^2}$，按 X 型先对 $y$ 积分",
+              "transformedState": "$I_1=\\int_{-1}^1\\mathrm{d}x\\int_{x^2}^{1}\\sqrt{y-x^2}\\,\\mathrm{d}y=\\frac23\\int_{-1}^1(1-x^2)^{3/2}\\,\\mathrm{d}x=\\frac23\\cdot\\frac{3\\pi}{8}=\\frac{\\pi}{4}$",
+              "condition": "内层令 $u=y-x^2$，$\\int_0^{1-x^2}\\sqrt u\\,\\mathrm{d}u=\\frac23(1-x^2)^{3/2}$；再令 $x=\\sin\\theta$ 算得 $\\int_{-\\pi/2}^{\\pi/2}\\cos^4\\theta\\,\\mathrm{d}\\theta=\\frac{3\\pi}{8}$。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$D_2$ 上被积函数为 $\\sqrt{x^2-y}$，仍按 X 型先对 $y$ 积分",
+              "transformedState": "$I_2=\\int_{-1}^1\\mathrm{d}x\\int_0^{x^2}\\sqrt{x^2-y}\\,\\mathrm{d}y=\\frac23\\int_{-1}^1|x|^3\\,\\mathrm{d}x=\\frac13$，故 $I=I_1+I_2=\\frac{\\pi}{4}+\\frac13$",
+              "condition": "$\\int_0^{x^2}\\sqrt{x^2-y}\\,\\mathrm{d}y=\\frac23(x^2)^{3/2}=\\frac23|x|^3$；$D_2$ 的贡献不能漏，漏掉就只剩 $\\frac{\\pi}{4}$。"
+            }
+          ],
+          "reason": "主路线只用初等幂函数与三角代换，两块分别算完再相加，计算量最小也最容易核对。",
+          "valid": true,
+          "preferred": true,
+          "condition": "以 $y=x^2$ 为分块边界，两块都必须计。"
+        },
+        {
+          "id": "r-partition-y-type",
+          "summary": "同样按抛物线分块，但改按 Y 型先对 $x$ 积分，$D_1$ 用半圆面积公式、$D_2$ 用含对数的原函数",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.partition_domain",
+              "state": "同一条抛物线把矩形分成两块，但改用水平切片描述每块",
+              "transformedState": "$D_1:\\ |x|\\le\\sqrt y\\ (0\\le y\\le1)$，$D_2:\\ \\sqrt y\\le|x|\\le1\\ (0\\le y\\le1)$",
+              "condition": "只有当 $y\\in[0,1]$ 时 $\\sqrt y\\le1$，切片才完整；否则 $D_2$ 的右界要改成 1 以外的边界。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$D_1$ 上先对 $x$ 积分，内层 $\\int_{-\\sqrt y}^{\\sqrt y}\\sqrt{y-x^2}\\,\\mathrm{d}x$ 是半径 $\\sqrt y$ 的半圆面积",
+              "transformedState": "$I_1=\\int_0^1\\frac{\\pi}{2}y\\,\\mathrm{d}y=\\frac{\\pi}{4}$",
+              "condition": "用 $\\int_{-a}^{a}\\sqrt{a^2-x^2}\\,\\mathrm{d}x=\\frac{\\pi a^2}{2}$，取 $a=\\sqrt y$，再由 $x\\mapsto-x$ 的对称性把两侧合并。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$D_2$ 上先对 $x$ 积分，$\\sqrt{x^2-y}$ 的原函数含对数，积分区间是 $[\\sqrt y,1]$ 及其对称段",
+              "transformedState": "$I_2=2\\int_0^1\\mathrm{d}y\\int_{\\sqrt y}^{1}\\sqrt{x^2-y}\\,\\mathrm{d}x=2\\int_0^1\\left[\\frac{\\sqrt{1-y}}{2}-\\frac{y}{2}\\ln\\frac{1+\\sqrt{1-y}}{\\sqrt y}\\right]\\mathrm{d}y=\\frac13$，合计 $I=\\frac{\\pi}{4}+\\frac13$",
+              "condition": "内层用 $\\int\\sqrt{x^2-y}\\,\\mathrm{d}x=\\frac{x}{2}\\sqrt{x^2-y}-\\frac{y}{2}\\ln\\left|x+\\sqrt{x^2-y}\\right|$，下限 $x=\\sqrt y$ 处对数项化为 $-\\frac{y}{2}\\ln\\sqrt y$。"
+            }
+          ],
+          "reason": "换另一种积分次序做交叉验证：$D_1$ 的半圆公式给出 $\\frac{\\pi}{4}$，$D_2$ 的对数项积分后给出 $\\frac13$，与主路线完全吻合。",
+          "valid": true,
+          "preferred": false,
+          "condition": "同样以 $y=x^2$ 分块，只是每块的积分次序相反。"
+        },
+        {
+          "id": "r-ignore-abs",
+          "summary": "忽略绝对值，直接把被积函数当成 $\\sqrt{y-x^2}$，只算了 $y\\ge x^2$ 的那一块",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "看到根号就写成 $\\sqrt{y-x^2}$，默认被积函数在整个 $D$ 上非负、不需要分块",
+              "transformedState": "只保留 $y\\ge x^2$ 的部分，写成 $\\int_{-1}^1\\mathrm{d}x\\int_{x^2}^{1}\\sqrt{y-x^2}\\,\\mathrm{d}y$",
+              "condition": "错：$D$ 中还包含 $y<x^2$ 的大片区域（例如点 $(0,0)$），那里 $y-x^2<0$，$\\sqrt{y-x^2}$ 无意义，必须先取绝对值再分块。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "按上面这块「完整区域」算到底，并把结果当作全题答案",
+              "transformedState": "得 $I=\\frac23\\int_{-1}^1(1-x^2)^{3/2}\\,\\mathrm{d}x=\\frac{\\pi}{4}$，把 $D_2$ 的贡献 $\\frac13$ 整个丢掉",
+              "condition": "即使 $D_1$ 部分算得无误，答案仍比真值少 $\\frac13$；真值是 $\\frac{\\pi}{4}+\\frac13$。"
+            }
+          ],
+          "reason": "真实错因是看见根号就忘了绝对值，因而漏掉 $y<x^2$ 那一块，属于分区意识缺失的典型错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把 $|y-x^2|$ 当成 $y-x^2$，从而不分区。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "必须先按 $y=x^2$ 分块并分别处理 $\\sqrt{y-x^2}$ 与 $\\sqrt{x^2-y}$；两种积分次序都应给出 $\\frac{\\pi}{4}+\\frac13$，漏掉任何一块都只剩其中一项。",
+      "metadata": {
+        "motherId": "candidate.bankadv19.xjtu-2015-3-5",
+        "trainingGoal": "识别被积函数含绝对值导致的符号变化，按抛物线 $y=x^2$ 分区并分别化累次积分，避免漏算其中一块。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015年高数下期末试题 三、解答题 第5题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-3-5"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$D$ 是矩形 $-1\\le x\\le1$、$0\\le y\\le1$",
+          "$x\\in[-1,1]$ 时 $0\\le x^2\\le1$，抛物线穿过矩形内部，分区后的两块都非空",
+          "分块边界就是被积函数符号改变处 $y=x^2$"
+        ],
+        "allowedVariations": [
+          "把 $|y-x^2|$ 换成 $|y-x|$，分块边界改为直线",
+          "把区域改成 $0\\le y\\le2$，检查分区边界是否仍是 $y=x^2$ 且两块面积如何变化",
+          "把开方次数改成 $\\sqrt{|y-x^2|^{3}}$，考察内层积分幂次的变化"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-3-5",
+          "text": "$I=\\iint_D\\sqrt{|y-x^2|}\\,dx\\,dy$，其中 $D=\\{(x,y)\\mid -1\\le x\\le1,\\ 0\\le y\\le1\\}$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "二重积分（直角坐标，X 型/Y 型区域）",
+          "notes": "高等数学 bankadv19；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv19",
+        "originalId": "xjtu-2015-3-5",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$D$ 被 $y=x^2$ 分成 $D_1=\\{y\\ge x^2\\}$ 与 $D_2=\\{y<x^2\\}$。$I_1=\\int_{-1}^1\\mathrm{d}x\\int_{x^2}^{1}\\sqrt{y-x^2}\\,\\mathrm{d}y=\\frac23\\int_{-1}^1(1-x^2)^{3/2}\\,\\mathrm{d}x$，令 $x=\\sin\\theta$ 得 $\\int_{-\\pi/2}^{\\pi/2}\\cos^4\\theta\\,\\mathrm{d}\\theta=\\frac{3\\pi}{8}$，故 $I_1=\\frac{\\pi}{4}$。$I_2=\\int_{-1}^1\\mathrm{d}x\\int_0^{x^2}\\sqrt{x^2-y}\\,\\mathrm{d}y=\\frac23\\int_{-1}^1|x|^3\\,\\mathrm{d}x=\\frac13$。所以 $I=\\frac{\\pi}{4}+\\frac13\\approx1.1187$。换序（$D_1$ 用半圆面积 $\\frac{\\pi}{2}y$、$D_2$ 用含对数的原函数）复核得同一值；量级核对：区域面积 2、被积函数介于 0 与 1，故 $0<I<2$，结果合理。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.partition_domain",
+        "M.cartesian_iterated_integral"
+      ],
+      "applicableMethodIds": [
+        "M.partition_domain",
+        "M.cartesian_iterated_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.cartesian_iterated_integral",
+        "M.change_order",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-partition-x-type",
+          "name": "先按 $y=x^2$ 分块，再对每块按 X 型先对 $y$ 积分（内层是幂函数，直接积出）"
+        },
+        {
+          "id": "r-partition-y-type",
+          "name": "同样按抛物线分块，但改按 Y 型先对 $x$ 积分，$D_1$ 用半圆面积公式、$D_2$ 用含对数的原函数"
+        },
+        {
+          "id": "r-ignore-abs",
+          "name": "忽略绝对值，直接把被积函数当成 $\\sqrt{y-x^2}$，只算了 $y\\ge x^2$ 的那一块"
+        }
+      ],
+      "questionKey": "ea876b163ff95ad73b501b2c1b9a4a8b7a26d00de67d70db244d5e10c87c6330",
+      "faceKey": "17424a188566668465b6a1ba09dd5a06307fd438345bf4f5f3db715f6236985d"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.change_order",
+      "question": "二次积分 $\\int_0^1\\mathrm{d}x\\int_x^{\\sqrt x}\\frac{\\cos y}{y}\\,\\mathrm{d}y=$（　）。",
+      "solution": "内层 $\\frac{\\cos y}{y}$ 对 $y$ 的原函数不是初等函数，需换序。区域 $D=\\{(x,y)\\mid 0\\le x\\le1,\\ x\\le y\\le\\sqrt x\\}$，投影到 $y$ 轴得 $y\\in[0,1]$；固定 $y$ 时由 $x\\le y$ 与 $y\\le\\sqrt x$ 得 $y^2\\le x\\le y$。故原式 $=\\int_0^1\\mathrm{d}y\\int_{y^2}^{y}\\frac{\\cos y}{y}\\,\\mathrm{d}x=\\int_0^1\\frac{\\cos y}{y}(y-y^2)\\,\\mathrm{d}y=\\int_0^1(1-y)\\cos y\\,\\mathrm{d}y=1-\\cos1$。",
+      "routes": [
+        {
+          "id": "r-region-then-fold",
+          "summary": "先由「内层积不出」判断必须换序，再画图还原区域、换序后一次积出内层并分部收尾",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "给定次序的内层是 $\\frac{\\cos y}{y}$，其对 $y$ 的原函数不是初等函数（余弦积分）",
+              "transformedState": "必须换序：由 $0\\le x\\le1$、$x\\le y\\le\\sqrt x$ 还原区域 $D$，它在 $y=x$ 与 $y=\\sqrt x$ 之间",
+              "condition": "$0<x<1$ 时 $\\sqrt x>x$，区域是以 $(1,1)$ 为尖点的月牙形，$y$ 的上下界就是这两条曲线。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "投影到 $y$ 轴：$x=0$ 与 $x=1$ 分别给出 $y=0$ 与 $y=1$，故 $y\\in[0,1]$",
+              "transformedState": "$\\int_0^1\\mathrm{d}x\\int_x^{\\sqrt x}\\frac{\\cos y}{y}\\,\\mathrm{d}y=\\int_0^1\\mathrm{d}y\\int_{y^2}^{y}\\frac{\\cos y}{y}\\,\\mathrm{d}x$",
+              "condition": "左界由 $y\\le\\sqrt x$ 反解为 $x\\ge y^2$（取正支），右界由 $x\\le y$ 得 $x\\le y$；$y^2\\le y$ 对 $y\\in[0,1]$ 成立。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "新次序下内层对 $x$ 的被积函数与 $x$ 无关，可直接积出得到关于 $y$ 的单积分",
+              "transformedState": "$=\\int_0^1\\frac{\\cos y}{y}(y-y^2)\\,\\mathrm{d}y=\\int_0^1(1-y)\\cos y\\,\\mathrm{d}y=1-\\cos1$",
+              "condition": "内层长度为 $y-y^2$，$\\frac1y$ 被约去；末步分部积分：$\\int y\\cos y\\,\\mathrm{d}y=y\\sin y+\\cos y$，故结果为 $1-\\cos1$。"
+            }
+          ],
+          "reason": "这是最标准的换序流程：先判断内层不可积，再几何还原区域，换序后内层成为常数，$\\frac1y$ 与 $y-y^2$ 相消。",
+          "valid": true,
+          "preferred": true,
+          "condition": "以 $x$ 与 $\\sqrt x$ 都取值于 $[0,1]$ 为前提，故 $y$ 不需分段。"
+        },
+        {
+          "id": "r-inequality-split-terms",
+          "summary": "不画图，直接用两条边界的不等式解出 $x$ 的区间，再把 $(1-y)\\cos y$ 拆成两项分别积分",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "把两条边界当不等式：$y\\ge x$ 与 $y\\le\\sqrt x$，配 $0\\le x\\le1$",
+              "transformedState": "因 $x$、$\\sqrt x$ 都属于 $[0,1]$，所有 $y$ 值也落在 $[0,1]$，即换序后的外层区间是 $[0,1]$",
+              "condition": "先用边界值的值域定外层范围，无需几何图形即可得到 $y\\in[0,1]$。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "固定 $y\\in[0,1]$，分别把两个不等式反解成 $x$ 的上、下界",
+              "transformedState": "由 $x\\le y$ 得 $x\\le y$；由 $y\\le\\sqrt x$ 得 $x\\ge y^2$；合起来 $y^2\\le x\\le y$，即 $\\int_0^1\\mathrm{d}y\\int_{y^2}^{y}\\frac{\\cos y}{y}\\,\\mathrm{d}x$",
+              "condition": "$y^2\\le y$ 在 $[0,1]$ 上恒成立，区间非空，不必分块。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "积出内层后得到 $\\int_0^1\\frac{\\cos y}{y}(y-y^2)\\,\\mathrm{d}y$，把分子拆开成两项",
+              "transformedState": "$=\\int_0^1\\cos y\\,\\mathrm{d}y-\\int_0^1y\\cos y\\,\\mathrm{d}y=\\sin1-(\\sin1+\\cos1-1)=1-\\cos1$",
+              "condition": "第一项直接用 $\\sin y$ 的原函数，第二项由 $\\int y\\cos y\\,\\mathrm{d}y=y\\sin y+\\cos y$ 给出；拆项后各项都初等可积。"
+            }
+          ],
+          "reason": "纯代数替代几何还原，并把最终单积分拆成两项各用熟悉的原函数，与主路线结果一致，便于手算核对。",
+          "valid": true,
+          "preferred": false,
+          "condition": "同样依赖 $\\sqrt x\\ge x$ 在 $[0,1]$ 上成立。"
+        },
+        {
+          "id": "r-endpoint-reverse",
+          "summary": "换序后把 $x$ 的左右界写反成 $y\\le x\\le y^2$，内层长度变号，得到 $\\cos1-1$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "已换序到 $y$ 为外层，$y\\in[0,1]$，需要读出固定 $y$ 时 $x$ 的区间",
+              "transformedState": "误把左界写成 $x=y$、右界写成 $x=y^2$，得到 $\\int_0^1\\mathrm{d}y\\int_{y}^{y^2}\\frac{\\cos y}{y}\\,\\mathrm{d}x$",
+              "condition": "错：由 $y\\le\\sqrt x$ 应得 $x\\ge y^2$（左界），由 $x\\le y$ 应得 $x\\le y$（右界），正确区间是 $[y^2,y]$；写反后内层长度变成 $y^2-y<0$，结果为 $\\cos1-1\\approx-0.4597$，与「$D$ 上被积函数 $\\frac{\\cos y}{y}>0$ 必得正值」矛盾。"
+            }
+          ],
+          "reason": "真实错因是把两条边界对应到左右界时搞混，端点一换符号就整体取反，答案虽形状相似但正负相反。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把 $x=\\sqrt y$ 与 $x=y$ 当作右界、左界的顺序颠倒。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "关键是内层对 $y$ 积不出必须换序，且换序后 $x$ 的区间为 $[y^2,y]$（左界来自 $y=\\sqrt x$）；可用被积函数恒正排除符号颠倒的错误答案。",
+      "metadata": {
+        "motherId": "candidate.bankadv19.xjtu-2015-2-3",
+        "trainingGoal": "由内层不可积判断必须交换积分次序，正确还原区域并反解出 $x\\in[y^2,y]$，再用约分与分部积分求得 $1-\\cos1$。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015年高数下期末试题 二、填空题 第3题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-2-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区域是 $0\\le x\\le1$、$x\\le y\\le\\sqrt x$，且 $\\sqrt x\\ge x$",
+          "内层 $\\frac{\\cos y}{y}$ 对 $y$ 的原函数不是初等函数，必须先换序",
+          "换序后 $x$ 的区间为 $[y^2,y]$，内层长度为 $y-y^2$，可约去 $\\frac1y$"
+        ],
+        "allowedVariations": [
+          "把内层上限 $\\sqrt x$ 换成 $\\sqrt[3]{x}$，重解 $x$ 的下界",
+          "把 $\\cos y$ 换成 $\\sin y$，重算结果为 $1-\\sin1$ 一轮的分部积分",
+          "把外层区间改成 $[0,4]$，检查 $\\sqrt x\\ge x$ 是否仍成立以及是否要分块"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-2-3",
+          "text": "二次积分 $\\int_0^1 dx\\int_x^{\\sqrt x}\\frac{\\cos y}{y}\\,dy=\\underline{\\qquad}$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "交换积分次序",
+          "notes": "高等数学 bankadv19；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv19",
+        "originalId": "xjtu-2015-2-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：区域 $D=\\{0\\le x\\le1,\\ x\\le y\\le\\sqrt x\\}$，因 $\\sqrt x\\ge x$（$0\\le x\\le1$）区域位于 $y=x$ 与 $y=\\sqrt x$ 之间。换序：$x$ 与 $\\sqrt x$ 都落在 $[0,1]$，故 $y\\in[0,1]$；固定 $y$ 时由 $x\\le y$ 得 $x\\le y$，由 $y\\le\\sqrt x$ 得 $x\\ge y^2$，即 $x\\in[y^2,y]$。于是原式 $=\\int_0^1\\mathrm{d}y\\int_{y^2}^{y}\\frac{\\cos y}{y}\\,\\mathrm{d}x=\\int_0^1\\frac{\\cos y}{y}(y-y^2)\\,\\mathrm{d}y=\\int_0^1(1-y)\\cos y\\,\\mathrm{d}y=\\sin1-(\\sin1+\\cos1-1)=1-\\cos1\\approx0.4597$。核对：被积函数在 $D$ 上恒正，结果为正；$y=0$ 处 $\\frac1y$ 与内层长度 $y-y^2$ 相消，积分收敛；若把 $x$ 的端点写反成 $[y,y^2]$，结果为 $\\cos1-1<0$，与正性矛盾。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral"
+      ],
+      "applicableMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-endpoint-reverse",
+          "name": "换序后把 $x$ 的左右界写反成 $y\\le x\\le y^2$，内层长度变号，得到 $\\cos1-1$"
+        },
+        {
+          "id": "r-region-then-fold",
+          "name": "先由「内层积不出」判断必须换序，再画图还原区域、换序后一次积出内层并分部收尾"
+        },
+        {
+          "id": "r-inequality-split-terms",
+          "name": "不画图，直接用两条边界的不等式解出 $x$ 的区间，再把 $(1-y)\\cos y$ 拆成两项分别积分"
+        }
+      ],
+      "questionKey": "262854fee52b5b8dd357726f5f6837c9ddda64418b66d85ebb6dece05471379f",
+      "faceKey": "8b3e6a1deac86673a496371ede4434ed9a533aa63c9550df446c4a15e18cdb5d"
+    }
+  ]
+}

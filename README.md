@@ -55,8 +55,8 @@
 
 | 平台 | 文件 | 说明 |
 |---|---|---|
-| 手机 | `artifacts/Mathmyth-v4.2.1-release.apk` | Android 7 及以上，正式签名 |
-| 电脑 | `artifacts/desktop/Mathmyth-v4.2.1-Setup.exe` | Windows x64 安装包，未做正式签名 |
+| 手机 | `artifacts/Mathmyth-v4.2.3-release.apk` | Android 7 及以上，正式签名 |
+| 电脑 | `artifacts/desktop/Mathmyth-v4.2.3-Setup.exe` | Windows x64 安装包，未做正式签名 |
 
 **从 3.1.0 升级的注意**：早期发布的 APK 是调试签名，安卓不允许直接覆盖安装。请先「设置 → 数据 → 导出到文件」
 保存备份，卸载旧版后再装这个包，装好后打开「设置 → 数据 → 导入」。从 4.2.1 起，以后升级可以直接覆盖安装。
@@ -80,7 +80,7 @@ npm ci
 npm run dev        # http://127.0.0.1:5197
 npm run build
 npm run preview    # http://127.0.0.1:4197
-npm test           # 452 项自动测试（4.2.1 验证记录）
+npm test           # 475 项自动测试（4.2.3 验证记录）
 ```
 
 打包两端：
@@ -91,7 +91,7 @@ npm run desktop:build     # Windows x64 NSIS
 ```
 
 无交互构建两端正式包：
-`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-package.ps1 -Target all -Version 4.2.1 -NoPrompt -Release`
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-package.ps1 -Target all -Version 4.2.3 -NoPrompt -Release`
 
 打包脚本会显示当前版本与 Android versionCode，换版本会自动 +1，保证能覆盖安装。
 签名材料（`android/keystore*`、`keystore.properties`）与产物（`artifacts/`、`dist/`）都不进仓库。
@@ -113,6 +113,8 @@ npm run desktop:build     # Windows x64 NSIS
 
 - **流式与渲染**：网页 SSE、安卓原生 HTTP、桌面原生 HTTP 共用同一解析器；Markdown 只在完整块、代码、公式、链接和列表边界提交检查点，
   未闭合的尾部先当普通文字显示，稳定块各自记忆化，结束后用完整 Markdown + GFM + KaTeX 重渲染。私有思考文本不进可见对话。
+  手机切到后台时系统会冻结网页、掐断连接，回答看起来"停在半句"；回到前台会自动续接同一条回答
+  （已收到的文字保留、不新增一条气泡、每条只续一次），不用重问。
 - **附件**：点附件先收键盘，再在输入框下展开「最近图片 / 拍照 / 相册 / 文件」。本机解析 JPEG/PNG/GIF/WebP、
   纯文本（UTF-8 / UTF-16 / GB18030）、.docx（公式保留为 LaTeX：分隔符、积分与求和的上下限、方程组、重音、函数名、文本框不重复）、
   Word 97–2007 .doc 主文本、PDF；PDF 对多模态模型同时保留页面图像。超限会说明原因，不静默截断；
@@ -136,6 +138,9 @@ npm run desktop:build     # Windows x64 NSIS
 <details>
 <summary><b>开发日志</b>（近期节点，完整记录见 docs/）</summary>
 
+- **4.2.3**：AI 现场出题不再被入库校验误拒（草稿按契约只给一条正确路线，"必须带错误路线"只适用于人工库题）；
+  本题路径的依据匹配支持空白与全角差异、重复连线自动去重、单条并列解法失败不再拖垮整题；后台归位加总期限、
+  队列优先处理当前会话，并提供队列诊断页。
 - **4.2.1**：输入保全（练习草稿按题落库、退出/切后台补写、下一道与开练先确认）、Word 公式保真（分隔符、积分上下限、
   方程组、重音、文本框去重）、附件异常中文化、足迹滚动不再逐事件全库导出、后台忙碌信号覆盖聊天随练。
 - **4.1.x**：多学科（高等数学 / 高中数学 数据分离）、新手引导（7 步聚光样例、可跳过、可重看）、题库与关系练习接入、

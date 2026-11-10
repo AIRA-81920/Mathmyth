@@ -1,0 +1,2979 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv10",
+  "sourceSha256": "3bfa62f663e995bd257f2d771b4ea5aba5f5bcf802e4aa7b228585b5a38b3a0d",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.linear_first_order",
+      "question": "设定在 $(0,+\\infty)$ 的函数 $y=y(x)$ 满足 $\\dfrac{dy}{dx}+\\dfrac{y}{2\\sqrt{x}}=2+\\sqrt{x}$，$y(1)=3$。求 $y(x)$ 的渐近线。",
+      "solution": "这是一阶线性非齐次方程，$P(x)=\\frac{1}{2\\sqrt{x}}$、$Q(x)=2+\\sqrt{x}$，积分因子 $\\mu=e^{\\sqrt{x}}$，于是 $\\left(ye^{\\sqrt{x}}\\right)'=(2+\\sqrt{x})e^{\\sqrt{x}}$。令 $u=\\sqrt{x}$，$\\mathrm{d}x=2u\\,\\mathrm{d}u$，得 $\\int(2+\\sqrt{x})e^{\\sqrt{x}}\\mathrm{d}x=2\\int(2u+u^{2})e^{u}\\mathrm{d}u=2u^{2}e^{u}=2xe^{\\sqrt{x}}$，故 $y=Ce^{-\\sqrt{x}}+2x$。由 $y(1)=3$ 得 $C=e$，即 $y=2x+e^{1-\\sqrt{x}}$。当 $x\\to+\\infty$ 时 $y-2x=e^{1-\\sqrt{x}}\\to0$，所以渐近线为 $y=2x$；$x\\to0^{+}$ 时 $y\\to e$，没有竖直渐近线。",
+      "routes": [
+        {
+          "id": "r-integrating-factor",
+          "summary": "两边乘积分因子 $e^{\\sqrt{x}}$，把左端凑成 $(ye^{\\sqrt{x}})'$ 后直接积分",
+          "steps": [
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "标准形 $y'+\\frac{1}{2\\sqrt{x}}y=2+\\sqrt{x}$，取积分因子 $\\mu=e^{\\sqrt{x}}$",
+              "transformedState": "$(ye^{\\sqrt{x}})'=(2+\\sqrt{x})e^{\\sqrt{x}}$",
+              "condition": "$P(x)$ 在 $(0,+\\infty)$ 连续，$\\mu$ 恒为正。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "令 $u=\\sqrt{x}$ 计算右端积分",
+              "transformedState": "$ye^{\\sqrt{x}}=2xe^{\\sqrt{x}}+C$，即 $y=2x+Ce^{-\\sqrt{x}}$",
+              "condition": "$\\mathrm{d}x=2u\\,\\mathrm{d}u$，$2\\int(2u+u^{2})e^{u}\\mathrm{d}u=2u^{2}e^{u}$。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "代入 $y(1)=3$ 定常数，再取 $x\\to+\\infty$",
+              "transformedState": "$C=e$，$y=2x+e^{1-\\sqrt{x}}$，$y-2x\\to0$，渐近线为 $y=2x$",
+              "condition": "$e^{1-\\sqrt{x}}\\to0$；$x\\to0^{+}$ 时 $y\\to e$，无竖直渐近线。"
+            }
+          ],
+          "reason": "积分因子一步把非齐次方程化成 $(ye^{\\sqrt{x}})'$ 的可积形式，是本题入口下的标准解法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-separation-vary",
+          "summary": "先分离变量求齐次通解 $y_{h}=Ce^{-\\sqrt{x}}$，再常数变易求非齐次解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.separation_of_variables",
+              "state": "先解对应齐次方程 $y'+\\frac{1}{2\\sqrt{x}}y=0$",
+              "transformedState": "$\\frac{\\mathrm{d}y}{y}=-\\frac{\\mathrm{d}x}{2\\sqrt{x}}$，得 $y_{h}=Ce^{-\\sqrt{x}}$",
+              "condition": "$x>0$ 且 $y>0$ 时可分离变量。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "设 $y=C(x)e^{-\\sqrt{x}}$ 代回原方程",
+              "transformedState": "$C'(x)=(2+\\sqrt{x})e^{\\sqrt{x}}$，$C(x)=2xe^{\\sqrt{x}}+C$，故 $y=2x+Ce^{-\\sqrt{x}}$；由 $y(1)=3$ 得 $C=e$，渐近线 $y=2x$",
+              "condition": "右端积分用 $u=\\sqrt{x}$ 换元，结果与积分因子法一致。"
+            }
+          ],
+          "reason": "先齐次后变易是教材通法，与直接乘积分因子起点不同，但得到同一通解与同一渐近线。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-forget-nonhom",
+          "summary": "把非齐次方程当齐次方程解，只保留 $e^{-\\sqrt{x}}$ 部分就读渐近线",
+          "steps": [
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.separation_of_variables",
+              "state": "忽略右端 $2+\\sqrt{x}$，只解 $y'+\\frac{1}{2\\sqrt{x}}y=0$",
+              "transformedState": "$y=3e^{1-\\sqrt{x}}$，令 $x\\to+\\infty$ 得 $y\\to0$，误判渐近线为 $y=0$",
+              "condition": "错：非齐次项对应的特解 $2x$ 被丢掉，该函数不满足原方程，正确渐近线是 $y=2x$。"
+            }
+          ],
+          "reason": "丢掉非齐次特解会使解整体少了 $2x$，渐近线由 $y=2x$ 错成 $y=0$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把非齐次方程按齐次方程求解。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先求出一阶线性非齐次方程含特解 $2x$ 的通解再取极限，不能只解齐次方程就读渐近线",
+      "metadata": {
+        "motherId": "candidate.bankadv10.ecnu-c1-4-2",
+        "trainingGoal": "识别一阶线性非齐次方程的积分因子结构，求出通解并据此判断斜渐近线",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师范大学 2023-2024 学年第一学期 高等数学C（一）期末（A卷）四、求解微分方程问题第2题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-4-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "方程是一阶线性非齐次，$P(x)=\\frac{1}{2\\sqrt{x}}$",
+          "初值条件 $y(1)=3$，定义域 $(0,+\\infty)$"
+        ],
+        "allowedVariations": [
+          "把右端改为 $2x+\\sqrt{x}$",
+          "把 $\\frac{1}{2\\sqrt{x}}$ 的系数改为 $k$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-4-2",
+          "text": "设定在 $(0,+\\infty)$ 的函数 $y=y(x)$ 满足 $\\dfrac{dy}{dx}+\\dfrac{y}{2\\sqrt{x}}=2+\\sqrt{x}$，$y(1)=3$。求 $y(x)$ 的渐近线。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "一阶线性方程",
+          "notes": "高等数学 bankadv10；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "ecnu-c1-4-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：积分因子 $\\mu=e^{\\int P\\mathrm{d}x}=e^{\\sqrt{x}}$。令 $u=\\sqrt{x}$、$\\mathrm{d}x=2u\\,\\mathrm{d}u$，$\\int(2+\\sqrt{x})e^{\\sqrt{x}}\\mathrm{d}x=2\\int(2u+u^{2})e^{u}\\mathrm{d}u=2u^{2}e^{u}=2xe^{\\sqrt{x}}$，故 $y=Ce^{-\\sqrt{x}}+2x$。由 $y(1)=3$ 得 $Ce^{-1}+2=3$，$C=e$，即 $y=2x+e^{1-\\sqrt{x}}$。回代验证：$y'+\\frac{y}{2\\sqrt{x}}=2-\\frac{e^{1-\\sqrt{x}}}{2\\sqrt{x}}+1+\\frac{e^{1-\\sqrt{x}}}{2\\sqrt{x}}=2+\\sqrt{x}$ 成立。当 $x\\to+\\infty$ 时 $y-2x\\to0$，故渐近线为 $y=2x$；$x\\to0^{+}$ 时 $y\\to e$ 有限，无竖直渐近线。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.constant_variation"
+      ],
+      "applicableMethodIds": [
+        "M.constant_variation",
+        "M.separation_of_variables"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.linear_first_order",
+          "methodId": "M.constant_variation"
+        },
+        {
+          "scenarioId": "S.ode.linear_first_order",
+          "methodId": "M.separation_of_variables"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.constant_variation",
+        "M.separation_of_variables"
+      ],
+      "options": [
+        {
+          "id": "r-forget-nonhom",
+          "name": "把非齐次方程当齐次方程解，只保留 $e^{-\\sqrt{x}}$ 部分就读渐近线"
+        },
+        {
+          "id": "r-integrating-factor",
+          "name": "两边乘积分因子 $e^{\\sqrt{x}}$，把左端凑成 $(ye^{\\sqrt{x}})'$ 后直接积分"
+        },
+        {
+          "id": "r-separation-vary",
+          "name": "先分离变量求齐次通解 $y_{h}=Ce^{-\\sqrt{x}}$，再常数变易求非齐次解"
+        }
+      ],
+      "questionKey": "f5a8fb3542e83a71635105ca928d06c3bbb38d62e5fb9242f75255acb7139fe6",
+      "faceKey": "ea6857f6008661695a4bd1d1f3659dc326069ad42108321f1c7e2e04b6906955"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.second_order_homogeneous",
+      "question": "求微分方程 $y''-2y'+5y=0$ 的通解。",
+      "solution": "特征方程 $r^{2}-2r+5=0$，判别式 $\\Delta=4-20=-16<0$，得共轭复根 $r=1\\pm2\\mathrm{i}$；故通解 $y=e^{x}(C_{1}\\cos2x+C_{2}\\sin2x)$，$C_{1},C_{2}$ 为任意常数。",
+      "routes": [
+        {
+          "id": "r-characteristic",
+          "summary": "写出特征方程、由复根 $1\\pm2\\mathrm{i}$ 直接套通解公式",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "由 $y''-2y'+5y=0$ 写出特征方程 $r^{2}-2r+5=0$",
+              "transformedState": "$\\Delta=4-20=-16<0$，$r=1\\pm2\\mathrm{i}$",
+              "condition": "系数 $p=-2$、$q=5$ 均为常数，右端为零。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "共轭复根 $\\alpha\\pm\\beta\\mathrm{i}$，其中 $\\alpha=1$、$\\beta=2$",
+              "transformedState": "$y=e^{x}(C_{1}\\cos2x+C_{2}\\sin2x)$",
+              "condition": "复根时必须提取 $e^{\\alpha x}$ 并保留两个三角解。"
+            }
+          ],
+          "reason": "特征方程法直接由根的三种类型写通解，是常系数齐次方程的首选。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-exp-substitution",
+          "summary": "令 $y=e^{x}u$ 消去一阶导数项，化为 $u''+4u=0$ 后再求通解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.reduction_of_order",
+              "state": "令 $y=e^{x}u(x)$，计算 $y''-2y'+5y$",
+              "transformedState": "$y''-2y'+5y=e^{x}(u''+4u)$，方程化为 $u''+4u=0$",
+              "condition": "$e^{x}\\neq0$，代换可逆。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "对 $u''+4u=0$ 写特征方程 $r^{2}+4=0$",
+              "transformedState": "$u=C_{1}\\cos2x+C_{2}\\sin2x$，回代得 $y=e^{x}(C_{1}\\cos2x+C_{2}\\sin2x)$",
+              "condition": "$u$ 的方程仍是常系数齐次，特征根 $\\pm2\\mathrm{i}$。"
+            }
+          ],
+          "reason": "指数代换把方程化为无一次项的形式，求解过程与直接套公式不同，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-real-roots",
+          "summary": "把判别式算错，将共轭复根当成实根写通解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "特征方程 $r^{2}-2r+5=0$ 写对",
+              "transformedState": "$r^{2}-2r+5=0$",
+              "condition": "该步无误。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "解一元二次方程时把判别式算成 $16$，把根写成 $1\\pm2$",
+              "transformedState": "得 $y=C_{1}e^{3x}+C_{2}e^{-x}$",
+              "condition": "错：$\\Delta=-16$，特征根是 $1\\pm2\\mathrm{i}$，实指数解不满足原方程。"
+            }
+          ],
+          "reason": "判别式为负时忘记虚数单位是复根情形的典型错法，会给出完全错误的解组。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把共轭复根当成相异实根。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先算判别式确定根的类型，复根情形必须写成 $e^{\\alpha x}(C_{1}\\cos\\beta x+C_{2}\\sin\\beta x)$",
+      "metadata": {
+        "motherId": "candidate.bankadv10.xjtu-2013-4",
+        "trainingGoal": "按特征方程根的类型（实根、重根、共轭复根）正确写出二阶常系数齐次方程的通解",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2013 年高数下期末试题 第4题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2013-4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "特征方程 $r^{2}-2r+5=0$",
+          "判别式 $\\Delta=-16<0$，特征根为共轭复根 $1\\pm2\\mathrm{i}$"
+        ],
+        "allowedVariations": [
+          "把 $5$ 改为 $4$（重根情形）",
+          "把 $5$ 改为 $-3$（两相异实根情形）"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2013-4",
+          "text": "求微分方程 $y''-2y'+5y=0$ 的通解.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "二阶常系数齐次线性方程",
+          "notes": "高等数学 bankadv10；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "xjtu-2013-4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：特征方程 $r^{2}-2r+5=0$，$\\Delta=4-20=-16<0$，$r=1\\pm2\\mathrm{i}$，故通解 $y=e^{x}(C_{1}\\cos2x+C_{2}\\sin2x)$。回代验证：$y=e^{x}\\cos2x$ 时 $y''-2y'+5y=e^{x}\\left[(1-4)\\cos2x-4\\sin2x\\right]-2e^{x}(\\cos2x-2\\sin2x)+5e^{x}\\cos2x=0$，$\\sin$ 分支同理。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.characteristic_equation"
+      ],
+      "applicableMethodIds": [
+        "M.characteristic_equation",
+        "M.reduction_of_order"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.second_order_homogeneous",
+          "methodId": "M.characteristic_equation"
+        },
+        {
+          "scenarioId": "S.ode.second_order_homogeneous",
+          "methodId": "M.reduction_of_order"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.characteristic_equation",
+        "M.reduction_of_order"
+      ],
+      "options": [
+        {
+          "id": "r-characteristic",
+          "name": "写出特征方程、由复根 $1\\pm2\\mathrm{i}$ 直接套通解公式"
+        },
+        {
+          "id": "r-exp-substitution",
+          "name": "令 $y=e^{x}u$ 消去一阶导数项，化为 $u''+4u=0$ 后再求通解"
+        },
+        {
+          "id": "r-real-roots",
+          "name": "把判别式算错，将共轭复根当成实根写通解"
+        }
+      ],
+      "questionKey": "965df8dac6ba25655b1f7c68bc7a6fd30b3963233250e3cd8221eb5e416df693",
+      "faceKey": "adf07fbeb3c081868a6700e8f8be89145416d657657b3dc4db0ef912cc44f244"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.solid_volume",
+      "question": "设函数 $y=e^{2x}$ 的图形 $C$ 上某点 $(x_{0},e^{2x_{0}})$ 的切线 $L$ 经过原点，由曲线 $C$、切线 $L$ 和 $y$ 轴所围成的位于第一象限的图形记为 $D$。\n(1) 求点 $x_{0}$。\n(2) 求 $D$ 的面积。\n(3) 求 $D$ 绕 $x$ 轴旋转一周所得旋转体的体积。",
+      "solution": "(1) 切线斜率 $y'=2e^{2x}$，过点 $(x_{0},e^{2x_{0}})$ 的切线为 $y=e^{2x_{0}}+2e^{2x_{0}}(x-x_{0})$；由它过原点得 $0=e^{2x_{0}}(1-2x_{0})$，故 $x_{0}=\\frac12$，切点为 $(\\frac12,e)$，切线为 $y=2ex$。\n(2) $D$ 是 $0\\le x\\le\\frac12$ 上介于 $y=2ex$ 与 $y=e^{2x}$ 之间的图形，$S=\\int_{0}^{\\frac12}(e^{2x}-2ex)\\mathrm{d}x=\\left[\\frac12e^{2x}-ex^{2}\\right]_{0}^{\\frac12}=\\frac{e-1}{2}-\\frac{e}{4}=\\frac{e-2}{4}$。\n(3) 绕 $x$ 轴旋转用垫圈法，外半径 $e^{2x}$、内半径 $2ex$：$V=\\pi\\int_{0}^{\\frac12}\\left(e^{4x}-4e^{2}x^{2}\\right)\\mathrm{d}x=\\pi\\left[\\frac14e^{4x}-\\frac{4e^{2}}{3}x^{3}\\right]_{0}^{\\frac12}=\\pi\\left(\\frac{e^{2}-1}{4}-\\frac{e^{2}}{6}\\right)=\\frac{\\pi(e^{2}-3)}{12}$。",
+      "routes": [
+        {
+          "id": "r-washer",
+          "summary": "由切线过原点定切点，再用竖直条垫圈微元对 $x$ 积分求面积与体积",
+          "steps": [
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.element_method",
+              "state": "由切线 $y=e^{2x_{0}}+2e^{2x_{0}}(x-x_{0})$ 过原点定出切点，并写出 $D$ 的 $x$ 型边界",
+              "transformedState": "$x_{0}=\\frac12$、切线 $y=2ex$；$0\\le x\\le\\frac12$，$2ex\\le y\\le e^{2x}$；面积微元 $(e^{2x}-2ex)\\mathrm{d}x$，体积微元 $\\pi(e^{4x}-4e^{2}x^{2})\\mathrm{d}x$",
+              "condition": "$e^{2x_{0}}\\neq0$，故只能 $x_{0}=\\frac12$；旋转时 $2ex$ 是内半径。"
+            },
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.newton_leibniz",
+              "state": "分别对面积微元与体积微元用牛顿-莱布尼茨公式",
+              "transformedState": "$S=\\frac{e-2}{4}$，$V=\\frac{\\pi(e^{2}-3)}{12}$",
+              "condition": "原函数 $\\frac12e^{2x}-ex^{2}$、$\\frac14e^{4x}-\\frac{4e^{2}}{3}x^{3}$ 在 $[0,\\frac12]$ 上连续。"
+            }
+          ],
+          "reason": "竖直条配垫圈法是绕 $x$ 轴旋转的标准微元，先定边界再一次性积分最直接。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-shell",
+          "summary": "改用水平条对 $y$ 积分，体积用柱壳法，面积也按 $y$ 型边界累加",
+          "steps": [
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.element_method",
+              "state": "定出切点后以 $y$ 为积分变量划 $D$：$0\\le y\\le1$ 时左边界为 $y$ 轴，$1\\le y\\le e$ 时左边界为曲线 $x=\\frac12\\ln y$",
+              "transformedState": "水平条长度：$0\\le y\\le1$ 为 $\\frac{y}{2e}$；$1\\le y\\le e$ 为 $\\frac{y}{2e}-\\frac12\\ln y$；柱壳微元 $\\mathrm{d}V=2\\pi y\\cdot h(y)\\mathrm{d}y$",
+              "condition": "$y=1$ 与 $y=e$ 是水平条边界切换点。"
+            },
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.newton_leibniz",
+              "state": "对两段分别积分并相加",
+              "transformedState": "$S=\\frac{1}{4e}+\\frac{e^{2}-1}{4e}-\\frac12=\\frac{e-2}{4}$，$V=\\frac{\\pi(e^{2}-3)}{12}$",
+              "condition": "柱壳法壳半径为 $y$、壳高为水平条长度，结果与垫圈法互相验证。"
+            }
+          ],
+          "reason": "换用柱壳法对 $y$ 积分，微元写法与垫圈法完全不同，但面积与体积结果一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-forget-inner",
+          "summary": "旋转时只按外圆盘积分，漏掉切线形成的内孔",
+          "steps": [
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.element_method",
+              "state": "切点 $x_{0}=\\frac12$、切线 $y=2ex$ 求对，但体积只取外圆盘微元",
+              "transformedState": "误取 $\\mathrm{d}V=\\pi e^{4x}\\mathrm{d}x$，忽略了内半径 $2ex$",
+              "condition": "错：$D$ 的下边界是 $y=2ex$，旋转体内有由切线扫出的空洞，必须扣除 $\\pi(2ex)^{2}$。"
+            },
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.newton_leibniz",
+              "state": "按错误微元积分",
+              "transformedState": "得 $V=\\pi\\int_{0}^{\\frac12}e^{4x}\\mathrm{d}x=\\frac{\\pi(e^{2}-1)}{4}$，比正确值 $\\frac{\\pi(e^{2}-3)}{12}$ 大",
+              "condition": "错：漏掉内孔体积后结果偏大。"
+            }
+          ],
+          "reason": "把曲边梯形当成实心圆盘是最常见的旋转体体积错法，会整体高估体积。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：垫圈法漏掉内半径。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先由切线条件定出 $x_{0}=\\frac12$；绕 $x$ 轴旋转时图形是垫圈形，必须用内外半径之差而不能只算外圆盘",
+      "metadata": {
+        "motherId": "candidate.bankadv10.ecnu-c1-5-1",
+        "trainingGoal": "由切线条件确定切点，用微元法求曲边图形的面积与绕 $x$ 轴旋转体体积",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师范大学 2023-2024 学年第一学期 高等数学C（一）期末（A卷）五、第1题（14分）",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-5-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲线 $C$ 为 $y=e^{2x}$，切线 $L$ 经过原点",
+          "图形 $D$ 位于第一象限并以 $y$ 轴为左边界"
+        ],
+        "allowedVariations": [
+          "把曲线改为 $y=e^{x}$",
+          "改为求 $D$ 绕 $y$ 轴旋转的体积"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-5-1",
+          "text": "设函数 $y=e^{2x}$ 的图形 $C$ 上某点 $(x_{0},e^{2x_{0}})$ 的切线 $L$ 经过原点，由曲线 $C$、切线 $L$ 和 $y$ 轴所围成的位于第一象限的图形记为 $D$。\n(1) 求点 $x_{0}$。\n(2) 求 $D$ 的面积。\n(3) 求 $D$ 绕 $x$ 轴旋转一周所得旋转体的体积。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "旋转体体积",
+          "notes": "高等数学 bankadv10；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "ecnu-c1-5-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：切线 $y=e^{2x_{0}}+2e^{2x_{0}}(x-x_{0})$ 过原点给出 $0=e^{2x_{0}}(1-2x_{0})$，故 $x_{0}=\\frac12$，切点 $(\\frac12,e)$，切线 $y=2ex$。区域 $D$：$0\\le x\\le\\frac12$，$2ex\\le y\\le e^{2x}$。面积 $\\int_{0}^{\\frac12}(e^{2x}-2ex)\\mathrm{d}x=\\frac{e-1}{2}-\\frac{e}{4}=\\frac{e-2}{4}\\approx0.1796$。体积 $\\pi\\int_{0}^{\\frac12}(e^{4x}-4e^{2}x^{2})\\mathrm{d}x=\\pi\\left(\\frac{e^{2}-1}{4}-\\frac{e^{2}}{6}\\right)=\\frac{\\pi(e^{2}-3)}{12}\\approx1.1489$。另用柱壳法 $2\\pi\\int_{0}^{1}\\frac{y^{2}}{2e}\\mathrm{d}y+2\\pi\\int_{1}^{e}y\\left(\\frac{y}{2e}-\\frac12\\ln y\\right)\\mathrm{d}y$ 复核，结果相同。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.element_method",
+        "M.newton_leibniz"
+      ],
+      "applicableMethodIds": [
+        "M.element_method",
+        "M.newton_leibniz"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.solid_volume",
+          "methodId": "M.element_method"
+        },
+        {
+          "scenarioId": "S.defint.solid_volume",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.solid_volume",
+          "methodId": "M.symmetry"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.element_method",
+        "M.newton_leibniz",
+        "M.symmetry"
+      ],
+      "options": [
+        {
+          "id": "r-forget-inner",
+          "name": "旋转时只按外圆盘积分，漏掉切线形成的内孔"
+        },
+        {
+          "id": "r-washer",
+          "name": "由切线过原点定切点，再用竖直条垫圈微元对 $x$ 积分求面积与体积"
+        },
+        {
+          "id": "r-shell",
+          "name": "改用水平条对 $y$ 积分，体积用柱壳法，面积也按 $y$ 型边界累加"
+        }
+      ],
+      "questionKey": "cbca9b9333f0737c853d5b8834c777ebdc5cd623a148afb23b284c0e2d9bb779",
+      "faceKey": "b6e1b3d1b4c6c47b163149a65ebfc6e7a78ef57808abdcc9ac7fc7051ae2f856"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.integral_inequality",
+      "question": "(1) 证明不等式：$\\dfrac{2}{\\pi}\\leq\\dfrac{\\sin x}{x}$，$x\\in\\left(0,\\dfrac{\\pi}{2}\\right)$。\n(2) 证明：$\\int_{0}^{\\frac{\\pi}{2}}e^{-a\\sin x}\\,\\mathrm{d}x<\\dfrac{\\pi}{2a}\\left(1-e^{-a}\\right)$，这里 $a$ 是正常数。",
+      "solution": "(1) 令 $g(x)=\\frac{\\sin x}{x}$（$0<x\\le\\frac{\\pi}{2}$），$g'(x)=\\frac{x\\cos x-\\sin x}{x^{2}}$；记 $h(x)=x\\cos x-\\sin x$，则 $h'(x)=-x\\sin x<0$，$h(0)=0$，故 $h(x)<0$，$g$ 严格递减，于是 $g(x)\\ge g(\\frac{\\pi}{2})=\\frac{2}{\\pi}$。\n(2) 由(1)得 $\\sin x\\ge\\frac{2x}{\\pi}$，从而 $e^{-a\\sin x}\\le e^{-\\frac{2ax}{\\pi}}$；在 $(0,\\frac{\\pi}{2})$ 内严格不等，故积分严格小于。计算 $\\int_{0}^{\\frac{\\pi}{2}}e^{-\\frac{2ax}{\\pi}}\\mathrm{d}x=\\left[-\\frac{\\pi}{2a}e^{-\\frac{2ax}{\\pi}}\\right]_{0}^{\\frac{\\pi}{2}}=\\frac{\\pi}{2a}(1-e^{-a})$，即得所证不等式。",
+      "routes": [
+        {
+          "id": "r-auxiliary-scaling",
+          "summary": "构造 $g(x)=\\frac{\\sin x}{x}$ 用导数判单调，再由 $\\sin x\\ge\\frac{2x}{\\pi}$ 放缩被积函数并积分",
+          "steps": [
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "构造 $g(x)=\\frac{\\sin x}{x}$，$h(x)=x\\cos x-\\sin x$",
+              "transformedState": "$h'(x)=-x\\sin x<0$，$h(0)=0$，故 $g'(x)<0$，$g(x)\\ge g(\\frac{\\pi}{2})=\\frac{2}{\\pi}$",
+              "condition": "$x\\in(0,\\frac{\\pi}{2}]$，$h$ 递减且从 $0$ 出发。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.inequality_scaling",
+              "state": "由 $\\sin x\\ge\\frac{2x}{\\pi}$ 对 $e^{-a\\sin x}$ 作放缩并积分",
+              "transformedState": "$e^{-a\\sin x}\\le e^{-\\frac{2ax}{\\pi}}$（仅 $x=\\frac{\\pi}{2}$ 取等），$\\int_{0}^{\\frac{\\pi}{2}}e^{-\\frac{2ax}{\\pi}}\\mathrm{d}x=\\frac{\\pi}{2a}(1-e^{-a})$，故原积分严格小于该值",
+              "condition": "$a>0$，指数函数单调递增，严格性来自被积函数在区间内部处处不等。"
+            }
+          ],
+          "reason": "先证函数不等式再用单调性放缩积分，是本题给出的入口下最自然的链条。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-concavity",
+          "summary": "改用辅助函数 $f(x)=\\sin x-\\frac{2x}{\\pi}$ 的二阶导数证明凹性，再放缩积分",
+          "steps": [
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "构造 $f(x)=\\sin x-\\frac{2}{\\pi}x$，考察二阶导数",
+              "transformedState": "$f''(x)=-\\sin x<0$，$f$ 在 $[0,\\frac{\\pi}{2}]$ 上为上凸函数，端点 $f(0)=f(\\frac{\\pi}{2})=0$，故内部 $f>0$，即 $\\sin x>\\frac{2x}{\\pi}$",
+              "condition": "上凸函数的图像在弦下方，端点等零保证内部为正。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.monotonicity_analysis",
+              "state": "用已证的严格不等式估计被积函数并积分",
+              "transformedState": "$e^{-a\\sin x}<e^{-\\frac{2ax}{\\pi}}$，积分得 $\\int_{0}^{\\frac{\\pi}{2}}e^{-a\\sin x}\\mathrm{d}x<\\frac{\\pi}{2a}(1-e^{-a})$",
+              "condition": "$a>0$，指数函数保序，严格不等号保持不变。"
+            }
+          ],
+          "reason": "用二阶导数判断凹性来证明函数不等式，与比值单调性的路线不同，但导出同一放缩。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-reverse-sign",
+          "summary": "放缩时把函数不等式的方向写反，推出与待证相反的不等式",
+          "steps": [
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "先正确证明 $\\frac{\\sin x}{x}\\ge\\frac{2}{\\pi}$",
+              "transformedState": "$\\sin x\\ge\\frac{2x}{\\pi}$",
+              "condition": "该步无误。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.inequality_scaling",
+              "state": "放缩时把不等号反向，写成 $\\sin x\\le\\frac{2x}{\\pi}$",
+              "transformedState": "得 $e^{-a\\sin x}\\ge e^{-\\frac{2ax}{\\pi}}$，积分推出 $\\int_{0}^{\\frac{\\pi}{2}}e^{-a\\sin x}\\mathrm{d}x\\ge\\frac{\\pi}{2a}(1-e^{-a})$，与待证结论方向相反",
+              "condition": "错：不等号方向反了，指数函数的单调性也被反向使用，无法得到严格小于。"
+            }
+          ],
+          "reason": "把 $\\sin x\\ge\\frac{2x}{\\pi}$ 记成反向是不等式证明中的常见失误，会使整条放缩链失效。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：放缩方向写反。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "a"
+      ],
+      "comparisonCriterion": "先把函数不等式化为 $\\sin x\\ge\\frac{2x}{\\pi}$，再在同一方向上放缩被积函数；不等号方向必须与指数函数的单调性一致",
+      "metadata": {
+        "motherId": "candidate.bankadv10.ecnu-c1-7-1",
+        "trainingGoal": "用辅助函数与放缩法证明含定积分的不等式，并把函数不等式转化为积分估计",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师范大学 2023-2024 学年第一学期 高等数学C（一）期末（A卷）七、第1题（10分）",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-7-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x\\in(0,\\frac{\\pi}{2})$，参数 $a$ 为正常数",
+          "待估积分是 $e^{-a\\sin x}$ 在 $[0,\\frac{\\pi}{2}]$ 上的定积分"
+        ],
+        "allowedVariations": [
+          "把 $e^{-a\\sin x}$ 改为 $\\sin^{k}x$",
+          "把结论右侧系数改为 $\\frac{\\pi}{2a}(1-e^{-2a})$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-7-1",
+          "text": "(1) 证明不等式：$\\dfrac{2}{\\pi}\\leq\\dfrac{\\sin x}{x}$，$x\\in\\left(0,\\dfrac{\\pi}{2}\\right)$。\n(2) 证明：$\\int_{0}^{\\frac{\\pi}{2}}e^{-a\\sin x}\\,dx<\\dfrac{\\pi}{2a}\\left(1-e^{-a}\\right)$，这里 $a$ 是正常数。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "定积分等式与不等式的证明",
+          "notes": "高等数学 bankadv10；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "ecnu-c1-7-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：(1) 令 $g(x)=\\frac{\\sin x}{x}$，$g'(x)=\\frac{x\\cos x-\\sin x}{x^{2}}$，记 $h(x)=x\\cos x-\\sin x$，$h'(x)=-x\\sin x<0$、$h(0)=0$，故 $h<0$、$g$ 递减，$g(x)\\ge g(\\frac{\\pi}{2})=\\frac{2}{\\pi}$。(2) 由 $\\sin x\\ge\\frac{2x}{\\pi}$（$x\\in(0,\\frac{\\pi}{2}]$，仅 $x=\\frac{\\pi}{2}$ 取等）得 $e^{-a\\sin x}\\le e^{-\\frac{2ax}{\\pi}}$，等号只在单点成立，故积分严格不等；而 $\\int_{0}^{\\frac{\\pi}{2}}e^{-\\frac{2ax}{\\pi}}\\mathrm{d}x=\\frac{\\pi}{2a}(1-e^{-a})$，结论成立。另用凹性复核：$f(x)=\\sin x-\\frac{2x}{\\pi}$ 满足 $f''=-\\sin x<0$ 且 $f(0)=f(\\frac{\\pi}{2})=0$，同样得该不等式。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.construct_auxiliary_function",
+        "M.inequality_scaling"
+      ],
+      "applicableMethodIds": [
+        "M.construct_auxiliary_function",
+        "M.inequality_scaling",
+        "M.monotonicity_analysis"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.variable_limit_integral"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.integral_mean_value_theorem"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.inequality_scaling"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.construct_auxiliary_function"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.monotonicity_analysis"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.variable_limit_integral",
+        "M.integral_mean_value_theorem",
+        "M.inequality_scaling",
+        "M.construct_auxiliary_function",
+        "M.monotonicity_analysis"
+      ],
+      "options": [
+        {
+          "id": "r-concavity",
+          "name": "改用辅助函数 $f(x)=\\sin x-\\frac{2x}{\\pi}$ 的二阶导数证明凹性，再放缩积分"
+        },
+        {
+          "id": "r-reverse-sign",
+          "name": "放缩时把函数不等式的方向写反，推出与待证相反的不等式"
+        },
+        {
+          "id": "r-auxiliary-scaling",
+          "name": "构造 $g(x)=\\frac{\\sin x}{x}$ 用导数判单调，再由 $\\sin x\\ge\\frac{2x}{\\pi}$ 放缩被积函数并积分"
+        }
+      ],
+      "questionKey": "91986ce41f355bbc0ab9fa64b5b726bf4a952ceb14b6e017f897446dd6450009",
+      "faceKey": "0bc73ddf8e47869526a8564ec7c304fe563ca252d86b1b31d81911d83f1d0c5a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.variable_limit_derivative",
+      "question": "求极限 $\\lim_{x\\to 0}\\dfrac{\\int_{0}^{x}\\left(e^{t^{2}}-\\cos t\\right)\\,\\mathrm{d}t}{x-\\sin x}$。",
+      "solution": "被积函数展开：$e^{t^{2}}-\\cos t=\\left(1+t^{2}+o(t^{2})\\right)-\\left(1-\\frac{t^{2}}{2}+o(t^{2})\\right)=\\frac32t^{2}+o(t^{2})$，故 $\\int_{0}^{x}\\left(e^{t^{2}}-\\cos t\\right)\\mathrm{d}t=\\frac{x^{3}}{2}+o(x^{3})$；又 $x-\\sin x=\\frac{x^{3}}{6}+o(x^{3})$。所以原极限 $=\\lim_{x\\to0}\\frac{x^{3}/2}{x^{3}/6}=3$。",
+      "routes": [
+        {
+          "id": "r-lhopital",
+          "summary": "对变限积分分子与分母连用三次洛必达法则",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.lhopital",
+              "state": "分子分母在 $x=0$ 处均为 $0$，属 $\\frac{0}{0}$ 型，一次求导",
+              "transformedState": "$\\frac{e^{x^{2}}-\\cos x}{1-\\cos x}$，仍为 $\\frac{0}{0}$ 型",
+              "condition": "变限积分求导公式：$\\frac{\\mathrm{d}}{\\mathrm{d}x}\\int_{0}^{x}f(t)\\mathrm{d}t=f(x)$。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.lhopital",
+              "state": "再次求导",
+              "transformedState": "$\\frac{2xe^{x^{2}}+\\sin x}{\\sin x}$，在 $x=0$ 处仍为 $\\frac{0}{0}$ 型",
+              "condition": "分子分母的导函数在 $0$ 的邻域内连续。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.lhopital",
+              "state": "第三次求导后代入 $x=0$",
+              "transformedState": "$\\frac{2e^{x^{2}}+4x^{2}e^{x^{2}}+\\cos x}{\\cos x}\\to\\frac{3}{1}=3$",
+              "condition": "此时分母 $\\cos x\\to1\\neq0$，可以直接代入。"
+            }
+          ],
+          "reason": "变限积分每求一次导就少一层积分，三次洛必达即可把 $0/0$ 型化为可代入的形式。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-taylor",
+          "summary": "直接对被积函数作二阶泰勒展开，积分后再与分母的三阶展开相除",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "把被积函数展开到 $t^{2}$ 阶",
+              "transformedState": "$e^{t^{2}}-\\cos t=\\frac32t^{2}+o(t^{2})$，从而分子 $=\\frac{x^{3}}{2}+o(x^{3})$",
+              "condition": "$t\\to0$ 时两项都要展到 $t^{2}$ 阶，$\\cos t$ 的 $-\\frac{t^{2}}{2}$ 不能丢。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "分母展开到三阶并求比值",
+              "transformedState": "$x-\\sin x=\\frac{x^{3}}{6}+o(x^{3})$，极限 $=\\frac{1/2}{1/6}=3$",
+              "condition": "分子分母最低阶都恰好是三阶，直接取系数比。"
+            }
+          ],
+          "reason": "直接展开被积函数可绕过逐次求导，计算量比三次洛必达小，结果相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-drop-cos-term",
+          "summary": "被积函数只用 $e^{t^{2}}\\approx1+t^{2}$、把 $\\cos t$ 近似成 $1$",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "把 $e^{t^{2}}-\\cos t$ 的等价量误取为 $t^{2}$",
+              "transformedState": "分子化为 $\\int_{0}^{x}t^{2}\\mathrm{d}t=\\frac{x^{3}}{3}$",
+              "condition": "错：$\\cos t$ 在 $t^{2}$ 阶有 $-\\frac{t^{2}}{2}$，丢掉它等价量就少了 $\\frac{t^{2}}{2}$。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "分母 $x-\\sin x\\sim\\frac{x^{3}}{6}$ 后求比值",
+              "transformedState": "得极限 $\\frac{1/3}{1/6}=2$（错误）",
+              "condition": "错：分子少算一项，结果由 $3$ 变成 $2$。"
+            }
+          ],
+          "reason": "只展开指数项而把余弦截断到常数项，是等价无穷小替换最典型的系数错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：同一阶的项没有全部保留。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "t"
+      ],
+      "comparisonCriterion": "分子分母都展开到最低非零阶，被积函数中 $e^{t^{2}}$ 与 $\\cos t$ 的 $t^{2}$ 项必须同时保留",
+      "metadata": {
+        "motherId": "candidate.bankadv10.ecnu-c1-1-2",
+        "trainingGoal": "处理含变限积分的 $\\frac{0}{0}$ 型极限，正确确定展开阶数并用洛必达或等价无穷小求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师范大学 2023-2024 学年第一学期 高等数学C（一）期末（A卷）一、计算下列极限第2题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-1-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "分子是上限为 $x$ 的变限积分，被积函数为 $e^{t^{2}}-\\cos t$",
+          "分母 $x-\\sin x$ 的最低阶为三阶"
+        ],
+        "allowedVariations": [
+          "被积函数改为 $e^{t}-1-t$",
+          "分母改为 $\\tan x-x$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-1-2",
+          "text": "求极限 $\\lim_{x\\to 0}\\dfrac{\\int_{0}^{x}\\left(e^{t^{2}}-\\cos t\\right)\\,dt}{x-\\sin x}$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "变限积分求导",
+          "notes": "高等数学 bankadv10；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "ecnu-c1-1-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$e^{t^{2}}-\\cos t=\\left(1+t^{2}+o(t^{2})\\right)-\\left(1-\\frac{t^{2}}{2}+o(t^{2})\\right)=\\frac32t^{2}+o(t^{2})$，积分得 $\\frac{x^{3}}{2}+o(x^{3})$；又 $x-\\sin x=\\frac{x^{3}}{6}+o(x^{3})$，故极限为 $\\frac{1/2}{1/6}=3$。用三次洛必达交叉验证：$\\frac{e^{x^{2}}-\\cos x}{1-\\cos x}\\to\\frac{2xe^{x^{2}}+\\sin x}{\\sin x}\\to\\frac{2e^{x^{2}}+4x^{2}e^{x^{2}}+\\cos x}{\\cos x}\\to3$，一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.lhopital"
+      ],
+      "applicableMethodIds": [
+        "M.lhopital",
+        "M.equiv_infinitesimal"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.variable_limit_integral"
+        },
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.equiv_infinitesimal"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.variable_limit_integral",
+        "M.lhopital",
+        "M.equiv_infinitesimal"
+      ],
+      "options": [
+        {
+          "id": "r-drop-cos-term",
+          "name": "被积函数只用 $e^{t^{2}}\\approx1+t^{2}$、把 $\\cos t$ 近似成 $1$"
+        },
+        {
+          "id": "r-lhopital",
+          "name": "对变限积分分子与分母连用三次洛必达法则"
+        },
+        {
+          "id": "r-taylor",
+          "name": "直接对被积函数作二阶泰勒展开，积分后再与分母的三阶展开相除"
+        }
+      ],
+      "questionKey": "624c06a2a932cace0431503c7e4afbb8298dbed355f8bb2c4bb1c667a53f8da9",
+      "faceKey": "01770dcf7e994ae9953cd2c6d6b41668c1ba328d4052abc54b3907870ab01cb6"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.second_order_nonhomogeneous",
+      "question": "求微分方程 $y''-5y'+6y=2xe^{2x}$ 的通解。",
+      "solution": "特征方程 $r^{2}-5r+6=0$，$r=2,3$，齐次通解 $y_{h}=C_{1}e^{2x}+C_{2}e^{3x}$。右端 $\\lambda=2$ 是单特征根，设 $y_{p}=x(Ax+B)e^{2x}$。令 $u=Ax^{2}+Bx$，代入左端得 $e^{2x}(u''-u')=e^{2x}(-2Ax+2A-B)=2xe^{2x}$，故 $-2A=2$、$2A-B=0$，$A=-1$、$B=-2$，$y_{p}=-(x^{2}+2x)e^{2x}$。通解为 $y=C_{1}e^{2x}+C_{2}e^{3x}-(x^{2}+2x)e^{2x}$。",
+      "routes": [
+        {
+          "id": "r-undetermined",
+          "summary": "先求齐次通解，再按单根共振规则设 $y_{p}=x(Ax+B)e^{2x}$ 并定系数",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "先解齐次方程 $y''-5y'+6y=0$",
+              "transformedState": "$r=2,3$，$y_{h}=C_{1}e^{2x}+C_{2}e^{3x}$，且 $\\lambda=2$ 与单根重合",
+              "condition": "非齐次方程的通解必须先有齐次通解作基础。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "因 $\\lambda=2$ 是单根，设 $y_{p}=x(Ax+B)e^{2x}$，令 $u=Ax^{2}+Bx$",
+              "transformedState": "$u''-u'=-2Ax+(2A-B)=2x$，$A=-1$、$B=-2$，$y_{p}=-(x^{2}+2x)e^{2x}$",
+              "condition": "共振时必须多乘一个 $x$，并把多项式升到一次。"
+            }
+          ],
+          "reason": "待定系数法按右端类型与共振规则设解，是本题的标准解法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-operator-two-first-order",
+          "summary": "用特征根把算子分解为 $(D-2)(D-3)$，逐个解两个一阶线性方程",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "由特征根 $2,3$ 把方程写成算子形式",
+              "transformedState": "$(D-2)(D-3)y=2xe^{2x}$",
+              "condition": "常系数算子可按特征根因式分解，两个因子可交换。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "令 $u=(D-3)y$，先解 $u'-2u=2xe^{2x}$",
+              "transformedState": "$(ue^{-2x})'=2x$，$u=(x^{2}+C)e^{2x}$",
+              "condition": "$\\lambda=2$ 与因子 $D-2$ 共振，积分自动产生 $x^{2}$ 项。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "再解 $y'-3y=(x^{2}+C)e^{2x}$",
+              "transformedState": "$(ye^{-3x})'=(x^{2}+C)e^{-x}$，积分得 $y=-(x^{2}+2x)e^{2x}+C_{1}e^{2x}+C_{2}e^{3x}$",
+              "condition": "两次一阶线性求解，常数项重新命名后与待定系数法结果一致。"
+            }
+          ],
+          "reason": "算子分解把二阶非齐次方程拆成两个一阶线性方程，思路与直接待定系数完全不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-forget-resonance",
+          "summary": "漏判共振，设 $y_{p}=(Ax+B)e^{2x}$ 导致无法比较系数",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "求齐次通解，$r=2,3$",
+              "transformedState": "$y_{h}=C_{1}e^{2x}+C_{2}e^{3x}$",
+              "condition": "该步无误。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "忽略 $\\lambda=2$ 是特征根，设 $y_{p}=(Ax+B)e^{2x}$（没有乘 $x$）",
+              "transformedState": "代入左端得 $e^{2x}(u''-u')=e^{2x}(-A)$，与 $2xe^{2x}$ 比较时 $x$ 的一次项无法匹配",
+              "condition": "错：共振时必须设 $x(Ax+B)e^{2x}$，漏乘 $x$ 会使特解失效。"
+            }
+          ],
+          "reason": "把共振情形当成普通情形设解，是二阶非齐次方程最常见的失分点。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：非齐次项指数与特征根重合时未乘 $x$。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先看 $\\lambda$ 是否与特征根重合：单根时特解必须乘以 $x$，并把多项式升到与右端同次",
+      "metadata": {
+        "motherId": "candidate.bankadv10.xjtu-2015-3-4",
+        "trainingGoal": "识别非齐次项与特征根的共振情形，正确设定特解并叠加齐次通解",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015 年高数下期末试题 三、解答题第4题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-3-4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "齐次部分特征根为 $r=2,3$",
+          "非齐次项 $f(x)=2xe^{2x}$，$\\lambda=2$ 是单特征根"
+        ],
+        "allowedVariations": [
+          "把右端改为 $2xe^{3x}$（与重根共振）",
+          "把右端改为 $2x$（非共振）"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-3-4",
+          "text": "求微分方程 $y''-5y'+6y=2xe^{2x}$ 的通解.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "二阶常系数非齐次线性方程",
+          "notes": "高等数学 bankadv10；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "xjtu-2015-3-4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：特征方程 $r^{2}-5r+6=0$ 得 $r=2,3$，$y_{h}=C_{1}e^{2x}+C_{2}e^{3x}$。$\\lambda=2$ 是单根，设 $y_{p}=x(Ax+B)e^{2x}$，令 $u=Ax^{2}+Bx$，则 $e^{2x}(u''-u')=e^{2x}(-2Ax+2A-B)=2xe^{2x}$，比较得 $A=-1$、$B=-2$。回代验证 $u=-x^{2}-2x$ 时 $u''-u'=-2-(-2x-2)=2x$，成立。故 $y=C_{1}e^{2x}+C_{2}e^{3x}-(x^{2}+2x)e^{2x}$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.characteristic_equation",
+        "M.undetermined_coefficients"
+      ],
+      "applicableMethodIds": [
+        "M.characteristic_equation",
+        "M.undetermined_coefficients"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.second_order_nonhomogeneous",
+          "methodId": "M.undetermined_coefficients"
+        },
+        {
+          "scenarioId": "S.ode.second_order_nonhomogeneous",
+          "methodId": "M.characteristic_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.undetermined_coefficients",
+        "M.characteristic_equation"
+      ],
+      "options": [
+        {
+          "id": "r-undetermined",
+          "name": "先求齐次通解，再按单根共振规则设 $y_{p}=x(Ax+B)e^{2x}$ 并定系数"
+        },
+        {
+          "id": "r-operator-two-first-order",
+          "name": "用特征根把算子分解为 $(D-2)(D-3)$，逐个解两个一阶线性方程"
+        },
+        {
+          "id": "r-forget-resonance",
+          "name": "漏判共振，设 $y_{p}=(Ax+B)e^{2x}$ 导致无法比较系数"
+        }
+      ],
+      "questionKey": "75c0f00586ab134050f397302b6622c87a67ba28539a1d37a72c599af8aed9f5",
+      "faceKey": "9a7066de5b6ed992b0920c5f4068b7192c6ddefbbce84fb5c938792915531ac3"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.improper_integral_calc",
+      "question": "求反常积分 $\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin x\\,\\mathrm{d}x$。",
+      "solution": "这是以 $x=0$ 为瑕点的瑕积分，且收敛。记 $I=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin x\\,\\mathrm{d}x$，令 $x=\\frac{\\pi}{2}-t$ 得 $I=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\cos x\\,\\mathrm{d}x$。两式相加：$2I=\\int_{0}^{\\frac{\\pi}{2}}\\ln(\\sin x\\cos x)\\mathrm{d}x=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin2x\\,\\mathrm{d}x-\\frac{\\pi}{2}\\ln2$。再令 $u=2x$，$\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin2x\\,\\mathrm{d}x=\\frac12\\int_{0}^{\\pi}\\ln\\sin u\\,\\mathrm{d}u=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin u\\,\\mathrm{d}u=I$。于是 $2I=I-\\frac{\\pi}{2}\\ln2$，得 $I=-\\frac{\\pi}{2}\\ln2$。",
+      "routes": [
+        {
+          "id": "r-symmetry-sum",
+          "summary": "用 $x=\\frac{\\pi}{2}-t$ 造出 $\\ln\\cos x$，两式相加化为 $2I=I-\\frac{\\pi}{2}\\ln2$",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "令 $x=\\frac{\\pi}{2}-t$ 换元",
+              "transformedState": "$I=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\cos t\\,\\mathrm{d}t$",
+              "condition": "换元后瑕点仍在 $t=0$，两边积分都收敛。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "两式相加并用 $\\sin x\\cos x=\\frac12\\sin2x$",
+              "transformedState": "$2I=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin2x\\,\\mathrm{d}x-\\frac{\\pi}{2}\\ln2$",
+              "condition": "两式在同一收敛区间上相加，常数项 $\\int_0^{\\frac{\\pi}{2}}\\ln\\frac12\\,\\mathrm{d}x=-\\frac{\\pi}{2}\\ln2$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "令 $u=2x$ 把 $\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin2x\\,\\mathrm{d}x$ 化为 $I$",
+              "transformedState": "$\\frac12\\int_{0}^{\\pi}\\ln\\sin u\\,\\mathrm{d}u=I$，解得 $I=-\\frac{\\pi}{2}\\ln2$",
+              "condition": "用到 $\\ln\\sin(\\pi-u)=\\ln\\sin u$ 的对称性。"
+            }
+          ],
+          "reason": "对称换元把两个未知积分互相转化，最后化成关于 $I$ 的一次方程，是这类瑕积分的标准技巧。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-substitute-double",
+          "summary": "先令 $u=2x$ 整体换元，再把后半区间翻回 $[0,\\frac{\\pi}{2}]$ 合并",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "先对原积分令 $u=2x$",
+              "transformedState": "$I=\\frac12\\int_{0}^{\\pi}\\ln\\sin\\frac{u}{2}\\,\\mathrm{d}u$",
+              "condition": "$u$ 从 $0$ 到 $\\pi$，瑕点在 $u=0$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "后半区间用 $u=\\pi-v$ 翻回，并用 $\\sin\\frac{u}{2}\\cos\\frac{u}{2}=\\frac12\\sin u$",
+              "transformedState": "$I=\\frac12\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin u\\,\\mathrm{d}u-\\frac{\\pi}{4}\\ln2=\\frac{I}{2}-\\frac{\\pi}{4}\\ln2$，故 $I=-\\frac{\\pi}{2}\\ln2$",
+              "condition": "换元后两个半区间合并为同一被积函数。"
+            }
+          ],
+          "reason": "从 $2x$ 换元出发再拆半区间合并，操作顺序与对称相加不同，同样得到一元方程。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-replace-ln-x",
+          "summary": "在瑕点附近用 $\\ln\\sin x\\sim\\ln x$ 后对整个区间直接套牛顿-莱布尼茨公式",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "把 $\\ln\\sin x$ 整体替换为 $\\ln x$ 再积分",
+              "transformedState": "得 $\\left[x\\ln x-x\\right]_{0}^{\\frac{\\pi}{2}}=\\frac{\\pi}{2}\\ln\\frac{\\pi}{2}-\\frac{\\pi}{2}\\approx-0.86$",
+              "condition": "错：$\\ln\\sin x$ 只在 $x\\to0^{+}$ 时与 $\\ln x$ 等价，在 $[0,\\frac{\\pi}{2}]$ 上整体替换会丢掉被积函数的差异，正确值为 $-\\frac{\\pi}{2}\\ln2\\approx-1.09$。"
+            }
+          ],
+          "reason": "等价替换只在瑕点邻域成立，把它当成整个区间上的恒等式必然给出错误数值。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：在有限区间上整体做局部等价替换。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先确认 $x=0$ 是瑕点且积分收敛，再用对称换元求值；不能在整段区间上把 $\\ln\\sin x$ 换成 $\\ln x$",
+      "metadata": {
+        "motherId": "candidate.bankadv10.ecnu-a-6",
+        "trainingGoal": "识别对数正弦瑕积分，用对称换元把积分化为关于自身的方程求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师范大学 2023-2024 学年第一学期 高等数学A期末（A卷）一、第6题（10分）",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "originalId": "ecnu-a-6"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "积分区间为 $[0,\\frac{\\pi}{2}]$，瑕点为 $x=0$",
+          "被积函数 $\\ln\\sin x$ 在区间上可积且恒为负"
+        ],
+        "allowedVariations": [
+          "改为求 $\\int_0^{\\pi}x\\ln\\sin x\\,\\mathrm{d}x$",
+          "改为求 $\\int_0^{\\frac{\\pi}{2}}\\ln\\cos x\\,\\mathrm{d}x$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-6",
+          "text": "求反常积分 $\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin x\\,\\mathrm{d}x$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "反常积分计算",
+          "notes": "高等数学 bankadv10；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "ecnu-a-6",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$\\ln\\sin x\\sim\\ln x$（$x\\to0^{+}$），$\\int_0^{\\eta}\\ln x\\,\\mathrm{d}x$ 收敛，故原积分收敛。记 $I=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin x\\,\\mathrm{d}x$，令 $x=\\frac{\\pi}{2}-t$ 得 $I=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\cos x\\,\\mathrm{d}x$；相加得 $2I=\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin2x\\,\\mathrm{d}x-\\frac{\\pi}{2}\\ln2$，而 $\\int_{0}^{\\frac{\\pi}{2}}\\ln\\sin2x\\,\\mathrm{d}x=\\frac12\\int_{0}^{\\pi}\\ln\\sin u\\,\\mathrm{d}u=I$（正弦在 $[0,\\pi]$ 上对称），故 $2I=I-\\frac{\\pi}{2}\\ln2$，$I=-\\frac{\\pi}{2}\\ln2\\approx-1.0888$。数值上被积函数恒负，结果符号合理。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.first_substitution"
+      ],
+      "applicableMethodIds": [
+        "M.first_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.integration_by_parts"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.partial_fraction"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.newton_leibniz",
+        "M.integration_by_parts",
+        "M.first_substitution",
+        "M.partial_fraction"
+      ],
+      "options": [
+        {
+          "id": "r-symmetry-sum",
+          "name": "用 $x=\\frac{\\pi}{2}-t$ 造出 $\\ln\\cos x$，两式相加化为 $2I=I-\\frac{\\pi}{2}\\ln2$"
+        },
+        {
+          "id": "r-substitute-double",
+          "name": "先令 $u=2x$ 整体换元，再把后半区间翻回 $[0,\\frac{\\pi}{2}]$ 合并"
+        },
+        {
+          "id": "r-replace-ln-x",
+          "name": "在瑕点附近用 $\\ln\\sin x\\sim\\ln x$ 后对整个区间直接套牛顿-莱布尼茨公式"
+        }
+      ],
+      "questionKey": "db7e79a474198dd6f7a64c7c33931150dee1eebad98d14d6dba1f0580c0c26d4",
+      "faceKey": "e5a41ddde8c99861da3f1e401671088873aab6336e082e68e001f0533bd04aaf"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.second_order_homogeneous",
+      "question": "求微分方程 $y'''-y''+2y'-2y=0$ 的通解。",
+      "solution": "特征方程 $r^{3}-r^{2}+2r-2=0$，分组分解得 $(r-1)(r^{2}+2)=0$，特征根 $r=1$ 与 $r=\\pm\\sqrt2\\mathrm{i}$。实根给 $C_{1}e^{x}$，纯虚根给 $C_{2}\\cos\\sqrt2x+C_{3}\\sin\\sqrt2x$，故通解 $y=C_{1}e^{x}+C_{2}\\cos\\sqrt2x+C_{3}\\sin\\sqrt2x$。",
+      "routes": [
+        {
+          "id": "r-factor-characteristic",
+          "summary": "写出三阶特征方程，分组分解出 $(r-1)(r^{2}+2)$，按根型写三个线性无关解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "写特征方程 $r^{3}-r^{2}+2r-2=0$ 并分组分解",
+              "transformedState": "$r^{2}(r-1)+2(r-1)=(r-1)(r^{2}+2)=0$",
+              "condition": "系数全为常数，右端为零，可按特征多项式因式分解。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "由 $r=1$ 与 $r^{2}+2=0$ 写出各根对应的解",
+              "transformedState": "$y=C_{1}e^{x}+C_{2}\\cos\\sqrt2x+C_{3}\\sin\\sqrt2x$",
+              "condition": "三阶方程需要三个线性无关解；纯虚根对应三角解。"
+            }
+          ],
+          "reason": "特征方程法直接由因式分解后的根型给出通解，是最短的路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-reduce-to-v",
+          "summary": "把方程写成 $(y'-y)''+2(y'-y)=0$，令 $v=y'-y$ 降阶，逐层解出",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.reduction_of_order",
+              "state": "整理 $y'''-y''+2y'-2y=(y'-y)''+2(y'-y)$，令 $v=y'-y$",
+              "transformedState": "$v''+2v=0$",
+              "condition": "原方程整体可写成关于 $v$ 的二阶方程。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "解 $v''+2v=0$",
+              "transformedState": "$v=C_{2}\\cos\\sqrt2x+C_{3}\\sin\\sqrt2x$",
+              "condition": "特征根 $\\pm\\sqrt2\\mathrm{i}$。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.reduction_of_order",
+              "state": "解 $y'-y=v$，用积分因子 $e^{-x}$",
+              "transformedState": "$y=e^{x}\\left(C_{1}+\\int e^{-x}v\\,\\mathrm{d}x\\right)=C_{1}e^{x}+C_{2}\\cos\\sqrt2x+C_{3}\\sin\\sqrt2x$",
+              "condition": "积分常数重新命名，齐次部分为 $C_{1}e^{x}$。"
+            }
+          ],
+          "reason": "把方程整体看成 $v$ 的二阶方程再逐层积分，与直接写特征方程的思路不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-drop-imaginary-unit",
+          "summary": "把纯虚根 $r^{2}+2=0$ 解成实根 $r=\\pm\\sqrt2$，写出指数型通解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "特征方程与分解正确：$(r-1)(r^{2}+2)=0$",
+              "transformedState": "$r=1$ 与 $r^{2}+2=0$",
+              "condition": "该步无误。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "解 $r^{2}+2=0$ 时丢掉虚数单位，写成 $r=\\pm\\sqrt2$",
+              "transformedState": "$y=C_{1}e^{x}+C_{2}e^{\\sqrt2x}+C_{3}e^{-\\sqrt2x}$",
+              "condition": "错：$r=\\pm\\sqrt2\\mathrm{i}$ 是纯虚根，对应三角解；$e^{\\pm\\sqrt2x}$ 不满足原方程。"
+            }
+          ],
+          "reason": "把 $r^{2}+a^{2}=0$ 当作 $r=\\pm a$ 是复根情形的常见错法，整组解都会失效。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：纯虚根漏写 $\\mathrm{i}$。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先因式分解特征多项式，再逐根判断实根或纯虚根，纯虚根必须写成三角解",
+      "metadata": {
+        "motherId": "candidate.bankadv10.xjtu-2017-js2",
+        "trainingGoal": "对常系数齐次方程因式分解特征多项式，按根的类型写出线性无关解组",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2017 年高数下期末试题 一、计算题第2题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2017-js2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "特征多项式 $r^{3}-r^{2}+2r-2$ 可分组分解为 $(r-1)(r^{2}+2)$",
+          "方程右端为零，系数全为常数"
+        ],
+        "allowedVariations": [
+          "把常数项 $-2$ 改为 $-4$",
+          "把 $2r$ 改为 $r$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2017-js2",
+          "text": "求微分方程 $y'''-y''+2y'-2y=0$ 的通解。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "二阶常系数齐次线性方程",
+          "notes": "高等数学 bankadv10；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "xjtu-2017-js2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：特征方程 $r^{3}-r^{2}+2r-2=r^{2}(r-1)+2(r-1)=(r-1)(r^{2}+2)=0$，特征根 $r=1$、$r=\\pm\\sqrt2\\mathrm{i}$，故通解 $y=C_{1}e^{x}+C_{2}\\cos\\sqrt2x+C_{3}\\sin\\sqrt2x$。回代验证：$y'''$ $=2\\sqrt2\\sin\\sqrt2x$、$y''=-2\\cos\\sqrt2x$、$2y'=-2\\sqrt2\\sin\\sqrt2x$、$-2y=-2\\cos\\sqrt2x$，四项相加为零。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.characteristic_equation"
+      ],
+      "applicableMethodIds": [
+        "M.characteristic_equation",
+        "M.reduction_of_order"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.second_order_homogeneous",
+          "methodId": "M.characteristic_equation"
+        },
+        {
+          "scenarioId": "S.ode.second_order_homogeneous",
+          "methodId": "M.reduction_of_order"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.characteristic_equation",
+        "M.reduction_of_order"
+      ],
+      "options": [
+        {
+          "id": "r-drop-imaginary-unit",
+          "name": "把纯虚根 $r^{2}+2=0$ 解成实根 $r=\\pm\\sqrt2$，写出指数型通解"
+        },
+        {
+          "id": "r-factor-characteristic",
+          "name": "写出三阶特征方程，分组分解出 $(r-1)(r^{2}+2)$，按根型写三个线性无关解"
+        },
+        {
+          "id": "r-reduce-to-v",
+          "name": "把方程写成 $(y'-y)''+2(y'-y)=0$，令 $v=y'-y$ 降阶，逐层解出"
+        }
+      ],
+      "questionKey": "c5314db1a9197ac3f22aa4a7095e34a4d6316655875d9d2138cce2879f932afb",
+      "faceKey": "b0ca7d56feaeeabc996d9f1d1324bb4f4335ac98891fa7d71041fcb34213fc3e"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.variable_limit_derivative",
+      "question": "设函数 $f(u,v)$ 具有一阶连续偏导数，$z=\\int_0^{xy}f(e^t,t)\\,\\mathrm{d}t$，求 $\\frac{\\partial z}{\\partial x},\\ \\frac{\\partial^2 z}{\\partial x\\partial y}$。",
+      "solution": "上限 $u=xy$ 关于 $x$ 的导数为 $y$，由变限积分求导得 $\\frac{\\partial z}{\\partial x}=y f(e^{xy},xy)$。再对 $y$ 求偏导：$\\frac{\\partial^2 z}{\\partial x\\partial y}=f(e^{xy},xy)+y\\left[e^{xy}x f_{1}(e^{xy},xy)+x f_{2}(e^{xy},xy)\\right]=f(e^{xy},xy)+xy\\left[e^{xy}f_{1}(e^{xy},xy)+f_{2}(e^{xy},xy)\\right]$，其中 $f_{1},f_{2}$ 分别表示 $f$ 对第一、第二变元的偏导数。",
+      "routes": [
+        {
+          "id": "r-x-then-y",
+          "summary": "先对 $x$ 求变限积分导数，再把结果按乘积与复合链式对 $y$ 求偏导",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "上限 $xy$ 关于 $x$ 求导，被积函数在 $t=xy$ 处取值",
+              "transformedState": "$\\frac{\\partial z}{\\partial x}=y\\,f(e^{xy},xy)$",
+              "condition": "$f$ 连续，$\\frac{\\partial}{\\partial x}(xy)=y$。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "把 $z_{x}=yf(e^{xy},xy)$ 看作 $y$ 的函数，用乘积法则与链式法则",
+              "transformedState": "$\\frac{\\partial^2 z}{\\partial x\\partial y}=f(e^{xy},xy)+xy\\left[e^{xy}f_{1}(e^{xy},xy)+f_{2}(e^{xy},xy)\\right]$",
+              "condition": "内层 $e^{xy}$、$xy$ 都要对 $y$ 求导，各产生因子 $x$。"
+            }
+          ],
+          "reason": "先 $x$ 后 $y$ 的顺序与题目要求的记法一致，是最直接的两步走法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-y-then-x",
+          "summary": "先算 $z_{y}$，再用混合偏导连续交换次序求 $z_{xy}$",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "上限 $xy$ 关于 $y$ 求导",
+              "transformedState": "$\\frac{\\partial z}{\\partial y}=x\\,f(e^{xy},xy)$",
+              "condition": "$f$ 连续，$\\frac{\\partial}{\\partial y}(xy)=x$。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "再用 $z_{xy}=z_{yx}$ 对 $x$ 求偏导",
+              "transformedState": "$\\frac{\\partial^2 z}{\\partial y\\partial x}=f(e^{xy},xy)+xy\\left[e^{xy}f_{1}(e^{xy},xy)+f_{2}(e^{xy},xy)\\right]$",
+              "condition": "$f$ 一阶连续偏导保证 $z$ 的二阶混合偏导连续，故次序可交换。"
+            }
+          ],
+          "reason": "利用混合偏导可交换，换一个求导次序计算，过程与主路线互补。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-miss-chain",
+          "summary": "把上限当成 $x$，漏掉链式因子 $y$ 与 $xy$ 的取值位置",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "直接照搬上限为 $x$ 的公式，写成 $f(e^{x},x)$",
+              "transformedState": "误得 $\\frac{\\partial z}{\\partial x}=f(e^{x},x)$，漏掉上限 $xy$ 对 $x$ 的导数因子 $y$",
+              "condition": "错：上限是 $xy$ 而非 $x$，被积函数应在 $t=xy$ 处取值，链式因子 $y$ 不能丢。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "在错误结果上继续对 $y$ 求导",
+              "transformedState": "得 $\\frac{\\partial^2 z}{\\partial x\\partial y}=0$（$f(e^{x},x)$ 与 $y$ 无关）",
+              "condition": "错：正确结果含 $f$ 与 $xy[e^{xy}f_{1}+f_{2}]$ 两项，不会为零。"
+            }
+          ],
+          "reason": "上限为复合函数时必须补上链式因子，直接把 $xy$ 当 $x$ 是本题最典型的错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：漏掉上限的链式求导因子。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "变限积分上限为 $xy$ 时，被积函数在 $xy$ 处取值并补链式因子；求混合偏导要逐层对复合变元求导",
+      "metadata": {
+        "motherId": "candidate.bankadv10.xjtu-2015-3-1",
+        "trainingGoal": "对上限为二元函数的变限积分求偏导，并用链式法则求混合偏导",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015 年高数下期末试题 三、解答题第1题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-3-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "积分上限为 $xy$，被积函数为 $f(e^{t},t)$",
+          "$f$ 具有一阶连续偏导数"
+        ],
+        "allowedVariations": [
+          "把上限改为 $x+y$",
+          "把被积函数改为 $f(t,e^{t})$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-3-1",
+          "text": "设函数 $f(u,v)$ 具有一阶连续偏导数，$z=\\int_0^{xy}f(e^t,t)\\,dt$，求 $\\frac{\\partial z}{\\partial x},\\ \\frac{\\partial^2 z}{\\partial x\\partial y}$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "变限积分求导",
+          "notes": "高等数学 bankadv10；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "xjtu-2015-3-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：上限 $xy$ 对 $x$ 的导数为 $y$，故 $\\frac{\\partial z}{\\partial x}=y f(e^{xy},xy)$。再对 $y$ 求偏导：$\\frac{\\partial}{\\partial y}\\left[yf(e^{xy},xy)\\right]=f(e^{xy},xy)+y\\left[f_{1}e^{xy}x+f_{2}x\\right]=f+xy\\left[e^{xy}f_{1}+f_{2}\\right]$，其中 $f_{1},f_{2},f$ 均在 $(e^{xy},xy)$ 取值。另按 $z_{y}=xf(e^{xy},xy)$ 先对 $y$ 求导再对 $x$ 求导，混合偏导连续（$f$ 一阶连续偏导）故结果一致，交叉验证通过。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.variable_limit_integral"
+      ],
+      "applicableMethodIds": [
+        "M.variable_limit_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.variable_limit_integral"
+        },
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.equiv_infinitesimal"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.variable_limit_integral",
+        "M.lhopital",
+        "M.equiv_infinitesimal"
+      ],
+      "options": [
+        {
+          "id": "r-miss-chain",
+          "name": "把上限当成 $x$，漏掉链式因子 $y$ 与 $xy$ 的取值位置"
+        },
+        {
+          "id": "r-x-then-y",
+          "name": "先对 $x$ 求变限积分导数，再把结果按乘积与复合链式对 $y$ 求偏导"
+        },
+        {
+          "id": "r-y-then-x",
+          "name": "先算 $z_{y}$，再用混合偏导连续交换次序求 $z_{xy}$"
+        }
+      ],
+      "questionKey": "567bb05e0bc4712570677f4ff1fe273fbbf22e2b36fd601c59db7e11002249bc",
+      "faceKey": "d0f286f89b749aa4cc33639b0fdd322ad9ad910022d1946e33aeca56909c8b73"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.second_order_nonhomogeneous",
+      "question": "求微分方程 $x''+2x'+2x=te^{-t}\\cos t$ 的通解。",
+      "solution": "特征方程 $r^{2}+2r+2=0$，根 $r=-1\\pm\\mathrm{i}$，齐次通解 $x_{h}=e^{-t}(C_{1}\\cos t+C_{2}\\sin t)$。右端 $te^{-t}\\cos t=\\mathrm{Re}\\left(te^{(-1+\\mathrm{i})t}\\right)$ 且 $\\lambda=-1+\\mathrm{i}$ 是单特征根，故设复值特解 $z_{p}=t(At+B)e^{\\lambda t}$，令 $u=At^{2}+Bt$。代入得 $e^{\\lambda t}\\left(u''+2\\mathrm{i}u'\\right)=te^{\\lambda t}$，即 $4\\mathrm{i}At+(2A+2\\mathrm{i}B)=t$，解得 $A=-\\frac{\\mathrm{i}}{4}$、$B=\\frac14$。取实部：$x_{p}=\\frac{e^{-t}}{4}(t^{2}\\sin t+t\\cos t)$。通解 $x=e^{-t}(C_{1}\\cos t+C_{2}\\sin t)+\\frac{e^{-t}}{4}(t^{2}\\sin t+t\\cos t)$。",
+      "routes": [
+        {
+          "id": "r-complex-undetermined",
+          "summary": "把右端写成复指数的实部，按单根共振设 $t(At+B)e^{\\lambda t}$，取实部得到特解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "解齐次方程 $x''+2x'+2x=0$ 的特征方程",
+              "transformedState": "$r=-1\\pm\\mathrm{i}$，$x_{h}=e^{-t}(C_{1}\\cos t+C_{2}\\sin t)$，且 $\\lambda=-1+\\mathrm{i}$ 是单根",
+              "condition": "复根给出衰减振荡的齐次解。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "设 $z_{p}=t(At+B)e^{\\lambda t}$，把方程化为 $u''+2\\mathrm{i}u'=t$",
+              "transformedState": "$4\\mathrm{i}At+(2A+2\\mathrm{i}B)=t$，$A=-\\frac{\\mathrm{i}}{4}$、$B=\\frac14$",
+              "condition": "$\\lambda$ 与特征根重合，特解必须多乘 $t$；多项式取到与右端同次。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "取实部并叠加齐次通解",
+              "transformedState": "$x_{p}=\\frac{e^{-t}}{4}(t^{2}\\sin t+t\\cos t)$，$x=e^{-t}(C_{1}\\cos t+C_{2}\\sin t)+\\frac{e^{-t}}{4}(t^{2}\\sin t+t\\cos t)$",
+              "condition": "实系数方程中复值解的实部仍是原方程的解。"
+            }
+          ],
+          "reason": "复指数写法把指数乘三角统一成一个指数因子，共振与多项式次数都一目了然。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-exp-substitution",
+          "summary": "令 $x=e^{-t}u$ 消去指数因子，化为 $u''+u=t\\cos t$ 后用实值待定系数",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "先由特征根 $r=-1\\pm\\mathrm{i}$ 判断齐次解，再用代换 $x=e^{-t}u$",
+              "transformedState": "$x''+2x'+2x=e^{-t}(u''+u)=te^{-t}\\cos t$，即 $u''+u=t\\cos t$",
+              "condition": "$e^{-t}\\neq0$，代换可逆；齐次根 $\\pm\\mathrm{i}$ 说明 $\\cos t,\\sin t$ 会共振。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "设 $u_{p}=t\\left[(at+b)\\cos t+(ct+d)\\sin t\\right]$",
+              "transformedState": "比较系数得 $a=0$、$b=\\frac14$、$c=\\frac14$、$d=0$，$u_{p}=\\frac{t^{2}\\sin t+t\\cos t}{4}$",
+              "condition": "右端 $t\\cos t$ 与齐次解共振，故乘 $t$ 且次数升一。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "回代 $x=e^{-t}u$",
+              "transformedState": "$x=e^{-t}(C_{1}\\cos t+C_{2}\\sin t)+\\frac{e^{-t}}{4}(t^{2}\\sin t+t\\cos t)$",
+              "condition": "常数重新命名，齐次部分形式不变。"
+            }
+          ],
+          "reason": "先用指数代换把方程化为无阻尼形式，再全程用实值三角函数待定系数，与复数法互为印证。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-no-resonance",
+          "summary": "忽略共振，只设 $e^{-t}(A\\cos t+B\\sin t)$ 形式的特解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "求齐次通解 $x_{h}=e^{-t}(C_{1}\\cos t+C_{2}\\sin t)$",
+              "transformedState": "$r=-1\\pm\\mathrm{i}$",
+              "condition": "该步无误。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "忽略 $\\lambda=-1+\\mathrm{i}$ 是特征根，设 $x_{p}=e^{-t}(A\\cos t+B\\sin t)$（既不乘 $t$ 也不含多项式）",
+              "transformedState": "代入左端恒得 $0$，出现 $0=te^{-t}\\cos t$，无法比较系数",
+              "condition": "错：共振时必须设 $t$ 乘一次多项式再乘 $e^{-t}\\cos t$ 型，否则特解被齐次解吞掉。"
+            }
+          ],
+          "reason": "把共振当普通情形设解，左端算出来恒为零，特解根本不存在，是这类题的经典错法。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：指数乘三角的指数与特征根重合时未乘 $t$。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "t",
+        "x"
+      ],
+      "comparisonCriterion": "先判断 $\\lambda=-1+\\mathrm{i}$ 是否与特征根重合：重合时特解要乘 $t$ 并把多项式升到与右端同次",
+      "metadata": {
+        "motherId": "candidate.bankadv10.xjtu-2018-jd4",
+        "trainingGoal": "处理指数乘三角型右端与特征根共振的二阶常系数非齐次方程",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2018 年高数下期末试题 三、解答题第4题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2018-jd4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "左端为 $x''+2x'+2x$，特征根 $-1\\pm\\mathrm{i}$",
+          "右端 $te^{-t}\\cos t$，$\\lambda=-1+\\mathrm{i}$ 为单特征根"
+        ],
+        "allowedVariations": [
+          "把右端改为 $e^{-t}\\sin t$（非共振）",
+          "把右端改为 $te^{-t}$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2018-jd4",
+          "text": "求微分方程 $x''+2x'+2x=te^{-t}\\cos t$ 的通解。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "二阶常系数非齐次线性方程",
+          "notes": "高等数学 bankadv10；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv10",
+        "originalId": "xjtu-2018-jd4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：特征方程 $r^{2}+2r+2=0$ 得 $r=-1\\pm\\mathrm{i}$。右端 $=\\mathrm{Re}(te^{\\lambda t})$，$\\lambda=-1+\\mathrm{i}$ 是单根，设复值解 $z_{p}=t(At+B)e^{\\lambda t}$；代入后化为 $u''+2\\mathrm{i}u'=t$（$u=At^{2}+Bt$），即 $4\\mathrm{i}At+(2A+2\\mathrm{i}B)=t$，$A=-\\frac{\\mathrm{i}}{4}$、$B=\\frac14$。取实部得 $x_{p}=\\frac{e^{-t}}{4}(t^{2}\\sin t+t\\cos t)$。回代验证：令 $x=e^{-t}g$，$g=\\frac{t^{2}\\sin t+t\\cos t}{4}$，则 $x''+2x'+2x=e^{-t}(g''+g)$，而 $g''+g=t\\cos t$，故成立。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.characteristic_equation",
+        "M.undetermined_coefficients"
+      ],
+      "applicableMethodIds": [
+        "M.characteristic_equation",
+        "M.undetermined_coefficients"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.second_order_nonhomogeneous",
+          "methodId": "M.undetermined_coefficients"
+        },
+        {
+          "scenarioId": "S.ode.second_order_nonhomogeneous",
+          "methodId": "M.characteristic_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.undetermined_coefficients",
+        "M.characteristic_equation"
+      ],
+      "options": [
+        {
+          "id": "r-exp-substitution",
+          "name": "令 $x=e^{-t}u$ 消去指数因子，化为 $u''+u=t\\cos t$ 后用实值待定系数"
+        },
+        {
+          "id": "r-no-resonance",
+          "name": "忽略共振，只设 $e^{-t}(A\\cos t+B\\sin t)$ 形式的特解"
+        },
+        {
+          "id": "r-complex-undetermined",
+          "name": "把右端写成复指数的实部，按单根共振设 $t(At+B)e^{\\lambda t}$，取实部得到特解"
+        }
+      ],
+      "questionKey": "9d528bedcb7bdff0c0b882b31f8bce2f86e719592b10828c2f42438b03df7878",
+      "faceKey": "55f4ff417da7ba68f72fd2463a21c555c00a62814552dc4dd76bf31553ae5c34"
+    }
+  ]
+}

@@ -61,7 +61,11 @@ test('existing mixed-entrance pools and short pools start from summaries with th
     const run = await engine.createPracticeRun(structuredClone(mixed));
     assert.equal(run.generationStatus, 'complete');
     assert.deepEqual(run.items.map(item => item.question.entranceScenarioId), mixed.items.map(question => question.entranceScenarioId));
-    const short = await prepareLocalPracticeInput(await choiceFor('RT.pool.S.multiint.change_order'), skeleton);
+    // bankadv 补题后已没有天然短题池，这里从真实题池里截出两道题，
+    // 专门验证“题池不足三道时也能完整开始并结束”。
+    const full = await prepareLocalPracticeInput(await choiceFor('RT.pool.S.multiint.change_order'), skeleton);
+    const short = { ...full, items: full.items.slice(0, 2),
+      preparedTarget: { ...full.preparedTarget, questions: full.preparedTarget.questions.slice(0, 2) } };
     assert.equal(short.items.length, 2);
     assert.equal((await engine.createPracticeRun(structuredClone(short))).generationStatus, 'complete');
   } finally { engine.close(); }

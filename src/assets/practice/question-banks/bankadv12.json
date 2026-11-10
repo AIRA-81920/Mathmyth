@@ -1,0 +1,3374 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv12",
+  "sourceSha256": "705b1593b46d64cb15cbf2032453ab312dcbb41c04e9e2f188cb304096a5bf22",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.symmetry_simplify",
+      "question": "设 $(D)$ 为圆域 $x^2+y^2\\leq R^2$，$(D_1)$ 为 $(D)$ 在第一象限的部分，则区域 $(D)$ 上的二重积分 $\\iint_{(D)}(x+y)^2\\,\\mathrm{d}x\\,\\mathrm{d}y$ 的最简表达式是（　）。A. $4\\iint_{(D_1)}y^2\\,\\mathrm{d}x\\,\\mathrm{d}y$；B. $0$；C. $16\\iint_{(D_1)}x^2\\,\\mathrm{d}x\\,\\mathrm{d}y$；D. $4\\iint_{(D_1)}(x^2+y^2)\\,\\mathrm{d}x\\,\\mathrm{d}y$。",
+      "solution": "把 $(x+y)^2$ 展开得 $x^2+2xy+y^2$。$D$ 关于 $y$ 轴对称、$2xy$ 是 $x$ 的奇函数，故 $\\iint_D2xy\\,d\\sigma=0$。$x^2$、$y^2$ 对 $x$、$y$ 均为偶函数，且 $D$ 的四个象限全等，所以 $\\iint_Dx^2d\\sigma=\\iint_Dy^2d\\sigma=4\\iint_{D_1}x^2d\\sigma=4\\iint_{D_1}y^2d\\sigma$。因此 $\\iint_D(x+y)^2d\\sigma=\\iint_D(x^2+y^2)d\\sigma=4\\iint_{D_1}(x^2+y^2)\\,d\\sigma$，最简表达式为 D。",
+      "routes": [
+        {
+          "id": "r-symmetry-cross-term",
+          "summary": "展开后先用奇偶性删去交叉项 $2xy$，再把偶项缩到第一象限乘 4",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.symmetry_simplify",
+              "methodId": "M.symmetry",
+              "state": "被积函数展开为 $x^2+2xy+y^2$，$D$ 关于 $y$ 轴与 $x$ 轴都对称",
+              "transformedState": "$\\iint_D2xy\\,d\\sigma=0$，积分化为 $\\iint_D(x^2+y^2)d\\sigma$",
+              "condition": "$2xy$ 对 $x$ 为奇（对 $y$ 也是奇），在关于 $y$ 轴的对称区域上积分为零。"
+            },
+            {
+              "scenarioId": "S.multiint.symmetry_simplify",
+              "methodId": "M.symmetry",
+              "state": "$x^2$、$y^2$ 对两变量都是偶函数，$D$ 的四个象限与 $D_1$ 全等",
+              "transformedState": "$\\iint_D(x^2+y^2)d\\sigma=4\\iint_{D_1}(x^2+y^2)d\\sigma$，对应选项 D",
+              "condition": "偶函数分量缩到第一象限后乘 4；$x^2$ 与 $y^2$ 的系数都是 1，不能互相抵消。"
+            }
+          ],
+          "reason": "对称性先用一次判零、一次取四倍，两步即得 D；关键是只删 $2xy$ 而保留 $x^2+y^2$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在圆域 $x^2+y^2\\leq R^2$ 上成立。"
+        },
+        {
+          "id": "r-symmetry-then-polar",
+          "summary": "先删交叉项，再用极坐标算出 $4\\iint_{D_1}(x^2+y^2)$ 的值为 $\\frac{\\pi R^4}{2}$ 来核对",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.symmetry_simplify",
+              "methodId": "M.symmetry",
+              "state": "展开后交叉项 $2xy$ 对 $x$ 为奇，$D$ 关于 $y$ 轴对称",
+              "transformedState": "$\\iint_D(x+y)^2d\\sigma=\\iint_D(x^2+y^2)d\\sigma$",
+              "condition": "只有交叉项判零，两个平方项都保留。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "$\\iint_{D_1}(x^2+y^2)d\\sigma$，$D_1$ 为 $0\\leq\\theta\\leq\\frac{\\pi}{2}$、$0\\leq r\\leq R$ 的四分之一圆域",
+              "transformedState": "$=\\int_0^{\\frac{\\pi}{2}}d\\theta\\int_0^Rr^2\\cdot r\\,dr=\\frac{\\pi}{2}\\cdot\\frac{R^4}{4}=\\frac{\\pi R^4}{8}$，乘 4 得 $\\frac{\\pi R^4}{2}$，与左边 $\\iint_D(x^2+y^2)d\\sigma=\\frac{\\pi R^4}{2}$ 相同",
+              "condition": "极坐标面积元 $r\\,dr\\,d\\theta$ 必须保留，$D_1$ 的角范围是 $0$ 到 $\\frac{\\pi}{2}$。"
+            }
+          ],
+          "reason": "不直接比形式，而是把候选表达式的值算出来与左端核对，确认只有 D 的系数 4 正确。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在圆域上成立。"
+        },
+        {
+          "id": "r-kill-even-x2",
+          "summary": "把偶函数 $x^2$ 也当成奇函数判零，只留下 $y^2$ 项，误选 A",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.symmetry_simplify",
+              "methodId": "M.symmetry",
+              "state": "展开后 $x^2$ 与 $y^2$ 对 $x$ 都是偶函数，交叉项 $2xy$ 为奇",
+              "transformedState": "误把 $\\iint_Dx^2d\\sigma$ 也判为 0，只剩 $\\iint_Dy^2d\\sigma=4\\iint_{D_1}y^2d\\sigma$，选 A",
+              "condition": "错：$x^2=(-x)^2$ 是偶函数，不满足 $f(-x,y)=-f(x,y)$ 的判零条件；判零后丢掉的是 $\\frac{\\pi R^4}{4}$。"
+            }
+          ],
+          "reason": "把「关于 $y$ 轴对称」误当成「含 $x$ 就判零」，对 $x^2$ 也判零，结果只剩 $y^2$，正好对上干扰项 A。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：对偶函数 $x^2$ 使用奇函数判零规则。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "R"
+      ],
+      "comparisonCriterion": "先展开并只对真正的奇项 $2xy$ 判零，偶项 $x^2+y^2$ 要缩到第一象限乘 4；可用极坐标算出 $\\frac{\\pi R^4}{8}$ 核对系数。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2024-2",
+        "trainingGoal": "识别圆域上 $(x+y)^2$ 展开后的奇偶结构，用对称性删交叉项、偶项缩象限后乘回倍数。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2024 高数下期末试题 一、单选题 第2题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2024-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$D$ 是半径 $R$ 的圆域，$D_1$ 是其第一象限部分",
+          "被积函数展开后含奇项 $2xy$ 与偶项 $x^2+y^2$",
+          "四个象限与 $D_1$ 全等"
+        ],
+        "allowedVariations": [
+          "把 $(x+y)^2$ 换成 $(x+y+1)^2$",
+          "把圆域换成正方形 $|x|\\leq R,\\ |y|\\leq R$",
+          "把 $D_1$ 改为 $x\\geq0$ 的半圆"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2024-2",
+          "text": "设 $(D)$ 为圆域 $x^2+y^2\\leq R^2$，$(D_1)$ 为 $(D)$ 在第一象限的部分，则区域 $(D)$ 上的二重积分 $\\iint_{(D)}(x+y)^2\\,\\mathrm{d}x\\,\\mathrm{d}y$ 的最简表达式是（　）。A. $4\\iint_{(D_1)}y^2\\,\\mathrm{d}x\\,\\mathrm{d}y$；B. $0$；C. $16\\iint_{(D_1)}x^2\\,\\mathrm{d}x\\,\\mathrm{d}y$；D. $4\\iint_{(D_1)}(x^2+y^2)\\,\\mathrm{d}x\\,\\mathrm{d}y$。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "利用对称性简化",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2024-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$(x+y)^2=x^2+2xy+y^2$。$D$ 关于 $y$ 轴对称而 $2xy$ 对 $x$ 为奇，故 $\\iint_D2xy\\,d\\sigma=0$；$x^2$、$y^2$ 对两变量都是偶函数且四个象限全等，所以 $\\iint_Dx^2d\\sigma=\\iint_Dy^2d\\sigma=4\\iint_{D_1}x^2d\\sigma=4\\iint_{D_1}y^2d\\sigma$。于是左边 $=4\\iint_{D_1}(x^2+y^2)d\\sigma$，即 D。数值核对：$\\iint_Dx^2d\\sigma=\\frac{\\pi R^4}{4}$，左边 $=2\\cdot\\frac{\\pi R^4}{4}=\\frac{\\pi R^4}{2}$；而 $4\\iint_{D_1}(x^2+y^2)d\\sigma=4\\cdot\\frac{\\pi R^4}{8}=\\frac{\\pi R^4}{2}$，一致。A 只有 $4\\iint_{D_1}y^2=\\frac{\\pi R^4}{4}$，少一半；C 为 $\\pi R^4$，多一倍；B 为 0 显然不对。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.symmetry"
+      ],
+      "applicableMethodIds": [
+        "M.symmetry",
+        "M.polar_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.symmetry_simplify",
+          "methodId": "M.symmetry"
+        },
+        {
+          "scenarioId": "S.multiint.symmetry_simplify",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.symmetry",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform",
+        "M.first_substitution",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-kill-even-x2",
+          "name": "把偶函数 $x^2$ 也当成奇函数判零，只留下 $y^2$ 项，误选 A"
+        },
+        {
+          "id": "r-symmetry-cross-term",
+          "name": "展开后先用奇偶性删去交叉项 $2xy$，再把偶项缩到第一象限乘 4"
+        },
+        {
+          "id": "r-symmetry-then-polar",
+          "name": "先删交叉项，再用极坐标算出 $4\\iint_{D_1}(x^2+y^2)$ 的值为 $\\frac{\\pi R^4}{2}$ 来核对"
+        }
+      ],
+      "questionKey": "9b008899d88a87bdff141c17b78602bcc5de4dc0f28223b7ed8c6aef4450c191",
+      "faceKey": "7ad23a889c96d428af6e93145b9b242b202807b4d8b103dc5124d5def54ea54c"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.polar",
+      "question": "极限 $\\lim\\limits_{r\\to 0^+}\\dfrac{1}{r^2}\\iint_{x^2+y^2\\leq r^2}\\mathrm{e}^{x^2+y^2}\\,\\mathrm{d}x\\,\\mathrm{d}y$ 等于（　）。A. $0$；B. $1$；C. $\\pi$；D. $2\\pi$。",
+      "solution": "极坐标下区域是 $0\\leq\\theta\\leq2\\pi$、$0\\leq\\rho\\leq r$，$d\\sigma=\\rho\\,d\\rho\\,d\\theta$，故 $\\iint_{x^2+y^2\\leq r^2}e^{x^2+y^2}d\\sigma=\\int_0^{2\\pi}d\\theta\\int_0^re^{\\rho^2}\\rho\\,d\\rho$。令 $u=\\rho^2$ 得 $\\int_0^re^{\\rho^2}\\rho\\,d\\rho=\\frac12(e^{r^2}-1)$，于是积分为 $\\pi(e^{r^2}-1)$。原式 $=\\pi\\frac{e^{r^2}-1}{r^2}$，由 $e^{t}-1\\sim t\\ (t\\to0)$ 得极限 $\\pi$，选 C。",
+      "routes": [
+        {
+          "id": "r-polar-exact",
+          "summary": "极坐标化后内层用 $u=\\rho^2$ 凑微分，取到精确值再与 $r^2$ 比较",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "区域 $x^2+y^2\\leq r^2$ 是半径 $r$ 的圆盘，$d\\sigma=\\rho\\,d\\rho\\,d\\theta$",
+              "transformedState": "$\\frac{1}{r^2}\\iint=\\frac{1}{r^2}\\int_0^{2\\pi}d\\theta\\int_0^re^{\\rho^2}\\rho\\,d\\rho$",
+              "condition": "圆盘对应 $0\\leq\\theta\\leq2\\pi$、$0\\leq\\rho\\leq r$，$r$ 是极限中的参量。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "$\\int_0^re^{\\rho^2}\\rho\\,d\\rho$，令 $u=\\rho^2$",
+              "transformedState": "$=\\frac12(e^{r^2}-1)$，故原式 $=\\pi\\frac{e^{r^2}-1}{r^2}$",
+              "condition": "$\\rho\\,d\\rho=\\frac12du$，系数 $\\frac12$ 不能漏。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "$\\pi\\frac{e^{r^2}-1}{r^2}$",
+              "transformedState": "$e^{r^2}-1\\sim r^2\\ (r\\to0)$，极限为 $\\pi$，选 C",
+              "condition": "等价无穷小 $e^{t}-1\\sim t$，此处 $t=r^2\\to0$。"
+            }
+          ],
+          "reason": "先精确算出 $\\pi(e^{r^2}-1)$，再用等价无穷小收尾，计算量最小且没有近似风险。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的极限过程中成立。"
+        },
+        {
+          "id": "r-polar-expand",
+          "summary": "极坐标化后把 $e^{\\rho^2}$ 展开成幂级数逐项积分，只保留主导项",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "区域为半径 $r$ 的圆盘，极坐标面积元 $\\rho\\,d\\rho\\,d\\theta$",
+              "transformedState": "$\\frac{1}{r^2}\\int_0^{2\\pi}\\int_0^re^{\\rho^2}\\rho\\,d\\rho\\,d\\theta$",
+              "condition": "先不做精确积分，只把极坐标框架搭好。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "$e^{\\rho^2}=1+\\rho^2+O(\\rho^4)$，可逐项用 $\\rho\\,d\\rho$ 积分",
+              "transformedState": "$\\iint=\\int_0^{2\\pi}\\int_0^r(1+\\rho^2+\\cdots)\\rho\\,d\\rho\\,d\\theta=\\pi r^2+\\frac{\\pi}{2}r^4+O(r^6)$",
+              "condition": "每项积分的权重 $\\rho\\,d\\rho$ 不能丢。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "$\\frac{\\pi r^2+\\frac{\\pi}{2}r^4+O(r^6)}{r^2}$",
+              "transformedState": "$=\\pi+O(r^2)\\to\\pi$，选 C",
+              "condition": "$r\\to0^+$ 时高次项消失。"
+            }
+          ],
+          "reason": "不依赖 $e^{t}-1$ 的精确原函数，用展开式逐项积分，主导项 $\\pi r^2$ 立刻给出 $\\pi$。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $r\\to0^+$ 的小圆盘上成立。"
+        },
+        {
+          "id": "r-miss-half",
+          "summary": "把 $\\int\\rho e^{\\rho^2}d\\rho$ 当成 $e^{\\rho^2}$，漏掉凑微分的 $\\frac12$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "圆盘区域与面积元 $\\rho\\,d\\rho\\,d\\theta$ 都写对",
+              "transformedState": "原式 $=\\frac{2\\pi}{r^2}\\int_0^re^{\\rho^2}\\rho\\,d\\rho$",
+              "condition": "问题不在极坐标框架，而在下一步的换元系数。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "$\\int_0^re^{\\rho^2}\\rho\\,d\\rho$",
+              "transformedState": "误算为 $e^{r^2}-1$（漏掉 $\\frac12$），原式 $\\approx\\frac{2\\pi(e^{r^2}-1)}{r^2}\\to2\\pi$，错选 D",
+              "condition": "错：$\\int\\rho e^{\\rho^2}d\\rho=\\frac12e^{\\rho^2}+C$，代上下限必带 $\\frac12$；丢掉它使结果整体放大一倍。"
+            }
+          ],
+          "reason": "凑微分时忽略 $\\rho\\,d\\rho=\\frac12d(\\rho^2)$ 的系数，$\\pi$ 变成 $2\\pi$，正好落到干扰项 D。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：漏掉 $u=\\rho^2$ 换元产生的 $\\frac12$。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "r"
+      ],
+      "comparisonCriterion": "极坐标下 $d\\sigma=\\rho\\,d\\rho\\,d\\theta$ 不能漏因子；内层换元 $u=\\rho^2$ 的 $\\frac12$ 必须保留，最后用 $e^{t}-1\\sim t$ 收尾。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2022-3",
+        "trainingGoal": "把小圆盘上的 $e^{x^2+y^2}$ 二重积分用极坐标算出精确值，再除以 $r^2$ 取极限。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2022 年高等数学下期末试题 一、选择题 第3题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2022-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "积分区域是半径 $r$ 的圆盘",
+          "被积函数为 $e^{x^2+y^2}$，只依赖 $\\rho$",
+          "极限过程是 $r\\to0^+$"
+        ],
+        "allowedVariations": [
+          "把 $e^{x^2+y^2}$ 换成 $\\sqrt{x^2+y^2}$",
+          "把分母 $r^2$ 换成 $r$",
+          "把被积函数换成 $\\cos(x^2+y^2)$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2022-3",
+          "text": "极限 $\\lim\\limits_{r\\to 0^+}\\dfrac{1}{r^2}\\iint_{x^2+y^2\\leq r^2}\\mathrm{e}^{x^2+y^2}\\,\\mathrm{d}x\\,\\mathrm{d}y$ 等于（　）。A. $0$；B. $1$；C. $\\pi$；D. $2\\pi$。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "极坐标计算二重积分",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2022-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：极坐标下 $\\iint_{x^2+y^2\\leq r^2}e^{x^2+y^2}d\\sigma=\\int_0^{2\\pi}d\\theta\\int_0^re^{\\rho^2}\\rho\\,d\\rho=2\\pi\\cdot\\frac12(e^{r^2}-1)=\\pi(e^{r^2}-1)$。于是原式 $=\\pi\\frac{e^{r^2}-1}{r^2}\\to\\pi$（因 $e^{r^2}-1\\sim r^2$），选 C。交叉验证：被积函数在圆盘上介于 $1$ 与 $e^{r^2}$，积分介于 $\\pi r^2$ 与 $\\pi r^2e^{r^2}$，除以 $r^2$ 后夹逼到 $\\pi$，与精确计算一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.polar_transform",
+        "M.first_substitution"
+      ],
+      "applicableMethodIds": [
+        "M.polar_transform",
+        "M.first_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.polar_transform",
+        "M.first_substitution",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-polar-exact",
+          "name": "极坐标化后内层用 $u=\\rho^2$ 凑微分，取到精确值再与 $r^2$ 比较"
+        },
+        {
+          "id": "r-polar-expand",
+          "name": "极坐标化后把 $e^{\\rho^2}$ 展开成幂级数逐项积分，只保留主导项"
+        },
+        {
+          "id": "r-miss-half",
+          "name": "把 $\\int\\rho e^{\\rho^2}d\\rho$ 当成 $e^{\\rho^2}$，漏掉凑微分的 $\\frac12$"
+        }
+      ],
+      "questionKey": "457a163d7b30c8527445ceb2018a1a5b1d2ca21526da75044af8af800943f590",
+      "faceKey": "2891bf8e4919ac05d609db2d442d448b6a9024465c994db1a20eb5d338b2abb5"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.geometric_application",
+      "question": "设空间区域 $\\Omega=\\{(x,y,z)\\mid 0\\leq z\\leq \\sqrt{4-x^2-y^2},\\ x^2+y^2\\leq 1\\}$，则 $\\Omega$ 的体积等于（　）。(A) $4\\int_0^{\\frac{\\pi}{2}}\\mathrm{d}\\theta\\int_0^1 r\\sqrt{4-r^2}\\,\\mathrm{d}r$；(B) $\\int_0^{2\\pi}\\mathrm{d}\\theta\\int_0^2 r\\sqrt{4-r^2}\\,\\mathrm{d}r$；(C) $4\\int_0^{\\frac{\\pi}{2}}\\mathrm{d}\\theta\\int_0^1\\sqrt{4-r^2}\\,\\mathrm{d}r$；(D) $\\int_0^{2\\pi}\\mathrm{d}\\theta\\int_0^2\\sqrt{4-r^2}\\,\\mathrm{d}r$。",
+      "solution": "体积 $V=\\iint_D\\left[\\sqrt{4-x^2-y^2}-0\\right]d\\sigma$，其中投影域 $D$ 由柱面 $x^2+y^2\\leq1$ 决定，即 $r\\leq1$。极坐标下 $d\\sigma=r\\,dr\\,d\\theta$，$V=\\int_0^{2\\pi}d\\theta\\int_0^1r\\sqrt{4-r^2}\\,dr$；由旋转对称性也可写成 $4\\int_0^{\\frac{\\pi}{2}}d\\theta\\int_0^1r\\sqrt{4-r^2}\\,dr$，对应 (A)。计算 $\\int_0^1r\\sqrt{4-r^2}dr=\\frac13(8-3\\sqrt3)$，故 $V=\\frac{2\\pi}{3}(8-3\\sqrt3)$。",
+      "routes": [
+        {
+          "id": "r-element-polar",
+          "summary": "微元法写出高差二重积分，再由旋转对称取 $0$ 到 $\\frac{\\pi}{2}$ 的四倍并用极坐标",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.element_method",
+              "state": "立体夹在 $z=0$ 与球面 $z=\\sqrt{4-x^2-y^2}$ 之间，且被柱面 $x^2+y^2\\leq1$ 截断",
+              "transformedState": "$V=\\iint_D\\sqrt{4-r^2}\\,d\\sigma$，$D:\\ x^2+y^2\\leq1$",
+              "condition": "投影域由两个条件共同决定，$r$ 的上限是 1 而不是 2。"
+            },
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.polar_transform",
+              "state": "被积函数与区域都只依赖 $r$，面积元 $d\\sigma=r\\,dr\\,d\\theta$",
+              "transformedState": "$V=\\int_0^{2\\pi}d\\theta\\int_0^1r\\sqrt{4-r^2}\\,dr=4\\int_0^{\\frac{\\pi}{2}}d\\theta\\int_0^1r\\sqrt{4-r^2}\\,dr$，对应 (A)",
+              "condition": "旋转对称允许把对 $\\theta$ 的全周积分写成 4 倍的四分之一周。"
+            },
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.polar_transform",
+              "state": "$\\int_0^1r\\sqrt{4-r^2}dr$，令 $u=4-r^2$",
+              "transformedState": "$=\\frac13(8-3\\sqrt3)$，故 $V=\\frac{2\\pi}{3}(8-3\\sqrt3)$",
+              "condition": "$r\\,dr=-\\frac12du$，上下限由 $u=4$ 变到 $u=3$。"
+            }
+          ],
+          "reason": "先微元法定出高差与投影域，再用旋转对称与极坐标把二重积分降为一元积分，形式正好对上 (A)。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $r\\leq1$ 的投影域内上曲面始终高于 $z=0$。"
+        },
+        {
+          "id": "r-section-z",
+          "summary": "先二后一：按高度 $z$ 的水平圆盘截面面积分段积分",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.element_method",
+              "state": "改用 $V=\\int_0^2A(z)dz$，$A(z)$ 是高度 $z$ 处水平截面的面积",
+              "transformedState": "截面条件 $r^2\\leq1$ 与 $r^2\\leq4-z^2$ 必须同时成立，需比较两者大小",
+              "condition": "立体最高点 $z=2$，截面在 $z=\\sqrt3$ 处换支。"
+            },
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.element_method",
+              "state": "$0\\leq z\\leq\\sqrt3$ 时 $4-z^2\\geq1$；$\\sqrt3\\leq z\\leq2$ 时 $4-z^2<1$",
+              "transformedState": "$A(z)=\\pi\\ (0\\leq z\\leq\\sqrt3)$，$A(z)=\\pi(4-z^2)\\ (\\sqrt3\\leq z\\leq2)$",
+              "condition": "两个约束谁起作用由 $z=\\sqrt3$ 分界。"
+            },
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.element_method",
+              "state": "$V=\\pi\\int_0^{\\sqrt3}dz+\\pi\\int_{\\sqrt3}^2(4-z^2)dz$",
+              "transformedState": "$=\\pi\\sqrt3+\\pi\\left[4z-\\frac{z^3}{3}\\right]_{\\sqrt3}^{2}=\\frac{2\\pi}{3}(8-3\\sqrt3)$，与主路线一致",
+              "condition": "$\\left[4z-\\frac{z^3}{3}\\right]_{\\sqrt3}^{2}=\\frac{16}{3}-3\\sqrt3$。"
+            }
+          ],
+          "reason": "把积分方向改成沿 $z$ 切片，用截面面积代替二重积分，可独立检验投影限 $r\\leq1$ 是否用对。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $0\\leq z\\leq2$ 的截面描述下成立。"
+        },
+        {
+          "id": "r-ball-projection",
+          "summary": "只看球面 $z=\\sqrt{4-x^2-y^2}$，把投影域当成 $r\\leq2$，误选 (B)",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.element_method",
+              "state": "由 $z=\\sqrt{4-x^2-y^2}$ 读出球面半径 2，直接把投影域写成 $x^2+y^2\\leq4$",
+              "transformedState": "$V=\\int_0^{2\\pi}d\\theta\\int_0^2r\\sqrt{4-r^2}\\,dr$，对应 (B)",
+              "condition": "错：区域还有 $x^2+y^2\\leq1$ 的柱面约束，投影半径只能是 1；$r\\leq2$ 表示整个上半球。"
+            },
+            {
+              "scenarioId": "S.multiint.geometric_application",
+              "methodId": "M.polar_transform",
+              "state": "$2\\pi\\cdot\\frac13\\cdot4^{\\frac32}$",
+              "transformedState": "$=\\frac{16\\pi}{3}$，比正确值 $\\frac{2\\pi}{3}(8-3\\sqrt3)$ 大得多",
+              "condition": "$1<r\\leq2$ 的部分并不属于 $\\Omega$，多算了半球的一大块。"
+            }
+          ],
+          "reason": "柱面 $x^2+y^2\\leq1$ 决定了投影域，忽略它等于把体积算成半径 2 的上半球，正好是干扰项 (B)。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：丢掉柱面约束、把投影半径取成 2。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "r"
+      ],
+      "comparisonCriterion": "投影域由 $x^2+y^2\\leq1$ 决定，$r$ 上限是 1；极坐标面积元 $r\\,dr\\,d\\theta$ 不能漏，(C)(D) 都缺 $r$。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2021-7",
+        "trainingGoal": "区分球面给出的 $z$ 上限与柱面给出的投影域，把体积写成高差积分并用极坐标或截面法计算。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2021 年高数下期末试题 二、选择题 第2题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2021-7"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "上曲面 $z=\\sqrt{4-x^2-y^2}$，下曲面 $z=0$",
+          "投影域被柱面 $x^2+y^2\\leq1$ 限制",
+          "体积为 $\\frac{2\\pi}{3}(8-3\\sqrt3)$"
+        ],
+        "allowedVariations": [
+          "把 $x^2+y^2\\leq1$ 换成 $x^2+y^2\\leq3$",
+          "把球面换成 $z=\\sqrt{9-x^2-y^2}$",
+          "改为求该立体的侧面积"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2021-7",
+          "text": "设空间区域 $\\Omega=\\{(x,y,z)\\mid 0\\leq z\\leq \\sqrt{4-x^2-y^2},\\ x^2+y^2\\leq 1\\}$，则 $\\Omega$ 的体积等于（　）。(A) $4\\int_0^{\\frac{\\pi}{2}}\\mathrm{d}\\theta\\int_0^1 r\\sqrt{4-r^2}\\,\\mathrm{d}r$；(B) $\\int_0^{2\\pi}\\mathrm{d}\\theta\\int_0^2 r\\sqrt{4-r^2}\\,\\mathrm{d}r$；(C) $4\\int_0^{\\frac{\\pi}{2}}\\mathrm{d}\\theta\\int_0^1\\sqrt{4-r^2}\\,\\mathrm{d}r$；(D) $\\int_0^{2\\pi}\\mathrm{d}\\theta\\int_0^2\\sqrt{4-r^2}\\,\\mathrm{d}r$。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "几何应用（体积等）",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2021-7",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：投影域由柱面 $x^2+y^2\\leq1$ 给出，是圆盘 $D:\\ r\\leq1$（不是球面赤道圆 $r\\leq2$），上曲面 $z=\\sqrt{4-r^2}$、下曲面 $z=0$，故 $V=\\iint_D\\sqrt{4-r^2}d\\sigma=\\int_0^{2\\pi}d\\theta\\int_0^1r\\sqrt{4-r^2}\\,dr$，由旋转对称等于 $4\\int_0^{\\frac{\\pi}{2}}d\\theta\\int_0^1r\\sqrt{4-r^2}\\,dr$，即 (A)。计算 $\\int_0^1r\\sqrt{4-r^2}dr=\\frac13(8-3\\sqrt3)$，得 $V=\\frac{2\\pi}{3}(8-3\\sqrt3)$。截面法复核：$\\int_0^{\\sqrt3}\\pi\\,dz+\\int_{\\sqrt3}^{2}\\pi(4-z^2)dz=\\pi\\sqrt3+\\pi\\left(\\frac{16}{3}-3\\sqrt3\\right)=\\frac{2\\pi}{3}(8-3\\sqrt3)$，一致。(B) 取 $r\\leq2$ 相当于半径 2 的上半球体积 $\\frac{16\\pi}{3}$；(C)(D) 漏乘雅可比 $r$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.element_method",
+        "M.polar_transform"
+      ],
+      "applicableMethodIds": [
+        "M.element_method",
+        "M.polar_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.geometric_application",
+          "methodId": "M.element_method"
+        },
+        {
+          "scenarioId": "S.multiint.geometric_application",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.geometric_application",
+          "methodId": "M.polar_transform"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.element_method",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform"
+      ],
+      "options": [
+        {
+          "id": "r-ball-projection",
+          "name": "只看球面 $z=\\sqrt{4-x^2-y^2}$，把投影域当成 $r\\leq2$，误选 (B)"
+        },
+        {
+          "id": "r-element-polar",
+          "name": "微元法写出高差二重积分，再由旋转对称取 $0$ 到 $\\frac{\\pi}{2}$ 的四倍并用极坐标"
+        },
+        {
+          "id": "r-section-z",
+          "name": "先二后一：按高度 $z$ 的水平圆盘截面面积分段积分"
+        }
+      ],
+      "questionKey": "988ffb09c0eeaac32df0ffe7c1592fe1731317f6ea3363cced430b706537e90d",
+      "faceKey": "c4eded13da507bd0b8d049cd83d5052731704e54b6020969654902bb9bd4dac2"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.spherical",
+      "question": "计算三重积分 $\\iiint_{(V)}\\left(\\frac{x}{a}+\\frac{y}{b}+\\frac{z}{c}\\right)^{2}\\mathrm{d}V$，其中 $(V)$ 为球体 $x^{2}+y^{2}+z^{2}\\le R^{2}$，$a,b,c$ 为正数。",
+      "solution": "展开 $(\\frac xa+\\frac yb+\\frac zc)^2=\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}+\\frac{2xy}{ab}+\\frac{2xz}{ac}+\\frac{2yz}{bc}$。球体关于三个坐标面对称，三个交叉项分别对某个变量为奇，积分均为 0。由球坐标 $x=\\rho\\sin\\varphi\\cos\\theta$、$dV=\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta$ 得 $\\iiint x^2dV=\\int_0^{2\\pi}\\cos^2\\theta\\,d\\theta\\int_0^{\\pi}\\sin^3\\varphi\\,d\\varphi\\int_0^R\\rho^4d\\rho=\\pi\\cdot\\frac43\\cdot\\frac{R^5}{5}=\\frac{4\\pi R^5}{15}$，同理 $\\iiint y^2dV=\\iiint z^2dV=\\frac{4\\pi R^5}{15}$。故原积分 $=\\frac{4\\pi R^5}{15}\\left(\\frac1{a^2}+\\frac1{b^2}+\\frac1{c^2}\\right)$。",
+      "routes": [
+        {
+          "id": "r-expand-symmetry",
+          "summary": "先展开平方，用球体对称性删去三个交叉项，再用球坐标把 $\\iiint x^2dV$ 算出",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "被积函数展开为 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}+\\frac{2xy}{ab}+\\frac{2xz}{ac}+\\frac{2yz}{bc}$",
+              "transformedState": "交叉项 $2xy$、$2xz$、$2yz$ 分别对 $x$、$y$、$z$ 为奇，球体关于三个坐标面对称，故它们的积分都是 0",
+              "condition": "每个交叉项都含某个变量的奇次幂，三项都必须判零。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "剩余项 $\\iiint\\frac{x^2}{a^2}dV$ 等；球坐标下 $x=\\rho\\sin\\varphi\\cos\\theta$，$dV=\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta$",
+              "transformedState": "$\\iiint x^2dV=\\int_0^{2\\pi}\\cos^2\\theta\\,d\\theta\\int_0^{\\pi}\\sin^3\\varphi\\,d\\varphi\\int_0^R\\rho^4d\\rho=\\pi\\cdot\\frac43\\cdot\\frac{R^5}{5}=\\frac{4\\pi R^5}{15}$",
+              "condition": "球坐标体积元含 $\\rho^2\\sin\\varphi$，$x^2$ 提供 $\\rho^2\\sin^2\\varphi\\cos^2\\theta$。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "由对称性 $\\iiint y^2dV=\\iiint z^2dV=\\frac{4\\pi R^5}{15}$",
+              "transformedState": "原积分 $=\\frac{4\\pi R^5}{15}\\left(\\frac1{a^2}+\\frac1{b^2}+\\frac1{c^2}\\right)$",
+              "condition": "三个平方项的系数分别对应正数 $a,b,c$，符号都为正。"
+            }
+          ],
+          "reason": "展开后只剩三个平方项有贡献，球体上三者积分相等，一次球坐标积分即可。",
+          "valid": true,
+          "preferred": true,
+          "condition": "球体以原点为中心，坐标面都是对称面。"
+        },
+        {
+          "id": "r-spherical-theta-orthogonality",
+          "summary": "不预先判零，直接把 $x,y,z$ 代入球坐标，用 $\\theta$ 的正交性一次算完",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "把每个因子代入球坐标：$\\frac xa=\\frac{\\rho\\sin\\varphi\\cos\\theta}{a}$ 等",
+              "transformedState": "被积函数化为 $\\rho^2\\left[\\sin^2\\varphi\\left(\\frac{\\cos^2\\theta}{a^2}+\\frac{\\sin^2\\theta}{b^2}\\right)+\\frac{\\cos^2\\varphi}{c^2}+\\frac{\\sin^2\\varphi\\sin2\\theta}{ab}+\\frac{\\sin2\\varphi\\cos\\theta}{ac}+\\frac{\\sin2\\varphi\\sin\\theta}{bc}\\right]$",
+              "condition": "$\\theta$ 积分中 $\\sin2\\theta$、$\\cos\\theta$、$\\sin\\theta$ 在一个周期上积零。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "先对 $\\theta$ 积分：$\\int_0^{2\\pi}\\cos^2\\theta\\,d\\theta=\\int_0^{2\\pi}\\sin^2\\theta\\,d\\theta=\\pi$，三个交叉项的 $\\theta$ 积分为 0",
+              "transformedState": "$=\\pi\\int_0^{\\pi}\\sin^3\\varphi\\,d\\varphi\\int_0^R\\rho^4d\\rho\\left(\\frac1{a^2}+\\frac1{b^2}\\right)+2\\pi\\int_0^{\\pi}\\sin\\varphi\\cos^2\\varphi\\,d\\varphi\\int_0^R\\rho^4d\\rho\\cdot\\frac1{c^2}$",
+              "condition": "$\\int_0^{\\pi}\\sin^3\\varphi\\,d\\varphi=\\frac43$，$\\int_0^{\\pi}\\sin\\varphi\\cos^2\\varphi\\,d\\varphi=\\frac23$。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "合并：$\\pi\\cdot\\frac43\\cdot\\frac{R^5}{5}$ 与 $2\\pi\\cdot\\frac23\\cdot\\frac{R^5}{5}$",
+              "transformedState": "$=\\frac{4\\pi R^5}{15}\\left(\\frac1{a^2}+\\frac1{b^2}+\\frac1{c^2}\\right)$，与主路线一致",
+              "condition": "两部分的系数都化为 $\\frac{4\\pi R^5}{15}$。"
+            }
+          ],
+          "reason": "不先判零也能算：$\\theta$ 的正交性自动消掉交叉项，两条路线结果相同但顺序不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在球体与球坐标下成立。"
+        },
+        {
+          "id": "r-each-equals-r2",
+          "summary": "把 $\\iiint x^2dV$、$\\iiint y^2dV$、$\\iiint z^2dV$ 都当成 $\\iiint\\rho^2dV$，结果放大 3 倍",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "算出 $\\iiint(x^2+y^2+z^2)dV=\\int_0^{2\\pi}d\\theta\\int_0^{\\pi}\\sin\\varphi\\,d\\varphi\\int_0^R\\rho^4d\\rho=\\frac{4\\pi R^5}{5}$",
+              "transformedState": "误认为每一项都等于 $\\frac{4\\pi R^5}{5}$，即取 $\\iiint x^2dV=\\iiint\\rho^2dV$",
+              "condition": "错：三者之和才是 $\\frac{4\\pi R^5}{5}$，由对称性每项是它的 $\\frac13$，即 $\\frac{4\\pi R^5}{15}$。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "按错误系数合并三项",
+              "transformedState": "$=\\frac{4\\pi R^5}{5}\\left(\\frac1{a^2}+\\frac1{b^2}+\\frac1{c^2}\\right)$，是正确答案的 3 倍",
+              "condition": "漏掉了把总量三等分这一步，系数从 $\\frac4{15}$ 变成 $\\frac45$。"
+            }
+          ],
+          "reason": "对称性只说三项相等，并没说每项等于总和；忘记 $\\frac13$ 是最常见的系数错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把 $\\iiint\\rho^2dV$ 直接当作其中一项。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "R",
+        "a",
+        "b",
+        "c"
+      ],
+      "comparisonCriterion": "球体上 $\\iiint x^2dV=\\frac13\\iiint\\rho^2dV=\\frac{4\\pi R^5}{15}$；交叉项因奇性为零，三项系数分别取 $a,b,c$。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2020-js7",
+        "trainingGoal": "把带参数的平方展开，在球体上用对称性删交叉项并正确切分 $\\iiint x^2dV$。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2020 年高数下期末考试试题 三、计算题 第7题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2020-js7"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$(V)$ 是以原点为心、半径 $R$ 的球体",
+          "$a,b,c$ 为正数，只作为系数",
+          "三个平方项在球体上的积分相等"
+        ],
+        "allowedVariations": [
+          "把 $a,b,c$ 中的某个换成 $2a$",
+          "把球体换成 $\\rho\\leq R$ 的球壳",
+          "把被积函数换成 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2020-js7",
+          "text": "计算三重积分 $\\iiint_{(V)}\\left(\\frac{x}{a}+\\frac{y}{b}+\\frac{z}{c}\\right)^{2}\\mathrm{d}V$，其中 $(V)$ 为球体 $x^{2}+y^{2}+z^{2}\\le R^{2}$，$a,b,c$ 为正数。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "球坐标计算三重积分",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2020-js7",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：展开得 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}+\\frac{2xy}{ab}+\\frac{2xz}{ac}+\\frac{2yz}{bc}$。球体关于三个坐标面都对称，三个交叉项分别对 $x$、$y$、$z$ 为奇，积分全为 0。又由对称性 $\\iiint x^2dV=\\iiint y^2dV=\\iiint z^2dV=\\frac13\\iiint\\rho^2dV$，而 $\\iiint\\rho^2dV=\\int_0^{2\\pi}d\\theta\\int_0^{\\pi}\\sin\\varphi\\,d\\varphi\\int_0^R\\rho^4d\\rho=2\\pi\\cdot2\\cdot\\frac{R^5}{5}=\\frac{4\\pi R^5}{5}$，故每个平方项为 $\\frac{4\\pi R^5}{15}$。于是原积分 $=\\frac{4\\pi R^5}{15}\\left(\\frac1{a^2}+\\frac1{b^2}+\\frac1{c^2}\\right)$。数值核对：$a=b=c=R=1$ 时为 $\\frac{4\\pi}{5}$，而 $\\iiint(x+y+z)^2dV=\\iiint(x^2+y^2+z^2)dV=\\frac{4\\pi}{5}$，一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.spherical_transform"
+      ],
+      "applicableMethodIds": [
+        "M.spherical_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.spherical",
+          "methodId": "M.spherical_transform"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.spherical_transform"
+      ],
+      "options": [
+        {
+          "id": "r-each-equals-r2",
+          "name": "把 $\\iiint x^2dV$、$\\iiint y^2dV$、$\\iiint z^2dV$ 都当成 $\\iiint\\rho^2dV$，结果放大 3 倍"
+        },
+        {
+          "id": "r-expand-symmetry",
+          "name": "先展开平方，用球体对称性删去三个交叉项，再用球坐标把 $\\iiint x^2dV$ 算出"
+        },
+        {
+          "id": "r-spherical-theta-orthogonality",
+          "name": "不预先判零，直接把 $x,y,z$ 代入球坐标，用 $\\theta$ 的正交性一次算完"
+        }
+      ],
+      "questionKey": "a7429eb4095dba36d4efbb13298906c3a58568d2869dfe9b704462dd3b668321",
+      "faceKey": "19b2feec3a31842f8e9e515c91218ba295103cc754d983cde4ef5a1a4b7dfddd"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.physical_application",
+      "question": "设有一物体，由曲面 $z=\\sqrt{4-x^2-y^2}$ 与 $z=\\frac{1}{3}(x^2+y^2)$ 所围成，已知它在任意点 $(x,y,z)$ 处的密度 $\\mu=z$，求此物体的质量.",
+      "solution": "质量微元 $dm=\\mu\\,dV=z\\,dV$，故 $m=\\iiint_\\Omega z\\,dV$。两曲面交线：$\\sqrt{4-r^2}=\\frac{r^2}{3}$，令 $t=r^2$ 得 $t^2+9t-36=0$，$t=3$，即 $r=\\sqrt3$、$z=1$。于是 $\\Omega:\\ r\\leq\\sqrt3,\\ \\frac{r^2}{3}\\leq z\\leq\\sqrt{4-r^2}$。先对 $z$ 积分：$\\int_{\\frac{r^2}{3}}^{\\sqrt{4-r^2}}z\\,dz=\\frac12\\left(4-r^2-\\frac{r^4}{9}\\right)$，故 $m=\\iint_D\\frac12\\left(4-r^2-\\frac{r^4}{9}\\right)d\\sigma$。极坐标下 $d\\sigma=r\\,dr\\,d\\theta$，$m=2\\pi\\cdot\\frac12\\int_0^{\\sqrt3}\\left(4-r^2-\\frac{r^4}{9}\\right)r\\,dr$，令 $t=r^2$ 得 $m=\\frac{\\pi}{2}\\int_0^3\\left(4-t-\\frac{t^2}{9}\\right)dt=\\frac{\\pi}{2}\\cdot\\frac{13}{2}=\\frac{13\\pi}{4}$。",
+      "routes": [
+        {
+          "id": "r-element-z-then-polar",
+          "summary": "质量微元 $dm=z\\,dV$，先求交线定出 $z$ 的上下限，内层对 $z$ 积分后用极坐标收尾",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "密度 $\\mu=z$，质量对体积具有可加性",
+              "transformedState": "$dm=z\\,dV$，$m=\\iiint_\\Omega z\\,dV$",
+              "condition": "质量是密度对体积的积分，被积函数不能换成 1。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "两曲面交线 $\\sqrt{4-r^2}=\\frac{r^2}{3}$，令 $t=r^2$ 解 $t^2+9t-36=0$",
+              "transformedState": "$t=3$，$r=\\sqrt3$，$z=1$；投影域 $r\\leq\\sqrt3$，$\\frac{r^2}{3}\\leq z\\leq\\sqrt{4-r^2}$",
+              "condition": "抛物面在下、球面在上；交线之外两者上下关系反转，故投影半径是 $\\sqrt3$。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "先对 $z$ 积分：$\\int_{\\frac{r^2}{3}}^{\\sqrt{4-r^2}}z\\,dz$",
+              "transformedState": "$=\\frac12\\left(4-r^2-\\frac{r^4}{9}\\right)$，$m=\\iint_D\\frac12\\left(4-r^2-\\frac{r^4}{9}\\right)d\\sigma$",
+              "condition": "$\\int z\\,dz=\\frac{z^2}{2}$，代上下限后是两个平方相减。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "面积元 $d\\sigma=r\\,dr\\,d\\theta$，$\\theta\\in[0,2\\pi]$",
+              "transformedState": "$m=2\\pi\\cdot\\frac12\\int_0^{\\sqrt3}\\left(4-r^2-\\frac{r^4}{9}\\right)r\\,dr=\\frac{\\pi}{2}\\int_0^3\\left(4-t-\\frac{t^2}{9}\\right)dt=\\frac{13\\pi}{4}$",
+              "condition": "令 $t=r^2$ 时 $r\\,dr=\\frac{dt}{2}$，外层的 $2\\pi\\cdot\\frac12$ 与 $\\frac12$ 合起来整理成 $\\frac{\\pi}{2}$。"
+            }
+          ],
+          "reason": "物理量先落成 $\\iiint z\\,dV$，交线给出投影半径与上下限，先 $z$ 后极坐标是最直接的算法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $r\\leq\\sqrt3$ 内两曲面上下关系不变。"
+        },
+        {
+          "id": "r-element-r-then-z",
+          "summary": "微元法后交换积分次序，先对 $r$ 积分，按 $z$ 在 $[0,1]$、$[1,2]$ 分段",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "密度 $\\mu=z$",
+              "transformedState": "$m=\\iiint_\\Omega z\\,dV$",
+              "condition": "质量微元先写对。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "由交线得 $r=\\sqrt3$、$z=1$；把 $(r,z)$ 平面区域按高度 $z$ 分段描述",
+              "transformedState": "$0\\leq z\\leq1$ 时由 $z=\\frac{r^2}{3}$ 得 $r\\leq\\sqrt{3z}$；$1\\leq z\\leq2$ 时由 $z=\\sqrt{4-r^2}$ 得 $r\\leq\\sqrt{4-z^2}$",
+              "condition": "交线 $z=1$ 是两个边界曲线的分界高度。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "在 $(r,z)$ 平面写累次积分，$m=\\int_0^{2\\pi}d\\theta\\int z\\,dz\\int r\\,dr$",
+              "transformedState": "$m=2\\pi\\left[\\int_0^1z\\cdot\\frac{3z}{2}dz+\\int_1^2z\\cdot\\frac{4-z^2}{2}dz\\right]$",
+              "condition": "每段 $\\int_0^{R(z)}r\\,dr=\\frac{R(z)^2}{2}$，$\\theta$ 积分给 $2\\pi$。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$2\\pi\\left(\\frac12+\\frac98\\right)$",
+              "transformedState": "$=2\\pi\\cdot\\frac{13}{8}=\\frac{13\\pi}{4}$，与主路线一致",
+              "condition": "两段积分分别为 $\\frac12$ 与 $\\frac98$，用于检验交线 $r=\\sqrt3$ 是否正确。"
+            }
+          ],
+          "reason": "同一质量积分改按 $z$ 先积 $r$，把 $(r,z)$ 平面分段，能独立核对交线 $r=\\sqrt3$ 与两段边界。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $(r,z)$ 平面分段描述成立。"
+        },
+        {
+          "id": "r-volume-instead-of-mass",
+          "summary": "把密度 $\\mu=z$ 漏掉，内层积分当成 $\\int1\\,dz$，算成体积",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "已写出 $m=\\iiint_\\Omega z\\,dV$，但计算内层时把被积函数当成 1",
+              "transformedState": "误得 $m=\\iint_D\\left(\\sqrt{4-r^2}-\\frac{r^2}{3}\\right)d\\sigma$（实际算的是体积）",
+              "condition": "错：密度 $z$ 必须参与积分，$\\int z\\,dz=\\frac{z^2}{2}$，不是高差。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "用极坐标算这个错的二重积分",
+              "transformedState": "$=2\\pi\\int_0^{\\sqrt3}\\left(\\sqrt{4-r^2}-\\frac{r^2}{3}\\right)r\\,dr=\\frac{19\\pi}{6}$，小于正确值 $\\frac{13\\pi}{4}$",
+              "condition": "漏乘密度相当于把物体当成密度为 1，数值与量纲都不对。"
+            }
+          ],
+          "reason": "体积只积 $dV$，质量必须积 $\\mu\\,dV$；漏掉 $z$ 会得到 $\\frac{19\\pi}{6}$ 这个似是而非的值。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：只对体积元积分，忘记乘密度 $\\mu=z$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "r"
+      ],
+      "comparisonCriterion": "先由交线 $r=\\sqrt3$ 定投影域，再把质量写成 $\\iiint z\\,dV$；内层 $\\int z\\,dz=\\frac{z^2}{2}$，两种积分次序结果都应为 $\\frac{13\\pi}{4}$。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2012-8",
+        "trainingGoal": "由球面与旋转抛物面的交线确定区域，写对质量微元 $dm=z\\,dV$ 并完成三重积分。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2012年高数下期末试题 一、计算题 第8题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2012-8"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "上曲面是球面 $z=\\sqrt{4-x^2-y^2}$，下曲面是抛物面 $z=\\frac13(x^2+y^2)$",
+          "密度 $\\mu=z$",
+          "交线 $r=\\sqrt3$、$z=1$"
+        ],
+        "allowedVariations": [
+          "把密度换成 $\\mu=1$",
+          "把抛物面换成 $z=\\frac14(x^2+y^2)$",
+          "改为求该物体的质心竖坐标"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2012-8",
+          "text": "设有一物体，由曲面 $z=\\sqrt{4-x^2-y^2}$ 与 $z=\\frac{1}{3}(x^2+y^2)$ 所围成，已知它在任意点 $(x,y,z)$ 处的密度 $\\mu=z$，求此物体的质量.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "物理应用（质量/质心/转动惯量）",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2012-8",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：交线由 $\\sqrt{4-r^2}=\\frac{r^2}{3}$，令 $t=r^2$ 得 $4-t=\\frac{t^2}{9}$，即 $t^2+9t-36=0$，取 $t=3$，故 $r=\\sqrt3$、交线高 $z=1$。区域 $\\frac{r^2}{3}\\leq z\\leq\\sqrt{4-r^2}$、$r\\leq\\sqrt3$。质量 $m=\\iiint z\\,dV=\\iint_D\\left[\\frac{z^2}{2}\\right]_{\\frac{r^2}{3}}^{\\sqrt{4-r^2}}d\\sigma=\\iint_D\\frac12\\left(4-r^2-\\frac{r^4}{9}\\right)d\\sigma$。极坐标：$m=2\\pi\\cdot\\frac12\\int_0^{\\sqrt3}\\left(4-r^2-\\frac{r^4}{9}\\right)r\\,dr$，令 $t=r^2$ 得 $m=\\frac{\\pi}{2}\\int_0^3\\left(4-t-\\frac{t^2}{9}\\right)dt=\\frac{\\pi}{2}\\left[4t-\\frac{t^2}{2}-\\frac{t^3}{27}\\right]_0^3=\\frac{\\pi}{2}(12-4.5-1)=\\frac{13\\pi}{4}$。复核（先 $r$ 后 $z$）：$m=2\\pi\\left[\\int_0^1\\frac{3z^2}{2}dz+\\int_1^2\\frac{4z-z^3}{2}dz\\right]=2\\pi\\left(\\frac12+\\frac98\\right)=\\frac{13\\pi}{4}$，一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.element_method",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform"
+      ],
+      "applicableMethodIds": [
+        "M.element_method",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.physical_application",
+          "methodId": "M.element_method"
+        },
+        {
+          "scenarioId": "S.multiint.physical_application",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.element_method",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform",
+        "M.first_substitution",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-volume-instead-of-mass",
+          "name": "把密度 $\\mu=z$ 漏掉，内层积分当成 $\\int1\\,dz$，算成体积"
+        },
+        {
+          "id": "r-element-z-then-polar",
+          "name": "质量微元 $dm=z\\,dV$，先求交线定出 $z$ 的上下限，内层对 $z$ 积分后用极坐标收尾"
+        },
+        {
+          "id": "r-element-r-then-z",
+          "name": "微元法后交换积分次序，先对 $r$ 积分，按 $z$ 在 $[0,1]$、$[1,2]$ 分段"
+        }
+      ],
+      "questionKey": "d789b836f249568dce4bf705768e5a9ebc96eccebee95c0b5425d2e959e14e62",
+      "faceKey": "b6231e904ba50e184e07e5475f231c2f8f9218d1dcbf945b9fc17c1514944fa6"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.double_cartesian",
+      "question": "计算 $\\iint_D\\sin\\frac{x}{y}\\,dx\\,dy$，其中 $D$ 是由 $x=0,\\ y=\\frac{\\pi}{2},\\ y=\\pi$ 及 $x=y^2$ 所围的平面区域.",
+      "solution": "区域 $D$ 描述为 $\\frac{\\pi}{2}\\leq y\\leq\\pi,\\ 0\\leq x\\leq y^2$。内层 $\\int_0^{y^2}\\sin\\frac{x}{y}dx$，令 $u=\\frac{x}{y}$（$dx=y\\,du$）得 $y\\int_0^{y}\\sin u\\,du=y(1-\\cos y)$。于是 $I=\\int_{\\frac{\\pi}{2}}^{\\pi}y(1-\\cos y)dy=\\int_{\\frac{\\pi}{2}}^{\\pi}y\\,dy-\\int_{\\frac{\\pi}{2}}^{\\pi}y\\cos y\\,dy$。其中 $\\int_{\\frac{\\pi}{2}}^{\\pi}y\\,dy=\\frac{3\\pi^2}{8}$，而 $\\int y\\cos y\\,dy=y\\sin y+\\cos y$，代入上下限得 $-1-\\frac{\\pi}{2}$。故 $I=\\frac{3\\pi^2}{8}+\\frac{\\pi}{2}+1$。",
+      "routes": [
+        {
+          "id": "r-y-strips",
+          "summary": "按 $y$ 分条（$x$ 从 $0$ 到 $y^2$），内层换元 $u=\\frac{x}{y}$ 积出，再对 $y$ 分部积分",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "边界是 $x=0$、$x=y^2$ 与 $y=\\frac{\\pi}{2}$、$y=\\pi$",
+              "transformedState": "$D:\\ \\frac{\\pi}{2}\\leq y\\leq\\pi,\\ 0\\leq x\\leq y^2$，$I=\\int_{\\frac{\\pi}{2}}^{\\pi}dy\\int_0^{y^2}\\sin\\frac{x}{y}\\,dx$",
+              "condition": "$x=y^2$ 是右边界，$x=0$ 是左边界；$y$ 的范围由两条水平线给出。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "内层 $\\int_0^{y^2}\\sin\\frac{x}{y}dx$，$y$ 视为常数",
+              "transformedState": "$u=\\frac{x}{y}$ 时 $=\\int_0^{y}\\sin u\\cdot y\\,du=y(1-\\cos y)$",
+              "condition": "$dx=y\\,du$，上限 $x=y^2$ 对应 $u=y$。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$I=\\int_{\\frac{\\pi}{2}}^{\\pi}y(1-\\cos y)dy$",
+              "transformedState": "$=\\frac{3\\pi^2}{8}+\\frac{\\pi}{2}+1$",
+              "condition": "$\\int y\\cos y\\,dy=y\\sin y+\\cos y$，代上下限得 $-1-\\frac{\\pi}{2}$。"
+            }
+          ],
+          "reason": "区域天然适合先对 $x$ 积分，内层换元后 $1/y$ 被积出的 $y$ 约掉，外层只剩初等函数。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $\\frac{\\pi}{2}\\leq y\\leq\\pi$、$0\\leq x\\leq y^2$ 上成立。"
+        },
+        {
+          "id": "r-2d-substitution",
+          "summary": "作二维换元 $u=\\frac{x}{y}$、$v=y$（雅可比 $v$），把区域拉成三角形后直接积分",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "被积函数只依赖 $\\frac{x}{y}$，令 $u=\\frac{x}{y}$、$v=y$",
+              "transformedState": "$x=uv$，$\\left|\\frac{\\partial(x,y)}{\\partial(u,v)}\\right|=v$；区域化为 $\\frac{\\pi}{2}\\leq v\\leq\\pi,\\ 0\\leq u\\leq v$",
+              "condition": "边界 $x=y^2$ 化为 $u=v$，$x=0$ 化为 $u=0$，两条水平线仍是 $v$ 的上下限。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$I=\\int_{\\frac{\\pi}{2}}^{\\pi}dv\\int_0^{v}\\sin u\\cdot v\\,du$",
+              "transformedState": "$=\\int_{\\frac{\\pi}{2}}^{\\pi}v(1-\\cos v)dv$",
+              "condition": "雅可比 $v$ 就是原来内层积分里的 $y$，换元后不能漏。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "与主路线相同的一元积分",
+              "transformedState": "$=\\frac{3\\pi^2}{8}+\\frac{\\pi}{2}+1$",
+              "condition": "用分部积分处理 $\\int v\\cos v\\,dv$。"
+            }
+          ],
+          "reason": "先把区域与函数同时化简成三角形上的 $\\sin u$，再积出 $v$ 的多项式，与直接累次积分等价但换元目的更清楚。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在换元后的三角形 $0\\leq u\\leq v$ 上成立。"
+        },
+        {
+          "id": "r-use-equiv-infinitesimal",
+          "summary": "对 $\\sin\\frac{x}{y}$ 使用等价无穷小 $\\sin t\\sim t$，把被积函数换成 $\\frac{x}{y}$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "看到 $\\sin\\frac{x}{y}$ 就以 $\\sin t\\sim t$ 替换",
+              "transformedState": "$I\\approx\\int_{\\frac{\\pi}{2}}^{\\pi}\\int_0^{y^2}\\frac{x}{y}\\,dx\\,dy$",
+              "condition": "错：$t=\\frac{x}{y}$ 在区域内从 $0$ 变到 $y>\\frac{\\pi}{2}$，远不是无穷小，$\\sin t\\sim t$ 不成立。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "内层 $\\int_0^{y^2}\\frac{x}{y}dx=\\frac{y^3}{2}$",
+              "transformedState": "$I\\approx\\frac12\\int_{\\frac{\\pi}{2}}^{\\pi}y^3dy=\\frac{15\\pi^4}{128}$，与正确值 $\\frac{3\\pi^2}{8}+\\frac{\\pi}{2}+1$ 相差很大",
+              "condition": "等价无穷小只在 $t\\to0$ 时可用，这里的 $t$ 最大到 $\\pi$。"
+            }
+          ],
+          "reason": "只看到 $\\sin$ 就套等价无穷小，忽略了 $\\frac{x}{y}$ 的最大值接近 $\\pi$，属于超范围使用。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：在 $t\\in(0,\\pi]$ 上使用 $\\sin t\\sim t$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "内层 $x$ 从 $0$ 到 $y^2$、$y\\in[\\frac{\\pi}{2},\\pi]$ 是先积分的唯一可行次序；$\\frac{x}{y}$ 不是无穷小，不能把 $\\sin$ 替换成自变量。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2012-6-2",
+        "trainingGoal": "识别内层可积的次序（$x$ 从 0 到 $y^2$），把 $1/y$ 与积分长度约去后完成计算。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2012年高数下期末试题 一、计算题 第6题（页内第2道）",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2012-6-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区域由 $x=0$、$x=y^2$、$y=\\frac{\\pi}{2}$、$y=\\pi$ 围成",
+          "$x=y^2$ 只取 $x\\geq0$ 的一支",
+          "被积函数 $\\sin\\frac{x}{y}$ 只依赖 $\\frac{x}{y}$"
+        ],
+        "allowedVariations": [
+          "把 $\\sin\\frac{x}{y}$ 换成 $\\cos\\frac{x}{y}$",
+          "把 $y$ 的范围换成 $[1,2]$",
+          "把边界 $y=\\pi$ 换成 $y=2\\pi$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2012-6-2",
+          "text": "计算 $\\iint_D\\sin\\frac{x}{y}\\,dx\\,dy$，其中 $D$ 是由 $x=0,\\ y=\\frac{\\pi}{2},\\ y=\\pi$ 及 $x=y^2$ 所围的平面区域.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "二重积分（直角坐标，X 型/Y 型区域）",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2012-6-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$D:\\ \\frac{\\pi}{2}\\leq y\\leq\\pi,\\ 0\\leq x\\leq y^2$。内层 $\\int_0^{y^2}\\sin\\frac{x}{y}dx$，令 $u=\\frac{x}{y}$ 得 $y\\int_0^{y}\\sin u\\,du=y(1-\\cos y)$。于是 $I=\\int_{\\frac{\\pi}{2}}^{\\pi}y(1-\\cos y)dy=\\int_{\\frac{\\pi}{2}}^{\\pi}y\\,dy-\\int_{\\frac{\\pi}{2}}^{\\pi}y\\cos y\\,dy$。第一项 $=\\frac{3\\pi^2}{8}$；第二项用分部积分 $\\int y\\cos y\\,dy=y\\sin y+\\cos y$，在 $\\pi$ 取 $-1$、在 $\\frac{\\pi}{2}$ 取 $\\frac{\\pi}{2}$，故为 $-1-\\frac{\\pi}{2}$。所以 $I=\\frac{3\\pi^2}{8}+\\frac{\\pi}{2}+1\\approx6.272$。数值核验：对 $y(1-\\cos y)$ 在 $[\\frac{\\pi}{2},\\pi]$ 上做数值积分得 $6.2719$，一致。若改先对 $y$ 积分，内层 $\\int\\sin\\frac{x}{y}dy$ 非初等，说明这个次序是必需的。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.cartesian_iterated_integral"
+      ],
+      "applicableMethodIds": [
+        "M.cartesian_iterated_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.cartesian_iterated_integral",
+        "M.change_order",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-y-strips",
+          "name": "按 $y$ 分条（$x$ 从 $0$ 到 $y^2$），内层换元 $u=\\frac{x}{y}$ 积出，再对 $y$ 分部积分"
+        },
+        {
+          "id": "r-2d-substitution",
+          "name": "作二维换元 $u=\\frac{x}{y}$、$v=y$（雅可比 $v$），把区域拉成三角形后直接积分"
+        },
+        {
+          "id": "r-use-equiv-infinitesimal",
+          "name": "对 $\\sin\\frac{x}{y}$ 使用等价无穷小 $\\sin t\\sim t$，把被积函数换成 $\\frac{x}{y}$"
+        }
+      ],
+      "questionKey": "d5ce5f291f5be208df239a656e31e155890bb976322986df68712ebc93a32d15",
+      "faceKey": "6b982ee89fb7c7ffc80faa0ec5fd06e20bd870afafe6e37b083ec7b2e84f9e57"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.change_order",
+      "question": "$\\int_0^1\\mathrm{d}y\\int_y^1\\dfrac{\\tan x}{x}\\,\\mathrm{d}x=$（　）。",
+      "solution": "积分区域由积分限给出：$0\\leq y\\leq1$，$y\\leq x\\leq1$，即顶点为 $(0,0)$、$(1,0)$、$(1,1)$ 的三角形，等价于 $0\\leq x\\leq1$、$0\\leq y\\leq x$。交换次序后 $\\int_0^1dx\\int_0^x\\frac{\\tan x}{x}dy=\\int_0^1\\frac{\\tan x}{x}\\cdot x\\,dx=\\int_0^1\\tan x\\,dx=-\\ln\\cos1=\\ln\\frac{1}{\\cos1}$。",
+      "routes": [
+        {
+          "id": "r-limit-to-region",
+          "summary": "由积分限还原三角形区域，交换次序后内层积出 $x$，化为 $\\int_0^1\\tan x\\,dx$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "原次序：$y$ 从 $0$ 到 $1$，对每个 $y$，$x$ 从 $y$ 到 $1$",
+              "transformedState": "区域是顶点 $(0,0)$、$(1,0)$、$(1,1)$ 的三角形：$0\\leq x\\leq1,\\ 0\\leq y\\leq x$",
+              "condition": "边界 $x=y$、$x=1$、$y=0$ 围成三角形，$y$ 先动时 $x$ 从斜线到竖线。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$\\int_0^1dx\\int_0^x\\frac{\\tan x}{x}dy$",
+              "transformedState": "$=\\int_0^1\\frac{\\tan x}{x}\\cdot x\\,dx=\\int_0^1\\tan x\\,dx$",
+              "condition": "内层对 $y$ 的积分长度正好是 $x$，与分母 $x$ 约掉是交换次序的关键收益。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$\\int_0^1\\tan x\\,dx$",
+              "transformedState": "$=-\\ln\\cos1=\\ln\\frac{1}{\\cos1}$",
+              "condition": "$\\int\\tan x\\,dx=-\\ln|\\cos x|$，代入 $0$ 与 $1$ 得 $-\\ln\\cos1$。"
+            }
+          ],
+          "reason": "交换次序后 $x$ 出现在积分长度里，$\\frac1x$ 被消掉，$\\tan x$ 可积。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在三角形 $0\\leq y\\leq x\\leq1$ 上成立。"
+        },
+        {
+          "id": "r-substitute-cos",
+          "summary": "交换次序后用 $\\tan x=\\frac{\\sin x}{\\cos x}$ 并凑微分 $u=\\cos x$ 求值",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "$0\\leq y\\leq1$、$y\\leq x\\leq1$",
+              "transformedState": "交换次序后 $0\\leq x\\leq1$、$0\\leq y\\leq x$",
+              "condition": "必须先还原区域再重写限，不能只换积分号。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "内层 $\\int_0^x\\frac{\\tan x}{x}dy$",
+              "transformedState": "$=\\tan x$，原式 $=\\int_0^1\\tan x\\,dx$",
+              "condition": "积分长度 $x$ 与分母约去。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "$\\int_0^1\\frac{\\sin x}{\\cos x}dx$，令 $u=\\cos x$",
+              "transformedState": "$du=-\\sin x\\,dx$，$=-\\int_1^{\\cos1}\\frac{du}{u}=\\ln\\frac{1}{\\cos1}$",
+              "condition": "换元后上下限由 $x=0,1$ 变为 $u=1,\\cos1$，负号把上下限翻回。"
+            }
+          ],
+          "reason": "同样先交换次序，但收尾用凑微分 $u=\\cos x$ 而不是直接套公式，可避免记错正负号。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $x\\in[0,1]\\subset[0,\\frac{\\pi}{2})$ 上 $\\cos x>0$。"
+        },
+        {
+          "id": "r-swap-symbols-only",
+          "summary": "只把两个积分号对调，仍保留内层 $x$ 从 $y$ 到 $1$ 的旧上下限",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "直接把 $\\int_0^1dy\\int_y^1$ 写成 $\\int dx\\int_0^1dy$",
+              "transformedState": "误得 $\\int_y^1\\frac{\\tan x}{x}\\left(\\int_0^1dy\\right)dx$，外层变量 $y$ 未定界",
+              "condition": "错：交换次序必须重新定限，内层应由 $y\\leq x\\leq1$ 改为 $0\\leq y\\leq x$。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "按错误写法硬算",
+              "transformedState": "只剩含未定 $y$ 的表达式 $\\int_y^1\\frac{\\tan x}{x}dx$，无法给出确定数值，说明次序没有真正交换",
+              "condition": "只换积分号不换限，区域没有被正确描述，结果既积不出也不是数。"
+            }
+          ],
+          "reason": "交换次序的本质是重新描述区域；只对调积分号而保留原上下限，会留下未定变量。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：只对调积分号而不重新确定积分限。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先把 $0\\leq y\\leq1,\\ y\\leq x\\leq1$ 还原成三角形 $0\\leq x\\leq1,\\ 0\\leq y\\leq x$，再交换；内层长度 $x$ 恰好消去 $\\frac1x$。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2020-7",
+        "trainingGoal": "由累次积分的限还原区域并交换次序，利用内层积分长度消去无法积出的 $\\frac1x$。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2020 年高数下期末试题 二、填空题 第2题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2020-7"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "原积分次序是先 $x$ 后 $y$",
+          "区域是三角形 $0\\leq y\\leq x\\leq1$",
+          "被积函数 $\\frac{\\tan x}{x}$ 关于 $x$ 没有初等原函数"
+        ],
+        "allowedVariations": [
+          "把上限 1 换成 $\\frac{\\pi}{4}$",
+          "把被积函数换成 $\\frac{\\sin x}{x}$",
+          "把区域换成 $\\int_0^1dy\\int_{y^2}^1$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2020-7",
+          "text": "$\\int_0^1\\mathrm{d}y\\int_y^1\\dfrac{\\tan x}{x}\\,\\mathrm{d}x=$ ____。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "交换积分次序",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2020-7",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：原积分区域是 $\\{0\\leq y\\leq1,\\ y\\leq x\\leq1\\}$，即三角形 $\\{0\\leq x\\leq1,\\ 0\\leq y\\leq x\\}$。交换次序得 $\\int_0^1dx\\int_0^x\\frac{\\tan x}{x}dy=\\int_0^1\\frac{\\tan x}{x}\\cdot x\\,dx=\\int_0^1\\tan x\\,dx=-\\ln\\cos1=\\ln\\frac{1}{\\cos1}$。数值核对：$\\cos1=0.5403$，$-\\ln0.5403=0.6156$，与直接数值二重积分的结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral"
+      ],
+      "applicableMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral",
+        "M.first_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform",
+        "M.first_substitution",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-swap-symbols-only",
+          "name": "只把两个积分号对调，仍保留内层 $x$ 从 $y$ 到 $1$ 的旧上下限"
+        },
+        {
+          "id": "r-limit-to-region",
+          "name": "由积分限还原三角形区域，交换次序后内层积出 $x$，化为 $\\int_0^1\\tan x\\,dx$"
+        },
+        {
+          "id": "r-substitute-cos",
+          "name": "交换次序后用 $\\tan x=\\frac{\\sin x}{\\cos x}$ 并凑微分 $u=\\cos x$ 求值"
+        }
+      ],
+      "questionKey": "92839f41abcfa894655831a68d24ee3ec9a9b35ebe313351220d9f4b26b11e5e",
+      "faceKey": "5fcefe4ced9cfcc007bb42e34d7fc8ae237d91505ca2f36721eb3b4b0a34ff70"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.polar",
+      "question": "设函数 $f(x,y)$ 在 $D:x^2+y^2\\le1$ 上有二阶连续的偏导数，且满足 $\\frac{\\partial^2 f}{\\partial x^2}+\\frac{\\partial^2 f}{\\partial y^2}=e^{-(x^2+y^2)}$，证明：$I=\\iint_D\\left(x\\frac{\\partial f}{\\partial x}+y\\frac{\\partial f}{\\partial y}\\right)dx\\,dy=\\frac{\\pi}{2e}$.",
+      "solution": "令 $x=r\\cos\\theta$、$y=r\\sin\\theta$，则 $x\\frac{\\partial f}{\\partial x}+y\\frac{\\partial f}{\\partial y}=r\\frac{\\partial f}{\\partial r}$，$d\\sigma=r\\,dr\\,d\\theta$，故 $I=\\int_0^{2\\pi}d\\theta\\int_0^1r^2f_r\\,dr$。拉普拉斯方程在极坐标下为 $\\frac1r(rf_r)_r=e^{-r^2}$，即 $(rf_r)_r=re^{-r^2}$；积分并利用 $rf_r$ 在 $r=0$ 为 0，得 $rf_r=\\frac12(1-e^{-r^2})$，于是 $f_r=\\frac{1-e^{-r^2}}{2r}$。代入得 $I=2\\pi\\int_0^1r^2\\cdot\\frac{1-e^{-r^2}}{2r}dr=\\pi\\int_0^1r(1-e^{-r^2})dr$。由 $\\int_0^1re^{-r^2}dr=\\frac12(1-e^{-1})$ 得 $I=\\pi\\left(\\frac12-\\frac{1-e^{-1}}{2}\\right)=\\frac{\\pi}{2e}$，证毕。",
+      "routes": [
+        {
+          "id": "r-polar-radial",
+          "summary": "极坐标下把被积式化为 $rf_r$，由拉普拉斯方程解出 $f_r$，再用 $u=r^2$ 凑微分",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "$x\\frac{\\partial f}{\\partial x}+y\\frac{\\partial f}{\\partial y}$ 与圆盘面积元",
+              "transformedState": "$=rf_r$，$d\\sigma=r\\,dr\\,d\\theta$，$I=\\int_0^{2\\pi}d\\theta\\int_0^1r^2f_r\\,dr$",
+              "condition": "径向导数满足 $\\nabla f\\cdot\\hat r=f_r$，且 $(x,y)=r\\hat r$。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "$\\Delta f=\\frac1r(rf_r)_r=e^{-r^2}$",
+              "transformedState": "$(rf_r)_r=re^{-r^2}$，$rf_r=\\frac12(1-e^{-r^2})$，$f_r=\\frac{1-e^{-r^2}}{2r}$",
+              "condition": "$f$ 二阶连续可微保证 $rf_r$ 在 $r=0$ 为 0，积分常数取 0。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "$I=2\\pi\\int_0^1r^2\\cdot\\frac{1-e^{-r^2}}{2r}dr=\\pi\\int_0^1r(1-e^{-r^2})dr$",
+              "transformedState": "$u=r^2$ 时 $r\\,dr=\\frac12du$，$I=\\frac{\\pi}{2}\\left(1-(1-e^{-1})\\right)=\\frac{\\pi}{2e}$",
+              "condition": "$\\int_0^1re^{-r^2}dr=\\frac12(1-e^{-1})$。"
+            }
+          ],
+          "reason": "拉普拉斯方程只含径向导数，可直接积出 $f_r$；再乘极坐标的 $r$ 后凑微分，两步到位。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在单位圆盘 $r\\leq1$ 上成立。"
+        },
+        {
+          "id": "r-green-second",
+          "summary": "先对 $r$ 分部积分把 $I$ 化为边界值与 $\\iint f$，再用格林第二公式（取 $g=\\frac{r^2}{4}$）消去 $\\iint f$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "极坐标下 $I=\\int_0^{2\\pi}\\int_0^1r^2f_r\\,dr\\,d\\theta$",
+              "transformedState": "$I=\\int_0^{2\\pi}d\\theta\\int_0^1r^2f_r\\,dr$",
+              "condition": "$x f_x+y f_y=rf_r$，面积元再提供一个 $r$。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "对 $\\int_0^1r^2f_r\\,dr$ 分部积分",
+              "transformedState": "$I=\\int_0^{2\\pi}f(1,\\theta)d\\theta-2\\iint_Df\\,d\\sigma$",
+              "condition": "边界项 $r^2f\\big|_0^1=f(1,\\theta)$，$r=0$ 处 $r^2f\\to0$。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "格林第二公式取 $g=\\frac{r^2}{4}$（$\\Delta g=1$），消去待定的 $\\iint_Df\\,d\\sigma$",
+              "transformedState": "$\\iint_Df\\,d\\sigma=\\frac14\\iint_De^{-r^2}r^2d\\sigma+\\frac12\\int_0^{2\\pi}f(1,\\theta)d\\theta-\\frac14\\int_0^{2\\pi}f_r(1,\\theta)d\\theta$",
+              "condition": "单位圆上外法向导数就是 $f_r$，且 $\\int_0^{2\\pi}f_r(1,\\theta)d\\theta=\\iint e^{-r^2}d\\sigma$。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "代回并利用 $\\int_0^{2\\pi}f_r(1,\\theta)d\\theta=2\\pi\\cdot\\frac12(1-e^{-1})=\\pi(1-e^{-1})$",
+              "transformedState": "$I=\\frac12\\iint_De^{-r^2}(1-r^2)d\\sigma=\\pi\\int_0^1e^{-r^2}(1-r^2)r\\,dr=\\frac{\\pi}{2e}$",
+              "condition": "$u=r^2$ 时 $r\\,dr=\\frac12du$，$\\frac12\\int_0^1e^{-u}(1-u)du=\\frac12e^{-1}$。"
+            }
+          ],
+          "reason": "把 $r$ 的分部积分与格林第二公式组合，全部化为 $e^{-r^2}$ 的积分，不依赖先解出 $f_r$ 的显式。",
+          "valid": true,
+          "preferred": false,
+          "condition": "$f$ 二阶连续可微，格林公式适用。"
+        },
+        {
+          "id": "r-forget-jacobian",
+          "summary": "极坐标下忘了面积元里的 $r$，把 $d\\sigma$ 直接写成 $dr\\,d\\theta$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "把 $xf_x+yf_y$ 化为 $rf_r$，写成 $I=\\int\\int rf_r\\,dr\\,d\\theta$",
+              "transformedState": "漏掉 $d\\sigma=r\\,dr\\,d\\theta$ 中的 $r$；正确应为 $\\int\\int r^2f_r$",
+              "condition": "错：面积元是 $r\\,dr\\,d\\theta$，$rf_r$ 还要再乘一个 $r$。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.first_substitution",
+              "state": "代入 $f_r=\\frac{1-e^{-r^2}}{2r}$",
+              "transformedState": "$I=2\\pi\\int_0^1r\\cdot\\frac{1-e^{-r^2}}{2r}dr=\\pi\\int_0^1(1-e^{-r^2})dr\\approx0.795$，与答案 $\\frac{\\pi}{2e}\\approx0.577$ 不符",
+              "condition": "少一个 $r$ 后 $1/r$ 被约掉，积分变成非初等形式，结果也不对。"
+            }
+          ],
+          "reason": "极坐标面积元的 $r$ 是最常漏的因子；漏掉后 $1/r$ 被约掉，结果偏离 $\\frac{\\pi}{2e}$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把 $d\\sigma$ 写成 $dr\\,d\\theta$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "r"
+      ],
+      "comparisonCriterion": "先用 $xf_x+yf_y=rf_r$ 与 $d\\sigma=r\\,dr\\,d\\theta$ 得到 $\\int\\int r^2f_r$，再由 $\\Delta f=\\frac1r(rf_r)_r=e^{-r^2}$ 解出 $f_r$；雅可比 $r$ 不能漏。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2015-3-10",
+        "trainingGoal": "把径向一阶算子与极坐标拉普拉斯方程配合，先解出 $f_r$ 再完成二重积分证明。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015年高数下期末试题 三、解答题 第10题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-3-10"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$D$ 是单位圆盘 $x^2+y^2\\leq1$",
+          "$f$ 有二阶连续偏导数且 $\\Delta f=e^{-(x^2+y^2)}$",
+          "被积式是径向一阶导数 $xf_x+yf_y=rf_r$"
+        ],
+        "allowedVariations": [
+          "把 $D$ 换成半径 $R$ 的圆盘",
+          "把右端换成 $e^{-(x^2+y^2)}\\cdot(x^2+y^2)$",
+          "改为证明 $\\iint_D(xf_y-yf_x)d\\sigma=0$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-3-10",
+          "text": "设函数 $f(x,y)$ 在 $D:x^2+y^2\\le1$ 上有二阶连续的偏导数，且满足 $\\frac{\\partial^2 f}{\\partial x^2}+\\frac{\\partial^2 f}{\\partial y^2}=e^{-(x^2+y^2)}$，证明：$I=\\iint_D\\left(x\\frac{\\partial f}{\\partial x}+y\\frac{\\partial f}{\\partial y}\\right)dx\\,dy=\\frac{\\pi}{2e}$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "极坐标计算二重积分",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2015-3-10",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：极坐标下 $x\\frac{\\partial f}{\\partial x}+y\\frac{\\partial f}{\\partial y}=r\\frac{\\partial f}{\\partial r}$，$d\\sigma=r\\,dr\\,d\\theta$，故 $I=\\int_0^{2\\pi}d\\theta\\int_0^1r^2f_r\\,dr$。又 $\\Delta f=f_{rr}+\\frac1r f_r=\\frac1r(rf_r)_r=e^{-r^2}$，所以 $(rf_r)_r=re^{-r^2}$；由 $f$ 二阶连续可微、$rf_r$ 在 $r=0$ 处为 0 得 $rf_r=\\frac12(1-e^{-r^2})$，即 $f_r=\\frac{1-e^{-r^2}}{2r}$。于是 $I=2\\pi\\int_0^1r^2\\cdot\\frac{1-e^{-r^2}}{2r}dr=\\pi\\int_0^1r(1-e^{-r^2})dr=\\pi\\left(\\frac12-\\frac12(1-e^{-1})\\right)=\\frac{\\pi}{2e}$。另一路线用格林第二公式复核也得 $\\frac{\\pi}{2e}$，与题设结论一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.polar_transform",
+        "M.first_substitution"
+      ],
+      "applicableMethodIds": [
+        "M.polar_transform",
+        "M.first_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.polar_transform",
+        "M.first_substitution",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-green-second",
+          "name": "先对 $r$ 分部积分把 $I$ 化为边界值与 $\\iint f$，再用格林第二公式（取 $g=\\frac{r^2}{4}$）消去 $\\iint f$"
+        },
+        {
+          "id": "r-forget-jacobian",
+          "name": "极坐标下忘了面积元里的 $r$，把 $d\\sigma$ 直接写成 $dr\\,d\\theta$"
+        },
+        {
+          "id": "r-polar-radial",
+          "name": "极坐标下把被积式化为 $rf_r$，由拉普拉斯方程解出 $f_r$，再用 $u=r^2$ 凑微分"
+        }
+      ],
+      "questionKey": "67f5c3c1bb75ccb267601445b8a59c489db659d7c4826b5091614af837bbd27d",
+      "faceKey": "c6f2f7f31d1ab98f68dded7172c6a8d13a81e2e4deaae714332b3975ae28335a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.physical_application",
+      "question": "设有一物体，它是由曲面 $z=\\sqrt{x^2+y^2}$ 和 $z=\\sqrt{8-x^2-y^2}$ 所围成，已知它在任意的点 $(x,y,z)$ 处的密度 $\\rho=z$，求此物体的质量 $m$.",
+      "solution": "质量微元 $dm=\\rho\\,dV=z\\,dV$，故 $m=\\iiint_\\Omega z\\,dV$。锥面 $z=r$ 与球面 $z=\\sqrt{8-r^2}$ 的交线满足 $r=\\sqrt{8-r^2}$，得 $r^2=4$，$r=2$、$z=2$。于是 $\\Omega:\\ r\\leq2,\\ r\\leq z\\leq\\sqrt{8-r^2}$。先对 $z$ 积分：$\\int_r^{\\sqrt{8-r^2}}z\\,dz=\\frac12(8-r^2-r^2)=4-r^2$，故 $m=\\iint_D(4-r^2)d\\sigma$。极坐标下 $m=\\int_0^{2\\pi}d\\theta\\int_0^2(4-r^2)r\\,dr=2\\pi\\left[2r^2-\\frac{r^4}{4}\\right]_0^2=8\\pi$。",
+      "routes": [
+        {
+          "id": "r-mass-elem-polar",
+          "summary": "质量微元 $dm=z\\,dV$，由交线定出 $z$ 的上下限，先对 $z$ 积分后用极坐标一次算完",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "密度 $\\rho=z$，质量对体积可加",
+              "transformedState": "$dm=z\\,dV$，$m=\\iiint_\\Omega z\\,dV$",
+              "condition": "被积函数是密度 $z$，不能用 1 代替。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "锥面 $z=r$ 与球面 $z=\\sqrt{8-r^2}$ 交线 $r=\\sqrt{8-r^2}$",
+              "transformedState": "$r^2=4$，$r=2$、$z=2$；$\\Omega:\\ r\\leq2,\\ r\\leq z\\leq\\sqrt{8-r^2}$",
+              "condition": "交线以内锥面在下、球面在上；投影半径 2 来自两曲面相等。"
+            },
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$\\int_r^{\\sqrt{8-r^2}}z\\,dz$",
+              "transformedState": "$=\\frac12(8-r^2-r^2)=4-r^2$，$m=\\iint_D(4-r^2)d\\sigma$",
+              "condition": "$\\int z\\,dz=\\frac{z^2}{2}$，两个平方项相减后系数抵消一半。"
+            },
+            {
+              "scenarioId": "S.multiint.polar",
+              "methodId": "M.polar_transform",
+              "state": "面积元 $d\\sigma=r\\,dr\\,d\\theta$，$\\theta\\in[0,2\\pi]$",
+              "transformedState": "$m=2\\pi\\int_0^2(4-r^2)r\\,dr=2\\pi\\left[2r^2-\\frac{r^4}{4}\\right]_0^2=8\\pi$",
+              "condition": "极坐标面积元的 $r$ 不能漏，上限是交线半径 2。"
+            }
+          ],
+          "reason": "质量积分先在内层对 $z$ 积出，剩下的 $4-r^2$ 只依赖 $r$，极坐标一步完成。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在锥台形区域 $r\\leq2$、$r\\leq z\\leq\\sqrt{8-r^2}$ 上成立。"
+        },
+        {
+          "id": "r-spherical",
+          "summary": "改用球坐标：锥面给 $\\varphi=\\frac{\\pi}{4}$、球面给 $\\rho=\\sqrt8$，三层积分分离",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "密度 $\\rho=z$（此处 $\\rho$ 是密度记号，与球坐标半径 $\\rho$ 无关）",
+              "transformedState": "$dm=z\\,dV$，$m=\\iiint_\\Omega z\\,dV$",
+              "condition": "先把物理量写成积分，坐标变换放在下一步。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "锥面 $z=\\sqrt{x^2+y^2}$ 即 $\\varphi=\\frac{\\pi}{4}$；球面 $x^2+y^2+z^2=8$ 即 $\\rho=\\sqrt8$（球半径是 $\\sqrt8$ 不是 2）",
+              "transformedState": "$\\Omega:\\ 0\\leq\\theta\\leq2\\pi,\\ 0\\leq\\varphi\\leq\\frac{\\pi}{4},\\ 0\\leq\\rho\\leq\\sqrt8$",
+              "condition": "锥面下方对应 $0\\leq\\varphi\\leq\\frac{\\pi}{4}$，$z=\\rho\\cos\\varphi$。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "$z=\\rho\\cos\\varphi$，$dV=\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta$",
+              "transformedState": "$m=2\\pi\\int_0^{\\frac{\\pi}{4}}\\sin\\varphi\\cos\\varphi\\,d\\varphi\\int_0^{\\sqrt8}\\rho^3d\\rho$",
+              "condition": "体积元含 $\\rho^2\\sin\\varphi$，与 $z=\\rho\\cos\\varphi$ 相乘得 $\\rho^3\\sin\\varphi\\cos\\varphi$。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "$\\int_0^{\\frac{\\pi}{4}}\\sin\\varphi\\cos\\varphi\\,d\\varphi=\\frac14$，$\\int_0^{\\sqrt8}\\rho^3d\\rho=16$",
+              "transformedState": "$m=2\\pi\\cdot\\frac14\\cdot16=8\\pi$，与主路线一致",
+              "condition": "$(\\sqrt8)^4/4=64/4=16$。"
+            }
+          ],
+          "reason": "锥面与球面围成的立体在球坐标里边界都是常数，三层积分互不耦合，可用于复核柱坐标结果。",
+          "valid": true,
+          "preferred": false,
+          "condition": "顶点在原点、球面以原点为中心。"
+        },
+        {
+          "id": "r-spherical-missing-jacobian",
+          "summary": "球坐标下漏写体积元中的 $\\rho^2\\sin\\varphi$，积分结果偏小",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.physical_application",
+              "methodId": "M.element_method",
+              "state": "$m=\\iiint z\\,dV$，球坐标代入 $z=\\rho\\cos\\varphi$",
+              "transformedState": "被积函数没问题，问题出在下一步的体积元",
+              "condition": "物理量写法正确。"
+            },
+            {
+              "scenarioId": "S.multiint.spherical",
+              "methodId": "M.spherical_transform",
+              "state": "把 $dV$ 直接当成 $d\\rho\\,d\\varphi\\,d\\theta$",
+              "transformedState": "误得 $m=2\\pi\\int_0^{\\frac{\\pi}{4}}\\cos\\varphi\\,d\\varphi\\int_0^{\\sqrt8}\\rho\\,d\\rho=2\\pi\\cdot\\frac{\\sqrt2}{2}\\cdot4=4\\sqrt2\\pi\\approx17.77$，小于正确值 $8\\pi\\approx25.13$",
+              "condition": "错：球坐标体积元是 $\\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta$，漏掉后量纲都不一致。"
+            }
+          ],
+          "reason": "球坐标体积元漏 $\\rho^2\\sin\\varphi$ 是最常见的错误，会得到 $4\\sqrt2\\pi$ 而不是 $8\\pi$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把球坐标体积元当作 $d\\rho\\,d\\varphi\\,d\\theta$。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "r"
+      ],
+      "comparisonCriterion": "交线 $r=2$、$z=2$ 必须由两曲面联立求出；球坐标下球面是 $\\rho=\\sqrt8$、体积元 $\\rho^2\\sin\\varphi$ 不能漏。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2013-8",
+        "trainingGoal": "由锥面与球面的交线确定区域，写对质量微元并分别用极坐标与球坐标完成计算。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2013年高数下期末试题 第8题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2013-8"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "上曲面是球面 $z=\\sqrt{8-x^2-y^2}$，下曲面是锥面 $z=\\sqrt{x^2+y^2}$",
+          "密度 $\\rho=z$",
+          "交线 $r=2$、$z=2$"
+        ],
+        "allowedVariations": [
+          "把球面半径换成 $\\sqrt{18}$",
+          "把锥面换成 $z=2\\sqrt{x^2+y^2}$",
+          "改为求该物体绕 $z$ 轴的转动惯量"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2013-8",
+          "text": "设有一物体，它是由曲面 $z=\\sqrt{x^2+y^2}$ 和 $z=\\sqrt{8-x^2-y^2}$ 所围成，已知它在任意的点 $(x,y,z)$ 处的密度 $\\rho=z$，求此物体的质量 $m$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "物理应用（质量/质心/转动惯量）",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2013-8",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：交线 $r=\\sqrt{8-r^2}$ 得 $r^2=4$，$r=2$、$z=2$。故 $\\Omega:\\ r\\leq2,\\ r\\leq z\\leq\\sqrt{8-r^2}$。$m=\\iiint z\\,dV=\\iint_D\\left[\\frac{z^2}{2}\\right]_r^{\\sqrt{8-r^2}}d\\sigma=\\iint_D\\frac12(8-r^2-r^2)d\\sigma=\\iint_D(4-r^2)d\\sigma=2\\pi\\int_0^2(4-r^2)r\\,dr=2\\pi\\left[2r^2-\\frac{r^4}{4}\\right]_0^2=2\\pi(8-4)=8\\pi$。复核（球坐标）：锥面 $\\varphi=\\frac{\\pi}{4}$、球面 $\\rho=\\sqrt8$，$m=2\\pi\\int_0^{\\frac{\\pi}{4}}\\sin\\varphi\\cos\\varphi\\,d\\varphi\\int_0^{\\sqrt8}\\rho^3d\\rho=2\\pi\\cdot\\frac14\\cdot16=8\\pi$，一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.element_method",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform"
+      ],
+      "applicableMethodIds": [
+        "M.element_method",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform",
+        "M.spherical_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.physical_application",
+          "methodId": "M.element_method"
+        },
+        {
+          "scenarioId": "S.multiint.physical_application",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.multiint.polar",
+          "methodId": "M.partition_domain"
+        },
+        {
+          "scenarioId": "S.multiint.spherical",
+          "methodId": "M.spherical_transform"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.element_method",
+        "M.cartesian_iterated_integral",
+        "M.polar_transform",
+        "M.first_substitution",
+        "M.partition_domain",
+        "M.spherical_transform"
+      ],
+      "options": [
+        {
+          "id": "r-spherical",
+          "name": "改用球坐标：锥面给 $\\varphi=\\frac{\\pi}{4}$、球面给 $\\rho=\\sqrt8$，三层积分分离"
+        },
+        {
+          "id": "r-spherical-missing-jacobian",
+          "name": "球坐标下漏写体积元中的 $\\rho^2\\sin\\varphi$，积分结果偏小"
+        },
+        {
+          "id": "r-mass-elem-polar",
+          "name": "质量微元 $dm=z\\,dV$，由交线定出 $z$ 的上下限，先对 $z$ 积分后用极坐标一次算完"
+        }
+      ],
+      "questionKey": "46f1066d93535a669ceaaeb523a78377acf024d641c8e815daa169340a63de50",
+      "faceKey": "56a80e08385b0b7beef1d9f37283b25eba0f16c5909bd7090fb0bbae8f65d071"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.double_cartesian",
+      "question": "求 $\\iint_{D}\\frac{x\\cos y}{y}\\,\\mathrm{d}x\\,\\mathrm{d}y$，其中 $D$ 是由曲线 $y=x^{2}\\ (x\\ge 0)$ 和直线 $x=0$，$y=4$ 围成的平面区域。",
+      "solution": "区域 $D$ 由 $x=0$、$x=\\sqrt y$（$y=x^2$ 取 $x\\geq0$ 的一支）与 $y=4$ 围成，即 $0\\leq y\\leq4,\\ 0\\leq x\\leq\\sqrt y$。内层 $\\int_0^{\\sqrt y}\\frac{x\\cos y}{y}dx=\\frac{\\cos y}{y}\\cdot\\frac{y}{2}=\\frac{\\cos y}{2}$。故 $I=\\frac12\\int_0^4\\cos y\\,dy=\\frac12\\sin4$。",
+      "routes": [
+        {
+          "id": "r-horizontal-strips",
+          "summary": "按 $y$ 分条（$x$ 从 $0$ 到 $\\sqrt y$），内层 $\\int x\\,dx=\\frac y2$ 与 $\\frac1y$ 约去",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "边界 $x=0$、$y=x^2$（右支为 $x=\\sqrt y$）、$y=4$",
+              "transformedState": "$D:\\ 0\\leq y\\leq4,\\ 0\\leq x\\leq\\sqrt y$，$I=\\int_0^4dy\\int_0^{\\sqrt y}\\frac{x\\cos y}{y}dx$",
+              "condition": "抛物线取 $x\\geq0$ 一支，右边界是 $x=\\sqrt y$，$y$ 从 0 到 4。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "内层 $\\int_0^{\\sqrt y}\\frac{x\\cos y}{y}dx$，$\\frac{\\cos y}{y}$ 对 $x$ 是常数",
+              "transformedState": "$=\\frac{\\cos y}{y}\\cdot\\frac{(\\sqrt y)^2}{2}=\\frac{\\cos y}{2}$",
+              "condition": "$\\int_0^{\\sqrt y}x\\,dx=\\frac y2$，正好与分母 $y$ 约掉。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$I=\\frac12\\int_0^4\\cos y\\,dy$",
+              "transformedState": "$=\\frac12\\sin4$",
+              "condition": "牛顿-莱布尼茨公式，$\\sin4\\approx-0.7568$。"
+            }
+          ],
+          "reason": "被积函数里的 $1/y$ 恰好被内层积分长度 $\\frac y2$ 约掉，先对 $x$ 积分是唯一可行次序。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $0\\leq y\\leq4$、$0\\leq x\\leq\\sqrt y$ 上成立。"
+        },
+        {
+          "id": "r-2d-substitution",
+          "summary": "作二维换元 $v=\\frac{x}{\\sqrt y}$、$u=y$，把抛物线区域拉成单位矩形",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "被积函数含 $\\frac xy$ 且区域为 $0\\leq x\\leq\\sqrt y$",
+              "transformedState": "令 $u=y$、$v=\\frac{x}{\\sqrt y}$，则 $x=v\\sqrt u$，雅可比 $\\sqrt u$；区域化为 $0\\leq u\\leq4,\\ 0\\leq v\\leq1$",
+              "condition": "$y=x^2$ 化为 $v=1$，$x=0$ 化为 $v=0$，$y=4$ 化为 $u=4$。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$\\frac{x\\cos y}{y}=\\frac{v\\sqrt u\\cos u}{u}=v\\,u^{-\\frac12}\\cos u$，再乘雅可比 $\\sqrt u$",
+              "transformedState": "$I=\\int_0^4\\cos u\\,du\\int_0^1v\\,dv$",
+              "condition": "$u^{-\\frac12}\\cdot\\sqrt u=1$，两个因子正好约去。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "$\\int_0^1v\\,dv=\\frac12$，$\\int_0^4\\cos u\\,du=\\sin4$",
+              "transformedState": "$I=\\frac12\\sin4$，与主路线一致",
+              "condition": "换元后的区域是矩形，两层积分分离。"
+            }
+          ],
+          "reason": "把 $\\frac{x}{\\sqrt y}$ 作为新变量，区域变成单位矩形、被积函数分离成 $v$ 与 $\\cos u$，是另一种化繁为简的办法。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $y>0$ 上换元可逆（区域 $y\\in[0,4]$ 的端点 $y=0$ 是零面积边界）。"
+        },
+        {
+          "id": "r-invert-order",
+          "summary": "先对 $y$ 积分（$y$ 从 $x^2$ 到 4），把 $\\frac{\\cos y}{y}$ 硬积成 $\\frac{\\sin y}{y}$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.change_order",
+              "state": "改按 X 型：$0\\leq x\\leq2$，$x^2\\leq y\\leq4$",
+              "transformedState": "$I=\\int_0^2x\\,dx\\int_{x^2}^4\\frac{\\cos y}{y}dy$",
+              "condition": "区域的 X 型描述没错，但内层 $\\int\\frac{\\cos y}{y}dy$ 是余弦积分，不是初等函数。"
+            },
+            {
+              "scenarioId": "S.multiint.double_cartesian",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "误把 $\\frac{\\cos y}{y}$ 的原函数当作 $\\frac{\\sin y}{y}$",
+              "transformedState": "得 $\\int_0^2x\\left(\\frac{\\sin4}{4}-\\frac{\\sin(x^2)}{x^2}\\right)dx$，与 $\\frac12\\sin4$ 不符",
+              "condition": "错：$\\frac{d}{dy}\\frac{\\sin y}{y}=\\frac{y\\cos y-\\sin y}{y^2}\\neq\\frac{\\cos y}{y}$，这个次序根本积不出初等原函数。"
+            }
+          ],
+          "reason": "先对 $y$ 积分时内层非初等，误造原函数只会得到无意义结果；正确次序是先对 $x$ 积分。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：先对 $y$ 积分并臆造 $\\frac{\\sin y}{y}$ 为原函数。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先对 $x$ 积分，$\\int_0^{\\sqrt y}x\\,dx=\\frac y2$ 与 $\\frac1y$ 约去；先对 $y$ 积分会遇到余弦积分，不可行。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2016-jd3",
+        "trainingGoal": "判断先对 $x$ 积分可行，并利用内层 $\\int x\\,dx=\\frac y2$ 与 $\\frac1y$ 约分完成计算。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2016 年高数下期末试题 三、简答题 第3题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2016-jd3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区域由 $y=x^2\\ (x\\geq0)$、$x=0$、$y=4$ 围成",
+          "被积函数 $\\frac{x\\cos y}{y}$",
+          "结果 $\\frac12\\sin4$"
+        ],
+        "allowedVariations": [
+          "把 $\\cos y$ 换成 $\\sin y$",
+          "把 $y=4$ 换成 $y=1$",
+          "把抛物线换成 $x=y^2$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2016-jd3",
+          "text": "求 $\\iint_{D}\\frac{x\\cos y}{y}\\,\\mathrm{d}x\\,\\mathrm{d}y$，其中 $D$ 是由曲线 $y=x^{2}\\ (x\\ge 0)$ 和直线 $x=0$，$y=4$ 围成的平面区域。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "二重积分（直角坐标，X 型/Y 型区域）",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2016-jd3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$D:\\ 0\\leq y\\leq4,\\ 0\\leq x\\leq\\sqrt y$。内层 $\\int_0^{\\sqrt y}\\frac{x\\cos y}{y}dx=\\frac{\\cos y}{y}\\cdot\\frac{(\\sqrt y)^2}{2}=\\frac{\\cos y}{2}$。故 $I=\\frac12\\int_0^4\\cos y\\,dy=\\frac12\\sin4$。数值：$\\sin4\\approx-0.7568$，$I\\approx-0.3784$，与二重积分数值结果一致。若改先对 $y$ 积分，内层 $\\int\\frac{\\cos y}{y}dy$ 为余弦积分、非初等，说明先对 $x$ 积分是必要的。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.cartesian_iterated_integral"
+      ],
+      "applicableMethodIds": [
+        "M.cartesian_iterated_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.cartesian_iterated_integral"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.double_cartesian",
+          "methodId": "M.partition_domain"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.cartesian_iterated_integral",
+        "M.change_order",
+        "M.partition_domain"
+      ],
+      "options": [
+        {
+          "id": "r-2d-substitution",
+          "name": "作二维换元 $v=\\frac{x}{\\sqrt y}$、$u=y$，把抛物线区域拉成单位矩形"
+        },
+        {
+          "id": "r-invert-order",
+          "name": "先对 $y$ 积分（$y$ 从 $x^2$ 到 4），把 $\\frac{\\cos y}{y}$ 硬积成 $\\frac{\\sin y}{y}$"
+        },
+        {
+          "id": "r-horizontal-strips",
+          "name": "按 $y$ 分条（$x$ 从 $0$ 到 $\\sqrt y$），内层 $\\int x\\,dx=\\frac y2$ 与 $\\frac1y$ 约去"
+        }
+      ],
+      "questionKey": "0d5f112f300e4fdf6da5343dfe9430bc2675b1ccfe13f39aac0bf0aa9b6c3252",
+      "faceKey": "10238eb225e8f434e09eb36cdfba4a0012b32f4e8eaa683e2da6d534ca15a2a0"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multiint.change_order",
+      "question": "设 $f$ 是连续函数，交换下列积分次序：$\\int_1^2 dx\\int_{2-x}^{\\sqrt{2x-x^2}}f(x,y)\\,dy$.",
+      "solution": "原积分区域为 $1\\leq x\\leq2$、$2-x\\leq y\\leq\\sqrt{2x-x^2}$。上界 $y=\\sqrt{2x-x^2}$ 即 $(x-1)^2+y^2=1$ 的上半圆（圆心 $(1,0)$、半径 1），下界是直线 $y=2-x$，两线交于 $(1,1)$ 与 $(2,0)$。把区域按 $y$ 分条：$0\\leq y\\leq1$，左边界由直线得 $x=2-y$，右边界由圆的右支得 $x=1+\\sqrt{1-y^2}$。故交换次序后 $\\int_1^2dx\\int_{2-x}^{\\sqrt{2x-x^2}}f(x,y)\\,dy=\\int_0^1dy\\int_{2-y}^{1+\\sqrt{1-y^2}}f(x,y)\\,dx$。",
+      "routes": [
+        {
+          "id": "r-region-to-vertical",
+          "summary": "画出直线 $y=2-x$ 与上半圆 $(x-1)^2+y^2=1$，按 $y$ 分条反解左右边界",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "原限 $x\\in[1,2]$，$y$ 从 $2-x$ 到 $\\sqrt{2x-x^2}$",
+              "transformedState": "上界配方为 $(x-1)^2+y^2=1$ 的上半圆，与直线交于 $(1,1)$、$(2,0)$；区域夹在直线与圆弧之间",
+              "condition": "上界 $\\sqrt{2x-x^2}$ 只在 $x\\in[1,2]$ 有意义，且 $y\\geq0$。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "改按 $y$ 分条，$y$ 的范围是两个交点纵坐标 $0$ 到 $1$",
+              "transformedState": "左边界 $x=2-y$（直线反解），右边界 $x=1+\\sqrt{1-y^2}$（圆右支反解）",
+              "condition": "圆 $(x-1)^2+y^2=1$ 的右支是 $x=1+\\sqrt{1-y^2}$；左支 $1-\\sqrt{1-y^2}$ 落在 $x<1$，不在原区域。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "新区域：$0\\leq y\\leq1$、$2-y\\leq x\\leq1+\\sqrt{1-y^2}$",
+              "transformedState": "$\\int_1^2dx\\int_{2-x}^{\\sqrt{2x-x^2}}f\\,dy=\\int_0^1dy\\int_{2-y}^{1+\\sqrt{1-y^2}}f\\,dx$",
+              "condition": "内外层交换后 $y$ 的积分限是 $[0,1]$，$x$ 的限由左右两条边界给出。"
+            }
+          ],
+          "reason": "把两条边界分别反解成 $x$ 的函数，$y$ 的范围就是交点纵坐标 $0$ 到 $1$，直接得到新次序。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在区域 $1\\leq x\\leq2$、$2-x\\leq y\\leq\\sqrt{2x-x^2}$ 上成立。"
+        },
+        {
+          "id": "r-quarter-disk-minus-triangle",
+          "summary": "把区域拆成四分之一圆盘减去直线下方的三角形，分别换序再作差",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "区域可写成 $\\{(x,y):1\\leq x\\leq2,\\ 0\\leq y\\leq\\sqrt{2x-x^2}\\}$ 减去 $\\{(x,y):1\\leq x\\leq2,\\ 0\\leq y\\leq2-x\\}$",
+              "transformedState": "前者是圆心 $(1,0)$、半径 1 的四分之一圆盘（$x\\geq1$ 的右半），后者是直线 $y=2-x$ 下方的三角形",
+              "condition": "两者的差正好是直线与圆弧之间的区域。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "分别按 $y$ 分条换序",
+              "transformedState": "四分之一圆盘：$y\\in[0,1]$、$x\\in[1,1+\\sqrt{1-y^2}]$；三角形：$y\\in[0,1]$、$x\\in[1,2-y]$",
+              "condition": "三角形反解 $x\\leq2-y$；圆盘右边界为 $1+\\sqrt{1-y^2}$。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.cartesian_iterated_integral",
+              "state": "作差：$x\\in[1,1+\\sqrt{1-y^2}]$ 减去 $x\\in[1,2-y]$",
+              "transformedState": "$\\int_0^1dy\\int_{2-y}^{1+\\sqrt{1-y^2}}f(x,y)dx$，与主路线一致",
+              "condition": "公共左端 $x=1$ 相抵消，剩余区间由 $2-y$ 到 $1+\\sqrt{1-y^2}$。"
+            }
+          ],
+          "reason": "把区域看成熟悉的圆盘减三角形，两块的换序都有标准答案，作差后得到同一定限，可检验边界没有写反。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $0\\leq y\\leq1$ 上 $2-y\\leq1+\\sqrt{1-y^2}$，差集非空。"
+        },
+        {
+          "id": "r-no-completing-square",
+          "summary": "配方时漏掉圆心平移，把圆弧反解成 $x=\\sqrt{1-y^2}$",
+          "steps": [
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "原区域上界 $y=\\sqrt{2x-x^2}$ 应配方为 $y^2=1-(x-1)^2$",
+              "transformedState": "误写成 $x^2+y^2=1$，右边界取 $x=\\sqrt{1-y^2}$",
+              "condition": "错：$2x-x^2=1-(x-1)^2$，圆以 $(1,0)$ 为心，不是以原点为心。"
+            },
+            {
+              "scenarioId": "S.multiint.change_order",
+              "methodId": "M.change_order",
+              "state": "按错误边界写新次序",
+              "transformedState": "得 $\\int_0^1dy\\int_{2-y}^{\\sqrt{1-y^2}}f\\,dx$，但 $\\sqrt{1-y^2}<2-y$（$y\\in(0,1)$），下限大于上限、区域为空",
+              "condition": "上下限颠倒说明右边界反解错了；正确右边界是 $1+\\sqrt{1-y^2}$。"
+            }
+          ],
+          "reason": "漏掉配方中的 $(x-1)^2$ 会把圆弧平移到原点，左右边界矛盾（$\\sqrt{1-y^2}$ 小于 $2-y$），是本题最常见的定限错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把圆心 $(1,0)$ 的圆当成以原点为心的单位圆。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "配方 $(x-1)^2+y^2=1$ 后右支是 $x=1+\\sqrt{1-y^2}$、直线是 $x=2-y$；新次序为 $y\\in[0,1]$、$x$ 从 $2-y$ 到 $1+\\sqrt{1-y^2}$。",
+      "metadata": {
+        "motherId": "candidate.bankadv12.xjtu-2012-3",
+        "trainingGoal": "把直线与上半圆围成的区域按 $y$ 分条，正确反解左右边界并完成次序交换。",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2012年高数下期末试题 一、计算题 第3题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2012-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区域由直线 $y=2-x$ 与上半圆 $(x-1)^2+y^2=1$ 围成",
+          "两交点 $(1,1)$ 与 $(2,0)$",
+          "$f$ 是任意连续函数，结果只改积分限"
+        ],
+        "allowedVariations": [
+          "把 $x$ 的上限 2 换成 $\\frac32$ 并相应改上界",
+          "把直线换成 $y=1-x$",
+          "把 $f$ 换成具体函数 $f=1$ 检验"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2012-3",
+          "text": "设 $f$ 是连续函数，交换下列积分次序：$\\int_1^2 dx\\int_{2-x}^{\\sqrt{2x-x^2}}f(x,y)\\,dy$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "重积分",
+          "difficulty": "中",
+          "method": "交换积分次序",
+          "notes": "高等数学 bankadv12；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv12",
+        "originalId": "xjtu-2012-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：原区域 $\\{1\\leq x\\leq2,\\ 2-x\\leq y\\leq\\sqrt{2x-x^2}\\}$。上界曲线即 $(x-1)^2+y^2=1$ 的上半圆（$y\\geq0$），圆心 $(1,0)$、半径 1；下界是直线 $y=2-x$。两者交于 $(1,1)$ 与 $(2,0)$。按 $y$ 分条：$y\\in[0,1]$ 时左边界 $x=2-y$（由直线反解），右边界 $x=1+\\sqrt{1-y^2}$（由圆右支反解），故新次序为 $\\int_0^1dy\\int_{2-y}^{1+\\sqrt{1-y^2}}f(x,y)dx$。端点核对：$y=0$ 给出 $[2,2]$、$y=1$ 给出 $[1,1]$，与两个交点吻合；$y=\\frac12$ 时 $[1.5,1.866]$，确实落在原区域 $1\\leq x\\leq2$ 内。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral"
+      ],
+      "applicableMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.change_order"
+        },
+        {
+          "scenarioId": "S.multiint.change_order",
+          "methodId": "M.cartesian_iterated_integral"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.change_order",
+        "M.cartesian_iterated_integral"
+      ],
+      "options": [
+        {
+          "id": "r-quarter-disk-minus-triangle",
+          "name": "把区域拆成四分之一圆盘减去直线下方的三角形，分别换序再作差"
+        },
+        {
+          "id": "r-no-completing-square",
+          "name": "配方时漏掉圆心平移，把圆弧反解成 $x=\\sqrt{1-y^2}$"
+        },
+        {
+          "id": "r-region-to-vertical",
+          "name": "画出直线 $y=2-x$ 与上半圆 $(x-1)^2+y^2=1$，按 $y$ 分条反解左右边界"
+        }
+      ],
+      "questionKey": "34ddff1dd60985b7125e87862c524e6eb6d1d73a225b9eeb93384af2e5f82d85",
+      "faceKey": "ab9a3ee1f30fd809f7eae3f8f41486f3f57083baf428749e58d43cf83d198e6a"
+    }
+  ]
+}

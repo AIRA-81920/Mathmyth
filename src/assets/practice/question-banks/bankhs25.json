@@ -1,0 +1,3206 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankhs25",
+  "sourceSha256": "d4405a6b11681df411261e7881f9799194ac65100a754e45bbacf99eb65b8640",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.hs_func",
+        "name": "集合、不等式与函数"
+      },
+      {
+        "id": "B.hs_trig",
+        "name": "三角函数与解三角形"
+      },
+      {
+        "id": "B.hs_seq",
+        "name": "数列"
+      },
+      {
+        "id": "B.hs_deriv",
+        "name": "导数及其应用"
+      },
+      {
+        "id": "B.hs_geom",
+        "name": "立体几何与空间向量"
+      },
+      {
+        "id": "B.hs_analytic",
+        "name": "解析几何、平面向量与复数"
+      },
+      {
+        "id": "B.hs_prob",
+        "name": "概率统计与计数原理"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.hs_func.set_logic",
+        "name": "集合与常用逻辑用语",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_func.set_operation",
+          "S.hs_func.condition_judge",
+          "S.hs_func.quantifier_negation",
+          "S.hs_func.new_definition_set"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.inequality",
+        "name": "不等式与二次关系",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_func.inequality_solve",
+          "S.hs_func.quadratic_root_dist",
+          "S.hs_func.basic_inequality",
+          "S.hs_func.inequality_property"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.concept",
+        "name": "函数概念与表示",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_func.domain",
+          "S.hs_func.expression",
+          "S.hs_func.value_range",
+          "S.hs_func.piecewise",
+          "S.hs_func.abstract_function"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.properties",
+        "name": "函数性质与图象",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_func.parity_period",
+          "S.hs_func.monotonicity",
+          "S.hs_func.graph_transform",
+          "S.hs_func.symmetry"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.elementary",
+        "name": "指对幂与函数零点",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_func.exp_log_calc",
+          "S.hs_func.exp_log_compare",
+          "S.hs_func.exp_log_graph",
+          "S.hs_func.zero_point",
+          "S.hs_func.function_model"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_trig.identity",
+        "name": "三角恒等变换",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_trig.identity_eval",
+          "S.hs_trig.identity_transform",
+          "S.hs_trig.auxiliary_angle",
+          "S.hs_trig.angle_relation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.graph",
+        "name": "三角函数的图象与性质",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_trig.graph_property",
+          "S.hs_trig.graph_transform",
+          "S.hs_trig.omega_param",
+          "S.hs_trig.trig_equation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.triangle",
+        "name": "解三角形",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_trig.sine_cosine_rule",
+          "S.hs_trig.triangle_shape",
+          "S.hs_trig.area",
+          "S.hs_trig.triangle_extremum",
+          "S.hs_trig.multi_triangle"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.application",
+        "name": "三角应用与建模",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_trig.measurement",
+          "S.hs_trig.trig_model"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_seq.term",
+        "name": "通项与递推",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_seq.arithmetic_geometric",
+          "S.hs_seq.an_sn",
+          "S.hs_seq.recurrence",
+          "S.hs_seq.construct_seq"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.sum",
+        "name": "数列求和",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_seq.sum_formula",
+          "S.hs_seq.sum_telescoping",
+          "S.hs_seq.sum_mismatch"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.property",
+        "name": "数列性质与不等式",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_seq.property",
+          "S.hs_seq.inequality",
+          "S.hs_seq.induction",
+          "S.hs_seq.model"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_deriv.concept",
+        "name": "导数概念与运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_deriv.definition",
+          "S.hs_deriv.calc",
+          "S.hs_deriv.tangent",
+          "S.hs_deriv.geometric"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.behavior",
+        "name": "用导数研究函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_deriv.monotonicity",
+          "S.hs_deriv.extremum",
+          "S.hs_deriv.zero",
+          "S.hs_deriv.param_range"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.proof",
+        "name": "导数与不等式证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_deriv.ineq_proof",
+          "S.hs_deriv.ineq_two_var",
+          "S.hs_deriv.construct",
+          "S.hs_deriv.series_bound"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_geom.position",
+        "name": "空间位置关系与证明",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_geom.line_plane_parallel",
+          "S.hs_geom.line_plane_perp",
+          "S.hs_geom.special_point",
+          "S.hs_geom.existence"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.metric",
+        "name": "空间度量",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_geom.distance",
+          "S.hs_geom.angle",
+          "S.hs_geom.volume",
+          "S.hs_geom.sphere"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.vector",
+        "name": "空间向量法",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_geom.basis",
+          "S.hs_geom.coordinate",
+          "S.hs_geom.normal_vector"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.solid",
+        "name": "基本立体图形、截面与翻折",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_geom.solid_graph",
+          "S.hs_geom.section",
+          "S.hs_geom.combination"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_analytic.vector",
+        "name": "平面向量",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_analytic.vector_calc",
+          "S.hs_analytic.vector_product",
+          "S.hs_analytic.vector_parallel_perp",
+          "S.hs_analytic.vector_geometry"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.complex",
+        "name": "复数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_analytic.complex_calc",
+          "S.hs_analytic.complex_geometry",
+          "S.hs_analytic.complex_quadratic"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_circle",
+        "name": "直线与圆",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_analytic.line_equation",
+          "S.hs_analytic.circle_equation",
+          "S.hs_analytic.line_circle_position",
+          "S.hs_analytic.circle_circle",
+          "S.hs_analytic.locus"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.conic",
+        "name": "圆锥曲线",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_analytic.ellipse",
+          "S.hs_analytic.hyperbola",
+          "S.hs_analytic.parabola",
+          "S.hs_analytic.conic_equation",
+          "S.hs_analytic.conic_focal"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_conic",
+        "name": "直线与圆锥曲线综合",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_analytic.intersection",
+          "S.hs_analytic.fixed_point",
+          "S.hs_analytic.range_extremum",
+          "S.hs_analytic.existence"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_prob.counting",
+        "name": "计数原理",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_prob.counting_principle",
+          "S.hs_prob.permutation",
+          "S.hs_prob.combination",
+          "S.hs_prob.binomial"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.classical",
+        "name": "概率模型",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_prob.classical",
+          "S.hs_prob.independent",
+          "S.hs_prob.conditional",
+          "S.hs_prob.geometric"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.random_var",
+        "name": "随机变量与分布",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_prob.distribution",
+          "S.hs_prob.expectation",
+          "S.hs_prob.binomial_dist",
+          "S.hs_prob.normal"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.statistics",
+        "name": "统计与成对数据",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_prob.sampling",
+          "S.hs_prob.regression",
+          "S.hs_prob.contingency"
+        ],
+        "block_id": "B.hs_prob"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.hs_analytic.vector_calc",
+        "name": "向量线性运算与坐标运算",
+        "definition": "题面要求进行向量的加减、数乘、坐标运算，或由条件求某向量的表示。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_product",
+        "name": "数量积、夹角与投影",
+        "definition": "题面要求求数量积、夹角、投影或模长。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_parallel_perp",
+        "name": "共线与垂直的判定",
+        "definition": "题面要求判断或利用向量的共线、垂直关系，通常含参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_geometry",
+        "name": "向量与几何图形（重心、系数和、轨迹）",
+        "definition": "题面把向量与几何图形结合，要求求系数或位置关系。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_calc",
+        "name": "复数运算与化简",
+        "definition": "题面要求复数代数形式的四则运算、求模或化简。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_geometry",
+        "name": "复数的几何意义与模",
+        "definition": "题面要求用复数的几何意义（对应点、向量、模）解决问题。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_quadratic",
+        "name": "复数与实系数方程",
+        "definition": "题面涉及实系数一元二次方程的虚根、复数相等或复系数方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_equation",
+        "name": "直线方程与两直线位置关系",
+        "definition": "题面要求求直线方程、判断两直线位置关系或求参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_equation",
+        "name": "圆的方程",
+        "definition": "题面要求求圆的方程，或由方程表示圆求参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_circle_position",
+        "name": "直线与圆的位置关系（弦长与切线）",
+        "definition": "题面讨论直线与圆的位置关系，要求求弦长、切线方程或参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_circle",
+        "name": "圆与圆的位置关系",
+        "definition": "题面讨论两圆的位置关系，要求求公共弦、公切线或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.locus",
+        "name": "轨迹方程",
+        "definition": "题面要求求动点的轨迹方程，或判断轨迹类型。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.ellipse",
+        "name": "椭圆的定义与性质",
+        "definition": "题面围绕椭圆的定义、标准方程与几何性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.hyperbola",
+        "name": "双曲线的定义、渐近线与离心率",
+        "definition": "题面围绕双曲线的定义、标准方程、渐近线与离心率求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.parabola",
+        "name": "抛物线的定义、准线与焦点弦",
+        "definition": "题面围绕抛物线的定义、标准方程、焦点弦与准线求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_equation",
+        "name": "圆锥曲线标准方程的确定",
+        "definition": "题面要求根据条件求椭圆、双曲线或抛物线的标准方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_focal",
+        "name": "焦点三角形与焦半径",
+        "definition": "题面围绕焦点三角形、焦半径、焦点弦的性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.intersection",
+        "name": "联立与韦达定理（弦长与中点）",
+        "definition": "题面要求把直线与圆锥曲线联立，用韦达定理求弦长、中点或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.fixed_point",
+        "name": "定点与定值问题",
+        "definition": "题面在直线与圆锥曲线的运动中，要求证明某点或某值恒定，或求定点。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.range_extremum",
+        "name": "范围与最值问题",
+        "definition": "题面要求求圆锥曲线中某量（弦长、面积、斜率、距离）的范围或最值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.existence",
+        "name": "存在性与探究性问题",
+        "definition": "题面问是否存在某点、某直线或某斜率使条件成立，要求判断并求值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_deriv.definition",
+        "name": "导数定义与瞬时变化率",
+        "definition": "题面出现函数增量比、瞬时变化率或极限形式的式子，要求求导数值或识别导数定义。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.calc",
+        "name": "复合结构与幂指式的求导",
+        "definition": "题面给出具体函数（含复合、幂指、分式、乘积），要求求导函数或某点导数值。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.tangent",
+        "name": "切线方程（在点与过点）",
+        "definition": "题面要求求曲线在某点或过某点的切线方程，或由切线条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.geometric",
+        "name": "导数几何意义与函数、导函数图象互推",
+        "definition": "题面给出函数与导函数的图象之一，要求判断另一个、比较大小或求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.monotonicity",
+        "name": "单调区间与含参单调性讨论",
+        "definition": "题面要求求含参函数的单调区间，或由在某区间单调反求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.extremum",
+        "name": "极值与闭区间最值",
+        "definition": "题面要求求极值、闭区间上的最值，或由极值条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.zero",
+        "name": "零点个数与方程根的讨论",
+        "definition": "题面要求讨论方程根的个数或函数零点个数，通常含参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.param_range",
+        "name": "恒成立与存在性求参数范围",
+        "definition": "题面要求在恒成立或存在某点使条件成立的条件下求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_proof",
+        "name": "单变量不等式证明",
+        "definition": "题面要求证明一个含单变量的函数不等式，例如指数函数与一次式、对数与一次式的大小关系及其推广。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_two_var",
+        "name": "双变量不等式与极值点偏移",
+        "definition": "题面不等式涉及两个变量，或要求证明与极值点对称位置有关的结论。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.construct",
+        "name": "构造函数与同构变形",
+        "definition": "题面不等式或等式两边结构相似但变量不同，需要通过构造同一母函数来处理。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.series_bound",
+        "name": "导数造不等式再累加（数列型）",
+        "definition": "题面要求证明与正整数有关、且通项的界由导数给出的数列不等式。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_func.set_operation",
+        "name": "集合的基本运算与包含关系",
+        "definition": "题面给出用列举法、描述法或不等式区间表示的集合（常含参数），要求求交集、并集、补集、子集个数，或判断包含关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.condition_judge",
+        "name": "充分必要条件的判定",
+        "definition": "题面要求判断「p 是 q 的充分/必要/充要条件」，或由条件关系反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quantifier_negation",
+        "name": "全称量词与存在量词命题的否定",
+        "definition": "题面出现全称量词或存在量词，要求写否定、判真假，或把「恒成立/有解」转化为参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.new_definition_set",
+        "name": "新定义集合的代入检验",
+        "definition": "题面先给出一个新定义的集合运算或集合属性，要求按定义判断元素归属或求集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_solve",
+        "name": "一元二次、分式与绝对值不等式的求解",
+        "definition": "题面要求解一元二次、分式或含绝对值的不等式，解集常需写成区间或集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quadratic_root_dist",
+        "name": "一元二次方程根的分布",
+        "definition": "题面讨论一元二次方程根的正负、大小或是否落在某区间内，通常含参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.basic_inequality",
+        "name": "基本不等式求最值",
+        "definition": "题面在正数条件下求积的最大值或和的最小值，结构上能凑出定值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_property",
+        "name": "不等式性质与比较大小",
+        "definition": "题面要求比较两个代数式的大小，或由不等式的性质推断某个式子的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.domain",
+        "name": "求函数的定义域",
+        "definition": "题面给出含分母、偶次根式、对数或零次幂的函数式，要求求自变量的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.expression",
+        "name": "求函数解析式",
+        "definition": "题面给出函数类型或函数方程，要求求 f(x) 的解析式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.value_range",
+        "name": "求函数的值域",
+        "definition": "题面要求求函数值的取值范围，常含参数或限定区间。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.piecewise",
+        "name": "分段函数",
+        "definition": "题面给出分段函数，要求求值、解方程或不等式，或讨论分界点处的性质。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.abstract_function",
+        "name": "抽象函数与函数方程",
+        "definition": "题面只给抽象函数的若干等式或性质，要求判断奇偶性、单调性或求值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.parity_period",
+        "name": "奇偶性与周期性",
+        "definition": "题面讨论函数的奇偶性、周期性，或由奇偶与周期推值、求解析式、比较大小。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.monotonicity",
+        "name": "单调性的判定与比较",
+        "definition": "题面要求判断或证明单调性、求单调区间，或利用单调性比较大小、解不等式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.graph_transform",
+        "name": "图象变换与识图",
+        "definition": "题面要求由已知函数图象经平移、伸缩、翻折得到新图象，或由图象判断解析式与参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.symmetry",
+        "name": "对称性与图象对称",
+        "definition": "题面给出函数图象的对称轴、对称中心或两函数图象的对称关系，要求求参数、求解析式或求和。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_calc",
+        "name": "指数与对数式的运算",
+        "definition": "题面要求化简指数式、对数式或求值，含换底与指数对数互化。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_compare",
+        "name": "指对幂大小比较",
+        "definition": "题面要求比较幂、指数式、对数式的大小，通常底数或指数不同。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_graph",
+        "name": "指对函数图象与性质",
+        "definition": "题面给出指数或对数函数的图象，要求求底数范围、解不等式或判断图象位置关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.zero_point",
+        "name": "函数零点与零点个数",
+        "definition": "题面要求判断函数零点个数、所在区间，或由零点存在反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.function_model",
+        "name": "函数模型与建模应用",
+        "definition": "题面给出实际情境（成本、增长、温度等），要求建立函数模型并求最值或作预测。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_geom.line_plane_parallel",
+        "name": "线面与面面平行证明",
+        "definition": "题面要求证明直线与平面平行，或两个平面平行。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.line_plane_perp",
+        "name": "线面与面面垂直证明",
+        "definition": "题面要求证明直线与平面垂直，或两个平面垂直。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.special_point",
+        "name": "特殊点定位与共面论证",
+        "definition": "题面要求确定中点、重心、垂足等特殊点的位置，或证明某点落在某平面内。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.existence",
+        "name": "位置关系存在性探究",
+        "definition": "题面问是否存在某点或某平面使条件成立，要求判断并说明理由。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.distance",
+        "name": "点到平面与异面直线距离",
+        "definition": "题面要求求点到平面的距离、两异面直线间的距离或两平行平面间的距离。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.angle",
+        "name": "线线角、线面角与二面角",
+        "definition": "题面要求求异面直线所成角、直线与平面所成角或二面角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.volume",
+        "name": "体积与表面积计算",
+        "definition": "题面要求求多面体或旋转体的体积、表面积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.sphere",
+        "name": "外接球与内切球",
+        "definition": "题面给出多面体与球的接切关系，要求求球的半径、表面积或体积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.basis",
+        "name": "空间向量基本定理与基底表示",
+        "definition": "题面要求用一组空间基底表示向量，或判断四点共面、三向量共面。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.coordinate",
+        "name": "建系与坐标运算",
+        "definition": "题面要求建立空间直角坐标系，用坐标表示点与向量并作运算。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.normal_vector",
+        "name": "法向量求法与向量法判位置关系",
+        "definition": "题面要求求平面的法向量，并用法向量解决平行、垂直、角度、距离问题。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.solid_graph",
+        "name": "直观图、展开图与最短路径",
+        "definition": "题面涉及基本立体图形、直观图或展开图，要求还原图形、求面积或最短路径。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.section",
+        "name": "截面作法与截面图形",
+        "definition": "题面要求作出或判断空间几何体的截面，并求截面面积或截面与某面所成角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.combination",
+        "name": "组合体与翻折问题",
+        "definition": "题面涉及两个几何体的组合或平面图形翻折成空间图形，要求求体积、距离或角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_prob.counting_principle",
+        "name": "分类加法与分步乘法原理",
+        "definition": "题面要求完成一件事的方法数，需判断该用分类加法还是分步乘法。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.permutation",
+        "name": "排列与排列数",
+        "definition": "题面要求计数且元素顺序有关，如排队、排列、数字排列。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.combination",
+        "name": "组合、分组与分配",
+        "definition": "题面要求计数且只选不排，如选组、抽样、分组分配。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial",
+        "name": "二项式定理与系数",
+        "definition": "题面围绕二项展开式的通项、特定项系数、系数和或系数最大项。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.classical",
+        "name": "古典概型",
+        "definition": "题面要求求古典概型的概率，通常给出样本空间与事件。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.independent",
+        "name": "相互独立事件",
+        "definition": "题面涉及多个事件同时发生或相互独立，要求求概率。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.conditional",
+        "name": "条件概率、全概率与贝叶斯",
+        "definition": "题面给出条件概率、全概率或由结果反推来源的问题。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.geometric",
+        "name": "几何概型",
+        "definition": "题面求几何概型的概率，即长度、面积或体积之比。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.distribution",
+        "name": "离散型随机变量分布列",
+        "definition": "题面要求求离散型随机变量的分布列及其性质。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.expectation",
+        "name": "期望与方差",
+        "definition": "题面要求求期望、方差，或由期望反求参数、比较方案。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial_dist",
+        "name": "二项分布",
+        "definition": "题面是若干次独立重复试验，要求求恰好若干次成功的概率或分布。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.normal",
+        "name": "正态分布",
+        "definition": "题面涉及正态分布曲线、对称性求概率或三段标准差原则。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.sampling",
+        "name": "抽样方法与样本估计",
+        "definition": "题面要求选择抽样方法，或由样本估计总体的均值、方差、百分位数。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.regression",
+        "name": "一元线性回归",
+        "definition": "题面给出成对数据，要求求相关系数、回归方程并作预测。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.contingency",
+        "name": "列联表与独立性检验",
+        "definition": "题面给出列联表，要求判断两个分类变量是否相关。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_seq.arithmetic_geometric",
+        "name": "等差与等比数列基本量计算",
+        "definition": "题面给出等差或等比数列的部分基本量（首项、公差、公比、项数、前 n 项和），要求求其余量或判断数列类型。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.an_sn",
+        "name": "通项与前 n 项和的关系",
+        "definition": "题面给出前 n 项和的表达式，或给出含通项与前 n 项和的混合关系式，要求求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.recurrence",
+        "name": "递推数列求通项",
+        "definition": "题面给出相邻项的递推关系，要求求通项公式。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.construct_seq",
+        "name": "构造新数列（等差化与等比化）",
+        "definition": "题面要求在递推式两边作变形，构造出等差或等比数列后再求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_formula",
+        "name": "公式法、分组求和与并项求和",
+        "definition": "题面要求求前 n 项和，通项是等差、等比或可分组、可并项的结构。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_telescoping",
+        "name": "裂项相消求和",
+        "definition": "题面要求求和的通项可拆成两项之差，求和时中间项相消。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_mismatch",
+        "name": "错位相减求和",
+        "definition": "题面求和的通项是等差乘等比结构，需要乘公比后错位相减。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.property",
+        "name": "数列单调性、最值项与等差等比性质",
+        "definition": "题面要求判断数列单调性、求最大或最小项，或利用等差中项、等比中项等性质求值。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.inequality",
+        "name": "数列不等式与放缩",
+        "definition": "题面要求证明数列型不等式，或比较数列和与某常数、函数的大小。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.induction",
+        "name": "数学归纳法证明",
+        "definition": "题面要求用数学归纳法证明与正整数有关的等式、不等式或整除性命题。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.model",
+        "name": "数列建模应用",
+        "definition": "题面给出增长、分期付款、存款等实际情境，要求建立数列模型并求解。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_trig.identity_eval",
+        "name": "给值求值（同角关系与诱导公式）",
+        "definition": "题面给出某个角的三角函数值，要求求同角其他三角函数值，或经诱导公式化简后求值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.identity_transform",
+        "name": "三角恒等变换与化简证明",
+        "definition": "题面要求化简三角式、证明三角恒等式或求非特殊角的乘积型三角函数值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.auxiliary_angle",
+        "name": "辅助角公式与化一",
+        "definition": "题面出现正弦与余弦的线性组合，要求化为一个三角函数后求周期、最值、单调区间或值域。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.angle_relation",
+        "name": "角的拆分与凑角求值",
+        "definition": "题面给出两个角的三角函数值，要求求这两角的和、差或倍角的函数值，角之间有可凑配的关系。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_property",
+        "name": "三角函数的周期、单调、对称与最值",
+        "definition": "题面给出三角函数解析式，要求求周期、单调区间、对称轴或对称中心、最值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_transform",
+        "name": "三角函数图象变换与解析式确定",
+        "definition": "题面要求由正弦函数经平移伸缩得到目标图象，或由图象反求正弦型函数的解析式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.omega_param",
+        "name": "含参数频率与初相的性质讨论",
+        "definition": "题面中频率或初相含参数，且给定单调性、零点个数或最值条件，要求求参数取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_equation",
+        "name": "三角方程与三角不等式",
+        "definition": "题面要求解简单三角方程或三角不等式，或由方程在给定区间内解的个数求参数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.sine_cosine_rule",
+        "name": "正余弦定理求边角",
+        "definition": "题面给出三角形的边角条件，要求求未知边、未知角，或判断三角形解的个数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_shape",
+        "name": "三角形形状判断与边角互化",
+        "definition": "题面给出含边角混合的等式，要求判断三角形形状或证明某个边角恒等式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.area",
+        "name": "三角形面积与周长计算",
+        "definition": "题面要求求三角形面积、周长，或由面积反求边角。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_extremum",
+        "name": "解三角形中的最值与范围",
+        "definition": "题面在给定边角约束下，要求周长、面积或某边的最大值、最小值或取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.multi_triangle",
+        "name": "多三角形拼接（公共边与公共角）",
+        "definition": "题面图形由两个及以上三角形拼接而成，共边、共角或共线分点，要求求长度、角或面积。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.measurement",
+        "name": "实际测量与方位角问题",
+        "definition": "题面给出实际测量情境（仰角、俯角、方位角、河宽、塔高），要求求不可直接测量的距离或高度。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_model",
+        "name": "周期现象的三角函数建模",
+        "definition": "题面给出周期性实际现象（简谐运动、摩天轮、潮汐），要求用正弦型函数建模或求某时刻的值。",
+        "block_id": "B.hs_trig"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.auxiliary_angle",
+      "question": "若 $f(x)=\\cos x-\\sin x$ 在 $[-a, a]$ 是减函数, 则 $a$ 的最大值是 $(\\quad)$\nA. $\\frac{\\pi}{4}$\nB. $\\frac{\\pi}{2}$\nC. $\\frac{3 \\pi}{4}$\nD. $\\pi$",
+      "solution": "$f(x)=-\\sqrt{2}\\sin\\left(x-\\frac{\\pi}{4}\\right)$，含原点的减区间为 $\\left[-\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right]$，由 $-a\\geqslant-\\frac{\\pi}{4}$ 与 $a\\leqslant\\frac{3\\pi}{4}$ 得 $a\\leqslant\\frac{\\pi}{4}$，最大值为 $\\frac{\\pi}{4}$，选 A。",
+      "routes": [
+        {
+          "id": "r-aux",
+          "summary": "用辅助角公式化为单一正弦型，再由正弦的增区间读出减区间",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_auxiliary_angle",
+              "state": "$f(x)=\\cos x-\\sin x$",
+              "transformedState": "$-\\sqrt{2}\\sin\\left(x-\\frac{\\pi}{4}\\right)$",
+              "condition": "两项同频率，振幅为 $\\sqrt{1^{2}+1^{2}}=\\sqrt{2}$，取负号后单调方向反转。"
+            },
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_global",
+              "state": "$x-\\frac{\\pi}{4}\\in\\left(-\\frac{\\pi}{2}+2k\\pi,\\frac{\\pi}{2}+2k\\pi\\right)$",
+              "transformedState": "$x\\in\\left(-\\frac{\\pi}{4}+2k\\pi,\\frac{3\\pi}{4}+2k\\pi\\right)$",
+              "condition": "正弦递增时 $-\\sqrt{2}\\sin$ 递减，取 $k=0$ 得含原点的减区间。"
+            },
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_global",
+              "state": "减区间 $\\left[-\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right]$ 与 $[-a,a]$ 比较",
+              "transformedState": "$-a\\geqslant-\\frac{\\pi}{4}$ 且 $a\\leqslant\\frac{3\\pi}{4}$，故 $a$ 的最大值为 $\\frac{\\pi}{4}$",
+              "condition": "对称区间 $[-a,a]$ 必须整段落在减区间内。"
+            }
+          ],
+          "reason": "化一后单调性直接由正弦的增区间给出，再把两个端点夹住，路径最短。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-extremum",
+          "summary": "由相邻最高点与最低点确定减区间，再夹参数范围",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_global",
+              "state": "$f(x)=\\sqrt{2}\\cos\\left(x+\\frac{\\pi}{4}\\right)$",
+              "transformedState": "在 $x=-\\frac{\\pi}{4}$ 取最大值 $\\sqrt{2}$，在 $x=\\frac{3\\pi}{4}$ 取最小值 $-\\sqrt{2}$",
+              "condition": "余弦型函数的相邻最高点与最低点之间恰为一个减区间。"
+            },
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_global",
+              "state": "$[-a,a]\\subseteq\\left[-\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right]$",
+              "transformedState": "$a\\leqslant\\frac{\\pi}{4}$",
+              "condition": "左端点 $-a$ 不能越过 $-\\frac{\\pi}{4}$。"
+            }
+          ],
+          "reason": "用相邻极值点直接定出减区间，再夹端点，结论与化一后一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-right-end",
+          "summary": "只看减区间的右端点，漏掉左端点的限制",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_global",
+              "state": "减区间 $\\left[-\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right]$",
+              "transformedState": "仅由 $a\\leqslant\\frac{3\\pi}{4}$ 得 $a$ 的最大值为 $\\frac{3\\pi}{4}$，选 C",
+              "condition": "漏掉条件 $-a\\geqslant-\\frac{\\pi}{4}$。"
+            }
+          ],
+          "reason": "取 $a=\\frac{3\\pi}{4}$ 时 $[-a,a]$ 的左端 $-\\frac{3\\pi}{4}$ 已越过 $-\\frac{\\pi}{4}$，该段函数递增，前提不成立。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "x"
+      ],
+      "comparisonCriterion": "优先用辅助角公式化一，再由正弦的增区间定减区间，并同时夹住 $[-a,a]$ 的两个端点，不能只看右端点",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_I_MCQs_119",
+        "trainingGoal": "识别余弦减正弦的组合，用化一定单调区间并夹出参数范围",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2018 全国卷 第10题",
+          "reference": "rainewhk/gaokao 2018/全国卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_119"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$[-a,a]$ 关于原点对称",
+          "减区间只由 $f'$ 的符号确定",
+          "两端点约束必须同时满足"
+        ],
+        "allowedVariations": [
+          "改变三角函数组合与系数",
+          "改问递增区间或区间长度"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_119",
+          "text": "10. （5 分) 若 $f(x)=\\cos x-\\sin x$ 在 $[-a, a]$ 是减函数, 则 $a$ 的最大值是 $(\\quad)$\nA. $\\frac{\\pi}{4}$\nB. $\\frac{\\pi}{2}$\nC. $\\frac{3 \\pi}{4}$\nD. $\\pi$\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2018\\全国卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "辅助角公式与化一",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_I_MCQs_119",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$f(x)=\\cos x-\\sin x=-\\sqrt{2}\\sin\\left(x-\\frac{\\pi}{4}\\right)$，求导得 $f'(x)=-\\sin x-\\cos x=-\\sqrt{2}\\sin\\left(x+\\frac{\\pi}{4}\\right)$，在 $\\left(-\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right)$ 内为负，故含原点的减区间是 $\\left[-\\frac{\\pi}{4},\\frac{3\\pi}{4}\\right]$。要求 $[-a,a]$ 含于其中，需 $-a\\geqslant-\\frac{\\pi}{4}$ 且 $a\\leqslant\\frac{3\\pi}{4}$，所以 $a\\leqslant\\frac{\\pi}{4}$，最大值 $\\frac{\\pi}{4}$，对应 A，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_auxiliary_angle",
+        "M.hs_trig_global"
+      ],
+      "applicableMethodIds": [
+        "M.hs_auxiliary_angle",
+        "M.hs_trig_global"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_auxiliary_angle"
+        },
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_trig_addition"
+        },
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_trig_global"
+        },
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_trig_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_auxiliary_angle",
+        "M.hs_trig_addition",
+        "M.hs_trig_global",
+        "M.hs_trig_equation"
+      ],
+      "options": [
+        {
+          "id": "r-right-end",
+          "name": "只看减区间的右端点，漏掉左端点的限制"
+        },
+        {
+          "id": "r-aux",
+          "name": "用辅助角公式化为单一正弦型，再由正弦的增区间读出减区间"
+        },
+        {
+          "id": "r-extremum",
+          "name": "由相邻最高点与最低点确定减区间，再夹参数范围"
+        }
+      ],
+      "questionKey": "ddfa0012ab3c10ef02f7c06ab80f98a549bf6a59b09be57fbac8f75b7214f8d0",
+      "faceKey": "74c02b8b20da36a339cb506946b2b6694d23336ef01cbe94f9c42890039b2a35"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.graph_property",
+      "question": "函数 $f(x)=\\sin \\left(2 x+\\frac{\\pi}{3}\\right)$ 的最小正周期为（ $)$\nA. $4 \\pi$\nB. $2 \\pi$\nC. $\\pi$\nD. $\\frac{\\pi}{2}$",
+      "solution": "$\\omega=2$，故最小正周期 $T=\\frac{2\\pi}{2}=\\pi$，选 C。",
+      "routes": [
+        {
+          "id": "r-formula",
+          "summary": "直接由 $\\omega=2$ 代入周期公式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "$f(x)=\\sin\\left(2x+\\frac{\\pi}{3}\\right)$，$\\omega=2$",
+              "transformedState": "$T=\\frac{2\\pi}{2}=\\pi$",
+              "condition": "正弦型函数 $y=\\sin(\\omega x+\\varphi)$ 的最小正周期为 $\\frac{2\\pi}{|\\omega|}$。"
+            }
+          ],
+          "reason": "周期只由 $x$ 的系数决定，一步代入即可。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-verify",
+          "summary": "用 $x$ 增加 $\\pi$ 时相位增加 $2\\pi$ 验证周期",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "$f(x+\\pi)=\\sin\\left(2x+2\\pi+\\frac{\\pi}{3}\\right)$",
+              "transformedState": "$f(x+\\pi)=f(x)$，且 $\\pi$ 是最小的正数，故 $T=\\pi$",
+              "condition": "相位增加整周期 $2\\pi$ 时函数值重复。"
+            }
+          ],
+          "reason": "按周期定义验证，排除 $\\frac{\\pi}{2}$ 等更小的候选值。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-formula-wrong",
+          "summary": "把周期公式误记成 $T=2\\pi\\omega$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "$\\omega=2$",
+              "transformedState": "误算 $T=2\\pi\\cdot2=4\\pi$，选 A",
+              "condition": "周期公式应为 $T=\\frac{2\\pi}{\\omega}$，$\\omega$ 在分母上。"
+            }
+          ],
+          "reason": "把除法记成乘法，$\\omega$ 越大周期应越小，$4\\pi$ 明显与函数图象不符。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先由 $x$ 的系数 $\\omega$ 代入 $T=\\frac{2\\pi}{\\omega}$，避免把周期公式记成乘法",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_II_MCQs_93",
+        "trainingGoal": "由正弦型函数的 $\\omega$ 求最小正周期",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2017 全国卷 第3题",
+          "reference": "rainewhk/gaokao 2017/全国卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_93"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\omega=2$ 不变",
+          "周期只与 $\\omega$ 有关，与初相 $\\frac{\\pi}{3}$ 无关"
+        ],
+        "allowedVariations": [
+          "改变 $\\omega$",
+          "改变初相"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_93",
+          "text": "3. (5 分) 函数 $f(x)=\\sin \\left(2 x+\\frac{\\pi}{3}\\right)$ 的最小正周期为（ $)$\nA. $4 \\pi$\nB. $2 \\pi$\nC. $\\pi$\nD. $\\frac{\\pi}{2}$\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2017\\全国卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "三角函数的周期、单调、对称与最值",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_II_MCQs_93",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$f(x)=\\sin\\left(2x+\\frac{\\pi}{3}\\right)$ 中 $\\omega=2$，最小正周期 $T=\\frac{2\\pi}{2}=\\pi$；也可直接验证 $f(x+\\pi)=\\sin\\left(2x+2\\pi+\\frac{\\pi}{3}\\right)=f(x)$。对应 C，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_global"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_global"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.graph_property",
+          "methodId": "M.hs_trig_global"
+        },
+        {
+          "scenarioId": "S.hs_trig.graph_property",
+          "methodId": "M.hs_auxiliary_angle"
+        },
+        {
+          "scenarioId": "S.hs_trig.graph_property",
+          "methodId": "M.hs_trig_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_trig_global",
+        "M.hs_auxiliary_angle",
+        "M.hs_trig_equation"
+      ],
+      "options": [
+        {
+          "id": "r-formula",
+          "name": "直接由 $\\omega=2$ 代入周期公式"
+        },
+        {
+          "id": "r-verify",
+          "name": "用 $x$ 增加 $\\pi$ 时相位增加 $2\\pi$ 验证周期"
+        },
+        {
+          "id": "r-formula-wrong",
+          "name": "把周期公式误记成 $T=2\\pi\\omega$"
+        }
+      ],
+      "questionKey": "a8471743b2a5fe39864822d2678d7e602a4b90cf8ba10f69f298683f390fdeeb",
+      "faceKey": "4abfe70f79377317749cfbca5ef2a46b9f36e119798afdd69c798a75ca60bcf4"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.sine_cosine_rule",
+      "question": "$\\triangle A B C$ 的内角 $A, B, C$ 的对边分别为 $a, b, c$，已知 $\\sin B+\\sin A(\\sin C-\\cos C)=0$，$a=2, c=\\sqrt{2}$，则 $C=(\\quad)$\nA. $\\frac{\\pi}{12}$\nB. $\\frac{\\pi}{6}$\nC. $\\frac{\\pi}{4}$\nD. $\\frac{\\pi}{3}$",
+      "solution": "由 $\\sin B=\\sin(A+C)$ 展开合并得 $\\sin C(\\sin A+\\cos A)=0$，故 $\\tan A=-1$，$A=\\frac{3\\pi}{4}$；再由正弦定理得 $\\sin C=\\frac{1}{2}$，结合 $a>c$ 得 $C=\\frac{\\pi}{6}$，选 B。",
+      "routes": [
+        {
+          "id": "r-angle",
+          "summary": "用内角和把 $\\sin B$ 换成 $\\sin(A+C)$，边角互化求 $A$，再用正弦定理求 $C$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_side_angle",
+              "state": "$\\sin B=\\sin(A+C)=\\sin A\\cos C+\\cos A\\sin C$",
+              "transformedState": "$\\sin C(\\sin A+\\cos A)=0$，因 $\\sin C\\neq0$ 得 $\\tan A=-1$，$A=\\frac{3\\pi}{4}$",
+              "condition": "$A+B+C=\\pi$，且三角形内角的正弦为正。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_sine_rule",
+              "state": "$\\frac{c}{\\sin C}=\\frac{a}{\\sin A}$，$a=2, c=\\sqrt{2}, \\sin A=\\frac{\\sqrt{2}}{2}$",
+              "transformedState": "$\\sin C=\\frac{1}{2}$",
+              "condition": "正弦定理对任意三角形成立。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_side_angle",
+              "state": "$\\sin C=\\frac{1}{2}$，候选 $C=\\frac{\\pi}{6}$ 或 $C=\\frac{5\\pi}{6}$",
+              "transformedState": "$a=2>c=\\sqrt{2}$ 得 $C<A=\\frac{3\\pi}{4}$，故 $C=\\frac{\\pi}{6}$",
+              "condition": "大边对大角，且 $A+C$ 不能超过 $\\pi$。"
+            }
+          ],
+          "reason": "先用内角和把多角条件化单角，再用正弦定理求角并用大边对大角定唯一解。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-cosine",
+          "summary": "由余弦定理求边 $b$，再用余弦定理直接求 $\\cos C$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_side_angle",
+              "state": "$\\sin B=\\sin(A+C)$ 代入条件",
+              "transformedState": "$\\tan A=-1$，$A=\\frac{3\\pi}{4}$",
+              "condition": "内角和与正弦展开式。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_cosine_rule",
+              "state": "$a^{2}=b^{2}+c^{2}-2bc\\cos A$",
+              "transformedState": "$b^{2}+2b-2=0$，得 $b=\\sqrt{3}-1$",
+              "condition": "$\\cos\\frac{3\\pi}{4}=-\\frac{\\sqrt{2}}{2}$，$b>0$ 取正根。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_cosine_rule",
+              "state": "$\\cos C=\\frac{a^{2}+b^{2}-c^{2}}{2ab}$",
+              "transformedState": "$\\cos C=\\frac{3-\\sqrt{3}}{2(\\sqrt{3}-1)}=\\frac{\\sqrt{3}}{2}$，$C=\\frac{\\pi}{6}$",
+              "condition": "$\\cos C>0$ 时 $C$ 为锐角，取唯一角。"
+            }
+          ],
+          "reason": "全部走边的关系求角，不依赖正弦定理的二解讨论，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-swap",
+          "summary": "正弦定理代入时把 $a$ 与 $c$ 的位置写反",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_side_angle",
+              "state": "$\\sin B=\\sin(A+C)$ 代入条件",
+              "transformedState": "$A=\\frac{3\\pi}{4}$",
+              "condition": "此步结论正确。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_sine_rule",
+              "state": "误写 $\\sin C=\\frac{a\\sin A}{c}=\\frac{2\\cdot\\frac{\\sqrt{2}}{2}}{\\sqrt{2}}=1$",
+              "transformedState": "$C=\\frac{\\pi}{2}$，与 $A=\\frac{3\\pi}{4}$ 相加已超过 $\\pi$",
+              "condition": "正弦定理应为 $\\sin C=\\frac{c\\sin A}{a}$，边与对角必须对应。"
+            }
+          ],
+          "reason": "边与对角错配，得到 $C=\\frac{\\pi}{2}$ 与内角和矛盾，说明该路线失效。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ],
+      "comparisonCriterion": "优先用内角和把 $\\sin B$ 化为 $\\sin(A+C)$ 求 $A$，再用正弦定理并借大边对大角定唯一角，避免边角错配",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_II_MCQs_90",
+        "trainingGoal": "在三角形中边角互化求角，并处理正弦定理的二解与增根",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2017 全国卷 第11题",
+          "reference": "rainewhk/gaokao 2017/全国卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_90"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "三角形内角和为 $\\pi$",
+          "$a=2>c=\\sqrt{2}$",
+          "正弦定理中边与对角必须对应"
+        ],
+        "allowedVariations": [
+          "改变已知边与角",
+          "改求 $\\triangle ABC$ 的面积"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_90",
+          "text": "11. (5 分) $\\triangle A B C$ 的内角 $A, B, C$ 的对边分别为 $a, b, c$, 已知 $\\sin B+\\sin A$ ( $\\sin C-\\cos C)=0, a=2, \\quad c=\\sqrt{2}$, 则 $C=(\\quad)$\nA. $\\frac{\\pi}{12}$\nB. $\\frac{\\pi}{6}$\nC. $\\frac{\\pi}{4}$\nD. $\\frac{\\pi}{3}$\n",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2017\\全国卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "正余弦定理求边角",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_II_MCQs_90",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$\\sin B=\\sin(A+C)=\\sin A\\cos C+\\cos A\\sin C$，代入条件并消去 $\\sin A\\cos C$ 得 $\\sin C(\\cos A+\\sin A)=0$，因 $\\sin C\\neq0$ 得 $\\tan A=-1$，又 $A$ 为钝角，故 $A=\\frac{3\\pi}{4}$。由正弦定理 $\\frac{c}{\\sin C}=\\frac{a}{\\sin A}$ 得 $\\sin C=\\frac{c\\sin A}{a}=\\frac{\\sqrt{2}\\cdot\\frac{\\sqrt{2}}{2}}{2}=\\frac{1}{2}$；因 $a>c$ 故 $C<A=\\frac{3\\pi}{4}$，$C=\\frac{\\pi}{6}$（若取 $\\frac{5\\pi}{6}$ 则 $A+C>\\pi$）。对应 B，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_side_angle",
+        "M.hs_sine_rule"
+      ],
+      "applicableMethodIds": [
+        "M.hs_side_angle",
+        "M.hs_sine_rule",
+        "M.hs_cosine_rule"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_sine_rule"
+        },
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_cosine_rule"
+        },
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_side_angle"
+        },
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_triangle_area"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_sine_rule",
+        "M.hs_cosine_rule",
+        "M.hs_side_angle",
+        "M.hs_triangle_area"
+      ],
+      "options": [
+        {
+          "id": "r-cosine",
+          "name": "由余弦定理求边 $b$，再用余弦定理直接求 $\\cos C$"
+        },
+        {
+          "id": "r-swap",
+          "name": "正弦定理代入时把 $a$ 与 $c$ 的位置写反"
+        },
+        {
+          "id": "r-angle",
+          "name": "用内角和把 $\\sin B$ 换成 $\\sin(A+C)$，边角互化求 $A$，再用正弦定理求 $C$"
+        }
+      ],
+      "questionKey": "f497078f7107ad33327491f502a51df76507fd98d86c3329051164f62fd4ca00",
+      "faceKey": "d763e4c5c2b78dec6d898f4a5552679b7a35c6149497c29f0fba7b77ba147d6c"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.angle_relation",
+      "question": "已知 $\\frac{\\cos \\alpha}{\\cos \\alpha-\\sin \\alpha}=\\sqrt{3}$, 则 $\\tan \\left(\\alpha+\\frac{\\pi}{4}\\right)=$ $(\\quad)$\nA. $2 \\sqrt{3}+1$\nB. $2 \\sqrt{3}-1$\nC. $\\frac{\\sqrt{3}}{2}$\nD. $1-\\sqrt{3}$",
+      "solution": "条件同除 $\\cos\\alpha$ 得 $\\tan\\alpha=1-\\frac{\\sqrt{3}}{3}$，再由 $\\tan\\left(\\alpha+\\frac{\\pi}{4}\\right)=\\frac{1+\\tan\\alpha}{1-\\tan\\alpha}$ 得 $2\\sqrt{3}-1$，选 B。",
+      "routes": [
+        {
+          "id": "r-tan",
+          "summary": "先把齐次分式化为 $\\tan\\alpha$，再用和角公式求目标角",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\frac{\\cos\\alpha}{\\cos\\alpha-\\sin\\alpha}=\\sqrt{3}$",
+              "transformedState": "$\\frac{1}{1-\\tan\\alpha}=\\sqrt{3}$，$\\tan\\alpha=1-\\frac{\\sqrt{3}}{3}$",
+              "condition": "分子分母同除 $\\cos\\alpha$，题设分式有意义保证 $\\cos\\alpha\\neq0$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\tan\\left(\\alpha+\\frac{\\pi}{4}\\right)=\\frac{\\tan\\alpha+\\tan\\frac{\\pi}{4}}{1-\\tan\\alpha\\tan\\frac{\\pi}{4}}$",
+              "transformedState": "$\\frac{2-\\frac{\\sqrt{3}}{3}}{\\frac{\\sqrt{3}}{3}}=2\\sqrt{3}-1$",
+              "condition": "$\\tan\\frac{\\pi}{4}=1$，分母 $1-\\tan\\alpha\\neq0$。"
+            }
+          ],
+          "reason": "先化单角正切再套和角公式，计算量最小。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-combine",
+          "summary": "把 $\\alpha+\\frac{\\pi}{4}$ 看成整体凑角，直接由条件反解目标式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_angle_combination",
+              "state": "$\\alpha+\\frac{\\pi}{4}$ 拆为 $\\alpha$ 与 $\\frac{\\pi}{4}$ 的和",
+              "transformedState": "目标式 $=\\frac{1+\\tan\\alpha}{1-\\tan\\alpha}$，而条件给出 $\\frac{1}{1-\\tan\\alpha}=\\sqrt{3}$",
+              "condition": "凑角后目标式只含 $\\tan\\alpha$ 与 $1-\\tan\\alpha$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\frac{1+\\tan\\alpha}{1-\\tan\\alpha}=\\frac{1}{1-\\tan\\alpha}+\\frac{\\tan\\alpha}{1-\\tan\\alpha}$",
+              "transformedState": "$\\sqrt{3}+(\\sqrt{3}-1)=2\\sqrt{3}-1$",
+              "condition": "由 $1-\\tan\\alpha=\\frac{\\sqrt{3}}{3}$ 得 $\\frac{\\tan\\alpha}{1-\\tan\\alpha}=\\sqrt{3}-1$。"
+            }
+          ],
+          "reason": "不做完整代换，直接用已知分式整体求值，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-read-tan",
+          "summary": "把条件分式直接读成 $\\tan\\alpha=\\sqrt{3}$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\frac{\\cos\\alpha}{\\cos\\alpha-\\sin\\alpha}=\\sqrt{3}$",
+              "transformedState": "误得 $\\tan\\alpha=\\sqrt{3}$，代入得 $\\tan\\left(\\alpha+\\frac{\\pi}{4}\\right)=-(2+\\sqrt{3})$",
+              "condition": "该分式不是 $\\tan\\alpha$，必须同除 $\\cos\\alpha$ 后才能读出 $1-\\tan\\alpha$ 的倒数。"
+            }
+          ],
+          "reason": "把分式误认成 $\\tan\\alpha$，所得 $-(2+\\sqrt{3})$ 与四个选项都不符，路线失效。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a"
+      ],
+      "comparisonCriterion": "优先把齐次分式同除 $\\cos\\alpha$ 化成 $\\tan\\alpha$，再用和角公式，不要把分式本身当 $\\tan\\alpha$",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:GAOKAO-Bench-2024_2024_Math_MCQs_6",
+        "trainingGoal": "由齐次分式求单角正切，再用和角公式求复合角正切",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2024 全国甲卷 第8题",
+          "reference": "rainewhk/gaokao 2024/全国甲卷/选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_6"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "同除 $\\cos\\alpha$ 的前提是 $\\cos\\alpha\\neq0$",
+          "和角公式的分母 $1-\\tan\\alpha\\neq0$"
+        ],
+        "allowedVariations": [
+          "改变右端常数",
+          "改求 $\\tan\\left(\\alpha-\\frac{\\pi}{4}\\right)$"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_6",
+          "text": "8. 已知 $\\frac{\\cos \\alpha}{\\cos \\alpha-\\sin \\alpha}=\\sqrt{3}$, 则 $\\tan \\left(\\alpha+\\frac{\\pi}{4}\\right)=$ ( )\nA. $2 \\sqrt{3}+1$\nB. $2 \\sqrt{3}-1$\nC. $\\frac{\\sqrt{3}}{2}$\nD. $1-\\sqrt{3}$",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2024\\全国甲卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "角的拆分与凑角求值",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_6",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：分子分母同除 $\\cos\\alpha$（$\\cos\\alpha\\neq0$）得 $\\frac{1}{1-\\tan\\alpha}=\\sqrt{3}$，故 $1-\\tan\\alpha=\\frac{\\sqrt{3}}{3}$，$\\tan\\alpha=1-\\frac{\\sqrt{3}}{3}$。再用和角公式 $\\tan\\left(\\alpha+\\frac{\\pi}{4}\\right)=\\frac{\\tan\\alpha+1}{1-\\tan\\alpha}=\\frac{2-\\frac{\\sqrt{3}}{3}}{\\frac{\\sqrt{3}}{3}}=2\\sqrt{3}-1$，对应 B，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_trig_addition"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_trig_addition",
+        "M.hs_angle_combination"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.angle_relation",
+          "methodId": "M.hs_angle_combination"
+        },
+        {
+          "scenarioId": "S.hs_trig.angle_relation",
+          "methodId": "M.hs_trig_addition"
+        },
+        {
+          "scenarioId": "S.hs_trig.angle_relation",
+          "methodId": "M.hs_trig_identity"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_angle_combination",
+        "M.hs_trig_addition",
+        "M.hs_trig_identity"
+      ],
+      "options": [
+        {
+          "id": "r-tan",
+          "name": "先把齐次分式化为 $\\tan\\alpha$，再用和角公式求目标角"
+        },
+        {
+          "id": "r-combine",
+          "name": "把 $\\alpha+\\frac{\\pi}{4}$ 看成整体凑角，直接由条件反解目标式"
+        },
+        {
+          "id": "r-read-tan",
+          "name": "把条件分式直接读成 $\\tan\\alpha=\\sqrt{3}$"
+        }
+      ],
+      "questionKey": "2a2a4af3b015d8ae49636da19d91ae4ebb113aeef776492edb1929682e937635",
+      "faceKey": "9a28f018180c110ad58488138b4ce0bdf7c2fe4d83fad56110c8131b0d254ad9"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.graph_transform",
+      "question": "已知 $f(x)$ 为函数 $y=\\cos \\left(2 x+\\frac{\\pi}{6}\\right)$ 向左平移 $\\frac{\\pi}{6}$ 个单位所得函数, 则 $y=f(x)$ 与 $y=\\frac{1}{2} x-\\frac{1}{2}$ 的交点个数为 $(\\quad)$\nA. 1\nB. 2\nC. 3\nD. 4",
+      "solution": "左移后 $f(x)=\\cos\\left(2x+\\frac{\\pi}{2}\\right)=-\\sin2x$，与 $y=\\frac{1}{2}x-\\frac{1}{2}$ 的图象有 3 个交点，选 C。",
+      "routes": [
+        {
+          "id": "r-transform",
+          "summary": "先按左加右减求出解析式，再用图象与直线的位置关系数交点",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_transform",
+              "methodId": "M.hs_trig_graph_transform",
+              "state": "$y=\\cos\\left(2x+\\frac{\\pi}{6}\\right)$ 向左平移 $\\frac{\\pi}{6}$",
+              "transformedState": "$f(x)=\\cos\\left(2x+\\frac{\\pi}{2}\\right)=-\\sin2x$",
+              "condition": "左加右减，平移量加在自变量 $x$ 上。"
+            },
+            {
+              "scenarioId": "S.hs_trig.graph_transform",
+              "methodId": "M.hs_trig_global",
+              "state": "$f(x)=-\\sin2x$ 与 $y=\\frac{1}{2}x-\\frac{1}{2}$",
+              "transformedState": "交点个数为 3",
+              "condition": "$f$ 的周期为 $\\pi$、值域为 $[-1,1]$，直线单调递增且过 $(1,0)$，可按段比较。"
+            }
+          ],
+          "reason": "先定解析式再数交点，是图象变换题的标准流程，最快。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-endpoint",
+          "summary": "在若干关键点比较 $f$ 与直线的函数值，用符号变化定位交点",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_transform",
+              "methodId": "M.hs_trig_graph_transform",
+              "state": "函数由 $y=\\cos\\left(2x+\\frac{\\pi}{6}\\right)$ 左移得到",
+              "transformedState": "$f(x)=-\\sin2x$",
+              "condition": "左加右减，且 $\\cos\\left(2x+\\frac{\\pi}{2}\\right)=-\\sin2x$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.graph_transform",
+              "methodId": "M.hs_trig_global",
+              "state": "在 $x=-\\frac{3\\pi}{4},\\frac{3\\pi}{4},\\frac{7\\pi}{4}$ 处比较：$f$ 依次为 $-1,1,1$，直线依次为 $-\\frac{3\\pi+4}{8}< -1$、$\\frac{3\\pi-4}{8}<1$、$\\frac{7\\pi-4}{8}>1$",
+              "transformedState": "相邻关键点之间函数值异号，共 3 个交点",
+              "condition": "$f$ 在每段上单调，符号变化即对应唯一交点。"
+            }
+          ],
+          "reason": "用关键点函数值的大小关系定位交点，避免凭图象粗略计数。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-shift-wrong",
+          "summary": "把左加右减记反，按向右平移求解析式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_transform",
+              "methodId": "M.hs_trig_graph_transform",
+              "state": "误按向右平移 $\\frac{\\pi}{6}$ 代入",
+              "transformedState": "$f(x)=\\cos\\left(2x-\\frac{\\pi}{6}\\right)$，数出的交点个数与 3 不符",
+              "condition": "向左平移应把 $\\frac{\\pi}{6}$ 加在 $x$ 上，写成 $2\\left(x+\\frac{\\pi}{6}\\right)$。"
+            }
+          ],
+          "reason": "解析式取错后整条曲线相位偏移，交点数必然算错，不能与选项 C 对应。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先按左加右减正确写出解析式，再按关键点比较函数值数交点，避免把平移方向记反",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:GAOKAO-Bench-2023_2023_Math_MCQs_8",
+        "trainingGoal": "由图象平移确定解析式，再用图象与直线的位置关系数交点",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2023 全国甲卷 第10题",
+          "reference": "rainewhk/gaokao 2023/全国甲卷/选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_8"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "左加右减，平移量加在 $x$ 上",
+          "$f$ 的周期为 $\\pi$，值域为 $[-1,1]$",
+          "直线 $y=\\frac{1}{2}x-\\frac{1}{2}$ 过 $(1,0)$"
+        ],
+        "allowedVariations": [
+          "改变平移量与直线斜率",
+          "改问交点横坐标之和"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_8",
+          "text": "10. 已知 $f(x)$ 为函数 $y=\\cos \\left(2 x+\\frac{\\pi}{6}\\right)$ 向左平移 $\\frac{\\pi}{6}$ 个单位所得函数, 则 $y=f(x)$ 与 $y=\\frac{1}{2} x-\\frac{1}{2}$ 的交点个数为 $()$\nA. 1\nB. 2\nC. 3\nD. 4",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2023\\全国甲卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "三角函数图象变换与解析式确定",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_8",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：向左平移 $\\frac{\\pi}{6}$ 得 $f(x)=\\cos\\left[2\\left(x+\\frac{\\pi}{6}\\right)+\\frac{\\pi}{6}\\right]=\\cos\\left(2x+\\frac{\\pi}{2}\\right)=-\\sin2x$。直线 $y=\\frac{1}{2}x-\\frac{1}{2}$ 过 $(0,-\\frac{1}{2})$ 与 $(1,0)$。在 $x< -2$ 时 $f\\geqslant-1$ 而直线小于 $-1.5$，无交点；在 $(0,\\frac{\\pi}{4})$ 内 $f$ 由 $0$ 降到 $-1$，与直线有一次相交；$x=\\frac{3\\pi}{4}$ 处 $f=1$ 而直线约 $0.68$，$x=2$ 处 $f\\approx0.76$ 而直线为 $0.5$，$x=3$ 处 $f\\approx0.28$ 而直线为 $1$，故在 $\\left(\\frac{3\\pi}{4},2\\right)$ 与 $(2,3)$ 各有一交点，合计 3 个，对应 C，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_graph_transform",
+        "M.hs_trig_global"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_graph_transform",
+        "M.hs_trig_global"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.graph_transform",
+          "methodId": "M.hs_trig_graph_transform"
+        },
+        {
+          "scenarioId": "S.hs_trig.graph_transform",
+          "methodId": "M.hs_trig_global"
+        },
+        {
+          "scenarioId": "S.hs_trig.graph_transform",
+          "methodId": "M.hs_omega_range"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_trig_graph_transform",
+        "M.hs_trig_global",
+        "M.hs_omega_range"
+      ],
+      "options": [
+        {
+          "id": "r-shift-wrong",
+          "name": "把左加右减记反，按向右平移求解析式"
+        },
+        {
+          "id": "r-transform",
+          "name": "先按左加右减求出解析式，再用图象与直线的位置关系数交点"
+        },
+        {
+          "id": "r-endpoint",
+          "name": "在若干关键点比较 $f$ 与直线的函数值，用符号变化定位交点"
+        }
+      ],
+      "questionKey": "86a63d8545fcf195c7805fb0f061b25e0882d80ff09a3f82236cfb53cfcd47b3",
+      "faceKey": "db2cf02594eba46474d3cdd96cfc8866ff71bfab3c94c8df708aec8c420e1750"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.identity_eval",
+      "question": "若 $\\cos \\alpha=-\\frac{4}{5}, \\alpha$ 是第三象限的角, 则 $\\frac{1+\\tan \\frac{\\alpha}{2}}{1-\\tan \\frac{\\alpha}{2}}=(\\quad)$\nA. $-\\frac{1}{2}$\nB. $\\frac{1}{2}$\nC. 2\nD. -2",
+      "solution": "由 $\\cos\\alpha=-\\frac{4}{5}$ 且 $\\alpha$ 在第三象限得 $\\sin\\alpha=-\\frac{3}{5}$；半角式化为 $\\frac{1+\\sin\\alpha}{\\cos\\alpha}=-\\frac{1}{2}$，选 A。",
+      "routes": [
+        {
+          "id": "r-half-angle",
+          "summary": "先定 $\\sin\\alpha$ 的符号，再把半角正切式通分成 $\\frac{1+\\sin\\alpha}{\\cos\\alpha}$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.identity_eval",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\cos\\alpha=-\\frac{4}{5}$，$\\alpha$ 为第三象限角",
+              "transformedState": "$\\sin\\alpha=-\\sqrt{1-\\cos^{2}\\alpha}=-\\frac{3}{5}$",
+              "condition": "第三象限正弦取负。"
+            },
+            {
+              "scenarioId": "S.hs_trig.identity_eval",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\frac{1+\\tan\\frac{\\alpha}{2}}{1-\\tan\\frac{\\alpha}{2}}$",
+              "transformedState": "$\\frac{\\cos\\frac{\\alpha}{2}+\\sin\\frac{\\alpha}{2}}{\\cos\\frac{\\alpha}{2}-\\sin\\frac{\\alpha}{2}}=\\frac{1+\\sin\\alpha}{\\cos\\alpha}=-\\frac{1}{2}$",
+              "condition": "分子分母同乘 $\\cos\\frac{\\alpha}{2}$，再用平方差与二倍角。"
+            }
+          ],
+          "reason": "把半角正切式一次性化到单角正弦余弦，代入即可，路径最短。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-tan-half",
+          "summary": "先用半角公式算出 $\\tan\\frac{\\alpha}{2}$，再代入原式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.identity_eval",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\cos\\alpha=-\\frac{4}{5}$，$\\sin\\alpha=-\\frac{3}{5}$",
+              "transformedState": "$\\tan\\frac{\\alpha}{2}=\\frac{\\sin\\alpha}{1+\\cos\\alpha}=\\frac{-\\frac{3}{5}}{\\frac{1}{5}}=-3$",
+              "condition": "$\\alpha$ 在第三象限，$\\frac{\\alpha}{2}$ 在第二象限，半角正切为负，与公式结果一致。"
+            },
+            {
+              "scenarioId": "S.hs_trig.identity_eval",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\frac{1+\\left(-3\\right)}{1-\\left(-3\\right)}$",
+              "transformedState": "$-\\frac{1}{2}$",
+              "condition": "直接代入 $\\tan\\frac{\\alpha}{2}=-3$。"
+            }
+          ],
+          "reason": "先求半角正切再代入，数值具体，便于检验符号。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-sign-wrong",
+          "summary": "忽略第三象限，把 $\\sin\\alpha$ 取成正的",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.identity_eval",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\cos\\alpha=-\\frac{4}{5}$",
+              "transformedState": "误取 $\\sin\\alpha=\\frac{3}{5}$，代入得 $\\frac{1+\\frac{3}{5}}{-\\frac{4}{5}}=-2$，选 D",
+              "condition": "第三象限的正弦应为负，符号判断错误。"
+            }
+          ],
+          "reason": "正弦符号取错后结果为 $-2$，与正确的 $-\\frac{1}{2}$ 不同，说明象限信息不可省略。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a"
+      ],
+      "comparisonCriterion": "优先由象限定正弦符号，再把半角正切式化为 $\\frac{1+\\sin\\alpha}{\\cos\\alpha}$，不能漏掉符号判断",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_I_MCQs_6",
+        "trainingGoal": "同角关系定符号后用半角关系化简求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2010 新课标卷 第9题",
+          "reference": "rainewhk/gaokao 2010/新课标卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_6"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\alpha$ 在第三象限，$\\sin\\alpha<0$",
+          "$\\frac{1+\\tan\\frac{\\alpha}{2}}{1-\\tan\\frac{\\alpha}{2}}=\\frac{1+\\sin\\alpha}{\\cos\\alpha}$"
+        ],
+        "allowedVariations": [
+          "改变象限",
+          "改求 $\\tan\\frac{\\alpha}{2}$"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_6",
+          "text": "9. (5 分）若 $\\cos \\alpha=-\\frac{4}{5}, \\alpha$ 是第三象限的角, 则 $\\frac{1+\\tan \\frac{\\alpha}{2}}{1-\\tan \\frac{\\alpha}{2}}=(\\quad)$\nA. $-\\frac{1}{2}$\nB. $\\frac{1}{2}$\nC. 2\nD. -2\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2010\\新课标卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "给值求值（同角关系与诱导公式）",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_I_MCQs_6",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$\\alpha$ 在第三象限，由 $\\cos\\alpha=-\\frac{4}{5}$ 得 $\\sin\\alpha=-\\frac{3}{5}$。把半角式通分：$\\frac{1+\\tan\\frac{\\alpha}{2}}{1-\\tan\\frac{\\alpha}{2}}=\\frac{\\cos\\frac{\\alpha}{2}+\\sin\\frac{\\alpha}{2}}{\\cos\\frac{\\alpha}{2}-\\sin\\frac{\\alpha}{2}}=\\frac{1+\\sin\\alpha}{\\cos\\alpha}=\\frac{1-\\frac{3}{5}}{-\\frac{4}{5}}=-\\frac{1}{2}$，对应 A，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_identity"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_trig_addition"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.identity_eval",
+          "methodId": "M.hs_trig_identity"
+        },
+        {
+          "scenarioId": "S.hs_trig.identity_eval",
+          "methodId": "M.hs_trig_addition"
+        },
+        {
+          "scenarioId": "S.hs_trig.identity_eval",
+          "methodId": "M.hs_angle_combination"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_trig_addition",
+        "M.hs_angle_combination"
+      ],
+      "options": [
+        {
+          "id": "r-half-angle",
+          "name": "先定 $\\sin\\alpha$ 的符号，再把半角正切式通分成 $\\frac{1+\\sin\\alpha}{\\cos\\alpha}$"
+        },
+        {
+          "id": "r-tan-half",
+          "name": "先用半角公式算出 $\\tan\\frac{\\alpha}{2}$，再代入原式"
+        },
+        {
+          "id": "r-sign-wrong",
+          "name": "忽略第三象限，把 $\\sin\\alpha$ 取成正的"
+        }
+      ],
+      "questionKey": "96fcba3971fdc3e2b929ab261b9fe243845a4a2c4f22135d9a3e8755c96b1439",
+      "faceKey": "071a9ea850d783422b432885db2e741937027a4550a7f3c6e6d117425e1ba5d8"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.identity_transform",
+      "question": "$\\cos ^{2} \\frac{\\pi}{12}-\\cos ^{2} \\frac{5 \\pi}{12}=(\\quad)$\n\nA. $\\frac{1}{2}$\n\nB. $\\frac{\\sqrt{3}}{3}$\n\nC. $\\frac{\\sqrt{2}}{2}$\n\nD. $\\frac{\\sqrt{3}}{2}$",
+      "solution": "$\\cos\\frac{5\\pi}{12}=\\sin\\frac{\\pi}{12}$，原式 $=\\cos^{2}\\frac{\\pi}{12}-\\sin^{2}\\frac{\\pi}{12}=\\cos\\frac{\\pi}{6}=\\frac{\\sqrt{3}}{2}$，选 D。",
+      "routes": [
+        {
+          "id": "r-induce",
+          "summary": "用诱导公式把 $\\cos\\frac{5\\pi}{12}$ 换成 $\\sin\\frac{\\pi}{12}$，再用二倍角",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.identity_transform",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\cos\\frac{5\\pi}{12}$",
+              "transformedState": "$\\sin\\frac{\\pi}{12}$",
+              "condition": "$\\frac{5\\pi}{12}+\\frac{\\pi}{12}=\\frac{\\pi}{2}$，用 $\\cos\\left(\\frac{\\pi}{2}-x\\right)=\\sin x$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.identity_transform",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\cos^{2}\\frac{\\pi}{12}-\\sin^{2}\\frac{\\pi}{12}$",
+              "transformedState": "$\\cos\\frac{\\pi}{6}=\\frac{\\sqrt{3}}{2}$",
+              "condition": "$\\cos^{2}x-\\sin^{2}x=\\cos2x$，$2\\cdot\\frac{\\pi}{12}=\\frac{\\pi}{6}$。"
+            }
+          ],
+          "reason": "先对齐两个角再套二倍角，一步到位。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-lower",
+          "summary": "直接用降幂公式把两个平方都化成一次余弦再相减",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.identity_transform",
+              "methodId": "M.hs_auxiliary_angle",
+              "state": "$\\cos^{2}\\frac{\\pi}{12}=\\frac{1+\\cos\\frac{\\pi}{6}}{2}$，$\\cos^{2}\\frac{5\\pi}{12}=\\frac{1+\\cos\\frac{5\\pi}{6}}{2}$",
+              "transformedState": "$\\frac{\\cos\\frac{\\pi}{6}-\\cos\\frac{5\\pi}{6}}{2}$",
+              "condition": "降幂公式 $\\cos^{2}x=\\frac{1+\\cos2x}{2}$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.identity_transform",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\cos\\frac{5\\pi}{6}=-\\cos\\frac{\\pi}{6}$",
+              "transformedState": "$\\frac{\\cos\\frac{\\pi}{6}+\\cos\\frac{\\pi}{6}}{2}=\\cos\\frac{\\pi}{6}=\\frac{\\sqrt{3}}{2}$",
+              "condition": "互补角的余弦互为相反数。"
+            }
+          ],
+          "reason": "降幂后只剩一次余弦，结果与先诱导再倍角一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-square-diff",
+          "summary": "把平方差误当成差角的余弦",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.identity_transform",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\cos^{2}\\frac{\\pi}{12}-\\cos^{2}\\frac{5\\pi}{12}$",
+              "transformedState": "误写成 $\\cos\\left(\\frac{\\pi}{12}-\\frac{5\\pi}{12}\\right)=\\cos\\left(-\\frac{\\pi}{3}\\right)=\\frac{1}{2}$，选 A",
+              "condition": "平方的差不能直接换成差的余弦，$\\cos^{2}A-\\cos^{2}B\\neq\\cos(A-B)$。"
+            }
+          ],
+          "reason": "混淆了平方差与差角公式，正确结果是 $\\frac{\\sqrt{3}}{2}$ 而不是 $\\frac{1}{2}$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先用诱导公式把两角对齐成同名函数，再用二倍角；平方的差不能直接换成差的余弦",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_II_MCQs_197",
+        "trainingGoal": "用诱导公式与二倍角公式化简余弦平方差",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2021 全国卷 第6题",
+          "reference": "rainewhk/gaokao 2021/全国卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_197"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\cos\\frac{5\\pi}{12}=\\sin\\frac{\\pi}{12}$",
+          "$\\cos^{2}x-\\sin^{2}x=\\cos2x$"
+        ],
+        "allowedVariations": [
+          "改变两个角",
+          "改求 $\\sin^{2}\\frac{\\pi}{12}-\\cos^{2}\\frac{5\\pi}{12}$"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_197",
+          "text": "6. $\\cos ^{2} \\frac{\\pi}{12}-\\cos ^{2} \\frac{5 \\pi}{12}=(\\quad)$\n\nA. $\\frac{1}{2}$\n\nB. $\\frac{\\sqrt{3}}{3}$\n\nC. $\\frac{\\sqrt{2}}{2}$\n\nD. $\\frac{\\sqrt{3}}{2}$\n",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2021\\全国卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "三角恒等变换与化简证明",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_II_MCQs_197",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$\\cos\\frac{5\\pi}{12}=\\cos\\left(\\frac{\\pi}{2}-\\frac{\\pi}{12}\\right)=\\sin\\frac{\\pi}{12}$，故原式为 $\\cos^{2}\\frac{\\pi}{12}-\\sin^{2}\\frac{\\pi}{12}=\\cos\\frac{\\pi}{6}=\\frac{\\sqrt{3}}{2}$；用降幂公式核算：$\\frac{1+\\cos\\frac{\\pi}{6}}{2}-\\frac{1+\\cos\\frac{5\\pi}{6}}{2}=\\frac{\\cos\\frac{\\pi}{6}-\\cos\\frac{5\\pi}{6}}{2}=\\cos\\frac{\\pi}{6}=\\frac{\\sqrt{3}}{2}$。对应 D，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_trig_addition"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_trig_addition",
+        "M.hs_auxiliary_angle"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.identity_transform",
+          "methodId": "M.hs_trig_addition"
+        },
+        {
+          "scenarioId": "S.hs_trig.identity_transform",
+          "methodId": "M.hs_auxiliary_angle"
+        },
+        {
+          "scenarioId": "S.hs_trig.identity_transform",
+          "methodId": "M.hs_trig_identity"
+        },
+        {
+          "scenarioId": "S.hs_trig.identity_transform",
+          "methodId": "M.hs_angle_combination"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_trig_addition",
+        "M.hs_auxiliary_angle",
+        "M.hs_trig_identity",
+        "M.hs_angle_combination"
+      ],
+      "options": [
+        {
+          "id": "r-lower",
+          "name": "直接用降幂公式把两个平方都化成一次余弦再相减"
+        },
+        {
+          "id": "r-square-diff",
+          "name": "把平方差误当成差角的余弦"
+        },
+        {
+          "id": "r-induce",
+          "name": "用诱导公式把 $\\cos\\frac{5\\pi}{12}$ 换成 $\\sin\\frac{\\pi}{12}$，再用二倍角"
+        }
+      ],
+      "questionKey": "fa331cfbad3248e319db4f96d55c0978220fc17bcbf6a524647c90aa84580d41",
+      "faceKey": "5dd0f4165f3d2b608b2e85783bdd6b1b060a49a228ca081fb5e4c51f76405bb5"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.omega_param",
+      "question": "已知函数 $f(x)=\\sin (\\omega x+\\varphi)$ 在区间 $\\left(\\frac{\\pi}{6}, \\frac{2 \\pi}{3}\\right)$ 单调递增, 直线 $x=\\frac{\\pi}{6}$ 和 $x=\\frac{2 \\pi}{3}$ 为函数 $y=f(x)$ 的图像的两条对称轴, 则 $f\\left(-\\frac{5 \\pi}{12}\\right)=(\\quad)$\nA. $-\\frac{\\sqrt{3}}{2}$\nB. $-\\frac{1}{2}$\nC. $\\frac{1}{2}$\nD. $\\frac{\\sqrt{3}}{2}$",
+      "solution": "两端对称轴相距半个周期，$\\frac{\\pi}{2}=\\frac{T}{2}$ 得 $\\omega=2$；左端点取最小值得 $\\varphi=-\\frac{5\\pi}{6}+2k\\pi$，故 $f\\left(-\\frac{5\\pi}{12}\\right)=\\sin\\left(-\\frac{5\\pi}{3}\\right)=\\frac{\\sqrt{3}}{2}$，选 D。",
+      "routes": [
+        {
+          "id": "r-omega",
+          "summary": "由对称轴间距与单调性定 $\\omega$，再由最值定 $\\varphi$，最后代入求值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.omega_param",
+              "methodId": "M.hs_omega_range",
+              "state": "$x=\\frac{\\pi}{6}$ 与 $x=\\frac{2\\pi}{3}$ 是相邻的两条对称轴",
+              "transformedState": "间距 $\\frac{\\pi}{2}=\\frac{T}{2}=\\frac{\\pi}{\\omega}$，得 $\\omega=2$",
+              "condition": "两条相邻对称轴对应相邻的最值点，间距为半个周期。"
+            },
+            {
+              "scenarioId": "S.hs_trig.omega_param",
+              "methodId": "M.hs_trig_equation",
+              "state": "区间内递增，故 $x=\\frac{\\pi}{6}$ 处取最小值 $-1$",
+              "transformedState": "$\\sin\\left(\\frac{\\pi}{3}+\\varphi\\right)=-1$，得 $\\varphi=-\\frac{5\\pi}{6}+2k\\pi$",
+              "condition": "递增区间的左端点是极小值点。"
+            },
+            {
+              "scenarioId": "S.hs_trig.omega_param",
+              "methodId": "M.hs_trig_global",
+              "state": "$f\\left(-\\frac{5\\pi}{12}\\right)=\\sin\\left(2\\cdot\\left(-\\frac{5\\pi}{12}\\right)-\\frac{5\\pi}{6}\\right)$",
+              "transformedState": "$\\sin\\left(-\\frac{5\\pi}{3}\\right)=\\frac{\\sqrt{3}}{2}$，选 D",
+              "condition": "把 $\\omega=2$ 与 $\\varphi=-\\frac{5\\pi}{6}$ 代入，用周期 $2\\pi$ 化简角。"
+            }
+          ],
+          "reason": "用对称轴间距直接定 $\\omega$，再由端点最值定 $\\varphi$，是最短路径。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-equations",
+          "summary": "联立两端点的相位方程，一次解出 $\\omega$ 与 $\\varphi$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.omega_param",
+              "methodId": "M.hs_trig_equation",
+              "state": "左端点取最小值、右端点取最大值",
+              "transformedState": "$\\frac{\\pi}{6}\\omega+\\varphi=-\\frac{\\pi}{2}+2k_{1}\\pi$，$\\frac{2\\pi}{3}\\omega+\\varphi=\\frac{\\pi}{2}+2k_{2}\\pi$",
+              "condition": "区间内递增，故左端点为最小值点、右端点为最大值点。"
+            },
+            {
+              "scenarioId": "S.hs_trig.omega_param",
+              "methodId": "M.hs_trig_equation",
+              "state": "两式相减",
+              "transformedState": "$\\frac{\\pi}{2}\\omega=\\pi+2(k_{2}-k_{1})\\pi$，结合区间只能含半个周期得 $\\omega=2$，$\\varphi=-\\frac{5\\pi}{6}$",
+              "condition": "相邻最值点相位差为 $\\pi$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.omega_param",
+              "methodId": "M.hs_trig_global",
+              "state": "$f\\left(-\\frac{5\\pi}{12}\\right)$",
+              "transformedState": "$\\frac{\\sqrt{3}}{2}$，选 D",
+              "condition": "代入已求出的 $\\omega$ 与 $\\varphi$。"
+            }
+          ],
+          "reason": "用相位方程联立求解，$\\omega$ 与 $\\varphi$ 都有方程依据，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-period-wrong",
+          "summary": "把两对称轴的间距当成一个周期",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.omega_param",
+              "methodId": "M.hs_omega_range",
+              "state": "间距 $\\frac{\\pi}{2}$",
+              "transformedState": "误得 $T=\\frac{\\pi}{2}$，$\\omega=4$，再取 $\\varphi=-\\frac{7\\pi}{6}$ 得 $f\\left(-\\frac{5\\pi}{12}\\right)=-\\frac{1}{2}$，选 B",
+              "condition": "相邻对称轴间距是半个周期，不是整个周期。"
+            }
+          ],
+          "reason": "$\\omega=4$ 时该区间不再单调递增，与题设矛盾，所得 $-\\frac{1}{2}$ 不可信。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先由相邻对称轴的半个周期定 $\\omega$，再由单调方向定端点的最值角色，避免把半周期当成整周期",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:GAOKAO-Bench-2023_2023_Math_MCQs_26",
+        "trainingGoal": "由对称轴与单调性确定 $\\omega$ 与 $\\varphi$，再求函数值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2023 全国乙卷 第6题",
+          "reference": "rainewhk/gaokao 2023/全国乙卷/选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_26"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "相邻对称轴间距为 $\\frac{T}{2}$",
+          "递增区间左端点取最小值"
+        ],
+        "allowedVariations": [
+          "改变区间与对称轴位置",
+          "改求 $f\\left(\\frac{\\pi}{12}\\right)$"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_26",
+          "text": "6. (2023. 全国乙卷) 已知函数 $f(x)=\\sin (\\omega x+\\varphi)$ 在区间 $\\left(\\frac{\\pi}{6}, \\frac{2 \\pi}{3}\\right)$ 单调递增, 直线 $x=\\frac{\\pi}{6}$ 和 $x=\\frac{2 \\pi}{3}$ 为函数 $y=f(x)$ 的图像的两条对称轴, 则 $f\\left(-\\frac{5 \\pi}{12}\\right)=()$\nA. $-\\frac{\\sqrt{3}}{2}$\nB. $-\\frac{1}{2}$\nC. $\\frac{1}{2}$\nD. $\\frac{\\sqrt{3}}{2}$",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2023\\全国乙卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "含参数频率与初相的性质讨论",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_26",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：区间内递增且两端都是对称轴，故 $x=\\frac{\\pi}{6}$ 处取最小值 $-1$、$x=\\frac{2\\pi}{3}$ 处取最大值 $1$，相邻最值点间隔为半个周期，$\\frac{\\pi}{2}=\\frac{T}{2}=\\frac{\\pi}{\\omega}$，得 $\\omega=2$。由 $\\sin\\left(\\frac{\\pi}{3}+\\varphi\\right)=-1$ 得 $\\varphi=-\\frac{5\\pi}{6}+2k\\pi$，于是 $f\\left(-\\frac{5\\pi}{12}\\right)=\\sin\\left(-\\frac{5\\pi}{3}\\right)=\\frac{\\sqrt{3}}{2}$。核算单调性：$\\omega=2$ 时 $2x-\\frac{5\\pi}{6}\\in\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$，确实递增。对应 D，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_omega_range",
+        "M.hs_trig_equation",
+        "M.hs_trig_global"
+      ],
+      "applicableMethodIds": [
+        "M.hs_omega_range",
+        "M.hs_trig_equation",
+        "M.hs_trig_global"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.omega_param",
+          "methodId": "M.hs_omega_range"
+        },
+        {
+          "scenarioId": "S.hs_trig.omega_param",
+          "methodId": "M.hs_trig_global"
+        },
+        {
+          "scenarioId": "S.hs_trig.omega_param",
+          "methodId": "M.hs_trig_graph_transform"
+        },
+        {
+          "scenarioId": "S.hs_trig.omega_param",
+          "methodId": "M.hs_trig_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_omega_range",
+        "M.hs_trig_global",
+        "M.hs_trig_graph_transform",
+        "M.hs_trig_equation"
+      ],
+      "options": [
+        {
+          "id": "r-equations",
+          "name": "联立两端点的相位方程，一次解出 $\\omega$ 与 $\\varphi$"
+        },
+        {
+          "id": "r-period-wrong",
+          "name": "把两对称轴的间距当成一个周期"
+        },
+        {
+          "id": "r-omega",
+          "name": "由对称轴间距与单调性定 $\\omega$，再由最值定 $\\varphi$，最后代入求值"
+        }
+      ],
+      "questionKey": "8e78ec881bc6cbe2b6e5dda766d9b32c8f0810006a333a28d96b3830d8a72646",
+      "faceKey": "8dd0a51224dd2a819b6176ffbca8b02e64a1c28ca4837ea7791a6a04958a50c9"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.auxiliary_angle",
+      "question": "函数 $f(x)=\\sin (x+\\phi)-2 \\sin \\phi \\cos x$ 的最大值为",
+      "solution": "$f(x)=\\sin(x-\\phi)$，振幅为 1，最大值为 1。",
+      "routes": [
+        {
+          "id": "r-expand",
+          "summary": "展开 $\\sin(x+\\phi)$ 后与余弦项合并成差角",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\sin(x+\\phi)-2\\sin\\phi\\cos x$",
+              "transformedState": "$\\sin x\\cos\\phi+\\cos x\\sin\\phi-2\\sin\\phi\\cos x=\\sin x\\cos\\phi-\\cos x\\sin\\phi$",
+              "condition": "用和角公式展开，再合并同类余弦项。"
+            },
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_global",
+              "state": "$\\sin x\\cos\\phi-\\cos x\\sin\\phi$",
+              "transformedState": "$\\sin(x-\\phi)$，最大值为 1",
+              "condition": "差角公式合并后是振幅为 1 的正弦型函数。"
+            }
+          ],
+          "reason": "展开合并后直接得到一个标准正弦型函数，最大值一眼可见。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-amplitude",
+          "summary": "把 $\\sin x$ 与 $\\cos x$ 的系数看成 $a,b$，用振幅公式读数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_auxiliary_angle",
+              "state": "整理为 $a\\sin x+b\\cos x$，其中 $a=\\cos\\phi$，$b=-\\sin\\phi$",
+              "transformedState": "振幅 $\\sqrt{a^{2}+b^{2}}=\\sqrt{\\cos^{2}\\phi+\\sin^{2}\\phi}=1$，最大值 1",
+              "condition": "同频率正弦与余弦合成后的振幅为 $\\sqrt{a^{2}+b^{2}}$。"
+            }
+          ],
+          "reason": "不算出相位，只用振幅公式也能得到最大值，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-add-max",
+          "summary": "把两项各自的最大值相加",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.auxiliary_angle",
+              "methodId": "M.hs_trig_global",
+              "state": "$\\sin(x+\\phi)$ 的最大值为 1，$-2\\sin\\phi\\cos x$ 的最大值为 $2|\\sin\\phi|$",
+              "transformedState": "误认为最大值为 $1+2|\\sin\\phi|$（如 $\\phi=\\frac{\\pi}{2}$ 时为 3）",
+              "condition": "两项相位相关，不能各自取最大值再相加。"
+            }
+          ],
+          "reason": "合并后振幅恒为 1，最大值不随 $\\phi$ 变化，相加会得出错误结论。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先展开合并成一个正弦型函数再由振幅读最大值，不能把两项的最大值相加",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_II_Fill-in-the-Blank_21",
+        "trainingGoal": "展开复合角后与同类项合并，用振幅读最大值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2014 全国卷 第14题",
+          "reference": "rainewhk/gaokao 2014/全国卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_21"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\sin(x+\\phi)$ 展开后与 $-2\\sin\\phi\\cos x$ 合并",
+          "振幅为 $\\sqrt{\\cos^{2}\\phi+\\sin^{2}\\phi}=1$"
+        ],
+        "allowedVariations": [
+          "改变第二项系数",
+          "改求最小正周期"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_Fill-in-the-Blank_21",
+          "text": "14. （5 分) 函数 $f(x)=\\sin (x+\\phi)-2 \\sin \\phi \\cos x$ 的最大值为\n",
+          "answer": "1\n",
+          "source": "rainewhk-gaokao / 2014\\全国卷\\填空题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "辅助角公式与化一",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_21",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$f(x)=\\sin x\\cos\\phi+\\cos x\\sin\\phi-2\\sin\\phi\\cos x=\\sin x\\cos\\phi-\\cos x\\sin\\phi=\\sin(x-\\phi)$，振幅为 $\\sqrt{\\cos^{2}\\phi+\\sin^{2}\\phi}=1$，最大值为 1，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_addition",
+        "M.hs_trig_global"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_addition",
+        "M.hs_trig_global",
+        "M.hs_auxiliary_angle"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_auxiliary_angle"
+        },
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_trig_addition"
+        },
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_trig_global"
+        },
+        {
+          "scenarioId": "S.hs_trig.auxiliary_angle",
+          "methodId": "M.hs_trig_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_auxiliary_angle",
+        "M.hs_trig_addition",
+        "M.hs_trig_global",
+        "M.hs_trig_equation"
+      ],
+      "options": [
+        {
+          "id": "r-amplitude",
+          "name": "把 $\\sin x$ 与 $\\cos x$ 的系数看成 $a,b$，用振幅公式读数"
+        },
+        {
+          "id": "r-add-max",
+          "name": "把两项各自的最大值相加"
+        },
+        {
+          "id": "r-expand",
+          "name": "展开 $\\sin(x+\\phi)$ 后与余弦项合并成差角"
+        }
+      ],
+      "questionKey": "1cfa1f7333d89f90640fc796bff94d16de949e028949cc8071b806a3e822066a",
+      "faceKey": "3080385a4063728ab5f1524f4c422da535c54ddc83ca0be71f1410d41609693a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.graph_property",
+      "question": "设函数 $f(x)=\\cos \\left(x+\\frac{\\pi}{3}\\right)$, 则下列结论错误的是 $(\\quad)$\nA. $f(x)$ 的一个周期为 $-2 \\pi$\nB. $y=f(x)$ 的图象关于直线 $x=\\frac{8 \\pi}{3}$ 对称\nC. $f(x+\\pi)$ 的一个零点为 $x=\\frac{\\pi}{6}$\nD. $f(x)$ 在 $\\left(\\frac{\\pi}{2}, \\pi\\right)$ 单调递减",
+      "solution": "逐项检验：A、B、C 均正确；$x\\in\\left(\\frac{\\pi}{2},\\pi\\right)$ 时整体角跨过 $\\pi$，$f$ 先减后增，D 错误，选 D。",
+      "routes": [
+        {
+          "id": "r-check-all",
+          "summary": "逐项用整体代换检验周期、对称轴、零点与单调性",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "A 项：周期 $2k\\pi$",
+              "transformedState": "取 $k=-1$ 得 $-2\\pi$，A 正确",
+              "condition": "正弦余弦型函数的周期可以取负值。"
+            },
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "B 项：$x=\\frac{8\\pi}{3}$",
+              "transformedState": "$f\\left(\\frac{8\\pi}{3}\\right)=\\cos 3\\pi=-1$ 为最小值，B 正确",
+              "condition": "取到最值的横坐标即为对称轴。"
+            },
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_equation",
+              "state": "C 项：解 $\\cos\\left(x+\\pi+\\frac{\\pi}{3}\\right)=0$",
+              "transformedState": "$x+\\frac{4\\pi}{3}=\\frac{\\pi}{2}+k\\pi$，$x=-\\frac{5\\pi}{6}+k\\pi$，取 $k=1$ 得 $x=\\frac{\\pi}{6}$，C 正确",
+              "condition": "$\\cos t=0$ 的解为 $t=\\frac{\\pi}{2}+k\\pi$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "D 项：$x\\in\\left(\\frac{\\pi}{2},\\pi\\right)$",
+              "transformedState": "$x+\\frac{\\pi}{3}\\in\\left(\\frac{5\\pi}{6},\\frac{4\\pi}{3}\\right)$ 跨过 $\\pi$，$f$ 先减后增，D 错误",
+              "condition": "余弦在 $(0,\\pi)$ 递减、在 $(\\pi,2\\pi)$ 递增。"
+            }
+          ],
+          "reason": "四项都用整体代换定位到基本余弦，判断有据，直接锁定 D。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-eliminate",
+          "summary": "先用整体角锁定 D 为错误项，再用排除法确认其余各项",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "$x\\in\\left(\\frac{\\pi}{2},\\pi\\right)$ 时 $x+\\frac{\\pi}{3}\\in\\left(\\frac{5\\pi}{6},\\frac{4\\pi}{3}\\right)$",
+              "transformedState": "区间跨过 $\\pi$，$f$ 先减后增，故 D 必为错误项",
+              "condition": "单调区间不能跨过余弦的转折点 $\\pi$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_equation",
+              "state": "验证 C：$f\\left(\\frac{\\pi}{6}+\\pi\\right)=0$",
+              "transformedState": "$x=\\frac{\\pi}{6}$ 是 $f(x+\\pi)$ 的零点，C 正确",
+              "condition": "直接代入检验零点。"
+            },
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "验证 A、B",
+              "transformedState": "周期含 $-2\\pi$，$f\\left(\\frac{8\\pi}{3}\\right)=-1$ 为最值，A、B 正确",
+              "condition": "负周期与最值点处的对称轴都符合定义。"
+            }
+          ],
+          "reason": "先用最易出错的一步排除，再验证其余，结论与逐项检验一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-negative-period",
+          "summary": "认为周期必须为正，判 A 项错误",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.graph_property",
+              "methodId": "M.hs_trig_global",
+              "state": "A 项写的是 $-2\\pi$",
+              "transformedState": "误认为负周期不成立，判 A 为错误项并选 A",
+              "condition": "周期定义只要求 $f(x+T)=f(x)$，$T$ 可正可负。"
+            }
+          ],
+          "reason": "$f(x-2\\pi)=\\cos\\left(x-2\\pi+\\frac{\\pi}{3}\\right)=f(x)$，所以 $-2\\pi$ 确实是周期，A 正确。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先用整体代换逐项检验，注意负周期也是周期，单调区间不能跨过余弦的转折点",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_I_MCQs_102",
+        "trainingGoal": "用整体代换检验余弦型函数的周期、对称、零点与单调性",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2017 全国卷 第6题",
+          "reference": "rainewhk/gaokao 2017/全国卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_102"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "负周期也是周期",
+          "取到最值的横坐标为对称轴",
+          "$x+\\frac{\\pi}{3}\\in\\left(\\frac{5\\pi}{6},\\frac{4\\pi}{3}\\right)$ 跨过 $\\pi$"
+        ],
+        "allowedVariations": [
+          "改变初相",
+          "改问正确结论的个数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_102",
+          "text": "6. (5 分) 设函数 $f(x)=\\cos \\left(x+\\frac{\\pi}{3}\\right)$, 则下列结论错误的是 $(\\quad)$\nA. $f(x)$ 的一个周期为 $-2 \\pi$\nB. $y=f(x)$ 的图象关于直线 $x=\\frac{8 \\pi}{3}$ 对称\nC. $f(x+\\pi)$ 的一个零点为 $x=\\frac{\\pi}{6}$\nD. $f(x)$ 在 $\\left(\\frac{\\pi}{2}, \\pi\\right)$ 单调递减\n",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2017\\全国卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "三角函数的周期、单调、对称与最值",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_I_MCQs_102",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：A 项，周期为 $2k\\pi$，取 $k=-1$ 得 $-2\\pi$，是周期，正确；B 项，$f\\left(\\frac{8\\pi}{3}\\right)=\\cos\\left(3\\pi\\right)=-1$ 取到最小值，故 $x=\\frac{8\\pi}{3}$ 是对称轴，正确；C 项，$f\\left(\\frac{\\pi}{6}+\\pi\\right)=\\cos\\frac{3\\pi}{2}=0$，正确；D 项，当 $x\\in\\left(\\frac{\\pi}{2},\\pi\\right)$ 时 $x+\\frac{\\pi}{3}\\in\\left(\\frac{5\\pi}{6},\\frac{4\\pi}{3}\\right)$ 跨过 $\\pi$，余弦先减后增，故不单调，D 错误。对应 D，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_global",
+        "M.hs_trig_equation"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_global",
+        "M.hs_trig_equation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.graph_property",
+          "methodId": "M.hs_trig_global"
+        },
+        {
+          "scenarioId": "S.hs_trig.graph_property",
+          "methodId": "M.hs_auxiliary_angle"
+        },
+        {
+          "scenarioId": "S.hs_trig.graph_property",
+          "methodId": "M.hs_trig_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_trig_global",
+        "M.hs_auxiliary_angle",
+        "M.hs_trig_equation"
+      ],
+      "options": [
+        {
+          "id": "r-eliminate",
+          "name": "先用整体角锁定 D 为错误项，再用排除法确认其余各项"
+        },
+        {
+          "id": "r-negative-period",
+          "name": "认为周期必须为正，判 A 项错误"
+        },
+        {
+          "id": "r-check-all",
+          "name": "逐项用整体代换检验周期、对称轴、零点与单调性"
+        }
+      ],
+      "questionKey": "e54c7ac877f92292cebb1521016471b59376027513d7c89765328e4ea4ac15e6",
+      "faceKey": "f7f7fab7c2e2734633562291478640ad62f6ef702c5c00a9e0f2992a141c03d9"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.sine_cosine_rule",
+      "question": "在 $\\triangle A B C$ 中, 内角 $A, B, C$ 所对边分别为 $a, b, c$, 若 $B=\\frac{\\pi}{3}, b^{2}=\\frac{9}{4} a c$, 则 $\\sin A+\\sin C=(\\quad)$\nA. $\\frac{2 \\sqrt{39}}{13}$\nB. $\\frac{\\sqrt{39}}{13}$\nC. $\\frac{\\sqrt{7}}{2}$\nD. $\\frac{3 \\sqrt{13}}{13}$",
+      "solution": "由正弦定理得 $\\sin A\\sin C=\\frac{1}{3}$，由余弦定理得 $a^{2}+c^{2}=\\frac{13}{4}ac$ 即 $\\sin^{2}A+\\sin^{2}C=\\frac{13}{12}$，故 $\\left(\\sin A+\\sin C\\right)^{2}=\\frac{7}{4}$，取正值得 $\\frac{\\sqrt{7}}{2}$，选 C。",
+      "routes": [
+        {
+          "id": "r-square",
+          "summary": "两定理分别给出乘积与平方和，再用完全平方求两正弦之和",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_side_angle",
+              "state": "$b^{2}=\\frac{9}{4}ac$，$B=\\frac{\\pi}{3}$",
+              "transformedState": "$\\sin^{2}B=\\frac{9}{4}\\sin A\\sin C$，得 $\\sin A\\sin C=\\frac{1}{3}$",
+              "condition": "正弦定理 $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}$ 使边的二次关系与角的正弦关系对应。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_cosine_rule",
+              "state": "$b^{2}=a^{2}+c^{2}-2ac\\cos\\frac{\\pi}{3}=a^{2}+c^{2}-ac$",
+              "transformedState": "$a^{2}+c^{2}=\\frac{13}{4}ac$，故 $\\sin^{2}A+\\sin^{2}C=\\frac{13}{12}$",
+              "condition": "$\\cos\\frac{\\pi}{3}=\\frac{1}{2}$，再用正弦定理把边的平方和化为正弦的平方和。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_sine_rule",
+              "state": "$\\left(\\sin A+\\sin C\\right)^{2}=\\frac{13}{12}+2\\cdot\\frac{1}{3}$",
+              "transformedState": "$\\frac{7}{4}$，取正值得 $\\frac{\\sqrt{7}}{2}$",
+              "condition": "三角形内角的正弦为正，开方取正值。"
+            }
+          ],
+          "reason": "乘积与平方和分别由正弦、余弦定理给出，配方后一步得到目标和。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-sum-side",
+          "summary": "把目标和化为一阶量 $\\frac{(a+c)\\sin B}{b}$，再由 $(a+c)^{2}$ 直接求",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_sine_rule",
+              "state": "$\\sin A+\\sin C=\\frac{\\left(a+c\\right)\\sin B}{b}$",
+              "transformedState": "只需先求 $(a+c)^{2}$ 与 $b^{2}$ 的关系",
+              "condition": "正弦定理把每个正弦换成对应边与 $\\frac{\\sin B}{b}$ 的乘积。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_cosine_rule",
+              "state": "$a^{2}+c^{2}=\\frac{13}{4}ac$",
+              "transformedState": "$\\left(a+c\\right)^{2}=\\frac{21}{4}ac$，而 $b^{2}=\\frac{9}{4}ac$",
+              "condition": "余弦定理给出平方和，再加 $2ac$ 得和的平方。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_sine_rule",
+              "state": "$\\sin A+\\sin C=\\frac{\\sqrt{\\frac{21}{4}ac}\\cdot\\frac{\\sqrt{3}}{2}}{\\frac{3}{2}\\sqrt{ac}}$",
+              "transformedState": "$\\frac{\\sqrt{63}}{6}=\\frac{\\sqrt{7}}{2}$",
+              "condition": "用 $b=\\frac{3}{2}\\sqrt{ac}$ 代入并约去 $\\sqrt{ac}$。"
+            }
+          ],
+          "reason": "全程只用一次量，避免配方，计算更直接，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-miss-cross",
+          "summary": "配方时漏掉交叉项 $2\\sin A\\sin C$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_side_angle",
+              "state": "$b^{2}=\\frac{9}{4}ac$",
+              "transformedState": "$\\sin A\\sin C=\\frac{1}{3}$",
+              "condition": "此步由正弦定理得到，正确。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_cosine_rule",
+              "state": "$a^{2}+c^{2}=\\frac{13}{4}ac$",
+              "transformedState": "$\\sin^{2}A+\\sin^{2}C=\\frac{13}{12}$",
+              "condition": "此步由余弦定理得到，正确。"
+            },
+            {
+              "scenarioId": "S.hs_trig.sine_cosine_rule",
+              "methodId": "M.hs_sine_rule",
+              "state": "把 $\\sin A+\\sin C$ 直接取为 $\\sqrt{\\sin^{2}A+\\sin^{2}C}$",
+              "transformedState": "$\\sqrt{\\frac{13}{12}}=\\frac{\\sqrt{39}}{6}$，与四个选项都不符",
+              "condition": "漏掉 $(\\sin A+\\sin C)^{2}$ 中的交叉项，开方结果不可信。"
+            }
+          ],
+          "reason": "少加 $2\\sin A\\sin C=\\frac{2}{3}$，所得 $\\frac{\\sqrt{39}}{6}$ 既不等于目标的 $\\frac{\\sqrt{7}}{2}$，也不在选项中。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 2
+        }
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ],
+      "comparisonCriterion": "优先由正弦定理与余弦定理分别得到乘积与平方和，再用完全平方求两正弦之和，不能漏掉交叉项",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:GAOKAO-Bench-2024_2024_Math_MCQs_9",
+        "trainingGoal": "正弦定理与余弦定理联动，把边的二次关系转化为角的正弦关系",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2024 全国甲卷 第11题",
+          "reference": "rainewhk/gaokao 2024/全国甲卷/选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_9"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$B=\\frac{\\pi}{3}$，$\\sin B=\\frac{\\sqrt{3}}{2}$",
+          "$b^{2}=\\frac{9}{4}ac$",
+          "三角形内角正弦为正"
+        ],
+        "allowedVariations": [
+          "改变 $B$ 与边关系的系数",
+          "改求 $\\cos A+\\cos C$"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_9",
+          "text": "11. 在 $\\triangle A B C$ 中, 内角 $A, B, C$ 所对边分别为 $a, b, c$, 若 $B=\\frac{\\pi}{3}, b^{2}=\\frac{9}{4} a c$, 则 $\\sin A+\\sin C=(\\quad)$\nA. $\\frac{2 \\sqrt{39}}{13}$\nB. $\\frac{\\sqrt{39}}{13}$\nC. $\\frac{\\sqrt{7}}{2}$\nD. $\\frac{3 \\sqrt{13}}{13}$",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2024\\全国甲卷\\选择题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "正余弦定理求边角",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_9",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：由正弦定理，$b^{2}=\\frac{9}{4}ac$ 化为 $\\sin^{2}B=\\frac{9}{4}\\sin A\\sin C$，而 $\\sin B=\\frac{\\sqrt{3}}{2}$，故 $\\sin A\\sin C=\\frac{1}{3}$。由余弦定理 $b^{2}=a^{2}+c^{2}-2ac\\cos B=a^{2}+c^{2}-ac=\\frac{9}{4}ac$，得 $a^{2}+c^{2}=\\frac{13}{4}ac$，再用正弦定理得 $\\sin^{2}A+\\sin^{2}C=\\frac{13}{4}\\sin A\\sin C=\\frac{13}{12}$。于是 $\\left(\\sin A+\\sin C\\right)^{2}=\\frac{13}{12}+\\frac{2}{3}=\\frac{7}{4}$，取正值得 $\\frac{\\sqrt{7}}{2}$。对应 C，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_side_angle",
+        "M.hs_cosine_rule",
+        "M.hs_sine_rule"
+      ],
+      "applicableMethodIds": [
+        "M.hs_side_angle",
+        "M.hs_cosine_rule",
+        "M.hs_sine_rule"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_sine_rule"
+        },
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_cosine_rule"
+        },
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_side_angle"
+        },
+        {
+          "scenarioId": "S.hs_trig.sine_cosine_rule",
+          "methodId": "M.hs_triangle_area"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_sine_rule",
+        "M.hs_cosine_rule",
+        "M.hs_side_angle",
+        "M.hs_triangle_area"
+      ],
+      "options": [
+        {
+          "id": "r-square",
+          "name": "两定理分别给出乘积与平方和，再用完全平方求两正弦之和"
+        },
+        {
+          "id": "r-sum-side",
+          "name": "把目标和化为一阶量 $\\frac{(a+c)\\sin B}{b}$，再由 $(a+c)^{2}$ 直接求"
+        },
+        {
+          "id": "r-miss-cross",
+          "name": "配方时漏掉交叉项 $2\\sin A\\sin C$"
+        }
+      ],
+      "questionKey": "cc4ea069b3f2d14015aa244c04830557a28890b01cfea7cfd09d3b8c72b037f2",
+      "faceKey": "7fcfc67831afafdc9d87b6861b066e35502093baf0927232378caf010d80d5a4"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_trig.angle_relation",
+      "question": "已知 $\\tan \\left(\\alpha-\\frac{5 \\pi}{4}\\right)=\\frac{1}{5}$, 则 $\\tan \\alpha=$",
+      "solution": "$\\tan\\left(\\alpha-\\frac{\\pi}{4}\\right)=\\frac{1}{5}$，再由 $\\alpha=\\left(\\alpha-\\frac{\\pi}{4}\\right)+\\frac{\\pi}{4}$ 得 $\\tan\\alpha=\\frac{\\frac{1}{5}+1}{1-\\frac{1}{5}}=\\frac{3}{2}$。",
+      "routes": [
+        {
+          "id": "r-combine",
+          "summary": "先用正切周期化简已知角，再把 $\\alpha$ 凑成两角之和",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_identity",
+              "state": "$\\tan\\left(\\alpha-\\frac{5\\pi}{4}\\right)$",
+              "transformedState": "$\\tan\\left(\\alpha-\\frac{\\pi}{4}\\right)=\\frac{1}{5}$",
+              "condition": "正切以 $\\pi$ 为周期，$-\\frac{5\\pi}{4}$ 与 $-\\frac{\\pi}{4}$ 相差 $\\pi$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_angle_combination",
+              "state": "$\\alpha=\\left(\\alpha-\\frac{\\pi}{4}\\right)+\\frac{\\pi}{4}$",
+              "transformedState": "$\\tan\\alpha=\\frac{\\frac{1}{5}+1}{1-\\frac{1}{5}}=\\frac{3}{2}$",
+              "condition": "凑角后用和角公式，$\\tan\\frac{\\pi}{4}=1$。"
+            }
+          ],
+          "reason": "先借周期把角化简，再凑角，是本题最短的两步。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-expand",
+          "summary": "直接把复合角按差角公式展开，解关于 $\\tan\\alpha$ 的方程",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\tan\\left(\\alpha-\\frac{5\\pi}{4}\\right)=\\frac{\\tan\\alpha-\\tan\\frac{5\\pi}{4}}{1+\\tan\\alpha\\tan\\frac{5\\pi}{4}}$",
+              "transformedState": "$\\frac{\\tan\\alpha-1}{1+\\tan\\alpha}=\\frac{1}{5}$",
+              "condition": "$\\tan\\frac{5\\pi}{4}=1$，分母 $1+\\tan\\alpha\\neq0$。"
+            },
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_addition",
+              "state": "$5\\tan\\alpha-5=1+\\tan\\alpha$",
+              "transformedState": "$\\tan\\alpha=\\frac{3}{2}$",
+              "condition": "解一次方程，结果与凑角法一致。"
+            }
+          ],
+          "reason": "不借周期，直接展开解方程，计算稍长但结论相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-tan-linearity",
+          "summary": "误把 $\\tan(A-B)$ 当作 $\\tan A-\\tan B$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_trig.angle_relation",
+              "methodId": "M.hs_trig_addition",
+              "state": "$\\tan\\left(\\alpha-\\frac{5\\pi}{4}\\right)$",
+              "transformedState": "误算 $\\tan\\alpha-\\tan\\frac{5\\pi}{4}=\\tan\\alpha-1=\\frac{1}{5}$，得 $\\tan\\alpha=\\frac{6}{5}$",
+              "condition": "正切不是一次函数，差角必须用公式 $(\\tan A-\\tan B)/(1+\\tan A\\tan B)$。"
+            }
+          ],
+          "reason": "把和差公式误记成逐项相减，得到 $\\frac{6}{5}$ 而不是正确的 $\\frac{3}{2}$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a"
+      ],
+      "comparisonCriterion": "优先借正切周期把角化简后凑角，或直接按差角公式展开解方程，不能把差角公式写成逐项相减",
+      "metadata": {
+        "motherId": "candidate.bankhs25.rw:2010-2022_Math_II_Fill-in-the-Blank_54",
+        "trainingGoal": "用正切周期与凑角法由复合角正切求单角正切",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2018 全国卷 第15题",
+          "reference": "rainewhk/gaokao 2018/全国卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_54"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\tan$ 的周期为 $\\pi$",
+          "$\\tan\\frac{5\\pi}{4}=1$",
+          "差角公式分母为 $1+\\tan A\\tan B$"
+        ],
+        "allowedVariations": [
+          "改变已知复合角",
+          "改求 $\\tan\\left(\\alpha+\\frac{\\pi}{4}\\right)$"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_Fill-in-the-Blank_54",
+          "text": "15. (5 分) 已知 $\\tan \\left(\\alpha-\\frac{5 \\pi}{4}\\right)=\\frac{1}{5}$, 则 $\\tan \\alpha=$\n",
+          "answer": "$\\frac{3}{2}$\n",
+          "source": "rainewhk-gaokao / 2018\\全国卷\\填空题.jsonl",
+          "category": "三角函数与解三角形",
+          "difficulty": "中",
+          "method": "角的拆分与凑角求值",
+          "notes": "高中数学 bankhs25；原题来自公开题源。"
+        },
+        "bankId": "bankhs25",
+        "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_54",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：由正切周期为 $\\pi$，$\\tan\\left(\\alpha-\\frac{5\\pi}{4}\\right)=\\tan\\left(\\alpha-\\frac{\\pi}{4}\\right)=\\frac{1}{5}$。再凑角 $\\alpha=\\left(\\alpha-\\frac{\\pi}{4}\\right)+\\frac{\\pi}{4}$，得 $\\tan\\alpha=\\frac{\\frac{1}{5}+1}{1-\\frac{1}{5}\\cdot1}=\\frac{3}{2}$；用差角展开核算：$\\frac{\\tan\\alpha-1}{1+\\tan\\alpha}=\\frac{1}{5}$ 解得 $\\tan\\alpha=\\frac{3}{2}$。与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_angle_combination"
+      ],
+      "applicableMethodIds": [
+        "M.hs_trig_identity",
+        "M.hs_angle_combination",
+        "M.hs_trig_addition"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_trig.angle_relation",
+          "methodId": "M.hs_angle_combination"
+        },
+        {
+          "scenarioId": "S.hs_trig.angle_relation",
+          "methodId": "M.hs_trig_addition"
+        },
+        {
+          "scenarioId": "S.hs_trig.angle_relation",
+          "methodId": "M.hs_trig_identity"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_angle_combination",
+        "M.hs_trig_addition",
+        "M.hs_trig_identity"
+      ],
+      "options": [
+        {
+          "id": "r-tan-linearity",
+          "name": "误把 $\\tan(A-B)$ 当作 $\\tan A-\\tan B$"
+        },
+        {
+          "id": "r-combine",
+          "name": "先用正切周期化简已知角，再把 $\\alpha$ 凑成两角之和"
+        },
+        {
+          "id": "r-expand",
+          "name": "直接把复合角按差角公式展开，解关于 $\\tan\\alpha$ 的方程"
+        }
+      ],
+      "questionKey": "1dfd70b178f1c28bc4725fef790b7e5160902f3d3945243194e846b9374aeb17",
+      "faceKey": "a99d80de057ba2c71d1515538bc74f2f55c7ffe364ae07fc9eb06d99ed31469d"
+    }
+  ]
+}

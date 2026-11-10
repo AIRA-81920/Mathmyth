@@ -41,11 +41,14 @@ test('curated identities survive appends, and newer semantic reviews replace fut
   }
 });
 test('a real one/two-question reviewed local pool finishes instead of waiting for a nonexistent third question', async () => {
-  const target = targets.find((target) => target.questions.length < 3);
-  assert.ok(target);
+  // bankadv1–7 补题后所有情景都已不少于三道题；从真实题池截出两道，
+  // 保留“短题池不等待第三题”的回归意图。
+  const full = targets.find((target) => target.questions.length >= 3);
+  assert.ok(full);
+  const items = (await prepareLocalRound(full, skeleton)).slice(0, 2);
+  const target = { ...full, questions: items, questionCount: items.length };
   const engine = await db();
   try {
-    const items = await prepareLocalRound(target, skeleton);
     let run = await engine.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items, localPrepared: true, preparedTarget: target });
     assert.equal(run.generationStatus, 'complete');
     for (const item of run.items) run = await engine.advancePracticeItem(run.id, item.id);

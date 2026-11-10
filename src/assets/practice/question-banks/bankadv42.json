@@ -1,0 +1,3102 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv42",
+  "sourceSha256": "376b2b04b7ca9b4b0e9fa20404138a933d1db755a15325d364dd44407a8aeaa4",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.discontinuity_classification",
+      "question": "讨论函数 $f(x)=\\dfrac{x^{2}-1}{x^{2}-3x+2}$ 的间断点，并指出其类型。",
+      "solution": "分母分解为 $x^{2}-3x+2=(x-1)(x-2)$，故函数的无定义点为 $x=1$ 与 $x=2$。在 $x\\ne1$ 时可约去公因子 $x-1$，得 $f(x)=\\dfrac{x+1}{x-2}$。对 $x=1$：$\\lim_{x\\to1}f(x)=\\dfrac{2}{-1}=-2$，极限存在而 $f(1)$ 无定义，所以 $x=1$ 是可去间断点（第一类）。对 $x=2$：$\\lim_{x\\to2^{-}}f(x)=-\\infty$，$\\lim_{x\\to2^{+}}f(x)=+\\infty$，所以 $x=2$ 是无穷间断点（第二类）。",
+      "routes": [
+        {
+          "id": "r-factor-cancel",
+          "summary": "先因式分解找出无定义点，约去公因子后逐点求左右极限分类",
+          "steps": [
+            {
+              "scenarioId": "S.limit.discontinuity_classification",
+              "methodId": "M.one_sided_limit",
+              "state": "$f(x)=\\dfrac{x^{2}-1}{x^{2}-3x+2}$，分母 $x^{2}-3x+2=(x-1)(x-2)$",
+              "transformedState": "无定义点为 $x=1$、$x=2$；$x\\ne1$ 时约去 $x-1$ 得 $\\dfrac{x+1}{x-2}$",
+              "condition": "先找无定义点；约分只在 $x\\ne1$ 时进行，保持原函数在该点的无定义性。"
+            },
+            {
+              "scenarioId": "S.limit.discontinuity_classification",
+              "methodId": "M.one_sided_limit",
+              "state": "考察 $x=1$ 处的两侧极限",
+              "transformedState": "$\\lim_{x\\to1}f(x)=\\dfrac{1+1}{1-2}=-2$，与 $f(1)$ 无定义对比，判为可去间断点",
+              "condition": "两侧极限相同且有限，但函数在该点无定义，属于第一类可去间断点。"
+            },
+            {
+              "scenarioId": "S.limit.discontinuity_classification",
+              "methodId": "M.one_sided_limit",
+              "state": "考察 $x=2$ 处的两侧极限",
+              "transformedState": "$\\lim_{x\\to2^{-}}f(x)=-\\infty$，$\\lim_{x\\to2^{+}}f(x)=+\\infty$，判为无穷间断点",
+              "condition": "$f=\\dfrac{x+1}{x-2}$ 在 $x=2$ 两侧分母变号而分子恒正，两侧都发散。"
+            }
+          ],
+          "reason": "约去可去公因子后，$x=1$ 两侧极限同为 $-2$，是可去间断点；$x=2$ 两侧发散且异号，是无穷间断点。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x\\ne1$ 时约分保持不变，先求两侧极限再与函数值比较。"
+        },
+        {
+          "id": "r-lhopital-one",
+          "summary": "$x=1$ 用洛必达求得有限极限，$x=2$ 由分子非零判为无穷发散",
+          "steps": [
+            {
+              "scenarioId": "S.limit.discontinuity_classification",
+              "methodId": "M.lhopital",
+              "state": "$x=1$ 处分子 $x^{2}-1\\to0$、分母 $x^{2}-3x+2\\to0$，为 $0/0$ 型",
+              "transformedState": "洛必达得 $\\dfrac{2x}{2x-3}\\to\\dfrac{2}{-1}=-2$，极限有限但 $f(1)$ 无定义，是可去间断点",
+              "condition": "分子分母在 $x=1$ 邻域可导，分母导数 $2x-3=-1\\ne0$。"
+            },
+            {
+              "scenarioId": "S.limit.discontinuity_classification",
+              "methodId": "M.one_sided_limit",
+              "state": "考察 $x=2$ 处",
+              "transformedState": "分子 $x^{2}-1\\to3\\ne0$、分母 $\\to0$，故 $\\lim_{x\\to2^{\\pm}}f(x)=\\pm\\infty$，是无穷间断点",
+              "condition": "分子非零时分母趋零，必为无穷间断点，无需再作未定式计算。"
+            }
+          ],
+          "reason": "用洛必达绕开因式分解求出 $x=1$ 的有限极限，$x=2$ 处不是未定式，直接由分子非零判无穷发散，结论与主路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "洛必达只适用于 $x=1$ 处的 $0/0$ 型；$x=2$ 处改用左右极限。"
+        },
+        {
+          "id": "r-all-infinite",
+          "summary": "见分母为零就一律判成无穷间断点",
+          "steps": [
+            {
+              "scenarioId": "S.limit.discontinuity_classification",
+              "methodId": "M.one_sided_limit",
+              "state": "两个使分母为零的点 $x=1$、$x=2$",
+              "transformedState": "误以为分母为零处都是无穷间断点，把 $x=1$ 与 $x=2$ 都判为第二类无穷间断点",
+              "condition": "判型前必须检查分子是否同时为零；$x=1$ 处分子也为零，约分后极限有限，不能直接判无穷。"
+            }
+          ],
+          "reason": "只看到分母为零就判无穷间断点，忽略了 $x=1$ 处分子分母同时为零、约分后极限为 $-2$ 这一可去情形。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先求无定义点并约去可去公因子，再逐点比较两侧极限是否有限、是否相等，最后与函数值对比定类型。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-discontinuity",
+        "trainingGoal": "掌握先找无定义点、再约分或求两侧极限，从而区分可去间断点与无穷间断点",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第1题",
+          "originalId": "gap-discontinuity"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "分母可分解为 $(x-1)(x-2)$，无定义点为 $x=1$ 与 $x=2$",
+          "$x=1$ 处约分后极限为 $-2$，$x=2$ 处两侧极限为无穷"
+        ],
+        "allowedVariations": [
+          "把分子换成 $x^{2}-4$，使 $x=1$ 不再可去",
+          "把分母换成 $(x-1)(x-3)$，改变间断点位置"
+        ],
+        "originalRecord": {
+          "id": "gap-discontinuity",
+          "text": "讨论函数 $f(x)=\\dfrac{x^{2}-1}{x^{2}-3x+2}$ 的间断点，并指出其类型。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "间断点判别与分类",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-discontinuity",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：约去公因子后 $x\\ne1$ 时 $f(x)=\\dfrac{x+1}{x-2}$。在 $x=1$，极限 $\\dfrac{2}{-1}=-2$ 存在但函数无定义，是可去间断点；在 $x=2$，左极限 $-\\infty$、右极限 $+\\infty$，是无穷间断点（第二类）。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "decide_property"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.one_sided_limit"
+      ],
+      "applicableMethodIds": [
+        "M.one_sided_limit",
+        "M.lhopital"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.discontinuity_classification",
+          "methodId": "M.one_sided_limit"
+        },
+        {
+          "scenarioId": "S.limit.discontinuity_classification",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.discontinuity_classification",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.discontinuity_classification",
+          "methodId": "M.important_limit"
+        },
+        {
+          "scenarioId": "S.limit.discontinuity_classification",
+          "methodId": "M.counterexample_sequences"
+        },
+        {
+          "scenarioId": "S.limit.discontinuity_classification",
+          "methodId": "M.continuity_rules"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.one_sided_limit",
+        "M.equiv_infinitesimal",
+        "M.lhopital",
+        "M.important_limit",
+        "M.counterexample_sequences",
+        "M.continuity_rules"
+      ],
+      "options": [
+        {
+          "id": "r-all-infinite",
+          "name": "见分母为零就一律判成无穷间断点"
+        },
+        {
+          "id": "r-factor-cancel",
+          "name": "先因式分解找出无定义点，约去公因子后逐点求左右极限分类"
+        },
+        {
+          "id": "r-lhopital-one",
+          "name": "$x=1$ 用洛必达求得有限极限，$x=2$ 由分子非零判为无穷发散"
+        }
+      ],
+      "questionKey": "41fd2f52659b08e65da227f0921e78fb47f692dbff3bbad6943c98d0dfde16dc",
+      "faceKey": "281500660dc747b832b561f2629902e8fb47689fc372baf04fc996b531236dad"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.growth_balance",
+      "question": "求极限 $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^{2}+3x+1}-x\\right)$。",
+      "solution": "有理化：$\\sqrt{x^{2}+3x+1}-x=\\dfrac{\\left(\\sqrt{x^{2}+3x+1}-x\\right)\\left(\\sqrt{x^{2}+3x+1}+x\\right)}{\\sqrt{x^{2}+3x+1}+x}=\\dfrac{3x+1}{\\sqrt{x^{2}+3x+1}+x}$。分子分母同除 $x$（$x>0$）得 $\\dfrac{3+1/x}{\\sqrt{1+3/x+1/x^{2}}+1}\\to\\dfrac{3}{2}$，故极限为 $\\dfrac{3}{2}$。",
+      "routes": [
+        {
+          "id": "r-rationalize-divide",
+          "summary": "先有理化把根式差写成单个分式，再同除最高次幂",
+          "steps": [
+            {
+              "scenarioId": "S.limit.growth_balance",
+              "methodId": "M.combine_fractions",
+              "state": "$\\sqrt{x^{2}+3x+1}-x$，主项相消",
+              "transformedState": "乘以共轭和并通分，得 $\\dfrac{3x+1}{\\sqrt{x^{2}+3x+1}+x}$",
+              "condition": "$x\\to+\\infty$ 时共轭和为正，可作分母。"
+            },
+            {
+              "scenarioId": "S.limit.growth_balance",
+              "methodId": "M.divide_highest_power",
+              "state": "有理化后的分式 $\\dfrac{3x+1}{\\sqrt{x^{2}+3x+1}+x}$",
+              "transformedState": "分子分母同除 $x$ 得 $\\dfrac{3+1/x}{\\sqrt{1+3/x+1/x^{2}}+1}\\to\\dfrac{3}{2}$",
+              "condition": "$x>0$，把 $x$ 写成 $\\sqrt{x^{2}}$ 移入根号。"
+            }
+          ],
+          "reason": "有理化把根式差变成分式，同除最高次幂后主项归一，次主项 $3x$ 贡献常数 $\\dfrac{3}{2}$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x\\to+\\infty$ 下进行，同除 $x$ 时取正支。"
+        },
+        {
+          "id": "r-finite-limit-constraint",
+          "summary": "设有限极限为 $c$，把根式写成 $x+c+o(1)$，平方比较一次项定出 $c$",
+          "steps": [
+            {
+              "scenarioId": "S.limit.growth_balance",
+              "methodId": "M.finite_limit_constraint",
+              "state": "设原式极限为有限常数 $c$",
+              "transformedState": "$\\sqrt{x^{2}+3x+1}=x+c+o(1)$",
+              "condition": "先由有理化后分式有界确认极限存在，再设有限常数。"
+            },
+            {
+              "scenarioId": "S.limit.growth_balance",
+              "methodId": "M.finite_limit_constraint",
+              "state": "把 $\\sqrt{x^{2}+3x+1}=x+c+o(1)$ 两边平方",
+              "transformedState": "$x^{2}+3x+1=x^{2}+2cx+o(x)$，比较一次项得 $2c=3$，即 $c=\\dfrac{3}{2}$",
+              "condition": "只比较 $x$ 的一次项系数，忽略 $o(x)$ 项。"
+            }
+          ],
+          "reason": "把有限极限作为待定常数，平方后一次项系数直接给出 $c=\\dfrac{3}{2}$，与主路线结果一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "需先说明极限有限，才能写 $x+c+o(1)$ 的展开形式。"
+        },
+        {
+          "id": "r-drop-subterm",
+          "summary": "只保留根式主项，把根式当成 $x$，相减得 0",
+          "steps": [
+            {
+              "scenarioId": "S.limit.growth_balance",
+              "methodId": "M.divide_highest_power",
+              "state": "$\\sqrt{x^{2}+3x+1}$ 与 $x$ 作比较",
+              "transformedState": "只保留主项，误取 $\\sqrt{x^{2}+3x+1}\\approx x$，相减得极限 $0$",
+              "condition": "次主项 $3x$ 不能丢，正是它贡献常数 $\\dfrac{3}{2}$；丢掉后差值被抹平。"
+            }
+          ],
+          "reason": "把根式只保留主项 $x$ 相当于丢掉次主项 $3x$，而该题答案恰恰由次主项决定。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "根式差先有理化成商再同除最高次幂；只比较主项会丢掉决定极限的次主项。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-growth-balance",
+        "trainingGoal": "识别无穷远处根式与一次式作差时主项相消、次主项决定极限的结构",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第2题",
+          "originalId": "gap-growth-balance"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "极限过程为 $x\\to+\\infty$，根式取正支",
+          "分子分母同除 $x$ 时 $x>0$"
+        ],
+        "allowedVariations": [
+          "改变根号内一次项系数改为 $5x$，答案变为 $\\dfrac{5}{2}$",
+          "把常数项换成 $-1$ 观察次主项影响"
+        ],
+        "originalRecord": {
+          "id": "gap-growth-balance",
+          "text": "求极限 $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^{2}+3x+1}-x\\right)$。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "无穷远增长项的相消",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-growth-balance",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：有理化得 $\\dfrac{3x+1}{\\sqrt{x^{2}+3x+1}+x}$，分子分母同除 $x$ 得 $\\dfrac{3+1/x}{\\sqrt{1+3/x+1/x^{2}}+1}\\to\\dfrac{3}{2}$；用 $\\sqrt{x^{2}+3x+1}=x+c+o(1)$ 平方比较一次项也得 $c=\\dfrac{3}{2}$，两法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.combine_fractions",
+        "M.divide_highest_power"
+      ],
+      "applicableMethodIds": [
+        "M.combine_fractions",
+        "M.divide_highest_power",
+        "M.finite_limit_constraint"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.growth_balance",
+          "methodId": "M.finite_limit_constraint"
+        },
+        {
+          "scenarioId": "S.limit.growth_balance",
+          "methodId": "M.divide_highest_power"
+        },
+        {
+          "scenarioId": "S.limit.growth_balance",
+          "methodId": "M.polynomial_division"
+        },
+        {
+          "scenarioId": "S.limit.growth_balance",
+          "methodId": "M.combine_fractions"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.finite_limit_constraint",
+        "M.divide_highest_power",
+        "M.polynomial_division",
+        "M.combine_fractions"
+      ],
+      "options": [
+        {
+          "id": "r-finite-limit-constraint",
+          "name": "设有限极限为 $c$，把根式写成 $x+c+o(1)$，平方比较一次项定出 $c$"
+        },
+        {
+          "id": "r-drop-subterm",
+          "name": "只保留根式主项，把根式当成 $x$，相减得 0"
+        },
+        {
+          "id": "r-rationalize-divide",
+          "name": "先有理化把根式差写成单个分式，再同除最高次幂"
+        }
+      ],
+      "questionKey": "6d127758106a77c8ed7f82364355f8059c4b156175703378ac73d37823c21dc3",
+      "faceKey": "14c176e0d079d6bc1f95ae9ba513d728d9a025c958af2bd15c1f8a9fb4baacd1"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.zero_times_inf",
+      "question": "求极限 $\\lim_{x\\to0^{+}}x\\ln x$。",
+      "solution": "当 $x\\to0^{+}$ 时 $x\\to0$、$\\ln x\\to-\\infty$，是 $0\\cdot\\infty$ 型。改写为 $x\\ln x=\\dfrac{\\ln x}{1/x}$，成为 $\\dfrac{\\infty}{\\infty}$ 型；洛必达得 $\\lim_{x\\to0^{+}}\\dfrac{1/x}{-1/x^{2}}=\\lim_{x\\to0^{+}}(-x)=0$。故 $\\lim_{x\\to0^{+}}x\\ln x=0$。",
+      "routes": [
+        {
+          "id": "r-rewrite-lhopital",
+          "summary": "把 $\\ln x$ 留在分子、$x$ 取倒数搬到分母，化成 $\\infty/\\infty$ 后用洛必达",
+          "steps": [
+            {
+              "scenarioId": "S.limit.zero_times_inf",
+              "methodId": "M.rewrite_as_fraction",
+              "state": "$x\\ln x$，$x\\to0^{+}$ 时为 $0\\cdot(-\\infty)$",
+              "transformedState": "改写为 $\\dfrac{\\ln x}{1/x}$，成为 $\\dfrac{\\infty}{\\infty}$ 型",
+              "condition": "在 $x\\in(0,1)$ 内 $1/x\\ne0$，可安全取倒数。"
+            },
+            {
+              "scenarioId": "S.limit.zero_times_inf",
+              "methodId": "M.lhopital",
+              "state": "商式 $\\dfrac{\\ln x}{1/x}$",
+              "transformedState": "$\\dfrac{(\\ln x)'}{(1/x)'}=\\dfrac{1/x}{-1/x^{2}}=-x\\to0$",
+              "condition": "分子分母在 $(0,1)$ 内可导，分母导数 $-1/x^{2}\\ne0$。"
+            }
+          ],
+          "reason": "把乘积改写成商是 $0\\cdot\\infty$ 型的标准起手式，一次洛必达即化出 $-x$，极限为 0。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x\\to0^{+}$ 右邻域内取倒数，$1/x$ 恒不为零。"
+        },
+        {
+          "id": "r-substitution-growth",
+          "summary": "换元 $t=-\\ln x$ 把 $\\ln x$ 化为幂增长，用指数增长更快说明极限为 0",
+          "steps": [
+            {
+              "scenarioId": "S.limit.zero_times_inf",
+              "methodId": "M.divide_highest_power",
+              "state": "$x\\ln x$，$0\\cdot\\infty$ 型",
+              "transformedState": "令 $t=-\\ln x$，$x\\to0^{+}$ 时 $t\\to+\\infty$，$x=e^{-t}$，故 $x\\ln x=-\\dfrac{t}{e^{t}}$",
+              "condition": "换元在 $(0,1)$ 上单调可逆，极限过程变为 $t\\to+\\infty$。"
+            },
+            {
+              "scenarioId": "S.limit.zero_times_inf",
+              "methodId": "M.divide_highest_power",
+              "state": "$-\\dfrac{t}{e^{t}}$，比较分子与分母的增长阶",
+              "transformedState": "由 $e^{t}\\ge\\dfrac{t^{2}}{2}$ 得 $0\\le\\dfrac{t}{e^{t}}\\le\\dfrac{2}{t}\\to0$，故原极限为 $0$",
+              "condition": "$t>0$ 时指数增长快于任意幂，主导项在分母。"
+            }
+          ],
+          "reason": "换元后 $\\ln x$ 的无穷变成 $t$ 的一次幂，指数分母压过幂分子，极限为 0，全程不依赖洛必达。",
+          "valid": true,
+          "preferred": false,
+          "condition": "$t=-\\ln x$ 是双射，换元后的极限过程等价。"
+        },
+        {
+          "id": "r-derive-product",
+          "summary": "把 $x\\ln x$ 直接当商求导用洛必达，得出 $-\\infty$",
+          "steps": [
+            {
+              "scenarioId": "S.limit.zero_times_inf",
+              "methodId": "M.lhopital",
+              "state": "直接对乘积 $x\\ln x$ 使用洛必达",
+              "transformedState": "把乘积当未定式商直接求导，得 $\\ln x+1\\to-\\infty$，误判极限为 $-\\infty$",
+              "condition": "洛必达只适用于 $0/0$ 或 $\\infty/\\infty$ 的商式，乘积必须先化商，不能直接求导。"
+            }
+          ],
+          "reason": "对乘积直接求导等于算 $(x\\ln x)'=\\ln x+1$，与极限无关，真实极限为 0。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先判断未定式类型，把乘积化为商或用换元比较增长阶；未化商不得使用洛必达。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-zero-times-inf",
+        "trainingGoal": "掌握 $0\\cdot\\infty$ 型化为商或换元后比较增长阶的两种求极限手法",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第3题",
+          "originalId": "gap-zero-times-inf"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "极限过程为 $x\\to0^{+}$，$\\ln x$ 取负无穷",
+          "$x$ 处于 $(0,1)$ 内，$1/x>0$"
+        ],
+        "allowedVariations": [
+          "把因子换成 $x^{2}\\ln x$，答案仍为 0",
+          "把 $\\ln x$ 换成 $\\ln(\\sin x)$ 观察同型处理"
+        ],
+        "originalRecord": {
+          "id": "gap-zero-times-inf",
+          "text": "求极限 $\\lim_{x\\to0^{+}}x\\ln x$。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "0·∞ 型未定式",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-zero-times-inf",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：原式为 $0\\cdot\\infty$，改写为 $\\dfrac{\\ln x}{1/x}$ 后用洛必达得 $\\dfrac{1/x}{-1/x^{2}}=-x\\to0$；换元 $t=-\\ln x$ 得 $-t/e^{t}\\to0$，两法一致，极限为 $0$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.rewrite_as_fraction",
+        "M.lhopital"
+      ],
+      "applicableMethodIds": [
+        "M.rewrite_as_fraction",
+        "M.lhopital",
+        "M.divide_highest_power"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.zero_times_inf",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.zero_times_inf",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.zero_times_inf",
+          "methodId": "M.divide_highest_power"
+        },
+        {
+          "scenarioId": "S.limit.zero_times_inf",
+          "methodId": "M.taylor_expansion"
+        },
+        {
+          "scenarioId": "S.limit.zero_times_inf",
+          "methodId": "M.rewrite_as_fraction"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.equiv_infinitesimal",
+        "M.lhopital",
+        "M.divide_highest_power",
+        "M.taylor_expansion",
+        "M.rewrite_as_fraction"
+      ],
+      "options": [
+        {
+          "id": "r-rewrite-lhopital",
+          "name": "把 $\\ln x$ 留在分子、$x$ 取倒数搬到分母，化成 $\\infty/\\infty$ 后用洛必达"
+        },
+        {
+          "id": "r-substitution-growth",
+          "name": "换元 $t=-\\ln x$ 把 $\\ln x$ 化为幂增长，用指数增长更快说明极限为 0"
+        },
+        {
+          "id": "r-derive-product",
+          "name": "把 $x\\ln x$ 直接当商求导用洛必达，得出 $-\\infty$"
+        }
+      ],
+      "questionKey": "87f75aac8577523dde67db2885d4850860d8116209024168335dc14ec4aad3ea",
+      "faceKey": "99599cce799a7fe9edc97eeb6ce710710705926c2b34a70e8986255ea3a5c812"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.function_sequence_limit",
+      "question": "设 $F_{n}(x)=\\dfrac{x^{n}}{1+x^{n}}\\ (x\\ge0)$，求 $\\lim_{n\\to\\infty}F_{n}(x)$ 的极限函数 $F(x)$。",
+      "solution": "固定 $x$ 后分三段讨论。当 $0\\le x<1$ 时 $x^{n}\\to0$，故 $F(x)=0$。当 $x=1$ 时 $x^{n}\\equiv1$，$F_{n}(1)=\\dfrac12$，故 $F(1)=\\dfrac12$。当 $x>1$ 时 $x^{n}\\to+\\infty$，分子分母同除 $x^{n}$ 得 $F_{n}(x)=\\dfrac{1}{1+x^{-n}}\\to1$。于是 $F(x)=0\\ (0\\le x<1)$，$F(1)=\\dfrac12$，$F(x)=1\\ (x>1)$。",
+      "routes": [
+        {
+          "id": "r-partition-direct",
+          "summary": "固定 $x$ 后按 $x<1$、$x=1$、$x>1$ 三段直接代入求点态极限",
+          "steps": [
+            {
+              "scenarioId": "S.limit.function_sequence_limit",
+              "methodId": "M.pointwise_limit",
+              "state": "$F_{n}(x)=\\dfrac{x^{n}}{1+x^{n}}$，$x\\ge0$",
+              "transformedState": "$0\\le x<1$ 时 $x^{n}\\to0$，得 $F(x)=0$",
+              "condition": "先固定 $x$；$x<1$ 时幂列趋零，可与分母加法交换极限。"
+            },
+            {
+              "scenarioId": "S.limit.function_sequence_limit",
+              "methodId": "M.pointwise_limit",
+              "state": "临界点 $x=1$ 与 $x>1$ 的情形",
+              "transformedState": "$F_{n}(1)=\\dfrac12\\to\\dfrac12$；$x>1$ 时 $F_{n}=\\dfrac{1}{1+x^{-n}}\\to1$",
+              "condition": "$x=1$ 时 $x^{n}\\equiv1$ 必须单独代入；$x>1$ 时 $x^{-n}\\to0$。"
+            }
+          ],
+          "reason": "按 $x$ 与 1 的大小分成三区，每个区内的点态极限直接可算，$x=1$ 单算得 $\\dfrac12$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x\\ge0$ 上逐点讨论，临界点 $x=1$ 不并入任何一侧。"
+        },
+        {
+          "id": "r-rewrite-one-minus",
+          "summary": "先把 $F_{n}$ 改写为 $1-\\dfrac{1}{1+x^{n}}$，再只看分式的三种走向",
+          "steps": [
+            {
+              "scenarioId": "S.limit.function_sequence_limit",
+              "methodId": "M.pointwise_limit",
+              "state": "$F_{n}(x)=\\dfrac{x^{n}}{1+x^{n}}$",
+              "transformedState": "恒等改写为 $F_{n}(x)=1-\\dfrac{1}{1+x^{n}}$",
+              "condition": "恒等变形对一切 $x\\ge0$ 成立，分母 $1+x^{n}>0$。"
+            },
+            {
+              "scenarioId": "S.limit.function_sequence_limit",
+              "methodId": "M.pointwise_limit",
+              "state": "分析 $\\dfrac{1}{1+x^{n}}$ 的三种走向",
+              "transformedState": "$0\\le x<1$：分母 $\\to1$，得 $F=0$；$x=1$：得 $F=\\dfrac12$；$x>1$：分母 $\\to+\\infty$，得 $F=1$",
+              "condition": "$x>1$ 时 $x^{n}\\to+\\infty$；$x<1$ 时 $x^{n}\\to0$。"
+            }
+          ],
+          "reason": "改写为 $1-$分式后，只需追踪 $\\dfrac{1}{1+x^{n}}$ 的三种去向，逻辑更集中，结论与主路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "改写后仍按 $x$ 与 1 的大小分区。"
+        },
+        {
+          "id": "r-merge-critical",
+          "summary": "把临界点 $x=1$ 并入 $x>1$ 一类，漏掉 $F(1)=\\dfrac12$",
+          "steps": [
+            {
+              "scenarioId": "S.limit.function_sequence_limit",
+              "methodId": "M.pointwise_limit",
+              "state": "$x^{n}$ 的极限按 $x<1$ 与 $x\\ge1$ 分类",
+              "transformedState": "误认为 $x\\ge1$ 时 $x^{n}\\to+\\infty$，得 $F_{n}\\to1$",
+              "condition": "$x=1$ 时 $x^{n}\\equiv1$ 恒为常数 1，不会趋于无穷，不能与 $x>1$ 合并。"
+            },
+            {
+              "scenarioId": "S.limit.function_sequence_limit",
+              "methodId": "M.pointwise_limit",
+              "state": "写出分段极限函数",
+              "transformedState": "误作 $F(x)=0\\ (x<1)$，$F(x)=1\\ (x\\ge1)$，把 $F(1)$ 错写成 1",
+              "condition": "实际 $F(1)=\\dfrac{1}{2}$，正确分段在 $x=1$ 处与左、右极限都不相等。"
+            }
+          ],
+          "reason": "把 $x=1$ 当作 $x>1$ 的一侧是错的：该点 $x^{n}\\equiv1$ 恒成立，极限函数在此取 $\\dfrac12$，分段结果在 $x=1$ 处断裂。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先固定 $x$ 再按 $x$ 与 1 的大小分区；临界点 $x=1$ 必须单独代入，不能并入任何一侧。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-function-sequence",
+        "trainingGoal": "掌握含参幂型函数列的极限函数求法，特别是临界点的单独处理",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第4题",
+          "originalId": "gap-function-sequence"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x\\ge0$，$\\dfrac{x^{n}}{1+x^{n}}$ 的分母恒为正",
+          "极限变量是 $n$，$x$ 在过程中固定"
+        ],
+        "allowedVariations": [
+          "换成 $\\dfrac{x^{2n}}{1+x^{2n}}$，观察分区依据变为 $|x|$ 与 1",
+          "换成 $\\dfrac{x^{n}-1}{x^{n}+1}$ 改变分段取值"
+        ],
+        "originalRecord": {
+          "id": "gap-function-sequence",
+          "text": "设 $F_{n}(x)=\\dfrac{x^{n}}{1+x^{n}}\\ (x\\ge0)$，求 $\\lim_{n\\to\\infty}F_{n}(x)$ 的极限函数 $F(x)$。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "含参极限定义的函数",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-function-sequence",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$0\\le x<1$ 时 $x^{n}\\to0$ 得 $F(x)=0$；$x=1$ 时 $F_{n}(1)=\\dfrac12$；$x>1$ 时同除 $x^{n}$ 得 $\\dfrac{1}{1+x^{-n}}\\to1$。故 $F(x)=0\\ (0\\le x<1)$，$F(1)=\\dfrac12$，$F(x)=1\\ (x>1)$，临界点 $x=1$ 必须单算。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.pointwise_limit"
+      ],
+      "applicableMethodIds": [
+        "M.pointwise_limit"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.function_sequence_limit",
+          "methodId": "M.pointwise_limit"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.pointwise_limit"
+      ],
+      "options": [
+        {
+          "id": "r-rewrite-one-minus",
+          "name": "先把 $F_{n}$ 改写为 $1-\\dfrac{1}{1+x^{n}}$，再只看分式的三种走向"
+        },
+        {
+          "id": "r-merge-critical",
+          "name": "把临界点 $x=1$ 并入 $x>1$ 一类，漏掉 $F(1)=\\dfrac12$"
+        },
+        {
+          "id": "r-partition-direct",
+          "name": "固定 $x$ 后按 $x<1$、$x=1$、$x>1$ 三段直接代入求点态极限"
+        }
+      ],
+      "questionKey": "4c285e5719d958886cd82a3d1e1e73848c579c5c8b38a76b2a16ecac10d74381",
+      "faceKey": "c14c821280741043530bb0507681bf1d29cf57d189aa5699d130b875df47cb0a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.recurrence_sequence",
+      "question": "设 $a_{1}=1$，$a_{n+1}=\\sqrt{2+a_{n}}\\ (n=1,2,\\dots)$，证明数列收敛并求其极限。",
+      "solution": "先用归纳法证 $1\\le a_{n}<2$：$a_{1}=1<2$；若 $a_{n}<2$，则 $a_{n+1}=\\sqrt{2+a_{n}}<\\sqrt4=2$，且根式取正支使 $a_{n+1}>0$。再判单调：$a_{n+1}-a_{n}=\\sqrt{2+a_{n}}-a_{n}=\\dfrac{2+a_{n}-a_{n}^{2}}{\\sqrt{2+a_{n}}+a_{n}}=\\dfrac{(2-a_{n})(1+a_{n})}{\\sqrt{2+a_{n}}+a_{n}}$，当 $0<a_{n}<2$ 时分子分母都为正，故 $a_{n+1}>a_{n}$。由单调有界准则，数列收敛。设极限为 $A$，则 $A\\ge1$ 且 $A=\\sqrt{2+A}$，平方得 $A^{2}-A-2=0$，$A=2$ 或 $A=-1$，舍去 $-1$，故 $\\lim_{n\\to\\infty}a_{n}=2$。",
+      "routes": [
+        {
+          "id": "r-monotone-bounded",
+          "summary": "归纳证有界、作差证单调，再用单调有界准则设极限代入递推式",
+          "steps": [
+            {
+              "scenarioId": "S.limit.recurrence_sequence",
+              "methodId": "M.inequality_scaling",
+              "state": "$a_{1}=1$，$a_{n+1}=\\sqrt{2+a_{n}}$",
+              "transformedState": "归纳得 $1\\le a_{n}<2$：若 $a_{n}<2$，则 $a_{n+1}<\\sqrt4=2$",
+              "condition": "初值 $a_{1}=1<2$，根式取正支保证 $a_{n}>0$，放缩链条保持。"
+            },
+            {
+              "scenarioId": "S.limit.recurrence_sequence",
+              "methodId": "M.inequality_scaling",
+              "state": "考察 $a_{n+1}-a_{n}$ 的符号",
+              "transformedState": "$a_{n+1}-a_{n}=\\dfrac{(2-a_{n})(1+a_{n})}{\\sqrt{2+a_{n}}+a_{n}}>0$，数列单调递增",
+              "condition": "$0<a_{n}<2$ 时分子 $(2-a_{n})(1+a_{n})>0$，分母为正。"
+            },
+            {
+              "scenarioId": "S.limit.recurrence_sequence",
+              "methodId": "M.monotone_bounded",
+              "state": "单调递增且有上界 $2$",
+              "transformedState": "极限 $A$ 存在且 $A\\in[1,2]$，由 $A=\\sqrt{2+A}$ 得 $A^{2}-A-2=0$",
+              "condition": "单调有界准则保证极限存在后，才能把 $A$ 代入递推式。"
+            },
+            {
+              "scenarioId": "S.limit.recurrence_sequence",
+              "methodId": "M.inequality_scaling",
+              "state": "$A^{2}-A-2=0$ 的两个根 $A=2$ 与 $A=-1$",
+              "transformedState": "由 $A\\ge1$ 舍去负根，得 $A=2$",
+              "condition": "$a_{n}\\ge1$ 对一切 $n$ 成立，极限也满足 $A\\ge1$。"
+            }
+          ],
+          "reason": "单调有界准则提供存在性，作差给出单调，最后解方程并筛根得到极限 2，是标准流程。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $a_{1}=1$ 与根式正支下，$1\\le a_{n}<2$ 全程成立。"
+        },
+        {
+          "id": "r-compression-error",
+          "summary": "对误差 $2-a_{n}$ 作压缩估计，用夹逼同时得到收敛性与极限值",
+          "steps": [
+            {
+              "scenarioId": "S.limit.recurrence_sequence",
+              "methodId": "M.inequality_scaling",
+              "state": "$2-a_{n+1}$ 与 $2-a_{n}$ 的关系",
+              "transformedState": "$2-a_{n+1}=\\dfrac{2-a_{n}}{2+\\sqrt{2+a_{n}}}\\le\\dfrac{2-a_{n}}{2+\\sqrt2}=q(2-a_{n})$，其中 $q=\\dfrac{1}{2+\\sqrt2}<1$",
+              "condition": "$a_{n}\\ge1$ 时 $\\sqrt{2+a_{n}}\\ge\\sqrt2$，分母有正下界。"
+            },
+            {
+              "scenarioId": "S.limit.recurrence_sequence",
+              "methodId": "M.squeeze_theorem",
+              "state": "累乘后的误差上界",
+              "transformedState": "$0\\le2-a_{n}\\le q^{n-1}(2-a_{1})\\to0$，故 $a_{n}\\to2$，收敛性同时得证",
+              "condition": "$0<q<1$ 时幂列趋于 0，两侧极限相同可用夹逼。"
+            }
+          ],
+          "reason": "直接用 $2-a_{n+1}$ 的压缩估计夹出误差趋零，一举得到收敛与极限，不必先证单调。",
+          "valid": true,
+          "preferred": false,
+          "condition": "需先用归纳确认 $a_{n}\\ge1$，才能得到分母下界 $2+\\sqrt2$。"
+        },
+        {
+          "id": "r-ignore-convergence",
+          "summary": "不证收敛直接设极限代入，并错误保留负根 $-1$",
+          "steps": [
+            {
+              "scenarioId": "S.limit.recurrence_sequence",
+              "methodId": "M.monotone_bounded",
+              "state": "设极限为 $A$，代入 $A=\\sqrt{2+A}$",
+              "transformedState": "$A^{2}-A-2=0$ 得 $A=2$ 或 $A=-1$，误取 $A=-1$",
+              "condition": "既没有先论证收敛，又没有用 $a_{n}\\ge1$ 排除负根，方向上要求 $A\\ge0$。"
+            }
+          ],
+          "reason": "跳过收敛性论证是逻辑缺口，且解方程后不筛根取了与 $a_{n}\\ge1$ 矛盾的 $-1$，正确答案是 2。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "a"
+      ],
+      "comparisonCriterion": "先证有界单调（或用压缩误差夹逼）确认收敛，再代入递推式解方程并利用 $a_{n}\\ge1$ 筛根。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-recurrence",
+        "trainingGoal": "掌握递推数列先证收敛再求极限的完整逻辑，尤其是筛根与收敛性论证",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第5题",
+          "originalId": "gap-recurrence"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$a_{1}=1$，根式取正支",
+          "递推式为 $a_{n+1}=\\sqrt{2+a_{n}}$"
+        ],
+        "allowedVariations": [
+          "初值改为 $a_{1}=0$，单调性由递减改为递增的讨论",
+          "递推式改为 $a_{n+1}=\\sqrt{6+a_{n}}$，极限变为 3"
+        ],
+        "originalRecord": {
+          "id": "gap-recurrence",
+          "text": "设 $a_{1}=1$，$a_{n+1}=\\sqrt{2+a_{n}}\\ (n=1,2,\\dots)$，证明数列收敛并求其极限。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "数列递推式极限",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-recurrence",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：归纳得 $1\\le a_{n}<2$；又 $a_{n+1}-a_{n}=\\dfrac{(2-a_{n})(1+a_{n})}{\\sqrt{2+a_{n}}+a_{n}}>0$，故单调递增有上界，收敛。设极限 $A$，由 $A=\\sqrt{2+A}$ 得 $A^{2}-A-2=0$，即 $A=2$ 或 $-1$，由 $A\\ge1$ 舍去负根，极限为 2。压缩估计 $2-a_{n+1}\\le\\dfrac{2-a_{n}}{2+\\sqrt2}$ 也得 $a_{n}\\to2$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inequality_scaling",
+        "M.monotone_bounded"
+      ],
+      "applicableMethodIds": [
+        "M.inequality_scaling",
+        "M.monotone_bounded",
+        "M.squeeze_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.recurrence_sequence",
+          "methodId": "M.monotone_bounded"
+        },
+        {
+          "scenarioId": "S.limit.recurrence_sequence",
+          "methodId": "M.squeeze_theorem"
+        },
+        {
+          "scenarioId": "S.limit.recurrence_sequence",
+          "methodId": "M.inequality_scaling"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.monotone_bounded",
+        "M.squeeze_theorem",
+        "M.inequality_scaling"
+      ],
+      "options": [
+        {
+          "id": "r-compression-error",
+          "name": "对误差 $2-a_{n}$ 作压缩估计，用夹逼同时得到收敛性与极限值"
+        },
+        {
+          "id": "r-ignore-convergence",
+          "name": "不证收敛直接设极限代入，并错误保留负根 $-1$"
+        },
+        {
+          "id": "r-monotone-bounded",
+          "name": "归纳证有界、作差证单调，再用单调有界准则设极限代入递推式"
+        }
+      ],
+      "questionKey": "464ace4bf826a51fd5451d368236499b6310d75d03ddad6f7bb3168fe6f23956",
+      "faceKey": "ae3b6b2a6af2872db4f24f2b40da2be68878628b8ba7f558d9be1f5d865294dc"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.deriv.inverse",
+      "question": "设 $y=f(x)$ 单调可导，$f(1)=2$，$f^{\\prime}(1)=3$，求反函数 $x=f^{-1}(y)$ 在 $y=2$ 处的导数。",
+      "solution": "由 $f(1)=2$ 知 $y=2$ 对应的原函数自变量为 $x=1$。因为 $f$ 单调可导且 $f'(1)=3\\ne0$，反函数 $x=f^{-1}(y)$ 在 $y=2$ 处可导，且 $\\left(f^{-1}\\right)'(2)=\\dfrac{1}{f'(1)}=\\dfrac13$。",
+      "routes": [
+        {
+          "id": "r-reciprocal",
+          "summary": "先由 $f(1)=2$ 定位对应点，再对 $f'(1)$ 取倒数",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.inverse",
+              "methodId": "M.inverse_derivative",
+              "state": "$f(1)=2$，$f'(1)=3$",
+              "transformedState": "$y=2$ 对应 $x=1$，即求 $\\dfrac{dx}{dy}$ 在 $(x,y)=(1,2)$ 处的值",
+              "condition": "$f$ 单调可导保证反函数存在，$f'(1)\\ne0$ 保证反函数在该点可导。"
+            },
+            {
+              "scenarioId": "S.deriv.inverse",
+              "methodId": "M.inverse_derivative",
+              "state": "在对应点使用反函数求导公式",
+              "transformedState": "$\\left(f^{-1}\\right)'(2)=\\dfrac{1}{f'(1)}=\\dfrac13$",
+              "condition": "公式 $\\dfrac{dx}{dy}=\\dfrac{1}{dy/dx}$ 只在同一对应点处成立。"
+            }
+          ],
+          "reason": "反函数导数等于原函数导数在对应点的倒数，定位到 $x=1$ 后取倒数即得 $\\dfrac13$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $f$ 单调可导且 $f'(1)=3\\ne0$ 的条件下进行。"
+        },
+        {
+          "id": "r-implicit",
+          "summary": "把 $y=f(x)$ 视为隐式关系，两边对 $y$ 求导解出 $\\dfrac{dx}{dy}$",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.inverse",
+              "methodId": "M.implicit_differentiation",
+              "state": "$y=f(x)$ 即 $x=f^{-1}(y)$",
+              "transformedState": "两边对 $y$ 求导得 $1=f'(x)\\cdot\\dfrac{dx}{dy}$，故 $\\dfrac{dx}{dy}=\\dfrac{1}{f'(x)}$",
+              "condition": "把 $x$ 看成 $y$ 的函数，$f'(x)\\ne0$ 才能解出。"
+            },
+            {
+              "scenarioId": "S.deriv.inverse",
+              "methodId": "M.implicit_differentiation",
+              "state": "代入对应点 $x=1$，$y=2$",
+              "transformedState": "$\\dfrac{dx}{dy}(2)=\\dfrac{1}{f'(1)}=\\dfrac13$",
+              "condition": "$f'(1)=3\\ne0$，结果取正号。"
+            }
+          ],
+          "reason": "从关系式出发隐式求导，得到的公式与反函数求导公式一致，但推导路径不同，更强调变量角色的互换。",
+          "valid": true,
+          "preferred": false,
+          "condition": "$f'(1)=3\\ne0$，对应点处反函数可导。"
+        },
+        {
+          "id": "r-no-reciprocal",
+          "summary": "把反函数导数当成原函数导数，漏掉取倒数",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.inverse",
+              "methodId": "M.inverse_derivative",
+              "state": "$\\left(f^{-1}\\right)'(2)$",
+              "transformedState": "误认为反函数导数等于原函数导数，直接写 $f'(1)=3$",
+              "condition": "反函数导数是原函数导数在对应点的倒数，不能相等；另外也不能把 $f'(2)$ 当作结果。"
+            }
+          ],
+          "reason": "混淆 $\\dfrac{dx}{dy}$ 与 $\\dfrac{dy}{dx}$，漏掉取倒数，答案应为 $\\dfrac13$ 而不是 3。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先由 $f(1)=2$ 定位对应点，再在对应点取原函数导数的倒数；不能把 $f'(1)$ 与 $f'(2)$ 混用。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-inverse-derivative",
+        "trainingGoal": "掌握反函数求导公式与对应点的定位，避免漏取倒数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第6题",
+          "originalId": "gap-inverse-derivative"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f(1)=2$，$f'(1)=3$",
+          "反函数在 $y=2$ 处对应原函数自变量 $x=1$"
+        ],
+        "allowedVariations": [
+          "把 $f'(1)$ 改为 $5$，答案变为 $\\dfrac15$",
+          "给出 $f(2)=1$ 改为求 $y=1$ 处的反函数导数"
+        ],
+        "originalRecord": {
+          "id": "gap-inverse-derivative",
+          "text": "设 $y=f(x)$ 单调可导，$f(1)=2$，$f^{\\prime}(1)=3$，求反函数 $x=f^{-1}(y)$ 在 $y=2$ 处的导数。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "导数与微分",
+          "difficulty": "中",
+          "method": "反函数求导",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-inverse-derivative",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$f(1)=2$ 说明 $y=2$ 对应 $x=1$；$f$ 单调可导且 $f'(1)=3\\ne0$ 保证反函数在 $y=2$ 可导，$(f^{-1})'(2)=\\dfrac{1}{f'(1)}=\\dfrac13$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inverse_derivative"
+      ],
+      "applicableMethodIds": [
+        "M.inverse_derivative",
+        "M.implicit_differentiation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.deriv.inverse",
+          "methodId": "M.inverse_derivative"
+        },
+        {
+          "scenarioId": "S.deriv.inverse",
+          "methodId": "M.implicit_differentiation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.inverse_derivative",
+        "M.implicit_differentiation"
+      ],
+      "options": [
+        {
+          "id": "r-no-reciprocal",
+          "name": "把反函数导数当成原函数导数，漏掉取倒数"
+        },
+        {
+          "id": "r-reciprocal",
+          "name": "先由 $f(1)=2$ 定位对应点，再对 $f'(1)$ 取倒数"
+        },
+        {
+          "id": "r-implicit",
+          "name": "把 $y=f(x)$ 视为隐式关系，两边对 $y$ 求导解出 $\\dfrac{dx}{dy}$"
+        }
+      ],
+      "questionKey": "05c98ee56cdb89636f9f77d5c4762886f9e5f52e6171c6f9cf3492ab5c6b10ea",
+      "faceKey": "21558a8975ff9534e4c5d60f9d036965643aa0dd63f7c8b3cc27551c02517818"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.mvt.identity_proof",
+      "question": "证明：当 $x>0$ 时，$\\arctan x+\\arctan\\dfrac1x=\\dfrac{\\pi}{2}$。",
+      "solution": "令 $F(x)=\\arctan x+\\arctan\\dfrac1x-\\dfrac{\\pi}{2}\\ (x>0)$。求导得 $F'(x)=\\dfrac{1}{1+x^{2}}+\\dfrac{1}{1+(1/x)^{2}}\\cdot\\left(-\\dfrac{1}{x^{2}}\\right)=\\dfrac{1}{1+x^{2}}-\\dfrac{1}{1+x^{2}}=0$。由拉格朗日中值定理的推论，导数恒为零的函数在区间上为常数。取 $x=1$ 得 $F(1)=\\dfrac{\\pi}{4}+\\dfrac{\\pi}{4}-\\dfrac{\\pi}{2}=0$，故 $F(x)\\equiv0$，即 $\\arctan x+\\arctan\\dfrac1x=\\dfrac{\\pi}{2}$。",
+      "routes": [
+        {
+          "id": "r-aux-derivative",
+          "summary": "构造差函数，证明导数恒为零并在一点取零值",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.identity_proof",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "$\\arctan x+\\arctan\\dfrac1x=\\dfrac{\\pi}{2}$，$x>0$",
+              "transformedState": "令 $F(x)=\\arctan x+\\arctan\\dfrac1x-\\dfrac{\\pi}{2}$，问题化为证 $F\\equiv0$",
+              "condition": "$x>0$，$F$ 在 $(0,+\\infty)$ 上可导，区间连通。"
+            },
+            {
+              "scenarioId": "S.mvt.identity_proof",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "求 $F'(x)$",
+              "transformedState": "$F'(x)=\\dfrac{1}{1+x^{2}}-\\dfrac{1}{1+x^{2}}=0$",
+              "condition": "$\\arctan\\dfrac1x$ 是复合函数，内层导数 $-\\dfrac{1}{x^{2}}$ 不能漏。"
+            },
+            {
+              "scenarioId": "S.mvt.identity_proof",
+              "methodId": "M.lagrange_mvt",
+              "state": "$F'\\equiv0$（$x>0$）",
+              "transformedState": "$F$ 在 $(0,+\\infty)$ 上为常数；取 $x=1$ 得 $F(1)=0$，故 $F\\equiv0$",
+              "condition": "拉格朗日中值定理推论：区间上导数为零则函数为常数，需区间连通。"
+            }
+          ],
+          "reason": "构造差函数后导数恒为零，再用一点取值定出常数为零，是最直接的恒等式证法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x>0$ 的连通区间上求导并取 $x=1$ 定常数。"
+        },
+        {
+          "id": "r-tangent-angle",
+          "summary": "令 $\\alpha=\\arctan x$、$\\beta=\\arctan\\dfrac1x$，用正切和角公式与角的范围定出两角之和",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.identity_proof",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "$\\arctan x$ 与 $\\arctan\\dfrac1x$，$x>0$",
+              "transformedState": "令 $\\alpha=\\arctan x\\in\\left(0,\\dfrac{\\pi}{2}\\right)$，$\\beta=\\arctan\\dfrac1x\\in\\left(0,\\dfrac{\\pi}{2}\\right)$，且 $\\tan\\alpha=x$，$\\tan\\beta=\\dfrac1x$",
+              "condition": "$x>0$ 时两角都取主值，落在 $\\left(0,\\dfrac{\\pi}{2}\\right)$ 内。"
+            },
+            {
+              "scenarioId": "S.mvt.identity_proof",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "$\\tan\\alpha\\tan\\beta=1$",
+              "transformedState": "和角公式分母 $1-\\tan\\alpha\\tan\\beta=0$，而 $\\alpha+\\beta\\in(0,\\pi)$，故 $\\alpha+\\beta=\\dfrac{\\pi}{2}$",
+              "condition": "分母为零说明和角是 $\\dfrac{\\pi}{2}$ 的奇数倍，结合范围只剩 $\\dfrac{\\pi}{2}$。"
+            }
+          ],
+          "reason": "用正切的和角公式与两角的取值范围直接定出角之和，是完全不依赖导数的三角恒等证法。",
+          "valid": true,
+          "preferred": false,
+          "condition": "$x>0$ 保证 $\\alpha,\\beta$ 都在 $\\left(0,\\dfrac{\\pi}{2}\\right)$，避免多值性。"
+        },
+        {
+          "id": "r-bad-chain-rule",
+          "summary": "求导时漏掉 $\\arctan\\dfrac1x$ 的内层导数，误得 $F'\\ne0$",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.identity_proof",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "对 $F(x)=\\arctan x+\\arctan\\dfrac1x$ 求导",
+              "transformedState": "误算 $\\left(\\arctan\\dfrac1x\\right)'=\\dfrac{1}{1+x^{2}}$（漏掉内层 $-\\dfrac{1}{x^{2}}$），得 $F'(x)=\\dfrac{2}{1+x^{2}}\\ne0$，据此错判等式不成立",
+              "condition": "复合求导必须有内层因子 $-\\dfrac{1}{x^{2}}$；漏掉后符号由负变正，$F'$ 不再为零。"
+            }
+          ],
+          "reason": "把 $\\arctan\\dfrac1x$ 的导数算成 $\\dfrac{1}{1+x^{2}}$，漏掉链式因子的 $-\\dfrac{1}{x^{2}}$，导致 $F'\\ne0$ 的错误结论。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "恒等式优先构造差函数并证导数恒为零，再用一点定常数；也可用正切和角公式直接定角。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-identity-proof",
+        "trainingGoal": "掌握用导数恒为零证明恒等式，并知道三角恒等式的平行证法",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第7题",
+          "originalId": "gap-identity-proof"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x>0$，区间 $(0,+\\infty)$ 连通",
+          "反三角函数取主值"
+        ],
+        "allowedVariations": [
+          "改为证明 $x>0$ 时 $\\arctan x+\\text{arccot}\\,x=\\dfrac{\\pi}{2}$",
+          "改为证明 $\\arcsin x+\\arccos x=\\dfrac{\\pi}{2}$，$x\\in[-1,1]$"
+        ],
+        "originalRecord": {
+          "id": "gap-identity-proof",
+          "text": "证明：当 $x>0$ 时，$\\arctan x+\\arctan\\dfrac1x=\\dfrac{\\pi}{2}$。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "微分中值定理与导数的应用",
+          "difficulty": "中",
+          "method": "证明恒等式",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-identity-proof",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：令 $F(x)=\\arctan x+\\arctan\\dfrac1x-\\dfrac{\\pi}{2}$，则 $F'(x)=\\dfrac{1}{1+x^{2}}-\\dfrac{1}{1+x^{2}}=0$，$F$ 为常数；取 $x=1$ 得 $F(1)=0$，故恒等式成立。另有三角法：$\\tan\\alpha\\tan\\beta=1$ 且两角在 $\\left(0,\\dfrac{\\pi}{2}\\right)$，得 $\\alpha+\\beta=\\dfrac{\\pi}{2}$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.construct_auxiliary_function",
+        "M.lagrange_mvt"
+      ],
+      "applicableMethodIds": [
+        "M.construct_auxiliary_function",
+        "M.lagrange_mvt"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.mvt.identity_proof",
+          "methodId": "M.construct_auxiliary_function"
+        },
+        {
+          "scenarioId": "S.mvt.identity_proof",
+          "methodId": "M.lagrange_mvt"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.construct_auxiliary_function",
+        "M.lagrange_mvt"
+      ],
+      "options": [
+        {
+          "id": "r-tangent-angle",
+          "name": "令 $\\alpha=\\arctan x$、$\\beta=\\arctan\\dfrac1x$，用正切和角公式与角的范围定出两角之和"
+        },
+        {
+          "id": "r-bad-chain-rule",
+          "name": "求导时漏掉 $\\arctan\\dfrac1x$ 的内层导数，误得 $F'\\ne0$"
+        },
+        {
+          "id": "r-aux-derivative",
+          "name": "构造差函数，证明导数恒为零并在一点取零值"
+        }
+      ],
+      "questionKey": "9dd3ef443c3766bf8952db5c2834cc289727f82d0b63ae41eaccbb44f455c138",
+      "faceKey": "791c02cf1ff6a13712b2fa0919d62c59541903c454a7848a91394c9d845d6718"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.mvt.lagrange_cauchy_equality",
+      "question": "设 $f(x)$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导，且 $0<a<b$。证明存在 $\\xi\\in(a,b)$，使得 $f(b)-f(a)=\\xi f^{\\prime}(\\xi)\\ln\\dfrac{b}{a}$。",
+      "solution": "取 $g(x)=\\ln x$。因 $0<a<b$，$g$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导，且 $g'(x)=\\dfrac1x\\ne0$；$f$ 也满足相应条件。对 $f$ 与 $g$ 用柯西中值定理，存在 $\\xi\\in(a,b)$ 使 $\\dfrac{f(b)-f(a)}{\\ln b-\\ln a}=\\dfrac{f'(\\xi)}{g'(\\xi)}=\\dfrac{f'(\\xi)}{1/\\xi}=\\xi f'(\\xi)$。又 $\\ln b-\\ln a=\\ln\\dfrac ba$，故 $f(b)-f(a)=\\xi f'(\\xi)\\ln\\dfrac ba$。",
+      "routes": [
+        {
+          "id": "r-cauchy-ln",
+          "summary": "把 $\\ln\\dfrac ba$ 看成 $\\ln x$ 的增量，对 $f$ 与 $\\ln x$ 用柯西中值定理",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.lagrange_cauchy_equality",
+              "methodId": "M.cauchy_mvt",
+              "state": "$f(b)-f(a)=\\xi f'(\\xi)\\ln\\dfrac ba$",
+              "transformedState": "整理为 $\\dfrac{f(b)-f(a)}{\\ln b-\\ln a}=\\dfrac{f'(\\xi)}{1/\\xi}$，识别分母函数 $g(x)=\\ln x$",
+              "condition": "$a\\ne b$ 且 $0<a<b$，故 $\\ln b-\\ln a=\\ln\\dfrac ba\\ne0$。"
+            },
+            {
+              "scenarioId": "S.mvt.lagrange_cauchy_equality",
+              "methodId": "M.cauchy_mvt",
+              "state": "验证条件并对 $f$、$g$ 应用柯西中值定理",
+              "transformedState": "存在 $\\xi\\in(a,b)$ 使 $\\dfrac{f(b)-f(a)}{\\ln b-\\ln a}=\\dfrac{f'(\\xi)}{1/\\xi}=\\xi f'(\\xi)$，回代即得结论",
+              "condition": "$g=\\ln x$ 在 $[a,b]$ 连续、$(a,b)$ 可导且 $g'=1/x\\ne0$（由 $a>0$ 保证）。"
+            }
+          ],
+          "reason": "结论中的 $\\ln\\dfrac ba$ 恰是 $\\ln x$ 的增量，两函数增量比正好凑成柯西中值定理，一步到位。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $0<a<b$、$f$ 闭区间连续开区间可导的条件下进行。"
+        },
+        {
+          "id": "r-rolle-construct",
+          "summary": "把结论搬进辅助函数，端点值抵消后用罗尔定理",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.lagrange_cauchy_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "结论含 $f$ 的增量与 $\\ln$ 因子",
+              "transformedState": "令 $F(x)=f(x)-f(a)-\\dfrac{f(b)-f(a)}{\\ln(b/a)}\\ln\\dfrac xa$",
+              "condition": "$0<a<b$ 使 $\\ln\\dfrac xa$ 在 $[a,b]$ 上有定义，且 $\\ln\\dfrac ba\\ne0$。"
+            },
+            {
+              "scenarioId": "S.mvt.lagrange_cauchy_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "验证辅助函数端点值",
+              "transformedState": "$F(a)=0$；$F(b)=f(b)-f(a)-\\dfrac{f(b)-f(a)}{\\ln(b/a)}\\ln\\dfrac ba=0$",
+              "condition": "$F$ 在 $[a,b]$ 连续、$(a,b)$ 可导，两端函数值相等。"
+            },
+            {
+              "scenarioId": "S.mvt.lagrange_cauchy_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "由罗尔定理",
+              "transformedState": "存在 $\\xi\\in(a,b)$：$F'(\\xi)=f'(\\xi)-\\dfrac{f(b)-f(a)}{\\ln(b/a)}\\cdot\\dfrac1\\xi=0$，整理得 $f(b)-f(a)=\\xi f'(\\xi)\\ln\\dfrac ba$",
+              "condition": "罗尔定理要求 $F$ 闭区间连续、开区间可导且两端值相等，均已验证。"
+            }
+          ],
+          "reason": "把结论直接搬进辅助函数，端点值自动抵消后套罗尔定理，是与柯西法并列的标准构造法。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $0<a<b$ 且 $\\ln\\dfrac ba\\ne0$ 的条件下构造辅助函数。"
+        },
+        {
+          "id": "r-lagrange-mismatch",
+          "summary": "对 $f$ 直接套拉格朗日，再把 $b-a$ 强行改写成 $\\xi\\ln\\dfrac ba$",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.lagrange_cauchy_equality",
+              "methodId": "M.lagrange_mvt",
+              "state": "对 $f$ 直接用拉格朗日中值定理",
+              "transformedState": "$f(b)-f(a)=f'(\\xi)(b-a)$，再把 $b-a$ 强行写成 $\\xi\\ln\\dfrac ba$，误得结论",
+              "condition": "$b-a$ 与 $\\xi\\ln\\dfrac ba$ 并不相等，改写后得到的点不再对应同一个 $\\xi$，等式不成立。"
+            }
+          ],
+          "reason": "拉格朗日给出的是因子 $b-a$，题中需要的是 $\\xi\\ln\\dfrac ba$，两者不能替换；必须另取 $g=\\ln x$ 用柯西型。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "b",
+        "x"
+      ],
+      "comparisonCriterion": "结论中出现 $\\ln\\dfrac ba$ 时，分母函数取 $\\ln x$ 用柯西中值定理；或把结论整体搬进辅助函数用罗尔定理。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-cauchy-mvt",
+        "trainingGoal": "掌握含 $\\ln$ 因子的中值等式两种证法：柯西中值定理与构造辅助函数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第8题",
+          "originalId": "gap-cauchy-mvt"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$0<a<b$，$\\ln\\dfrac ba>0$",
+          "$f$ 在 $[a,b]$ 连续、$(a,b)$ 可导"
+        ],
+        "allowedVariations": [
+          "把结论中的 $\\ln\\dfrac ba$ 换成 $b-a$，退化为拉格朗日型",
+          "把 $\\xi$ 前的因子改为 $\\dfrac{1}{\\xi}$，对应分母函数改为 $-\\dfrac1x$"
+        ],
+        "originalRecord": {
+          "id": "gap-cauchy-mvt",
+          "text": "设 $f(x)$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导，且 $0<a<b$。证明存在 $\\xi\\in(a,b)$，使得 $f(b)-f(a)=\\xi f^{\\prime}(\\xi)\\ln\\dfrac{b}{a}$。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "微分中值定理与导数的应用",
+          "difficulty": "中",
+          "method": "证明含中值的等式（拉格朗日/柯西型）",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-cauchy-mvt",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：取 $g(x)=\\ln x$，在 $[a,b]$ 连续、$(a,b)$ 可导且 $g'=1/x\\ne0$（$a>0$）。对 $f$ 与 $g$ 用柯西中值定理：$\\dfrac{f(b)-f(a)}{\\ln b-\\ln a}=\\dfrac{f'(\\xi)}{1/\\xi}=\\xi f'(\\xi)$，而 $\\ln b-\\ln a=\\ln\\dfrac ba$，即得结论。构造辅助函数 $F(x)=f(x)-f(a)-\\dfrac{f(b)-f(a)}{\\ln(b/a)}\\ln\\dfrac xa$ 用罗尔定理亦成立。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.cauchy_mvt"
+      ],
+      "applicableMethodIds": [
+        "M.cauchy_mvt",
+        "M.construct_auxiliary_function"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.mvt.lagrange_cauchy_equality",
+          "methodId": "M.lagrange_mvt"
+        },
+        {
+          "scenarioId": "S.mvt.lagrange_cauchy_equality",
+          "methodId": "M.cauchy_mvt"
+        },
+        {
+          "scenarioId": "S.mvt.lagrange_cauchy_equality",
+          "methodId": "M.construct_auxiliary_function"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.lagrange_mvt",
+        "M.cauchy_mvt",
+        "M.construct_auxiliary_function"
+      ],
+      "options": [
+        {
+          "id": "r-rolle-construct",
+          "name": "把结论搬进辅助函数，端点值抵消后用罗尔定理"
+        },
+        {
+          "id": "r-lagrange-mismatch",
+          "name": "对 $f$ 直接套拉格朗日，再把 $b-a$ 强行改写成 $\\xi\\ln\\dfrac ba$"
+        },
+        {
+          "id": "r-cauchy-ln",
+          "name": "把 $\\ln\\dfrac ba$ 看成 $\\ln x$ 的增量，对 $f$ 与 $\\ln x$ 用柯西中值定理"
+        }
+      ],
+      "questionKey": "a99456f1eba330c8c123026e02374ec3085074d517ef0d02ba984e7fecb52262",
+      "faceKey": "de162bc0a94b3e00b4d30e4a29d8e484db2df1c92afbdf973a09e1b1708d07b0"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.bernoulli",
+      "question": "求微分方程 $y^{\\prime}+y=xy^{2}$ 的通解。",
+      "solution": "这是 $n=2$ 的伯努利方程。两边除以 $y^{2}$（$y\\ne0$）得 $\\dfrac{y'}{y^{2}}+\\dfrac1y=x$。令 $z=\\dfrac1y$，则 $z'=-\\dfrac{y'}{y^{2}}$，方程化为 $z'-z=-x$。该一阶线性方程的通解为 $z=Ce^{x}+x+1$，故 $y=\\dfrac{1}{Ce^{x}+x+1}$（$C$ 为任意常数）。此外 $y\\equiv0$ 也是原方程的解。",
+      "routes": [
+        {
+          "id": "r-z-substitution",
+          "summary": "除以 $y^{2}$ 后令 $z=1/y$ 线化，再用常数变易法解线性方程",
+          "steps": [
+            {
+              "scenarioId": "S.ode.bernoulli",
+              "methodId": "M.bernoulli_substitution",
+              "state": "$y'+y=xy^{2}$，$n=2$",
+              "transformedState": "两边除 $y^{2}$ 并令 $z=y^{-1}$，得 $z'-z=-x$",
+              "condition": "$y\\ne0$；$z=y^{1-n}=y^{-1}$，$z'=-y'/y^{2}$。"
+            },
+            {
+              "scenarioId": "S.ode.bernoulli",
+              "methodId": "M.constant_variation",
+              "state": "一阶线性方程 $z'-z=-x$",
+              "transformedState": "齐次解 $Ce^{x}$，令 $C=C(x)$ 得 $C'(x)e^{x}=-x$，积分得 $z=Ce^{x}+x+1$",
+              "condition": "常数变易要求 $C(x)=\\int-xe^{-x}dx=(x+1)e^{-x}+C$。"
+            },
+            {
+              "scenarioId": "S.ode.bernoulli",
+              "methodId": "M.bernoulli_substitution",
+              "state": "$z=Ce^{x}+x+1$",
+              "transformedState": "回代 $y=\\dfrac1z=\\dfrac{1}{Ce^{x}+x+1}$，并保留 $y\\equiv0$",
+              "condition": "$y\\ne0$ 时回代有效；被约去的 $y=0$ 也是解，需单列。"
+            }
+          ],
+          "reason": "伯努利代换把非线性方程变为一阶线性方程，常数变易法给出 $z$，回代即得通解，是标准流程。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $y\\ne0$ 的区间上作代换，$C$ 为任意常数。"
+        },
+        {
+          "id": "r-integral-factor",
+          "summary": "同一个 $z=1/y$ 代换，但线性方程改用积分因子 $e^{-x}$ 直接积分",
+          "steps": [
+            {
+              "scenarioId": "S.ode.bernoulli",
+              "methodId": "M.bernoulli_substitution",
+              "state": "$y'+y=xy^{2}$，$n=2$",
+              "transformedState": "令 $z=y^{-1}$，得线性方程 $z'-z=-x$",
+              "condition": "$y\\ne0$，$z'=-y'/y^{2}$。"
+            },
+            {
+              "scenarioId": "S.ode.bernoulli",
+              "methodId": "M.constant_variation",
+              "state": "$z'-z=-x$，取积分因子 $\\mu=e^{-x}$",
+              "transformedState": "$\\left(ze^{-x}\\right)'=-xe^{-x}$，积分得 $ze^{-x}=(x+1)e^{-x}+C$，即 $z=Ce^{x}+x+1$",
+              "condition": "用分部积分 $\\int-xe^{-x}dx=(x+1)e^{-x}+C$ 直接算出，不需讨论 $C(x)$。"
+            },
+            {
+              "scenarioId": "S.ode.bernoulli",
+              "methodId": "M.bernoulli_substitution",
+              "state": "$z=Ce^{x}+x+1$",
+              "transformedState": "$y=\\dfrac{1}{Ce^{x}+x+1}$，另列 $y\\equiv0$",
+              "condition": "与主路线同一回代，$y\\ne0$ 时成立。"
+            }
+          ],
+          "reason": "与主路线共用代换，但线性方程改用积分因子一次性积分，避开常数变易的推导，结果完全一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "积分因子 $e^{-x}$ 恒正，代换与回代条件同主路线。"
+        },
+        {
+          "id": "r-sign-error",
+          "summary": "$z=1/y$ 求导漏掉负号，线性方程符号随之改变",
+          "steps": [
+            {
+              "scenarioId": "S.ode.bernoulli",
+              "methodId": "M.bernoulli_substitution",
+              "state": "令 $z=y^{-1}$，两边除 $y^{2}$",
+              "transformedState": "误算 $z'=+\\dfrac{y'}{y^{2}}$，得 $z'+z=x$，解得 $z=Ce^{-x}+x-1$，回代 $y=\\dfrac{1}{Ce^{-x}+x-1}$",
+              "condition": "$z=y^{-1}$ 的导数应为 $-y'/y^{2}$，负号丢失后线性方程由 $z'-z=-x$ 变成 $z'+z=x$。"
+            }
+          ],
+          "reason": "代换求导漏掉负号导致方程符号整体改变，所得 $y$ 代回原方程不成立。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先确认伯努利类型并令 $z=y^{1-n}$，再解线性方程；代换求导的负号与 $y=0$ 的单独讨论不可遗漏。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-bernoulli",
+        "trainingGoal": "掌握伯努利方程的代换线化与一阶线性方程求解，注意负号与失根",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第9题",
+          "originalId": "gap-bernoulli"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "方程中 $y$ 的最高次数为 2，$n=2$",
+          "作代换时限制 $y\\ne0$，$y\\equiv0$ 单列"
+        ],
+        "allowedVariations": [
+          "右端改为 $x y^{3}$，$z=y^{-2}$",
+          "把 $P(x)$ 改为 $\\dfrac1x$，得到 $y'+y/x=xy^{2}$"
+        ],
+        "originalRecord": {
+          "id": "gap-bernoulli",
+          "text": "求微分方程 $y^{\\prime}+y=xy^{2}$ 的通解。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "伯努利方程",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-bernoulli",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：两边除 $y^{2}$ 并令 $z=y^{-1}$，得 $z'-z=-x$，解得 $z=Ce^{x}+x+1$，故 $y=\\dfrac{1}{Ce^{x}+x+1}$；代回原方程验证成立，另外 $y\\equiv0$ 也是解。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.bernoulli_substitution",
+        "M.constant_variation"
+      ],
+      "applicableMethodIds": [
+        "M.bernoulli_substitution",
+        "M.constant_variation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.bernoulli",
+          "methodId": "M.bernoulli_substitution"
+        },
+        {
+          "scenarioId": "S.ode.bernoulli",
+          "methodId": "M.constant_variation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.bernoulli_substitution",
+        "M.constant_variation"
+      ],
+      "options": [
+        {
+          "id": "r-integral-factor",
+          "name": "同一个 $z=1/y$ 代换，但线性方程改用积分因子 $e^{-x}$ 直接积分"
+        },
+        {
+          "id": "r-sign-error",
+          "name": "$z=1/y$ 求导漏掉负号，线性方程符号随之改变"
+        },
+        {
+          "id": "r-z-substitution",
+          "name": "除以 $y^{2}$ 后令 $z=1/y$ 线化，再用常数变易法解线性方程"
+        }
+      ],
+      "questionKey": "f19a76fa8ca84346727160d6a1bed53c9bc3418e7496deef68c734a90deaac7f",
+      "faceKey": "ac328560b1943c88a2f0f8fd8efefad5e0446f4d5fc38cd83da7eb2e4c3283aa"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.vecalg.cylinder_cone",
+      "question": "指出方程 $x^{2}+y^{2}=4$ 与 $z=\\sqrt{x^{2}+y^{2}}$ 分别表示什么曲面。",
+      "solution": "$x^{2}+y^{2}=4$ 中不出现 $z$，对任意固定的 $z$ 截痕都是圆 $x^{2}+y^{2}=4$，故它表示母线平行于 $z$ 轴、以 $z$ 轴为轴、半径为 2 的圆柱面。$z=\\sqrt{x^{2}+y^{2}}$ 两边平方（注意 $z\\ge0$）得 $z^{2}=x^{2}+y^{2}$，方程关于 $x,y,z$ 齐次，表示顶点在原点、以 $z$ 轴为轴、半顶角为 $\\dfrac{\\pi}{4}$ 的上半圆锥面。",
+      "routes": [
+        {
+          "id": "r-missing-variable",
+          "summary": "先看缺哪个变量判柱面，再看三变量是否齐次判锥面",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.cylinder_cone",
+              "methodId": "M.cylinder_cone_recognition",
+              "state": "$x^{2}+y^{2}=4$",
+              "transformedState": "方程不含 $z$，对任意 $z$ 的截痕都是圆 $x^{2}+y^{2}=4$，是以 $z$ 轴为轴、半径 2 的圆柱面",
+              "condition": "缺变量 $z$ 意味着曲面沿 $z$ 方向平移不变，母线平行 $z$ 轴。"
+            },
+            {
+              "scenarioId": "S.vecalg.cylinder_cone",
+              "methodId": "M.cylinder_cone_recognition",
+              "state": "$z=\\sqrt{x^{2}+y^{2}}$",
+              "transformedState": "平方得 $z^{2}=x^{2}+y^{2}$（$z\\ge0$），各项均为二次且关于 $x,y,z$ 齐次，是顶点在原点、半顶角 $\\dfrac{\\pi}{4}$ 的上半圆锥面",
+              "condition": "$z\\ge0$ 只取锥的上半支，母线是过原点的射线。"
+            }
+          ],
+          "reason": "缺变量直接锁定柱面，平方后齐次直接锁定锥面，这是两类方程最快的判据。",
+          "valid": true,
+          "preferred": true,
+          "condition": "按方程缺少的变量与齐次次数两步定型。"
+        },
+        {
+          "id": "r-cross-section",
+          "summary": "用截痕与母线方向按定义验证两个方程表示的曲面",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.cylinder_cone",
+              "methodId": "M.cylinder_cone_recognition",
+              "state": "$x^{2}+y^{2}=4$",
+              "transformedState": "在平面 $z=k$ 上截痕恒为圆 $x^{2}+y^{2}=4$，且点 $(x,y,z_{0})$ 在曲面上时 $(x,y,k)$ 也在曲面上，母线方向为 $(0,0,1)$，是圆柱面",
+              "condition": "截痕与 $z$ 无关，等价于母线平行 $z$ 轴。"
+            },
+            {
+              "scenarioId": "S.vecalg.cylinder_cone",
+              "methodId": "M.cylinder_cone_recognition",
+              "state": "$z=\\sqrt{x^{2}+y^{2}}$",
+              "transformedState": "过 $z$ 轴的半平面 $\\theta=\\theta_{0}$ 上截痕为射线 $z=r\\ (r\\ge0)$，所有母线交于原点 $O$，是以 $O$ 为顶点的锥面",
+              "condition": "锥面等价于过定点的直线族，母线公共交点为顶点。"
+            }
+          ],
+          "reason": "按定义从截痕与母线方向验证，不依赖缺变量$/$齐次的速判，结论与主路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在空间直角坐标系下取截痕与母线验证。"
+        },
+        {
+          "id": "r-paraboloid-confusion",
+          "summary": "把柱面当平面圆，把根号平方后误当旋转抛物面",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.cylinder_cone",
+              "methodId": "M.cylinder_cone_recognition",
+              "state": "两个方程 $x^{2}+y^{2}=4$ 与 $z=\\sqrt{x^{2}+y^{2}}$",
+              "transformedState": "把 $x^{2}+y^{2}=4$ 误判为圆（平面曲线），又把 $\\sqrt{x^{2}+y^{2}}$ 平方后误写成 $z=x^{2}+y^{2}$，判为旋转抛物面",
+              "condition": "$x^{2}+y^{2}=4$ 在空间中缺 $z$，是柱面而非平面圆；$\\sqrt{x^{2}+y^{2}}$ 平方得到 $z^{2}=x^{2}+y^{2}$，是二次齐次式，不是 $z=x^{2}+y^{2}$。"
+            }
+          ],
+          "reason": "只按表面形式套模板：缺变量被当成平面曲线，开方平方时把 $z$ 的次数弄错，将锥面错认成抛物面。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "先看方程缺哪个变量，再看关于三变量是否齐次；柱面母线平行缺变量方向，锥面母线过顶点。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-cylinder-cone",
+        "trainingGoal": "掌握缺变量判柱面、齐次判锥面的识别方法，并区分锥面与抛物面",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第10题",
+          "originalId": "gap-cylinder-cone"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x^{2}+y^{2}=4$ 是空间曲面方程而非平面曲线",
+          "$z=\\sqrt{x^{2}+y^{2}}$ 满足 $z\\ge0$ 只取上半锥"
+        ],
+        "allowedVariations": [
+          "把方程改为 $y^{2}+z^{2}=4$，柱面母线改为平行 $x$ 轴",
+          "把锥面改为 $z^{2}=x^{2}+y^{2}$，去掉了 $z\\ge0$ 的限制"
+        ],
+        "originalRecord": {
+          "id": "gap-cylinder-cone",
+          "text": "指出方程 $x^{2}+y^{2}=4$ 与 $z=\\sqrt{x^{2}+y^{2}}$ 分别表示什么曲面。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "向量代数与空间解析几何",
+          "difficulty": "中",
+          "method": "柱面与锥面的识别",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-cylinder-cone",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$x^{2}+y^{2}=4$ 不含 $z$，任意 $z$ 的截面都是同一圆，是以 $z$ 轴为轴、半径 2 的圆柱面；$z=\\sqrt{x^{2}+y^{2}}$ 平方得 $z^{2}=x^{2}+y^{2}$（$z\\ge0$），关于三变量齐次，是顶点在原点、以 $z$ 轴为轴、半顶角 $\\dfrac{\\pi}{4}$ 的上半圆锥面。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.cylinder_cone_recognition"
+      ],
+      "applicableMethodIds": [
+        "M.cylinder_cone_recognition"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.vecalg.cylinder_cone",
+          "methodId": "M.cylinder_cone_recognition"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.cylinder_cone_recognition"
+      ],
+      "options": [
+        {
+          "id": "r-missing-variable",
+          "name": "先看缺哪个变量判柱面，再看三变量是否齐次判锥面"
+        },
+        {
+          "id": "r-cross-section",
+          "name": "用截痕与母线方向按定义验证两个方程表示的曲面"
+        },
+        {
+          "id": "r-paraboloid-confusion",
+          "name": "把柱面当平面圆，把根号平方后误当旋转抛物面"
+        }
+      ],
+      "questionKey": "d5cee0f7720ca0ad2f4acd3ff5c95ca1119e8826907722a39ffc2ebf8ff4df9c",
+      "faceKey": "cfad566412c6c4e2359fc21e94fabd977c3512c44d4363e1011cddeaa34db581"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.bounded_times_zero",
+      "question": "求极限 $\\lim_{x\\to0}x^{2}\\sin\\dfrac1x$。",
+      "solution": "当 $x\\ne0$ 时 $\\left|\\sin\\dfrac1x\\right|\\le1$，故 $-x^{2}\\le x^{2}\\sin\\dfrac1x\\le x^{2}$。而 $\\lim_{x\\to0}x^{2}=0$，两侧都趋于 0，由夹逼准则得 $\\lim_{x\\to0}x^{2}\\sin\\dfrac1x=0$。",
+      "routes": [
+        {
+          "id": "r-squeeze",
+          "summary": "用 $\\left|\\sin\\dfrac1x\\right|\\le1$ 给出一致上下界，再用夹逼收尾",
+          "steps": [
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.inequality_scaling",
+              "state": "$x^{2}\\sin\\dfrac1x$，$x\\to0$",
+              "transformedState": "$\\left|\\sin\\dfrac1x\\right|\\le1$，故 $-x^{2}\\le x^{2}\\sin\\dfrac1x\\le x^{2}$",
+              "condition": "$x\\ne0$ 时不等式成立；$x=0$ 处函数值为 0，不影响极限。"
+            },
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.squeeze_theorem",
+              "state": "两侧界 $-x^{2}$ 与 $x^{2}$",
+              "transformedState": "两侧都趋于 $0$，中间项被夹住，极限为 $0$",
+              "condition": "两侧极限相同，夹逼准则可用。"
+            }
+          ],
+          "reason": "用振荡因子的统一上界构造两侧夹逼，外侧是无穷小，中间项只能趋于 0。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x\\to0$ 的去心邻域内进行，$\\left|\\sin\\dfrac1x\\right|\\le1$ 恒成立。"
+        },
+        {
+          "id": "r-epsilon-delta",
+          "summary": "直接用极限定义：把振荡因子用 1 控制，取 $\\delta=\\sqrt{\\varepsilon}$",
+          "steps": [
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.inequality_scaling",
+              "state": "考察 $\\left|x^{2}\\sin\\dfrac1x-0\\right|$",
+              "transformedState": "$\\left|x^{2}\\sin\\dfrac1x\\right|\\le x^{2}$（$x\\ne0$）",
+              "condition": "$\\left|\\sin\\dfrac1x\\right|\\le1$ 对一切 $x\\ne0$ 成立。"
+            },
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.inequality_scaling",
+              "state": "对任意 $\\varepsilon>0$ 取 $\\delta=\\sqrt{\\varepsilon}$",
+              "transformedState": "$0<|x|<\\delta$ 时 $\\left|x^{2}\\sin\\dfrac1x\\right|\\le x^{2}<\\varepsilon$，按定义极限为 $0$",
+              "condition": "极限定义要求 $\\varepsilon$ 任意小，取 $\\delta=\\sqrt{\\varepsilon}$ 即可满足。"
+            }
+          ],
+          "reason": "不依赖夹逼准则，用同一个绝对值上界直接完成 $\\varepsilon$-$\\delta$ 论证，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $x\\to0$ 的定义式论证中进行。"
+        },
+        {
+          "id": "r-factor-no-limit",
+          "summary": "因子无极限就判乘积无极限，忽略无穷小的压制",
+          "steps": [
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.squeeze_theorem",
+              "state": "$\\sin\\dfrac1x$ 在 $x\\to0$ 时振荡",
+              "transformedState": "误认为因子无极限则乘积 $x^{2}\\sin\\dfrac1x$ 的极限也不存在",
+              "condition": "有界因子无极限不妨碍乘积为无穷小；$x^{2}\\to0$ 会把振荡压到 0，正确结论是 0。"
+            }
+          ],
+          "reason": "混淆“因子振荡无极限”与“乘积无极限”，漏掉无穷小乘有界量仍为无穷小这一结论。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先给振荡因子统一上界，再用夹逼或定义证明乘积为无穷小；不能把因子无极限等同于乘积无极限。",
+      "metadata": {
+        "motherId": "candidate.bankadv42.gap-bounded-times-zero-2",
+        "trainingGoal": "掌握有界量乘无穷小的夹逼证明，并能用定义复核",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准期末题型）",
+          "reference": "Mathmyth 自编补缺 补缺第11题",
+          "originalId": "gap-bounded-times-zero-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x\\to0$，只需考察去心邻域",
+          "$\\left|\\sin\\dfrac1x\\right|\\le1$ 恒成立"
+        ],
+        "allowedVariations": [
+          "把 $x^{2}$ 换成 $|x|^{3}$，极限仍为 0",
+          "把 $\\sin\\dfrac1x$ 换成 $\\cos\\dfrac1x$，结论不变"
+        ],
+        "originalRecord": {
+          "id": "gap-bounded-times-zero-2",
+          "text": "求极限 $\\lim_{x\\to0}x^{2}\\sin\\dfrac1x$。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（标准期末题型）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "有界量乘无穷小",
+          "notes": "高等数学 bankadv42；为只有 1 道题的情景补第 2 道，题目按标准期末题型自编。"
+        },
+        "bankId": "bankadv42",
+        "originalId": "gap-bounded-times-zero-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$x\\ne0$ 时 $\\left|x^{2}\\sin\\dfrac1x\\right|\\le x^{2}$，两侧 $-x^{2}$ 与 $x^{2}$ 都趋于 0，由夹逼得极限为 0；用定义取 $\\delta=\\sqrt{\\varepsilon}$ 同样证得 0。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inequality_scaling",
+        "M.squeeze_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.inequality_scaling",
+        "M.squeeze_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.bounded_times_zero",
+          "methodId": "M.squeeze_theorem"
+        },
+        {
+          "scenarioId": "S.limit.bounded_times_zero",
+          "methodId": "M.inequality_scaling"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling"
+      ],
+      "options": [
+        {
+          "id": "r-epsilon-delta",
+          "name": "直接用极限定义：把振荡因子用 1 控制，取 $\\delta=\\sqrt{\\varepsilon}$"
+        },
+        {
+          "id": "r-factor-no-limit",
+          "name": "因子无极限就判乘积无极限，忽略无穷小的压制"
+        },
+        {
+          "id": "r-squeeze",
+          "name": "用 $\\left|\\sin\\dfrac1x\\right|\\le1$ 给出一致上下界，再用夹逼收尾"
+        }
+      ],
+      "questionKey": "2b356355d2bbc51a7025057fc29270e006ec9cc8c4f4261a37c80852a8566787",
+      "faceKey": "4a7d2e92bcd89f8733b39e66f554f474c8a7fe639062f400df5070d83676782d"
+    }
+  ]
+}

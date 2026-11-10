@@ -22,13 +22,13 @@ test('only valid encountered scenarios unlock recommendations and manual targets
   assert.ok(list.every(choice => !choice.scenarioName.includes('傅里叶')));
 });
 
-// 供题完整性与骨架覆盖分别检查。已知仍缺三个后来加入的入口，不能因
-// 每个现有题池都可用就宣称全部骨架都有题；新增缺口应触发显式复核。
+// 供题完整性与骨架覆盖分别检查。bankadv1–7 补题后 112 个情景全部有入口题池，
+// 新增缺口应触发显式复核。
 test('every local pool stays ready with complete rounds across levels', async () => {
   const targets = await localTargets(skeleton);
   assert.ok(targets.length >= 26);
   const missing = [...skeleton.scenarioById.keys()].filter(id => !targets.some(t => t.scenarioId === id)).sort();
-  assert.deepEqual(missing, ['S.limit.bounded_times_zero', 'S.multiint.polar', 'S.multiint.symmetry_simplify']);
+  assert.deepEqual(missing, []);
   for (const target of targets) {
     assert.equal(target.localReady, true);
     assert.ok(target.questionCount >= 1, `${target.scenarioId} 本地题池为空`);

@@ -1,0 +1,3103 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv34",
+  "sourceSha256": "3cf31a5aecd8f9701b7d2a4476f4eaddf5157ddfd5e98b0bae32926d204e3c9b",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.path_independence",
+      "question": "计算第二型曲线积分 $I=\\int_{L}\\frac{x-y}{x^{2}+y^{2}}\\,\\mathrm{d}x+\\frac{x+y}{x^{2}+y^{2}}\\,\\mathrm{d}y$，其中 $L$ 是从点 $A(-a,0)$ 经上半椭圆 $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}=1\\ (y\\ge0)$，到点 $B(a,0)$ 的弧段。",
+      "solution": "记 $P=\\frac{x-y}{x^{2}+y^{2}}$、$Q=\\frac{x+y}{x^{2}+y^{2}}$。在 $y\\ge0$ 且挖去原点的区域内二者有连续偏导，且 $\\frac{\\partial P}{\\partial y}=\\frac{\\partial Q}{\\partial x}=\\frac{y^{2}-x^{2}-2xy}{(x^{2}+y^{2})^{2}}$，故积分与路径无关。取极坐标，$P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y=\\frac{\\mathrm{d}r}{r}+\\mathrm{d}\\theta$，于是势函数为 $u(x,y)=\\frac12\\ln(x^{2}+y^{2})+\\theta(x,y)$。$L$ 位于上半平面，极角 $\\theta$ 在 $[0,\\pi]$ 上单值连续，起点 $A(-a,0)$ 处 $\\theta=\\pi$，终点 $B(a,0)$ 处 $\\theta=0$，所以 $I=u(B)-u(A)=\\big(\\frac12\\ln a^{2}+0\\big)-\\big(\\frac12\\ln a^{2}+\\pi\\big)=-\\pi$。",
+      "routes": [
+        {
+          "id": "r-polar-potential",
+          "summary": "验证与路径无关后取 $u=\\frac12\\ln(x^{2}+y^{2})+\\theta$，用两端极角差求值",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.path_independence",
+              "state": "$P=\\frac{x-y}{x^{2}+y^{2}}$，$Q=\\frac{x+y}{x^{2}+y^{2}}$，$L$ 位于 $y\\ge0$",
+              "transformedState": "$\\frac{\\partial P}{\\partial y}=\\frac{\\partial Q}{\\partial x}$，在挖去原点的上半区域内积分与路径无关",
+              "condition": "$x^{2}+y^{2}\\ne0$；$L$ 全在闭上半平面内，不含原点。"
+            },
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.path_independence",
+              "state": "极坐标下 $x=r\\cos\\theta$，$y=r\\sin\\theta$",
+              "transformedState": "$P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y=\\frac{\\mathrm{d}r}{r}+\\mathrm{d}\\theta$，势函数 $u=\\frac12\\ln(x^{2}+y^{2})+\\theta$，$I=u(B)-u(A)$",
+              "condition": "$\\theta$ 取 $0\\le\\theta\\le\\pi$ 的单值分支，不能用 $\\arctan(y/x)$ 代替。"
+            },
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.path_independence",
+              "state": "$\\theta_{A}=\\pi$（负 $x$ 轴），$\\theta_{B}=0$（正 $x$ 轴），两点 $\\ln(x^{2}+y^{2})$ 均为 $\\ln a^{2}$",
+              "transformedState": "$I=\\big(\\frac12\\ln a^{2}+0\\big)-\\big(\\frac12\\ln a^{2}+\\pi\\big)=-\\pi$",
+              "condition": "只有极角差保留下来，对数项在两端相抵。"
+            }
+          ],
+          "reason": "该积分场在挖去原点的上半平面是“对数位势 + 极角”，端点处对数项相同、极角由 $\\pi$ 变到 $0$，一步得到 $-\\pi$，与 $a$、$b$ 无关。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（路径位于 $y\\ge0$ 且不经过原点）进行。"
+        },
+        {
+          "id": "r-param-semicircle",
+          "summary": "判定与路径无关后改走上半单位半圆，参数化后被积式化为 $\\mathrm{d}t$",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.path_independence",
+              "state": "原路径是上半椭圆弧，计算不便",
+              "transformedState": "由 $\\partial P/\\partial y=\\partial Q/\\partial x$ 判定可换路，改取上半单位半圆 $x=\\cos t$，$y=\\sin t$，$t:\\pi\\to0$",
+              "condition": "上半单位半圆与椭圆弧同起点 $A$、同终点 $B$，且全程位于 $y\\ge0$、不经过原点。"
+            },
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.parametric_curve_integral",
+              "state": "$\\mathrm{d}x=-\\sin t\\,\\mathrm{d}t$，$\\mathrm{d}y=\\cos t\\,\\mathrm{d}t$，$x^{2}+y^{2}=1$",
+              "transformedState": "$(\\cos t-\\sin t)(-\\sin t)+(\\cos t+\\sin t)(\\cos t)=\\sin^{2}t+\\cos^{2}t=1$，即被积式为 $1\\,\\mathrm{d}t$",
+              "condition": "参数落在单位圆上，分母恒为 1；方向由 $t$ 递减实现“从 $A$ 到 $B$”。"
+            },
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.parametric_curve_integral",
+              "state": "$I=\\int_{\\pi}^{0}1\\,\\mathrm{d}t$",
+              "transformedState": "$I=0-\\pi=-\\pi$",
+              "condition": "下限大于上限是弧的方向所致，结果与势函数法的 $-\\pi$ 完全一致。"
+            }
+          ],
+          "reason": "换路只改变路径，不改变端点；被积式在单位圆上奇迹般地化简为常数 $1$，于是只剩极角变化量 $-\\pi$。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-arctan-zero",
+          "summary": "用 $\\arctan(y/x)$ 作势函数，两端都算成 0，误答 $I=0$",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.path_independence",
+              "state": "想到 $\\frac{\\partial}{\\partial x}\\arctan\\frac{y}{x}=-\\frac{y}{x^{2}+y^{2}}$，于是取 $u=\\frac12\\ln(x^{2}+y^{2})+\\arctan\\frac{y}{x}$",
+              "transformedState": "声称 $du=P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y$ 处处成立，直接代入两端点",
+              "condition": "错误：$\\arctan(y/x)$ 在负 $x$ 轴上不连续（分支切割恰好穿过起点 $A$），在整条路径上不是单值连续的势函数。"
+            },
+            {
+              "scenarioId": "S.line_surface.path_independence",
+              "methodId": "M.path_independence",
+              "state": "$u(A)=\\frac12\\ln a^{2}+\\arctan 0$，$u(B)=\\frac12\\ln a^{2}+\\arctan 0$",
+              "transformedState": "误得 $I=0$",
+              "condition": "真实答案为 $-\\pi$：$A$ 处应取极角 $\\pi$ 而不是 $\\arctan 0=0$。"
+            }
+          ],
+          "reason": "把只在 $x>0$ 半平面有效的 $\\arctan(y/x)$ 当成全局势函数，跨过负半轴时极角从 $\\pi$ 跌回 $0$ 的跳变被抹掉，是本题最典型的错因。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：势函数在路径穿过的负 $x$ 轴上失去单值连续性。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先由 $\\partial P/\\partial y=\\partial Q/\\partial x$ 判定无关，再用极角势函数或换路参数化求端点增量；角度量必须用单值的极角而不是 $\\arctan(y/x)$",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2017-jd2",
+        "trainingGoal": "识别“只给起终点、路径仅为几何描述”的第二型曲线积分，用偏导判据确认与路径无关，并用极角势函数处理带角度跳变的场",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2017 年高数下期末 二、解答题第 2 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2017-jd2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "路径位于 $y\\ge0$ 且不经过原点",
+          "起点 $A(-a,0)$、终点 $B(a,0)$，$a>0$"
+        ],
+        "allowedVariations": [
+          "把上半椭圆换成上半圆周",
+          "把终点改成椭圆上的另一点",
+          "把被积式换成 $\\frac{-y\\,\\mathrm{d}x+x\\,\\mathrm{d}y}{x^{2}+y^{2}}$ 并问极角变化"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2017-jd2",
+          "text": "计算第二型曲线积分 $I=\\int_{L}\\frac{x-y}{x^{2}+y^{2}}\\,\\mathrm{d}x+\\frac{x+y}{x^{2}+y^{2}}\\,\\mathrm{d}y$，其中 $L$ 是从点 $A(-a,0)$ 经上半椭圆 $\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}=1\\ (y\\ge 0)$，到点 $B(a,0)$ 的弧段。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "曲线积分与路径无关",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2017-jd2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "在 $y\\ge0$ 且挖去原点的区域内 $P=\\frac{x-y}{x^{2}+y^{2}}$、$Q=\\frac{x+y}{x^{2}+y^{2}}$ 满足 $\\partial P/\\partial y=\\partial Q/\\partial x=\\frac{y^{2}-x^{2}-2xy}{(x^{2}+y^{2})^{2}}$，故与路径无关。极坐标下 $x=r\\cos\\theta$、$y=r\\sin\\theta$ 时 $P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y=\\frac{1}{r}\\mathrm{d}r+\\mathrm{d}\\theta$，势函数 $u=\\frac12\\ln(x^{2}+y^{2})+\\theta$，$\\theta$ 在 $0\\le\\theta\\le\\pi$ 上单值连续。出发点 $A(-a,0)$ 对应 $\\theta=\\pi$、终点 $B(a,0)$ 对应 $\\theta=0$，故 $I=\\theta_{B}-\\theta_{A}=0-\\pi=-\\pi$。另取 $x=\\cos t,y=\\sin t$（$t:\\pi\\to0$）参数化核验，被积式恰为 $\\mathrm{d}t$，积分 $=\\int_{\\pi}^{0}\\mathrm{d}t=-\\pi$，两法一致。若改用 $\\arctan(y/x)$ 会把两端点都算成 0，属常见错误。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.path_independence"
+      ],
+      "applicableMethodIds": [
+        "M.path_independence",
+        "M.parametric_curve_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.path_independence",
+          "methodId": "M.path_independence"
+        },
+        {
+          "scenarioId": "S.line_surface.path_independence",
+          "methodId": "M.parametric_curve_integral"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.path_independence",
+        "M.parametric_curve_integral"
+      ],
+      "options": [
+        {
+          "id": "r-arctan-zero",
+          "name": "用 $\\arctan(y/x)$ 作势函数，两端都算成 0，误答 $I=0$"
+        },
+        {
+          "id": "r-polar-potential",
+          "name": "验证与路径无关后取 $u=\\frac12\\ln(x^{2}+y^{2})+\\theta$，用两端极角差求值"
+        },
+        {
+          "id": "r-param-semicircle",
+          "name": "判定与路径无关后改走上半单位半圆，参数化后被积式化为 $\\mathrm{d}t$"
+        }
+      ],
+      "questionKey": "920023b240a758e24724d889d3fcc83a56017228f69fc0de1996ea5987a49397",
+      "faceKey": "71ea24ceb1fd52c3b565e79f179ec29246229d31956ff3d7e7d5df845b543daa"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.surface_integral_second_kind",
+      "question": "设曲面 $S:x^2+y^2+z^2=R^2\\ (z\\ge 0)$，取上侧，$S_1$ 为 $S$ 位于第一卦限部分，则有（　）\nA. $\\iint_S x\\,\\mathrm{d}S=4\\iint_{S_1}x\\,\\mathrm{d}S$\nB. $\\iint_S y\\,\\mathrm{d}S=4\\iint_{S_1}y\\,\\mathrm{d}S$\nC. $\\iint_S x\\,\\mathrm{d}y\\,\\mathrm{d}z=4\\iint_{S_1}x\\,\\mathrm{d}y\\,\\mathrm{d}z$\nD. $\\iint_S y\\,\\mathrm{d}y\\,\\mathrm{d}z=4\\iint_{S_1}y\\,\\mathrm{d}y\\,\\mathrm{d}z$",
+      "solution": "上半球面关于 $yOz$ 面、$zOx$ 面均对称。A、B 是对面积的积分：dS 在反射下不变而 $x$、$y$ 变号，故两个积分都为 0，与 $4\\iint_{S_1}(\\cdot)>0$ 矛盾，A、B 不成立。C、D 是对坐标的积分且全曲面取上侧：$x\\,\\mathrm{d}y\\,\\mathrm{d}z$ 在 $x<0$ 与 $x>0$ 两片上符号相反、相互抵消，全曲面积分为 0，C 不成立；$y\\,\\mathrm{d}y\\,\\mathrm{d}z$ 中 $y$ 与 $\\mathrm{d}y\\,\\mathrm{d}z$ 同步变号，乘积不变，四块贡献全等，故 $\\iint_S y\\,\\mathrm{d}y\\,\\mathrm{d}z=4\\iint_{S_1}y\\,\\mathrm{d}y\\,\\mathrm{d}z$，D 成立。答 D。",
+      "routes": [
+        {
+          "id": "r-projection-check",
+          "summary": "把两类微元都投影写开，逐项比较四块的符号与贡献",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "上半球面 $z=\\sqrt{R^{2}-x^{2}-y^{2}}$ 取上侧，$S_1$ 为第一卦限部分",
+              "transformedState": "$x\\,\\mathrm{d}y\\,\\mathrm{d}z$、$y\\,\\mathrm{d}y\\,\\mathrm{d}z$ 向 $yOz$ 面投影，被积式化为 $\\pm x\\cdot\\frac{x}{z}\\,\\mathrm{d}y\\,\\mathrm{d}x$ 与 $\\pm y\\cdot\\frac{y}{z}\\,\\mathrm{d}y\\,\\mathrm{d}x$",
+              "condition": "取上侧时法向量在 $yOz$ 面投影的第二分量为 $\\frac{y}{z}$，$x\\ge0$ 与 $x\\le0$ 两片按 $x$ 的正负定号。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "$x<0$ 与 $x>0$ 两片投影到同一圆域",
+              "transformedState": "$\\iint_S x\\,\\mathrm{d}y\\,\\mathrm{d}z$ 两片被积式互为相反数，合计 0，C 不成立",
+              "condition": "$x$ 与有向微元同时反号，乘积反号。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "$y\\,\\mathrm{d}y\\,\\mathrm{d}z$ 在 $x<0$ 与 $x>0$ 两片",
+              "transformedState": "两片被积式相同，$\\iint_S=2\\iint_{S\\cap\\{x\\ge0\\}}$；再把 $y\\to-y$ 对称得 $=4\\iint_{S_1}y\\,\\mathrm{d}y\\,\\mathrm{d}z$，D 成立",
+              "condition": "曲面整体取上侧，两块的有向微元与 $y$ 同步取号。"
+            }
+          ],
+          "reason": "直接投影能把“哪个量变号、哪个量不变号”写清楚，从而看清只有 D 的四块贡献全等。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（$R>0$、$z\\ge0$、全曲面取上侧）进行。"
+        },
+        {
+          "id": "r-symmetry-both",
+          "summary": "先用 dS 的反射不变性排除 A、B，再用“函数与有向微元是否同步变号”排除 C",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "$S$ 关于 $yOz$ 面（$x\\to-x$）与 $zOx$ 面（$y\\to-y$）对称",
+              "transformedState": "dS 在两种反射下不变，而 $x$、$y$ 变号，故 $\\iint_S x\\,\\mathrm{d}S=\\iint_S y\\,\\mathrm{d}S=0$，排除 A、B",
+              "condition": "第一类曲面积分的面积元与取侧无关。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "$x\\,\\mathrm{d}y\\,\\mathrm{d}z$ 在 $x\\to-x$ 下函数与有向微元同时变号",
+              "transformedState": "乘积反号，两块抵消，$\\iint_S x\\,\\mathrm{d}y\\,\\mathrm{d}z=0$，排除 C",
+              "condition": "取上侧使 $x<0$ 一片的法向量第二分量为负，微元随之变号。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "$y\\,\\mathrm{d}y\\,\\mathrm{d}z$ 在 $y\\to-y$ 下函数与有向微元同时变号",
+              "transformedState": "乘积不变号，四块与 $S_1$ 一一对应且取值相同，D 成立",
+              "condition": "$S$ 同时关于 $x=0$、$y=0$ 两平面对称，故每块贡献都等于 $S_1$ 上的贡献。"
+            }
+          ],
+          "reason": "与主路线结论相同但用奇偶性作判据，省去逐块投影的面积元换算。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-dydz-as-ds",
+          "summary": "把 $\\mathrm{d}y\\,\\mathrm{d}z$ 当成 $\\mathrm{d}S$，按面积元的奇偶性判 C 成立",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\iint_S x\\,\\mathrm{d}y\\,\\mathrm{d}z$ 与 $\\iint_{S_1}x\\,\\mathrm{d}y\\,\\mathrm{d}z$ 形式整齐对称",
+              "transformedState": "默认 $\\mathrm{d}y\\,\\mathrm{d}z$ 与 $\\mathrm{d}S$ 一样“与取侧无关”，认为 $x$ 在四块上贡献相同",
+              "condition": "错误：$\\mathrm{d}y\\,\\mathrm{d}z$ 是有向微元，其符号随所取侧及 $x$ 的正负而变。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_second_kind",
+              "methodId": "M.surface_projection",
+              "state": "四块视为全等",
+              "transformedState": "误答 C",
+              "condition": "真实值是 0：$x<0$ 与 $x>0$ 两块互相抵消。"
+            }
+          ],
+          "reason": "混淆第一类与第二类曲面积分的微元性质，忽视取侧带来的符号翻转，是本题最常见的错选。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：把有向微元 $\\mathrm{d}y\\,\\mathrm{d}z$ 当作无向面积元。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "R",
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "对面积元看“函数反射是否变号”，对坐标元必须看“函数与有向微元是否同步变号”；只有四块贡献全等才允许提出 4 倍",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2015-1-2",
+        "trainingGoal": "区分第一类与第二类曲面积分的对称性，理解 dS 反射不变而有向微元随取侧变号，据此在四个选项中判断 4 倍关系",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015 年高数下期末 一、单选题第 2 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-1-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$S$ 为上半球面 $z\\ge0$ 并整体取上侧",
+          "$S_1$ 严格限制在第一卦限 $x,y,z\\ge0$"
+        ],
+        "allowedVariations": [
+          "把球半径换成 $2R$",
+          "把第一卦限换到第二卦限",
+          "把选项中的 $x$ 换成 $z$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-1-2",
+          "text": "设曲面 $S:x^2+y^2+z^2=R^2\\ (z\\ge 0)$，取上侧，$S_1$ 为 $S$ 位于第一卦限部分，则有（　）\nA. $\\iint_S x\\,dS=4\\iint_{S_1}x\\,dS$\nB. $\\iint_S y\\,dS=4\\iint_{S_1}y\\,dS$\nC. $\\iint_S x\\,dy\\,dz=4\\iint_{S_1}x\\,dy\\,dz$\nD. $\\iint_S y\\,dy\\,dz=4\\iint_{S_1}y\\,dy\\,dz$",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "第二类曲面积分（对坐标，直接投影）",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2015-1-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "上半球面 $S$ 关于 $yOz$ 面与 $zOx$ 面都对称，被第一卦限切片四等分。对面积元 dS 取侧无关：$x$ 在 $x\\to-x$ 下变号，$\\iint_S x\\,\\mathrm{d}S=0$ 而 $4\\iint_{S_1}x\\,\\mathrm{d}S>0$，A 错；同理 $\\iint_S y\\,\\mathrm{d}S=0$，B 错。对坐标元需看“函数×有向微元”是否同步变号：$x\\,\\mathrm{d}y\\,\\mathrm{d}z$ 在 $x\\to-x$ 时两者同时变号、乘积反号，两块抵消得 0，C 错；$y\\,\\mathrm{d}y\\,\\mathrm{d}z$ 在 $y\\to-y$ 时两者同时变号、乘积不变，四块贡献相同，D 对。数值核验：$\\iint_S y\\,\\mathrm{d}y\\,\\mathrm{d}z=4\\int_0^{R}y\\,\\mathrm{d}y\\int_0^{\\sqrt{R^2-y^2}}\\mathrm{d}z=\\frac{4R^3}{3}$，与 $4\\iint_{S_1}$ 相符。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.surface_projection"
+      ],
+      "applicableMethodIds": [
+        "M.surface_projection"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.surface_integral_second_kind",
+          "methodId": "M.surface_projection"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.surface_projection"
+      ],
+      "options": [
+        {
+          "id": "r-dydz-as-ds",
+          "name": "把 $\\mathrm{d}y\\,\\mathrm{d}z$ 当成 $\\mathrm{d}S$，按面积元的奇偶性判 C 成立"
+        },
+        {
+          "id": "r-projection-check",
+          "name": "把两类微元都投影写开，逐项比较四块的符号与贡献"
+        },
+        {
+          "id": "r-symmetry-both",
+          "name": "先用 dS 的反射不变性排除 A、B，再用“函数与有向微元是否同步变号”排除 C"
+        }
+      ],
+      "questionKey": "e6b9dcf22137bdd968729b8336d5f40c1dc47c2c14dfadb90e0fceba6a4b85a7",
+      "faceKey": "a19447ca26e83d62bf29bc7f1280b7b6aab7479d68982b9d4eb7264d0a6b0e9b"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.surface_integral_first_kind",
+      "question": "计算曲面积分 $\\iint_\\Sigma y^2\\,\\mathrm{d}S$，其中 $\\Sigma=\\{(x,y,z)\\mid x+y+z=1,\\ x\\geq 0,\\ y\\geq 0,\\ z\\geq 0\\}$。",
+      "solution": "把 $\\Sigma$ 写成 $z=1-x-y$，其在 $xOy$ 面上的投影为 $D=\\{x\\ge0,\\ y\\ge0,\\ x+y\\le1\\}$，且 $\\mathrm{d}S=\\sqrt{1+1+1}\\,\\mathrm{d}x\\mathrm{d}y=\\sqrt3\\,\\mathrm{d}x\\mathrm{d}y$。故 $\\iint_\\Sigma y^{2}\\mathrm{d}S=\\sqrt3\\iint_D y^{2}\\mathrm{d}x\\mathrm{d}y=\\sqrt3\\int_0^{1}y^{2}(1-y)\\mathrm{d}y=\\sqrt3\\Big(\\frac13-\\frac14\\Big)=\\frac{\\sqrt3}{12}$。",
+      "routes": [
+        {
+          "id": "r-projection",
+          "summary": "把平面三角形投影到 $xOy$ 面，写出 $\\mathrm{d}S=\\sqrt3\\,\\mathrm{d}x\\mathrm{d}y$ 后化为二重积分",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\Sigma$：$x+y+z=1$ 在第一卦限的三角形",
+              "transformedState": "$z=1-x-y$，$z_x=z_y=-1$，$\\mathrm{d}S=\\sqrt{1+z_x^{2}+z_y^{2}}\\,\\mathrm{d}x\\mathrm{d}y=\\sqrt3\\,\\mathrm{d}x\\mathrm{d}y$，投影域 $D:x\\ge0,y\\ge0,x+y\\le1$",
+              "condition": "$z_x$、$z_y$ 在 $\\Sigma$ 上连续，$\\Sigma$ 在 $xOy$ 面上一一投影。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\sqrt3\\iint_D y^{2}\\,\\mathrm{d}x\\mathrm{d}y$",
+              "transformedState": "$\\sqrt3\\int_0^{1}y^{2}(1-y)\\,\\mathrm{d}y=\\sqrt3\\big(\\frac13-\\frac14\\big)=\\frac{\\sqrt3}{12}$",
+              "condition": "对 $y$ 先定限：$0\\le y\\le1$，$0\\le x\\le1-y$。"
+            }
+          ],
+          "reason": "$\\mathrm{d}S$ 的换算系数是常数 $\\sqrt3$，二重积分只剩多项式，一次定积分即可收尾。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（第一卦限、$x+y+z=1$）进行。"
+        },
+        {
+          "id": "r-area-and-mean",
+          "summary": "先求三角形面积，再把 $y^{2}$ 当面密度取投影域上的平均值",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.element_method",
+              "state": "把 $y^{2}$ 视为曲面上的“面密度”，微元质量 $\\mathrm{d}m=y^{2}\\mathrm{d}S$",
+              "transformedState": "总“质量”$=\\Sigma$ 的面积 × $y^{2}$ 在投影域上的加权平均值",
+              "condition": "$\\mathrm{d}S=\\sqrt3\\,\\mathrm{d}A$ 是常数倍，故面平均可用平面三角形上的面积平均代替。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.element_method",
+              "state": "$\\Sigma$ 的三边长 $\\sqrt2,\\sqrt2,\\sqrt2$",
+              "transformedState": "面积为 $\\frac{\\sqrt3}{4}\\cdot(\\sqrt2)^{2}=\\frac{\\sqrt3}{2}$；$\\int_D y^{2}\\mathrm{d}A=\\frac1{12}$，$|D|=\\frac12$，平均 $y^{2}=\\frac16$",
+              "condition": "等边三角形边长 $\\sqrt2$，面积公式 $\\frac{\\sqrt3}{4}a^{2}$。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.element_method",
+              "state": "面积 $\\frac{\\sqrt3}{2}$，平均密度 $\\frac16$",
+              "transformedState": "$\\frac{\\sqrt3}{2}\\cdot\\frac16=\\frac{\\sqrt3}{12}$",
+              "condition": "结果与直接投影法的 $\\frac{\\sqrt3}{12}$ 完全相同。"
+            }
+          ],
+          "reason": "把面积分拆成“面积 × 平均密度”，思路是物理式的微元法，完全不经过二重积分定限。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-forget-jacobian",
+          "summary": "直接把 $\\mathrm{d}S$ 写成 $\\mathrm{d}x\\mathrm{d}y$，漏掉 $\\sqrt3$ 因子",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\Sigma$ 投影到 $D$：$x\\ge0,y\\ge0,x+y\\le1$",
+              "transformedState": "误取 $\\mathrm{d}S=\\mathrm{d}x\\mathrm{d}y$，写成 $\\iint_D y^{2}\\,\\mathrm{d}x\\mathrm{d}y$",
+              "condition": "错误：斜平面上的面积元与投影面积元相差 $\\sqrt{1+z_x^{2}+z_y^{2}}=\\sqrt3$，不可省略。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\int_0^{1}y^{2}(1-y)\\,\\mathrm{d}y$",
+              "transformedState": "误得 $\\frac1{12}$，真值应为 $\\frac{\\sqrt3}{12}$",
+              "condition": "漏乘面积元换算系数 $\\sqrt3$，整体偏小为原值的 $\\frac{1}{\\sqrt3}$。"
+            }
+          ],
+          "reason": "对显式曲面直接用 $\\mathrm{d}x\\mathrm{d}y$ 替换 $\\mathrm{d}S$，忘记斜平面的面积放大因子，是本题最典型的算错点。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：漏掉 $\\mathrm{d}S=\\sqrt3\\,\\mathrm{d}x\\mathrm{d}y$ 的系数。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "关键在 $\\mathrm{d}S=\\sqrt{1+z_x^{2}+z_y^{2}}\\,\\mathrm{d}x\\mathrm{d}y=\\sqrt3\\,\\mathrm{d}x\\mathrm{d}y$ 这一步；之后无论是二重积分还是“面积×平均密度”都必须带上 $\\sqrt3$",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2022-14",
+        "trainingGoal": "掌握第一类曲面积分的投影法：先由显式曲面算出面积元换算系数 $\\sqrt{1+z_x^{2}+z_y^{2}}$，再把标量积分化为投影域上的二重积分",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2022 年高等数学下期末 三、计算题第 4 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2022-14"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲面是第一卦限内 $x+y+z=1$ 的三角形部分",
+          "被积函数只有 $y$，与 $x$、$z$ 无关"
+        ],
+        "allowedVariations": [
+          "把 $y^{2}$ 换成 $x^{2}$ 或 $z^{2}$",
+          "把平面改成 $2x+y+z=2$",
+          "把积分改成求该三角形的面积"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2022-14",
+          "text": "计算曲面积分 $\\iint_\\Sigma y^2\\,\\mathrm{d}S$，其中 $\\Sigma=\\{(x,y,z)\\mid x+y+z=1,\\ x\\geq 0,\\ y\\geq 0,\\ z\\geq 0\\}$。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "第一类曲面积分（对面积）",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2022-14",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "$\\Sigma$ 为 $z=1-x-y$ 在 $D=\\{x\\ge0,\\ y\\ge0,\\ x+y\\le1\\}$ 上的部分，$\\mathrm{d}S=\\sqrt{1+z_x^{2}+z_y^{2}}\\,\\mathrm{d}x\\mathrm{d}y=\\sqrt3\\,\\mathrm{d}x\\mathrm{d}y$。于是 $\\iint_\\Sigma y^{2}\\mathrm{d}S=\\sqrt3\\int_0^{1}y^{2}\\Big(\\int_0^{1-y}\\mathrm{d}x\\Big)\\mathrm{d}y=\\sqrt3\\int_0^{1}(y^{2}-y^{3})\\mathrm{d}y=\\sqrt3\\big(\\frac13-\\frac14\\big)=\\frac{\\sqrt3}{12}$。交叉核验：$\\Sigma$ 的面积是 $\\frac{\\sqrt3}{2}$，把 $y^{2}$ 看作面密度并在投影三角形上取平均（$\\int_D y^{2}\\mathrm{d}A=\\frac1{12}$，$|D|=\\frac12$，平均值 $\\frac16$），得 $\\frac{\\sqrt3}{2}\\cdot\\frac16=\\frac{\\sqrt3}{12}$，两法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.surface_projection"
+      ],
+      "applicableMethodIds": [
+        "M.surface_projection",
+        "M.element_method"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.surface_integral_first_kind",
+          "methodId": "M.surface_projection"
+        },
+        {
+          "scenarioId": "S.line_surface.surface_integral_first_kind",
+          "methodId": "M.symmetry"
+        },
+        {
+          "scenarioId": "S.line_surface.surface_integral_first_kind",
+          "methodId": "M.element_method"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.surface_projection",
+        "M.symmetry",
+        "M.element_method"
+      ],
+      "options": [
+        {
+          "id": "r-forget-jacobian",
+          "name": "直接把 $\\mathrm{d}S$ 写成 $\\mathrm{d}x\\mathrm{d}y$，漏掉 $\\sqrt3$ 因子"
+        },
+        {
+          "id": "r-projection",
+          "name": "把平面三角形投影到 $xOy$ 面，写出 $\\mathrm{d}S=\\sqrt3\\,\\mathrm{d}x\\mathrm{d}y$ 后化为二重积分"
+        },
+        {
+          "id": "r-area-and-mean",
+          "name": "先求三角形面积，再把 $y^{2}$ 当面密度取投影域上的平均值"
+        }
+      ],
+      "questionKey": "e31b0bd5dd25572a2e958db62e42bf97416c50a527889117fc86017135aeaaac",
+      "faceKey": "892082ee801f6dad725d67220af56ef1c85bdfdd4e6f48dc1392ec9ca97af2bd"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.curve_integral_first_kind",
+      "question": "求第一型曲线积分 $I=\\int_{L}\\sqrt{2y^{2}+z^{2}}\\,\\mathrm{d}s$，其中 $L:\\begin{cases}x^{2}+y^{2}+z^{2}=a^{2}\\\\ x-y=0\\end{cases}$。",
+      "solution": "$L$ 是球面 $x^{2}+y^{2}+z^{2}=a^{2}$ 与过球心的平面 $x=y$ 的交线，故为半径 $a$ 的大圆，弧长 $2\\pi a$。在 $L$ 上 $x=y$，于是 $2y^{2}+z^{2}=x^{2}+y^{2}+z^{2}=a^{2}$，被积函数为常数 $a$。所以 $I=\\int_L a\\,\\mathrm{d}s=a\\cdot2\\pi a=2\\pi a^{2}$。",
+      "routes": [
+        {
+          "id": "r-symmetry-constant",
+          "summary": "先证被积函数在 $L$ 上恒为 $a$，再用大圆周长 $2\\pi a$ 求值",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "$L$：球面 $x^{2}+y^{2}+z^{2}=a^{2}$ 与平面 $x=y$ 的交线",
+              "transformedState": "在 $L$ 上 $x=y$，故 $2y^{2}+z^{2}=x^{2}+y^{2}+z^{2}=a^{2}$，被积函数恒等于 $a$",
+              "condition": "$L$ 同时满足两个方程，$x=y$ 可整体代入被积函数。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "平面 $x=y$ 过球心，截得的是大圆",
+              "transformedState": "平面 $x=y$ 过球心，$L$ 是半径 $a$ 的球的大圆，周长为 $2\\pi a$",
+              "condition": "过球心的平面截球必得大圆，其半径与球半径相同。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "被积函数 $a$，弧长 $2\\pi a$",
+              "transformedState": "$I=a\\cdot2\\pi a=2\\pi a^{2}$",
+              "condition": "常数被积函数直接提出积分号。"
+            }
+          ],
+          "reason": "第一步把球面方程“降为” $2y^{2}+z^{2}=a^{2}$，被积函数立刻变成常数，剩下只需一个圆周长的几何量。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（$a>0$，$L$ 为平面 $x=y$ 截球所得大圆）进行。"
+        },
+        {
+          "id": "r-param",
+          "summary": "取 $x=y=\\frac{a}{\\sqrt2}\\cos t$、$z=a\\sin t$ 参数化，直接算弧长微元与被积函数",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "由 $x=y$ 与球面方程得 $2y^{2}+z^{2}=a^{2}$，这是 $yOz$ 面内的椭圆",
+              "transformedState": "取 $x=y=\\frac{a}{\\sqrt2}\\cos t$，$z=a\\sin t$，$t\\in[0,2\\pi]$",
+              "condition": "代入 $\\frac{a^{2}}{2}\\cos^{2}t+\\frac{a^{2}}{2}\\cos^{2}t+a^{2}\\sin^{2}t=a^{2}$ 恒成立，参数化覆盖整条闭曲线。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "$\\mathrm{d}s=\\sqrt{x'^{2}+y'^{2}+z'^{2}}\\,\\mathrm{d}t$",
+              "transformedState": "$x'=y'=-\\frac{a}{\\sqrt2}\\sin t$，$z'=a\\cos t$，故 $\\mathrm{d}s=\\sqrt{\\frac{a^{2}}{2}\\sin^{2}t+\\frac{a^{2}}{2}\\sin^{2}t+a^{2}\\cos^{2}t}\\,\\mathrm{d}t=a\\,\\mathrm{d}t$",
+              "condition": "三个分量都要计入 $\\mathrm{d}s$，且 $a^{2}\\sin^{2}t+a^{2}\\cos^{2}t=a^{2}$ 化简后无根号。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "被积函数 $\\sqrt{a^{2}\\cos^{2}t+a^{2}\\sin^{2}t}=a$",
+              "transformedState": "$I=\\int_{0}^{2\\pi}a\\cdot a\\,\\mathrm{d}t=2\\pi a^{2}$",
+              "condition": "被积函数与 $t$ 无关，直接乘参数区间长度。"
+            }
+          ],
+          "reason": "参数化后弧长微元与被积函数各自化简为常数 $a$，两条独立计算路径给出同一结果 $2\\pi a^{2}$。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-2d-arc-element",
+          "summary": "参数化时沿用平面曲线的 $\\mathrm{d}s=\\sqrt{x'^{2}+y'^{2}}\\,\\mathrm{d}t$，漏掉 $z'$ 项",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "取 $x=y=\\frac{a}{\\sqrt2}\\cos t$，$z=a\\sin t$",
+              "transformedState": "误用二维公式 $\\mathrm{d}s=\\sqrt{x'^{2}+y'^{2}}\\,\\mathrm{d}t=\\frac{a}{\\sqrt2}|\\sin t|\\,\\mathrm{d}t$",
+              "condition": "错误：空间曲线的弧长微元必须含 $z'^{2}$，本题真实的 $\\mathrm{d}s=a\\,\\mathrm{d}t$。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "$\\int_0^{2\\pi}a\\cdot\\frac{a}{\\sqrt2}|\\sin t|\\,\\mathrm{d}t$",
+              "transformedState": "误得 $\\frac{4a^{2}}{\\sqrt2}=2\\sqrt2\\,a^{2}$，真值为 $2\\pi a^{2}$",
+              "condition": "弧长因子被低估，结果与真实值相差 $\\frac{\\sqrt2}{\\pi}$ 倍。"
+            }
+          ],
+          "reason": "把平面曲线的弧长公式照搬到空间曲线，$z'$ 项丢失导致弧长微元算错，是最常见的失分原因。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：弧长微元漏掉 $z'$ 分量。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "a"
+      ],
+      "comparisonCriterion": "优先用交线方程把被积函数化为常数再乘弧长；若要参数化，弧长微元必须包含全部三个分量",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2017-js9",
+        "trainingGoal": "掌握空间曲线第一类曲线积分：先用两曲面交线方程化简被积函数，再识别交线为球的大圆以得到弧长",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2017 年高数下期末 一、计算题第 9 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2017-js9"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$L$ 是球面与过球心的平面 $x=y$ 的交线",
+          "$a>0$ 为球半径"
+        ],
+        "allowedVariations": [
+          "把平面换成 $x=2y$",
+          "把被积函数换成 $\\sqrt{2x^{2}+z^{2}}$",
+          "把球面半径改成 $2a$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2017-js9",
+          "text": "求第一型曲线积分 $I=\\int_{L}\\sqrt{2y^{2}+z^{2}}\\,\\mathrm{d}s$，其中 $L:\\begin{cases}x^{2}+y^{2}+z^{2}=a^{2}\\\\ x-y=0\\end{cases}$。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "第一类曲线积分（对弧长）",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2017-js9",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "$L$ 是半径 $a$ 的球面被过球心的平面 $x=y$ 截出的大圆，半径 $a$、弧长 $2\\pi a$。在 $L$ 上 $x=y$，故 $x^{2}+y^{2}+z^{2}=2y^{2}+z^{2}=a^{2}$，被积函数恒等于 $a$，于是 $I=a\\cdot2\\pi a=2\\pi a^{2}$。参数化核验：取 $x=y=\\frac{a}{\\sqrt2}\\cos t$、$z=a\\sin t$，$t\\in[0,2\\pi]$，$|\\vec{r}'(t)|=\\sqrt{\\frac{a^{2}}{2}\\sin^{2}t+\\frac{a^{2}}{2}\\sin^{2}t+a^{2}\\cos^{2}t}=a$，被积函数 $=\\sqrt{a^{2}\\cos^{2}t+a^{2}\\sin^{2}t}=a$，得 $\\int_0^{2\\pi}a\\cdot a\\,\\mathrm{d}t=2\\pi a^{2}$，与几何法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.symmetry"
+      ],
+      "applicableMethodIds": [
+        "M.symmetry",
+        "M.parametric_curve_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.curve_integral_first_kind",
+          "methodId": "M.parametric_curve_integral"
+        },
+        {
+          "scenarioId": "S.line_surface.curve_integral_first_kind",
+          "methodId": "M.symmetry"
+        },
+        {
+          "scenarioId": "S.line_surface.curve_integral_first_kind",
+          "methodId": "M.element_method"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.parametric_curve_integral",
+        "M.symmetry",
+        "M.element_method"
+      ],
+      "options": [
+        {
+          "id": "r-2d-arc-element",
+          "name": "参数化时沿用平面曲线的 $\\mathrm{d}s=\\sqrt{x'^{2}+y'^{2}}\\,\\mathrm{d}t$，漏掉 $z'$ 项"
+        },
+        {
+          "id": "r-symmetry-constant",
+          "name": "先证被积函数在 $L$ 上恒为 $a$，再用大圆周长 $2\\pi a$ 求值"
+        },
+        {
+          "id": "r-param",
+          "name": "取 $x=y=\\frac{a}{\\sqrt2}\\cos t$、$z=a\\sin t$ 参数化，直接算弧长微元与被积函数"
+        }
+      ],
+      "questionKey": "d747dba8d39bfb21bc39ae7a3edf97dc282a9ed5381b54b2a78c5cbd6a509484",
+      "faceKey": "bc420c2d69b7287e7cbde1662ebc519d44cba5141a1690cbd5ccf1161fb774c4"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.gauss_theorem",
+      "question": "设 $\\Sigma$ 是旋转抛物面 $z=1-x^2-y^2\\ (z\\ge0)$，取上侧，计算第二类曲面积分：$I=\\iint_\\Sigma 2x^3\\,\\mathrm{d}y\\,\\mathrm{d}z+2y^3\\,\\mathrm{d}z\\,\\mathrm{d}x+3(z^2-1)\\,\\mathrm{d}x\\,\\mathrm{d}y$。",
+      "solution": "被积式的散度 $\\frac{\\partial P}{\\partial x}+\\frac{\\partial Q}{\\partial y}+\\frac{\\partial R}{\\partial z}=6x^{2}+6y^{2}+6z$。补圆盘 $\\Sigma_1:\\ z=0,\\ x^{2}+y^{2}\\le1$，取**下侧**，使 $\\Sigma+\\Sigma_1$ 围成立体 $\\Omega:r^{2}+z\\le1,\\ z\\ge0$ 且全取外侧。于是 $\\iint_\\Sigma+\\iint_{\\Sigma_1}=6\\iiint_\\Omega(x^{2}+y^{2}+z)\\mathrm{d}v=6\\big(\\frac{\\pi}{6}+\\frac{\\pi}{6}\\big)=2\\pi$。而 $\\Sigma_1$ 上只剩 dxdy 项，取下侧时为 $\\iint_{\\Sigma_1}3(z^{2}-1)\\mathrm{d}x\\mathrm{d}y=-\\iint_D(-3)\\mathrm{d}x\\mathrm{d}y=3\\pi$。所以 $I=2\\pi-3\\pi=-\\pi$。",
+      "routes": [
+        {
+          "id": "r-close-and-subtract",
+          "summary": "补 $z=0$ 圆盘（取下侧）封闭，用高斯公式后减去补面项",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "$\\Sigma$：$z=1-x^{2}-y^{2}\\ (z\\ge0)$ 取上侧，是开口曲面",
+              "transformedState": "补圆盘 $\\Sigma_1:z=0,\\ x^{2}+y^{2}\\le1$ **取下侧**，$\\Sigma+\\Sigma_1$ 围成 $\\Omega:r^{2}+z\\le1,z\\ge0$，其外侧与 $\\Sigma$ 的上侧一致",
+              "condition": "补面的取向必须与 $\\Sigma$ 的上侧接成“外侧”，所以 $\\Sigma_1$ 取**下侧**。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "散度 $6x^{2}+6y^{2}+6z$",
+              "transformedState": "$\\iint_\\Sigma+\\iint_{\\Sigma_1}=6\\iiint_\\Omega(x^{2}+y^{2}+z)\\mathrm{d}v=6\\big(\\frac{\\pi}{6}+\\frac{\\pi}{6}\\big)=2\\pi$",
+              "condition": "柱坐标：$\\iiint(x^{2}+y^{2})\\mathrm{d}v=\\int_0^1\\frac{\\pi(1-z)^{2}}{2}\\mathrm{d}z$，$\\iiint z\\,\\mathrm{d}v=\\pi\\int_0^1z(1-z)\\mathrm{d}z$。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "$\\Sigma_1$ 上 $z=0$，法向量向下，仅 dxdy 项非零",
+              "transformedState": "$\\iint_{\\Sigma_1}3(z^{2}-1)\\mathrm{d}x\\mathrm{d}y=-\\iint_D(-3)\\mathrm{d}x\\mathrm{d}y=3\\pi$",
+              "condition": "下侧取向使 dxdy 取负号，与 $R=-3$ 的负号两次相抵。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "$\\iint_\\Sigma=2\\pi-\\iint_{\\Sigma_1}$",
+              "transformedState": "$I=2\\pi-3\\pi=-\\pi$",
+              "condition": "补面后必须“减”，不是加。"
+            }
+          ],
+          "reason": "补面把开口曲面变成闭曲面，散度在柱坐标下只剩两个简单的定积分，最后减掉圆盘的 $3\\pi$ 即得 $-\\pi$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（$\\Sigma$ 取上侧、$z\\ge0$）进行。"
+        },
+        {
+          "id": "r-split-fields",
+          "summary": "拆成两族：前两项补面用高斯，dxdy 项直接投影",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "前两项 $(2x^{3},2y^{3},0)$ 只与 x、y 有关",
+              "transformedState": "其散度为 $6x^{2}+6y^{2}$，用补面技巧：$\\iint_\\Sigma(2x^{3}\\mathrm{d}y\\mathrm{d}z+2y^{3}\\mathrm{d}z\\mathrm{d}x)=6\\iiint_\\Omega(x^{2}+y^{2})\\mathrm{d}v-0=\\pi$",
+              "condition": "圆盘 $\\Sigma_1$ 上法向量竖直，$\\mathrm{d}y\\,\\mathrm{d}z$ 与 $\\mathrm{d}z\\,\\mathrm{d}x$ 分量为 0，故补面贡献可省。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "第三项 $3(z^{2}-1)\\mathrm{d}x\\mathrm{d}y$ 在 $\\Sigma$ 上取上侧",
+              "transformedState": "直接投影到单位圆 $D$：$3\\int_0^{2\\pi}\\int_0^{1}\\big[(1-r^{2})^{2}-1\\big]r\\,\\mathrm{d}r\\mathrm{d}\\theta=6\\pi\\big(\\frac16-\\frac12\\big)=-2\\pi$",
+              "condition": "上侧在 $xOy$ 面投影取正号，不必再补面。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "$\\pi$ 与 $-2\\pi$ 相加",
+              "transformedState": "$I=\\pi-2\\pi=-\\pi$",
+              "condition": "两族计算结果相加，得 $-\\pi$，与补面高斯法一致。"
+            }
+          ],
+          "reason": "把三类分量中“投影容易的 dxdy 项”单独直算、其余两族补面用高斯，省掉圆盘修正的符号讨论，是另一种可行思路。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-cover-same-side",
+          "summary": "补 $z=0$ 圆盘时误取上侧，与 $\\Sigma$ 同向，补面符号弄错",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "$\\Sigma$ 取上侧，需补圆盘 $z=0$",
+              "transformedState": "误把 $\\Sigma_1$ 也取**上侧**（与 $\\Sigma$ 同向），所得闭曲面并非“外侧”",
+              "condition": "错误：$\\Sigma$ 的上侧对应立体的外侧，圆盘必须取下侧才能接成外侧；同上侧会得到内法向的混合定向。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "$\\iint_{\\Sigma_1}3(z^{2}-1)\\mathrm{d}x\\mathrm{d}y$ 按上侧记为 $-3\\pi$",
+              "transformedState": "误算 $I=2\\pi-(-3\\pi)=5\\pi$，真值 $-\\pi$",
+              "condition": "补面取向反了，修正项符号翻转，结果与真值差 $6\\pi$。"
+            }
+          ],
+          "reason": "补面的“侧”是本题唯一的坑：$\\Sigma$ 取上侧并不意味着补面也取上侧，圆盘必须取下侧才构成外侧，这一步错了整题符号翻转。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：补面取向与 $\\Sigma$ 同向，破坏了“闭曲面外侧”的前提。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "补面时先定“闭曲面外侧”的取向，再算散度的三重积分；dxdy 项单独投影时必须与 $\\Sigma$ 的上侧一致",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2015-3-6",
+        "trainingGoal": "掌握高斯公式的补面技巧：为开口的抛物面帽补坐标面圆盘构成闭曲面，并严格确定补面取向（外侧）",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015 年高数下期末 三、解答题第 6 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-3-6"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\Sigma$ 为旋转抛物面 $z=1-x^{2}-y^{2}$ 且只取 $z\\ge0$ 的部分",
+          "曲面整体取上侧"
+        ],
+        "allowedVariations": [
+          "把 $2x^{3}$ 系数改成 $3x^{3}$",
+          "把抛物面改成 $z=2-x^{2}-y^{2}$",
+          "把 dxdy 项换成 $z^{3}\\,\\mathrm{d}x\\,\\mathrm{d}y$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-3-6",
+          "text": "设 $\\Sigma$ 是旋转抛物面 $z=1-x^2-y^2\\ (z\\ge0)$，取上侧，计算第二类曲面积分：$I=\\iint_\\Sigma 2x^3\\,dy\\,dz+2y^3\\,dz\\,dx+3(z^2-1)\\,dx\\,dy$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "高斯公式",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2015-3-6",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "散度 $\\nabla\\cdot(2x^{3},2y^{3},3(z^{2}-1))=6x^{2}+6y^{2}+6z$。补 $z=0$ 上的圆盘 $\\Sigma_1$（取**下侧**，使 $\\Sigma+\\Sigma_1$ 成为开口立体 $\\Omega:r^{2}+z\\le1,z\\ge0$ 的外侧），高斯公式给出 $\\iint_\\Sigma+\\iint_{\\Sigma_1}=6\\iiint_\\Omega(x^{2}+y^{2}+z)\\,\\mathrm{d}v$。柱坐标计算：$\\iiint(x^{2}+y^{2})\\mathrm{d}v=\\int_0^1\\frac{\\pi(1-z)^{2}}{2}\\mathrm{d}z=\\frac{\\pi}{6}$，$\\iiint z\\,\\mathrm{d}v=\\pi\\int_0^1 z(1-z)\\mathrm{d}z=\\frac{\\pi}{6}$，合计 $\\frac{\\pi}{3}$，乘 6 得 $2\\pi$。$\\Sigma_1$ 取下侧时只有 dxdy 项贡献：$3(0-1)\\cdot(-\\pi)=3\\pi$。故 $I=2\\pi-3\\pi=-\\pi$。直接验算：dxdy 项 $=3\\int_0^{2\\pi}\\int_0^1[(1-r^{2})^{2}-1]r\\,\\mathrm{d}r\\mathrm{d}\\theta=-2\\pi$；由闭曲面关系 $\\iint_\\Sigma(2x^{3}\\mathrm{d}y\\mathrm{d}z+2y^{3}\\mathrm{d}z\\mathrm{d}x)=\\pi$，合计 $-\\pi$，与高斯法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.supplementary_path",
+        "M.gauss_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.supplementary_path",
+        "M.gauss_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.gauss_theorem",
+          "methodId": "M.gauss_theorem"
+        },
+        {
+          "scenarioId": "S.line_surface.gauss_theorem",
+          "methodId": "M.supplementary_path"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.gauss_theorem",
+        "M.supplementary_path"
+      ],
+      "options": [
+        {
+          "id": "r-split-fields",
+          "name": "拆成两族：前两项补面用高斯，dxdy 项直接投影"
+        },
+        {
+          "id": "r-cover-same-side",
+          "name": "补 $z=0$ 圆盘时误取上侧，与 $\\Sigma$ 同向，补面符号弄错"
+        },
+        {
+          "id": "r-close-and-subtract",
+          "name": "补 $z=0$ 圆盘（取下侧）封闭，用高斯公式后减去补面项"
+        }
+      ],
+      "questionKey": "2578c26d58c81fe666bdf19c33645b181998529a98c5f6b81a2ca01115388f6d",
+      "faceKey": "18fbd692c471899c458598df4470960cf6246434d577fb4f730721b181be9a95"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.green_theorem",
+      "question": "设曲线 $C:2x^2+y^2=1$，方向取逆时针方向。求曲线积分 $\\int_C\\frac{(x+y)\\mathrm{d}x+(y-x)\\mathrm{d}y}{x^2+y^2}$。",
+      "solution": "记 $P=\\frac{x+y}{x^{2}+y^{2}}$、$Q=\\frac{y-x}{x^{2}+y^{2}}$，在 $x^{2}+y^{2}\\ne0$ 处 $\\frac{\\partial Q}{\\partial x}=\\frac{\\partial P}{\\partial y}=\\frac{x^{2}-y^{2}-2xy}{(x^{2}+y^{2})^{2}}$。但原点在 $C$ 内部且为奇点，不能直接对整个内部用格林公式：取以原点为心的小圆 $C_\\varepsilon:x^{2}+y^{2}=\\varepsilon^{2}$（逆时针），在环域 $D'$ 上有 $\\oint_C-\\oint_{C_\\varepsilon}=\\iint_{D'}0=0$，故 $\\oint_C=\\oint_{C_\\varepsilon}$。在 $C_\\varepsilon$ 上 $x=\\varepsilon\\cos t$、$y=\\varepsilon\\sin t$，$\\mathrm{d}x=-\\varepsilon\\sin t\\,\\mathrm{d}t$、$\\mathrm{d}y=\\varepsilon\\cos t\\,\\mathrm{d}t$，被积式 $=\\frac{1}{\\varepsilon}(-\\varepsilon\\sin^{2}t-\\varepsilon\\cos^{2}t)\\mathrm{d}t=-\\mathrm{d}t$，于是 $\\oint_C=-\\int_0^{2\\pi}\\mathrm{d}t=-2\\pi$。",
+      "routes": [
+        {
+          "id": "r-green-hole",
+          "summary": "挖去原点小圆后用格林公式，把积分转移到小圆上求值",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "$C:2x^{2}+y^{2}=1$ 逆时针，$P=\\frac{x+y}{x^{2}+y^{2}}$、$Q=\\frac{y-x}{x^{2}+y^{2}}$",
+              "transformedState": "原点在被积函数中无定义且在 $C$ 内，故挖去小圆 $C_\\varepsilon$，在环域 $D'$ 上 $\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}=0$",
+              "condition": "被积函数在 $D'$ 内连续可微；$C_\\varepsilon$ 与 $C$ 同取逆时针，格林公式中二者相减。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "$\\oint_C=\\oint_{C_\\varepsilon}$",
+              "transformedState": "在 $C_\\varepsilon$ 上 $x=\\varepsilon\\cos t$、$y=\\varepsilon\\sin t$，被积式为 $-\\mathrm{d}t$，$\\oint_{C_\\varepsilon}=-2\\pi$",
+              "condition": "$\\varepsilon$ 充分小使小圆整体落在椭圆内部，此处 $x^{2}+y^{2}=\\varepsilon^{2}$ 可整体代入。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "结果与 $\\varepsilon$ 无关",
+              "transformedState": "$\\oint_C=-2\\pi$，与椭圆半轴 $\\frac{1}{\\sqrt2}$、$1$ 的大小无关",
+              "condition": "$\\varepsilon\\to0$ 时小圆上被积式始终为 $-\\mathrm{d}t$，极限稳定。"
+            }
+          ],
+          "reason": "关键在于先“挖洞”再格林：环域上散度为 0，把积分搬到便于计算的小圆上，结果只剩角度的一次积分。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（$C$ 逆时针封闭、原点为唯一奇点）进行。"
+        },
+        {
+          "id": "r-ellipse-param",
+          "summary": "直接用椭圆参数化 $x=\\frac{\\cos t}{\\sqrt2}$、$y=\\sin t$ 化为一元定积分",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.polar_transform",
+              "state": "$C:2x^{2}+y^{2}=1$ 可写成 $\\frac{x^{2}}{1/2}+y^{2}=1$",
+              "transformedState": "取 $x=\\frac{\\cos t}{\\sqrt2}$，$y=\\sin t$，逆时针对应 $t:0\\to2\\pi$",
+              "condition": "$xOy$ 面上的椭圆按离心角参数化，$t$ 递增即逆时针。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.polar_transform",
+              "state": "$\\mathrm{d}x=-\\frac{\\sin t}{\\sqrt2}\\mathrm{d}t$，$\\mathrm{d}y=\\cos t\\,\\mathrm{d}t$，$x^{2}+y^{2}=\\frac{\\cos^{2}t}{2}+\\sin^{2}t$",
+              "transformedState": "被积式 $=\\frac{\\frac12\\sin t\\cos t-\\frac{1}{\\sqrt2}}{\\frac12\\cos^{2}t+\\sin^{2}t}\\,\\mathrm{d}t$",
+              "condition": "分子中的 $\\sin t\\cos t$ 项在一个周期上积分为 0（分母为偶、分子为奇）。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.polar_transform",
+              "state": "只剩 $-\\frac{1}{\\sqrt2}\\int_0^{2\\pi}\\frac{\\mathrm{d}t}{\\frac12\\cos^{2}t+\\sin^{2}t}$",
+              "transformedState": "用 $\\int_0^{2\\pi}\\frac{\\mathrm{d}t}{a^{2}\\cos^{2}t+b^{2}\\sin^{2}t}=\\frac{2\\pi}{ab}$（$a=\\frac{1}{\\sqrt2},b=1$）得 $-\\frac{1}{\\sqrt2}\\cdot2\\pi\\sqrt2=-2\\pi$",
+              "condition": "标准积分公式适用于 $a,b>0$ 的椭圆参数化。"
+            }
+          ],
+          "reason": "不做“挖洞”，直接沿椭圆参数化，奇次项消去后落到经典公式 $\\int_0^{2\\pi}\\frac{\\mathrm{d}t}{a^{2}\\cos^{2}t+b^{2}\\sin^{2}t}=\\frac{2\\pi}{ab}$，同样得到 $-2\\pi$。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行（被积函数在 $C$ 上处处有定义）。"
+        },
+        {
+          "id": "r-ignore-pole",
+          "summary": "见 $\\partial Q/\\partial x=\\partial P/\\partial y$ 就直接用格林公式，误答 0",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "$C$ 是逆时针封闭椭圆，$\\frac{\\partial Q}{\\partial x}=\\frac{\\partial P}{\\partial y}=\\frac{x^{2}-y^{2}-2xy}{(x^{2}+y^{2})^{2}}$",
+              "transformedState": "直接对整个椭圆内部 $D$ 套格林公式：$\\oint_C=\\iint_D 0\\,\\mathrm{d}x\\mathrm{d}y=0$",
+              "condition": "错误：原点在 $D$ 内且 $P$、$Q$ 在原点无定义，$D$ 不是被积函数的可微区域，格林公式的前提“$D$ 内偏导连续”被破坏。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "误得 $\\oint_C=0$",
+              "transformedState": "错答 0",
+              "condition": "真值是 $-2\\pi$：奇点贡献的 $-2\\pi$ 恰好等于绕原点的环路积分，被“直接格林”抹掉了。"
+            }
+          ],
+          "reason": "看到偏导相等就以为积分必为 0，忽略了原点这个奇点，是本题最典型的失分原因。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：未挖去奇点就对含原点的区域使用格林公式。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "含奇点的封闭曲线必须“挖洞”后用格林公式，或直接参数化；仅当区域不含奇点时 $\\partial Q/\\partial x=\\partial P/\\partial y$ 才能断言积分为 0",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2022-13",
+        "trainingGoal": "掌握格林公式对含奇点情形的处理：先在环域上消去散度，再把积分转移到以奇点为中心的小圆上求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2022 年高等数学下期末 三、计算题第 3 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2022-13"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲线 $C$ 为逆时针椭圆 $2x^{2}+y^{2}=1$",
+          "被积函数在原点无定义，原点位于 $C$ 内部"
+        ],
+        "allowedVariations": [
+          "把椭圆换成圆 $x^{2}+y^{2}=1$",
+          "把分母改成 $x^{2}+4y^{2}$",
+          "改变 $C$ 的方向并追问结果如何变号"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2022-13",
+          "text": "设曲线 $C:2x^2+y^2=1$，方向取逆时针方向。求曲线积分 $\\int_C\\dfrac{(x+y)\\mathrm{d}x+(y-x)\\mathrm{d}y}{x^2+y^2}$。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "格林公式（封闭曲线）",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2022-13",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "记 $P=\\frac{x+y}{x^{2}+y^{2}}$、$Q=\\frac{y-x}{x^{2}+y^{2}}$，在去掉原点的区域上 $\\frac{\\partial Q}{\\partial x}=\\frac{\\partial P}{\\partial y}=\\frac{x^{2}-y^{2}-2xy}{(x^{2}+y^{2})^{2}}$。因 $C$ 围成区域含原点（被积函数在原点无定义），须挖去以原点为心的小圆 $C_\\varepsilon$：在环域 $D'$ 上用格林公式得 $\\oint_C=\\oint_{C_\\varepsilon}$（$C_\\varepsilon$ 取逆时针）。在 $C_\\varepsilon$ 上 $x=\\varepsilon\\cos t$、$y=\\varepsilon\\sin t$，被积式 $=(-\\sin^{2}t-\\cos^{2}t)\\,\\mathrm{d}t=-\\mathrm{d}t$，故 $\\oint_{C_\\varepsilon}=-\\int_0^{2\\pi}\\mathrm{d}t=-2\\pi$，即 $\\oint_C=-2\\pi$。参数化核验：取 $x=\\frac{\\cos t}{\\sqrt2}$、$y=\\sin t$，被积式化为 $\\frac{\\frac12\\sin t\\cos t-\\frac{1}{\\sqrt2}}{\\frac12\\cos^{2}t+\\sin^{2}t}\\mathrm{d}t$，奇项积分为 0，余下 $-\\frac{1}{\\sqrt2}\\cdot\\frac{2\\pi}{\\frac{1}{\\sqrt2}}=-2\\pi$，两法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.green_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.green_theorem",
+        "M.polar_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.green_theorem",
+          "methodId": "M.green_theorem"
+        },
+        {
+          "scenarioId": "S.line_surface.green_theorem",
+          "methodId": "M.supplementary_path"
+        },
+        {
+          "scenarioId": "S.line_surface.green_theorem",
+          "methodId": "M.polar_transform"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.green_theorem",
+        "M.supplementary_path",
+        "M.polar_transform"
+      ],
+      "options": [
+        {
+          "id": "r-ellipse-param",
+          "name": "直接用椭圆参数化 $x=\\frac{\\cos t}{\\sqrt2}$、$y=\\sin t$ 化为一元定积分"
+        },
+        {
+          "id": "r-ignore-pole",
+          "name": "见 $\\partial Q/\\partial x=\\partial P/\\partial y$ 就直接用格林公式，误答 0"
+        },
+        {
+          "id": "r-green-hole",
+          "name": "挖去原点小圆后用格林公式，把积分转移到小圆上求值"
+        }
+      ],
+      "questionKey": "554c7f70f16ca39976f600a11c424afd61e3324e3f01db46c915bf942b162127",
+      "faceKey": "6323a1cbd457f1f428e87e6032f9087174d8c476a7c49eef29f355ab3205d7c1"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.surface_integral_first_kind",
+      "question": "计算曲面积分 $\\iint_{\\Sigma}(x^{2}+y^{2})\\,\\mathrm{d}S$，其中 $\\Sigma$ 是锥面 $z=\\sqrt{x^{2}+y^{2}}\\ (0\\le z\\le 2)$ 部分。",
+      "solution": "$\\Sigma:\\ z=\\sqrt{x^{2}+y^{2}}$，$0\\le z\\le2$，故投影域 $D:x^{2}+y^{2}\\le4$。由 $z_x=\\frac{x}{\\sqrt{x^{2}+y^{2}}}$、$z_y=\\frac{y}{\\sqrt{x^{2}+y^{2}}}$ 得 $z_x^{2}+z_y^{2}=1$，$\\mathrm{d}S=\\sqrt2\\,\\mathrm{d}x\\mathrm{d}y$。用极坐标：$\\iint_\\Sigma(x^{2}+y^{2})\\mathrm{d}S=\\sqrt2\\int_0^{2\\pi}\\mathrm{d}\\theta\\int_0^{2}r^{3}\\,\\mathrm{d}r=2\\sqrt2\\pi\\cdot4=8\\sqrt2\\,\\pi$。",
+      "routes": [
+        {
+          "id": "r-projection-polar",
+          "summary": "写出 $\\mathrm{d}S=\\sqrt2\\,\\mathrm{d}x\\mathrm{d}y$，投影到圆域后用极坐标积分",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\Sigma:\\ z=\\sqrt{x^{2}+y^{2}}$，$0\\le z\\le2$",
+              "transformedState": "$z_x=\\frac{x}{z},z_y=\\frac{y}{z}$，$z_x^{2}+z_y^{2}=1$，$\\mathrm{d}S=\\sqrt2\\,\\mathrm{d}x\\mathrm{d}y$，投影域 $D:x^{2}+y^{2}\\le4$",
+              "condition": "锥面上 $x^{2}+y^{2}=z^{2}\\ne0$（顶点处为可去奇点，不影响积分）。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\sqrt2\\iint_D(x^{2}+y^{2})\\,\\mathrm{d}x\\mathrm{d}y$",
+              "transformedState": "$\\sqrt2\\int_0^{2\\pi}\\int_0^{2}r^{3}\\,\\mathrm{d}r\\mathrm{d}\\theta=2\\sqrt2\\pi\\cdot4=8\\sqrt2\\,\\pi$",
+              "condition": "极坐标下 $x^{2}+y^{2}=r^{2}$，面积元 $r\\,\\mathrm{d}r\\mathrm{d}\\theta$ 已含 Jacobi 因子 $r$。"
+            }
+          ],
+          "reason": "锥面的 $z_x^{2}+z_y^{2}$ 恰为 1，$\\mathrm{d}S$ 只放大 $\\sqrt2$ 倍；极坐标下被积函数与 Jacobi 因子合并为 $r^{3}$，一次积分结束。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（$0\\le z\\le2$）进行。"
+        },
+        {
+          "id": "r-area-times-mean",
+          "summary": "先求锥面侧面积，再乘 $r^{2}$ 在锥面上的加权平均值",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.element_method",
+              "state": "把 $x^{2}+y^{2}$ 看作锥面上的面密度",
+              "transformedState": "积分 $=$ 侧面积 $\\times$ 面密度平均值",
+              "condition": "锥面底面半径 2、母线 $2\\sqrt2$ 的正圆锥，侧面积公式 $\\pi r l$ 可用。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.element_method",
+              "state": "$\\pi r l=\\pi\\cdot2\\cdot2\\sqrt2=4\\sqrt2\\pi$",
+              "transformedState": "$\\mathrm{d}S=\\sqrt2\\,r\\,\\mathrm{d}r\\mathrm{d}\\theta$ 使 $r^{2}$ 的加权平均为 $\\frac{\\int_0^2r^{3}\\mathrm{d}r}{\\int_0^2r\\,\\mathrm{d}r}=\\frac{4}{2}=2$",
+              "condition": "锥面上的面积元与 $r$ 成正比，故平均要按 $r\\,\\mathrm{d}r$ 加权而不是按 $\\mathrm{d}r$。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.element_method",
+              "state": "侧面积 $4\\sqrt2\\pi$，平均面密度 $2$",
+              "transformedState": "$4\\sqrt2\\pi\\cdot2=8\\sqrt2\\,\\pi$",
+              "condition": "与投影法结果一致。"
+            }
+          ],
+          "reason": "利用“积分 $=$ 侧面积 × 平均面密度”，把面积本身的几何公式与加权平均分开算，避开二重积分。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-forget-ds-factor",
+          "summary": "把 $\\mathrm{d}S$ 直接写成 $\\mathrm{d}x\\mathrm{d}y$，漏掉 $\\sqrt2$",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$\\Sigma:\\ z=\\sqrt{x^{2}+y^{2}}$ 的投影是圆盘 $D:x^{2}+y^{2}\\le4$",
+              "transformedState": "误取 $\\mathrm{d}S=\\mathrm{d}x\\mathrm{d}y$，写成 $\\iint_D(x^{2}+y^{2})\\mathrm{d}x\\mathrm{d}y$",
+              "condition": "错误：锥面的面积元是投影面积元的 $\\sqrt{1+z_x^{2}+z_y^{2}}=\\sqrt2$ 倍，不能省略。"
+            },
+            {
+              "scenarioId": "S.line_surface.surface_integral_first_kind",
+              "methodId": "M.surface_projection",
+              "state": "$2\\pi\\int_0^2 r^{3}\\mathrm{d}r$",
+              "transformedState": "误得 $8\\pi$，真值为 $8\\sqrt2\\,\\pi$",
+              "condition": "漏乘 $\\sqrt2$，结果缩小为真值的 $\\frac{1}{\\sqrt2}$。"
+            }
+          ],
+          "reason": "锥面的法向量与 $z$ 轴成 45°，面积元比投影面积大 $\\sqrt2$ 倍；直接把 $\\mathrm{d}S$ 当成 $\\mathrm{d}x\\mathrm{d}y$ 是本题最常见的错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：漏掉面积元放大因子 $\\sqrt2$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "关键在 $\\mathrm{d}S=\\sqrt{1+z_x^{2}+z_y^{2}}\\,\\mathrm{d}x\\mathrm{d}y=\\sqrt2\\,\\mathrm{d}x\\mathrm{d}y$；漏掉 $\\sqrt2$ 与漏掉极坐标 Jacobi 因子 $r$ 都会算错",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2019-js3",
+        "trainingGoal": "在锥面上计算第一类曲面积分：先由 $z_x^{2}+z_y^{2}=1$ 得 $\\mathrm{d}S=\\sqrt2\\,\\mathrm{d}x\\mathrm{d}y$，再用极坐标合并被积函数与面积元",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2019 年高等数学下册期末 二、计算题第 3 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2019-js3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲面是顶点在原点的正圆锥面 $z=\\sqrt{x^{2}+y^{2}}$",
+          "只取 $0\\le z\\le2$ 的一段"
+        ],
+        "allowedVariations": [
+          "把上限从 2 改成 $h$",
+          "把被积函数换成 $z^{2}$",
+          "把锥面换成 $z=2\\sqrt{x^{2}+y^{2}}$ 的一段"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2019-js3",
+          "text": "计算曲面积分 $\\iint_{\\Sigma}(x^{2}+y^{2})\\,\\mathrm{d}S$，其中 $\\Sigma$ 是锥面 $z=\\sqrt{x^{2}+y^{2}}\\ (0\\le z\\le 2)$ 部分。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "第一类曲面积分（对面积）",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2019-js3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "锥面 $z=\\sqrt{x^{2}+y^{2}}$ 上 $z_x=\\frac{x}{z}=\\cos\\theta$、$z_y=\\frac{y}{z}=\\sin\\theta$，故 $z_x^{2}+z_y^{2}=1$，$\\mathrm{d}S=\\sqrt2\\,\\mathrm{d}x\\mathrm{d}y$；投影域为 $x^{2}+y^{2}\\le4$。于是 $\\iint_\\Sigma(x^{2}+y^{2})\\mathrm{d}S=\\sqrt2\\int_0^{2\\pi}\\int_0^{2}r^{2}\\cdot r\\,\\mathrm{d}r\\mathrm{d}\\theta=\\sqrt2\\cdot2\\pi\\cdot\\frac{2^{4}}{4}=8\\sqrt2\\,\\pi$。交叉核验：锥面侧面积 $=\\pi r l=\\pi\\cdot2\\cdot2\\sqrt2=4\\sqrt2\\pi$，而 $r^{2}$ 以 $r\\,\\mathrm{d}r$ 加权在 $[0,2]$ 上的平均为 $\\frac{\\int_0^2r^{3}\\mathrm{d}r}{\\int_0^2r\\,\\mathrm{d}r}=\\frac{4}{2}=2$，乘积 $=8\\sqrt2\\pi$，两法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.surface_projection"
+      ],
+      "applicableMethodIds": [
+        "M.surface_projection",
+        "M.element_method"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.surface_integral_first_kind",
+          "methodId": "M.surface_projection"
+        },
+        {
+          "scenarioId": "S.line_surface.surface_integral_first_kind",
+          "methodId": "M.symmetry"
+        },
+        {
+          "scenarioId": "S.line_surface.surface_integral_first_kind",
+          "methodId": "M.element_method"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.surface_projection",
+        "M.symmetry",
+        "M.element_method"
+      ],
+      "options": [
+        {
+          "id": "r-area-times-mean",
+          "name": "先求锥面侧面积，再乘 $r^{2}$ 在锥面上的加权平均值"
+        },
+        {
+          "id": "r-forget-ds-factor",
+          "name": "把 $\\mathrm{d}S$ 直接写成 $\\mathrm{d}x\\mathrm{d}y$，漏掉 $\\sqrt2$"
+        },
+        {
+          "id": "r-projection-polar",
+          "name": "写出 $\\mathrm{d}S=\\sqrt2\\,\\mathrm{d}x\\mathrm{d}y$，投影到圆域后用极坐标积分"
+        }
+      ],
+      "questionKey": "91f098e27778e252946ca64f28b5818aaf2681aedc14f07c1361aebd89fa2151",
+      "faceKey": "02db6a1f92880f620a4a0efc5b2ae42afdb654a03f27bd7558d651347df96d1c"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.curve_integral_first_kind",
+      "question": "设空间曲线 $C$ 为 $\\begin{cases}x^2+y^2+z^2=R^2\\\\ x+y+z=\\frac{3R}{2}\\end{cases}$，其中常数 $R>0$，则 $\\oint_C y\\,\\mathrm{d}s=$（　）.",
+      "solution": "$C$ 是球面与平面 $x+y+z=\\frac{3R}{2}$ 的交线，平面到球心距离 $\\frac{\\sqrt3}{2}R$，故 $C$ 是半径 $\\rho=\\frac{\\sqrt3}{2}R$、周长 $\\sqrt3\\pi R$ 的圆。由 $x,y,z$ 的轮换对称性 $\\oint_Cx\\,\\mathrm{d}s=\\oint_Cy\\,\\mathrm{d}s=\\oint_Cz\\,\\mathrm{d}s$，而 $\\oint_C(x+y+z)\\mathrm{d}s=\\frac{3R}{2}\\cdot\\sqrt3\\pi R=\\frac{3\\sqrt3}{2}\\pi R^{2}$，故 $\\oint_Cy\\,\\mathrm{d}s=\\frac{\\sqrt3}{2}\\pi R^{2}$。",
+      "routes": [
+        {
+          "id": "r-rotation-symmetry",
+          "summary": "利用 $x,y,z$ 轮换对称把 $y$ 的积分化为 $(x+y+z)$ 的积分的三分之一",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "$C$ 由球面与平面 $x+y+z=\\frac{3R}{2}$ 交成",
+              "transformedState": "方程组在 $x,y,z$ 轮换下不变，故 $\\oint_Cx\\,\\mathrm{d}s=\\oint_Cy\\,\\mathrm{d}s=\\oint_Cz\\,\\mathrm{d}s$",
+              "condition": "两个方程对 $x,y,z$ 完全对称，曲线具有轮换对称性。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "$\\oint_C(x+y+z)\\mathrm{d}s=\\frac{3R}{2}\\oint_C\\mathrm{d}s$",
+              "transformedState": "$\\oint_C\\mathrm{d}s=\\sqrt3\\pi R$（半径 $\\rho=\\frac{\\sqrt3}{2}R$ 的圆周长）",
+              "condition": "球心到平面距离 $\\frac{\\sqrt3}{2}R$，交线圆半径 $\\rho=\\sqrt{R^{2}-\\frac{3R^{2}}{4}}=\\frac{\\sqrt3}{2}R$。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "三积分相等且和为 $\\frac{3R}{2}\\cdot\\sqrt3\\pi R$",
+              "transformedState": "$\\oint_Cy\\,\\mathrm{d}s=\\frac13\\cdot\\frac{3\\sqrt3}{2}\\pi R^{2}=\\frac{\\sqrt3}{2}\\pi R^{2}$",
+              "condition": "把常数系数整体提出后只需除以 3。"
+            }
+          ],
+          "reason": "整个计算不含任何被积函数的具体形状，只用到“轮换对称 + 平面方程给平均值”，一步到位。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（$R>0$）进行。"
+        },
+        {
+          "id": "r-param-circle",
+          "summary": "先算圆心半径，再用正交单位向量参数化并逐项积分",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "球心到平面 $x+y+z=\\frac{3R}{2}$ 的距离为 $\\frac{\\sqrt3}{2}R$，圆心是 $(\\frac R2,\\frac R2,\\frac R2)$",
+              "transformedState": "$C$ 是半径为 $\\rho=\\frac{\\sqrt3}{2}R$ 的圆；取 $\\vec{r}(t)=\\vec{c}+\\rho(\\cos t\\,\\vec{e}_1+\\sin t\\,\\vec{e}_2)$，$\\vec{e}_1=\\frac{(1,-1,0)}{\\sqrt2}$、$\\vec{e}_2=\\frac{(1,1,-2)}{\\sqrt6}$",
+              "condition": "$\\vec{e}_1,\\vec{e}_2$ 都垂直于平面法向量 $(1,1,1)$ 且相互正交，$|\\vec{r}'(t)|=\\rho$。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "$\\mathrm{d}s=\\rho\\,\\mathrm{d}t$，被积函数 $y=\\frac R2+\\rho\\big(\\frac{\\cos t}{\\sqrt2}+\\frac{\\sin t}{\\sqrt6}\\big)$",
+              "transformedState": "三角项在 $[0,2\\pi]$ 上积分为 0，只剩 $\\int_0^{2\\pi}\\frac R2\\,\\rho\\,\\mathrm{d}t=\\pi\\rho R$",
+              "condition": "周期上的 $\\cos t$、$\\sin t$ 积分为零，常数项保留。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.parametric_curve_integral",
+              "state": "$\\pi\\rho R$ 且 $\\rho=\\frac{\\sqrt3}{2}R$",
+              "transformedState": "$\\frac{\\sqrt3}{2}\\pi R^{2}$",
+              "condition": "与轮换对称法的结果一致。"
+            }
+          ],
+          "reason": "参数化把几何量（圆心、半径、正交基）全部写出，三角项自动消去，得到同一答案，适合需要显式验证的情形。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-treat-as-great-circle",
+          "summary": "误把交线当成半径 $R$ 的大圆，称关于 $y=0$ 对称故积分为 0",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "只看到球面 $x^{2}+y^{2}+z^{2}=R^{2}$，忽略平面 $x+y+z=\\frac{3R}{2}$ 的约束",
+              "transformedState": "把 $C$ 当成半径 $R$ 的大圆 $x^{2}+y^{2}=R^{2}$（$z=0$），于是 $y$ 关于 $y=0$ 为奇函数，断言 $\\oint_Cy\\,\\mathrm{d}s=0$",
+              "condition": "错误：平面 $x+y+z=\\frac{3R}{2}$ 不过球心，交线是小圆，且 $z$ 恒为 $\\frac{3R}{2}-x-y$，曲线整体偏移，$y$ 不再关于 0 对称。"
+            },
+            {
+              "scenarioId": "S.line_surface.curve_integral_first_kind",
+              "methodId": "M.symmetry",
+              "state": "误得 0",
+              "transformedState": "错答 0",
+              "condition": "真值为 $\\frac{\\sqrt3}{2}\\pi R^{2}$：曲线在 $y>0$ 一侧，$y$ 的平均值为 $\\frac R2$。"
+            }
+          ],
+          "reason": "忘记平面不经过球心，把截口当大圆；一旦误认为曲线关于 $y=0$ 对称，就会直接得出 0 这个错误答案。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：把非过球心平面的截口当作大圆并套用对称性。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "R"
+      ],
+      "comparisonCriterion": "先由球心到平面距离算出小圆半径 $\\rho=\\frac{\\sqrt3}{2}R$，再用轮换对称或参数化求值；不能把截口当大圆",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2015-2-4",
+        "trainingGoal": "对空间曲线第一类积分先做几何识别（球面与平面的截口圆半径），再用轮换对称把未知积分化为已知的 $(x+y+z)$ 积分",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015 年高数下期末 二、填空题第 4 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-2-4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "球面半径 $R>0$，平面为 $x+y+z=\\frac{3R}{2}$",
+          "曲线为两曲面的交线，取整个闭圆"
+        ],
+        "allowedVariations": [
+          "把平面换成 $x+y+z=R$",
+          "被积函数换成 $x$ 或 $x+y+z$",
+          "把球面半径改为 $2R$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-2-4",
+          "text": "设空间曲线 $C$ 为 $\\begin{cases}x^2+y^2+z^2=R^2\\\\ x+y+z=\\frac{3R}{2}\\end{cases}$，其中常数 $R>0$，则 $\\oint_C y\\,ds=\\underline{\\qquad}$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "第一类曲线积分（对弧长）",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2015-2-4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "球面到平面 $x+y+z=\\frac{3R}{2}$ 的距离为 $\\frac{3R/2}{\\sqrt3}=\\frac{\\sqrt3}{2}R$，故交线是半径 $\\rho=\\sqrt{R^{2}-\\frac{3R^{2}}{4}}=\\frac{\\sqrt3}{2}R$ 的圆，周长 $L=2\\pi\\rho=\\sqrt3\\pi R$。曲线对 $x$、$y$、$z$ 轮换对称，故 $\\oint_Cx\\,\\mathrm{d}s=\\oint_Cy\\,\\mathrm{d}s=\\oint_Cz\\,\\mathrm{d}s$，三者和为 $\\oint_C(x+y+z)\\mathrm{d}s=\\frac{3R}{2}L$，于是 $\\oint_Cy\\,\\mathrm{d}s=\\frac{R}{2}\\cdot\\sqrt3\\pi R=\\frac{\\sqrt3}{2}\\pi R^{2}$。参数化核验：圆心 $\\big(\\frac R2,\\frac R2,\\frac R2\\big)$，取 $\\vec{e}_1=\\frac{(1,-1,0)}{\\sqrt2}$、$\\vec{e}_2=\\frac{(1,1,-2)}{\\sqrt6}$，$\\vec{r}(t)=\\vec{c}+\\rho(\\cos t\\,\\vec{e}_1+\\sin t\\,\\vec{e}_2)$，$|\\vec{r}'|=\\rho$，$\\oint y\\,\\mathrm{d}s=\\rho\\int_0^{2\\pi}\\big[\\frac R2+\\rho\\big(\\frac{\\cos t}{\\sqrt2}+\\frac{\\sin t}{\\sqrt6}\\big)\\big]\\mathrm{d}t=\\rho\\cdot\\frac R2\\cdot2\\pi=\\frac{\\sqrt3}{2}\\pi R^{2}$，两法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.symmetry"
+      ],
+      "applicableMethodIds": [
+        "M.symmetry",
+        "M.parametric_curve_integral"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.curve_integral_first_kind",
+          "methodId": "M.parametric_curve_integral"
+        },
+        {
+          "scenarioId": "S.line_surface.curve_integral_first_kind",
+          "methodId": "M.symmetry"
+        },
+        {
+          "scenarioId": "S.line_surface.curve_integral_first_kind",
+          "methodId": "M.element_method"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.parametric_curve_integral",
+        "M.symmetry",
+        "M.element_method"
+      ],
+      "options": [
+        {
+          "id": "r-rotation-symmetry",
+          "name": "利用 $x,y,z$ 轮换对称把 $y$ 的积分化为 $(x+y+z)$ 的积分的三分之一"
+        },
+        {
+          "id": "r-param-circle",
+          "name": "先算圆心半径，再用正交单位向量参数化并逐项积分"
+        },
+        {
+          "id": "r-treat-as-great-circle",
+          "name": "误把交线当成半径 $R$ 的大圆，称关于 $y=0$ 对称故积分为 0"
+        }
+      ],
+      "questionKey": "092fb78e4482f591fcb0a92bf7a0cac98728c5ba45ebc973526339450d7d7fa7",
+      "faceKey": "3c34d9ade7c317a7a6974fa9a9e15849c65f8af098f1ba09e458df29b93a5149"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.gauss_theorem",
+      "question": "计算曲面积分 $I=\\iint_\\Sigma x\\cos^2(1+z)\\,\\mathrm{d}y\\,\\mathrm{d}z+y\\sin^2(1+z)\\,\\mathrm{d}z\\,\\mathrm{d}x+4(z+1)\\,\\mathrm{d}x\\,\\mathrm{d}y$，其中 $\\Sigma$ 是下半球面 $z=-\\sqrt{1-x^2-y^2}$ 的上侧.",
+      "solution": "散度 $\\frac{\\partial P}{\\partial x}+\\frac{\\partial Q}{\\partial y}+\\frac{\\partial R}{\\partial z}=\\cos^{2}(1+z)+\\sin^{2}(1+z)+4=5$。$\\Sigma$ 与圆盘 $\\Sigma_1:z=0,x^{2}+y^{2}\\le1$ 围成下半球 $\\Omega$（体积 $\\frac{2\\pi}{3}$）。下半球的外法向为下侧，而题目要求上侧（$\\Omega$ 的内法向），故 $I=-\\iint_\\Sigma(外)$。由高斯公式 $\\iint_\\Sigma(外)+\\iint_{\\Sigma_1}(上侧)=5\\cdot\\frac{2\\pi}{3}=\\frac{10\\pi}{3}$；$\\Sigma_1$ 取上侧时 $\\iint_{\\Sigma_1}4(z+1)\\mathrm{d}x\\mathrm{d}y=4\\pi$（$z=0$，面积为 $\\pi$）。所以 $\\iint_\\Sigma(外)=\\frac{10\\pi}{3}-4\\pi=-\\frac{2\\pi}{3}$，$I=\\frac{2\\pi}{3}$。",
+      "routes": [
+        {
+          "id": "r-close-disk-outward",
+          "summary": "补 $z=0$ 圆盘（取上侧）成闭曲面，按外法向算通量后变号",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "$\\Sigma$ 是下半球面，开口处为 $z=0$ 的单位圆盘",
+              "transformedState": "补 $\\Sigma_1$ 并取上侧（下半球顶部的外法向朝上），$\\Sigma(外)+\\Sigma_1$ 围成下半球 $\\Omega$，体积 $\\frac{2\\pi}{3}$",
+              "condition": "下半球的外法向是**下侧**，与题目所给上侧相反，故最终要整体变号。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "散度 $=\\cos^{2}(1+z)+\\sin^{2}(1+z)+4=5$",
+              "transformedState": "$\\iint_\\Sigma(外)+\\iint_{\\Sigma_1}(上侧)=5\\cdot\\frac{2\\pi}{3}=\\frac{10\\pi}{3}$",
+              "condition": "闭曲面全取外法向，$\\Sigma_1$ 的上侧正是下半球的外法向。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "$\\Sigma_1$ 上 $z=0$，只剩 $4(z+1)\\mathrm{d}x\\mathrm{d}y$",
+              "transformedState": "$\\iint_{\\Sigma_1}=4\\cdot\\pi=4\\pi$，故 $\\iint_\\Sigma(外)=\\frac{10\\pi}{3}-4\\pi=-\\frac{2\\pi}{3}$",
+              "condition": "上侧投影取正号，$z=0$ 时 $4(z+1)=4$。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "题目要求上侧 $=$ 内法向",
+              "transformedState": "$I=-\\iint_\\Sigma(外)=\\frac{2\\pi}{3}$",
+              "condition": "取侧与外法向相反，结果取负。"
+            }
+          ],
+          "reason": "整体一步用高斯，唯一要小心的是“下半球的上侧其实是内法向”，最后变号即可得到 $\\frac{2\\pi}{3}$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（下半球面、上侧）进行。"
+        },
+        {
+          "id": "r-split-two-families",
+          "summary": "拆成两族：dydz 两项走散度，dxdy 项补圆盘后作减法",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "先算 $4(z+1)\\mathrm{d}x\\mathrm{d}y$ 一项",
+              "transformedState": "补圆盘取上侧：$\\iint_\\Sigma(外)+4\\pi=\\iiint_\\Omega4\\,\\mathrm{d}v=\\frac{8\\pi}{3}$，故 $\\iint_\\Sigma(外)=-\\frac{4\\pi}{3}$，按上侧为 $\\frac{4\\pi}{3}$",
+              "condition": "圆盘取上半球外侧（朝上），于是通量 $4\\pi$ 可直接代减。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "再看 $x\\cos^{2}(1+z)\\mathrm{d}y\\mathrm{d}z+y\\sin^{2}(1+z)\\mathrm{d}z\\mathrm{d}x$ 两项",
+              "transformedState": "圆盘上法向量竖直、$\\mathrm{d}y\\,\\mathrm{d}z$ 与 $\\mathrm{d}z\\,\\mathrm{d}x$ 为零，故按外法向 $=\\iiint_\\Omega(\\cos^{2}+\\sin^{2})\\mathrm{d}v=\\frac{2\\pi}{3}$；按上侧变号为 $-\\frac{2\\pi}{3}$",
+              "condition": "$\\cos^{2}(1+z)+\\sin^{2}(1+z)=1$，三重积分化为 $\\Omega$ 的体积。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "$\\frac{4\\pi}{3}$ 与 $-\\frac{2\\pi}{3}$ 相加",
+              "transformedState": "$I=\\frac{2\\pi}{3}$",
+              "condition": "两族分别按上侧定向计算，最后直接相加。"
+            }
+          ],
+          "reason": "把“投影能直算的 dxdy 项”和“散度能化简的 dydz 项”拆开处理，避免一次性讨论整个闭曲面的取向，结论仍是 $\\frac{2\\pi}{3}$。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-treat-upper-as-outward",
+          "summary": "把“上侧”当成下半球的外法向，忘记变号，误答 $-\\frac{2\\pi}{3}$",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "补圆盘取上侧，闭曲面通量 $5\\cdot\\frac{2\\pi}{3}=\\frac{10\\pi}{3}$",
+              "transformedState": "直接认定“题目给的上侧就是外法向”，于是取 $\\iint_\\Sigma=\\frac{10\\pi}{3}-4\\pi=-\\frac{2\\pi}{3}$ 作为答案",
+              "condition": "错误：下半球的外法向是下侧，上侧是内法向；题目要求的积分应是外法向结果的相反数。"
+            },
+            {
+              "scenarioId": "S.line_surface.gauss_theorem",
+              "methodId": "M.gauss_theorem",
+              "state": "误得 $-\\frac{2\\pi}{3}$",
+              "transformedState": "错答 $-\\frac{2\\pi}{3}$，真值 $\\frac{2\\pi}{3}$",
+              "condition": "定向错认导致整题符号相反。"
+            }
+          ],
+          "reason": "“下半球的上侧”与“下半球的外侧”正好相反，这是本题最隐蔽的符号陷阱，忽略它就会得到相反数。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：把内法向当成了外法向，缺少最后的变号。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "先用散度 $5$ 与体积 $\\frac{2\\pi}{3}$ 算闭曲面通量，再减补面 $4\\pi$，最后按“上侧是内法向”变号；三步缺一不可",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2013-10",
+        "trainingGoal": "掌握高斯公式在“开口半球面 + 非外法向”情形下的处理：识别下半球的上侧为内法向，算完外法向通量后整体变号",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2013 年高数下期末 第 10 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2013-10"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲面是单位下半球面 $z=-\\sqrt{1-x^{2}-y^{2}}$",
+          "题目指定取上侧（与下半球外法向相反）"
+        ],
+        "allowedVariations": [
+          "把半径改成 2",
+          "把 $4(z+1)$ 改成 $4(z+2)$",
+          "把取侧改成下侧并追问结果"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2013-10",
+          "text": "计算曲面积分 $I=\\iint_\\Sigma x\\cos^2(1+z)\\,dy\\,dz+y\\sin^2(1+z)\\,dz\\,dx+4(z+1)\\,dx\\,dy$，其中 $\\Sigma$ 是下半球面 $z=-\\sqrt{1-x^2-y^2}$ 的上侧.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "高斯公式",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2013-10",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "散度 $=\\cos^{2}(1+z)+\\sin^{2}(1+z)+4=5$。$\\Sigma$ 与圆盘 $\\Sigma_1:z=0,\\ x^{2}+y^{2}\\le1$ 围成下半球 $\\Omega:x^{2}+y^{2}+z^{2}\\le1,\\ z\\le0$，体积 $\\frac{2\\pi}{3}$。注意：下半球的外法向是**下侧**，题目给的是**上侧**，即 $\\Omega$ 的内法向。按外法向计算：$\\iint_\\Sigma(外)+\\iint_{\\Sigma_1}(上侧)=5\\cdot\\frac{2\\pi}{3}=\\frac{10\\pi}{3}$，而 $\\Sigma_1$ 取上侧时 $\\iint_{\\Sigma_1}4(z+1)\\mathrm{d}x\\mathrm{d}y=4\\pi$（圆盘外法向朝上），故 $\\iint_\\Sigma(外)=\\frac{10\\pi}{3}-4\\pi=-\\frac{2\\pi}{3}$，于是 $I=-\\iint_\\Sigma(外)=\\frac{2\\pi}{3}$。另法核验：dydz 两项按外法向 $=\\iiint_\\Omega(\\cos^{2}+\\sin^{2})\\mathrm{d}v=\\frac{2\\pi}{3}$（上侧变号后为 $-\\frac{2\\pi}{3}$）；dxdy 项按上侧 $=\\iint_D4\\big(1-\\sqrt{1-r^{2}}\\big)r\\,\\mathrm{d}r\\mathrm{d}\\theta=\\frac{4\\pi}{3}$；合计 $\\frac{4\\pi}{3}-\\frac{2\\pi}{3}=\\frac{2\\pi}{3}$，两法一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.supplementary_path",
+        "M.gauss_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.supplementary_path",
+        "M.gauss_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.gauss_theorem",
+          "methodId": "M.gauss_theorem"
+        },
+        {
+          "scenarioId": "S.line_surface.gauss_theorem",
+          "methodId": "M.supplementary_path"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.gauss_theorem",
+        "M.supplementary_path"
+      ],
+      "options": [
+        {
+          "id": "r-split-two-families",
+          "name": "拆成两族：dydz 两项走散度，dxdy 项补圆盘后作减法"
+        },
+        {
+          "id": "r-treat-upper-as-outward",
+          "name": "把“上侧”当成下半球的外法向，忘记变号，误答 $-\\frac{2\\pi}{3}$"
+        },
+        {
+          "id": "r-close-disk-outward",
+          "name": "补 $z=0$ 圆盘（取上侧）成闭曲面，按外法向算通量后变号"
+        }
+      ],
+      "questionKey": "0abc6de5a5a5e10b4fcff965c19035a8a94defdb72fd874154611e128dcd68fc",
+      "faceKey": "676683488e8126642da43f2c7be860284ebae0a8078c7fa159ef4801ea3964b1"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.line_surface.green_theorem",
+      "question": "计算曲线积分 $\\int_L e^x[\\cos y\\,\\mathrm{d}x+(y-\\sin y)\\,\\mathrm{d}y]$，其中 $L$ 是 $y=\\sin x$ 从 $A(0,0)$ 到点 $B(\\pi,0)$ 的弧段.",
+      "solution": "记 $P=e^{x}\\cos y$、$Q=e^{x}(y-\\sin y)$，$\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}=e^{x}(y-\\sin y)+e^{x}\\sin y=e^{x}y$。补线段 $BA$（沿 $y=0$ 从 $x=\\pi$ 到 $0$），$L+BA$ 围成 $D=\\{0\\le x\\le\\pi,\\ 0\\le y\\le\\sin x\\}$ 且为顺时针（负向），故 $\\int_L+\\int_{BA}=-\\iint_De^{x}y\\,\\mathrm{d}x\\mathrm{d}y$。而 $\\iint_De^{x}y\\,\\mathrm{d}x\\mathrm{d}y=\\int_0^{\\pi}\\frac{e^{x}\\sin^{2}x}{2}\\mathrm{d}x=\\frac{e^{\\pi}-1}{5}$，$\\int_{BA}e^{x}\\mathrm{d}x=1-e^{\\pi}$。故 $\\int_L=-\\frac{e^{\\pi}-1}{5}-(1-e^{\\pi})=\\frac45(e^{\\pi}-1)$。",
+      "routes": [
+        {
+          "id": "r-supplement-segment",
+          "summary": "补 $x$ 轴线段 $BA$ 成顺时针闭路，用格林公式后减去补线段的积分",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "$L:y=\\sin x$ 从 $A(0,0)$ 到 $B(\\pi,0)$，不封闭",
+              "transformedState": "补线段 $BA$（$y=0$，$x:\\pi\\to0$），$L+BA$ 围成 $D=\\{0\\le x\\le\\pi,0\\le y\\le\\sin x\\}$，走向为顺时针",
+              "condition": "顺时针即负向，格林公式右端要取负号。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "$\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}=e^{x}y$",
+              "transformedState": "$\\iint_D e^{x}y\\,\\mathrm{d}x\\mathrm{d}y=\\int_0^{\\pi}e^{x}\\frac{\\sin^{2}x}{2}\\mathrm{d}x=\\frac{e^{\\pi}-1}{5}$，故 $\\int_L+\\int_{BA}=-\\frac{e^{\\pi}-1}{5}$",
+              "condition": "负号来自顺时针；被积函数 $e^{x}\\sin^{2}x$ 用 $\\sin^{2}x=\\frac{1-\\cos2x}{2}$ 拆分积分。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "补线段上 $y=0$，$\\mathrm{d}y=0$",
+              "transformedState": "$\\int_{BA}=\\int_{\\pi}^{0}e^{x}\\mathrm{d}x=1-e^{\\pi}$",
+              "condition": "线段方向由 $B$ 到 $A$，积分下限大于上限。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "$\\int_L=-\\frac{e^{\\pi}-1}{5}-(1-e^{\\pi})$",
+              "transformedState": "$\\int_L=\\frac45(e^{\\pi}-1)$",
+              "condition": "减法后两个 $e^{\\pi}-1$ 合并，系数 $1-\\frac15=\\frac45$。"
+            }
+          ],
+          "reason": "补线后只需算一个二重积分与一条线段的定积分，$\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}=e^{x}y$ 又恰好可分离变量，计算最省。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下（$L$ 为 $y=\\sin x$ 的一段拱）进行。"
+        },
+        {
+          "id": "r-total-differential-split",
+          "summary": "先把 $e^{x}\\cos y\\,\\mathrm{d}x-e^{x}\\sin y\\,\\mathrm{d}y$ 认成全微分，剩下的 $e^{x}y\\,\\mathrm{d}y$ 再补线用格林",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "被积式改写为 $\\mathrm{d}(e^{x}\\cos y)+e^{x}y\\,\\mathrm{d}y$",
+              "transformedState": "$\\int_L\\mathrm{d}(e^{x}\\cos y)=\\big[e^{x}\\cos y\\big]_{(0,0)}^{(\\pi,0)}=e^{\\pi}-1$",
+              "condition": "$\\mathrm{d}(e^{x}\\cos y)=e^{x}\\cos y\\,\\mathrm{d}x-e^{x}\\sin y\\,\\mathrm{d}y$，全微分部分只与端点有关。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "还剩 $\\int_L e^{x}y\\,\\mathrm{d}y$",
+              "transformedState": "补 $BA$ 成顺时针闭路：$\\oint e^{x}y\\,\\mathrm{d}y=-\\iint_D\\frac{\\partial}{\\partial x}(e^{x}y)\\mathrm{d}x\\mathrm{d}y=-\\frac{e^{\\pi}-1}{5}$",
+              "condition": "顺时针取负；$\\frac{\\partial}{\\partial x}(e^{x}y)=e^{x}y$，与主路线同一个二重积分。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.supplementary_path",
+              "state": "补线段 $BA$ 上 $y=0$，$\\mathrm{d}y=0$",
+              "transformedState": "$\\int_{BA}e^{x}y\\,\\mathrm{d}y=0$，故 $\\int_Le^{x}y\\,\\mathrm{d}y=-\\frac{e^{\\pi}-1}{5}$",
+              "condition": "$y\\equiv0$ 时 $\\mathrm{d}y=0$，补线贡献为零。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "$(e^{\\pi}-1)$ 与 $-\\frac{e^{\\pi}-1}{5}$",
+              "transformedState": "$\\int_L=(e^{\\pi}-1)-\\frac{e^{\\pi}-1}{5}=\\frac45(e^{\\pi}-1)$",
+              "condition": "两部分都只依赖端点，相加即可。"
+            }
+          ],
+          "reason": "先识别出全微分部分，直接得到 $e^{\\pi}-1$，剩下的小项才需要补线，避免把整题都塞进一个二重积分里。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-green-on-open-arc",
+          "summary": "不补线，直接对不封闭的 $L$ 套格林公式，误答 $\\frac{e^{\\pi}-1}{5}$",
+          "steps": [
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "$L:y=\\sin x$ 从 $A$ 到 $B$，与 $x$ 轴围出区域 $D$",
+              "transformedState": "直接写 $\\int_L=\\iint_D e^{x}y\\,\\mathrm{d}x\\mathrm{d}y=\\frac{e^{\\pi}-1}{5}$，既不补线也不讨论方向",
+              "condition": "错误：$L$ 只是 $D$ 的部分边界，单独一条弧不构成闭曲线，格林公式不成立；且沿 $L$ 的方向使 $D$ 在其右侧，属负向。"
+            },
+            {
+              "scenarioId": "S.line_surface.green_theorem",
+              "methodId": "M.green_theorem",
+              "state": "误得 $\\frac{e^{\\pi}-1}{5}$",
+              "transformedState": "错答 $\\frac{e^{\\pi}-1}{5}$，真值 $\\frac45(e^{\\pi}-1)$",
+              "condition": "漏掉补线段的 $-\\int_{BA}=e^{\\pi}-1$，结果比真值少了整整 $e^{\\pi}-1$。"
+            }
+          ],
+          "reason": "格林公式只适用于封闭曲线；把开放弧当成封闭边界，且忽略补线段贡献，是本题最典型的两处错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "失效点在第 1 步：对不封闭的曲线直接使用格林公式。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "必须补 $x$ 轴线段成闭路，且闭路为顺时针要取负；补线段上的积分不能漏",
+      "metadata": {
+        "motherId": "candidate.bankadv34.xjtu-2012-9",
+        "trainingGoal": "掌握格林公式的补线技巧与方向判断：补 $x$ 轴线段成闭路、按顺时针取负、再减去补线段积分",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2012 年高数下期末 一、计算题第 9 题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2012-9"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲线 $L$ 为 $y=\\sin x$ 上从 $A(0,0)$ 到 $B(\\pi,0)$ 的弧段",
+          "被积式中 $e^{x}$ 为公因子"
+        ],
+        "allowedVariations": [
+          "把正弦曲线改为 $y=\\sin 2x$ 其一段",
+          "把终点改到 $(2\\pi,0)$",
+          "把 $e^{x}$ 换成 $e^{2x}$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2012-9",
+          "text": "计算曲线积分 $\\int_L e^x[\\cos y\\,dx+(y-\\sin y)dy]$，其中 $L$ 是 $y=\\sin x$ 从 $A(0,0)$ 到点 $B(\\pi,0)$ 的弧段.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "曲线积分与曲面积分",
+          "difficulty": "中",
+          "method": "格林公式（封闭曲线）",
+          "notes": "高等数学 bankadv34；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv34",
+        "originalId": "xjtu-2012-9",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "记 $P=e^{x}\\cos y$、$Q=e^{x}(y-\\sin y)$，则 $\\frac{\\partial Q}{\\partial x}=e^{x}(y-\\sin y)$、$\\frac{\\partial P}{\\partial y}=-e^{x}\\sin y$，差为 $e^{x}y$。补线段 $BA$（$y=0$，$x$ 由 $\\pi$ 到 $0$），$L+BA$ 为**顺时针**闭路，故 $\\oint=\\iint_D\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}\\mathrm{d}x\\mathrm{d}y$ 要取负：$\\iint_D e^{x}y\\,\\mathrm{d}x\\mathrm{d}y=\\int_0^{\\pi}e^{x}\\frac{\\sin^{2}x}{2}\\mathrm{d}x=\\frac12\\Big[\\frac{e^{x}-1}{2}-\\frac{e^{x}-1}{10}\\Big]_0^{\\pi}=\\frac{e^{\\pi}-1}{5}$，故 $\\oint=-\\frac{e^{\\pi}-1}{5}$。又 $\\int_{BA}e^{x}\\mathrm{d}x=1-e^{\\pi}=-(e^{\\pi}-1)$，于是 $\\int_L=\\oint-\\int_{BA}=\\frac{4}{5}(e^{\\pi}-1)$。数值抽查：被积函数在 $x=0,0.5,1,1.5,2,2.5,3$ 处约为 $1,1.49,1.96,2.49,4.16,9.72,19.88$，Simpson 估算约 $17.7$，与 $\\frac45\\times22.14\\approx17.71$ 相符。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.supplementary_path",
+        "M.green_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.supplementary_path",
+        "M.green_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.line_surface.green_theorem",
+          "methodId": "M.green_theorem"
+        },
+        {
+          "scenarioId": "S.line_surface.green_theorem",
+          "methodId": "M.supplementary_path"
+        },
+        {
+          "scenarioId": "S.line_surface.green_theorem",
+          "methodId": "M.polar_transform"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.green_theorem",
+        "M.supplementary_path",
+        "M.polar_transform"
+      ],
+      "options": [
+        {
+          "id": "r-supplement-segment",
+          "name": "补 $x$ 轴线段 $BA$ 成顺时针闭路，用格林公式后减去补线段的积分"
+        },
+        {
+          "id": "r-total-differential-split",
+          "name": "先把 $e^{x}\\cos y\\,\\mathrm{d}x-e^{x}\\sin y\\,\\mathrm{d}y$ 认成全微分，剩下的 $e^{x}y\\,\\mathrm{d}y$ 再补线用格林"
+        },
+        {
+          "id": "r-green-on-open-arc",
+          "name": "不补线，直接对不封闭的 $L$ 套格林公式，误答 $\\frac{e^{\\pi}-1}{5}$"
+        }
+      ],
+      "questionKey": "2d9aeb1c6a957aa36e4c3425a33b57f6991e08c9a759a103ac800eeb6782b5a6",
+      "faceKey": "4c0963b4be7ccfc274c909a45c537e5074c41becaccc6dad8ee954481d594a30"
+    }
+  ]
+}

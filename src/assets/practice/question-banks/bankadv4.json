@@ -1,0 +1,3263 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv4",
+  "sourceSha256": "42e1f57669a533f40b26adabdbfaa3ecfdc4f25c47c7d6ea0cac7b3e79f8f406",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.binary_limit",
+      "question": "求二元函数的极限 $\\lim\\limits_{\\substack{x\\to 0\\\\ y\\to 1}}\\dfrac{\\sin xy}{x}=$（　）。",
+      "solution": "$\\frac{\\sin xy}{x}=y\\cdot\\frac{\\sin xy}{xy}$；由于 $(x,y)\\to(0,1)$ 时 $xy\\to0$，$\\frac{\\sin xy}{xy}\\to1$，且 $y\\to1$，所以原极限 $=1$。",
+      "routes": [
+        {
+          "id": "r-factor-squeeze",
+          "summary": "拆出有界因子 $y$，用 $\\sin t/t\\to1$ 与夹逼保证各路径一致",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.binary_limit",
+              "methodId": "M.inequality_scaling",
+              "state": "把 $\\frac{\\sin xy}{x}$ 写成 $y\\cdot\\frac{\\sin xy}{xy}$",
+              "transformedState": "$\\left|\\frac{\\sin xy}{xy}-1\\right|\\le|xy|$（$0<|xy|<1$），且 $|y|$ 在 $1$ 附近有界",
+              "condition": "$y$ 在 $1$ 的邻域内，$xy\\to0$，且 $\\sin t=t+o(t)$。"
+            },
+            {
+              "scenarioId": "S.multivar.binary_limit",
+              "methodId": "M.squeeze_theorem",
+              "state": "估计 $\\left|\\frac{\\sin xy}{x}-y\\right|\\le|y|\\cdot|xy|$",
+              "transformedState": "上界趋于 $0$，故 $\\frac{\\sin xy}{x}\\to y$，再令 $y\\to1$ 得极限 $1$",
+              "condition": "$x\\to0,\\ y\\to1$，上界与路径无关。"
+            }
+          ],
+          "reason": "把二重极限拆成有界因子与标准极限，再用夹逼说明该估计对所有路径一致，是最稳妥的写法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-polar",
+          "summary": "以 $(0,1)$ 为中心作极坐标代换，逐方向求标准极限",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.binary_limit",
+              "methodId": "M.polar_transform",
+              "state": "令 $x=r\\cos\\theta$、$y=1+r\\sin\\theta$，$r\\to0$",
+              "transformedState": "$\\frac{\\sin[r\\cos\\theta(1+r\\sin\\theta)]}{r\\cos\\theta}=(1+r\\sin\\theta)\\cdot\\frac{\\sin[r\\cos\\theta(1+r\\sin\\theta)]}{r\\cos\\theta(1+r\\sin\\theta)}$",
+              "condition": "取 $\\cos\\theta\\neq0$ 的射线（分母 $x\\neq0$），$r\\to0$。"
+            },
+            {
+              "scenarioId": "S.multivar.binary_limit",
+              "methodId": "M.squeeze_theorem",
+              "state": "内层变量 $r\\cos\\theta(1+r\\sin\\theta)\\to0$，且 $1+r\\sin\\theta\\to1$",
+              "transformedState": "由 $\\frac{\\sin t}{t}\\to1$ 得整体 $\\to1$，且该估计对 $\\theta$ 一致",
+              "condition": "需要证明关于 $\\theta$ 一致，不能只逐条射线取极限。"
+            }
+          ],
+          "reason": "极坐标把趋近方式显式参数化，再利用一致估计收尾，与因子分解路线起点不同但结论相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-single-path",
+          "summary": "只沿 $y=1$ 一条路径化为一元极限就判定二重极限",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.binary_limit",
+              "methodId": "M.path_approach",
+              "state": "取路径 $y=1$，原式化为 $\\frac{\\sin x}{x}$",
+              "transformedState": "$\\frac{\\sin x}{x}\\to1$，据此直接断定二重极限为 $1$",
+              "condition": "错：单条路径极限存在不能保证二重极限存在，必须证明所有路径趋于同一值。"
+            }
+          ],
+          "reason": "沿一条路径得到的只是累次极限的一个特例，不能作为二重极限存在的依据。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：以单条路径代替全部路径。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "优先把 $\\frac{\\sin xy}{x}$ 化为 $y\\cdot\\frac{\\sin xy}{xy}$；只沿单条路径求极限不能判定二重极限存在",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2023-8",
+        "trainingGoal": "识别分母无定义时的二重极限结构，用因子分解与标准极限求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2023 年工科数学分析试题 二、填空题第8题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2023-8"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "极限过程是 $(x,y)\\to(0,1)$",
+          "分母 $x\\neq0$，标准极限 $\\frac{\\sin t}{t}\\to1$"
+        ],
+        "allowedVariations": [
+          "把 $\\sin xy$ 换成 $1-\\cos(xy)$",
+          "把趋近点改为 $(0,0)$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2023-8",
+          "text": "求二元函数的极限 $\\lim\\limits_{\\substack{x\\to 0\\\\ y\\to 1}}\\dfrac{\\sin xy}{x}=$ ____。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "二元函数极限",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2023-8",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$\\frac{\\sin xy}{x}=y\\cdot\\frac{\\sin xy}{xy}$，当 $(x,y)\\to(0,1)$ 时 $xy\\to0$，$\\frac{\\sin xy}{xy}\\to1$，又 $y\\to1$，故原极限为 $1$。两条路径与极坐标交叉验证结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inequality_scaling",
+        "M.squeeze_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.inequality_scaling",
+        "M.squeeze_theorem",
+        "M.polar_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.binary_limit",
+          "methodId": "M.path_approach"
+        },
+        {
+          "scenarioId": "S.multivar.binary_limit",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multivar.binary_limit",
+          "methodId": "M.squeeze_theorem"
+        },
+        {
+          "scenarioId": "S.multivar.binary_limit",
+          "methodId": "M.inequality_scaling"
+        },
+        {
+          "scenarioId": "S.multivar.binary_limit",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.multivar.binary_limit",
+          "methodId": "M.continuity_rules"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.path_approach",
+        "M.polar_transform",
+        "M.squeeze_theorem",
+        "M.inequality_scaling",
+        "M.lhopital",
+        "M.continuity_rules"
+      ],
+      "options": [
+        {
+          "id": "r-polar",
+          "name": "以 $(0,1)$ 为中心作极坐标代换，逐方向求标准极限"
+        },
+        {
+          "id": "r-single-path",
+          "name": "只沿 $y=1$ 一条路径化为一元极限就判定二重极限"
+        },
+        {
+          "id": "r-factor-squeeze",
+          "name": "拆出有界因子 $y$，用 $\\sin t/t\\to1$ 与夹逼保证各路径一致"
+        }
+      ],
+      "questionKey": "732ff6e1068a3e2b8cd83892e48b71259dd3942e0e58e312574ad0252b88a865",
+      "faceKey": "27c01ca7b60a5df5017535d4dfcd8164588163eb2a6094e9df74b482e4e10d69"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.continuity",
+      "question": "设函数 $f(x,y)=\\begin{cases}\\dfrac{5x^2y}{x^4+y^2}, & x^2+y^2\\neq 0,\\\\ 0, & x^2+y^2=0,\\end{cases}$ 则 $f(x,y)$ 在点 $(0,0)$ 处（　）。A. 连续，偏导数存在；B. 连续，偏导数不存在；C. 不连续，偏导数存在；D. 不连续，偏导数不存在。",
+      "solution": "沿 $y=0$：$f(x,0)=0\\to0$；沿 $y=x^2$：$f(x,x^2)=\\frac{5x^4}{x^4+x^4}=\\frac52$。极限随路径改变，故在 $(0,0)$ 不连续。又 $f_x(0,0)=\\lim_{h\\to0}\\frac{f(h,0)-f(0,0)}{h}=0$，$f_y(0,0)=\\lim_{k\\to0}\\frac{f(0,k)-f(0,0)}{k}=0$，偏导数存在。选 C。",
+      "routes": [
+        {
+          "id": "r-two-paths",
+          "summary": "取两条特殊路径 $y=0$ 与 $y=x^2$ 否定连续性，再用偏导定义算偏导",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.continuity",
+              "methodId": "M.path_approach",
+              "state": "沿 $y=0$ 与 $y=x^2$ 两条路径趋于原点",
+              "transformedState": "$\\lim_{(x,0)\\to(0,0)}f=0$，$\\lim_{(x,x^2)\\to(0,0)}f=\\frac52$，极限不存在，故不连续",
+              "condition": "两条路径都在定义域内且趋于 $(0,0)$，函数值分别取到不同极限。"
+            },
+            {
+              "scenarioId": "S.multivar.partial_derivative",
+              "methodId": "M.def_partial_derivative",
+              "state": "在分界点按定义求 $f_x(0,0)$、$f_y(0,0)$",
+              "transformedState": "$f_x(0,0)=\\lim_{h\\to0}\\frac{0-0}{h}=0$，$f_y(0,0)=\\lim_{k\\to0}\\frac{0-0}{k}=0$，偏导数存在",
+              "condition": "分段函数在分界点必须用定义，不能直接套求导公式。"
+            }
+          ],
+          "reason": "路径法否定连续性，偏导定义确认偏导数存在，两者合起来对应选项 C。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-parabola-family",
+          "summary": "沿抛物线族 $y=kx^2$ 扫一遍，检验极限是否随 $k$ 变化",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.continuity",
+              "methodId": "M.path_approach",
+              "state": "沿 $y=kx^2$（$k\\neq0$）趋于原点",
+              "transformedState": "$f(x,kx^2)=\\frac{5kx^4}{x^4+k^2x^4}=\\frac{5k}{1+k^2}$，随 $k$ 变化，故二重极限不存在",
+              "condition": "取 $k=0$ 与 $k=1$ 分别得 $0$ 与 $\\frac52$，已足够说明不连续。"
+            },
+            {
+              "scenarioId": "S.multivar.partial_derivative",
+              "methodId": "M.def_partial_derivative",
+              "state": "偏导数定义",
+              "transformedState": "同法得 $f_x(0,0)=f_y(0,0)=0$，偏导数存在",
+              "condition": "分界点处用定义法。"
+            }
+          ],
+          "reason": "用连续变化的参数族直接看出极限依赖路径，比只取两条特定路径更能说明问题。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-polar-fixed-theta",
+          "summary": "极坐标只固定 $\\theta$ 就断言极限为 $0$",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.continuity",
+              "methodId": "M.polar_transform",
+              "state": "令 $x=r\\cos\\theta$、$y=r\\sin\\theta$，固定 $\\theta$ 取 $r\\to0$",
+              "transformedState": "对每个固定 $\\theta$ 得 $f\\to0$，误判极限为 $0$、函数连续",
+              "condition": "错：固定 $\\theta$ 逐条射线趋于 $0$ 不足以保证二重极限存在；沿 $\\theta\\to\\pi/2$ 的抛物线 $y=x^2$ 实际给出 $\\frac52$。"
+            }
+          ],
+          "reason": "极坐标必须证明关于 $\\theta$ 一致，只算每条射线的极限会漏掉以曲线方式逼近的路径。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：只固定 $\\theta$ 取极限。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "判断连续性优先用两条不同路径或抛物线族；判断分界点偏导数必须回到定义",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2024-1",
+        "trainingGoal": "判断分段二元函数在原点的连续性与偏导数存在性",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2024 高数下期末试题 一、单选题第1题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2024-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "分界点是 $(0,0)$，且 $f(0,0)=0$",
+          "分子 $5x^2y$，分母 $x^4+y^2$"
+        ],
+        "allowedVariations": [
+          "改变分子系数",
+          "把抛物线路径换成 $y=kx^2$ 族"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2024-1",
+          "text": "设函数 $f(x,y)=\\begin{cases}\\dfrac{5x^2y}{x^4+y^2}, & x^2+y^2\\neq 0,\\\\ 0, & x^2+y^2=0,\\end{cases}$ 则 $f(x,y)$ 在点 $(0,0)$ 处（　）。A. 连续，偏导数存在；B. 连续，偏导数不存在；C. 不连续，偏导数存在；D. 不连续，偏导数不存在。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "二元函数连续性",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2024-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：沿 $y=0$ 得 $f\\to0$，沿 $y=x^2$ 得 $f=\\frac{5x^4}{2x^4}=\\frac52$，两条路径极限不同，故在原点不连续；由定义 $f_x(0,0)=\\lim_{h\\to0}\\frac{f(h,0)-0}{h}=0$，同理 $f_y(0,0)=0$，两个偏导数都存在。故选 C。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.path_approach",
+        "M.def_partial_derivative"
+      ],
+      "applicableMethodIds": [
+        "M.path_approach",
+        "M.def_partial_derivative"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.continuity",
+          "methodId": "M.path_approach"
+        },
+        {
+          "scenarioId": "S.multivar.continuity",
+          "methodId": "M.polar_transform"
+        },
+        {
+          "scenarioId": "S.multivar.continuity",
+          "methodId": "M.continuity_rules"
+        },
+        {
+          "scenarioId": "S.multivar.partial_derivative",
+          "methodId": "M.partial_derivative_direct"
+        },
+        {
+          "scenarioId": "S.multivar.partial_derivative",
+          "methodId": "M.def_partial_derivative"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.path_approach",
+        "M.polar_transform",
+        "M.continuity_rules",
+        "M.partial_derivative_direct",
+        "M.def_partial_derivative"
+      ],
+      "options": [
+        {
+          "id": "r-two-paths",
+          "name": "取两条特殊路径 $y=0$ 与 $y=x^2$ 否定连续性，再用偏导定义算偏导"
+        },
+        {
+          "id": "r-parabola-family",
+          "name": "沿抛物线族 $y=kx^2$ 扫一遍，检验极限是否随 $k$ 变化"
+        },
+        {
+          "id": "r-polar-fixed-theta",
+          "name": "极坐标只固定 $\\theta$ 就断言极限为 $0$"
+        }
+      ],
+      "questionKey": "241504c3dc648ad6dc82ab3b69e8920fe4357394d90dbd79b8f95eb571a49406",
+      "faceKey": "f9ea6408c0b878b7c23a6a43b697e84415d859d08e7b0831d44d1a734605a544"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.closed_region_extremum",
+      "question": "求函数 $f(x,y)=x^{2}+2y^{2}-x^{2}y^{2}$ 在区域 $D=\\{(x,y)\\mid x^{2}+y^{2}\\le 4,\\ y\\ge 0\\}$ 上的最大值与最小值。",
+      "solution": "内部：$f_x=2x(1-y^2)$、$f_y=2y(2-x^2)$，令其为零得 $(0,0)$ 与 $(\\pm\\sqrt2,1)$，值 $0$、$2$。边界 $y=0$：$f=x^2$，$-2\\le x\\le2$，值域 $[0,4]$。半圆 $x^2+y^2=4$：取 $x=2\\cos\\theta,y=2\\sin\\theta$，$s=\\sin^2\\theta$，$f=16s^2-12s+4$，$s\\in[0,1]$，最小 $7/4$、最大 $8$。比较得最大值 $8$（在 $(0,2)$），最小值 $0$（在 $(0,0)$）。",
+      "routes": [
+        {
+          "id": "r-interior-then-boundary",
+          "summary": "按闭域最值框架先求内部驻点并判别，再分段处理直线边界与半圆边界",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.boundary_comparison",
+              "state": "先按有界闭域框架分内部与边界两类候选；解 $f_x=2x(1-y^2)=0$、$f_y=2y(2-x^2)=0$",
+              "transformedState": "D 内驻点 $(0,0)$、$(\\pm\\sqrt2,1)$，函数值 $0$、$2$",
+              "condition": "由 $y\\ge0$ 舍去 $y=-1$，$(\\pm\\sqrt2,1)$ 满足 $x^2+y^2=3\\le4$。"
+            },
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "$A=2-2y^2$、$B=-4xy$、$C=4-2x^2$",
+              "transformedState": "$(0,0)$：$AC-B^2=8>0,A>0$，局部极小 $0$；$(\\pm\\sqrt2,1)$：$AC-B^2=-32<0$，非极值",
+              "condition": "二阶判别只用于内部候选点。"
+            },
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.lagrange_multiplier",
+              "state": "半圆边界 $x^2+y^2=4$，令 $L=f+\\lambda(x^2+y^2-4)$",
+              "transformedState": "得 $(0,2)$ 值 $8$；$x^2=5/2,y^2=3/2$ 值 $7/4$；端点 $(\\pm2,0)$ 值 $4$",
+              "condition": "$y\\ge0$，端点单独计入。"
+            },
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.boundary_comparison",
+              "state": "直线边界 $y=0$：$f=x^2$（$-2\\le x\\le2$），并汇总全部候选值",
+              "transformedState": "$y=0$ 上值域 $[0,4]$；候选值 $\\{0,2,4,7/4,8\\}$，最大 $8$ 于 $(0,2)$，最小 $0$ 于 $(0,0)$",
+              "condition": "比较全部候选值。"
+            }
+          ],
+          "reason": "先内部后边界是闭域最值的标准流程，内部用二阶判别、曲线边界用乘数法，最后统一比较。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-boundary-first",
+          "summary": "先用拉格朗日乘数法处理半圆边界，再回过来求内部驻点并比较",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.lagrange_multiplier",
+              "state": "先处理半圆边界 $x^2+y^2=4$，令 $L=x^2+2y^2-x^2y^2+\\lambda(x^2+y^2-4)$",
+              "transformedState": "解 $2x(1-y^2+\\lambda)=0$、$2y(2-x^2+\\lambda)=0$：$(0,2)$ 值 $8$，$(\\pm\\sqrt{5/2},\\sqrt{3/2})$ 值 $7/4$，端点 $(\\pm2,0)$ 值 $4$",
+              "condition": "$y\\ge0$，端点单独比较。"
+            },
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "再求内部驻点并判别",
+              "transformedState": "$(0,0)$ 值 $0$（局部极小），$(\\pm\\sqrt2,1)$ 为鞍点，值 $2$",
+              "condition": "内部候选值同样要纳入比较。"
+            },
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.boundary_comparison",
+              "state": "直线边界 $y=0$：$f=x^2$，$-2\\le x\\le2$",
+              "transformedState": "值域 $[0,4]$",
+              "condition": "端点 $(\\pm2,0)$ 已与半圆端点重合。"
+            },
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.boundary_comparison",
+              "state": "汇总内部与两段边界的候选值",
+              "transformedState": "最大 $8$ 于 $(0,2)$，最小 $0$ 于 $(0,0)$",
+              "condition": "全部候选值统一比较。"
+            }
+          ],
+          "reason": "先边界后内部同样可行，边界用乘数法系统求出所有驻点与端点值，再与内部比较。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-interior-only",
+          "summary": "只解内部驻点就报出最大值与最小值",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.closed_region_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "只解内部方程 $f_x=f_y=0$",
+              "transformedState": "得 $(0,0)$ 值 $0$、$(\\pm\\sqrt2,1)$ 值 $2$，直接报最大值 $2$、最小值 $0$",
+              "condition": "错：有界闭域最值还必须检查 $y=0$ 与半圆边界，边界 $(0,2)$ 处函数值可达 $8$。"
+            }
+          ],
+          "reason": "把闭域最值当成无条件极值，漏掉了边界上更大的函数值。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：忽略闭域边界。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "有界闭域最值必须同时比较内部驻点、直线边界和曲线边界上的全部候选值",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2020-js2",
+        "trainingGoal": "掌握有界闭域最值的完整候选点法：内部驻点、直线边界与曲线边界",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2020 年高数下期末考试试题 三、计算题第2题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2020-js2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区域 $D$ 由 $x^2+y^2\\le4$ 与 $y\\ge0$ 围成",
+          "函数连续，最值必在内部驻点或边界取得"
+        ],
+        "allowedVariations": [
+          "把圆盘半径改为 3",
+          "把边界 $y\\ge0$ 改为 $x\\ge0$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2020-js2",
+          "text": "求函数 $f(x,y)=x^{2}+2y^{2}-x^{2}y^{2}$ 在区域 $D=\\{(x,y)\\mid x^{2}+y^{2}\\le 4,\\ y\\ge 0\\}$ 上的最大值与最小值。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "有界闭域上的最值",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2020-js2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：内部 $f_x=2x(1-y^2)=0$、$f_y=2y(2-x^2)=0$，在 $D$ 内得 $(0,0)$ 与 $(\\pm\\sqrt2,1)$，函数值 $0$ 与 $2$。边界 $y=0$：$f=x^2\\in[0,4]$。半圆 $x^2+y^2=4$：令 $s=\\sin^2\\theta$，$f=16s^2-12s+4$，$s\\in[0,1]$，最小 $7/4$（$s=3/8$），最大 $8$（$s=1$）。比较全部候选值得最大值 $8$（在 $(0,2)$），最小值 $0$（在 $(0,0)$）。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.boundary_comparison",
+        "M.extremum_second_test",
+        "M.lagrange_multiplier"
+      ],
+      "applicableMethodIds": [
+        "M.boundary_comparison",
+        "M.extremum_second_test",
+        "M.lagrange_multiplier"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.closed_region_extremum",
+          "methodId": "M.boundary_comparison"
+        },
+        {
+          "scenarioId": "S.multivar.closed_region_extremum",
+          "methodId": "M.extremum_second_test"
+        },
+        {
+          "scenarioId": "S.multivar.closed_region_extremum",
+          "methodId": "M.lagrange_multiplier"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.boundary_comparison",
+        "M.extremum_second_test",
+        "M.lagrange_multiplier"
+      ],
+      "options": [
+        {
+          "id": "r-boundary-first",
+          "name": "先用拉格朗日乘数法处理半圆边界，再回过来求内部驻点并比较"
+        },
+        {
+          "id": "r-interior-only",
+          "name": "只解内部驻点就报出最大值与最小值"
+        },
+        {
+          "id": "r-interior-then-boundary",
+          "name": "按闭域最值框架先求内部驻点并判别，再分段处理直线边界与半圆边界"
+        }
+      ],
+      "questionKey": "d35940b56fedbefcd0dd30d59c2adc2b9cd7099a0c8153d0b0697b28db95cc59",
+      "faceKey": "06e021d82d7bae6bf921d3bdd5537a4a126cc9a4c6085375f44be25f1a1beb61"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.implicit_derivative",
+      "question": "设 $y=f(x,t)$，而 $t$ 是由方程 $F(x,y,t)=0$ 所确定的 $x,y$ 的函数，其中 $f,F$ 都具有一阶连续偏导数，求 $\\frac{dy}{dx}$。",
+      "solution": "对 $y=f(x,t)$ 求导：$\\frac{dy}{dx}=f_x+f_t\\frac{dt}{dx}$；对 $F(x,y,t)=0$ 求导：$F_x+F_y\\frac{dy}{dx}+F_t\\frac{dt}{dx}=0$。联立消去 $\\frac{dt}{dx}$，得 $\\frac{dy}{dx}=\\frac{f_xF_t-f_tF_x}{F_t+f_tF_y}$（要求 $F_t+f_tF_y\\neq0$）。",
+      "routes": [
+        {
+          "id": "r-chain-eliminate",
+          "summary": "对两个方程同时链式求导，联立消去 $\\frac{dt}{dx}$",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.implicit_derivative",
+              "methodId": "M.implicit_multivar",
+              "state": "把 $y$、$t$ 都视为 $x$ 的函数，对 $y=f(x,t)$ 与 $F(x,y,t)=0$ 分别求导",
+              "transformedState": "$\\frac{dy}{dx}=f_x+f_t\\frac{dt}{dx}$，$F_x+F_y\\frac{dy}{dx}+F_t\\frac{dt}{dx}=0$",
+              "condition": "$f,F$ 一阶连续偏导，$F_t+f_tF_y\\neq0$ 保证可解。"
+            },
+            {
+              "scenarioId": "S.multivar.implicit_derivative",
+              "methodId": "M.implicit_multivar",
+              "state": "把两式联立消去 $\\frac{dt}{dx}$",
+              "transformedState": "$\\frac{dy}{dx}=\\frac{f_xF_t-f_tF_x}{F_t+f_tF_y}$",
+              "condition": "分母 $F_t+f_tF_y\\neq0$。"
+            }
+          ],
+          "reason": "两个关系式都含有 $\\frac{dt}{dx}$，联立消元是最直接的隐函数求导写法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-total-differential",
+          "summary": "对两个关系式分别取全微分，再整理出 $dy$ 与 $dx$ 的比",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.implicit_derivative",
+              "methodId": "M.total_differential",
+              "state": "对 $y=f(x,t)$ 取全微分",
+              "transformedState": "$dy=f_x\\,dx+f_t\\,dt$",
+              "condition": "全微分形式不变性。"
+            },
+            {
+              "scenarioId": "S.multivar.implicit_derivative",
+              "methodId": "M.total_differential",
+              "state": "对 $F(x,y,t)=0$ 取全微分并消去 $dt$",
+              "transformedState": "$F_x\\,dx+F_y\\,dy+F_t\\,dt=0$，代入得 $dy=\\frac{f_xF_t-f_tF_x}{F_t+f_tF_y}\\,dx$",
+              "condition": "$F_t+f_tF_y\\neq0$。"
+            }
+          ],
+          "reason": "全微分一次给出所有变量的微分关系，避免显式解出 $\\frac{dt}{dx}$，与链式路线思路不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-drop-t",
+          "summary": "把 $t$ 当作与 $x$ 无关的常数，直接用一元隐函数公式",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.implicit_derivative",
+              "methodId": "M.implicit_multivar",
+              "state": "在 $F(x,y,t)=0$ 中把 $t$ 视为常数，按一元隐函数公式求 $\\frac{dy}{dx}$",
+              "transformedState": "得 $\\frac{dy}{dx}=-\\frac{F_x}{F_y}$，漏掉 $F_t\\frac{dt}{dx}$ 与 $f_t\\frac{dt}{dx}$ 两项",
+              "condition": "错：$t$ 随 $x$ 变化，必须链式求导并保留 $F_t$、$f_t$ 项。"
+            }
+          ],
+          "reason": "把三元方程降为二元处理，丢掉了 $t$ 随 $x$ 变化产生的项。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把 $t$ 当常数。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "t"
+      ],
+      "comparisonCriterion": "核心是同时保留 $f_t$ 与 $F_t$ 关于 $t$ 的链式项，不能把 $t$ 当常数",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2014-12",
+        "trainingGoal": "处理由复合关系与隐式方程共同确定的隐函数求导",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2014年高数下期末试题 一、计算题第12题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2014-12"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$y=f(x,t)$ 且 $F(x,y,t)=0$",
+          "$f,F$ 具有一阶连续偏导数"
+        ],
+        "allowedVariations": [
+          "把 $F(x,y,t)=0$ 换成 $F(x,y,t)=c$",
+          "把 $y=f(x,t)$ 换成 $x=g(y,t)$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2014-12",
+          "text": "设 $y=f(x,t)$，而 $t$ 是由方程 $F(x,y,t)=0$ 所确定的 $x,y$ 的函数，其中 $f,F$ 都具有一阶连续偏导数，求 $\\frac{dy}{dx}$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "隐函数求导（单方程/方程组）",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2014-12",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立推导：对 $y=f(x,t)$ 得 $\\frac{dy}{dx}=f_x+f_t\\frac{dt}{dx}$；对 $F(x,y,t)=0$ 得 $F_x+F_y\\frac{dy}{dx}+F_t\\frac{dt}{dx}=0$。消去 $\\frac{dt}{dx}$，解得 $\\frac{dy}{dx}=\\frac{f_xF_t-f_tF_x}{F_t+f_tF_y}$（分母非零）。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.implicit_multivar"
+      ],
+      "applicableMethodIds": [
+        "M.implicit_multivar",
+        "M.total_differential"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.implicit_derivative",
+          "methodId": "M.implicit_multivar"
+        },
+        {
+          "scenarioId": "S.multivar.implicit_derivative",
+          "methodId": "M.total_differential"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.implicit_multivar",
+        "M.total_differential"
+      ],
+      "options": [
+        {
+          "id": "r-total-differential",
+          "name": "对两个关系式分别取全微分，再整理出 $dy$ 与 $dx$ 的比"
+        },
+        {
+          "id": "r-drop-t",
+          "name": "把 $t$ 当作与 $x$ 无关的常数，直接用一元隐函数公式"
+        },
+        {
+          "id": "r-chain-eliminate",
+          "name": "对两个方程同时链式求导，联立消去 $\\frac{dt}{dx}$"
+        }
+      ],
+      "questionKey": "d6e54b086d8b4c337fff91d8e0c566442f5a0c13a28dc0db8ebd2ef87cc1d70f",
+      "faceKey": "6a15dc2fafd0fc82e4fd93fb8a0fee91f75376f47b5d493faae414c9450ee4bd"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.unconditional_extremum",
+      "question": "求函数 $f(x,y)=x^2(2+y^2)+y\\ln y$ 的极值。",
+      "solution": "$f_x=2x(2+y^2)$，$f_y=2x^2y+\\ln y+1$（$y>0$）。由 $f_x=0$ 得 $x=0$，代入 $f_y=0$ 得 $\\ln y=-1$，$y=1/e$。唯一驻点 $(0,1/e)$，$f=-1/e$。$A=2(2+y^2)$、$B=4xy$、$C=2x^2+1/y$，在驻点 $A>0$、$AC-B^2>0$，故为极小值 $-1/e$，无极大值。",
+      "routes": [
+        {
+          "id": "r-stationary-second-test",
+          "summary": "解驻点方程组，再用二阶偏导判别极值类型",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.unconditional_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "$f_x=2x(2+y^2)$，$f_y=2x^2y+\\ln y+1$，定义域 $y>0$",
+              "transformedState": "令偏导为零得唯一驻点 $(0,1/e)$，函数值 $-1/e$",
+              "condition": "由 $f_x=0$ 先得 $x=0$，再解 $f_y=0$。"
+            },
+            {
+              "scenarioId": "S.multivar.unconditional_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "计算 $A=f_{xx}=2(2+y^2)$、$B=f_{xy}=4xy$、$C=f_{yy}=2x^2+1/y$",
+              "transformedState": "在 $(0,1/e)$：$A>0$，$AC-B^2=(4+2/e^2)e>0$，为极小值 $-1/e$",
+              "condition": "二阶判别。"
+            }
+          ],
+          "reason": "直接解驻点并用二阶判别，是二元无条件极值的标准流程。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-separate-nonnegative",
+          "summary": "先分离非负项 $x^2(2+y^2)$，把问题降为一元函数 $g(y)=y\\ln y$ 的极小",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.unconditional_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "$f=x^2(2+y^2)+y\\ln y$，其中 $x^2(2+y^2)\\ge0$，等号仅在 $x=0$",
+              "transformedState": "$f$ 的极小等价于 $g(y)=y\\ln y$（$y>0$）的极小",
+              "condition": "非负项不影响最小值位置。"
+            },
+            {
+              "scenarioId": "S.multivar.unconditional_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "$g'(y)=\\ln y+1=0\\Rightarrow y=1/e$",
+              "transformedState": "$g''=1/y>0$，$g(1/e)=-1/e$；对应 $x=0$，极小值 $-1/e$，无极大值",
+              "condition": "$y>0$，一元二阶判别。"
+            }
+          ],
+          "reason": "利用非负项把二元问题降为一元，能更清楚地看出极小值的来源。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-missing-constant",
+          "summary": "漏掉 $y\\ln y$ 求导产生的 $+1$，误得驻点 $(0,1)$",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.unconditional_extremum",
+              "methodId": "M.extremum_second_test",
+              "state": "把 $f_y$ 误算为 $2x^2y+\\ln y$",
+              "transformedState": "令 $f_y=0$ 与 $x=0$ 得 $y=1$，驻点 $(0,1)$，函数值 $0$",
+              "condition": "错：$(y\\ln y)'=\\ln y+1$，漏掉常数 $1$，真正驻点是 $(0,1/e)$。"
+            }
+          ],
+          "reason": "求导漏项使驻点错位，得到的 $0$ 并非极值。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：丢项。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先用 $f_x=0$ 定出 $x=0$，再正确求 $y\\ln y$ 的导数得到 $\\ln y+1$",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2022-11",
+        "trainingGoal": "求含对数项的二元显式函数无条件极值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2022 年高等数学下期末试题 三、计算题第1题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2022-11"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "定义域 $y>0$",
+          "函数 $f=x^2(2+y^2)+y\\ln y$"
+        ],
+        "allowedVariations": [
+          "把 $\\ln y$ 改为 $\\ln(2y)$",
+          "改变二次项系数"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2022-11",
+          "text": "求函数 $f(x,y)=x^2(2+y^2)+y\\ln y$ 的极值。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "无条件极值",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2022-11",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$f_x=2x(2+y^2)=0\\Rightarrow x=0$；$f_y=2x^2y+\\ln y+1=0\\Rightarrow\\ln y=-1$，$y=1/e$。唯一驻点 $(0,1/e)$，函数值 $-1/e$。$A=2(2+y^2)$、$B=4xy$、$C=2x^2+1/y$，在驻点 $A>0$、$AC-B^2>0$，为极小值。又 $f\\ge y\\ln y\\ge-1/e$，故为全局极小值，无极大值。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.extremum_second_test"
+      ],
+      "applicableMethodIds": [
+        "M.extremum_second_test"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.unconditional_extremum",
+          "methodId": "M.extremum_second_test"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.extremum_second_test"
+      ],
+      "options": [
+        {
+          "id": "r-separate-nonnegative",
+          "name": "先分离非负项 $x^2(2+y^2)$，把问题降为一元函数 $g(y)=y\\ln y$ 的极小"
+        },
+        {
+          "id": "r-missing-constant",
+          "name": "漏掉 $y\\ln y$ 求导产生的 $+1$，误得驻点 $(0,1)$"
+        },
+        {
+          "id": "r-stationary-second-test",
+          "name": "解驻点方程组，再用二阶偏导判别极值类型"
+        }
+      ],
+      "questionKey": "16f0fe5a252e775eaca082d21bb09e1d0a4b2bc692ec4cec5f5555e7846d57e8",
+      "faceKey": "b37c2f9af476a1a9e2570c20a817b2c179c181354c86ff06f5ccf8ff9bbf9034"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.vecalg.plane_equation",
+      "question": "设一平面经过原点及 $M(6,-3,2)$，且与平面 $4x-y+2z=8$ 垂直，则此平面方程为（　）。",
+      "solution": "已知平面法向量 $n_1=(4,-1,2)$，$\\overrightarrow{OM}=(6,-3,2)$，取 $n=\\overrightarrow{OM}\\times n_1=(-4,-4,6)$，化简为 $(2,2,-3)$。平面过原点，故 $2x+2y-3z=0$。",
+      "routes": [
+        {
+          "id": "r-cross-product",
+          "summary": "用两条已知方向向量的叉积求法向量，再写点法式",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.plane_equation",
+              "methodId": "M.cross_product",
+              "state": "$n_1=(4,-1,2)$，$\\overrightarrow{OM}=(6,-3,2)$",
+              "transformedState": "$n=\\overrightarrow{OM}\\times n_1=(-4,-4,6)\\sim(2,2,-3)$",
+              "condition": "两平面垂直等价于法向量点积为 $0$，故 $n$ 同时垂直于 $n_1$ 与 $\\overrightarrow{OM}$。"
+            },
+            {
+              "scenarioId": "S.vecalg.plane_equation",
+              "methodId": "M.plane_point_normal",
+              "state": "过原点 $O(0,0,0)$，法向量取 $(2,2,-3)$",
+              "transformedState": "$2(x-0)+2(y-0)-3(z-0)=0$，即 $2x+2y-3z=0$",
+              "condition": "点法式。"
+            }
+          ],
+          "reason": "所求平面由原点和 $M$ 确定一条方向，又垂直于已知平面，叉积一次得到法向量。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-undetermined-normal",
+          "summary": "设平面为 $Ax+By+Cz=0$，用两个正交条件解出法向量比例",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.plane_equation",
+              "methodId": "M.plane_point_normal",
+              "state": "平面过原点，设 $Ax+By+Cz=0$，即法向量 $n=(A,B,C)$",
+              "transformedState": "代入 $M$ 得 $6A-3B+2C=0$；与已知平面垂直得 $4A-B+2C=0$",
+              "condition": "两个条件分别来自过点与法向量垂直。"
+            },
+            {
+              "scenarioId": "S.vecalg.plane_equation",
+              "methodId": "M.plane_point_normal",
+              "state": "两式相减解出比例",
+              "transformedState": "得 $A=B$、$C=-\\frac32A$，即 $(A,B,C)\\sim(2,2,-3)$，平面 $2x+2y-3z=0$",
+              "condition": "取 $A=2$ 得到整数系数。"
+            }
+          ],
+          "reason": "不借助叉积，直接设一般式并用线面关系建立方程组，是另一种求解法向量的思路。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-parallel-mistake",
+          "summary": "把两平面垂直误读成法向量平行，直接沿用已知平面法向量",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.plane_equation",
+              "methodId": "M.plane_point_normal",
+              "state": "取已知平面法向量 $n=(4,-1,2)$ 作为所求平面的法向量",
+              "transformedState": "得 $4x-y+2z=0$（过原点），但该平面不过 $M(6,-3,2)$",
+              "condition": "错：平面垂直对应法向量互相垂直（$n\\cdot n_1=0$），而非法向量平行。"
+            }
+          ],
+          "reason": "混淆平面垂直与平行的法向量关系，且所得平面不满足过 $M$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把垂直当平行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "两平面垂直意味着法向量点积为 0，应取 $n=\\overrightarrow{OM}\\times n_1$ 而非直接沿用 $n_1$",
+      "metadata": {
+        "motherId": "candidate.bankadv4.fudan-b-2-3",
+        "trainingGoal": "由过点与垂直条件确定平面方程，正确理解平面垂直的法向量关系",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 2011-2012 学年第一学期 高等数学B期末（A卷）第二题第3小题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-2-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "平面过原点",
+          "平面过 $M(6,-3,2)$ 且与 $4x-y+2z=8$ 垂直"
+        ],
+        "allowedVariations": [
+          "改变已知点坐标",
+          "把垂直条件换为平行条件"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-2-3",
+          "text": "设一平面经过原点及 $M(6,-3,2)$，且与平面 $4x-y+2z=8$ 垂直，则此平面方程为。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "向量代数与空间解析几何",
+          "difficulty": "中",
+          "method": "求平面方程",
+          "notes": "高等数学 bankadv4；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "fudan-b-2-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：已知平面法向量 $n_1=(4,-1,2)$，所求平面含向量 $\\overrightarrow{OM}=(6,-3,2)$ 且 $n\\perp n_1$，取 $n=\\overrightarrow{OM}\\times n_1=(-4,-4,6)\\sim(2,2,-3)$。平面过原点得 $2x+2y-3z=0$。验证 $n\\cdot n_1=0$ 且 $M$ 满足方程。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.cross_product",
+        "M.plane_point_normal"
+      ],
+      "applicableMethodIds": [
+        "M.cross_product",
+        "M.plane_point_normal"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.vecalg.plane_equation",
+          "methodId": "M.plane_point_normal"
+        },
+        {
+          "scenarioId": "S.vecalg.plane_equation",
+          "methodId": "M.plane_pencil"
+        },
+        {
+          "scenarioId": "S.vecalg.plane_equation",
+          "methodId": "M.cross_product"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.plane_point_normal",
+        "M.plane_pencil",
+        "M.cross_product"
+      ],
+      "options": [
+        {
+          "id": "r-cross-product",
+          "name": "用两条已知方向向量的叉积求法向量，再写点法式"
+        },
+        {
+          "id": "r-undetermined-normal",
+          "name": "设平面为 $Ax+By+Cz=0$，用两个正交条件解出法向量比例"
+        },
+        {
+          "id": "r-parallel-mistake",
+          "name": "把两平面垂直误读成法向量平行，直接沿用已知平面法向量"
+        }
+      ],
+      "questionKey": "cc58e79a4ab60d342d948f8c990953151af3245953cbf5436b7420ec179acf75",
+      "faceKey": "cbdac9142b405f14663008c3f946367beb687972586101e021bdad2a922145ed"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.vecalg.surface_of_revolution",
+      "question": "求直线 $l:\\begin{cases}x=2t,\\\\ y=k,\\ k\\neq 0,\\\\ z=t.\\end{cases}$ 绕 $z$ 轴旋转一周生成的旋转曲面方程，并指出所得旋转曲面的类型。",
+      "solution": "母线上点 $(2t,k,t)$ 绕 $z$ 轴旋转，旋转半径 $\\rho=\\sqrt{4t^2+k^2}$，且 $z=t$。故 $x^2+y^2=4t^2+k^2=4z^2+k^2$，即 $x^2+y^2-4z^2=k^2$。因 $k\\neq0$，可写为 $\\frac{x^2}{k^2}+\\frac{y^2}{k^2}-\\frac{4z^2}{k^2}=1$，是单叶双曲面，旋转轴为 $z$ 轴。",
+      "routes": [
+        {
+          "id": "r-point-radius",
+          "summary": "按旋转定义跟踪母线上点的旋转半径，消参后判断类型",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.surface_of_revolution",
+              "methodId": "M.revolution_surface",
+              "state": "母线上点 $(2t,k,t)$，绕 $z$ 轴旋转时 $z=t$ 不变",
+              "transformedState": "旋转半径 $\\rho=\\sqrt{4t^2+k^2}$，即 $x^2+y^2=4t^2+k^2$",
+              "condition": "绕 $z$ 轴，$z$ 坐标保持不变。"
+            },
+            {
+              "scenarioId": "S.vecalg.surface_of_revolution",
+              "methodId": "M.revolution_surface",
+              "state": "消去参数，利用 $t=z$",
+              "transformedState": "$x^2+y^2=4z^2+k^2$，即 $\\frac{x^2+y^2}{k^2}-\\frac{4z^2}{k^2}=1$",
+              "condition": "$k\\neq0$，可除以 $k^2$。"
+            },
+            {
+              "scenarioId": "S.vecalg.surface_of_revolution",
+              "methodId": "M.revolution_surface",
+              "state": "按二次曲面标准形分类",
+              "transformedState": "单叶双曲面，旋转轴为 $z$ 轴",
+              "condition": "$k\\neq0$ 时不是圆锥面。"
+            }
+          ],
+          "reason": "直接用旋转定义得到 $x^2+y^2=\\rho^2$，过程最短且能自然看出类型。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-cylindrical",
+          "summary": "用柱坐标描述母线，旋转时极角自由，再消去参数",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.surface_of_revolution",
+              "methodId": "M.revolution_surface",
+              "state": "母线点 $(2t,k,t)$ 的柱坐标为 $\\rho=\\sqrt{4t^2+k^2}$、$z=t$、$\\theta=\\arctan\\frac{k}{2t}$",
+              "transformedState": "绕 $z$ 轴旋转使 $\\theta$ 任意，曲面只由 $\\rho$ 与 $z$ 的关系决定",
+              "condition": "柱坐标变换。"
+            },
+            {
+              "scenarioId": "S.vecalg.surface_of_revolution",
+              "methodId": "M.revolution_surface",
+              "state": "旋转面上 $\\rho^2=x^2+y^2$，且 $z=t$",
+              "transformedState": "$x^2+y^2=4z^2+k^2$",
+              "condition": "消去 $t$。"
+            },
+            {
+              "scenarioId": "S.vecalg.surface_of_revolution",
+              "methodId": "M.revolution_surface",
+              "state": "整理为标准形",
+              "transformedState": "$\\frac{x^2+y^2}{k^2}-\\frac{4z^2}{k^2}=1$，单叶双曲面",
+              "condition": "$k\\neq0$。"
+            }
+          ],
+          "reason": "柱坐标把旋转过程表达为 $\\theta$ 自由，本质上与逐点半径法等价，但视角不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-drop-k",
+          "summary": "套用'另一变量改平方和'时漏掉 $y=k$ 的常数项",
+          "steps": [
+            {
+              "scenarioId": "S.vecalg.surface_of_revolution",
+              "methodId": "M.revolution_surface",
+              "state": "把母线写成 $x=2z$，直接令 $x^2$ 换成 $x^2+y^2$",
+              "transformedState": "$x^2+y^2=4z^2$，误判为圆锥面",
+              "condition": "错：母线不在 $xOz$ 面内，点 $(2t,k,t)$ 的旋转半径平方是 $4t^2+k^2$，常数 $k^2$ 不能丢。"
+            }
+          ],
+          "reason": "忽略 $y=k$ 的整体贡献，导致曲面方程与类型都错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：漏掉常数项 $k^2$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "t",
+        "k"
+      ],
+      "comparisonCriterion": "旋转半径为 $\\rho^2=x_0^2+y_0^2=4t^2+k^2$，不能只替换 $x$ 而丢掉 $k^2$",
+      "metadata": {
+        "motherId": "candidate.bankadv4.fudan-b-7-1",
+        "trainingGoal": "由母线方程求绕坐标轴旋转的曲面并判别类型",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 2011-2012 学年第一学期 高等数学B期末（A卷）第七题第1小题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-7-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "母线 $x=2t,\\ y=k,\\ z=t$ 且 $k\\neq0$",
+          "绕 $z$ 轴旋转"
+        ],
+        "allowedVariations": [
+          "把 $k\\neq0$ 改成具体常数",
+          "改为绕 $x$ 轴旋转"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-7-1",
+          "text": "求直线 $l:\\begin{cases}x=2t,\\\\ y=k,\\ k\\neq 0,\\\\ z=t.\\end{cases}$ 绕 $z$ 轴旋转一周生成的旋转曲面方程，并指出所得旋转曲面的类型。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "向量代数与空间解析几何",
+          "difficulty": "中",
+          "method": "旋转曲面方程",
+          "notes": "高等数学 bankadv4；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "fudan-b-7-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：母线上点 $(2t,k,t)$ 到 $z$ 轴的距离满足 $\\rho^2=4t^2+k^2$，旋转时 $z=t$ 不变、$x^2+y^2=\\rho^2$，故 $x^2+y^2=4z^2+k^2$。$k\\neq0$ 时化为 $\\frac{x^2}{k^2}+\\frac{y^2}{k^2}-\\frac{4z^2}{k^2}=1$，是单叶双曲面。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.revolution_surface"
+      ],
+      "applicableMethodIds": [
+        "M.revolution_surface"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.vecalg.surface_of_revolution",
+          "methodId": "M.revolution_surface"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.revolution_surface"
+      ],
+      "options": [
+        {
+          "id": "r-point-radius",
+          "name": "按旋转定义跟踪母线上点的旋转半径，消参后判断类型"
+        },
+        {
+          "id": "r-cylindrical",
+          "name": "用柱坐标描述母线，旋转时极角自由，再消去参数"
+        },
+        {
+          "id": "r-drop-k",
+          "name": "套用'另一变量改平方和'时漏掉 $y=k$ 的常数项"
+        }
+      ],
+      "questionKey": "36b4d7384d47d39060d35a33549450dc327ec554f67f8d49154ca0c75772d0b1",
+      "faceKey": "3b334c1660368e83b32773eefee5f09ca1365311120e19feb904cd86a8ed7026"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.conditional_extremum",
+      "question": "函数 $z=3x+4y$ 在条件 $x^{2}+y^{2}=1$ 下的最大值为（　）。",
+      "solution": "令 $L=3x+4y+\\lambda(x^2+y^2-1)$，由 $3+2\\lambda x=0$、$4+2\\lambda y=0$ 得 $x:y=3:4$。代入 $x^2+y^2=1$ 得 $(3/5,4/5)$、$(-3/5,-4/5)$，对应 $z=5$、$-5$，故最大值为 $5$。",
+      "routes": [
+        {
+          "id": "r-lagrange",
+          "summary": "构造拉格朗日函数，解驻点后比较函数值",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.conditional_extremum",
+              "methodId": "M.lagrange_multiplier",
+              "state": "令 $L=3x+4y+\\lambda(x^2+y^2-1)$",
+              "transformedState": "$3+2\\lambda x=0$、$4+2\\lambda y=0$，得 $x:y=3:4$",
+              "condition": "约束正则，$\\lambda\\neq0$。"
+            },
+            {
+              "scenarioId": "S.multivar.conditional_extremum",
+              "methodId": "M.lagrange_multiplier",
+              "state": "代回约束 $x^2+y^2=1$",
+              "transformedState": "驻点 $(3/5,4/5)$、$(-3/5,-4/5)$，$z=5$、$-5$，最大值 $5$",
+              "condition": "比较各驻点的函数值。"
+            }
+          ],
+          "reason": "乘数法把约束与目标统一处理，能直接得到所有候选点。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-trig-elimination",
+          "summary": "用三角代换消去约束，化为一元三角函数求最大值",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.conditional_extremum",
+              "methodId": "M.constraint_elimination",
+              "state": "令 $x=\\cos\\theta$、$y=\\sin\\theta$（$0\\le\\theta<2\\pi$）",
+              "transformedState": "$z=3\\cos\\theta+4\\sin\\theta$",
+              "condition": "单位圆约束可参数化。"
+            },
+            {
+              "scenarioId": "S.multivar.conditional_extremum",
+              "methodId": "M.constraint_elimination",
+              "state": "合并为单一正弦",
+              "transformedState": "$z=5\\sin(\\theta+\\alpha)\\le5$，等号在 $\\tan\\alpha=\\frac34$ 时成立",
+              "condition": "振幅 $\\sqrt{3^2+4^2}=5$。"
+            }
+          ],
+          "reason": "三角代换把约束直接消去，利用振幅公式一步得到最大值，与乘数法思路不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-violate-constraint",
+          "summary": "把约束误当成 $x=1$ 且 $y=1$，直接相加",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.conditional_extremum",
+              "methodId": "M.constraint_elimination",
+              "state": "由 $x^2+y^2=1$ 误取 $x=1$、$y=1$",
+              "transformedState": "$z=3+4=7$，报最大值 $7$",
+              "condition": "错：$x=1$ 与 $y=1$ 不能同时满足单位圆约束。"
+            }
+          ],
+          "reason": "把平方和为 $1$ 的两个变量都取到 $1$，所得点根本不在约束曲线上。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：违反约束消元。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "约束是 $x^2+y^2=1$，最大值为振幅 $\\sqrt{3^2+4^2}=5$，不能令两变量同时取 $1$",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2016-tk4",
+        "trainingGoal": "用拉格朗日乘数法或三角代换求圆约束下的线性目标最值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2016 年高数下期末试题 一、填空题第4题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2016-tk4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "约束 $x^2+y^2=1$",
+          "目标 $z=3x+4y$ 为线性函数"
+        ],
+        "allowedVariations": [
+          "改变目标函数系数",
+          "把约束改为椭圆"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2016-tk4",
+          "text": "函数 $z=3x+4y$ 在条件 $x^{2}+y^{2}=1$ 下的最大值为 ______。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "条件极值",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2016-tk4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：拉格朗日乘数法给出 $3+2\\lambda x=0$、$4+2\\lambda y=0$，故 $x:y=3:4$，结合 $x^2+y^2=1$ 得 $(3/5,4/5)$ 与 $(-3/5,-4/5)$，$z$ 分别为 $5$ 与 $-5$，最大值为 $5$。三角代换 $x=\\cos\\theta,y=\\sin\\theta$ 得 $z=5\\sin(\\theta+\\alpha)\\le5$，结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.lagrange_multiplier"
+      ],
+      "applicableMethodIds": [
+        "M.lagrange_multiplier",
+        "M.constraint_elimination"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.conditional_extremum",
+          "methodId": "M.lagrange_multiplier"
+        },
+        {
+          "scenarioId": "S.multivar.conditional_extremum",
+          "methodId": "M.constraint_elimination"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.lagrange_multiplier",
+        "M.constraint_elimination"
+      ],
+      "options": [
+        {
+          "id": "r-lagrange",
+          "name": "构造拉格朗日函数，解驻点后比较函数值"
+        },
+        {
+          "id": "r-trig-elimination",
+          "name": "用三角代换消去约束，化为一元三角函数求最大值"
+        },
+        {
+          "id": "r-violate-constraint",
+          "name": "把约束误当成 $x=1$ 且 $y=1$，直接相加"
+        }
+      ],
+      "questionKey": "fc3a37a8a69d4c6e78a5b4e21ef9589f1d9122b1e2995cec283729e959ed2d62",
+      "faceKey": "e4a264dd5d4bed1e5493889788fc79883a2736cb70319fb65e663ca277a6137d"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.space_curve_tangent",
+      "question": "求曲线 $\\begin{cases}x=t\\\\ y=-t^{2}\\\\ z=t^{3}\\end{cases}$ 与平面 $x+2y+z=4$ 平行的切线方程。",
+      "solution": "$r'(t)=(1,-2t,3t^2)$，平面法向量 $n=(1,2,1)$。由 $r'\\cdot n=1-4t+3t^2=0$ 得 $t=1$ 或 $t=1/3$。$t=1$ 时点为 $(1,-1,1)$、方向 $(1,-2,3)$，切线 $\\frac{x-1}{1}=\\frac{y+1}{-2}=\\frac{z-1}{3}$；$t=1/3$ 时点为 $(1/3,-1/9,1/27)$、方向 $(3,-2,1)$，切线 $\\frac{x-1/3}{3}=\\frac{y+1/9}{-2}=\\frac{z-1/27}{1}$。",
+      "routes": [
+        {
+          "id": "r-param-tangent",
+          "summary": "参数式直接求切向量，令其与平面法向量点积为零",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.space_curve_tangent",
+              "methodId": "M.curve_tangent_vector",
+              "state": "曲线参数式 $x=t,y=-t^2,z=t^3$",
+              "transformedState": "$r'(t)=(1,-2t,3t^2)$；平面法向量 $n=(1,2,1)$",
+              "condition": "参数式直接求导。"
+            },
+            {
+              "scenarioId": "S.multivar.space_curve_tangent",
+              "methodId": "M.curve_tangent_vector",
+              "state": "切线与平面平行等价于 $r'(t)\\cdot n=0$",
+              "transformedState": "$1-4t+3t^2=0$，得 $t=1$ 或 $t=1/3$",
+              "condition": "二次方程两个根都要保留。"
+            },
+            {
+              "scenarioId": "S.multivar.space_curve_tangent",
+              "methodId": "M.curve_tangent_vector",
+              "state": "分别代入切点与切向量",
+              "transformedState": "$L_1:\\frac{x-1}{1}=\\frac{y+1}{-2}=\\frac{z-1}{3}$；$L_2:\\frac{x-1/3}{3}=\\frac{y+1/9}{-2}=\\frac{z-1/27}{1}$",
+              "condition": "$t=1/3$ 的方向乘 $3$ 化简为整数。"
+            }
+          ],
+          "reason": "参数式求切向量最直接，平行条件化为一个二次方程，两根对应两条切线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-surface-intersection",
+          "summary": "把曲线看成两曲面交线，用两法向量叉积得到切向量",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.space_curve_tangent",
+              "methodId": "M.surface_normal_vector",
+              "state": "把曲线看成曲面 $x^2+y=0$ 与 $x^3-z=0$ 的交线",
+              "transformedState": "$\\nabla G_1=(2x,1,0)$，$\\nabla G_2=(3x^2,0,-1)$，$\\nabla G_1\\times\\nabla G_2=(-1,2x,-3x^2)\\sim(1,-2x,3x^2)$",
+              "condition": "用 $x$ 作为参数，与参数式切向量一致。"
+            },
+            {
+              "scenarioId": "S.multivar.space_curve_tangent",
+              "methodId": "M.surface_normal_vector",
+              "state": "与平面平行的条件",
+              "transformedState": "$(-1,2x,-3x^2)\\cdot(1,2,1)=-1+4x-3x^2=0$，得 $x=1$ 或 $x=1/3$",
+              "condition": "与参数式得到同一组参数值。"
+            },
+            {
+              "scenarioId": "S.multivar.space_curve_tangent",
+              "methodId": "M.curve_tangent_vector",
+              "state": "写出两条切线",
+              "transformedState": "$L_1:\\frac{x-1}{1}=\\frac{y+1}{-2}=\\frac{z-1}{3}$，$L_2:\\frac{x-1/3}{3}=\\frac{y+1/9}{-2}=\\frac{z-1/27}{1}$",
+              "condition": "切点为 $(x,-x^2,x^3)$。"
+            }
+          ],
+          "reason": "交线视角先求两曲面法向量的叉积，是参数式以外另一条独立可行的思路。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-parallel-normal",
+          "summary": "把'切线与平面平行'误判为切向量与法向量平行",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.space_curve_tangent",
+              "methodId": "M.curve_tangent_vector",
+              "state": "令 $r'(t)=k(1,2,1)$，即 $1=k$、$-2t=2k$、$3t^2=k$",
+              "transformedState": "推得 $t=-1$ 与 $3t^2=1$ 矛盾，误称不存在这样的切线",
+              "condition": "错：平行于平面应是 $r'(t)\\cdot n=0$，不是 $r'(t)\\parallel n$。"
+            }
+          ],
+          "reason": "把线面平行与线面垂直的条件混淆，导致无解的错误结论。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：令切向量平行于法向量。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z",
+        "t"
+      ],
+      "comparisonCriterion": "切线与平面平行是 $r'(t)$ 与法向量 $n$ 垂直，两个参数根都不能漏",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2017-js4",
+        "trainingGoal": "利用切向量与平面法向量垂直求空间曲线的平行切线",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2017 年高数下期末试题 一、计算题第4题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2017-js4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲线 $x=t,\\ y=-t^2,\\ z=t^3$",
+          "平面 $x+2y+z=4$ 的法向量为 $(1,2,1)$"
+        ],
+        "allowedVariations": [
+          "改变平面方程",
+          "把曲线参数式换成其他多项式"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2017-js4",
+          "text": "求曲线 $\\begin{cases}x=t\\\\ y=-t^{2}\\\\ z=t^{3}\\end{cases}$ 与平面 $x+2y+z=4$ 平行的切线方程。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "空间曲线的切线与法平面",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2017-js4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$r'(t)=(1,-2t,3t^2)$，平面法向量 $n=(1,2,1)$，令 $r'\\cdot n=3t^2-4t+1=0$ 得 $t=1$ 与 $t=1/3$。$t=1$ 时点 $(1,-1,1)$、方向 $(1,-2,3)$；$t=1/3$ 时点 $(1/3,-1/9,1/27)$、方向 $(1,-2/3,1/3)\\sim(3,-2,1)$。两条切线均与平面平行。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.curve_tangent_vector"
+      ],
+      "applicableMethodIds": [
+        "M.curve_tangent_vector",
+        "M.surface_normal_vector"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.space_curve_tangent",
+          "methodId": "M.curve_tangent_vector"
+        },
+        {
+          "scenarioId": "S.multivar.space_curve_tangent",
+          "methodId": "M.surface_normal_vector"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.curve_tangent_vector",
+        "M.surface_normal_vector"
+      ],
+      "options": [
+        {
+          "id": "r-surface-intersection",
+          "name": "把曲线看成两曲面交线，用两法向量叉积得到切向量"
+        },
+        {
+          "id": "r-parallel-normal",
+          "name": "把'切线与平面平行'误判为切向量与法向量平行"
+        },
+        {
+          "id": "r-param-tangent",
+          "name": "参数式直接求切向量，令其与平面法向量点积为零"
+        }
+      ],
+      "questionKey": "a07ee61b8268b5803fddfb8d269699d9264edcf2118e4852756c68b666f84379",
+      "faceKey": "5140e49b57cec111ffec2afc48100876e82770f079c35f135d8ed9ae14a508e7"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.partial_derivative",
+      "question": "设 $f(x,y)=x^3y-\\sin(x^2-y^2)$，则 $\\left.\\frac{\\partial f}{\\partial x}\\right|_{(1,3)}=$（　）。",
+      "solution": "$f_x=3x^2y-\\cos(x^2-y^2)\\cdot2x$，代入 $(1,3)$ 得 $3\\cdot1\\cdot3-2\\cos(1-9)=9-2\\cos8$。",
+      "routes": [
+        {
+          "id": "r-direct-partial",
+          "summary": "对 $x$ 直接求偏导，$y$ 视为常数，再代入点",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.partial_derivative",
+              "methodId": "M.partial_derivative_direct",
+              "state": "对 $x$ 求偏导，$y$ 视为常数",
+              "transformedState": "$f_x=3x^2y-\\cos(x^2-y^2)\\cdot2x$",
+              "condition": "复合函数链式求导，内层 $(x^2-y^2)_x=2x$。"
+            },
+            {
+              "scenarioId": "S.multivar.partial_derivative",
+              "methodId": "M.partial_derivative_direct",
+              "state": "代入 $(1,3)$",
+              "transformedState": "$f_x(1,3)=9-2\\cos(-8)=9-2\\cos8$",
+              "condition": "余弦为偶函数。"
+            }
+          ],
+          "reason": "显式函数在普通点求偏导，直接逐项求导最省事。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-definition",
+          "summary": "回到偏导数定义，用增量比的极限求值",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.partial_derivative",
+              "methodId": "M.def_partial_derivative",
+              "state": "按定义 $f_x(1,3)=\\lim_{h\\to0}\\frac{f(1+h,3)-f(1,3)}{h}$",
+              "transformedState": "展开 $(1+h)^3\\cdot3-\\sin((1+h)^2-9)-[3-\\sin(-8)]$ 并除以 $h$",
+              "condition": "定义法在普通点同样适用。"
+            },
+            {
+              "scenarioId": "S.multivar.partial_derivative",
+              "methodId": "M.def_partial_derivative",
+              "state": "取极限并化简",
+              "transformedState": "得 $9-2\\cos8$，与公式法一致",
+              "condition": "两种方法交叉验证。"
+            }
+          ],
+          "reason": "定义法不依赖求导公式，可用于验证公式法结果的正确性。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-differentiate-y",
+          "summary": "对 $\\sin(x^2-y^2)$ 求 $x$ 偏导时把 $y$ 也当成被求导变量",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.partial_derivative",
+              "methodId": "M.partial_derivative_direct",
+              "state": "把 $x^2-y^2$ 对 $x$ 求导误写为 $2x-2y$",
+              "transformedState": "$f_x=3x^2y-(2x-2y)\\cos(x^2-y^2)$，在 $(1,3)$ 得 $9+4\\cos8$",
+              "condition": "错：对 $x$ 求偏导时 $y$ 是常数，$(x^2-y^2)_x=2x$。"
+            }
+          ],
+          "reason": "偏导时对 $y$ 也求导，多出 $-2y$ 项并改变符号。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：把 $y$ 也当被求导变量。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "对 $x$ 求偏导时 $y$ 是常数，内层导数只能是 $2x$",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2015-2-1",
+        "trainingGoal": "正确对含复合正弦项的显式函数求偏导并在点处求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2015年高数下期末试题 二、填空题第1题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2015-2-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "函数 $f=x^3y-\\sin(x^2-y^2)$",
+          "求对 $x$ 的偏导在 $(1,3)$ 的值"
+        ],
+        "allowedVariations": [
+          "求对 $y$ 的偏导",
+          "改变求值点"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2015-2-1",
+          "text": "设 $f(x,y)=x^3y-\\sin(x^2-y^2)$，则 $\\left.\\frac{\\partial f}{\\partial x}\\right|_{(1,3)}=\\underline{\\qquad}$.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "显式偏导数计算",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2015-2-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$f_x=3x^2y-\\cos(x^2-y^2)\\cdot2x$，代入 $(1,3)$ 得 $9-2\\cos(-8)=9-2\\cos8$。用偏导定义复核结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.partial_derivative_direct"
+      ],
+      "applicableMethodIds": [
+        "M.partial_derivative_direct",
+        "M.def_partial_derivative"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.partial_derivative",
+          "methodId": "M.partial_derivative_direct"
+        },
+        {
+          "scenarioId": "S.multivar.partial_derivative",
+          "methodId": "M.def_partial_derivative"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.partial_derivative_direct",
+        "M.def_partial_derivative"
+      ],
+      "options": [
+        {
+          "id": "r-direct-partial",
+          "name": "对 $x$ 直接求偏导，$y$ 视为常数，再代入点"
+        },
+        {
+          "id": "r-definition",
+          "name": "回到偏导数定义，用增量比的极限求值"
+        },
+        {
+          "id": "r-differentiate-y",
+          "name": "对 $\\sin(x^2-y^2)$ 求 $x$ 偏导时把 $y$ 也当成被求导变量"
+        }
+      ],
+      "questionKey": "0f3a53c7b47b0a20015cfb31fc343090f08d0a5363502131636b96a4ed38083d",
+      "faceKey": "bfdf17146296f1b6d9417cd80bf456599584e36bfa396e0889a14b3714b13869"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.directional_gradient",
+      "question": "求 $u=4x^{2}+y^{2}+z^{2}$ 在点 $M(1,0,2)$ 处的梯度及最大方向导数。",
+      "solution": "$\\nabla u=(8x,2y,2z)$，在 $M(1,0,2)$ 处 $\\nabla u=(8,0,4)$。最大方向导数 $=|\\nabla u|=\\sqrt{8^2+4^2}=4\\sqrt5$，沿方向 $\\frac{(8,0,4)}{4\\sqrt5}=\\frac{(2,0,1)}{\\sqrt5}$ 取得。",
+      "routes": [
+        {
+          "id": "r-gradient-modulus",
+          "summary": "求梯度向量，再由梯度模得到最大方向导数",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.directional_gradient",
+              "methodId": "M.directional_derivative_gradient",
+              "state": "分别求三个偏导",
+              "transformedState": "$\\nabla u=(8x,2y,2z)$，$\\nabla u(M)=(8,0,4)$",
+              "condition": "梯度由各偏导组成。"
+            },
+            {
+              "scenarioId": "S.multivar.directional_gradient",
+              "methodId": "M.directional_derivative_gradient",
+              "state": "最大方向导数等于梯度模",
+              "transformedState": "$|\\nabla u|=\\sqrt{8^2+0^2+4^2}=4\\sqrt5$，方向 $\\frac{(2,0,1)}{\\sqrt5}$",
+              "condition": "梯度方向即函数增长最快的方向。"
+            }
+          ],
+          "reason": "梯度与最大方向导数的标准关系一步到位，是本题的首选。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-direction-parameter",
+          "summary": "沿单位方向参数化，用复合函数求导得到方向导数再取最大",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.directional_gradient",
+              "methodId": "M.multivar_chain_rule",
+              "state": "沿单位方向 $l=(\\cos\\alpha,\\cos\\beta,\\cos\\gamma)$ 参数化 $M+t\\,l$",
+              "transformedState": "$\\frac{\\partial u}{\\partial l}=\\frac{d}{dt}\\big|_{t=0}u(1+t\\cos\\alpha,t\\cos\\beta,2+t\\cos\\gamma)=(8,0,4)\\cdot l$",
+              "condition": "链式法则作用于复合函数 $u(M+t\\,l)$。"
+            },
+            {
+              "scenarioId": "S.multivar.directional_gradient",
+              "methodId": "M.multivar_chain_rule",
+              "state": "对单位向量 $l$ 求最大值",
+              "transformedState": "由柯西不等式 $(8,0,4)\\cdot l\\le|(8,0,4)|=4\\sqrt5$，等号在 $l=\\frac{(2,0,1)}{\\sqrt5}$",
+              "condition": "$l$ 必须是单位向量。"
+            }
+          ],
+          "reason": "用方向参数化与链式法则先得到一般方向导数，再对方向优化，是独立于梯度公式的路线。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-unnormalized",
+          "summary": "方向向量未单位化，直接把梯度与 $(8,0,4)$ 的点积当最大方向导数",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.directional_gradient",
+              "methodId": "M.directional_derivative_gradient",
+              "state": "取方向向量 $(8,0,4)$ 直接作点积",
+              "transformedState": "$\\nabla u\\cdot(8,0,4)=64+16=80$，报最大方向导数为 $80$",
+              "condition": "错：方向向量必须先单位化，最大方向导数是 $|\\nabla u|=4\\sqrt5$。"
+            }
+          ],
+          "reason": "方向导数公式要求方向余弦是单位向量，未单位化把结果误算成 $|\\nabla u|^2=80$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：方向向量未单位化。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "梯度为 $(8,0,4)$，最大方向导数是 $|\\nabla u|=4\\sqrt5$，不是梯度与自身点积",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2017-js1",
+        "trainingGoal": "求三元函数在一点的梯度与最大方向导数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2017 年高数下期末试题 一、计算题第1题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2017-js1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "函数 $u=4x^2+y^2+z^2$",
+          "点 $M(1,0,2)$"
+        ],
+        "allowedVariations": [
+          "改变二次型系数",
+          "把点换成其他坐标"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2017-js1",
+          "text": "求 $u=4x^{2}+y^{2}+z^{2}$ 在点 $M(1,0,2)$ 处的梯度及最大方向导数。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "方向导数与梯度",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2017-js1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$\\nabla u=(8x,2y,2z)$，在 $M(1,0,2)$ 得 $(8,0,4)$；最大方向导数为 $|\\nabla u|=\\sqrt{64+16}=4\\sqrt5$，取最大值的方向为 $\\frac{(2,0,1)}{\\sqrt5}$。用方向参数化复核结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.directional_derivative_gradient"
+      ],
+      "applicableMethodIds": [
+        "M.directional_derivative_gradient",
+        "M.multivar_chain_rule"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.directional_gradient",
+          "methodId": "M.directional_derivative_gradient"
+        },
+        {
+          "scenarioId": "S.multivar.directional_gradient",
+          "methodId": "M.multivar_chain_rule"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.directional_derivative_gradient",
+        "M.multivar_chain_rule"
+      ],
+      "options": [
+        {
+          "id": "r-unnormalized",
+          "name": "方向向量未单位化，直接把梯度与 $(8,0,4)$ 的点积当最大方向导数"
+        },
+        {
+          "id": "r-gradient-modulus",
+          "name": "求梯度向量，再由梯度模得到最大方向导数"
+        },
+        {
+          "id": "r-direction-parameter",
+          "name": "沿单位方向参数化，用复合函数求导得到方向导数再取最大"
+        }
+      ],
+      "questionKey": "a11e01906e2251ea11e47931e2c647a150b1745a59914a32390563f207f788dd",
+      "faceKey": "d4fda1fe81a189be7ca41bdbf397408b306024863fc3d7ede3e72052cdbe5db3"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.multivar.surface_tangent",
+      "question": "求曲面 $z-e^z+2xy=3$ 在点 $(1,2,0)$ 处的切平面方程。",
+      "solution": "令 $F(x,y,z)=z-e^z+2xy-3$，$\\nabla F=(2y,2x,1-e^z)$。在 $(1,2,0)$ 处 $n=(4,2,0)$，切平面为 $4(x-1)+2(y-2)+0\\cdot(z-0)=0$，即 $2x+y-4=0$。",
+      "routes": [
+        {
+          "id": "r-gradient-normal",
+          "summary": "由隐式曲面梯度求法向量，再写切平面",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.surface_tangent",
+              "methodId": "M.surface_normal_vector",
+              "state": "令 $F(x,y,z)=z-e^z+2xy-3$",
+              "transformedState": "$\\nabla F=(2y,2x,1-e^z)$",
+              "condition": "隐式曲面法向量为梯度。"
+            },
+            {
+              "scenarioId": "S.multivar.surface_tangent",
+              "methodId": "M.surface_normal_vector",
+              "state": "代入 $(1,2,0)$",
+              "transformedState": "$n=(4,2,0)$，切平面 $4(x-1)+2(y-2)=0$，即 $2x+y-4=0$",
+              "condition": "$F_z=1-e^z$ 在切点为 $0$，切平面与 $z$ 轴平行。"
+            }
+          ],
+          "reason": "隐式曲面用梯度求法向量是最直接的切平面做法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-total-differential-normal",
+          "summary": "对 $F=0$ 取全微分，读出法向量分量",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.surface_tangent",
+              "methodId": "M.surface_normal_vector",
+              "state": "对 $F(x,y,z)=0$ 取全微分",
+              "transformedState": "$2y\\,dx+2x\\,dy+(1-e^z)\\,dz=0$",
+              "condition": "全微分形式不变性。"
+            },
+            {
+              "scenarioId": "S.multivar.surface_tangent",
+              "methodId": "M.surface_normal_vector",
+              "state": "在 $(1,2,0)$ 代入",
+              "transformedState": "$4\\,dx+2\\,dy+0\\cdot dz=0$，法向量 $(4,2,0)$，切平面 $2x+y-4=0$",
+              "condition": "微分的系数即法向量分量。"
+            }
+          ],
+          "reason": "全微分法直接从微分关系读出法向量，与梯度公式是两种不同的表达。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-miss-ez",
+          "summary": "漏算 $e^z$ 的偏导，把 $F_z$ 误写成 $1$",
+          "steps": [
+            {
+              "scenarioId": "S.multivar.surface_tangent",
+              "methodId": "M.surface_normal_vector",
+              "state": "$F=z-e^z+2xy-3$，误算 $F_z=1$",
+              "transformedState": "$n=(4,2,1)$，切平面 $4(x-1)+2(y-2)+z=0$，即 $4x+2y+z-8=0$",
+              "condition": "错：$F_z=1-e^z$，在 $z=0$ 处等于 $0$，法向量第三分量应为 $0$。"
+            }
+          ],
+          "reason": "漏掉 $-e^z$ 的导数，导致法向量与切平面都错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：漏算 $F_z$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y",
+        "z"
+      ],
+      "comparisonCriterion": "法向量第三分量为 $F_z=1-e^z$，在 $(1,2,0)$ 处为 $0$，切平面不含 $z$ 项",
+      "metadata": {
+        "motherId": "candidate.bankadv4.xjtu-2012-2",
+        "trainingGoal": "用隐式曲面法向量求切平面，注意 $F_z$ 的计算",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2012年高数下期末试题 一、计算题第2题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2012-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲面 $F=z-e^z+2xy-3=0$",
+          "切点为 $(1,2,0)$"
+        ],
+        "allowedVariations": [
+          "改变曲面常数项",
+          "把切点换成其他曲面上的点"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2012-2",
+          "text": "求曲面 $z-e^z+2xy=3$ 在点 $(1,2,0)$ 处的切平面方程.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "多元函数微分法及其应用",
+          "difficulty": "中",
+          "method": "曲面的切平面与法线",
+          "notes": "高等数学 bankadv4；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv4",
+        "originalId": "xjtu-2012-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立计算：$F=z-e^z+2xy-3$，$\\nabla F=(2y,2x,1-e^z)$，在 $(1,2,0)$ 得 $(4,2,0)$。切平面 $4(x-1)+2(y-2)+0\\cdot z=0$，即 $2x+y-4=0$。全微分法复核一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.surface_normal_vector"
+      ],
+      "applicableMethodIds": [
+        "M.surface_normal_vector"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.multivar.surface_tangent",
+          "methodId": "M.surface_normal_vector"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.surface_normal_vector"
+      ],
+      "options": [
+        {
+          "id": "r-gradient-normal",
+          "name": "由隐式曲面梯度求法向量，再写切平面"
+        },
+        {
+          "id": "r-total-differential-normal",
+          "name": "对 $F=0$ 取全微分，读出法向量分量"
+        },
+        {
+          "id": "r-miss-ez",
+          "name": "漏算 $e^z$ 的偏导，把 $F_z$ 误写成 $1$"
+        }
+      ],
+      "questionKey": "cf888b29c4c52c0bc186262e3a464068738ec7125e45682a0f02932eb2eec396",
+      "faceKey": "297357b94325172a878485e56c7542490d8298a8860e21ab38d09cdef5a7ab61"
+    }
+  ]
+}

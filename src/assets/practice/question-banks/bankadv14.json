@@ -1,0 +1,2850 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv14",
+  "sourceSha256": "7f2b7377031c9204a5e9ebf3e1d0ad8db99aa3858fc7b0c22f4429063b907078",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.summation_function",
+      "question": "求幂级数 $\\sum\\limits_{n=2}^{\\infty}\\dfrac{1}{n^2-1}x^n$ 的和函数，并求 $\\sum\\limits_{n=2}^{\\infty}\\dfrac{1}{(n^2-1)2^n}$ 的和。",
+      "solution": "记 $S(x)=\\sum_{n=2}^{\\infty}\\dfrac{x^n}{n^2-1}$。由 $\\dfrac{1}{n^2-1}=\\dfrac12\\left(\\dfrac{1}{n-1}-\\dfrac{1}{n+1}\\right)$ 得 $S(x)=\\dfrac12\\left[\\sum_{n=2}^{\\infty}\\dfrac{x^n}{n-1}-\\sum_{n=2}^{\\infty}\\dfrac{x^n}{n+1}\\right]$。第一项 $=\\sum_{m=1}^{\\infty}\\dfrac{x^{m+1}}{m}=-x\\ln(1-x)$；第二项令 $m=n+1\\ge3$，$=\\dfrac1x\\sum_{m=3}^{\\infty}\\dfrac{x^m}{m}=\\dfrac1x\\left[-\\ln(1-x)-x-\\dfrac{x^2}2\\right]$。故 $S(x)=\\dfrac12\\left[\\left(\\dfrac1x-x\\right)\\ln(1-x)+1+\\dfrac x2\\right]$，$|x|<1$；在 $x=\\pm1$ 处原级数绝对收敛，由和函数的连续性补上 $S(1)=\\dfrac34$、$S(-1)=\\dfrac14$。取 $x=\\dfrac12$ 得 $\\sum_{n=2}^{\\infty}\\dfrac{1}{(n^2-1)2^n}=S\\left(\\dfrac12\\right)=\\dfrac12\\left[\\dfrac32\\ln\\dfrac12+\\dfrac54\\right]=\\dfrac58-\\dfrac34\\ln2$。",
+      "routes": [
+        {
+          "id": "r-split-ln",
+          "summary": "先把 $\\dfrac{1}{n^2-1}$ 裂成两个一阶分母，再借用 $-\\ln(1-x)$ 的展开求和",
+          "steps": [
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "系数可裂项：$\\dfrac{1}{n^2-1}=\\dfrac12\\left(\\dfrac{1}{n-1}-\\dfrac{1}{n+1}\\right)$",
+              "transformedState": "$S(x)=\\dfrac12\\left[\\sum_{n\\ge2}\\dfrac{x^n}{n-1}-\\sum_{n\\ge2}\\dfrac{x^n}{n+1}\\right]$",
+              "condition": "$n\\ge2$ 时裂项恒成立，两个级数都在 $|x|<1$ 内绝对收敛，可分别求和。"
+            },
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "两个一阶分母级数分别套用 $\\sum_{m\\ge1}\\dfrac{x^m}{m}=-\\ln(1-x)$",
+              "transformedState": "$S(x)=\\dfrac12\\left[\\left(\\dfrac1x-x\\right)\\ln(1-x)+1+\\dfrac x2\\right]$，$S\\left(\\dfrac12\\right)=\\dfrac58-\\dfrac34\\ln2$",
+              "condition": "第二个和从 $m=3$ 起，需用 $\\sum_{m\\ge1}\\dfrac{x^m}{m}$ 减去前两项；$x=\\dfrac12$ 在收敛域内可直接代入。"
+            }
+          ],
+          "reason": "裂项把系数化为两个只含 $n-1$、$n+1$ 的级数，再直接调用对数展开式，一步合并即得闭式。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-diff-then-integrate",
+          "summary": "先逐项求导把分母降成一阶，求出 $S'$ 后再逐项积分还原",
+          "steps": [
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "对 $S(x)$ 在 $|x|<1$ 内逐项求导",
+              "transformedState": "$S'(x)=\\dfrac12\\left[-\\ln(1-x)+\\dfrac1{x^2}\\left(-\\ln(1-x)-x-\\dfrac{x^2}2\\right)\\right]$",
+              "condition": "由 $\\dfrac{n}{n^2-1}=\\dfrac12\\left(\\dfrac{1}{n-1}+\\dfrac{1}{n+1}\\right)$，逐项求导在收敛区间内部合法。"
+            },
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "利用 $S(0)=0$，从 $0$ 到 $x$ 逐项积分",
+              "transformedState": "$S(x)=\\int_0^xS'(t)\\,\\mathrm{d}t=\\dfrac12\\left[\\left(\\dfrac1x-x\\right)\\ln(1-x)+1+\\dfrac x2\\right]$，与裂项结果一致",
+              "condition": "$S(0)=\\sum_{n\\ge2}\\dfrac{0^n}{n^2-1}=0$，积分常数由初值定出；$|x|<1$ 内逐项积分合法。"
+            }
+          ],
+          "reason": "不求裂项闭式，而是把系数先求导简化，再用初值条件积分还原，属于求导—积分的逆运算思路。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-drop-half-factor",
+          "summary": "裂项时漏掉 $\\dfrac12$ 系数，直接把 $\\dfrac{1}{n^2-1}$ 写成 $\\dfrac{1}{n-1}-\\dfrac{1}{n+1}$",
+          "steps": [
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "误把 $\\dfrac{1}{n^2-1}$ 直接拆成 $\\dfrac{1}{n-1}-\\dfrac{1}{n+1}$",
+              "transformedState": "误得 $S(x)=-x\\ln(1-x)+\\dfrac1x\\left[-\\ln(1-x)-x-\\dfrac{x^2}2\\right]$，整体为正确值的 $2$ 倍，误得数值和为 $\\dfrac54-\\dfrac32\\ln2\\approx0.210$",
+              "condition": "错在裂项系数：$\\dfrac{1}{n-1}-\\dfrac{1}{n+1}=\\dfrac{2}{n^2-1}$，必须乘 $\\dfrac12$；漏掉后和函数与数值和都被放大一倍。"
+            }
+          ],
+          "reason": "常见错法是把 $\\dfrac{1}{n^2-1}$ 与 $\\dfrac{1}{n-1}-\\dfrac{1}{n+1}$ 直接等同，忽略恒等式中的 $\\dfrac12$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：裂项漏掉 $\\dfrac12$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "优先把 $\\dfrac{1}{n^2-1}$ 裂项后借用 $-\\ln(1-x)$ 展开；数值和必须用 $x=\\dfrac12$ 代入闭式，不能只做近似比较",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2021-18",
+        "trainingGoal": "掌握分母为 $n^2-1$ 的幂级数裂项求和，并把数值级数和归结为和函数在某点的取值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2021 年高数下期末试题 六、",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2021-18"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$1/(n^2-1)$ 的裂项系数固定为 $\\dfrac12$",
+          "幂级数从 $n=2$ 开始求和",
+          "收敛域包含端点 $x=\\pm1$"
+        ],
+        "allowedVariations": [
+          "把系数换成 $\\dfrac{1}{n^2-4}$",
+          "把 $x^n$ 换成 $x^{n-1}$ 后讨论和函数"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2021-18",
+          "text": "求幂级数 $\\sum\\limits_{n=2}^{\\infty}\\dfrac{1}{n^2-1}x^n$ 的和函数，并求 $\\sum\\limits_{n=2}^{\\infty}\\dfrac{1}{(n^2-1)2^n}$ 的和。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "幂级数求和函数",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2021-18",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$\\dfrac{1}{n^2-1}=\\dfrac12\\left(\\dfrac{1}{n-1}-\\dfrac{1}{n+1}\\right)$。第一项 $\\sum_{n\\ge2}\\dfrac{x^n}{n-1}=-x\\ln(1-x)$；第二项 $\\sum_{n\\ge2}\\dfrac{x^n}{n+1}=\\dfrac1x\\left[-\\ln(1-x)-x-\\dfrac{x^2}2\\right]$。合并得 $S(x)=\\dfrac12\\left[\\left(\\dfrac1x-x\\right)\\ln(1-x)+1+\\dfrac x2\\right]$，取 $x=\\dfrac12$ 得 $S=\\dfrac58-\\dfrac34\\ln2\\approx0.10514$；逐项加和 $n=2$ 至 $8$ 为 $0.105098$，与 $0.105141$ 相差约 $4\times10^{-5}$，属尾部量级，二者吻合。端点 $x=\\pm1$ 处原级数绝对收敛，$S(1)=\\dfrac34$、$S(-1)=\\dfrac14$，与裂项直接求和（$\\dfrac12[1+\\dfrac12]$、$\\dfrac12[1-\\dfrac12]$）一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.series_summation"
+      ],
+      "applicableMethodIds": [
+        "M.series_summation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.summation_function",
+          "methodId": "M.series_summation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.series_summation"
+      ],
+      "options": [
+        {
+          "id": "r-drop-half-factor",
+          "name": "裂项时漏掉 $\\dfrac12$ 系数，直接把 $\\dfrac{1}{n^2-1}$ 写成 $\\dfrac{1}{n-1}-\\dfrac{1}{n+1}$"
+        },
+        {
+          "id": "r-split-ln",
+          "name": "先把 $\\dfrac{1}{n^2-1}$ 裂成两个一阶分母，再借用 $-\\ln(1-x)$ 的展开求和"
+        },
+        {
+          "id": "r-diff-then-integrate",
+          "name": "先逐项求导把分母降成一阶，求出 $S'$ 后再逐项积分还原"
+        }
+      ],
+      "questionKey": "5636fdd8691b1cca6f884babf1d29129055c7d9f6c9ffd67825d8c38ca901a60",
+      "faceKey": "9cbc4c5c825ef1a9ae00c104b3adfba73430fe672736738972cf1d6371ce08b5"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.positive_term_test",
+      "question": "设函数 $f(x)$ 在 $[0,+\\infty)$ 上连续，且单调增加有上界。证明级数 $\\sum\\limits_{n=1}^{\\infty}\\left[f(n)-\\int_{n-1}^{n}f(x)\\,\\mathrm{d}x\\right]$ 收敛。",
+      "solution": "记 $u_n=f(n)-\\int_{n-1}^{n}f(x)\\,\\mathrm{d}x$。因 $f$ 在 $[n-1,n]$ 上单调增加，有 $f(n-1)\\le f(x)\\le f(n)$，故 $f(n-1)\\le\\int_{n-1}^{n}f(x)\\,\\mathrm{d}x\\le f(n)$，从而 $0\\le u_n\\le f(n)-f(n-1)$。于是 $\\sum_{n=1}^{N}u_n\\le\\sum_{n=1}^{N}[f(n)-f(n-1)]=f(N)-f(0)$；又 $f$ 单调有上界，$f(N)\\le M$，所以部分和 $S_N\\le M-f(0)$。$S_N$ 单调不减且有上界，故 $\\sum u_n$ 收敛。",
+      "routes": [
+        {
+          "id": "r-comparison-telescoping",
+          "summary": "把 $u_n$ 夹在 $0$ 与裂项差 $f(n)-f(n-1)$ 之间，与收敛的裂项级数作比较",
+          "steps": [
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.inequality_scaling",
+              "state": "通项 $u_n=f(n)-\\int_{n-1}^{n}f(x)\\,\\mathrm{d}x$",
+              "transformedState": "$0\\le u_n\\le f(n)-f(n-1)$",
+              "condition": "$f$ 单调增加，$x\\in[n-1,n]$ 时 $f(n-1)\\le f(x)\\le f(n)$，积分被两端值夹住。"
+            },
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.comparison_test",
+              "state": "取 $\\sum[f(n)-f(n-1)]$ 为比较对象",
+              "transformedState": "$\\sum_{n=1}^{N}[f(n)-f(n-1)]=f(N)-f(0)\\le M-f(0)$，该级数收敛，故原级数收敛",
+              "condition": "裂项级数部分和单调有上界，比较判别法给出收敛性。"
+            }
+          ],
+          "reason": "用积分上下界把通项压到裂项差，再与一个已知收敛的裂项级数作比较，是本题最标准的路径。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-cauchy-criterion",
+          "summary": "不作级数比较，直接用柯西收敛准则配合放缩估计片段和",
+          "steps": [
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.inequality_scaling",
+              "state": "对任意 $m>n$，考察片段和 $\\sum_{k=n+1}^{m}u_k$",
+              "transformedState": "$0\\le\\sum_{k=n+1}^{m}u_k\\le\\sum_{k=n+1}^{m}[f(k)-f(k-1)]=f(m)-f(n)$",
+              "condition": "每个 $u_k\\ge0$ 且 $u_k\\le f(k)-f(k-1)$，求和后裂项相消。"
+            },
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.inequality_scaling",
+              "state": "令 $f(n)$ 的极限为 $L$（单调有界必收敛）",
+              "transformedState": "$f(m)-f(n)\\to L-L=0$，片段和可任意小，满足柯西准则，级数收敛",
+              "condition": "$f$ 单调增加有上界，故 $\\lim_{n\\to\\infty}f(n)$ 存在，$m>n$ 时 $f(m)-f(n)\\to0$。"
+            }
+          ],
+          "reason": "不用比较判别法，而是把部分和的片段差压到 $f(m)-f(n)$，靠 $f(n)$ 的收敛性直接验证柯西准则。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-ratio-test-misuse",
+          "summary": "对 $u_n$ 直接套用比值判别法，得到极限为 $1$ 仍断言收敛",
+          "steps": [
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.ratio_test",
+              "state": "计算 $\\lim_{n\\to\\infty}\\dfrac{u_{n+1}}{u_n}$",
+              "transformedState": "该比值一般没有通用极限；即使存在也趋于 $1$，比值判别法失效，却据此宣称收敛",
+              "condition": "错在工具选择：$f$ 只是一般单调有界函数，$u_n$ 的形态不受控，比值极限未必存在，且等于 $1$ 时判别法本身给不出结论。"
+            }
+          ],
+          "reason": "把只适用于乘法结构通项的比值判别法硬套到积分型通项，属于判别法失效仍下结论。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：对积分型通项误用比值判别法。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "先用单调性把 $u_n$ 夹到 $f(n)-f(n-1)$，再任选比较判别法或柯西准则；不能对积分型通项直接套比值/根值判别",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2021-20",
+        "trainingGoal": "学会用单调性夹逼把积分型通项化为裂项差，再证正项级数收敛",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2021 年高数下期末试题 八、",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2021-20"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f$ 在 $[0,+\\infty)$ 上连续、单调增加且有上界",
+          "级数从 $n=1$ 开始，积分区间为 $[n-1,n]$",
+          "通项必须为非负"
+        ],
+        "allowedVariations": [
+          "把单调增加改为单调减少且下有界",
+          "把积分区间换成 $[n,n+1]$ 后重新证明"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2021-20",
+          "text": "设函数 $f(x)$ 在 $[0,+\\infty)$ 上连续，且单调增加有上界。证明级数 $\\sum\\limits_{n=1}^{\\infty}\\left[f(n)-\\int_{n-1}^{n}f(x)\\,\\mathrm{d}x\\right]$ 收敛。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "正项级数敛散性判别（比较、比值、根值）",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2021-20",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "记 $u_n=f(n)-\\int_{n-1}^{n}f(x)\\,\\mathrm{d}x$。$f$ 单调增加给出 $f(n-1)\\le f(x)\\le f(n)$（$x\\in[n-1,n]$），积分得 $f(n-1)\\le\\int_{n-1}^{n}f\\le f(n)$，故 $0\\le u_n\\le f(n)-f(n-1)$。于是 $S_N=\\sum_{n=1}^{N}u_n\\le\\sum_{n=1}^{N}[f(n)-f(n-1)]=f(N)-f(0)\\le M-f(0)$（$M$ 为上界），$S_N$ 单调不减且有上界，故收敛。交叉核对：取 $f(x)=\\arctan x$，$u_n$ 逐项为正且部分和有界，与结论一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inequality_scaling",
+        "M.comparison_test"
+      ],
+      "applicableMethodIds": [
+        "M.inequality_scaling",
+        "M.comparison_test"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.comparison_test"
+        },
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.ratio_test"
+        },
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.root_test"
+        },
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.inequality_scaling"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.comparison_test",
+        "M.ratio_test",
+        "M.root_test",
+        "M.inequality_scaling"
+      ],
+      "options": [
+        {
+          "id": "r-ratio-test-misuse",
+          "name": "对 $u_n$ 直接套用比值判别法，得到极限为 $1$ 仍断言收敛"
+        },
+        {
+          "id": "r-comparison-telescoping",
+          "name": "把 $u_n$ 夹在 $0$ 与裂项差 $f(n)-f(n-1)$ 之间，与收敛的裂项级数作比较"
+        },
+        {
+          "id": "r-cauchy-criterion",
+          "name": "不作级数比较，直接用柯西收敛准则配合放缩估计片段和"
+        }
+      ],
+      "questionKey": "d4e80e1f4d6b08b66902365c2ca661586f1d5f8a76f55ac07daf9b2552e50f42",
+      "faceKey": "4aa494ffe19f8e616e59d24b8867f72f28ba861013ab90f3324515c649531812"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.power_series_radius",
+      "question": "若幂级数 $\\sum\\limits_{n=1}^{\\infty}a_n(x-1)^n$ 在 $x=-1$ 处收敛，则此级数在 $x=2$ 处（　）。A. 发散；B. 敛散性不能确定；C. 条件收敛；D. 绝对收敛。",
+      "solution": "令 $t=x-1$，级数化为 $\\sum a_nt^n$，中心为 $x=1$。在 $x=-1$ 处收敛即 $t=-2$ 收敛，由阿贝尔定理知收敛半径 $R\\ge2$。在 $x=2$ 处 $t=1$，有 $|t|=1<2\\le R$，该点位于收敛区间内部，幂级数在区间内部绝对收敛，故在 $x=2$ 处绝对收敛，选 D。",
+      "routes": [
+        {
+          "id": "r-abel-distance",
+          "summary": "用阿贝尔定理把已知收敛点换算成收敛半径下界，再比较目标点到中心的距离",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.convergence_radius",
+              "state": "平移 $t=x-1$，已知 $t=-2$ 处收敛",
+              "transformedState": "收敛半径 $R\\ge|t|=2$",
+              "condition": "阿贝尔定理：凡使级数收敛的点，到中心的距离不超过收敛半径。"
+            },
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.convergence_radius",
+              "state": "目标点 $x=2$ 对应 $t=1$",
+              "transformedState": "$|t|=1<2\\le R$，位于收敛区间内部，绝对收敛，选 D",
+              "condition": "幂级数在 $|t|<R$ 内绝对收敛，内部点无需讨论端点。"
+            }
+          ],
+          "reason": "由已知收敛点给出 $R$ 的下界，再用距离比较锁定目标点必在内部，是标准判定。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-root-cauchy-hadamard",
+          "summary": "用柯西-阿达马公式从 $\\sum a_n(-2)^n$ 收敛估出 $\\limsup\\sqrt[n]{|a_n|}$，再算目标点",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.root_test",
+              "state": "由 $\\sum a_n(-2)^n$ 收敛，通项有界，$\\sqrt[n]{|a_n|}\\cdot2$ 上极限不超过 $1$",
+              "transformedState": "$\\limsup_{n\\to\\infty}\\sqrt[n]{|a_n|}\\le\\dfrac12$，故 $R=\\dfrac{1}{\\limsup\\sqrt[n]{|a_n|}}\\ge2$",
+              "condition": "收敛级数通项趋于零，从而 $\\limsup\\sqrt[n]{|a_n(-2)^n|}\\le1$，即柯西-阿达马公式给出的半径下界。"
+            },
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.convergence_radius",
+              "state": "目标点 $t=1$，$|t|=1$",
+              "transformedState": "$1<R$ 的范围内（$R\\ge2$），级数绝对收敛，选 D",
+              "condition": "$R\\ge2>1$，$t=1$ 严格位于收敛区间内部。"
+            }
+          ],
+          "reason": "不直接引用阿贝尔定理，而是用根值（柯西-阿达马）公式把已知收敛点转成对 $\\limsup\\sqrt[n]{|a_n|}$ 的估计。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-forget-shift",
+          "summary": "忽略 $(x-1)^n$ 的平移，把幂级数当作以 $x=0$ 为中心",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.convergence_radius",
+              "state": "误以 $x=0$ 为中心，由 $x=-1$ 收敛得 $R\\ge1$",
+              "transformedState": "误判 $x=2$ 处 $|x|=2>1$ 无法确定，选 B",
+              "condition": "错在中心：级数中心是 $x=1$ 而非 $x=0$，距离必须按 $|x-1|$ 计算。"
+            }
+          ],
+          "reason": "把 $x=-1$ 的收敛距离按 $|x|$ 计算，忽略平移后 $x=2$ 实际只距中心 $1$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：忽略幂级数的平移中心。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "一切距离都以中心 $x=1$ 为基准；已知收敛点只给出 $R$ 的下界，内部点必绝对收敛",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2023-5",
+        "trainingGoal": "由已知收敛点反推收敛半径下界，并判断另一点是否落在收敛区间内部",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2023 年工科数学分析试题 一、单选题第5题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2023-5"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "幂级数以 $x=1$ 为中心",
+          "已知 $x=-1$ 处收敛",
+          "目标点为 $x=2$"
+        ],
+        "allowedVariations": [
+          "把中心改为 $x=2$、已知收敛点改为 $x=0$",
+          "把目标点换成 $x=4$ 讨论端点情形"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2023-5",
+          "text": "若幂级数 $\\sum\\limits_{n=1}^{\\infty}a_n(x-1)^n$ 在 $x=-1$ 处收敛，则此级数在 $x=2$ 处（　）。A. 发散；B. 敛散性不能确定；C. 条件收敛；D. 绝对收敛。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "幂级数收敛半径与收敛域",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2023-5",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "令 $t=x-1$。在 $x=-1$ 收敛即 $\\sum a_n(-2)^n$ 收敛，由阿贝尔定理收敛半径 $R\\ge2$。在 $x=2$ 处 $t=1$，$|t|=1<2\\le R$，落在收敛区间内部，幂级数在内部绝对收敛，故选 D。交叉核对：取 $a_n=\\dfrac{1}{n2^n}$，$R=2$，$x=-1$ 处为 $\\sum(-1)^n/n$ 条件收敛，$x=2$ 处 $\\sum\\dfrac{1}{n2^n}$ 绝对收敛，与结论一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "decide_property"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.convergence_radius"
+      ],
+      "applicableMethodIds": [
+        "M.convergence_radius",
+        "M.root_test"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.power_series_radius",
+          "methodId": "M.convergence_radius"
+        },
+        {
+          "scenarioId": "S.series.power_series_radius",
+          "methodId": "M.ratio_test"
+        },
+        {
+          "scenarioId": "S.series.power_series_radius",
+          "methodId": "M.root_test"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.convergence_radius",
+        "M.ratio_test",
+        "M.root_test"
+      ],
+      "options": [
+        {
+          "id": "r-forget-shift",
+          "name": "忽略 $(x-1)^n$ 的平移，把幂级数当作以 $x=0$ 为中心"
+        },
+        {
+          "id": "r-abel-distance",
+          "name": "用阿贝尔定理把已知收敛点换算成收敛半径下界，再比较目标点到中心的距离"
+        },
+        {
+          "id": "r-root-cauchy-hadamard",
+          "name": "用柯西-阿达马公式从 $\\sum a_n(-2)^n$ 收敛估出 $\\limsup\\sqrt[n]{|a_n|}$，再算目标点"
+        }
+      ],
+      "questionKey": "3e58b9f149379179872daf0539d5505dc5f8c866aa839ab02443e937bfa5c7a0",
+      "faceKey": "65a563e8bd1db1f14523ce25ddf50dfe1d53c9dc612ec79b0bb0fae3c7f5755f"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.power_series_expansion",
+      "question": "设 $f(x)=\\dfrac{1}{4}\\ln\\dfrac{1+x}{1-x}+\\dfrac{1}{2}\\arctan x-x$，试将 $f(x)$ 展开成 $x$ 的幂级数。",
+      "solution": "由 $\\ln\\dfrac{1+x}{1-x}=\\ln(1+x)-\\ln(1-x)=\\sum_{n\\ge1}\\dfrac{[(-1)^{n-1}+1]x^n}{n}=2\\sum_{m\\ \\mathrm{odd}}\\dfrac{x^m}{m}$，得 $\\dfrac14\\ln\\dfrac{1+x}{1-x}=\\dfrac12\\sum_{m\\ \\mathrm{odd}}\\dfrac{x^m}{m}$；又 $\\arctan x=\\sum_{k\\ge0}\\dfrac{(-1)^kx^{2k+1}}{2k+1}$。两式相加，奇次幂 $x^m$ 的系数为 $\\dfrac{1+(-1)^{(m-1)/2}}{2m}$，仅当 $m\\equiv1\\ (\\mathrm{mod}\\ 4)$ 时为 $\\dfrac1m$，其余为 $0$；再减去 $x$ 恰好抵消 $m=1$ 项。故 $f(x)=\\sum_{j\\ge0}\\dfrac{x^{4j+5}}{4j+5}=\\dfrac{x^5}{5}+\\dfrac{x^9}{9}+\\dfrac{x^{13}}{13}+\\cdots$，$|x|<1$。",
+      "routes": [
+        {
+          "id": "r-known-expansions",
+          "summary": "分别套用 $\\ln\\dfrac{1+x}{1-x}$ 与 $\\arctan x$ 的已知展开式，合并同类项时按 $x$ 的次数筛项",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "两部分的已知展开：$\\dfrac14\\ln\\dfrac{1+x}{1-x}=\\dfrac12\\sum_{m\\ \\mathrm{odd}}\\dfrac{x^m}{m}$，$\\dfrac12\\arctan x=\\dfrac12\\sum_{k\\ge0}\\dfrac{(-1)^kx^{2k+1}}{2k+1}$",
+              "transformedState": "两项相加后 $x^m$（$m$ 奇）的系数化为 $\\dfrac{1+(-1)^{(m-1)/2}}{2m}$",
+              "condition": "$|x|<1$，两展开式都绝对收敛，可逐项合并。"
+            },
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "按 $m\\equiv1,3\\ (\\mathrm{mod}\\ 4)$ 筛选，并减去 $x$",
+              "transformedState": "$f(x)=\\sum_{j\\ge0}\\dfrac{x^{4j+5}}{4j+5}$，$|x|<1$；$x=\\pm1$ 处级数发散",
+              "condition": "$m\\equiv3\\ (\\mathrm{mod}\\ 4)$ 时 $(-1)^{(m-1)/2}=-1$ 系数为零；$m=1$ 项由 $-x$ 抵消。"
+            }
+          ],
+          "reason": "直接调用两个基本展开式，关键是合并时按 $x$ 的次数筛除 $4j+3$ 次项。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-derivative-then-integrate",
+          "summary": "先求导把超越函数化为有理函数 $\\dfrac{x^4}{1-x^4}$，再几何展开后逐项积分",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "对 $f$ 直接求导",
+              "transformedState": "$f'(x)=\\dfrac1{2(1-x^2)}+\\dfrac1{2(1+x^2)}-1=\\dfrac1{1-x^4}-1=\\dfrac{x^4}{1-x^4}$",
+              "condition": "$|x|<1$ 且 $x\\ne\\pm1$，求导逐项合法；注意 $\\dfrac14\\cdot\\dfrac2{1-x^2}$ 的系数化简。"
+            },
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "把 $\\dfrac{x^4}{1-x^4}$ 按几何级数展开并从 $0$ 积分",
+              "transformedState": "$f'(x)=\\sum_{j\\ge0}x^{4j+4}$，$f(x)=\\sum_{j\\ge0}\\dfrac{x^{4j+5}}{4j+5}$（$f(0)=0$）",
+              "condition": "$|x|<1$ 内逐项积分合法；端点 $x=\\pm1$ 处级数为 $\\pm\\sum\\dfrac{1}{4j+5}$，发散。"
+            }
+          ],
+          "reason": "不求助于对数与反正切的展开式，而是先求导化为有理函数再用等比级数积分，属于完全不同的出发点。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-keep-even-powers",
+          "summary": "合并时未按 $x$ 的次数筛选，误把 $\\ln\\dfrac{1+x}{1-x}$ 展开成含偶次项的形式",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "误写 $\\ln\\dfrac{1+x}{1-x}=\\sum_{n\\ge1}\\dfrac{2x^n}{n}$（保留了偶次项）",
+              "transformedState": "误得 $f(x)$ 残余 $\\dfrac{x^2}4$ 等偶次项，与 $f$ 为奇函数矛盾",
+              "condition": "错在合并：正确展开只有奇次项，$\\ln\\dfrac{1+x}{1-x}=2\\sum_{m\\ \\mathrm{odd}}\\dfrac{x^m}{m}$；保留偶次项会使 $f''(0)\\ne0$。"
+            }
+          ],
+          "reason": "常见错法是把 $\\ln(1+x)-\\ln(1-x)$ 逐项相加后忘记奇偶筛选，误保留 $x^2$、$x^4$ 等项。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：合并展开式时未按奇偶筛项。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "j",
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "优先走间接法（基本展开式合并）；必须验证 $f$ 为奇函数、首项为 $x^5$，端点发散",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2023-17",
+        "trainingGoal": "用两个基本展开式合并得到只含 $4j+5$ 次项的幂级数，并用求导积分法交叉验证",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2023 年工科数学分析试题 三、计算题第17题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2023-17"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f$ 是奇函数，展开式只含奇次幂",
+          "首项为 $\\dfrac{x^5}5$",
+          "收敛区间为 $(-1,1)$"
+        ],
+        "allowedVariations": [
+          "把 $\\arctan x$ 换成 $\\arctan(x/2)$",
+          "把前面的系数 $\\dfrac14$ 改为 $\\dfrac18$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2023-17",
+          "text": "设 $f(x)=\\dfrac{1}{4}\\ln\\dfrac{1+x}{1-x}+\\dfrac{1}{2}\\arctan x-x$，试将 $f(x)$ 展开成 $x$ 的幂级数。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "函数展开成幂级数",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2023-17",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解（两种方法交叉验证）：(1) 套已知展开，$\\dfrac14\\ln\\dfrac{1+x}{1-x}=\\dfrac12\\sum_{m\\ \\mathrm{odd}}\\dfrac{x^m}{m}$，$\\dfrac12\\arctan x=\\dfrac12\\sum_{k\\ge0}\\dfrac{(-1)^kx^{2k+1}}{2k+1}$，相加得 $\\sum_{m\\ \\mathrm{odd}}\\dfrac{1+(-1)^{(m-1)/2}}{2}\\dfrac{x^m}{m}$，奇数 $m$ 中只有 $m\\equiv1\\ (\\mathrm{mod}\\ 4)$ 保留，减去 $x$ 后得 $x^5/5+x^9/9+\\cdots$。(2) 求导：$f'(x)=\\dfrac1{2(1-x^2)}+\\dfrac1{2(1+x^2)}-1=\\dfrac1{1-x^4}-1=\\dfrac{x^4}{1-x^4}=\\sum_{j\\ge0}x^{4j+4}$，积分得 $f(x)=\\sum_{j\\ge0}\\dfrac{x^{4j+5}}{4j+5}$。两法结果一致，展开式为 $f(x)=\\sum\\limits_{j=0}^{\\infty}\\dfrac{x^{4j+5}}{4j+5}$，$|x|<1$；端点 $x=\\pm1$ 处级数化为 $\\pm\\sum\\dfrac{1}{4j+5}$，发散。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.power_series_expansion"
+      ],
+      "applicableMethodIds": [
+        "M.power_series_expansion"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.power_series_expansion",
+          "methodId": "M.power_series_expansion"
+        },
+        {
+          "scenarioId": "S.series.power_series_expansion",
+          "methodId": "M.taylor_expansion"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.power_series_expansion",
+        "M.taylor_expansion"
+      ],
+      "options": [
+        {
+          "id": "r-derivative-then-integrate",
+          "name": "先求导把超越函数化为有理函数 $\\dfrac{x^4}{1-x^4}$，再几何展开后逐项积分"
+        },
+        {
+          "id": "r-keep-even-powers",
+          "name": "合并时未按 $x$ 的次数筛选，误把 $\\ln\\dfrac{1+x}{1-x}$ 展开成含偶次项的形式"
+        },
+        {
+          "id": "r-known-expansions",
+          "name": "分别套用 $\\ln\\dfrac{1+x}{1-x}$ 与 $\\arctan x$ 的已知展开式，合并同类项时按 $x$ 的次数筛项"
+        }
+      ],
+      "questionKey": "5e8a41080ee6e24ec66738e6489d7f04231c465f3d18ce857969530dd6f093ef",
+      "faceKey": "7c70f972a74ce24f03004da52dd5b71359d444a3b9b5caafdfcfab5fffdadeb4"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.fourier_series",
+      "question": "将函数 $f(x)=x-\\dfrac{\\pi}{2}+\\left|x-\\dfrac{\\pi}{2}\\right|\\ (0\\leq x\\leq \\pi)$ 展成余弦级数。",
+      "solution": "在 $[0,\\pi]$ 上 $f(x)=2\\max\\left(x-\\dfrac\\pi2,0\\right)$，即 $0\\le x\\le\\dfrac\\pi2$ 时 $f=0$，$\\dfrac\\pi2\\le x\\le\\pi$ 时 $f=2x-\\pi$。余弦级数对应偶延拓，$b_n=0$。$a_0=\\dfrac2\\pi\\int_0^\\pi f(x)\\,\\mathrm{d}x=\\dfrac\\pi2$；$a_n=\\dfrac2\\pi\\int_{\\pi/2}^{\\pi}2\\left(x-\\dfrac\\pi2\\right)\\cos nx\\,\\mathrm{d}x$。令 $u=x-\\dfrac\\pi2$，$\\cos n\\left(u+\\dfrac\\pi2\\right)=\\cos nu\\cos\\dfrac{n\\pi}2-\\sin nu\\sin\\dfrac{n\\pi}2$，分部积分并用 $\\sin(n\\pi)=0$、$\\cos(n\\pi)=(-1)^n$，得 $a_n=\\dfrac4\\pi\\cdot\\dfrac{(-1)^n-\\cos(n\\pi/2)}{n^2}$。故 $f(x)\\sim\\dfrac\\pi4+\\dfrac4\\pi\\sum_{n=1}^{\\infty}\\dfrac{(-1)^n-\\cos(n\\pi/2)}{n^2}\\cos nx$，$0<x<\\pi$；端点 $x=\\pi$ 处级数和为 $\\pi=f(\\pi)$。",
+      "routes": [
+        {
+          "id": "r-piecewise-integral",
+          "summary": "先分段化简 $f$，再按余弦系数公式直接在 $[\\pi/2,\\pi]$ 上分部积分",
+          "steps": [
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "化简 $f=2\\max\\left(x-\\dfrac\\pi2,0\\right)$，$f$ 在 $[0,\\pi/2]$ 恒为 $0$",
+              "transformedState": "余弦级数按偶延拓，$b_n=0$；$a_0=\\dfrac2\\pi\\int_0^\\pi f\\,\\mathrm{d}x=\\dfrac\\pi2$",
+              "condition": "余弦级数要求偶延拓，故正弦系数全为零；$f$ 在 $[0,\\pi/2]$ 为零使积分只剩 $[\\pi/2,\\pi]$。"
+            },
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "在 $[\\pi/2,\\pi]$ 上计算 $a_n$",
+              "transformedState": "$a_n=\\dfrac4\\pi\\cdot\\dfrac{(-1)^n-\\cos(n\\pi/2)}{n^2}$，级数为 $\\dfrac\\pi4+\\dfrac4\\pi\\sum\\dfrac{(-1)^n-\\cos(n\\pi/2)}{n^2}\\cos nx$",
+              "condition": "令 $u=x-\\dfrac\\pi2$ 后分部积分，$\\sin(n\\pi)=0$、$\\cos(n\\pi)=(-1)^n$。"
+            }
+          ],
+          "reason": "先把绝对值拆成分段线性函数，再按余弦系数定义直接积分，是傅里叶系数最直接的算法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-split-linear-absolute",
+          "summary": "把 $f$ 拆成 $\\left(x-\\dfrac\\pi2\\right)+\\left|x-\\dfrac\\pi2\\right|$，利用 $|x-\\pi/2|$ 关于 $x=\\pi/2$ 的对称性化简积分",
+          "steps": [
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "$f=\\left(x-\\dfrac\\pi2\\right)+\\left|x-\\dfrac\\pi2\\right|$，其中 $g(x)=\\left|x-\\dfrac\\pi2\\right|$ 满足 $g(\\pi-x)=g(x)$",
+              "transformedState": "先算 $\\left(x-\\dfrac\\pi2\\right)$ 的余弦系数：$a_0=0$，$a_n=\\dfrac{2[(-1)^n-1]}{\\pi n^2}$",
+              "condition": "线性性允许逐项求系数；$\\left(x-\\dfrac\\pi2\\right)$ 在 $[0,\\pi]$ 上关于 $\\pi/2$ 反对称，$a_0=0$。"
+            },
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "再用 $g$ 的对称性把 $a_n^g$ 化到 $[0,\\pi/2]$",
+              "transformedState": "$a_n^g$：$n$ 奇时为 $0$，$n\\equiv2\\ (\\mathrm{mod}\\ 4)$ 时为 $\\dfrac8{\\pi n^2}$，$n\\equiv0\\ (\\mathrm{mod}\\ 4)$ 时为 $0$；合并得同一级数 $\\dfrac\\pi4+\\dfrac4\\pi\\sum\\dfrac{(-1)^n-\\cos(n\\pi/2)}{n^2}\\cos nx$",
+              "condition": "$g(\\pi-x)=g(x)$ 使 $\\int_0^\\pi g\\cos nx\\,\\mathrm{d}x=(1+(-1)^n)\\int_0^{\\pi/2}g\\cos nx\\,\\mathrm{d}x$，奇次项自动为零。"
+            }
+          ],
+          "reason": "不直接对 $f$ 分部积分，而是拆成一次函数与绝对值两部分，用关于 $x=\\pi/2$ 的对称性各自化简，属不同思路。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-sine-extension",
+          "summary": "把“余弦级数”误作奇延拓，令 $a_n=0$ 只计算正弦系数 $b_n$",
+          "steps": [
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "误按奇延拓展开，认为只需求 $b_n$",
+              "transformedState": "得到只含 $\\sin nx$ 的正弦级数，在 $x=\\pi$ 处和为 $0$，与 $f(\\pi)=\\pi$ 矛盾",
+              "condition": "错在延拓方式：余弦级数必须作偶延拓（$b_n=0$、$a_n\\ne0$）；奇延拓得到的是正弦级数，两者不能混用。"
+            }
+          ],
+          "reason": "把余弦级数与正弦级数的延拓方式互换，是最常见的概念性错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：混淆余弦级数与正弦级数的延拓。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "余弦级数必须偶延拓、只算 $a_n$；先分段化简 $f$ 可大幅减少积分量，端点值用狄利克雷定理核对",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2021-17",
+        "trainingGoal": "对含绝对值的分段线性函数作偶延拓，正确计算余弦系数 $a_n$ 并写清和函数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2021 年高数下期末试题 五、",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2021-17"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f$ 在 $[0,\\pi]$ 上分段为 $0$ 与 $2x-\\pi$",
+          "余弦级数对应偶延拓，$b_n=0$",
+          "端点 $x=\\pi$ 处级数收敛于 $\\pi$"
+        ],
+        "allowedVariations": [
+          "把区间改为 $[0,2]$ 并讨论余弦级数",
+          "把 $f$ 改为 $\\left|x-\\dfrac\\pi3\\right|+x$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2021-17",
+          "text": "将函数 $f(x)=x-\\dfrac{\\pi}{2}+\\left|x-\\dfrac{\\pi}{2}\\right|\\ (0\\leq x\\leq \\pi)$ 展成余弦级数。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "傅里叶级数展开",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2021-17",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "先化简：$x-\\dfrac\\pi2+\\left|x-\\dfrac\\pi2\\right|=2\\max\\left(x-\\dfrac\\pi2,0\\right)$，即 $x\\in[0,\\pi/2]$ 时 $f=0$，$x\\in[\\pi/2,\\pi]$ 时 $f=2x-\\pi$。偶延拓故 $b_n=0$。$a_0=\\dfrac2\\pi\\int_0^\\pi f\\,\\mathrm{d}x=\\dfrac2\\pi\\cdot2\\cdot\\dfrac{(\\pi/2)^2}2=\\dfrac\\pi2$，常数项 $\\dfrac{a_0}2=\\dfrac\\pi4$。$a_n=\\dfrac2\\pi\\int_{\\pi/2}^{\\pi}2\\left(x-\\dfrac\\pi2\\right)\\cos nx\\,\\mathrm{d}x$，令 $u=x-\\dfrac\\pi2$ 得 $a_n=\\dfrac4\\pi\\cdot\\dfrac{(-1)^n-\\cos(n\\pi/2)}{n^2}$。数值核对：取 $x=0$，级数 $\\dfrac\\pi4+\\dfrac4\\pi\\sum\\dfrac{(-1)^n-\\cos(n\\pi/2)}{n^2}$，前 $8$ 项之和约 $0.001$，随 $n$ 增大趋于 $f(0)=0$；取 $x=\\pi$ 时级数收敛于 $f(\\pi)=\\pi$，与分段表达式一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.fourier_series_expansion"
+      ],
+      "applicableMethodIds": [
+        "M.fourier_series_expansion"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.fourier_series",
+          "methodId": "M.fourier_series_expansion"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.fourier_series_expansion"
+      ],
+      "options": [
+        {
+          "id": "r-piecewise-integral",
+          "name": "先分段化简 $f$，再按余弦系数公式直接在 $[\\pi/2,\\pi]$ 上分部积分"
+        },
+        {
+          "id": "r-split-linear-absolute",
+          "name": "把 $f$ 拆成 $\\left(x-\\dfrac\\pi2\\right)+\\left|x-\\dfrac\\pi2\\right|$，利用 $|x-\\pi/2|$ 关于 $x=\\pi/2$ 的对称性化简积分"
+        },
+        {
+          "id": "r-sine-extension",
+          "name": "把“余弦级数”误作奇延拓，令 $a_n=0$ 只计算正弦系数 $b_n$"
+        }
+      ],
+      "questionKey": "a8599369d33b4c4168d36001df49599e631464ed43895df6d4842511e9f9df43",
+      "faceKey": "160f8273768a82e460a81d840a9be4294150cfcb74e5e0c072a3d14b4544d209"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.summation_function",
+      "question": "设数列 $\\{a_n\\}$ 满足条件：$a_0=3$，$a_1=1$，$a_{n-2}-n(n-1)a_n=0\\ (n\\geq 2)$，$S(x)$ 是幂级数 $\\sum\\limits_{n=0}^{+\\infty}a_nx^n$ 的和函数，求 $S(x)$ 的表达式。",
+      "solution": "由 $a_{n-2}=n(n-1)a_n$ 得 $a_n=\\dfrac{a_{n-2}}{n(n-1)}$。对偶数项 $n=2k$：$a_{2k}=\\dfrac{a_{2k-2}}{(2k)(2k-1)}=\\cdots=\\dfrac{a_0}{(2k)!}=\\dfrac3{(2k)!}$；对奇数项 $n=2k+1$：$a_{2k+1}=\\dfrac{a_{2k-1}}{(2k+1)(2k)}=\\cdots=\\dfrac{a_1}{(2k+1)!}=\\dfrac1{(2k+1)!}$。故 $S(x)=\\sum_{k\\ge0}\\dfrac{3x^{2k}}{(2k)!}+\\sum_{k\\ge0}\\dfrac{x^{2k+1}}{(2k+1)!}=3\\cosh x+\\sinh x$，$x\\in\\mathbb{R}$。",
+      "routes": [
+        {
+          "id": "r-recurrence-parity",
+          "summary": "由递推式分奇偶两支直接求出通项，再套用 $\\cosh$、$\\sinh$ 的展开式",
+          "steps": [
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "递推 $a_n=\\dfrac{a_{n-2}}{n(n-1)}$ 使奇偶项完全分离",
+              "transformedState": "$a_{2k}=\\dfrac3{(2k)!}$，$a_{2k+1}=\\dfrac1{(2k+1)!}$",
+              "condition": "分母只含同奇偶的连续因子，迭代后恰为该奇偶阶乘；$a_0$、$a_1$ 分别给定初值。"
+            },
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "把偶、奇两部分分别代入 $\\cosh x$ 与 $\\sinh x$ 的展开",
+              "transformedState": "$S(x)=3\\cosh x+\\sinh x=\\dfrac{3(e^x+e^{-x})}2+\\dfrac{e^x-e^{-x}}2=2e^x+e^{-x}$，$x\\in\\mathbb{R}$",
+              "condition": "$\\sum\\dfrac{x^{2k}}{(2k)!}=\\cosh x$、$\\sum\\dfrac{x^{2k+1}}{(2k+1)!}=\\sinh x$，收敛半径无穷。"
+            }
+          ],
+          "reason": "从递推式直接读出通项，再识别为双曲函数的展开，属于系数法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-ode",
+          "summary": "对和函数逐项求导两次，把系数递推转化为微分方程 $S''=S$ 再解初值问题",
+          "steps": [
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "逐项求导两次并代入递推 $a_{n-2}=n(n-1)a_n$",
+              "transformedState": "$S''(x)=\\sum_{n\\ge2}n(n-1)a_nx^{n-2}=\\sum_{n\\ge2}a_{n-2}x^{n-2}=S(x)$",
+              "condition": "$\\sum a_nx^n$ 的收敛半径为无穷，可逐项求导两次。"
+            },
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "解 $S''=S$，初值 $S(0)=a_0=3$、$S'(0)=a_1=1$",
+              "transformedState": "通解 $S=C_1e^x+C_2e^{-x}$，由 $C_1+C_2=3$、$C_1-C_2=1$ 得 $C_1=2,C_2=1$，即 $S=3\\cosh x+\\sinh x$",
+              "condition": "特征方程 $r^2=1$ 有两实根，初值条件唯一确定常数。"
+            }
+          ],
+          "reason": "不求通项，而是把递推整体翻译成微分方程，用初值条件解出和函数，是真正不同的结构性思路。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-drop-negative-exponential",
+          "summary": "解 $S''=S$ 时只取 $e^x$ 一支，漏掉 $e^{-x}$",
+          "steps": [
+            {
+              "scenarioId": "S.series.summation_function",
+              "methodId": "M.series_summation",
+              "state": "把 $S''=S$ 的通解误写成 $S=Ce^x$",
+              "transformedState": "由 $S(0)=3$ 强行取 $C=3$，得 $S=3e^x$，但此时 $S'(0)=3\\ne1$",
+              "condition": "错在二阶线性方程漏根：$r^2=1$ 有两个根 $\\pm1$，通解必须含 $e^{-x}$。"
+            }
+          ],
+          "reason": "二阶方程只取一个特征根，导致初值条件自相矛盾却仍下结论。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：漏掉 $e^{-x}$ 分支。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "k",
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "优先分奇偶求通项识别为 $3\\cosh x+\\sinh x$；用 $S(0)=3$、$S'(0)=1$ 复核，避免漏掉 $e^{-x}$",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2022-17",
+        "trainingGoal": "把系数递推翻译为通项或微分方程，求幂级数和函数并识别双曲函数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2022 年高等数学下期末试题 三、计算题第7题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2022-17"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$a_0=3$、$a_1=1$ 为初值",
+          "递推只在 $n\\ge2$ 时成立",
+          "和函数在全体实数上有定义"
+        ],
+        "allowedVariations": [
+          "把初值改为 $a_0=1$、$a_1=3$",
+          "把递推改为 $a_{n-2}+n(n-1)a_n=0$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2022-17",
+          "text": "设数列 $\\{a_n\\}$ 满足条件：$a_0=3$，$a_1=1$，$a_{n-2}-n(n-1)a_n=0\\ (n\\geq 2)$，$S(x)$ 是幂级数 $\\sum\\limits_{n=0}^{+\\infty}a_nx^n$ 的和函数，求 $S(x)$ 的表达式。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "幂级数求和函数",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2022-17",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "由 $a_{n-2}=n(n-1)a_n$ 得分奇偶两支：$a_{2k}=\\dfrac{a_{2k-2}}{(2k)(2k-1)}=\\dfrac3{(2k)!}$，$a_{2k+1}=\\dfrac{a_{2k-1}}{(2k+1)(2k)}=\\dfrac1{(2k+1)!}$。故 $S(x)=3\\sum\\dfrac{x^{2k}}{(2k)!}+\\sum\\dfrac{x^{2k+1}}{(2k+1)!}=3\\cosh x+\\sinh x$。校验：$S(0)=3=a_0$，$S'(0)=1=a_1$，$S''=S$ 与原递推 $a_{n-2}=n(n-1)a_n$ 等价；展开前几项 $3+x+\\dfrac32x^2+\\dfrac16x^3+\\cdots$ 与递推结果 $a_2=\\dfrac32$、$a_3=\\dfrac16$ 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.series_summation"
+      ],
+      "applicableMethodIds": [
+        "M.series_summation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.summation_function",
+          "methodId": "M.series_summation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.series_summation"
+      ],
+      "options": [
+        {
+          "id": "r-drop-negative-exponential",
+          "name": "解 $S''=S$ 时只取 $e^x$ 一支，漏掉 $e^{-x}$"
+        },
+        {
+          "id": "r-recurrence-parity",
+          "name": "由递推式分奇偶两支直接求出通项，再套用 $\\cosh$、$\\sinh$ 的展开式"
+        },
+        {
+          "id": "r-ode",
+          "name": "对和函数逐项求导两次，把系数递推转化为微分方程 $S''=S$ 再解初值问题"
+        }
+      ],
+      "questionKey": "e068b30f03299ab22d6bbc35ef1fb35ade8c95fc58e2b1b339aaadae8a0910b5",
+      "faceKey": "dd383c2c241e092e21ca31fe8218aca9b98d2704d8bc9b80852f0b9c06f122fd"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.positive_term_test",
+      "question": "下列命题中正确的是（　）。(A) 设正项级数 $\\sum\\limits_{n=1}^{\\infty}a_n$ 收敛，且 $\\lim\\limits_{n\\to\\infty}\\dfrac{a_{n+1}}{a_n}$ 存在，则 $\\lim\\limits_{n\\to\\infty}\\dfrac{a_{n+1}}{a_n}<1$；(B) 若正项级数 $\\sum\\limits_{n=1}^{\\infty}a_n$ 发散，必存在 $N\\in\\mathbb{R}_{+}$，当 $n>N$ 时，恒有 $a_n>\\dfrac{1}{n}$；(C) 设 $f(x)=x-\\sin x$，则 $\\sum\\limits_{n=1}^{\\infty}(-1)^nf\\left(\\dfrac{1}{\\sqrt{n}}\\right)$ 绝对收敛；(D) 若级数 $\\sum\\limits_{n=1}^{\\infty}(a_{2n-1}+a_{2n})$ 收敛，则 $\\sum\\limits_{n=1}^{\\infty}a_n$ 收敛。",
+      "solution": "(A) 假：取 $a_n=\\dfrac1{n^2}$，$\\sum a_n$ 收敛，而 $\\dfrac{a_{n+1}}{a_n}=\\dfrac{n^2}{(n+1)^2}\\to1$，极限等于 $1$ 而非小于 $1$。(B) 假：取 $a_n=\\dfrac1{n\\ln n}\\ (n\\ge2)$，$\\sum a_n$ 发散，但 $a_n<\\dfrac1n$ 恒成立。(C) 真：由 $\\sin x=x-\\dfrac{x^3}6+o(x^3)$ 得 $x-\\sin x\\sim\\dfrac{x^3}6$，故 $f\\left(\\dfrac1{\\sqrt n}\\right)\\sim\\dfrac1{6n^{3/2}}$，而 $\\sum\\dfrac1{n^{3/2}}$ 收敛，原级数绝对收敛。(D) 假：取 $a_{2n-1}=n$、$a_{2n}=-n$，则 $a_{2n-1}+a_{2n}=0$，$\\sum(a_{2n-1}+a_{2n})$ 收敛，但 $\\sum a_n$ 发散。故正确选项为 C。",
+      "routes": [
+        {
+          "id": "r-scaling-prove-c",
+          "summary": "用三阶不等式放缩直接证明 (C) 成立，再由单选题型确定答案",
+          "steps": [
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.inequality_scaling",
+              "state": "对 (C) 的通项作放缩，$x>0$ 时 $0\\le x-\\sin x\\le\\dfrac{x^3}6$",
+              "transformedState": "$0\\le f\\left(\\dfrac1{\\sqrt n}\\right)=\\dfrac1{\\sqrt n}-\\sin\\dfrac1{\\sqrt n}\\le\\dfrac1{6n^{3/2}}$",
+              "condition": "$\\sin x\\ge x-\\dfrac{x^3}6\\ (x>0)$，故 $x-\\sin x\\ge0$ 且被 $x^3/6$ 控制。"
+            },
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.comparison_test",
+              "state": "与 $p=\\dfrac32$ 的 $p$ 级数比较",
+              "transformedState": "$\\sum\\dfrac1{6n^{3/2}}$ 收敛，故 $\\sum\\left|f\\left(\\dfrac1{\\sqrt n}\\right)\\right|$ 收敛，(C) 真，答案为 C",
+              "condition": "$p=\\dfrac32>1$，比较判别法；本题为单选，(C) 成立即可确定答案。"
+            }
+          ],
+          "reason": "正面验证唯一正确选项，抓住 $x-\\sin x$ 的三阶无穷小，是本题最直接的解法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-counterexamples",
+          "summary": "先为 (A)(B)(D) 各构造一个反例排除，再用极限比较确认 (C)",
+          "steps": [
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.comparison_test",
+              "state": "构造 (A)、(B) 的反例",
+              "transformedState": "(A) $a_n=\\dfrac1{n^2}$，比值极限为 $1$；(B) $a_n=\\dfrac1{n\\ln n}$ 由柯西凝聚判别法（$2^ka_{2^k}=\\dfrac1{k\\ln2}$）知发散，且 $a_n<\\dfrac1n$，故 (A)(B) 皆假",
+              "condition": "反例满足各选项前提却使结论不成立；(B) 与 $1/n$ 的极限比较比值为 $0$，判不出发散，须用柯西凝聚或积分判别法。"
+            },
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.comparison_test",
+              "state": "构造 (D) 的反例并用极限比较验证 (C)",
+              "transformedState": "(D) $a_{2n-1}=n,a_{2n}=-n$ 使分组和为 $0$ 而 $\\sum a_n$ 发散；(C) $f\\left(\\dfrac1{\\sqrt n}\\right)\\sim\\dfrac1{6n^{3/2}}$，与 $\\sum n^{-3/2}$ 极限比较收敛",
+              "condition": "(D) 中 $a_n$ 不必非负，分组收敛不能推整体收敛；(C) 极限比较比值趋于 $\\dfrac16$。"
+            }
+          ],
+          "reason": "走排除法：用反例否定三个选项，再对剩余选项作极限比较，路径与正面证明完全不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-equivalent-order",
+          "summary": "把 $x-\\sin x$ 误作 $\\sim x$，得到 $f\\left(\\dfrac1{\\sqrt n}\\right)\\sim\\dfrac1{\\sqrt n}$ 从而误判 (C)",
+          "steps": [
+            {
+              "scenarioId": "S.series.positive_term_test",
+              "methodId": "M.comparison_test",
+              "state": "误取等价无穷小 $x-\\sin x\\sim x$",
+              "transformedState": "误得 $f\\left(\\dfrac1{\\sqrt n}\\right)\\sim\\dfrac1{\\sqrt n}$，与发散级数 $\\sum\\dfrac1{\\sqrt n}$ 比较，误判为条件收敛，从而错误否定 (C)",
+              "condition": "错在等价阶数：$x-\\sin x\\sim\\dfrac{x^3}6$ 是三阶无穷小，不能与 $x$ 同阶替换。"
+            }
+          ],
+          "reason": "把三阶无穷小当成一阶，是等价替换中最典型的失误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：等价无穷小取错阶。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "遇到 $x-\\sin x$ 必须保留三阶项 $x^3/6$；正项判别用 $p$ 级数作基准，其余选项优先举反例",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2021-10",
+        "trainingGoal": "辨析正项级数判别法的适用条件，并用 $p$ 级数与三阶无穷小判断绝对收敛",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2021 年高数下期末试题 二、选择题第5题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2021-10"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f(x)=x-\\sin x$，故通项为 $\\dfrac1{\\sqrt n}-\\sin\\dfrac1{\\sqrt n}$",
+          "(A)(B) 的前提均为正项级数",
+          "(D) 未假设 $a_n$ 非负"
+        ],
+        "allowedVariations": [
+          "把 (C) 中 $\\dfrac1{\\sqrt n}$ 换成 $\\dfrac1n$",
+          "把 (A) 的结论改为 $\\lim\\dfrac{a_{n+1}}{a_n}\\le1$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2021-10",
+          "text": "下列命题中正确的是（　）。(A) 设正项级数 $\\sum\\limits_{n=1}^{\\infty}a_n$ 收敛，且 $\\lim\\limits_{n\\to\\infty}\\dfrac{a_{n+1}}{a_n}$ 存在，则 $\\lim\\limits_{n\\to\\infty}\\dfrac{a_{n+1}}{a_n}<1$；(B) 若正项级数 $\\sum\\limits_{n=1}^{\\infty}a_n$ 发散，必存在 $N\\in\\mathbb{R}_{+}$，当 $n>N$ 时，恒有 $a_n>\\dfrac{1}{n}$；(C) 设 $f(x)=x-\\sin x$，则 $\\sum\\limits_{n=1}^{\\infty}(-1)^nf\\left(\\dfrac{1}{\\sqrt{n}}\\right)$ 绝对收敛；(D) 若级数 $\\sum\\limits_{n=1}^{\\infty}(a_{2n-1}+a_{2n})$ 收敛，则 $\\sum\\limits_{n=1}^{\\infty}a_n$ 收敛。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "正项级数敛散性判别（比较、比值、根值）",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2021-10",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "逐项判定：(A) 假，取 $a_n=\\dfrac1{n^2}$，级数收敛但 $\\dfrac{a_{n+1}}{a_n}=\\dfrac{n^2}{(n+1)^2}\\to1$，不是 $<1$。(B) 假，取 $a_n=\\dfrac1{n\\ln n}\\ (n\\ge2)$，$\\sum a_n$ 发散而 $a_n<\\dfrac1n$。(C) 真，$x>0$ 时 $x-\\sin x=\\dfrac{x^3}6+o(x^3)$，故 $f\\left(\\dfrac1{\\sqrt n}\\right)\\sim\\dfrac1{6n^{3/2}}$，$\\sum n^{-3/2}$ 收敛，绝对收敛。(D) 假，取 $a_{2n-1}=n$、$a_{2n}=-n$，则 $a_{2n-1}+a_{2n}=0$，$\\sum$ 收敛但 $\\sum a_n$ 发散。故正确选项为 C。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inequality_scaling",
+        "M.comparison_test"
+      ],
+      "applicableMethodIds": [
+        "M.inequality_scaling",
+        "M.comparison_test"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.comparison_test"
+        },
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.ratio_test"
+        },
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.root_test"
+        },
+        {
+          "scenarioId": "S.series.positive_term_test",
+          "methodId": "M.inequality_scaling"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.comparison_test",
+        "M.ratio_test",
+        "M.root_test",
+        "M.inequality_scaling"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-equivalent-order",
+          "name": "把 $x-\\sin x$ 误作 $\\sim x$，得到 $f\\left(\\dfrac1{\\sqrt n}\\right)\\sim\\dfrac1{\\sqrt n}$ 从而误判 (C)"
+        },
+        {
+          "id": "r-scaling-prove-c",
+          "name": "用三阶不等式放缩直接证明 (C) 成立，再由单选题型确定答案"
+        },
+        {
+          "id": "r-counterexamples",
+          "name": "先为 (A)(B)(D) 各构造一个反例排除，再用极限比较确认 (C)"
+        }
+      ],
+      "questionKey": "7accffb798c2a12632a6099cbca2f7e7d93b7d6c8f96b4ac240a77bdfeadc200",
+      "faceKey": "e39a519bd3d3e8af36d79b09242a3a7156780fed174396287a597d5d379e2450"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.power_series_radius",
+      "question": "若幂级数 $\\sum\\limits_{n=1}^{\\infty}a_n(x-1)^n$ 在 $x=-1$ 处收敛，则该级数在点 $x=3$ 处（　）。A. 条件收敛；B. 绝对收敛；C. 发散；D. 敛散性不能确定。",
+      "solution": "令 $t=x-1$，级数为 $\\sum a_nt^n$，中心 $x=1$。$x=-1$ 收敛即 $t=-2$ 收敛，故收敛半径 $R\\ge2$。$x=3$ 对应 $t=2$，只能知道 $|t|=2\\le R$ 的下界关系，$t=2$ 可能恰是收敛区间的端点。举例：$a_n=\\dfrac1{n2^n}$ 满足题设（$x=-1$ 为条件收敛），但 $x=3$ 处成为 $\\sum\\dfrac1n$，发散；$a_n=\\dfrac1{n^22^n}$ 也满足题设，而 $x=3$ 处为 $\\sum\\dfrac1{n^2}$，收敛。两种情形都与题设相容，故 $x=3$ 处敛散性不能确定，选 D。",
+      "routes": [
+        {
+          "id": "r-abel-boundary",
+          "summary": "用阿贝尔定理定出 $R\\ge2$，指出 $x=3$ 恰与已知收敛点同距，属边界待定",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.convergence_radius",
+              "state": "平移 $t=x-1$，$t=-2$ 处收敛",
+              "transformedState": "$R\\ge2$",
+              "condition": "阿贝尔定理：收敛点到中心的距离不超过收敛半径。"
+            },
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.convergence_radius",
+              "state": "$x=3$ 对应 $t=2$，与 $t=-2$ 同距",
+              "transformedState": "$R\\ge2$ 只是下界，$|t|=2$ 可能恰为端点：$R=2$ 时 $t=2$ 的敛散须由具体系数决定，不能由 $t=-2$ 收敛推出，选 D",
+              "condition": "$R$ 由已知收敛点只能定下界；当 $R=2$ 时 $t=\\pm2$ 均为端点，端点敛散必须单独判定。"
+            }
+          ],
+          "reason": "抓住“同距点未必同敛散”，用半径只能给下界这一事实判定不能确定。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-two-counterexamples",
+          "summary": "构造两个收敛半径同为 $2$ 但 $x=3$ 处一个发散一个收敛的级数，直接证明不能确定",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.root_test",
+              "state": "取 $a_n=\\dfrac1{n2^n}$ 与 $a_n=\\dfrac1{n^22^n}$",
+              "transformedState": "两者的 $\\sqrt[n]{|a_n|}\\to\\dfrac12$，故 $R=2$，均满足 $x=-1$ 收敛",
+              "condition": "柯西-阿达马公式；两个系数列都使 $R=2$，$t=-2$ 为端点，由莱布尼茨判别法都收敛。"
+            },
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.root_test",
+              "state": "比较两个级数在 $t=2$ 的行为",
+              "transformedState": "前者化为 $\\sum\\dfrac1n$ 发散，后者化为 $\\sum\\dfrac1{n^2}$ 收敛，故敛散性不能确定，选 D",
+              "condition": "同一前提下两种结果并存，说明题设信息不足以判定 $x=3$。"
+            }
+          ],
+          "reason": "用一发散一收敛的两个具体级数作反例，比只引用半径下界更有说服力。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-assume-symmetric-convergence",
+          "summary": "误认为收敛域关于中心对称，已知一端点收敛便断定另一端也收敛",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_radius",
+              "methodId": "M.convergence_radius",
+              "state": "把 $x=-1$ 视为收敛区间的一个端点、$R=2$，并默认另一端点 $x=3$ 同样收敛",
+              "transformedState": "误判 $x=3$ 绝对收敛，选 B",
+              "condition": "错在默认端点行为对称：收敛半径只保证 $|t|<R$ 内绝对收敛，$|t|=R$ 两端的敛散由具体系数决定，可能发散也可能条件收敛。"
+            }
+          ],
+          "reason": "把“收敛半径对称”误当成“端点敛散对称”，是本题最常见的错误推理。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：默认两个端点的敛散性一致。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "先由已知收敛点得 $R$ 的下界；目标点若与已知点同距，必须另找反例，不能对称地推出收敛",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2024-6",
+        "trainingGoal": "区分幂级数内部点与边界点，理解“某点收敛”只能给半径下界，端点敛散需具体判定",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2024 高数下期末试题 一、单选题第6题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2024-6"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "幂级数中心为 $x=1$",
+          "已知 $x=-1$ 处收敛",
+          "目标点为 $x=3$，与已知点关于中心对称"
+        ],
+        "allowedVariations": [
+          "把目标点改为 $x=0$（内部点）",
+          "把已知点改为 $x=0$ 的收敛条件"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2024-6",
+          "text": "若幂级数 $\\sum\\limits_{n=1}^{\\infty}a_n(x-1)^n$ 在 $x=-1$ 处收敛，则该级数在点 $x=3$ 处（　）。A. 条件收敛；B. 绝对收敛；C. 发散；D. 敛散性不能确定。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "幂级数收敛半径与收敛域",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2024-6",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "令 $t=x-1$，$x=-1$ 对应 $t=-2$ 收敛，故 $R\\ge2$；$x=3$ 对应 $t=2$，恰与已知收敛点同距，只能确定 $R\\ge2$，$t=2$ 是可能的边界点，敛散性无法确定。两例验证：$a_n=\\dfrac1{n2^n}$ 时 $R=2$，$x=-1$ 处 $\\sum\\dfrac{(-1)^n}{n}$ 条件收敛，$x=3$ 处 $\\sum\\dfrac1n$ 发散；$a_n=\\dfrac1{n^22^n}$ 时 $R=2$，$x=-1$ 处 $\\sum\\dfrac{(-1)^n}{n^2}$ 绝对收敛，$x=3$ 处 $\\sum\\dfrac1{n^2}$ 也收敛。同一前提出现发散与收敛两种情形，故选 D。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "decide_property"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.convergence_radius"
+      ],
+      "applicableMethodIds": [
+        "M.convergence_radius",
+        "M.root_test"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.power_series_radius",
+          "methodId": "M.convergence_radius"
+        },
+        {
+          "scenarioId": "S.series.power_series_radius",
+          "methodId": "M.ratio_test"
+        },
+        {
+          "scenarioId": "S.series.power_series_radius",
+          "methodId": "M.root_test"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.convergence_radius",
+        "M.ratio_test",
+        "M.root_test"
+      ],
+      "options": [
+        {
+          "id": "r-two-counterexamples",
+          "name": "构造两个收敛半径同为 $2$ 但 $x=3$ 处一个发散一个收敛的级数，直接证明不能确定"
+        },
+        {
+          "id": "r-assume-symmetric-convergence",
+          "name": "误认为收敛域关于中心对称，已知一端点收敛便断定另一端也收敛"
+        },
+        {
+          "id": "r-abel-boundary",
+          "name": "用阿贝尔定理定出 $R\\ge2$，指出 $x=3$ 恰与已知收敛点同距，属边界待定"
+        }
+      ],
+      "questionKey": "611cfa19be235200642e32ea9e91fb7a16e7e29022a0e824c74775f2703600db",
+      "faceKey": "62c615698a92a8e22c5ca58d9adf54c0c2ed7a6959baedcae44965e235cb6966"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.power_series_expansion",
+      "question": "将 $f(x)=(1+x)\\ln(1+x)$ 展开成 $x$ 的幂级数，并求 $\\sum\\limits_{n=2}^{+\\infty}\\dfrac{(-1)^{n}}{n(n-1)}$ 的和。",
+      "solution": "由 $\\ln(1+x)=\\sum_{n\\ge1}\\dfrac{(-1)^{n-1}x^n}{n}\\ (-1<x\\le1)$，两边乘 $x$ 得 $x\\ln(1+x)=\\sum_{n\\ge1}\\dfrac{(-1)^{n-1}x^{n+1}}{n}=\\sum_{m\\ge2}\\dfrac{(-1)^mx^m}{m-1}$。于是 $f(x)=x+\\sum_{n\\ge2}\\left[\\dfrac{(-1)^{n-1}}{n}+\\dfrac{(-1)^n}{n-1}\\right]x^n=x+\\sum_{n\\ge2}\\dfrac{(-1)^n}{n(n-1)}x^n$，$|x|<1$。该级数在 $x=1$ 绝对收敛（通项 $\\sim\\dfrac1{n^2}$），由阿贝尔定理可代入 $x=1$：$f(1)=2\\ln2=1+\\sum_{n\\ge2}\\dfrac{(-1)^n}{n(n-1)}$，故 $\\sum_{n\\ge2}\\dfrac{(-1)^n}{n(n-1)}=2\\ln2-1$。",
+      "routes": [
+        {
+          "id": "r-multiply-and-merge",
+          "summary": "乘 $x$ 后指标平移，把两个同次幂的系数合并成 $\\dfrac{(-1)^n}{n(n-1)}$",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "由 $\\ln(1+x)$ 的展开乘 $x$",
+              "transformedState": "$x\\ln(1+x)=\\sum_{n\\ge2}\\dfrac{(-1)^nx^n}{n-1}$",
+              "condition": "指标平移 $n\\to n-1$ 时符号 $(-1)^{n-1}\\to(-1)^n$，这一步不能漏翻转。"
+            },
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "与 $\\ln(1+x)$ 的展开合并同类项",
+              "transformedState": "$f(x)=x+\\sum_{n\\ge2}\\dfrac{(-1)^n}{n(n-1)}x^n$；取 $x=1$ 得和为 $2\\ln2-1$",
+              "condition": "$x=1$ 处级数绝对收敛，阿贝尔定理保证和函数在端点连续，可直接代入。"
+            }
+          ],
+          "reason": "标准间接法：借已知对数展开，乘 $x$ 后合并同次项，再在收敛端点求值。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-differentiate-integrate",
+          "summary": "先求导得到 $1+\\ln(1+x)$，再逐项积分还原 $f$，不直接做乘法合并",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "求导并利用 $f(0)=0$",
+              "transformedState": "$f'(x)=\\ln(1+x)+1$，$f(x)=\\int_0^x[\\ln(1+t)+1]\\,\\mathrm{d}t=x+\\int_0^x\\ln(1+t)\\,\\mathrm{d}t$",
+              "condition": "$f$ 在 $(-1,+\\infty)$ 可导，积分以 $f(0)=0$ 定常数。"
+            },
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "把 $\\ln(1+t)$ 的展开逐项积分",
+              "transformedState": "$f(x)=x+\\sum_{n\\ge1}\\dfrac{(-1)^{n-1}x^{n+1}}{n(n+1)}=x+\\sum_{m\\ge2}\\dfrac{(-1)^mx^m}{m(m-1)}$，取 $x=1$ 得 $2\\ln2-1$",
+              "condition": "$|x|<1$ 内逐项积分合法，$m=n+1$ 后符号为 $(-1)^{m}$。"
+            }
+          ],
+          "reason": "走微积分逆运算：先求导剥掉乘积结构，再逐项积分还原，与直接乘开合并的思路不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-shift-sign-error",
+          "summary": "乘 $x$ 时指标平移未翻转符号，得到系数符号相反的和",
+          "steps": [
+            {
+              "scenarioId": "S.series.power_series_expansion",
+              "methodId": "M.power_series_expansion",
+              "state": "把 $x\\ln(1+x)$ 误写成 $\\sum_{n\\ge2}\\dfrac{(-1)^{n-1}x^n}{n-1}$",
+              "transformedState": "合并得 $f(x)=x+\\sum_{n\\ge2}\\dfrac{(-1)^{n-1}(2n-1)}{n(n-1)}x^n$，取 $x=1$ 时误得 $f(1)=0$，从而误得所求级数的和为 $-1$",
+              "condition": "错在指标平移：$(-1)^{n-1}x^{n+1}/n$ 变为 $x^m$ 时应写成 $(-1)^mx^m/(m-1)$，符号必须翻转。"
+            }
+          ],
+          "reason": "平移指标时符号不翻转，是与正确展开仅差一个符号的典型错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：指标平移时漏掉符号翻转。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "优先走乘 $x$ 合并的间接法；指标平移必须翻转符号，端点 $x=1$ 由绝对收敛性保证可代入",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2019-s5",
+        "trainingGoal": "掌握 $(1+x)\\ln(1+x)$ 的幂级数展开，并用展开式在 $x=1$ 求数值级数和",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2019 年高等数学下册期末试题 五、第1题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2019-s5"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "展开式为 $x+\\sum_{n\\ge2}\\dfrac{(-1)^nx^n}{n(n-1)}$",
+          "收敛区间为 $(-1,1)$，端点 $x=1$ 绝对收敛",
+          "数值级数从 $n=2$ 开始"
+        ],
+        "allowedVariations": [
+          "把 $f$ 改为 $(1-x)\\ln(1-x)$",
+          "把系数改为 $\\dfrac{(-1)^n}{n(n+1)}$"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2019-s5",
+          "text": "（8 分）将 $f(x)=(1+x)\\ln(1+x)$ 展开成 $x$ 的幂级数，并求 $\\sum_{n=2}^{+\\infty}\\frac{(-1)^{n}}{n(n-1)}$ 的和。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "函数展开成幂级数",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2019-s5",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$\\ln(1+x)=\\sum_{n\\ge1}\\dfrac{(-1)^{n-1}x^n}{n}$，乘 $x$ 后 $x\\ln(1+x)=\\sum_{m\\ge2}\\dfrac{(-1)^mx^m}{m-1}$。合并得 $f(x)=x+\\sum_{n\\ge2}\\dfrac{(-1)^n}{n(n-1)}x^n$。代入 $x=1$（该级数绝对收敛，由阿贝尔定理和函数在端点连续）得 $f(1)=2\\ln2=1+\\sum_{n\\ge2}\\dfrac{(-1)^n}{n(n-1)}$，故和为 $2\\ln2-1$。数值核对：$n=2$ 至 $10$ 部分和约 $0.3913$，$2\\ln2-1\\approx0.386294$，尾部量级 $10^{-2}$ 递减，吻合。交叉验证：对 $f$ 求导得 $f'(x)=1+\\ln(1+x)$，逐项积分也得到同一展开式。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.power_series_expansion"
+      ],
+      "applicableMethodIds": [
+        "M.power_series_expansion"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.power_series_expansion",
+          "methodId": "M.power_series_expansion"
+        },
+        {
+          "scenarioId": "S.series.power_series_expansion",
+          "methodId": "M.taylor_expansion"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.power_series_expansion",
+        "M.taylor_expansion"
+      ],
+      "options": [
+        {
+          "id": "r-multiply-and-merge",
+          "name": "乘 $x$ 后指标平移，把两个同次幂的系数合并成 $\\dfrac{(-1)^n}{n(n-1)}$"
+        },
+        {
+          "id": "r-differentiate-integrate",
+          "name": "先求导得到 $1+\\ln(1+x)$，再逐项积分还原 $f$，不直接做乘法合并"
+        },
+        {
+          "id": "r-shift-sign-error",
+          "name": "乘 $x$ 时指标平移未翻转符号，得到系数符号相反的和"
+        }
+      ],
+      "questionKey": "2d0fa80f27a822d547dcbea4f6f18146ffdd56646d8e6fb223861a15209f3a60",
+      "faceKey": "a321ed703ba01df63fef9bb6c8d57e1158916b31470c9b9687e231d248118396"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.series.fourier_series",
+      "question": "将函数 $f(x)=2+|x|\\ (-1\\leq x\\leq 1)$ 展开成以 $2$ 为周期的傅里叶级数，并由此求级数 $\\sum\\limits_{n=1}^{\\infty}\\dfrac{1}{n^2}$ 的和。",
+      "solution": "$f$ 为偶函数，$b_n=0$。取 $l=1$：$a_0=\\int_{-1}^{1}(2+|x|)\\,\\mathrm{d}x=5$；$a_n=\\int_{-1}^{1}(2+|x|)\\cos(n\\pi x)\\,\\mathrm{d}x=4\\int_0^1\\cos(n\\pi x)\\,\\mathrm{d}x+2\\int_0^1x\\cos(n\\pi x)\\,\\mathrm{d}x=0+2\\cdot\\dfrac{(-1)^n-1}{n^2\\pi^2}$。故 $a_n=\\dfrac{2[(-1)^n-1]}{n^2\\pi^2}$，即奇次项为 $-\\dfrac4{n^2\\pi^2}$、偶次项为 $0$。于是 $f(x)=\\dfrac52-\\dfrac4{\\pi^2}\\sum_{k=0}^{\\infty}\\dfrac{\\cos(2k+1)\\pi x}{(2k+1)^2}$。令 $x=0$（连续点，级数收敛于 $f(0)=2$）：$2=\\dfrac52-\\dfrac4{\\pi^2}\\sum_{k=0}^{\\infty}\\dfrac1{(2k+1)^2}$，得 $\\sum_{k=0}^{\\infty}\\dfrac1{(2k+1)^2}=\\dfrac{\\pi^2}8$。又 $\\sum_{n=1}^{\\infty}\\dfrac1{n^2}=\\sum_{k\\ge0}\\dfrac1{(2k+1)^2}+\\dfrac14\\sum_{n=1}^{\\infty}\\dfrac1{n^2}$，故 $\\dfrac34\\sum_{n=1}^{\\infty}\\dfrac1{n^2}=\\dfrac{\\pi^2}8$，即 $\\sum_{n=1}^{\\infty}\\dfrac1{n^2}=\\dfrac{\\pi^2}6$。",
+      "routes": [
+        {
+          "id": "r-direct-even-coeffs",
+          "summary": "直接用偶函数余弦系数公式算 $a_0$、$a_n$，再令 $x=0$ 反解 $\\sum1/n^2$",
+          "steps": [
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "$f$ 偶，$l=1$，$b_n=0$",
+              "transformedState": "$a_0=\\int_{-1}^1f\\,\\mathrm{d}x=5$，$a_n=2\\int_0^1(2+x)\\cos(n\\pi x)\\,\\mathrm{d}x=\\dfrac{2[(-1)^n-1]}{n^2\\pi^2}$",
+              "condition": "偶函数在 $[-1,1]$ 上积分折半后乘 $2$；$\\int_0^1\\cos(n\\pi x)\\,\\mathrm{d}x=0$。"
+            },
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "代 $x=0$ 并拆出奇数项与偶数项",
+              "transformedState": "$\\sum_{k\\ge0}\\dfrac1{(2k+1)^2}=\\dfrac{\\pi^2}8$，进而 $\\sum\\dfrac1{n^2}=\\dfrac{\\pi^2}6$",
+              "condition": "$x=0$ 为连续点，故级数等于 $f(0)=2$；偶数项和是总数和的 $\\dfrac14$。"
+            }
+          ],
+          "reason": "最直接的算法：套余弦系数公式，再选择一个便于分离奇偶项的点代入。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-superposition-known",
+          "summary": "把 $f=2+|x|$ 拆成常函数与 $|x|$ 两部分，借用已知的 $|x|$ 余弦展开线性叠加",
+          "steps": [
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "拆分 $f=2+|x|$，常函数 $2$ 只贡献常数项",
+              "transformedState": "$2$ 的 $a_0=4$（常数项为 $2$）；$|x|$ 的 $a_0=1$，$a_n=\\dfrac{2[(-1)^n-1]}{n^2\\pi^2}$",
+              "condition": "$l=1$ 且两部分都是偶函数，可逐项叠加 $a_0$ 与 $a_n$。"
+            },
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "叠加后得同一级数并代 $x=0$",
+              "transformedState": "$a_0=5$，常数项 $\\dfrac52$；$\\sum_{k\\ge0}\\dfrac1{(2k+1)^2}=\\dfrac{\\pi^2}8$，$\\sum\\dfrac1{n^2}=\\dfrac{\\pi^2}6$",
+              "condition": "常函数只改变 $a_0$，不影响余弦项系数；$x=0$ 连续。"
+            }
+          ],
+          "reason": "利用线性性与已知的 $|x|$ 展开，把问题化为常数项叠加，不同于直接积分。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-forget-half-constant",
+          "summary": "写级数时把常数项写成 $a_0$ 而不是 $\\dfrac{a_0}2$",
+          "steps": [
+            {
+              "scenarioId": "S.series.fourier_series",
+              "methodId": "M.fourier_series_expansion",
+              "state": "已正确算得 $a_0=5$、$a_n=\\dfrac{2[(-1)^n-1]}{n^2\\pi^2}$",
+              "transformedState": "却把常数项写成 $5$，代 $x=0$ 得 $\\sum_{k\\ge0}\\dfrac1{(2k+1)^2}=\\dfrac{3\\pi^2}4$，进而误得 $\\sum\\dfrac1{n^2}=\\pi^2$",
+              "condition": "错在常数项公式：傅里叶级数为 $\\dfrac{a_0}2+\\sum a_n\\cos\\dfrac{n\\pi x}l+\\cdots$，系数 $a_0$ 必须除以 $2$。"
+            }
+          ],
+          "reason": "漏掉常数项的二分之一，使求出的 $\\sum1/n^2$ 放大到 $\\pi^2$，是最常见的中点公式失误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "错误做法：常数项漏除以 $2$。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "x"
+      ],
+      "comparisonCriterion": "先用偶函数性删去 $b_n$；常数项必须是 $a_0/2$，求 $\\sum1/n^2$ 时用奇偶拆分与 $\\sum1/(2k+1)^2=\\pi^2/8$ 交叉核对",
+      "metadata": {
+        "motherId": "candidate.bankadv14.xjtu-2023-18",
+        "trainingGoal": "对以 $2$ 为周期的偶函数求傅里叶系数，并用 $x=0$ 处的收敛性推导 $\\sum1/n^2$",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交通大学 2023 年工科数学分析试题 三、计算题第18题",
+          "reference": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "originalId": "xjtu-2023-18"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "周期为 $2$，即 $l=1$",
+          "$f$ 为偶函数，正弦系数全为零",
+          "$a_n$ 只含奇次项，系数为 $-\\dfrac4{n^2\\pi^2}$"
+        ],
+        "allowedVariations": [
+          "把 $f$ 改为 $1+|x|$ 后求 $\\sum1/n^2$",
+          "把区间改为 $[-2,2]$ 重新展开"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2023-18",
+          "text": "将函数 $f(x)=2+|x|\\ (-1\\leq x\\leq 1)$ 展开成以 $2$ 为周期的傅里叶级数，并由此求级数 $\\sum\\limits_{n=1}^{\\infty}\\dfrac{1}{n^2}$ 的和。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "无穷级数",
+          "difficulty": "中",
+          "method": "傅里叶级数展开",
+          "notes": "高等数学 bankadv14；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv14",
+        "originalId": "xjtu-2023-18",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "f 为偶函数，$b_n=0$。$l=1$：$a_0=\\dfrac1l\\int_{-1}^{1}f\\,\\mathrm{d}x=2\\int_0^1(2+x)\\,\\mathrm{d}x=5$；$a_n=\\int_{-1}^1f\\cos(n\\pi x)\\,\\mathrm{d}x=2\\int_0^1(2+x)\\cos(n\\pi x)\\,\\mathrm{d}x$，其中 $\\int_0^1\\cos(n\\pi x)\\,\\mathrm{d}x=0$、$\\int_0^1x\\cos(n\\pi x)\\,\\mathrm{d}x=\\dfrac{(-1)^n-1}{n^2\\pi^2}$，故 $a_n=\\dfrac{2[(-1)^n-1]}{n^2\\pi^2}$（$n$ 奇为 $-\\dfrac4{n^2\\pi^2}$，$n$ 偶为 $0$）。级数：$f(x)=\\dfrac52-\\dfrac4{\\pi^2}\\sum_{k\\ge0}\\dfrac{\\cos(2k+1)\\pi x}{(2k+1)^2}$。代 $x=0$（连续点）：$2=\\dfrac52-\\dfrac4{\\pi^2}\\sum_{k\\ge0}\\dfrac1{(2k+1)^2}$，得 $\\sum_{k\\ge0}\\dfrac1{(2k+1)^2}=\\dfrac{\\pi^2}8$，再由 $\\sum\\dfrac1{n^2}=\\dfrac43\\sum_{k\\ge0}\\dfrac1{(2k+1)^2}$ 得 $\\dfrac{\\pi^2}6$。数值核对：$\\sum_{k\\ge0}1/(2k+1)^2\\approx1.2337$，$\\pi^2/8\\approx1.2337$，一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.fourier_series_expansion"
+      ],
+      "applicableMethodIds": [
+        "M.fourier_series_expansion"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.series.fourier_series",
+          "methodId": "M.fourier_series_expansion"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.fourier_series_expansion"
+      ],
+      "options": [
+        {
+          "id": "r-direct-even-coeffs",
+          "name": "直接用偶函数余弦系数公式算 $a_0$、$a_n$，再令 $x=0$ 反解 $\\sum1/n^2$"
+        },
+        {
+          "id": "r-superposition-known",
+          "name": "把 $f=2+|x|$ 拆成常函数与 $|x|$ 两部分，借用已知的 $|x|$ 余弦展开线性叠加"
+        },
+        {
+          "id": "r-forget-half-constant",
+          "name": "写级数时把常数项写成 $a_0$ 而不是 $\\dfrac{a_0}2$"
+        }
+      ],
+      "questionKey": "36ae4604e2ae548fc0a9585de52176e60b0d757d07d2891da3110bda0bf711aa",
+      "faceKey": "d9d5a40fc3c7026585439770ccfba039aeff171eca699e218ebef2d3273144f8"
+    }
+  ]
+}

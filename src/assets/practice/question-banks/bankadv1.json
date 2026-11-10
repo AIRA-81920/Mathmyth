@@ -1,0 +1,3456 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv1",
+  "sourceSha256": "7b92cceecf53a018072c2f1129fe330e2e069c0145d14ba761c198b343dd5493",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.inf_minus_inf",
+      "question": "求极限 $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^{2}+x}-\\sqrt{x^{2}-x}\\right)$。",
+      "solution": "有理化得 $\\frac{2x}{\\sqrt{x^{2}+x}+\\sqrt{x^{2}-x}}$；分子分母同除以 $x$（$x>0$）得 $\\frac{2}{\\sqrt{1+1/x}+\\sqrt{1-1/x}}\\to1$，故原极限为 $1$。",
+      "routes": [
+        {
+          "id": "r-rationalize",
+          "summary": "先乘共轭有理化，再同除最高次幂",
+          "steps": [
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.rationalization",
+              "state": "两根式之差",
+              "transformedState": "$\\frac{2x}{\\sqrt{x^{2}+x}+\\sqrt{x^{2}-x}}$",
+              "condition": "$x\\to+\\infty$，共轭和为正，可直接乘。"
+            },
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.divide_highest_power",
+              "state": "有理化后的分式",
+              "transformedState": "$\\frac{2}{\\sqrt{1+1/x}+\\sqrt{1-1/x}}\\to1$",
+              "condition": "$x>0$，分子分母同除 $x$。"
+            }
+          ],
+          "reason": "有理化把无穷相消化成商式，同除最高次幂一步收尾。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-taylor",
+          "summary": "提取 $x$ 后展开根式，保留一阶修正",
+          "steps": [
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.taylor_expansion",
+              "state": "$x\\left(\\sqrt{1+\\frac1x}-\\sqrt{1-\\frac1x}\\right)$",
+              "transformedState": "$x\\left[\\left(1+\\frac{1}{2x}\\right)-\\left(1-\\frac{1}{2x}\\right)+o\\left(\\frac1x\\right)\\right]\\to1$",
+              "condition": "$x\\to+\\infty$ 时 $1/x\\to0$，根式展开到一阶即可。"
+            }
+          ],
+          "reason": "根式展开到一阶即可看出差为 $1$，结论与主路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-drop",
+          "summary": "把两个根式都换成 $x$，直接相减得 $0$",
+          "steps": [
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "两根式之差",
+              "transformedState": "误认为 $\\sqrt{x^{2}\\pm x}\\sim x$，相减得 $0$。",
+              "condition": "同阶量不能直接当作相等，次主项必须保留。"
+            }
+          ],
+          "reason": "两个根式的次主项不同，直接替换会丢掉决定答案的常数 $1$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先把根式差化为商，再同除最高次幂；不能把同阶量直接当成相等。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.ecnu-c1-1-3",
+        "trainingGoal": "识别两根式相减的 $\\infty-\\infty$ 结构，用有理化把差化为商后求极限",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第1大题第3题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-1-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "极限过程是 $x\\to+\\infty$",
+          "两个根式都取正支"
+        ],
+        "allowedVariations": [
+          "改变根号内的一次项系数",
+          "换成两个三次根式相减"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-1-3",
+          "text": "求极限 $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^{2}+x}-\\sqrt{x^{2}-x}\\right)$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "∞−∞ 型未定式",
+          "notes": "高等数学 bankadv1；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "ecnu-c1-1-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：有理化得 $\\frac{2x}{\\sqrt{x^{2}+x}+\\sqrt{x^{2}-x}}$，分子分母同除 $x$ 后为 $\\frac{2}{\\sqrt{1+1/x}+\\sqrt{1-1/x}}\\to1$。另用根式一阶展开 $\\sqrt{1\\pm1/x}\\approx1\\pm\\frac{1}{2x}$ 交叉验证，同样得 $1$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.rationalization",
+        "M.divide_highest_power"
+      ],
+      "applicableMethodIds": [
+        "M.rationalization",
+        "M.divide_highest_power",
+        "M.taylor_expansion"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.rationalization"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.factor_cancel"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.finite_limit_constraint"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.divide_highest_power"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.taylor_expansion"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.polynomial_division"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.combine_fractions"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.rationalization",
+        "M.equiv_infinitesimal",
+        "M.factor_cancel",
+        "M.lhopital",
+        "M.finite_limit_constraint",
+        "M.divide_highest_power",
+        "M.taylor_expansion",
+        "M.polynomial_division",
+        "M.combine_fractions"
+      ],
+      "options": [
+        {
+          "id": "r-drop",
+          "name": "把两个根式都换成 $x$，直接相减得 $0$"
+        },
+        {
+          "id": "r-rationalize",
+          "name": "先乘共轭有理化，再同除最高次幂"
+        },
+        {
+          "id": "r-taylor",
+          "name": "提取 $x$ 后展开根式，保留一阶修正"
+        }
+      ],
+      "questionKey": "47b21c31216df7558bd05706fea60cf59386ebb945dac1a8cfd5f37c19654ae5",
+      "faceKey": "64d18fa631c90dbb44de234b19748917da7d23cfcd5edaf027c2240b6c80e453"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.deriv.parametric_derivative",
+      "question": "设 $\\begin{cases}x=\\int_{1}^{t}\\sqrt{\\ln u}\\,du,\\\\ y=\\int_{1}^{t^{2}}\\sqrt{\\ln u}\\,du,\\end{cases}\\ (t>1)$，求 $\\dfrac{d^{2}y}{dx^{2}}$。",
+      "solution": "先求 $\\frac{dx}{dt}=\\sqrt{\\ln t}$，$\\frac{dy}{dt}=\\sqrt{\\ln t^{2}}\\cdot2t=2t\\sqrt{2\\ln t}$（$t>1$）。于是 $\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=2\\sqrt{2}\\,t$。再对 $t$ 求导并除以 $\\frac{dx}{dt}$：$\\frac{d^{2}y}{dx^{2}}=\\frac{2\\sqrt{2}}{\\sqrt{\\ln t}}$。",
+      "routes": [
+        {
+          "id": "r-param",
+          "summary": "按参数方程标准公式求一阶、二阶导数",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.parametric_derivative",
+              "methodId": "M.parametric_differentiation",
+              "state": "参数式 $x(t)$、$y(t)$ 均为变上限积分",
+              "transformedState": "$\\frac{dx}{dt}=\\sqrt{\\ln t}$，$\\frac{dy}{dt}=\\sqrt{\\ln t^{2}}\\cdot2t=2t\\sqrt{2\\ln t}$",
+              "condition": "$t>1$ 时两个积分上限都在定义域内，可直接对上限求导。"
+            },
+            {
+              "scenarioId": "S.deriv.parametric_derivative",
+              "methodId": "M.parametric_differentiation",
+              "state": "$\\frac{dy}{dx}=2\\sqrt{2}\\,t$",
+              "transformedState": "$\\frac{d^{2}y}{dx^{2}}=\\frac{\\left(2\\sqrt{2}\\,t\\right)'_{t}}{\\frac{dx}{dt}}=\\frac{2\\sqrt{2}}{\\sqrt{\\ln t}}$",
+              "condition": "二阶参数导数是 $(dy/dx)_t'$ 再除以 $\\frac{dx}{dt}$，不是两个二阶导数相除。"
+            }
+          ],
+          "reason": "标准参数求导公式，先作一阶商，再对参数求导后除以 $dx/dt$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-inverse",
+          "summary": "把 $t$ 视为 $x$ 的反函数，直接对 $x$ 求导",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.parametric_derivative",
+              "methodId": "M.chain_rule",
+              "state": "反函数视角",
+              "transformedState": "$\\frac{dt}{dx}=\\frac{1}{\\sqrt{\\ln t}}$，$\\frac{dy}{dx}=2\\sqrt{2}\\,t$",
+              "condition": "$x'(t)=\\sqrt{\\ln t}>0$（$t>1$），反函数存在。"
+            },
+            {
+              "scenarioId": "S.deriv.parametric_derivative",
+              "methodId": "M.chain_rule",
+              "state": "对 $x$ 直接求导",
+              "transformedState": "$\\frac{d^{2}y}{dx^{2}}=2\\sqrt{2}\\,\\frac{dt}{dx}=\\frac{2\\sqrt{2}}{\\sqrt{\\ln t}}$",
+              "condition": "不再构造参数商，链式法则一步到底。"
+            }
+          ],
+          "reason": "利用 $x(t)$ 单调可逆，把二阶导写成对 $x$ 的链式求导，与主路线机制不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-second-quotient",
+          "summary": "把二阶导数写成两个二阶导数之商",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.parametric_derivative",
+              "methodId": "M.parametric_differentiation",
+              "state": "先求一阶导",
+              "transformedState": "$\\frac{dx}{dt}=\\sqrt{\\ln t}$，$\\frac{dy}{dt}=2t\\sqrt{2\\ln t}$，$\\frac{dy}{dx}=2\\sqrt{2}\\,t$",
+              "condition": "一阶导数本身正确。"
+            },
+            {
+              "scenarioId": "S.deriv.parametric_derivative",
+              "methodId": "M.parametric_differentiation",
+              "state": "求二阶导",
+              "transformedState": "误写 $\\frac{d^{2}y}{dx^{2}}=\\frac{d^{2}y/dt^{2}}{d^{2}x/dt^{2}}=\\frac{2\\sqrt{2}}{1/(2t\\sqrt{\\ln t})}=4\\sqrt{2}\\,t\\sqrt{\\ln t}$",
+              "condition": "必须先对 $t$ 求 $dy/dx$ 的导再除以 $\\frac{dx}{dt}$，不能把两个二阶导数直接相除。"
+            }
+          ],
+          "reason": "这是参数二阶导最常见的错误：把 $\\frac{d^{2}y/dt^{2}}{d^{2}x/dt^{2}}$ 当成 $\\frac{d^{2}y}{dx^{2}}$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "t",
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "二阶参数导数必须对一阶导数再求一次参数导后除以 $dx/dt$；先化简 $\\sqrt{\\ln t^{2}}=\\sqrt2\\sqrt{\\ln t}$ 可避免出错。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.fudan-b-2-2",
+        "trainingGoal": "掌握变上限积分参数方程的二阶导数：先求 $dy/dx$，再对 $t$ 求导后除以 $dx/dt$",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第2大题第2题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-2-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$t>1$，两个变上限积分的下限都是 $1$",
+          "被积函数 $\\sqrt{\\ln u}$ 在积分区间上有定义"
+        ],
+        "allowedVariations": [
+          "把上限改为 $t^{3}$",
+          "把被积函数换成 $\\sqrt{\\ln u}/u$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-2-2",
+          "text": "设 $\\begin{cases}x=\\int_{1}^{t}\\sqrt{\\ln u}\\,du,\\\\ y=\\int_{1}^{t^{2}}\\sqrt{\\ln u}\\,du,\\end{cases}\\ (t>1)$，求 $\\dfrac{d^{2}y}{dx^{2}}$。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "导数与微分",
+          "difficulty": "中",
+          "method": "参数方程求导",
+          "notes": "高等数学 bankadv1；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "fudan-b-2-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$\\frac{dx}{dt}=\\sqrt{\\ln t}$，$\\frac{dy}{dt}=\\sqrt{\\ln t^{2}}\\cdot2t=2t\\sqrt{2\\ln t}$（$t>1$），故 $\\frac{dy}{dx}=2\\sqrt{2}\\,t$；再对 $t$ 求导并除以 $\\frac{dx}{dt}$ 得 $\\frac{d^{2}y}{dx^{2}}=\\frac{2\\sqrt{2}}{\\sqrt{\\ln t}}$。用 $y(t)=x(t^{2})$ 的链式法则视角复核，结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.parametric_differentiation"
+      ],
+      "applicableMethodIds": [
+        "M.parametric_differentiation",
+        "M.chain_rule"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.deriv.parametric_derivative",
+          "methodId": "M.parametric_differentiation"
+        },
+        {
+          "scenarioId": "S.deriv.parametric_derivative",
+          "methodId": "M.chain_rule"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.parametric_differentiation",
+        "M.chain_rule"
+      ],
+      "options": [
+        {
+          "id": "r-param",
+          "name": "按参数方程标准公式求一阶、二阶导数"
+        },
+        {
+          "id": "r-inverse",
+          "name": "把 $t$ 视为 $x$ 的反函数，直接对 $x$ 求导"
+        },
+        {
+          "id": "r-second-quotient",
+          "name": "把二阶导数写成两个二阶导数之商"
+        }
+      ],
+      "questionKey": "489aa185a39b4f944e8305db34fee88b4c7b4a10f6addfeccf0c5bac7262fc5b",
+      "faceKey": "10eda73a87ea658c00067d23ac681613ffff23603359ac992c5f875b8379de7a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.deriv.piecewise_differentiability",
+      "question": "设 $f(x)=\\begin{cases}\\dfrac{\\ln(1+x)}{x}, & x\\neq 0,\\\\ 1, & x=0,\\end{cases}$ 求 $f'(0)$。",
+      "solution": "由导数定义 $f'(0)=\\lim_{x\\to0}\\frac{f(x)-f(0)}{x}=\\lim_{x\\to0}\\frac{\\ln(1+x)-x}{x^{2}}$；将 $\\ln(1+x)=x-\\frac{x^{2}}{2}+o(x^{2})$ 代入得 $f'(0)=-\\frac12$。",
+      "routes": [
+        {
+          "id": "r-def-taylor",
+          "summary": "分界点用导数定义，差商分子用泰勒展开",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.piecewise_differentiability",
+              "methodId": "M.derivative_definition",
+              "state": "分界点 $x=0$ 的差商",
+              "transformedState": "$f'(0)=\\lim_{x\\to0}\\frac{\\frac{\\ln(1+x)}{x}-1}{x}=\\lim_{x\\to0}\\frac{\\ln(1+x)-x}{x^{2}}$",
+              "condition": "$f(0)=1$，差商为 $0/0$ 型。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.taylor_expansion",
+              "state": "对 $\\ln(1+x)$ 展开",
+              "transformedState": "$\\ln(1+x)=x-\\frac{x^{2}}{2}+o(x^{2})$，故 $\\frac{-x^{2}/2+o(x^{2})}{x^{2}}\\to-\\frac12$",
+              "condition": "展开到二阶，一阶项恰好抵消。"
+            }
+          ],
+          "reason": "分界点必须回到导数定义，二阶泰勒恰好保留决定答案的项。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-def-lhopital",
+          "summary": "导数定义后对差商用洛必达",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.piecewise_differentiability",
+              "methodId": "M.derivative_definition",
+              "state": "分界点 $x=0$ 的差商",
+              "transformedState": "$f'(0)=\\lim_{x\\to0}\\frac{\\ln(1+x)-x}{x^{2}}$",
+              "condition": "$f(0)=1$，差商为 $0/0$ 型。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.lhopital",
+              "state": "$0/0$ 型",
+              "transformedState": "$\\frac{\\frac{1}{1+x}-1}{2x}=\\frac{-1}{2(1+x)}\\to-\\frac12$",
+              "condition": "求导一次即脱离未定式。"
+            }
+          ],
+          "reason": "洛必达与泰勒两条路线独立，得到的 $f'(0)$ 相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-eq-bold",
+          "summary": "在差商中直接把 $\\ln(1+x)$ 换成 $x$",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.piecewise_differentiability",
+              "methodId": "M.derivative_definition",
+              "state": "分界点 $x=0$ 的差商",
+              "transformedState": "$f'(0)=\\lim_{x\\to0}\\frac{\\ln(1+x)-x}{x^{2}}$",
+              "condition": "差商已化为 $0/0$ 型。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "差商分子",
+              "transformedState": "误用 $\\ln(1+x)\\sim x$，把 $\\ln(1+x)-x$ 当作恒等于 $0$，得 $f'(0)=0$",
+              "condition": "等价替换只适用于乘除因子，不能用在差 $\\ln(1+x)-x$ 上。"
+            }
+          ],
+          "reason": "一阶等价把两条曲线在 $0$ 处贴合，但差商要看二阶展开，替换后答案由 $-\\frac12$ 错成 $0$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "分界点处一律回到导数定义；差商中的加减结构要用泰勒而非等价替换。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.ecnu-c1-2-1",
+        "trainingGoal": "用导数定义处理分段函数分界点，并在差商中正确展开对数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第2大题第1题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-2-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "分段点 $x=0$ 处函数值定义为 $1$",
+          "$x\\neq0$ 时 $f(x)=\\ln(1+x)/x$"
+        ],
+        "allowedVariations": [
+          "把 $\\ln(1+x)$ 换成 $e^{x}-1$",
+          "把分段点的函数值改为其他常数"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-2-1",
+          "text": "设 $f(x)=\\begin{cases}\\dfrac{\\ln(1+x)}{x}, & x\\neq 0,\\\\[4pt] 1, & x=0,\\end{cases}$ 求 $f'(0)$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "导数与微分",
+          "difficulty": "中",
+          "method": "分段函数分界点可导性",
+          "notes": "高等数学 bankadv1；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "ecnu-c1-2-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$f'(0)=\\lim_{x\\to0}\\frac{\\ln(1+x)/x-1}{x}=\\lim_{x\\to0}\\frac{\\ln(1+x)-x}{x^{2}}$；由 $\\ln(1+x)=x-\\frac{x^{2}}{2}+o(x^{2})$ 得 $f'(0)=-\\frac12$。用洛必达 $\\frac{1/(1+x)-1}{2x}\\to-\\frac12$ 交叉验证一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.derivative_definition",
+        "M.taylor_expansion"
+      ],
+      "applicableMethodIds": [
+        "M.derivative_definition",
+        "M.taylor_expansion",
+        "M.lhopital"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.deriv.piecewise_differentiability",
+          "methodId": "M.derivative_definition"
+        },
+        {
+          "scenarioId": "S.deriv.piecewise_differentiability",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.deriv.piecewise_differentiability",
+          "methodId": "M.chain_rule"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.factor_cancel"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.rationalization"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.taylor_expansion"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.derivative_definition"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.important_limit"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.derivative_definition",
+        "M.equiv_infinitesimal",
+        "M.chain_rule",
+        "M.factor_cancel",
+        "M.rationalization",
+        "M.lhopital",
+        "M.taylor_expansion",
+        "M.important_limit"
+      ],
+      "options": [
+        {
+          "id": "r-eq-bold",
+          "name": "在差商中直接把 $\\ln(1+x)$ 换成 $x$"
+        },
+        {
+          "id": "r-def-taylor",
+          "name": "分界点用导数定义，差商分子用泰勒展开"
+        },
+        {
+          "id": "r-def-lhopital",
+          "name": "导数定义后对差商用洛必达"
+        }
+      ],
+      "questionKey": "b0222c0cc186dfd942ec646fae9627f8c41181ce3c9525c42a7b49a418c8f093",
+      "faceKey": "777c2c1be9460239f2e4ab5e175b668127577568d1ab63fa619de517ce2b16d7"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.infinitesimal_order",
+      "question": "设函数 $g(x)$ 在 $x=0$ 点某邻域内有定义，若 $\\lim_{x\\to 0}\\dfrac{x-g(x)}{\\sin x}=1$ 成立，则（　）。\\\\nA. $g(x)$ 在 $x=0$ 点连续，但不可导；\\\\nB. $g(x)$ 在 $x=0$ 点可导但导数不为 $0$；\\\\nC. $\\lim_{x\\to 0}g(x)$ 存在，但 $g(x)$ 在 $x=0$ 点不连续；\\\\nD. $x\\to 0$ 时，$g(x)$ 是 $x$ 的高阶无穷小量。",
+      "solution": "由 $\\sin x\\sim x$ 得 $\\frac{x-g(x)}{x}\\to1$，即 $x-g(x)=x+o(x)$，所以 $g(x)=o(x)$，$g(x)$ 是 $x$ 的高阶无穷小，选 D。题设未约束 $g(0)$，不能推出连续或可导。",
+      "routes": [
+        {
+          "id": "r-equiv",
+          "summary": "分母用 $\\sin x\\sim x$，再作无穷小阶的比较",
+          "steps": [
+            {
+              "scenarioId": "S.limit.infinitesimal_order",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "比值极限的分母",
+              "transformedState": "$\\sin x\\sim x\\Rightarrow\\frac{x-g(x)}{x}\\to1\\Rightarrow x-g(x)=x+o(x)\\Rightarrow g(x)=o(x)$，选 D",
+              "condition": "等价替换只用在与 $x$ 作商的分母，不能对差 $x-g(x)$ 整体替换。"
+            }
+          ],
+          "reason": "把分母换成 $x$ 后直接读出 $g(x)$ 比 $x$ 高阶。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-taylor",
+          "summary": "用 $\\sin x$ 的一阶泰勒展开并比较一次项系数",
+          "steps": [
+            {
+              "scenarioId": "S.limit.infinitesimal_order",
+              "methodId": "M.taylor_expansion",
+              "state": "$\\sin x$ 的一阶展开",
+              "transformedState": "$\\frac{x-g(x)}{x+o(x)}\\to1$；设 $g(x)=ax+o(x)$，比较一次项得 $1-a=1$，故 $a=0$，$g(x)=o(x)$，选 D",
+              "condition": "利用 $\\sin x=x+o(x)$，把 $g$ 的一次项系数设为待定。"
+            }
+          ],
+          "reason": "待定系数视角与直接等价替换机制不同，但都导出 $g$ 无一次项。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-false-continuity",
+          "summary": "由 $g(x)\\to0$ 误判 $g$ 在 $0$ 处连续",
+          "steps": [
+            {
+              "scenarioId": "S.limit.infinitesimal_order",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "比值极限分母",
+              "transformedState": "$\\sin x\\sim x$，得 $\\frac{x-g(x)}{x}\\to1$，进而 $g(x)\\to0$",
+              "condition": "只得到 $g(x)$ 在去心邻域内趋于 $0$。"
+            },
+            {
+              "scenarioId": "S.limit.infinitesimal_order",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "由 $g(x)\\to0$ 判断连续性",
+              "transformedState": "误认为 $g(x)\\to0$ 就保证 $g$ 在 $x=0$ 连续（甚至可导），选 A",
+              "condition": "极限存在与连续是两回事；题目未给出 $g(0)=0$，也无法保证可导。"
+            }
+          ],
+          "reason": "把去心邻域内的极限值当成函数值，越过了连续性所需的 $g(0)$ 条件。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先比较分母的阶，再确定 $g(x)$ 相对 $x$ 的阶；不能由极限存在推断连续或可导。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.fudan-b-1-1",
+        "trainingGoal": "由比值极限判断无穷小的阶，区分“极限存在”与“连续、可导”",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第1大题第1题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-1-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$g(x)$ 只需在 $x=0$ 的某去心邻域内满足条件",
+          "极限过程 $x\\to0$ 为双侧"
+        ],
+        "allowedVariations": [
+          "把极限值 $1$ 改为其他非零常数",
+          "把 $\\sin x$ 换为 $x$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-1-1",
+          "text": "设函数 $g(x)$ 在 $x=0$ 点某邻域内有定义，若 $\\lim_{x\\to 0}\\dfrac{x-g(x)}{\\sin x}=1$ 成立，则 $[\\ ]$。\nA. $g(x)$ 在 $x=0$ 点连续，但不可导；\nB. $g(x)$ 在 $x=0$ 点可导但导数不为 0；\nC. $\\lim_{x\\to 0}g(x)$ 存在，但 $g(x)$ 在 $x=0$ 点不连续；\nD. $x\\to 0$ 时，$g(x)$ 是 $x$ 的高阶无穷小量。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "无穷小阶的比较",
+          "notes": "高等数学 bankadv1；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "fudan-b-1-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$\\sin x\\sim x$，故 $\\frac{x-g(x)}{x}\\to1$，即 $x-g(x)=x+o(x)$，从而 $g(x)=o(x)$、$\\frac{g(x)}{x}\\to0$，选 D。取 $g(x)\\equiv0$ 可验证 A、B、C 均被排除。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.equiv_infinitesimal"
+      ],
+      "applicableMethodIds": [
+        "M.equiv_infinitesimal",
+        "M.taylor_expansion"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.infinitesimal_order",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.infinitesimal_order",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.infinitesimal_order",
+          "methodId": "M.taylor_expansion"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.equiv_infinitesimal",
+        "M.lhopital",
+        "M.taylor_expansion"
+      ],
+      "options": [
+        {
+          "id": "r-taylor",
+          "name": "用 $\\sin x$ 的一阶泰勒展开并比较一次项系数"
+        },
+        {
+          "id": "r-false-continuity",
+          "name": "由 $g(x)\\to0$ 误判 $g$ 在 $0$ 处连续"
+        },
+        {
+          "id": "r-equiv",
+          "name": "分母用 $\\sin x\\sim x$，再作无穷小阶的比较"
+        }
+      ],
+      "questionKey": "6d630460a62ab7c218bc8aff2863cfc425b6da1c10492f104e0a88f08ea89851",
+      "faceKey": "12ef4da61997c99a955681a879f9fbea9b3bf0adfd60e08335a7935c8ab6dd97"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.deriv.tangent_normal",
+      "question": "设曲线 $\\begin{cases}x=\\sin t+t^{3}-1,\\\\ y=\\ln(1+2t)+\\cos t,\\end{cases}$ 求它在 $t=0$ 处的切线和法线方程。",
+      "solution": "$t=0$ 时 $x=-1$，$y=1$，切点 $(-1,1)$。$\\frac{dx}{dt}=\\cos t+3t^{2}\\to1$，$\\frac{dy}{dt}=\\frac{2}{1+2t}-\\sin t\\to2$，故 $k=\\frac{dy}{dx}=2$。切线 $y-1=2(x+1)$，即 $y=2x+3$；法线 $y-1=-\\frac12(x+1)$，即 $x+2y-1=0$。",
+      "routes": [
+        {
+          "id": "r-param",
+          "summary": "参数方程求导得斜率，再点斜式写切线法线",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.tangent_normal",
+              "methodId": "M.parametric_differentiation",
+              "state": "参数式在 $t=0$ 处",
+              "transformedState": "$x(0)=-1$，$y(0)=1$；$x'(0)=1$，$y'(0)=2$，$\\frac{dy}{dx}=2$",
+              "condition": "先分别求 $\\frac{dx}{dt}$、$\\frac{dy}{dt}$ 再作商。"
+            },
+            {
+              "scenarioId": "S.deriv.tangent_normal",
+              "methodId": "M.tangent_normal_equation",
+              "state": "点 $(-1,1)$ 与斜率 $k=2$",
+              "transformedState": "切线 $y=2x+3$，法线 $x+2y-1=0$",
+              "condition": "法线斜率为 $-\\frac12$，最终写成一般式。"
+            }
+          ],
+          "reason": "参数求导 + 点斜式，是最直接的切法线流程。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-implicit",
+          "summary": "把 $t$ 当作 $x$ 的隐函数，逐项链式求导",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.tangent_normal",
+              "methodId": "M.implicit_differentiation",
+              "state": "把 $t$ 视为 $x$ 的隐函数",
+              "transformedState": "由 $x=\\sin t+t^{3}-1$ 两边对 $x$ 求导：$1=(\\cos t+3t^{2})\\frac{dt}{dx}$，$t'(0)=1$",
+              "condition": "$x'(0)=1\\neq0$，$t(x)$ 在 $x=-1$ 附近存在。"
+            },
+            {
+              "scenarioId": "S.deriv.tangent_normal",
+              "methodId": "M.implicit_differentiation",
+              "state": "对 $y$ 关于 $x$ 求导",
+              "transformedState": "$\\frac{dy}{dx}=\\left(\\frac{2}{1+2t}-\\sin t\\right)\\frac{dt}{dx}$，在 $t=0$ 处等于 $2$",
+              "condition": "含 $t$ 的项逐项求导后乘 $\\frac{dt}{dx}$。"
+            },
+            {
+              "scenarioId": "S.deriv.tangent_normal",
+              "methodId": "M.tangent_normal_equation",
+              "state": "点 $(-1,1)$ 与 $k=2$",
+              "transformedState": "切线 $y=2x+3$，法线 $x+2y-1=0$",
+              "condition": "与主路线结论一致。"
+            }
+          ],
+          "reason": "不直接用参数求导公式，而是把参数式看成 $t=t(x)$ 的复合关系，机制不同但结果相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-miss-point",
+          "summary": "斜率算对但把切点误算成原点",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.tangent_normal",
+              "methodId": "M.parametric_differentiation",
+              "state": "参数式在 $t=0$ 处",
+              "transformedState": "$x'(0)=1$，$y'(0)=2$，$\\frac{dy}{dx}=2$",
+              "condition": "斜率计算本身正确。"
+            },
+            {
+              "scenarioId": "S.deriv.tangent_normal",
+              "methodId": "M.tangent_normal_equation",
+              "state": "写切线",
+              "transformedState": "误把 $t=0$ 的横坐标算成 $0$，用点 $(0,0)$ 得切线 $y=2x$",
+              "condition": "$x(0)=\\sin0+0^{3}-1=-1$，漏掉常数项 $-1$ 会让切线错误平移。"
+            }
+          ],
+          "reason": "只检查斜率、不检查切点，是切线题最常见的失分点。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "t",
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先算准 $t=0$ 对应的点，再求斜率与负倒数；切线、法线都必须过该点。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.ecnu-c1-2-2",
+        "trainingGoal": "参数式曲线求切线法线：正确取点、求斜率、写法线与一般式",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第2大题第2题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-2-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "曲线由参数 $t$ 给出，考察点 $t=0$",
+          "$t=0$ 对应点 $(-1,1)$"
+        ],
+        "allowedVariations": [
+          "改求 $t=1$ 处的切线",
+          "把 $\\cos t$ 换成 $\\sin t$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-2-2",
+          "text": "设曲线 $\\begin{cases}x=\\sin t+t^{3}-1,\\\\ y=\\ln(1+2t)+\\cos t,\\end{cases}$ 求它在 $t=0$ 处的切线和法线方程。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "导数与微分",
+          "difficulty": "中",
+          "method": "切线与法线方程",
+          "notes": "高等数学 bankadv1；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "ecnu-c1-2-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$t=0$ 对应点 $\\left(\\sin0+0-1,\\ \\ln1+\\cos0\\right)=(-1,1)$；$x'(0)=\\cos0+0=1$，$y'(0)=\\frac{2}{1+2t}\\big|_{t=0}-\\sin0=2$，故 $\\frac{dy}{dx}=2$。切线 $y-1=2(x+1)$ 即 $y=2x+3$，法线 $y-1=-\\frac12(x+1)$ 即 $x+2y-1=0$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.parametric_differentiation",
+        "M.tangent_normal_equation"
+      ],
+      "applicableMethodIds": [
+        "M.parametric_differentiation",
+        "M.tangent_normal_equation",
+        "M.implicit_differentiation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.deriv.tangent_normal",
+          "methodId": "M.tangent_normal_equation"
+        },
+        {
+          "scenarioId": "S.deriv.tangent_normal",
+          "methodId": "M.implicit_differentiation"
+        },
+        {
+          "scenarioId": "S.deriv.tangent_normal",
+          "methodId": "M.parametric_differentiation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.tangent_normal_equation",
+        "M.implicit_differentiation",
+        "M.parametric_differentiation"
+      ],
+      "options": [
+        {
+          "id": "r-miss-point",
+          "name": "斜率算对但把切点误算成原点"
+        },
+        {
+          "id": "r-param",
+          "name": "参数方程求导得斜率，再点斜式写切线法线"
+        },
+        {
+          "id": "r-implicit",
+          "name": "把 $t$ 当作 $x$ 的隐函数，逐项链式求导"
+        }
+      ],
+      "questionKey": "8c6063afff3a56c4f68fc4f58daf7fa0fa87cec969400fedcb94a8237325e417",
+      "faceKey": "8f416d6fcf23d02dd99d8bf91f25cacaf4043d66805f97eae4a2d3f7119a2401"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.n_term_sum",
+      "question": "求 $\\lim_{n\\to\\infty}\\sqrt[n]{\\dfrac{5^{n}+3}{n}}$。",
+      "solution": "记 $a_n=\\sqrt[n]{\\frac{5^{n}+3}{n}}$。取对数：$\\ln a_n=\\frac1n\\left[\\ln(5^{n}+3)-\\ln n\\right]=\\frac1n\\left[n\\ln5+\\ln(1+3/5^{n})-\\ln n\\right]$，其中 $\\frac{\\ln(1+3/5^{n})}{n}\\to0$、$\\frac{\\ln n}{n}\\to0$，故 $\\ln a_n\\to\\ln5$，$a_n\\to5$。",
+      "routes": [
+        {
+          "id": "r-log",
+          "summary": "取对数把根式化为 $1/n$ 倍，再拆出主项",
+          "steps": [
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.log_transform",
+              "state": "$n$ 次根式取对数",
+              "transformedState": "$\\ln a_n=\\frac1n\\left[\\ln(5^{n}+3)-\\ln n\\right]$",
+              "condition": "$a_n>0$，$n$ 次根化成 $\\frac1n$ 倍对数。"
+            },
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.log_transform",
+              "state": "拆出主项",
+              "transformedState": "$\\frac1n\\left[n\\ln5+\\ln(1+3/5^{n})-\\ln n\\right]\\to\\ln5$，故 $a_n\\to e^{\\ln5}=5$",
+              "condition": "$\\frac{\\ln(1+3/5^{n})}{n}$ 与 $\\frac{\\ln n}{n}$ 都趋于 $0$。"
+            }
+          ],
+          "reason": "取对数把根式降为商，主项 $5^{n}$ 直接给出 $\\ln5$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-squeeze",
+          "summary": "对通项作双侧放缩后用夹逼准则",
+          "steps": [
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.inequality_scaling",
+              "state": "对通项作放缩",
+              "transformedState": "$5^{n}\\le5^{n}+3\\le2\\cdot5^{n}$（$n\\ge1$），故 $5\\sqrt[n]{1/n}\\le a_n\\le5\\sqrt[n]{2/n}$",
+              "condition": "由 $3\\le5^{n}$ 才能放大到 $2\\cdot5^{n}$。"
+            },
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.squeeze_theorem",
+              "state": "两端极限",
+              "transformedState": "$\\sqrt[n]{1/n}=e^{-(\\ln n)/n}\\to1$，两端均趋于 $5$，故 $a_n\\to5$",
+              "condition": "上下界极限相同，夹逼成立。"
+            }
+          ],
+          "reason": "夹逼不依赖主项拆分，直接从不等式两端压出同一个极限。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-root-power",
+          "summary": "把 $n$ 次根误当成 $n$ 次幂",
+          "steps": [
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.log_transform",
+              "state": "取对数",
+              "transformedState": "$\\ln a_n=\\frac1n[n\\ln5+\\ln(1+3/5^{n})-\\ln n]\\to\\ln5$",
+              "condition": "主项拆分本身正确。"
+            },
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.log_transform",
+              "state": "处理剩余项",
+              "transformedState": "误把 $\\frac{\\ln n}{n}$ 当作 $\\ln n$（以为 $\\sqrt[n]{1/n}=1/n$），得 $\\ln a_n\\to-\\infty$，误答极限 $0$",
+              "condition": "$\\sqrt[n]{1/n}=e^{-(\\ln n)/n}\\to1$，指数是 $\\frac{\\ln n}{n}$ 而不是 $\\ln n$。"
+            }
+          ],
+          "reason": "混淆 $n$ 次根与 $n$ 次幂，把趋于 $1$ 的因子算成趋于 $0$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "n"
+      ],
+      "comparisonCriterion": "根式数列优先取对数或夹逼；$\\\\sqrt[n]{1/n}\\\\to1$ 是必须记清的基准极限。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.fudan-b-2-1",
+        "trainingGoal": "n 次根式数列极限：取对数或夹逼，注意 $\\sqrt[n]{1/n}\\to1$",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第2大题第1题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-2-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$n\\to\\infty$，根指数与底数的指数同为 $n$",
+          "$5^{n}+3$ 中 $5^{n}$ 是主项"
+        ],
+        "allowedVariations": [
+          "把底数 $5$ 换成 $a>1$",
+          "把 $+3$ 换成 $+n$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-2-1",
+          "text": "求 $\\lim_{n\\to\\infty}\\sqrt[n]{\\dfrac{5^{n}+3}{n}}$。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "和式与连乘的数列极限",
+          "notes": "高等数学 bankadv1；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "fudan-b-2-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：取对数 $\\ln a_n=\\frac1n[\\ln(5^{n}+3)-\\ln n]=\\frac1n[n\\ln5+\\ln(1+3/5^{n})-\\ln n]\\to\\ln5$，故极限为 $5$。用夹逼 $5\\sqrt[n]{1/n}\\le a_n\\le5\\sqrt[n]{2/n}$ 复核，两端均趋于 $5$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.log_transform"
+      ],
+      "applicableMethodIds": [
+        "M.log_transform",
+        "M.inequality_scaling",
+        "M.squeeze_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.squeeze_theorem"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.inequality_scaling"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.log_transform"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.product_telescoping"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.riemann_sum_limit"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling",
+        "M.log_transform",
+        "M.product_telescoping",
+        "M.riemann_sum_limit"
+      ],
+      "options": [
+        {
+          "id": "r-log",
+          "name": "取对数把根式化为 $1/n$ 倍，再拆出主项"
+        },
+        {
+          "id": "r-squeeze",
+          "name": "对通项作双侧放缩后用夹逼准则"
+        },
+        {
+          "id": "r-root-power",
+          "name": "把 $n$ 次根误当成 $n$ 次幂"
+        }
+      ],
+      "questionKey": "f97f02d90ba670fa2d1f5531ca405fdbb466e97b3dcd6799b7976121b838d3cd",
+      "faceKey": "146294166e8d126f58764d2781618bd5dcfb80509d0a42f43874d85709a742ef"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.deriv.implicit_derivative",
+      "question": "设函数 $y=y(x)$ 由方程 $x^{y}=y^{x}$ 确定，求 $y'(1)$。",
+      "solution": "当 $x=1$ 时由 $x^{y}=y^{x}$ 得 $y=1$。两边取对数（$x,y>0$）：$y\\ln x=x\\ln y$，对 $x$ 求导得 $y'\\ln x+\\frac{y}{x}=\\ln y+\\frac{x y'}{y}$。代入 $x=1$、$y=1$：$0+1=0+y'$，故 $y'(1)=1$。",
+      "routes": [
+        {
+          "id": "r-log",
+          "summary": "取对数化为普通隐函数，再两边求导",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.implicit_derivative",
+              "methodId": "M.implicit_differentiation",
+              "state": "幂指方程",
+              "transformedState": "$y\\ln x=x\\ln y$，两边对 $x$ 求导",
+              "condition": "$x>0$、$y>0$ 时才能取对数。"
+            },
+            {
+              "scenarioId": "S.deriv.implicit_derivative",
+              "methodId": "M.chain_rule",
+              "state": "含 $y$ 的项",
+              "transformedState": "$y'\\ln x+\\frac{y}{x}=\\ln y+\\frac{x y'}{y}$，代入 $(1,1)$ 得 $1=y'$",
+              "condition": "对 $\\ln y$ 求导后必须乘 $y'$。"
+            }
+          ],
+          "reason": "取对数是处理幂指函数的标准做法，代入点后一次方程即解出 $y'$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-direct",
+          "summary": "不取对数，直接按指数函数两边求导",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.implicit_derivative",
+              "methodId": "M.implicit_differentiation",
+              "state": "两边直接对 $x$ 求导",
+              "transformedState": "$x^{y}\\left(y'\\ln x+\\frac{y}{x}\\right)=y^{x}\\left(\\ln y+\\frac{x y'}{y}\\right)$",
+              "condition": "把 $x^{y}$、$y^{x}$ 都当作指数函数整体求导，不先取对数。"
+            },
+            {
+              "scenarioId": "S.deriv.implicit_derivative",
+              "methodId": "M.chain_rule",
+              "state": "代入 $(1,1)$",
+              "transformedState": "左端 $1\\cdot(0+1)=1$，右端 $1\\cdot(0+y')=y'$，故 $y'=1$",
+              "condition": "两个底数在 $(1,1)$ 处都为 $1$，对数项不能省略。"
+            }
+          ],
+          "reason": "保留幂指形式直接求导，与取对数路线是两种不同的代数化手段。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-constant-y",
+          "summary": "把 $y$ 当常数，按幂函数公式求导",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.implicit_derivative",
+              "methodId": "M.chain_rule",
+              "state": "把 $y$ 当常数",
+              "transformedState": "误用幂函数公式：$(x^{y})'=y x^{y-1}$，$(y^{x})'=x y^{x-1}$，得 $y x^{y-1}=x y^{x-1}$",
+              "condition": "底数与指数都含变量时是幂指函数，不能按幂函数求导。"
+            },
+            {
+              "scenarioId": "S.deriv.implicit_derivative",
+              "methodId": "M.implicit_differentiation",
+              "state": "代入 $(1,1)$",
+              "transformedState": "得 $1=1$ 恒等，误认为无法确定导数而答 $y'(1)=0$",
+              "condition": "丢失 $y'$ 后方程不再含导数信息，不能据此得 $0$。"
+            }
+          ],
+          "reason": "把 $y$ 当常数会消掉全部 $y'$，这是隐函数求导中最常见的结构性错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "幂指函数必须先取对数或整体按指数函数求导；任何含 $y$ 的项都要乘 $y'$。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.fudan-b-3-1",
+        "trainingGoal": "幂指函数隐函数求导：先取对数，勿把 $y$ 当常数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第3大题第1题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-3-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x>0$、$y>0$ 才能取对数",
+          "考察点由 $x=1$ 得 $y=1$"
+        ],
+        "allowedVariations": [
+          "改求另一分支点处的 $y'$",
+          "把方程换成 $x^{y}=e^{y}$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-3-1",
+          "text": "设函数 $y=y(x)$ 由方程 $x^{y}=y^{x}$ 确定，求 $y'(1)$。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "导数与微分",
+          "difficulty": "中",
+          "method": "隐函数求导",
+          "notes": "高等数学 bankadv1；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "fudan-b-3-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$x=1$ 时由 $1=y^{1}$ 得 $y=1$。取对数 $y\\ln x=x\\ln y$ 后两边对 $x$ 求导：$y'\\ln x+\\frac{y}{x}=\\ln y+\\frac{x y'}{y}$，代入 $(1,1)$ 得 $1=y'$，故 $y'(1)=1$。用隐函数定理 $y'=-F_x/F_y=1$ 复核一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.implicit_differentiation",
+        "M.chain_rule"
+      ],
+      "applicableMethodIds": [
+        "M.implicit_differentiation",
+        "M.chain_rule"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.deriv.implicit_derivative",
+          "methodId": "M.implicit_differentiation"
+        },
+        {
+          "scenarioId": "S.deriv.implicit_derivative",
+          "methodId": "M.chain_rule"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.implicit_differentiation",
+        "M.chain_rule"
+      ],
+      "options": [
+        {
+          "id": "r-log",
+          "name": "取对数化为普通隐函数，再两边求导"
+        },
+        {
+          "id": "r-direct",
+          "name": "不取对数，直接按指数函数两边求导"
+        },
+        {
+          "id": "r-constant-y",
+          "name": "把 $y$ 当常数，按幂函数公式求导"
+        }
+      ],
+      "questionKey": "cfec03548ac23a30951fce042f114ebc80c12117fd32962d00b45a38e7ea1f64",
+      "faceKey": "7d65c36ba664efe960ad9fc9af72d70f3906134894c99e37e59c91ab6720e283"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.deriv.higher_order",
+      "question": "设 $f(x)=\\frac{x^{2}}{x^{2}-6x+8}$，求 $f^{(n)}(0)$。",
+      "solution": "先做多项式除法：$x^{2}=(x^{2}-6x+8)+(6x-8)$，故 $f(x)=1+\\frac{6x-8}{(x-2)(x-4)}$。再部分分式：$\\frac{6x-8}{(x-2)(x-4)}=\\frac{-2}{x-2}+\\frac{8}{x-4}$，即 $f(x)=1-\\frac{2}{x-2}+\\frac{8}{x-4}$。由 $\\left(\\frac{1}{x-a}\\right)^{(n)}=\\frac{(-1)^{n}n!}{(x-a)^{n+1}}$ 得 $f^{(n)}(0)=n!\\left(\\frac{1}{2^{n}}-\\frac{2}{4^{n}}\\right)$（$n\\ge1$）。",
+      "routes": [
+        {
+          "id": "r-partial",
+          "summary": "多项式除法 + 部分分式，再逐项套高阶导公式",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.polynomial_division",
+              "state": "假分式",
+              "transformedState": "$f(x)=1+\\frac{6x-8}{(x-2)(x-4)}$",
+              "condition": "分子分母同次，先除出整式部分 $1$。"
+            },
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.partial_fraction",
+              "state": "真分式",
+              "transformedState": "$f(x)=1-\\frac{2}{x-2}+\\frac{8}{x-4}$",
+              "condition": "在 $x=2$、$x=4$ 处定系数。"
+            },
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.chain_rule",
+              "state": "逐项求 $n$ 阶导",
+              "transformedState": "$f^{(n)}(0)=n!\\left(\\frac{1}{2^{n}}-\\frac{2}{4^{n}}\\right)$",
+              "condition": "常数项对 $n\\ge1$ 的导数为 $0$，每项还要带上 $(-1)^{n}$ 与 $n!$。"
+            }
+          ],
+          "reason": "先拆成简单分式，再套 $\\left(\\frac{1}{x-a}\\right)^{(n)}$ 公式，是最稳妥的流程。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-series",
+          "summary": "在 $x=0$ 处展开成幂级数，读 $x^{n}$ 系数",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.power_series_expansion",
+              "state": "$f(x)$ 在 $x=0$ 附近的幂级数",
+              "transformedState": "$f(x)=1+\\sum_{n\\ge1}\\left(\\frac{1}{2^{n}}-\\frac{2}{4^{n}}\\right)x^{n}$",
+              "condition": "把 $\\frac{1}{x-2}=-\\frac12\\cdot\\frac{1}{1-x/2}$、$\\frac{1}{x-4}=-\\frac14\\cdot\\frac{1}{1-x/4}$ 在 $|x|<2$ 内展开。"
+            },
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.power_series_expansion",
+              "state": "读 $x^{n}$ 的系数",
+              "transformedState": "$\\frac{f^{(n)}(0)}{n!}=\\frac{1}{2^{n}}-\\frac{2}{4^{n}}$，故 $f^{(n)}(0)=n!\\left(\\frac{1}{2^{n}}-\\frac{2}{4^{n}}\\right)$",
+              "condition": "幂级数在收敛区间内可逐项求导，系数唯一。"
+            }
+          ],
+          "reason": "由幂级数系数直接读出高阶导，避免逐项写符号，机制与主路线不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-sign-miss",
+          "summary": "套高阶导公式时漏掉 $(-1)^{n}$",
+          "steps": [
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.polynomial_division",
+              "state": "假分式",
+              "transformedState": "$f(x)=1+\\frac{6x-8}{(x-2)(x-4)}$",
+              "condition": "除法本身正确。"
+            },
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.partial_fraction",
+              "state": "部分分式",
+              "transformedState": "$f(x)=1-\\frac{2}{x-2}+\\frac{8}{x-4}$",
+              "condition": "拆分本身正确。"
+            },
+            {
+              "scenarioId": "S.deriv.higher_order",
+              "methodId": "M.chain_rule",
+              "state": "套高阶导公式",
+              "transformedState": "把 $\\left(\\frac{1}{x-a}\\right)^{(n)}$ 误写为 $\\frac{n!}{(x-a)^{n+1}}$（漏掉 $(-1)^{n}$），得 $f^{(n)}(0)=n!\\left(-\\frac{1}{2^{n}}+\\frac{2}{4^{n}}\\right)$",
+              "condition": "在 $x=0$ 处 $(x-a)^{n+1}=(-a)^{n+1}$ 还带来一个符号，$n=2$ 时与正确答案符号相反。"
+            }
+          ],
+          "reason": "符号是高阶导公式最容易漏的部分，$n=2$ 时答案会从 $\\frac14$ 变成 $-\\frac14$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 2
+        }
+      ],
+      "variables": [
+        "x",
+        "n"
+      ],
+      "comparisonCriterion": "假分式先除出整式，再部分分式；$\\left(\\frac{1}{x-a}\\right)^{(n)}$ 必须带 $(-1)^{n}$ 并注意 $(-a)^{n+1}$ 的符号。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.ecnu-a-4",
+        "trainingGoal": "有理分式高阶导数：先除法与部分分式，再用 $\\frac{(-1)^{n}n!}{(x-a)^{n+1}}$ 公式",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数A 第1大题第4题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "originalId": "ecnu-a-4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "在 $x=0$ 处求 $n$ 阶导，$n\\ge1$",
+          "分母因式分解为 $(x-2)(x-4)$"
+        ],
+        "allowedVariations": [
+          "改求 $f^{(n)}(1)$",
+          "把分子换成 $x$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-4",
+          "text": "设 $f(x)=\\frac{x^{2}}{x^{2}-6x+8}$，求 $f^{(n)}(0)$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "导数与微分",
+          "difficulty": "中",
+          "method": "高阶导数",
+          "notes": "高等数学 bankadv1；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "ecnu-a-4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$f(x)=1-\\frac{2}{x-2}+\\frac{8}{x-4}$，而 $\\left(\\frac{1}{x-a}\\right)^{(n)}=\\frac{(-1)^{n}n!}{(x-a)^{n+1}}$，在 $x=0$ 处为 $-\\frac{n!}{a^{n+1}}$，故 $f^{(n)}(0)=n!\\left(\\frac{1}{2^{n}}-\\frac{2}{4^{n}}\\right)$。$n=1$ 得 $0$、$n=2$ 得 $\\frac14$，与逐次求导复核一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.polynomial_division",
+        "M.partial_fraction",
+        "M.chain_rule"
+      ],
+      "applicableMethodIds": [
+        "M.polynomial_division",
+        "M.partial_fraction",
+        "M.chain_rule",
+        "M.power_series_expansion"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.deriv.higher_order",
+          "methodId": "M.leibniz_formula"
+        },
+        {
+          "scenarioId": "S.deriv.higher_order",
+          "methodId": "M.partial_fraction"
+        },
+        {
+          "scenarioId": "S.deriv.higher_order",
+          "methodId": "M.chain_rule"
+        },
+        {
+          "scenarioId": "S.deriv.higher_order",
+          "methodId": "M.polynomial_division"
+        },
+        {
+          "scenarioId": "S.deriv.higher_order",
+          "methodId": "M.power_series_expansion"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.leibniz_formula",
+        "M.partial_fraction",
+        "M.chain_rule",
+        "M.polynomial_division",
+        "M.power_series_expansion"
+      ],
+      "options": [
+        {
+          "id": "r-partial",
+          "name": "多项式除法 + 部分分式，再逐项套高阶导公式"
+        },
+        {
+          "id": "r-series",
+          "name": "在 $x=0$ 处展开成幂级数，读 $x^{n}$ 系数"
+        },
+        {
+          "id": "r-sign-miss",
+          "name": "套高阶导公式时漏掉 $(-1)^{n}$"
+        }
+      ],
+      "questionKey": "09b256cddf4d0bf79d5c0e3ce36b709f60928fc37256e5baff390625120d9207",
+      "faceKey": "4f756a5bf9865e52d857f6d09ee705fa93246b78f408078c256bfd43403b9a65"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.0over0",
+      "question": "求极限 $\\lim_{x\\to 0}\\dfrac{\\ln\\sin x-\\ln x}{1-\\cos x}$。",
+      "solution": "分子合并：$\\ln\\sin x-\\ln x=\\ln\\frac{\\sin x}{x}$。当 $x\\to0$ 时 $\\sin x=x-\\frac{x^{3}}{6}+o(x^{3})$，故 $\\frac{\\sin x}{x}=1-\\frac{x^{2}}{6}+o(x^{2})$，$\\ln\\frac{\\sin x}{x}\\sim-\\frac{x^{2}}{6}$；又 $1-\\cos x\\sim\\frac{x^{2}}{2}$，所以原极限为 $\\frac{-1/6}{1/2}=-\\frac13$。",
+      "routes": [
+        {
+          "id": "r-equiv",
+          "summary": "合并对数，分母等价替换，分子泰勒展开",
+          "steps": [
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "分母与分子的结构",
+              "transformedState": "$1-\\cos x\\sim\\frac{x^{2}}{2}$，$\\ln\\sin x-\\ln x=\\ln\\frac{\\sin x}{x}$",
+              "condition": "分子先合并成一个对数，分母单独等价替换。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.taylor_expansion",
+              "state": "分子的对数展开",
+              "transformedState": "$\\ln\\frac{\\sin x}{x}\\sim-\\frac{x^{2}}{6}$，比值 $\\to\\frac{-1/6}{1/2}=-\\frac13$",
+              "condition": "需展开到 $x^{2}$ 才能与分母同阶。"
+            }
+          ],
+          "reason": "合并对数消除两项相减，再用同阶展开直接得常数。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-lhopital",
+          "summary": "先洛必达一次，再用 $\\cot x$ 的展开收尾",
+          "steps": [
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.lhopital",
+              "state": "$0/0$ 型",
+              "transformedState": "$\\frac{\\cot x-\\frac1x}{\\sin x}$",
+              "condition": "分子求导得 $\\cot x-\\frac1x$，仍是 $0/0$ 型。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.taylor_expansion",
+              "state": "展开 $\\cot x$",
+              "transformedState": "$\\cot x=\\frac1x-\\frac{x}{3}+O(x^{3})$，故 $\\frac{-x/3+O(x^{3})}{x}\\to-\\frac13$",
+              "condition": "洛必达后的式子用 $\\cot x$ 的一次项收尾。"
+            }
+          ],
+          "reason": "先求导再展开是另一条可走通的路径，与合并对数路线机制不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-log-split",
+          "summary": "把两个对数分别用等价替换再相减",
+          "steps": [
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "对分子两项分别替换",
+              "transformedState": "由 $\\sin x\\sim x$ 误推 $\\ln\\sin x\\sim\\ln x$",
+              "condition": "$\\ln\\sin x$、$\\ln x$ 都趋于 $-\\infty$，不是无穷小，不能这样替换。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "相减",
+              "transformedState": "分子被抹成 $0$，原式 $\\sim\\frac{0}{x^{2}/2}=0$，误答 $0$",
+              "condition": "对数差必须整体处理，分别替换会丢掉真正的主项。"
+            }
+          ],
+          "reason": "两个发散量不能各自替换后相减，这正是对数差极限的典型陷阱。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "对数差先合并为 $\\ln(\\sin x/x)$；分母等价替换与分子展开必须同阶匹配。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.ecnu-c1-1-1",
+        "trainingGoal": "0/0 型含对数差的极限：合并对数后用等价无穷小或泰勒展开",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第1大题第1题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-1-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x\\to0$ 且 $\\sin x>0$，对数才有定义",
+          "分子先合并为 $\\ln(\\sin x/x)$"
+        ],
+        "allowedVariations": [
+          "把 $1-\\cos x$ 换成 $x^{2}/2$",
+          "把 $\\ln x$ 换成 $\\ln(2x)$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-1-1",
+          "text": "求极限 $\\lim_{x\\to 0}\\dfrac{\\ln\\sin x-\\ln x}{1-\\cos x}$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "0/0 型未定式",
+          "notes": "高等数学 bankadv1；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "ecnu-c1-1-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：分子 $=\\ln\\frac{\\sin x}{x}$，由 $\\sin x=x-\\frac{x^{3}}{6}+o(x^{3})$ 得 $\\ln\\frac{\\sin x}{x}\\sim-\\frac{x^{2}}{6}$；分母 $1-\\cos x\\sim\\frac{x^{2}}{2}$，故极限为 $-\\frac13$。用洛必达化为 $\\frac{\\cot x-1/x}{\\sin x}\\to-\\frac13$ 复核一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.equiv_infinitesimal",
+        "M.taylor_expansion"
+      ],
+      "applicableMethodIds": [
+        "M.equiv_infinitesimal",
+        "M.taylor_expansion",
+        "M.lhopital"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.factor_cancel"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.rationalization"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.taylor_expansion"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.derivative_definition"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.important_limit"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.equiv_infinitesimal",
+        "M.factor_cancel",
+        "M.rationalization",
+        "M.lhopital",
+        "M.taylor_expansion",
+        "M.derivative_definition",
+        "M.important_limit"
+      ],
+      "options": [
+        {
+          "id": "r-equiv",
+          "name": "合并对数，分母等价替换，分子泰勒展开"
+        },
+        {
+          "id": "r-lhopital",
+          "name": "先洛必达一次，再用 $\\cot x$ 的展开收尾"
+        },
+        {
+          "id": "r-log-split",
+          "name": "把两个对数分别用等价替换再相减"
+        }
+      ],
+      "questionKey": "8449a9ae643d4cf2478a6bcf0bae63b556f5a3020cff41337de05fb04ca17ce2",
+      "faceKey": "5c5bb213ed12606e80b12ec4d8962c6229bc8b13267b64b2e26860d290c53078"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.inf_minus_inf",
+      "question": "利用 Taylor 展开式求极限 $\\lim_{x\\to 0}\\left(1+\\dfrac{1}{x^{2}}-\\dfrac{1}{x^{3}}\\ln\\dfrac{2+x}{2-x}\\right)$。",
+      "solution": "拆开对数：$\\ln\\frac{2+x}{2-x}=\\ln\\left(1+\\frac x2\\right)-\\ln\\left(1-\\frac x2\\right)=\\left(\\frac x2-\\frac{x^{2}}{8}+\\frac{x^{3}}{24}-\\cdots\\right)-\\left(-\\frac x2-\\frac{x^{2}}{8}-\\frac{x^{3}}{24}-\\cdots\\right)=x+\\frac{x^{3}}{12}+O(x^{5})$。于是 $\\frac1{x^{3}}\\ln\\frac{2+x}{2-x}=\\frac1{x^{2}}+\\frac1{12}+O(x^{2})$，原式 $=1+\\frac1{x^{2}}-\\left(\\frac1{x^{2}}+\\frac1{12}+O(x^{2})\\right)\\to\\frac{11}{12}$。",
+      "routes": [
+        {
+          "id": "r-taylor",
+          "summary": "对数差展开到三阶，$1/x^{2}$ 项相消",
+          "steps": [
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.taylor_expansion",
+              "state": "对数差",
+              "transformedState": "$\\ln\\frac{2+x}{2-x}=x+\\frac{x^{3}}{12}+O(x^{5})$",
+              "condition": "$x\\to0$ 时 $x/2\\to0$，两个对数展开到三阶，偶次项相消。"
+            },
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.taylor_expansion",
+              "state": "代回原式",
+              "transformedState": "$1+\\frac1{x^{2}}-\\left(\\frac1{x^{2}}+\\frac1{12}+O(x^{2})\\right)\\to\\frac{11}{12}$",
+              "condition": "$\\frac1{x^{3}}$ 会把三阶项放大成常数，展开阶数必须足够。"
+            }
+          ],
+          "reason": "题面指定的泰勒路线，关键是保留到 $x^{3}$ 项。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-combine",
+          "summary": "先通分成一个分式，再用洛必达逐次降阶",
+          "steps": [
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.combine_fractions",
+              "state": "三项作差",
+              "transformedState": "$\\frac{x^{3}+x-\\ln\\frac{2+x}{2-x}}{x^{3}}$",
+              "condition": "统一到分母 $x^{3}$ 后化为 $0/0$ 型。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.lhopital",
+              "state": "$0/0$ 型",
+              "transformedState": "$\\frac{3x^{2}+1-\\frac{4}{4-x^{2}}}{3x^{2}}$",
+              "condition": "对数项求导得 $\\frac{4}{4-x^{2}}$，仍是 $0/0$ 型。"
+            },
+            {
+              "scenarioId": "S.limit.0over0",
+              "methodId": "M.lhopital",
+              "state": "继续求导",
+              "transformedState": "再求导两次后 $\\frac{6-\\frac12}{6}=\\frac{11}{12}$",
+              "condition": "分母经三次求导变为常数 $6$，得到定值。"
+            }
+          ],
+          "reason": "通分后连续洛必达不依赖展开技巧，用来交叉验证泰勒结果。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-low-order",
+          "summary": "只把对数展开到一阶，误以为已够用",
+          "steps": [
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.taylor_expansion",
+              "state": "只展开到一阶",
+              "transformedState": "$\\ln\\frac{2+x}{2-x}\\approx x$",
+              "condition": "忽略了三阶项 $\\frac{x^{3}}{12}$。"
+            },
+            {
+              "scenarioId": "S.limit.inf_minus_inf",
+              "methodId": "M.taylor_expansion",
+              "state": "代入",
+              "transformedState": "$1+\\frac1{x^{2}}-\\frac{x}{x^{3}}=1$，误答 $1$",
+              "condition": "$\\frac1{x^{3}}$ 会把三阶项放大成常数，只展到一阶漏掉 $\\frac1{12}$。"
+            }
+          ],
+          "reason": "展开阶数不足是最常见的 $\\infty-\\infty$ 失分点：主项相消后余项才是答案。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先判断 $1/x^{3}$ 会把展开式放大多少阶，再决定对数至少展到 $x^{3}$。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.fudan-b-3-3",
+        "trainingGoal": "$\\infty-\\infty$ 型含对数的极限：泰勒展开阶数要与 $1/x^{3}$ 的放大倍数匹配",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第3大题第3题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-3-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$x\\to0$ 且 $|x|<2$ 保证对数可展开",
+          "展开点为 $x=0$，需保留到 $x^{3}$ 项"
+        ],
+        "allowedVariations": [
+          "把 $\\frac{2+x}{2-x}$ 换成 $\\frac{1+x}{1-x}$",
+          "把前面的 $1$ 换成常数 $a$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-3-3",
+          "text": "利用 Taylor 展开式求极限 $\\lim_{x\\to 0}\\left(1+\\dfrac{1}{x^{2}}-\\dfrac{1}{x^{3}}\\ln\\dfrac{2+x}{2-x}\\right)$。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "∞−∞ 型未定式",
+          "notes": "高等数学 bankadv1；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "fudan-b-3-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$\\ln\\frac{2+x}{2-x}=\\ln(1+\\frac x2)-\\ln(1-\\frac x2)=x+\\frac{x^{3}}{12}+O(x^{5})$，故 $\\frac1{x^{3}}\\ln\\frac{2+x}{2-x}=\\frac1{x^{2}}+\\frac1{12}+O(x^{2})$，原式为 $1-\\frac1{12}+O(x^{2})\\to\\frac{11}{12}$。用通分后三次洛必达复核亦得 $\\frac{11}{12}$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.taylor_expansion"
+      ],
+      "applicableMethodIds": [
+        "M.taylor_expansion",
+        "M.combine_fractions",
+        "M.lhopital"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.rationalization"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.factor_cancel"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.finite_limit_constraint"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.divide_highest_power"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.taylor_expansion"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.polynomial_division"
+        },
+        {
+          "scenarioId": "S.limit.inf_minus_inf",
+          "methodId": "M.combine_fractions"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.equiv_infinitesimal"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.factor_cancel"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.rationalization"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.taylor_expansion"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.derivative_definition"
+        },
+        {
+          "scenarioId": "S.limit.0over0",
+          "methodId": "M.important_limit"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.rationalization",
+        "M.equiv_infinitesimal",
+        "M.factor_cancel",
+        "M.lhopital",
+        "M.finite_limit_constraint",
+        "M.divide_highest_power",
+        "M.taylor_expansion",
+        "M.polynomial_division",
+        "M.combine_fractions",
+        "M.derivative_definition",
+        "M.important_limit"
+      ],
+      "options": [
+        {
+          "id": "r-combine",
+          "name": "先通分成一个分式，再用洛必达逐次降阶"
+        },
+        {
+          "id": "r-low-order",
+          "name": "只把对数展开到一阶，误以为已够用"
+        },
+        {
+          "id": "r-taylor",
+          "name": "对数差展开到三阶，$1/x^{2}$ 项相消"
+        }
+      ],
+      "questionKey": "0d02013b80bae43c8b72ef7f851a674b9bb3563b85d8c1b1f45a2f08bc4dbf4a",
+      "faceKey": "e627a8bbb1bac0f5f9f3d4fd076c9490c6b84e8619ecffa35a4e587e4e0afee0"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.n_term_sum",
+      "question": "求极限 $\\lim_{n \\to \\infty} n^{4}\\left[\\frac{100}{n^{3}}-\\sum_{k=1}^{100}\\frac{1}{(n+k)^{3}}\\right]$。",
+      "solution": "展开每项：$\\frac{1}{(n+k)^{3}}=\\frac1{n^{3}}\\left(1+\\frac kn\\right)^{-3}=\\frac1{n^{3}}\\left(1-\\frac{3k}{n}+O\\left(\\frac{1}{n^{2}}\\right)\\right)$。对 $k=1,\\dots,100$ 求和，用 $\\sum_{k=1}^{100}k=5050$：$\\sum_{k=1}^{100}\\frac{1}{(n+k)^{3}}=\\frac{100}{n^{3}}-\\frac{3\\cdot5050}{n^{4}}+O\\left(\\frac{1}{n^{5}}\\right)$。于是括号内为 $\\frac{3\\cdot5050}{n^{4}}+O(\\frac1{n^{5}})$，乘以 $n^{4}$ 得极限 $3\\cdot5050=15150$。",
+      "routes": [
+        {
+          "id": "r-scaling",
+          "summary": "用二项式不等式双侧放缩每一项，再整体夹逼",
+          "steps": [
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.inequality_scaling",
+              "state": "逐项作双侧放缩",
+              "transformedState": "对 $u=\\frac kn$ 有 $1-3u\\le(1+u)^{-3}\\le1-3u+6u^{2}$，求和得 $\\frac{100}{n^{3}}-\\frac{3\\cdot5050}{n^{4}}\\le\\sum_{k=1}^{100}\\frac{1}{(n+k)^{3}}\\le\\frac{100}{n^{3}}-\\frac{3\\cdot5050}{n^{4}}+\\frac{6\\cdot338350}{n^{5}}$",
+              "condition": "不等式来自 $\\left(1+u\\right)^{-3}=1-3u+6u^{2}(1+\\xi)^{-5}$，$0\\le\\xi\\le u$。"
+            },
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.squeeze_theorem",
+              "state": "乘 $n^{4}$ 后夹逼",
+              "transformedState": "$15150-\\frac{6\\cdot338350}{n}\\le E_n\\le15150$，两端趋于 $15150$，故 $E_n\\to15150$",
+              "condition": "余项系数为常数，随 $n\\to\\infty$ 消失。"
+            }
+          ],
+          "reason": "把每个 $1/(n+k)^{3}$ 夹在 $1-3k/n$ 与 $1-3k/n+6k^{2}/n^{2}$ 之间，求和后一次夹出答案。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-mvt",
+          "summary": "用拉格朗日中值定理精确刻划每个差，再夹逼",
+          "steps": [
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.inequality_scaling",
+              "state": "用中值定理刻划每个差",
+              "transformedState": "$\\frac1{n^{3}}-\\frac1{(n+k)^{3}}=\\frac{3k}{\\xi_k^{4}}$，$\\xi_k\\in(n,n+k)$，故 $\\frac{3k}{(n+100)^{4}}\\le\\frac1{n^{3}}-\\frac1{(n+k)^{3}}\\le\\frac{3k}{n^{4}}$",
+              "condition": "对 $f(t)=t^{-3}$ 在 $[n,n+k]$ 上使用拉格朗日中值定理。"
+            },
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.squeeze_theorem",
+              "state": "对 $k$ 求和再乘 $n^{4}$",
+              "transformedState": "$\\frac{15150\\,n^{4}}{(n+100)^{4}}\\le E_n\\le15150$，两端趋于 $15150$，故 $E_n\\to15150$",
+              "condition": "$\\frac{n^{4}}{(n+100)^{4}}\\to1$，上下界同趋于 $15150$。"
+            }
+          ],
+          "reason": "中值定理直接给出差的精确表达式，不需要写出二阶泰勒余项，与放缩路线机制不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-main-term",
+          "summary": "把同阶的 $1/(n+k)^{3}$ 直接当作 $1/n^{3}$",
+          "steps": [
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.inequality_scaling",
+              "state": "只保留主项",
+              "transformedState": "误用 $\\frac{1}{(n+k)^{3}}\\approx\\frac1{n^{3}}$，把同阶量当作相等，括号内约等于 $0$",
+              "condition": "同阶不等于相等，$\\frac{3k}{n^{4}}$ 的一阶修正被丢掉。"
+            },
+            {
+              "scenarioId": "S.limit.n_term_sum",
+              "methodId": "M.squeeze_theorem",
+              "state": "乘 $n^{4}$",
+              "transformedState": "误得极限 $0$",
+              "condition": "本题答案正是由一阶修正 $3\\sum k$ 决定，不能只留主项。"
+            }
+          ],
+          "reason": "括号内主项相消后剩下的 $3k/n^{4}$ 才是极限的来源，直接抹平只能得到错误的 $0$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "n",
+        "k"
+      ],
+      "comparisonCriterion": "固定项数和的差极限，必须保留一阶修正项 $3k/n^{4}$；先判断相消到哪一阶再放缩。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.ecnu-a-2",
+        "trainingGoal": "固定项数和式的一阶修正：用放缩或中值定理夹逼出 $3\\sum k$",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数A 第1大题第2题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "originalId": "ecnu-a-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "求和项数固定为 $100$，不随 $n$ 变化",
+          "$n\\to\\infty$，$k/n\\to0$"
+        ],
+        "allowedVariations": [
+          "把 $100$ 换成其他固定整数",
+          "把三次方换成二次方"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-2",
+          "text": "求极限 $\\lim_{n \\to \\infty} n^{4}\\left[\\frac{100}{n^{3}}-\\sum_{k=1}^{100}\\frac{1}{(n+k)^{3}}\\right]$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "极限",
+          "difficulty": "中",
+          "method": "和式与连乘的数列极限",
+          "notes": "高等数学 bankadv1；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "ecnu-a-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$\\frac1{(n+k)^{3}}=n^{-3}\\left(1-\\frac{3k}{n}+O(\\frac1{n^{2}})\\right)$，对 $k=1,\\dots,100$ 求和得 $\\sum_{k=1}^{100}\\frac{1}{(n+k)^{3}}=n^{-3}\\left(100-\\frac{3\\cdot5050}{n}+O(\\frac1{n^{2}})\\right)$，故 $n^{4}\\left[\\frac{100}{n^{3}}-\\sum\\right]=3\\cdot5050+O(\\frac1n)\\to15150$。用中值定理夹逼复核同样得 $15150$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inequality_scaling",
+        "M.squeeze_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.inequality_scaling",
+        "M.squeeze_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.squeeze_theorem"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.inequality_scaling"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.log_transform"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.product_telescoping"
+        },
+        {
+          "scenarioId": "S.limit.n_term_sum",
+          "methodId": "M.riemann_sum_limit"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling",
+        "M.log_transform",
+        "M.product_telescoping",
+        "M.riemann_sum_limit"
+      ],
+      "options": [
+        {
+          "id": "r-mvt",
+          "name": "用拉格朗日中值定理精确刻划每个差，再夹逼"
+        },
+        {
+          "id": "r-main-term",
+          "name": "把同阶的 $1/(n+k)^{3}$ 直接当作 $1/n^{3}$"
+        },
+        {
+          "id": "r-scaling",
+          "name": "用二项式不等式双侧放缩每一项，再整体夹逼"
+        }
+      ],
+      "questionKey": "97a302c05c86f72631ae781b890b12e2c6e048c0af0085f685a7a9b163858c59",
+      "faceKey": "d4ed742309c31fb110c0f4ede2817549a2e64c30e7faaf2830e5ed1df7f32fda"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.limit.bounded_times_zero",
+      "question": "求极限 $\\lim_{x\\to\\infty}\\dfrac{\\sin x}{x}$。",
+      "solution": "对 $x>0$，有 $-\\dfrac1x\\le\\dfrac{\\sin x}{x}\\le\\dfrac1x$；两侧都趋于 $0$，由夹逼准则得极限为 $0$。$x<0$ 同理，故 $\\lim_{x\\to\\infty}\\dfrac{\\sin x}{x}=0$。",
+      "routes": [
+        {
+          "id": "r-squeeze",
+          "summary": "用 $-1/x$ 与 $1/x$ 夹住 $\\sin x/x$，再让两侧同时趋于 0",
+          "steps": [
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.squeeze_theorem",
+              "state": "$\\dfrac{\\sin x}{x}$",
+              "transformedState": "$-\\dfrac1x\\le\\dfrac{\\sin x}{x}\\le\\dfrac1x$，两侧都趋于 $0$",
+              "condition": "$x\\to\\infty$ 且 $|\\sin x|\\le1$，上下界同时成立。"
+            }
+          ],
+          "reason": "上下界都趋于 0，夹逼准则直接给出极限 0。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-bounded",
+          "summary": "先用有界性给绝对值上界，再说明上界是无穷小",
+          "steps": [
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.inequality_scaling",
+              "state": "$\\sin x$ 有界，$1/x$ 是无穷小",
+              "transformedState": "$\\left|\\dfrac{\\sin x}{x}\\right|\\le\\dfrac1{|x|}\\to0$",
+              "condition": "$|x|\\to\\infty$，$|\\sin x|\\le1$。"
+            }
+          ],
+          "reason": "有界量乘无穷小仍是无穷小，绝对值估计一步到位。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-equivalent",
+          "summary": "把 \\\\to\\\\infty$ 当成 \\\\to0$，用 $\\\\sin x\\\\sim x$ 得到 1",
+          "steps": [
+            {
+              "scenarioId": "S.limit.bounded_times_zero",
+              "methodId": "M.squeeze_theorem",
+              "state": "$\\dfrac{\\sin x}{x}$",
+              "transformedState": "错误地替换为 $\\dfrac{x}{x}=1$",
+              "condition": "等价无穷小 $\\sin x\\sim x$ 只在 $x\\to0$ 成立，本题是 $x\\to\\infty$。"
+            }
+          ],
+          "reason": "在无穷远处 $\\sin x$ 并不趋于 $x$，替换后得到错误的 1，实际极限是 0。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "有界量乘无穷小优先用夹逼或绝对值估计；不能把只在 $x\\to0$ 成立的等价式用到无穷远。",
+      "metadata": {
+        "motherId": "candidate.bankadv1.adv-gap-bounded-times-zero",
+        "trainingGoal": "识别有界量乘无穷小的结构，用夹逼或放缩得到极限 0",
+        "source": {
+          "kind": "dataset_import",
+          "label": "Mathmyth 自编补缺（标准极限改写）",
+          "reference": "高等数学题库补缺",
+          "originalId": "adv-gap-bounded-times-zero"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "极限过程是 $x\\to\\infty$",
+          "$|\\sin x|\\le1$ 对一切实数成立"
+        ],
+        "allowedVariations": [
+          "把 $x$ 换成 $x^2$",
+          "把 $\\sin x$ 换成 $\\cos x$"
+        ],
+        "originalRecord": {
+          "id": "adv-gap-bounded-times-zero",
+          "text": "求极限 $\\\\lim_{x\\\\to\\\\infty}\\\\dfrac{\\\\sin x}{x}$。",
+          "answer": "",
+          "source": "Mathmyth 自编补缺（公开教材标准例题改写）",
+          "category": "极限",
+          "difficulty": "低",
+          "method": "有界量乘无穷小",
+          "notes": "高等数学 bankadv1；补齐 S.limit.bounded_times_zero 入口。"
+        },
+        "bankId": "bankadv1",
+        "originalId": "adv-gap-bounded-times-zero",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$|\\sin x|\\le1$，所以 $|\\sin x/x|\\le1/|x|$，当 $|x|\\to\\infty$ 时上界趋于 0，由夹逼准则极限为 0。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.squeeze_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.limit.bounded_times_zero",
+          "methodId": "M.squeeze_theorem"
+        },
+        {
+          "scenarioId": "S.limit.bounded_times_zero",
+          "methodId": "M.inequality_scaling"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.squeeze_theorem",
+        "M.inequality_scaling"
+      ],
+      "options": [
+        {
+          "id": "r-bounded",
+          "name": "先用有界性给绝对值上界，再说明上界是无穷小"
+        },
+        {
+          "id": "r-equivalent",
+          "name": "把 \\\\to\\\\infty$ 当成 \\\\to0$，用 $\\\\sin x\\\\sim x$ 得到 1"
+        },
+        {
+          "id": "r-squeeze",
+          "name": "用 $-1/x$ 与 $1/x$ 夹住 $\\sin x/x$，再让两侧同时趋于 0"
+        }
+      ],
+      "questionKey": "d0cf5d4f6f310a7f02004e26ec3322aaf194de6b3b759030358d41a239685a52",
+      "faceKey": "639390abf2fd1a576e4564a3d0b3c2a810be5ef2b15bf3d4f5a0ff93de482035"
+    }
+  ]
+}

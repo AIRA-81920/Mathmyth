@@ -1,0 +1,3375 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv3",
+  "sourceSha256": "5f8b5f247d08a46dcb28acd743df35e58086910be83f22523ff402be81f09d68",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.separable",
+      "question": "求解微分方程 $\\dfrac{dy}{dx}=xy(2-y)$，$y(0)=1$。",
+      "solution": "分离变量：$\\dfrac{dy}{y(2-y)}=x\\,\\mathrm{d}x$。由 $\\dfrac{1}{y(2-y)}=\\dfrac12\\left(\\dfrac1y+\\dfrac1{2-y}\\right)$，两边积分得 $\\dfrac12\\ln\\dfrac{y}{2-y}=\\dfrac{x^2}{2}+C$，即 $\\ln\\dfrac{y}{2-y}=x^2+2C$。代入 $y(0)=1$ 得 $2C=\\ln1=0$，故 $\\dfrac{y}{2-y}=e^{x^2}$，解出 $y=\\dfrac{2e^{x^2}}{1+e^{x^2}}$（此时 $y<2$，与初值相容）。",
+      "routes": [
+        {
+          "id": "r-partial-fraction",
+          "summary": "分离变量后用部分分式拆开 $\\dfrac{1}{y(2-y)}$，再按初值定常数并解出显式解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.separable",
+              "methodId": "M.separation_of_variables",
+              "state": "$\\dfrac{dy}{dx}=xy(2-y)$，$y(0)=1$",
+              "transformedState": "$\\dfrac{dy}{y(2-y)}=x\\,\\mathrm{d}x$，变量已分居等号两侧",
+              "condition": "$y\\neq0,2$；初值 $y(0)=1$ 使解在 $y(2-y)>0$ 的区间内，分离合法。"
+            },
+            {
+              "scenarioId": "S.ode.separable",
+              "methodId": "M.separation_of_variables",
+              "state": "$\\dfrac{dy}{y(2-y)}=x\\,\\mathrm{d}x$",
+              "transformedState": "$\\dfrac12\\ln\\dfrac{y}{2-y}=\\dfrac{x^2}{2}+C$",
+              "condition": "$y\\in(0,2)$ 时 $y>0$、$2-y>0$，无需加绝对值；部分分式逐项积分的原函数为 $\\dfrac12\\ln\\dfrac{y}{2-y}$。"
+            },
+            {
+              "scenarioId": "S.ode.separable",
+              "methodId": "M.separation_of_variables",
+              "state": "$\\ln\\dfrac{y}{2-y}=x^2+2C$",
+              "transformedState": "$y(0)=1\\Rightarrow 2C=0$，$\\dfrac{y}{2-y}=e^{x^2}$，$y=\\dfrac{2e^{x^2}}{1+e^{x^2}}$",
+              "condition": "解满足 $y<2$，$2-y>0$，可从对数式中反解出 $y$。"
+            }
+          ],
+          "reason": "分离变量后唯一的技术难点是左端有理分式的积分，部分分式一步拆开即可，最后按初值定常数并反解。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的初值 $y(0)=1$ 附近讨论，$y$ 不穿过 $y=0$ 与 $y=2$ 这两条平衡解。"
+        },
+        {
+          "id": "r-logistic-variable",
+          "summary": "分离变量后令 $u=\\dfrac{y}{2-y}$ 作整体代换，左端直接化为 $\\dfrac{\\mathrm{d}u}{2u}$",
+          "steps": [
+            {
+              "scenarioId": "S.ode.separable",
+              "methodId": "M.separation_of_variables",
+              "state": "$\\dfrac{dy}{dx}=xy(2-y)$，$y(0)=1$",
+              "transformedState": "$\\dfrac{dy}{y(2-y)}=x\\,\\mathrm{d}x$",
+              "condition": "$y\\neq0,2$，初值保证解位于 $0<y<2$。"
+            },
+            {
+              "scenarioId": "S.ode.separable",
+              "methodId": "M.separation_of_variables",
+              "state": "$\\dfrac{dy}{y(2-y)}=x\\,\\mathrm{d}x$",
+              "transformedState": "令 $u=\\dfrac{y}{2-y}$，则 $\\mathrm{d}y=\\dfrac{(2-y)^2}{2}\\,\\mathrm{d}u$，左端化为 $\\dfrac{\\mathrm{d}u}{2u}$，积分得 $\\dfrac12\\ln u=\\dfrac{x^2}{2}+C$",
+              "condition": "在 $0<y<2$ 上 $u=\\dfrac{y}{2-y}>0$ 且单调可逆，代换合法。"
+            },
+            {
+              "scenarioId": "S.ode.separable",
+              "methodId": "M.separation_of_variables",
+              "state": "$\\dfrac12\\ln u=\\dfrac{x^2}{2}+C$，且 $u(0)=1$",
+              "transformedState": "$C=0$，$u=e^{x^2}$，回代 $y=\\dfrac{2u}{1+u}=\\dfrac{2e^{x^2}}{1+e^{x^2}}$",
+              "condition": "由 $y=\\dfrac{2u}{1+u}$ 回代，初值 $y(0)=1$ 对应 $u(0)=1$。"
+            }
+          ],
+          "reason": "不去做部分分式，而是把 $\\dfrac{y}{2-y}$ 整体看作新变量，左端的对数结构自然出现，是一条独立成立的路线。",
+          "valid": true,
+          "preferred": false,
+          "condition": "要求解始终落在 $0<y<2$，此时 $u$ 为正且代换可逆。"
+        },
+        {
+          "id": "r-log-of-product",
+          "summary": "把 $\\displaystyle\\int\\dfrac{\\mathrm{d}y}{y(2-y)}$ 直接写成 $\\ln|y(2-y)|$",
+          "steps": [
+            {
+              "scenarioId": "S.ode.separable",
+              "methodId": "M.separation_of_variables",
+              "state": "$\\dfrac{dy}{y(2-y)}=x\\,\\mathrm{d}x$",
+              "transformedState": "误取原函数 $\\ln|y(2-y)|$，得 $\\ln|y(2-y)|=\\dfrac{x^2}{2}+C$",
+              "condition": "错在把分母的乘积 $y(2-y)$ 整体当作 $\\ln$ 的内层：$\\dfrac{\\mathrm{d}}{\\mathrm{d}y}\\ln|y(2-y)|=\\dfrac{2-2y}{y(2-y)}$，与 $\\dfrac{1}{y(2-y)}$ 不相等。"
+            }
+          ],
+          "reason": "乘积取对数不等于逐项取对数，漏掉部分分式使原函数差一个与 $y$ 有关的因子，解出的 $y$ 代回原方程不成立。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先判断右端能否拆成 $x$ 的函数与 $y$ 的函数之积；分离后左端必须用部分分式（或整体代换）求原函数，不能把乘积直接取对数",
+      "metadata": {
+        "motherId": "candidate.bankadv3.ecnu-c1-4-1",
+        "trainingGoal": "识别可分离变量的 Logistic 型方程，正确完成有理分式积分并按初值定解",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大高数 C（一）第四大题第1题",
+          "reference": "华东师范大学 2023-2024 学年第一学期 高等数学 C（一）期末（A卷）",
+          "originalId": "ecnu-c1-4-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "初值条件是 $y(0)=1$",
+          "方程右端为 $xy(2-y)$",
+          "$y=0$ 与 $y=2$ 是平衡解，解不能穿过它们"
+        ],
+        "allowedVariations": [
+          "改变初值 $y(0)=y_0$（$0<y_0<2$）",
+          "改变一次项系数得到 $xy(k-y)$",
+          "把 $x$ 换成 $x^2$ 或 $\\sin x$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-4-1",
+          "text": "求解微分方程 $\\dfrac{dy}{dx}=xy(2-y)$，$y(0)=1$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "可分离变量方程",
+          "notes": "高等数学 bankadv3；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "ecnu-c1-4-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：分离变量得 $\\dfrac{dy}{y(2-y)}=x\\,\\mathrm{d}x$，左端部分分式 $\\dfrac{1}{y(2-y)}=\\dfrac12\\left(\\dfrac1y+\\dfrac1{2-y}\\right)$，积分得 $\\ln\\dfrac{y}{2-y}=x^2+2C$；代入 $y(0)=1$ 得 $2C=0$，于是 $\\dfrac{y}{2-y}=e^{x^2}$，解得 $y=\\dfrac{2e^{x^2}}{1+e^{x^2}}$。回代验证：$y'=\\dfrac{4xe^{x^2}}{(1+e^{x^2})^2}=xy(2-y)$，且 $y(0)=1$，与原题一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.separation_of_variables"
+      ],
+      "applicableMethodIds": [
+        "M.separation_of_variables"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.separable",
+          "methodId": "M.separation_of_variables"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.separation_of_variables"
+      ],
+      "options": [
+        {
+          "id": "r-logistic-variable",
+          "name": "分离变量后令 $u=\\dfrac{y}{2-y}$ 作整体代换，左端直接化为 $\\dfrac{\\mathrm{d}u}{2u}$"
+        },
+        {
+          "id": "r-log-of-product",
+          "name": "把 $\\displaystyle\\int\\dfrac{\\mathrm{d}y}{y(2-y)}$ 直接写成 $\\ln|y(2-y)|$"
+        },
+        {
+          "id": "r-partial-fraction",
+          "name": "分离变量后用部分分式拆开 $\\dfrac{1}{y(2-y)}$，再按初值定常数并解出显式解"
+        }
+      ],
+      "questionKey": "972ab5982cb0b86b8a94eaa015ab497c09b048c21cf544ad10344307ada1c121",
+      "faceKey": "ae0a1b119488ed45bbb89a0fe6771d40b9791df86a97511f4908e860485bc8db"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.linear_first_order",
+      "question": "微分方程 $x\\,\\mathrm{d}y+(y-\\sin x)\\,\\mathrm{d}x=0$ 满足 $y\\big|_{x=\\pi}=1$ 的特解 $y=$（　）。",
+      "solution": "把方程改写为 $xy'+y=\\sin x$，即 $(xy)'=\\sin x$，两边积分得 $xy=-\\cos x+C$。代入 $x=\\pi,\\ y=1$：$\\pi=-\\cos\\pi+C=1+C$，故 $C=\\pi-1$，特解 $y=\\dfrac{\\pi-1-\\cos x}{x}$（$x>0$，在 $x=\\pi$ 的邻域内成立）。",
+      "routes": [
+        {
+          "id": "r-standard-formula",
+          "summary": "化为标准形 $y'+\\dfrac1x y=\\dfrac{\\sin x}{x}$，用积分因子 $e^{\\int\\frac{\\mathrm{d}x}{x}}=x$ 直接套一阶线性通解公式",
+          "steps": [
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$x\\,\\mathrm{d}y+(y-\\sin x)\\,\\mathrm{d}x=0$",
+              "transformedState": "两边同除 $x$ 得 $y'+\\dfrac1x y=\\dfrac{\\sin x}{x}$，积分因子 $\\mu=e^{\\int\\frac{\\mathrm{d}x}{x}}=x$",
+              "condition": "$x>0$（初值在 $x=\\pi$，故在 $x>0$ 的正半轴讨论）。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$(xy)'=\\sin x$",
+              "transformedState": "$xy=-\\cos x+C$，即 $y=\\dfrac{C-\\cos x}{x}$",
+              "condition": "积分因子把左端收成乘积导数，右端直接积分即可。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$y=\\dfrac{C-\\cos x}{x}$",
+              "transformedState": "$y(\\pi)=1\\Rightarrow C=\\pi-1$，$y=\\dfrac{\\pi-1-\\cos x}{x}$",
+              "condition": "代入初值定常数，$x=\\pi$ 处 $x\\neq0$，代值合法。"
+            }
+          ],
+          "reason": "标准形加积分因子是最短路径，一步把左端收成 $(xy)'$，再积分代初值即可。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x>0$ 上求解，初值点 $x=\\pi$ 不经过奇点 $x=0$。"
+        },
+        {
+          "id": "r-homogeneous-then-variation",
+          "summary": "先分离变量解齐次方程 $xy'+y=0$ 得 $y=\\dfrac{C}{x}$，再常数变易求非齐次特解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.separation_of_variables",
+              "state": "对应的齐次方程 $xy'+y=0$",
+              "transformedState": "$\\dfrac{\\mathrm{d}y}{y}=-\\dfrac{\\mathrm{d}x}{x}$，积分得 $y=\\dfrac{C}{x}$",
+              "condition": "齐次时右端为 0，方程可分离变量，$x>0$ 上可取 $y\\neq0$。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$y=\\dfrac{C(x)}{x}$",
+              "transformedState": "代入 $xy'+y=\\sin x$ 得 $C'(x)=\\sin x$，故 $C(x)=-\\cos x+C_1$，$y=\\dfrac{-\\cos x+C_1}{x}$",
+              "condition": "常数变易：令齐次解的常数 $C$ 为 $x$ 的函数，代回原方程消去含 $C(x)$ 的项。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$y=\\dfrac{C_1-\\cos x}{x}$",
+              "transformedState": "$C_1=\\pi-1$，$y=\\dfrac{\\pi-1-\\cos x}{x}$",
+              "condition": "代入 $y(\\pi)=1$ 定常数。"
+            }
+          ],
+          "reason": "先解齐次再常数变易，不需要预先记住一阶线性通解公式，是不依赖公式的独立路线，结论与主路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $x>0$ 上讨论，齐次解 $\\dfrac{C}{x}$ 在 $x=\\pi$ 附近非零。"
+        },
+        {
+          "id": "r-forgot-divide-x",
+          "summary": "化标准形时把右端写成 $\\sin x$，漏除以 $x$",
+          "steps": [
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$xy'+y=\\sin x$",
+              "transformedState": "误写成 $y'+\\dfrac1x y=\\sin x$（右端漏除 $x$），于是 $(xy)'=x\\sin x$",
+              "condition": "错在两边同除 $x$ 时右端 $\\sin x$ 未同时除以 $x$，化出的标准形与 $xy'+y=\\sin x$ 不再等价。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$(xy)'=x\\sin x$",
+              "transformedState": "分部积分得 $xy=\\sin x-x\\cos x+C$，$y(\\pi)=1$ 给出 $C=\\pi$，得 $y=\\dfrac{\\sin x-x\\cos x+\\pi}{x}$",
+              "condition": "由错误的标准形推下去形式自洽，但与原方程不符，代回 $xy'+y=\\sin x$ 不成立。"
+            }
+          ],
+          "reason": "右端漏除 $x$ 是最常见的移项失误，得到的特解代回原方程后 $xy'+y$ 多出 $\\dfrac{\\sin x}{x}$ 相关项，答案错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先看左端能否整体写成某个乘积的导数；不能用公式时再走“齐次分离 + 常数变易”两步，但化标准形时必须同步除以 $x$",
+      "metadata": {
+        "motherId": "candidate.bankadv3.xjtu-2016-tk5",
+        "trainingGoal": "把混杂形式的方程整理成一阶线性标准形，并用积分因子（或常数变易）解初值问题",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交大高数下填空题第5题",
+          "reference": "西安交通大学彭康书院 高等数学（下）真题集 2016 年期末",
+          "originalId": "xjtu-2016-tk5"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "初值条件为 $y|_{x=\\pi}=1$",
+          "方程可整理为 $xy'+y=\\sin x$",
+          "解在 $x=\\pi$ 的邻域内讨论"
+        ],
+        "allowedVariations": [
+          "把 $\\sin x$ 换成 $\\cos x$ 或 $x^2$",
+          "改变初值 $y(\\pi)=y_0$",
+          "把 $x$ 换成 $x+2$ 使奇点平移"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2016-tk5",
+          "text": "微分方程 $x\\,\\mathrm{d}y+(y-\\sin x)\\,\\mathrm{d}x=0$ 满足 $y\\big|_{x=\\pi}=1$ 的特解 $y=$ ______。",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "一阶线性方程",
+          "notes": "高等数学 bankadv3；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "xjtu-2016-tk5",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：原式即 $xy'+y=\\sin x$，左端恰为 $(xy)'$，故 $xy=-\\cos x+C$。代入 $y(\\pi)=1$ 得 $\\pi=-\\cos\\pi+C=1+C$，$C=\\pi-1$，于是 $y=\\dfrac{\\pi-1-\\cos x}{x}$。回代验证：$x y'+y=\\dfrac{\\mathrm{d}}{\\mathrm{d}x}(xy)=\\sin x$；且 $y(\\pi)=\\dfrac{\\pi-1+1}{\\pi}=1$，与原题一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.constant_variation"
+      ],
+      "applicableMethodIds": [
+        "M.constant_variation",
+        "M.separation_of_variables"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.linear_first_order",
+          "methodId": "M.constant_variation"
+        },
+        {
+          "scenarioId": "S.ode.linear_first_order",
+          "methodId": "M.separation_of_variables"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.constant_variation",
+        "M.separation_of_variables"
+      ],
+      "options": [
+        {
+          "id": "r-standard-formula",
+          "name": "化为标准形 $y'+\\dfrac1x y=\\dfrac{\\sin x}{x}$，用积分因子 $e^{\\int\\frac{\\mathrm{d}x}{x}}=x$ 直接套一阶线性通解公式"
+        },
+        {
+          "id": "r-homogeneous-then-variation",
+          "name": "先分离变量解齐次方程 $xy'+y=0$ 得 $y=\\dfrac{C}{x}$，再常数变易求非齐次特解"
+        },
+        {
+          "id": "r-forgot-divide-x",
+          "name": "化标准形时把右端写成 $\\sin x$，漏除以 $x$"
+        }
+      ],
+      "questionKey": "5d65c48a7126a9f60eb7e4e4e9e3f465ed7cd9753a5cef0e2b36c5b7ebd71d75",
+      "faceKey": "bcf570951c0d19ccea06fcef02493026cd29435bb45a07d631b8f4e88c2a1625"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.second_order_homogeneous",
+      "question": "求微分方程 $x''+4x'+5x=0$ 的通解.",
+      "solution": "特征方程 $r^2+4r+5=0$，判别式 $\\Delta=16-20=-4<0$，得共轭复根 $r=-2\\pm i$。故通解为 $x=e^{-2t}(C_1\\cos t+C_2\\sin t)$，其中 $C_1,C_2$ 为任意常数（$x$ 是 $t$ 的函数）。",
+      "routes": [
+        {
+          "id": "r-characteristic-complex",
+          "summary": "写特征方程、判别式小于零得共轭复根 $-2\\pm i$，按复根情形直接写出通解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "$x''+4x'+5x=0$",
+              "transformedState": "特征方程 $r^2+4r+5=0$",
+              "condition": "常系数齐次方程，令 $x=e^{rt}$ 代入即得特征方程。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "$r^2+4r+5=0$",
+              "transformedState": "$\\Delta=16-20=-4$，$r=-2\\pm i$（$\\alpha=-2,\\ \\beta=1$）",
+              "condition": "复根情形，$\\alpha\\pm\\beta i$ 对应解 $e^{\\alpha t}\\cos\\beta t$、$e^{\\alpha t}\\sin\\beta t$。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "共轭复根 $-2\\pm i$",
+              "transformedState": "$x=e^{-2t}(C_1\\cos t+C_2\\sin t)$",
+              "condition": "两个实值解 $e^{-2t}\\cos t$、$e^{-2t}\\sin t$ 线性无关，二阶方程的通解即其线性组合。"
+            }
+          ],
+          "reason": "常系数齐次方程的最短路径：判别式与根一步算出，按复根模板写通解，不需要任何额外变换。",
+          "valid": true,
+          "preferred": true,
+          "condition": "方程右端恒为零且系数为常数。"
+        },
+        {
+          "id": "r-remove-damping",
+          "summary": "先乘 $e^{2t}$ 把方程改写成 $(e^{2t}x)''+e^{2t}x=0$，令 $u=e^{2t}x$ 化为 $u''+u=0$ 再解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "$x''+4x'+5x=0$",
+              "transformedState": "两边乘 $e^{2t}$，得 $(e^{2t}x)''+e^{2t}x=0$，令 $u=e^{2t}x$ 则 $u''+u=0$",
+              "condition": "$e^{2t}$ 恒不为零，乘它不改变解集；$(e^{2t}x)''=e^{2t}(x''+4x'+4x)$，补上 $e^{2t}x$ 恰为原方程左端的 $e^{2t}$ 倍。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "$u''+u=0$",
+              "transformedState": "特征方程 $r^2+1=0$，$r=\\pm i$，$u=C_1\\cos t+C_2\\sin t$",
+              "condition": "化归后的方程仍为常系数齐次，直接用复根模板。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "$u=C_1\\cos t+C_2\\sin t$",
+              "transformedState": "$x=e^{-2t}u=e^{-2t}(C_1\\cos t+C_2\\sin t)$",
+              "condition": "回代 $u=e^{2t}x$，把 $e^{-2t}$ 因子补回。"
+            }
+          ],
+          "reason": "先吸收阻尼项把方程化成无阻尼的 $u''+u=0$，可以避免在特征根里直接处理 $-2\\pm i$，与直接写特征根的路线互补。",
+          "valid": true,
+          "preferred": false,
+          "condition": "乘的因子 $e^{2t}$ 非零，代换 $u=e^{2t}x$ 可逆。"
+        },
+        {
+          "id": "r-blind-reduction",
+          "summary": "误认为所有二阶方程都能降阶，令 $p=x'$ 直接降到一阶",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.reduction_of_order",
+              "state": "$x''+4x'+5x=0$",
+              "transformedState": "令 $p=x'$，$p'=x''$，得 $p'+4p+5x=0$",
+              "condition": "错在方程含 $x$ 项，不属于“缺 $x$”型也不能把 $x$ 消掉；降阶后得到一个同时含 $p$ 与 $x$ 的一阶方程，阶数降了但未知函数没减少。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_homogeneous",
+              "methodId": "M.reduction_of_order",
+              "state": "$p'+4p+5x=0$",
+              "transformedState": "把 $x$ 当作 $t$ 的已知函数强行分离，得到无法闭合的 $\\dfrac{\\mathrm{d}p}{\\mathrm{d}x}$ 与 $t$ 混在一起的式子",
+              "condition": "此路走不下去：必须承认 $x$ 与 $p$ 是两个未知函数，应回到特征方程法。"
+            }
+          ],
+          "reason": "可降阶只适用于“缺 $x$”或“缺 $y$”的特殊方程，本方程 $x$ 项系数为 5 不为零，硬降阶只会把问题变成一阶方程组，无法直接积出通解。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "t",
+        "x"
+      ],
+      "comparisonCriterion": "右端为零且系数是常数时，优先写特征方程；含 $x$ 项（$q\\neq0$）的方程不能当作可降阶方程处理",
+      "metadata": {
+        "motherId": "candidate.bankadv3.xjtu-2012-4",
+        "trainingGoal": "熟练由特征方程的三种根型写二阶常系数齐次方程通解，并区分复根与可降阶情形",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交大高数下计算题第4题",
+          "reference": "西安交通大学彭康书院 高等数学（下）真题集 2012 年期末",
+          "originalId": "xjtu-2012-4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "未知函数 $x$ 是 $t$ 的函数",
+          "方程右端恒为零",
+          "特征根为一对共轭复根 $-2\\pm i$"
+        ],
+        "allowedVariations": [
+          "把 $4x'$ 改为 $4x'+4x$（重根）",
+          "把 $5x$ 改为 $3x$（两相异实根）",
+          "右端加上指数型非齐次项"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2012-4",
+          "text": "求微分方程 $x''+4x'+5x=0$ 的通解.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "二阶常系数齐次线性方程",
+          "notes": "高等数学 bankadv3；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "xjtu-2012-4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：特征方程 $r^2+4r+5=0$，$\\Delta=16-20=-4$，$r=-2\\pm i$，故 $x=e^{-2t}(C_1\\cos t+C_2\\sin t)$。验证：取 $x=e^{-2t}\\cos t$，$x'=e^{-2t}(-2\\cos t-\\sin t)$，$x''=e^{-2t}(3\\cos t+4\\sin t)$，代回 $x''+4x'+5x=e^{-2t}[(3\\cos t+4\\sin t)+(-8\\cos t-4\\sin t)+5\\cos t]=0$，另一特解同理，通解正确。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.characteristic_equation"
+      ],
+      "applicableMethodIds": [
+        "M.characteristic_equation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.second_order_homogeneous",
+          "methodId": "M.characteristic_equation"
+        },
+        {
+          "scenarioId": "S.ode.second_order_homogeneous",
+          "methodId": "M.reduction_of_order"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.characteristic_equation",
+        "M.reduction_of_order"
+      ],
+      "options": [
+        {
+          "id": "r-characteristic-complex",
+          "name": "写特征方程、判别式小于零得共轭复根 $-2\\pm i$，按复根情形直接写出通解"
+        },
+        {
+          "id": "r-remove-damping",
+          "name": "先乘 $e^{2t}$ 把方程改写成 $(e^{2t}x)''+e^{2t}x=0$，令 $u=e^{2t}x$ 化为 $u''+u=0$ 再解"
+        },
+        {
+          "id": "r-blind-reduction",
+          "name": "误认为所有二阶方程都能降阶，令 $p=x'$ 直接降到一阶"
+        }
+      ],
+      "questionKey": "6f0e6cf8b66ab0db7a4a27a435328804bde9d997d1041c5633abbd0a3add3eca",
+      "faceKey": "a207e6a7ea6c579b79b719f43d66092fbf4661df0cc17e84d7546212cf1b6eaa"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.improper_convergence",
+      "question": "试就 $p$ 的不同取值，判断反常积分 $\\int_{0}^{+\\infty}\\dfrac{\\ln(1+\\sqrt{x})}{x^{p}}\\,dx$ 的敛散性。",
+      "solution": "被积函数非负，把积分拆成 $\\int_0^1$ 与 $\\int_1^{+\\infty}$。近端：$\\lim_{x\\to0^+}\\dfrac{\\ln(1+\\sqrt x)}{x^{1/2}}=1$，即被积函数与 $x^{1/2-p}$ 同阶，由 $\\int_0^1 x^{1/2-p}\\,\\mathrm{d}x$ 收敛当且仅当 $p<\\dfrac32$，得近端收敛条件 $p<\\dfrac32$。远端：$\\ln(1+\\sqrt x)\\sim\\dfrac12\\ln x$，而 $\\int_1^{+\\infty}\\dfrac{\\ln x}{x^p}\\,\\mathrm{d}x$ 收敛当且仅当 $p>1$（$p=1$ 时原函数 $\\frac12\\ln^2x\\to+\\infty$），故远端收敛条件为 $p>1$。综上：当 $1<p<\\dfrac32$ 时原积分收敛；当 $p\\le1$ 时在无穷远处发散；当 $p\\ge\\dfrac32$ 时在 $x=0$ 附近发散（$p=\\frac32$ 时被积函数 $\\sim\\frac1x$，对数发散）。",
+      "routes": [
+        {
+          "id": "r-two-end-comparison",
+          "summary": "按两端奇性拆成 $\\int_0^1$ 与 $\\int_1^{+\\infty}$，各自与 $x^{1/2-p}$、$\\frac{\\ln x}{x^p}$ 作极限比较",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.comparison_test",
+              "state": "$\\int_0^{+\\infty}\\dfrac{\\ln(1+\\sqrt x)}{x^p}\\,\\mathrm{d}x$",
+              "transformedState": "$\\int_0^1+\\int_1^{+\\infty}$，两端分别判敛",
+              "condition": "被积函数非负，两段都收敛时原积分才收敛；任一段发散即原积分发散。"
+            },
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.comparison_test",
+              "state": "近端 $\\int_0^1\\dfrac{\\ln(1+\\sqrt x)}{x^p}\\,\\mathrm{d}x$",
+              "transformedState": "$\\dfrac{\\ln(1+\\sqrt x)}{x^p}\\sim x^{1/2-p}$，收敛当且仅当 $p<\\dfrac32$",
+              "condition": "极限比较：$\\lim_{x\\to0^+}\\dfrac{\\ln(1+\\sqrt x)}{x^{1/2}}=1$，与 $\\int_0^1x^{1/2-p}\\mathrm{d}x$ 同敛散。"
+            },
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.comparison_test",
+              "state": "远端 $\\int_1^{+\\infty}\\dfrac{\\ln(1+\\sqrt x)}{x^p}\\,\\mathrm{d}x$",
+              "transformedState": "被积函数与 $\\dfrac{\\ln x}{x^p}$ 同阶，收敛当且仅当 $p>1$",
+              "condition": "对任意 $\\varepsilon>0$ 有 $\\ln(1+\\sqrt x)\\le C_\\varepsilon x^{\\varepsilon}$，与 $\\int_1^{+\\infty}\\frac{\\mathrm{d}x}{x^{p-\\varepsilon}}$ 比较；$p=1$ 时 $\\int_1^{R}\\frac{\\ln x}{x}\\mathrm{d}x=\\frac12\\ln^2R\\to\\infty$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.comparison_test",
+              "state": "$p<\\dfrac32$ 且 $p>1$",
+              "transformedState": "原积分当 $1<p<\\dfrac32$ 收敛；$p\\le1$ 或 $p\\ge\\dfrac32$ 时发散",
+              "condition": "两个端点条件取交集，$p$ 的临界值为 $1$ 与 $\\dfrac32$。"
+            }
+          ],
+          "reason": "含参反常积分的标准做法是分别盯住无穷远与瑕点两个端点，用极限比较法与 $x^{1/2-p}$、$\\frac{\\ln x}{x^p}$ 对齐阶数，交集给出参数的收敛区间。",
+          "valid": true,
+          "preferred": true,
+          "condition": "被积函数在 $(0,+\\infty)$ 上非负且连续，可用比较判别法。"
+        },
+        {
+          "id": "r-scaling-both-ends",
+          "summary": "不取极限比较，直接用 $\\frac12\\sqrt x\\le\\ln(1+\\sqrt x)\\le\\sqrt x$ 及 $\\ln(1+\\sqrt x)\\ge\\ln2$ 的放缩夹逼",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.inequality_scaling",
+              "state": "$\\int_0^{+\\infty}\\dfrac{\\ln(1+\\sqrt x)}{x^p}\\,\\mathrm{d}x$",
+              "transformedState": "拆成两端，分别用初等不等式夹住被积函数",
+              "condition": "被积函数非负，放缩两边同敛散即可判定。"
+            },
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.inequality_scaling",
+              "state": "近端 $0<x\\le1$",
+              "transformedState": "$\\dfrac12x^{1/2-p}\\le\\dfrac{\\ln(1+\\sqrt x)}{x^p}\\le x^{1/2-p}$，收敛当且仅当 $p<\\dfrac32$",
+              "condition": "由 $\\frac{t}{2}\\le\\ln(1+t)\\le t$（$0\\le t\\le1$）取 $t=\\sqrt x$；$\\int_0^1x^{1/2-p}\\mathrm{d}x$ 在 $p<\\frac32$ 收敛、$p\\ge\\frac32$ 发散。"
+            },
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.inequality_scaling",
+              "state": "远端 $x\\ge1$",
+              "transformedState": "$\\ln2\\le\\ln(1+\\sqrt x)\\le C_\\varepsilon x^{\\varepsilon}$，得 $p>1$ 收敛、$p\\le1$ 发散",
+              "condition": "$p\\le1$ 时被积函数 $\\ge\\ln2\\cdot x^{-p}$，与发散积分比较；$p>1$ 时被积函数 $\\le C_\\varepsilon x^{\\varepsilon-p}$，$\\varepsilon$ 取足够小使 $p-\\varepsilon>1$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.inequality_scaling",
+              "state": "$p<\\dfrac32$ 且 $p>1$",
+              "transformedState": "原积分当 $1<p<\\dfrac32$ 收敛，其余发散",
+              "condition": "两端放缩结论合并。"
+            }
+          ],
+          "reason": "不依赖极限比较，只用 $\\ln(1+t)$ 的初等上下界把被积函数夹在两个幂函数之间，同样得到 $1<p<\\frac32$，是独立的放缩路线。",
+          "valid": true,
+          "preferred": false,
+          "condition": "放缩所需的 $\\frac{t}{2}\\le\\ln(1+t)\\le t$ 仅在小 $t$ 上成立，故近端与远端必须分开处理。"
+        },
+        {
+          "id": "r-only-infinity",
+          "summary": "只检查无穷远端的 $p>1$，忽略 $x\\to0^+$ 处 $\\ln(1+\\sqrt x)\\sim\\sqrt x$ 造成的瑕点",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.comparison_test",
+              "state": "$\\int_0^{+\\infty}\\dfrac{\\ln(1+\\sqrt x)}{x^p}\\,\\mathrm{d}x$",
+              "transformedState": "只与 $\\int_1^{+\\infty}\\dfrac{\\ln x}{x^p}\\,\\mathrm{d}x$ 比较，得 $p>1$ 时收敛",
+              "condition": "该步只处理了无穷上限，$x\\to0^+$ 处的奇性完全没有检查。"
+            },
+            {
+              "scenarioId": "S.defint.improper_convergence",
+              "methodId": "M.comparison_test",
+              "state": "$p>1$ 时收敛",
+              "transformedState": "错误结论：$p>1$ 收敛，$p\\le1$ 发散",
+              "condition": "错在把“有无穷上限”当成唯一的奇性来源；实际上 $p\\ge\\frac32$ 时近端被积函数 $\\sim x^{1/2-p}$，与 $\\frac1x$ 或更差的幂比较必发散，参数区间被漏掉一半。"
+            }
+          ],
+          "reason": "含参反常积分必须同时检查每个奇点；只盯无穷远会漏掉 $x=0$ 的瑕点，从而把 $p\\ge\\frac32$ 的散情形误判为收敛。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "p",
+        "x"
+      ],
+      "comparisonCriterion": "先找齐所有奇点（$x=0$ 与 $x=+\\infty$），再分别用比较判别法对齐 $x^{1/2-p}$ 与 $\\frac{\\ln x}{x^p}$；最后取参数条件的交集",
+      "metadata": {
+        "motherId": "candidate.bankadv3.fudan-b-4-1",
+        "trainingGoal": "掌握双奇点含参反常积分“分段判敛、取交集”的完整流程，避免只看无穷远",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦高数 B 第四大题第1题",
+          "reference": "复旦大学 2011-2012 学年第一学期 高等数学 B 期末（A卷）",
+          "originalId": "fudan-b-4-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "积分下限为 $0$、上限为 $+\\infty$",
+          "被积函数非负",
+          "近端 $\\ln(1+\\sqrt x)\\sim\\sqrt x$，远端 $\\ln(1+\\sqrt x)\\sim\\frac12\\ln x$"
+        ],
+        "allowedVariations": [
+          "把 $\\ln(1+\\sqrt x)$ 换成 $\\ln(1+x)$",
+          "把 $x^p$ 换成 $x^p\\ln x$",
+          "把下限 $0$ 换成 $1$ 使问题只判无穷远"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-4-1",
+          "text": "试就 $p$ 的不同取值，判断反常积分 $\\int_{0}^{+\\infty}\\dfrac{\\ln(1+\\sqrt{x})}{x^{p}}\\,dx$ 的敛散性。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "反常积分敛散性判断",
+          "notes": "高等数学 bankadv3；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "fudan-b-4-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：被积函数在 $(0,+\\infty)$ 上非负，需拆成 $\\int_0^1$ 与 $\\int_1^{+\\infty}$ 两段。近端 $x\\to0^+$ 时 $\\ln(1+\\sqrt x)\\sim\\sqrt x=x^{1/2}$，被积函数 $\\sim x^{1/2-p}$，故近端收敛当且仅当 $1/2-p>-1$，即 $p<3/2$。远端 $x\\to+\\infty$ 时 $\\ln(1+\\sqrt x)\\sim\\frac12\\ln x$，对任意 $\\varepsilon>0$ 有 $0\\le\\ln(1+\\sqrt x)\\le C_\\varepsilon x^{\\varepsilon}$，被积函数与 $\\frac{\\ln x}{x^p}$ 同阶，收敛当且仅当 $p>1$（$p=1$ 时 $\\int_1^{\\infty}\\frac{\\ln x}{x}\\,\\mathrm{d}x=+\\infty$ 发散）。两段同时收敛给出 $1<p<\\dfrac32$；其余情形（$p\\le1$ 或 $p\\ge\\dfrac32$）发散。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "decide_property"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.comparison_test"
+      ],
+      "applicableMethodIds": [
+        "M.comparison_test",
+        "M.inequality_scaling"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.improper_convergence",
+          "methodId": "M.comparison_test"
+        },
+        {
+          "scenarioId": "S.defint.improper_convergence",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.improper_convergence",
+          "methodId": "M.inequality_scaling"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.comparison_test",
+        "M.newton_leibniz",
+        "M.inequality_scaling"
+      ],
+      "options": [
+        {
+          "id": "r-only-infinity",
+          "name": "只检查无穷远端的 $p>1$，忽略 $x\\to0^+$ 处 $\\ln(1+\\sqrt x)\\sim\\sqrt x$ 造成的瑕点"
+        },
+        {
+          "id": "r-two-end-comparison",
+          "name": "按两端奇性拆成 $\\int_0^1$ 与 $\\int_1^{+\\infty}$，各自与 $x^{1/2-p}$、$\\frac{\\ln x}{x^p}$ 作极限比较"
+        },
+        {
+          "id": "r-scaling-both-ends",
+          "name": "不取极限比较，直接用 $\\frac12\\sqrt x\\le\\ln(1+\\sqrt x)\\le\\sqrt x$ 及 $\\ln(1+\\sqrt x)\\ge\\ln2$ 的放缩夹逼"
+        }
+      ],
+      "questionKey": "86db3f82020db8a011045c4b697662e5f2d33faad68ecc79b978cdaccf3f2059",
+      "faceKey": "5b27211b0894eb9cf8d3274543c890e2e51bbdb9847ad0edeaa5235063cf8966"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.solid_volume",
+      "question": "设 $D$ 是位于曲线 $y=\\sqrt{x}\\,a^{-\\frac{x}{2a}}\\ (a>1,\\ 0\\leq x<+\\infty)$ 下方、$x$ 轴上方的无界区域。\n(1) 求区域 $D$ 绕 $x$ 轴旋转一周所成旋转体的体积 $V(a)$；\n(2) 当 $a$ 为何值时，$V(a)$ 最小？并求此最小值。",
+      "solution": "(1) 圆盘微元 $\\mathrm{d}V=\\pi y^2\\,\\mathrm{d}x$，而 $y^2=x a^{-x/a}$，故 $V(a)=\\pi\\int_0^{+\\infty}xa^{-x/a}\\,\\mathrm{d}x$。记 $c=\\dfrac{\\ln a}{a}$，由 $\\int_0^{+\\infty}xe^{-cx}\\,\\mathrm{d}x=\\dfrac{1}{c^2}$ 得 $V(a)=\\pi\\dfrac{a^2}{(\\ln a)^2}$。(2) $V'(a)=\\pi\\cdot\\dfrac{2a(\\ln a)^2-2a^2\\ln a\\cdot\\frac1a}{(\\ln a)^4}=\\dfrac{2\\pi a(\\ln a-1)}{(\\ln a)^3}$，在 $(1,e)$ 上为负、在 $(e,+\\infty)$ 上为正，故 $a=e$ 时 $V(a)$ 取最小值 $V(e)=\\pi e^2$。",
+      "routes": [
+        {
+          "id": "r-disk-parts",
+          "summary": "圆盘微元得到 $\\pi\\int_0^{+\\infty}xa^{-x/a}\\mathrm{d}x$，用分部积分求出原函数再取无穷上限",
+          "steps": [
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.element_method",
+              "state": "$D$：$0\\le y\\le\\sqrt{x}a^{-\\frac{x}{2a}}$，$0\\le x<+\\infty$",
+              "transformedState": "$\\mathrm{d}V=\\pi y^2\\mathrm{d}x=\\pi x a^{-x/a}\\mathrm{d}x$，$V(a)=\\pi\\int_0^{+\\infty}xa^{-x/a}\\mathrm{d}x$",
+              "condition": "圆盘半径即曲线纵坐标，$y^2=xa^{-x/a}$；区域无界，积分需按反常积分取 $R\\to+\\infty$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.integration_by_parts",
+              "state": "$\\int xa^{-x/a}\\mathrm{d}x$，记 $c=\\dfrac{\\ln a}{a}$",
+              "transformedState": "$\\int xe^{-cx}\\mathrm{d}x=-\\dfrac{x}{c}e^{-cx}-\\dfrac{1}{c^2}e^{-cx}$，在 $[0,R]$ 上作差得 $\\dfrac{1}{c^2}-\\dfrac{R}{c}e^{-cR}-\\dfrac{1}{c^2}e^{-cR}$",
+              "condition": "$c>0$（因 $a>1$），故 $R e^{-cR}\\to0$、$e^{-cR}\\to0$；取 $u=x$、$\\mathrm{d}v=e^{-cx}\\mathrm{d}x$ 分部两次。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "取 $R\\to+\\infty$ 的极限",
+              "transformedState": "$V(a)=\\pi\\cdot\\dfrac{1}{c^2}=\\dfrac{\\pi a^2}{(\\ln a)^2}$，再由 $V'(a)=\\dfrac{2\\pi a(\\ln a-1)}{(\\ln a)^3}$ 得 $a=e$、$V_{\\min}=\\pi e^2$",
+              "condition": "边界项在无穷远为 0，故收敛；$V'$ 的符号在 $a=e$ 两侧由负变正，确为最小值点。"
+            }
+          ],
+          "reason": "圆盘微元把体积化为标准的指数型反常积分，分部积分给出原函数，取极限后 $V(a)$ 有闭式表达，再对 $a$ 求导即得极小点。",
+          "valid": true,
+          "preferred": true,
+          "condition": "$a>1$ 保证 $c=\\frac{\\ln a}{a}>0$，无穷上限处指数衰减，积分收敛。"
+        },
+        {
+          "id": "r-disk-scaling",
+          "summary": "圆盘微元后作伸缩代换 $t=x/a$，把含参积分化为与 $a$ 无关的标准积分再读公式",
+          "steps": [
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.element_method",
+              "state": "$V(a)=\\pi\\int_0^{+\\infty}xa^{-x/a}\\mathrm{d}x$",
+              "transformedState": "圆盘微元已建立体积积分",
+              "condition": "微元式与主路线相同，差别在后续处理积分的代换方式。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "含参积分 $\\int_0^{+\\infty}xa^{-x/a}\\mathrm{d}x$",
+              "transformedState": "令 $t=\\dfrac{x}{a}$，$\\mathrm{d}x=a\\,\\mathrm{d}t$，得 $a^2\\int_0^{+\\infty}t a^{-t}\\,\\mathrm{d}t$",
+              "condition": "$a>1$，代换单调可逆，上下限 $0,+\\infty$ 不变；被积函数中的 $a$ 已全部集中为因子 $a^2$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "$a^2\\int_0^{+\\infty}t a^{-t}\\mathrm{d}t$",
+              "transformedState": "$\\int_0^{+\\infty}ta^{-t}\\mathrm{d}t=\\dfrac{1}{(\\ln a)^2}$，故 $V(a)=\\dfrac{\\pi a^2}{(\\ln a)^2}$，极小点为 $a=e$、$V_{\\min}=\\pi e^2$",
+              "condition": "标准积分 $\\int_0^{+\\infty}te^{-kt}\\mathrm{d}t=\\frac{1}{k^2}$（$k=\\ln a>0$）；极小点由 $V'$ 变号确定。"
+            }
+          ],
+          "reason": "不硬算分部，而是先用伸缩代换把参数从指数里剥离，化成只含 $\\ln a$ 的标准积分，避免分部时反复处理 $c$；思路与分部路线明显不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "$a>1$ 保证 $\\ln a>0$，标准积分收敛。"
+        },
+        {
+          "id": "r-square-forgotten",
+          "summary": "把 $y^2$ 误写成 $xa^{-\\frac{x}{2a}}$，漏掉平方后 $a$ 的指数没有翻倍",
+          "steps": [
+            {
+              "scenarioId": "S.defint.solid_volume",
+              "methodId": "M.element_method",
+              "state": "$y=\\sqrt{x}a^{-\\frac{x}{2a}}$",
+              "transformedState": "误取 $y^2=xa^{-\\frac{x}{2a}}$（实际应为 $xa^{-x/a}$），得 $V(a)=\\pi\\int_0^{+\\infty}xa^{-\\frac{x}{2a}}\\mathrm{d}x$",
+              "condition": "错在平方时指数要乘 2：$\\left(a^{-\\frac{x}{2a}}\\right)^2=a^{-\\frac{x}{a}}$，漏掉这一倍会让积分值变成 $\\frac{4a^2}{(\\ln a)^2}$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "$\\pi\\int_0^{+\\infty}xe^{-\\frac{\\ln a}{2a}x}\\mathrm{d}x$",
+              "transformedState": "$V(a)=\\dfrac{4\\pi a^2}{(\\ln a)^2}$，极小点仍在 $a=e$ 但 $V_{\\min}=4\\pi e^2$",
+              "condition": "指数系数变成 $\\frac{\\ln a}{2a}$，其倒数的平方带来因子 4；数值是正确值的 4 倍。"
+            }
+          ],
+          "reason": "平方运算时指数必须加倍，$\\left(a^{-x/(2a)}\\right)^2=a^{-x/a}$；漏掉这一步会让 $V(a)$ 整体放大 4 倍，最小值也随之错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "x",
+        "t"
+      ],
+      "comparisonCriterion": "先写圆盘微元 $\\mathrm{d}V=\\pi y^2\\mathrm{d}x$（注意平方时指数翻倍），再用分部或伸缩代换算出含参广义积分；得到 $V(a)$ 后再用导数定最小值点",
+      "metadata": {
+        "motherId": "candidate.bankadv3.fudan-b-6-1",
+        "trainingGoal": "掌握无界区域旋转体体积的圆盘微元与含参广义积分计算，并能由 $V(a)$ 求导确定最优参数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦高数 B 第六大题第1题",
+          "reference": "复旦大学 2011-2012 学年第一学期 高等数学 B 期末（A卷）",
+          "originalId": "fudan-b-6-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "参数满足 $a>1$",
+          "区域由曲线与 $x$ 轴围成，$x\\in[0,+\\infty)$ 无界",
+          "旋转轴是 $x$ 轴"
+        ],
+        "allowedVariations": [
+          "把曲线换成 $y=\\sqrt{x}\\,e^{-x/a}$",
+          "把旋转轴改为 $y$ 轴",
+          "把 $a^{-\\frac{x}{2a}}$ 换成 $b^{-\\frac{x}{2b}}$ 并讨论 $b>1$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-6-1",
+          "text": "设 $D$ 是位于曲线 $y=\\sqrt{x}\\,a^{-\\frac{x}{2a}}\\ (a>1,\\ 0\\leq x<+\\infty)$ 下方、$x$ 轴上方的无界区域。\n(1) 求区域 $D$ 绕 $x$ 轴旋转一周所成旋转体的体积 $V(a)$；\n(2) 当 $a$ 为何值时，$V(a)$ 最小？并求此最小值。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "旋转体体积",
+          "notes": "高等数学 bankadv3；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "fudan-b-6-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：圆盘微元 $\\mathrm{d}V=\\pi y^2\\mathrm{d}x=\\pi x a^{-x/a}\\mathrm{d}x$（$y^2=x a^{-x/a}$），故 $V(a)=\\pi\\int_0^{+\\infty}x a^{-x/a}\\mathrm{d}x$。令 $c=\\dfrac{\\ln a}{a}>0$，则 $a^{-x/a}=e^{-cx}$，$\\int_0^{+\\infty}xe^{-cx}\\mathrm{d}x=\\dfrac{1}{c^2}=\\dfrac{a^2}{(\\ln a)^2}$，得 $V(a)=\\dfrac{\\pi a^2}{(\\ln a)^2}$。求极值：$V'(a)=\\dfrac{2\\pi a(\\ln a-1)}{(\\ln a)^3}$，在 $a\\in(1,e)$ 为负、$a>e$ 为正，故 $a=e$ 取极小也是最小，$V(e)=\\pi e^2$。交叉验证：令 $t=x/a$，$\\int_0^{+\\infty}xa^{-x/a}\\mathrm{d}x=a^2\\int_0^{+\\infty}t a^{-t}\\mathrm{d}t=a^2\\cdot\\dfrac{1}{(\\ln a)^2}$，结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.element_method",
+        "M.integration_by_parts",
+        "M.newton_leibniz"
+      ],
+      "applicableMethodIds": [
+        "M.element_method",
+        "M.integration_by_parts",
+        "M.newton_leibniz",
+        "M.first_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.solid_volume",
+          "methodId": "M.element_method"
+        },
+        {
+          "scenarioId": "S.defint.solid_volume",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.solid_volume",
+          "methodId": "M.symmetry"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.integration_by_parts"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.partial_fraction"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.element_method",
+        "M.newton_leibniz",
+        "M.symmetry",
+        "M.integration_by_parts",
+        "M.first_substitution",
+        "M.partial_fraction"
+      ],
+      "options": [
+        {
+          "id": "r-disk-scaling",
+          "name": "圆盘微元后作伸缩代换 $t=x/a$，把含参积分化为与 $a$ 无关的标准积分再读公式"
+        },
+        {
+          "id": "r-square-forgotten",
+          "name": "把 $y^2$ 误写成 $xa^{-\\frac{x}{2a}}$，漏掉平方后 $a$ 的指数没有翻倍"
+        },
+        {
+          "id": "r-disk-parts",
+          "name": "圆盘微元得到 $\\pi\\int_0^{+\\infty}xa^{-x/a}\\mathrm{d}x$，用分部积分求出原函数再取无穷上限"
+        }
+      ],
+      "questionKey": "e50da626fa373bf66ff14af81002c7fcec4a962a089b8a00b45fc0e3740dc178",
+      "faceKey": "c3639f8c5223244f458833514ce3f58b28cf90848a3952bebcf61c072a64c5ed"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.integral_inequality",
+      "question": "已知 $f(x)$ 二阶可导，$f''(x)\\ge 0$，求证：$f\\left(\\frac{a+b}{2}\\right)\\le \\frac{1}{b-a}\\int_{a}^{b}f(t)\\,\\mathrm{d}t$。",
+      "solution": "设 $m=\\dfrac{a+b}{2}$。由 $f''\\ge0$，$f$ 的图像在点 $m$ 的切线上方，即对任意 $t$ 有 $f(t)\\ge f(m)+f'(m)(t-m)$。在 $[a,b]$ 上积分：$\\int_a^bf(t)\\,\\mathrm{d}t\\ge(b-a)f(m)+f'(m)\\int_a^b(t-m)\\,\\mathrm{d}t$。而 $\\int_a^b(t-m)\\,\\mathrm{d}t=\\dfrac{(t-m)^2}{2}\\Big|_a^b=\\dfrac{(b-m)^2-(a-m)^2}{2}=0$（因 $b-m=m-a$），于是 $\\int_a^bf(t)\\,\\mathrm{d}t\\ge(b-a)f(m)$。两边除以 $b-a>0$，即得 $f\\left(\\dfrac{a+b}{2}\\right)\\le\\dfrac{1}{b-a}\\int_a^bf(t)\\,\\mathrm{d}t$。",
+      "routes": [
+        {
+          "id": "r-tangent-midpoint",
+          "summary": "在中点 $m$ 处取支撑线（切线）$f(t)\\ge f(m)+f'(m)(t-m)$，两边在 $[a,b]$ 上积分，一次项积分恰为零",
+          "steps": [
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.inequality_scaling",
+              "state": "$f''\\ge0$，取中点 $m=\\dfrac{a+b}{2}$",
+              "transformedState": "逐点不等式 $f(t)\\ge f(m)+f'(m)(t-m)$，$t\\in[a,b]$",
+              "condition": "$f$ 在 $m$ 处可导（二阶可导的必然结果），凸函数的图像在任一点切线上方，等号仅在 $t=m$ 处成立。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.inequality_scaling",
+              "state": "不等式两边在 $[a,b]$ 上积分",
+              "transformedState": "$\\int_a^bf\\,\\mathrm{d}t\\ge(b-a)f(m)+f'(m)\\int_a^b(t-m)\\,\\mathrm{d}t=(b-a)f(m)$，除以 $b-a>0$ 即得所证",
+              "condition": "$\\int_a^b(t-m)\\,\\mathrm{d}t=\\dfrac{(b-m)^2-(a-m)^2}{2}=0$，因为 $a-m=-(b-m)$；积分保持不等号方向。"
+            }
+          ],
+          "reason": "凸函数的切线是最自然的支撑线，取在中点后一次项积分恰好抵消，结论一步得出，不需要任何辅助函数。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $[a,b]$（$a<b$）上讨论，$f$ 二阶可导从而在 $m$ 处有切线。"
+        },
+        {
+          "id": "r-aux-monotone",
+          "summary": "构造变限辅助函数 $G(x)=\\int_a^xf-(x-a)f(\\frac{a+x}{2})$，证 $G'\\ge0$、$G$ 单调不减，再取 $x=b$",
+          "steps": [
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "要证的不等式中上限 $b$ 固定",
+              "transformedState": "$G(x)=\\int_a^xf(t)\\,\\mathrm{d}t-(x-a)f\\left(\\dfrac{a+x}{2}\\right)$，$x\\ge a$",
+              "condition": "把固定上限 $b$ 换成流动的 $x$，使不等式两端都成为 $x$ 的函数，再在 $x=b$ 取值。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.variable_limit_integral",
+              "state": "$G(x)$ 含变限积分与乘积项",
+              "transformedState": "$G'(x)=f(x)-f\\left(\\dfrac{a+x}{2}\\right)-\\dfrac{x-a}{2}f'\\left(\\dfrac{a+x}{2}\\right)$",
+              "condition": "对 $\\int_a^xf$ 用变限求导，对乘积项用乘积法则与链式法则；$G(a)=0$。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.monotonicity_analysis",
+              "state": "记 $m=\\dfrac{a+x}{2}$，则 $x-m=\\dfrac{x-a}{2}$",
+              "transformedState": "由 $f(x)\\ge f(m)+f'(m)(x-m)$ 得 $G'(x)\\ge0$，故 $G$ 在 $[a,+\\infty)$ 上单调不减",
+              "condition": "凸性支撑线不等式给出 $f(x)-f(m)\\ge\\dfrac{x-a}{2}f'(m)$，恰好是 $G'$ 中后两项的相反数。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.monotonicity_analysis",
+              "state": "$G$ 单调不减且 $G(a)=0$",
+              "transformedState": "$G(b)\\ge0$，即 $\\int_a^bf\\,\\mathrm{d}t\\ge(b-a)f(m)$，除以 $b-a$ 得所证",
+              "condition": "取 $x=b$ 即可；不等式方向由 $G$ 的单调性直接继承。"
+            }
+          ],
+          "reason": "把上限参数化后对变限积分求导，再用凸性支撑线控制 $G'$ 的符号，是标准“构造函数—判单调”的证法，与直接用切线积分互补。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在 $[a,+\\infty)$ 上 $G$ 可导，$f$ 二阶可导保证 $G'$ 存在；$a<b$。"
+        },
+        {
+          "id": "r-tangent-endpoint",
+          "summary": "改用左端点 $a$ 处的切线 $f(t)\\ge f(a)+f'(a)(t-a)$ 积分，得到的界只含 $f(a)$ 与 $f'(a)$",
+          "steps": [
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.inequality_scaling",
+              "state": "由 $f''\\ge0$ 取端点 $a$ 处的切线",
+              "transformedState": "$f(t)\\ge f(a)+f'(a)(t-a)$，积分得 $\\int_a^bf\\,\\mathrm{d}t\\ge(b-a)f(a)+\\dfrac{(b-a)^2}{2}f'(a)$",
+              "condition": "支撑线不等式本身成立，但切点选在端点，积分后出现的是一次项与端点导数的组合，与中点函数值无关。"
+            },
+            {
+              "scenarioId": "S.defint.integral_inequality",
+              "methodId": "M.inequality_scaling",
+              "state": "该下界只含 $f(a)$、$f'(a)$",
+              "transformedState": "无法化为 $(b-a)f\\left(\\dfrac{a+b}{2}\\right)$：$f(m)$ 与 $f(a)$ 之间相差 $f'(\\theta)\\dfrac{b-a}{2}$，符号不受控制",
+              "condition": "错在切点位置：要出现中点函数值，支撑线必须在中点取；端点切线只给出一阶下界，不能推出平均值不小于中点值。"
+            }
+          ],
+          "reason": "端点切线的积分只给出含 $f(a)$ 与 $f'(a)$ 的下界，无法过渡到 $f(\\frac{a+b}{2})$；这说明切点必须选在中点，是本题最典型的思路偏差。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "a",
+        "b",
+        "x",
+        "t"
+      ],
+      "comparisonCriterion": "先判断结论是比较积分平均值与中点函数值：在中点取支撑线并积分是最短路径，参数化上限构造辅助函数再判单调是通法；切点取在端点只能得到含端点信息的界，推不出结论",
+      "metadata": {
+        "motherId": "candidate.bankadv3.ecnu-a-9",
+        "trainingGoal": "掌握凸函数支撑线不等式与变限辅助函数两种证法，理解切点必须选在中点才能得到平均值下界",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大高数 A 第二大题第9题",
+          "reference": "华东师范大学 2023-2024 学年第一学期 高等数学 A 期末（A卷）",
+          "originalId": "ecnu-a-9"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f$ 在 $[a,b]$ 上二阶可导且 $f''\\ge0$",
+          "$a<b$，$b-a>0$",
+          "结论等价于凸函数在区间上的平均值不小于中点函数值"
+        ],
+        "allowedVariations": [
+          "把中点 $\\frac{a+b}{2}$ 换成 $\\frac{a+b}{3}$（结论不再成立，可作为反例讨论）",
+          "把 $f''\\ge0$ 换成 $f''\\le0$ 并相应改变不等号方向",
+          "把区间 $[a,b]$ 换成 $[0,1]$ 并加权重函数"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-9",
+          "text": "已知 $f(x)$ 二阶可导，$f''(x)\\ge 0$，求证：$f\\left(\\frac{a+b}{2}\\right)\\le \\frac{1}{b-a}\\int_{a}^{b}f(t)\\,\\mathrm{d}t$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "定积分等式与不等式的证明",
+          "notes": "高等数学 bankadv3；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "ecnu-a-9",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：由 $f''\\ge0$ 知 $f$ 为凸函数，其图像位于任一点 $t_0$ 的切线上方，即 $f(t)\\ge f(t_0)+f'(t_0)(t-t_0)$。取中点 $t_0=m=\\dfrac{a+b}{2}$，在 $[a,b]$ 上积分得 $\\int_a^bf(t)\\,\\mathrm{d}t\\ge(b-a)f(m)+f'(m)\\int_a^b(t-m)\\,\\mathrm{d}t$，而 $\\int_a^b(t-m)\\,\\mathrm{d}t=\\dfrac{(b-m)^2-(a-m)^2}{2}=0$，故 $\\int_a^bf\\ge(b-a)f(m)$，除以 $b-a>0$ 即为所证。几何意义：凸曲线在切线之上，区间平均值不小于中点函数值。用 $f(t)=(t-1)^2$、$[a,b]=[0,2]$ 复核：左端 $f(1)=0$，右端 $\\dfrac12\\int_0^2(t-1)^2\\mathrm{d}t=\\dfrac13$，不等式成立。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.inequality_scaling"
+      ],
+      "applicableMethodIds": [
+        "M.inequality_scaling",
+        "M.construct_auxiliary_function",
+        "M.variable_limit_integral",
+        "M.monotonicity_analysis"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.variable_limit_integral"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.integral_mean_value_theorem"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.inequality_scaling"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.construct_auxiliary_function"
+        },
+        {
+          "scenarioId": "S.defint.integral_inequality",
+          "methodId": "M.monotonicity_analysis"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.variable_limit_integral",
+        "M.integral_mean_value_theorem",
+        "M.inequality_scaling",
+        "M.construct_auxiliary_function",
+        "M.monotonicity_analysis"
+      ],
+      "options": [
+        {
+          "id": "r-aux-monotone",
+          "name": "构造变限辅助函数 $G(x)=\\int_a^xf-(x-a)f(\\frac{a+x}{2})$，证 $G'\\ge0$、$G$ 单调不减，再取 $x=b$"
+        },
+        {
+          "id": "r-tangent-endpoint",
+          "name": "改用左端点 $a$ 处的切线 $f(t)\\ge f(a)+f'(a)(t-a)$ 积分，得到的界只含 $f(a)$ 与 $f'(a)$"
+        },
+        {
+          "id": "r-tangent-midpoint",
+          "name": "在中点 $m$ 处取支撑线（切线）$f(t)\\ge f(m)+f'(m)(t-m)$，两边在 $[a,b]$ 上积分，一次项积分恰为零"
+        }
+      ],
+      "questionKey": "cae3ccbdcb17666d3b4512b1bf21188c73b48cfb3baf488ec22a515bcc34f6ab",
+      "faceKey": "99f70cee915adfd109923211cfc21346663e4c29e6337e9871aff21e560ff3c8"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.plane_area",
+      "question": "求由抛物线 $(y-2)^{2}=x-1$ 和与抛物线相切于纵坐标 $y_0=3$ 处的切线以及 $x$ 轴所围成的图形面积。",
+      "solution": "抛物线 $x=(y-2)^2+1$ 在 $y=3$ 处的点为 $(2,3)$，且 $\\dfrac{\\mathrm{d}x}{\\mathrm{d}y}=2(y-2)$ 在 $y=3$ 处为 2，故切线为 $x-2=2(y-3)$，即 $x=2y-4$，它与 $x$ 轴交于 $(-4,0)$；抛物线与 $x$ 轴交于 $(5,0)$。取水平微元 $\\mathrm{d}A=[(y-2)^2+1-(2y-4)]\\,\\mathrm{d}y=(y-3)^2\\,\\mathrm{d}y$，$y\\in[0,3]$，故面积 $S=\\int_0^3(y-3)^2\\,\\mathrm{d}y=\\dfrac{(y-3)^3}{3}\\Big|_0^3=9$。",
+      "routes": [
+        {
+          "id": "r-horizontal-strip",
+          "summary": "以 $y$ 为积分变量取水平微元，宽度为抛物线横坐标减切线横坐标，恰好化为完全平方 $(y-3)^2$，一次积分到底",
+          "steps": [
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.element_method",
+              "state": "$y=3$ 处切点 $(2,3)$，$\\dfrac{\\mathrm{d}x}{\\mathrm{d}y}=2(y-2)$",
+              "transformedState": "切线 $x=2y-4$，与 $x$ 轴交于 $(-4,0)$；抛物线与 $x$ 轴交于 $(5,0)$，围成区域的 $y$ 范围是 $[0,3]$",
+              "condition": "切线斜率须用 $\\dfrac{\\mathrm{d}x}{\\mathrm{d}y}$（抛物线开口向右）；三条边界两两相交给出封闭区域。"
+            },
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.element_method",
+              "state": "水平微元，左界切线、右界抛物线",
+              "transformedState": "$\\mathrm{d}A=\\left[(y-2)^2+1-(2y-4)\\right]\\mathrm{d}y=(y-3)^2\\,\\mathrm{d}y$，$S=\\int_0^3(y-3)^2\\mathrm{d}y$",
+              "condition": "在 $[0,3]$ 上恒有 $(y-3)^2\\ge0$，抛物线始终在切线右侧，宽度非负，无需分段。"
+            },
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.newton_leibniz",
+              "state": "$S=\\int_0^3(y-3)^2\\mathrm{d}y$",
+              "transformedState": "$S=\\dfrac{(y-3)^3}{3}\\Big|_0^3=0-\\dfrac{(-3)^3}{3}=9$",
+              "condition": "被积函数为完全平方，原函数为 $\\frac{(y-3)^3}{3}$，直接用牛顿-莱布尼茨公式。"
+            }
+          ],
+          "reason": "三条边界在水平方向上各只对应一条曲线，宽度又恰好是完全平方，取 $y$ 为积分变量可一次积完，是最短路径。",
+          "valid": true,
+          "preferred": true,
+          "condition": "切点在 $y=3$ 处，区域上端由切点封顶；$y$ 范围为 $[0,3]$。"
+        },
+        {
+          "id": "r-vertical-three-pieces",
+          "summary": "以 $x$ 为积分变量取竖直微元，按切点、顶点与 $x$ 轴交点分成 $[-4,1]$、$[1,2]$、$[2,5]$ 三段",
+          "steps": [
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.element_method",
+              "state": "把抛物线写成 $y=2\\pm\\sqrt{x-1}$（$x\\ge1$），切线 $y=\\dfrac{x+4}{2}$",
+              "transformedState": "上边界随 $x$ 改变：$[-4,1]$ 用切线；$[1,2]$ 用 $y=2-\\sqrt{x-1}$ 与 $y=2+\\sqrt{x-1}$ 之间的两块；$[2,5]$ 用 $y=2-\\sqrt{x-1}$",
+              "condition": "顶点横坐标 $x=1$、切点横坐标 $x=2$ 是边界切换点；$x=1$ 左侧无抛物线分支。"
+            },
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.newton_leibniz",
+              "state": "三段竖直微元之和",
+              "transformedState": "$S=\\int_{-4}^{1}\\dfrac{x+4}{2}\\mathrm{d}x+\\int_1^2\\left[\\left(2-\\sqrt{x-1}\\right)+\\left(\\dfrac{x+4}{2}-2-\\sqrt{x-1}\\right)\\right]\\mathrm{d}x+\\int_2^5\\left(2-\\sqrt{x-1}\\right)\\mathrm{d}x$",
+              "condition": "$[1,2]$ 段竖直直线与区域交于两段，必须拆成 $0\\le y\\le2-\\sqrt{x-1}$ 与 $2+\\sqrt{x-1}\\le y\\le\\frac{x+4}{2}$，漏掉上方窄条会少算 $\\frac1{12}$。"
+            },
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.newton_leibniz",
+              "state": "三段积分",
+              "transformedState": "$\\dfrac{25}{4}+\\dfrac43+\\dfrac1{12}+\\dfrac43=9$",
+              "condition": "去根号用 $\\int\\sqrt{x-1}\\,\\mathrm{d}x=\\frac23(x-1)^{3/2}$，各段上下限分别代入后相加。"
+            }
+          ],
+          "reason": "改为对 $x$ 积分，虽要按顶点与切点分段，且 $[1,2]$ 段出现上下两块，但完全不依赖“宽度恰为完全平方”的巧合，是独立的解法方向，结论同为 9。",
+          "valid": true,
+          "preferred": false,
+          "condition": "$x\\ge1$ 时抛物线有两个分支，必须用 $2\\pm\\sqrt{x-1}$ 表示，并在 $x=1$、$x=2$ 处分段。"
+        },
+        {
+          "id": "r-cap-at-vertex",
+          "summary": "误把抛物线顶点的纵坐标 $y=2$ 当成区域最高点，水平积分上限取 2",
+          "steps": [
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.element_method",
+              "state": "抛物线顶点为 $(1,2)$，切点在 $y=3$",
+              "transformedState": "误认为区域上端止于顶点，取 $y\\in[0,2]$，宽度仍用 $(y-3)^2$，得 $S=\\int_0^2(y-3)^2\\mathrm{d}y$",
+              "condition": "错在把顶点当成最高点：区域的上端由切点 $(2,3)$ 封顶，$y\\in(2,3]$ 还有一条宽度很小的窄条没有被计入。"
+            },
+            {
+              "scenarioId": "S.defint.plane_area",
+              "methodId": "M.newton_leibniz",
+              "state": "$\\int_0^2(y-3)^2\\mathrm{d}y$",
+              "transformedState": "$=\\dfrac{(y-3)^3}{3}\\Big|_0^2=-\\dfrac13+9=\\dfrac{26}{3}$",
+              "condition": "结果 $\\frac{26}{3}$ 比真值 9 小 $\\frac13$，恰好就是被漏掉的 $y\\in(2,3]$ 窄条面积，说明积分上限取错。"
+            }
+          ],
+          "reason": "切点纵坐标是 $y_0=3$，不是顶点纵坐标 2；水平微元的积分上限必须取到切点所在的高度，否则会漏掉 $\\frac13$ 的面积。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "先画图确定三条边界的交点：开口向右时优先取 $y$ 为积分变量（宽度常可化为完全平方），取 $x$ 为变量则必须按顶点与切点分段并注意竖直方向的双分支",
+      "metadata": {
+        "motherId": "candidate.bankadv3.fudan-b-3-4",
+        "trainingGoal": "掌握开口向右抛物线与切线、坐标轴围成面积的水平微元法，并正确识别切点高度与顶点高度",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦高数 B 第三大题第4题",
+          "reference": "复旦大学 2011-2012 学年第一学期 高等数学 B 期末（A卷）",
+          "originalId": "fudan-b-3-4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "抛物线开口向右，顶点为 $(1,2)$",
+          "切点在抛物线上且纵坐标为 $y_0=3$，即点 $(2,3)$",
+          "第三条边界是 $x$ 轴（$y=0$）"
+        ],
+        "allowedVariations": [
+          "把切点纵坐标改为 $y_0=1$（对应下方切点）",
+          "把抛物线改为 $(y-1)^2=x-2$",
+          "把 $x$ 轴换成直线 $y=1$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-3-4",
+          "text": "求由抛物线 $(y-2)^{2}=x-1$ 和与抛物线相切于纵坐标 $y_0=3$ 处的切线以及 $x$ 轴所围成的图形面积。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "平面图形面积",
+          "notes": "高等数学 bankadv3；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "fudan-b-3-4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：抛物线 $x=(y-2)^2+1$，$y=3$ 处点为 $(2,3)$，$\\dfrac{\\mathrm{d}x}{\\mathrm{d}y}=2(y-2)$ 在 $y=3$ 取 2，切线为 $x=2y-4$，与 $x$ 轴交于 $(-4,0)$；抛物线与 $x$ 轴交于 $y=0$ 时 $x=5$，即 $(5,0)$。取水平微元，左界切线 $x=2y-4$，右界抛物线 $x=(y-2)^2+1$，宽度 $(y-2)^2+1-(2y-4)=y^2-6y+9=(y-3)^2$，故 $S=\\int_0^3(y-3)^2\\mathrm{d}y=\\left[\\dfrac{(y-3)^3}{3}\\right]_0^3=9$。另用竖直微元分三段复核：$\\int_{-4}^{1}\\frac{x+4}{2}\\mathrm{d}x=\\frac{25}{4}$，$\\int_1^2\\left[\\left(2-\\sqrt{x-1}\\right)+\\left(\\frac{x+4}{2}-2-\\sqrt{x-1}\\right)\\right]\\mathrm{d}x=\\frac43+\\frac1{12}$，$\\int_2^5\\left(2-\\sqrt{x-1}\\right)\\mathrm{d}x=\\frac43$，合计 $9$，两种方向一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.element_method",
+        "M.newton_leibniz"
+      ],
+      "applicableMethodIds": [
+        "M.element_method",
+        "M.newton_leibniz"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.plane_area",
+          "methodId": "M.element_method"
+        },
+        {
+          "scenarioId": "S.defint.plane_area",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.plane_area",
+          "methodId": "M.symmetry"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.element_method",
+        "M.newton_leibniz",
+        "M.symmetry"
+      ],
+      "options": [
+        {
+          "id": "r-cap-at-vertex",
+          "name": "误把抛物线顶点的纵坐标 $y=2$ 当成区域最高点，水平积分上限取 2"
+        },
+        {
+          "id": "r-horizontal-strip",
+          "name": "以 $y$ 为积分变量取水平微元，宽度为抛物线横坐标减切线横坐标，恰好化为完全平方 $(y-3)^2$，一次积分到底"
+        },
+        {
+          "id": "r-vertical-three-pieces",
+          "name": "以 $x$ 为积分变量取竖直微元，按切点、顶点与 $x$ 轴交点分成 $[-4,1]$、$[1,2]$、$[2,5]$ 三段"
+        }
+      ],
+      "questionKey": "716992dbc5dc4cd0b3f972e8f13fd1c3cfcde71f6e362f9ade6fabd9e74c5f6d",
+      "faceKey": "140371de06a481af2eee559f527874bb844e7a6c97bbaabec26229396b530c2e"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.variable_limit_derivative",
+      "question": "求极限 $\\lim_{x \\to 0}\\frac{\\int_{0}^{x}(x-t)\\ln(3+t^{2})\\,\\mathrm{d}t}{\\sin^{2}x}$。",
+      "solution": "把分子中的 $x$ 提到积分号外：$\\int_0^x(x-t)\\ln(3+t^2)\\,\\mathrm{d}t=x\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t-\\int_0^xt\\ln(3+t^2)\\,\\mathrm{d}t$。对 $x$ 求导得 $\\left(\\int_0^x(x-t)\\ln(3+t^2)\\mathrm{d}t\\right)'=\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t$，再求导得 $\\ln(3+x^2)$。于是分子在 $x=0$ 处展开为 $\\frac12\\ln3\\cdot x^2+o(x^2)$，分母 $\\sin^2x\\sim x^2$，故原极限为 $\\frac12\\ln3$。",
+      "routes": [
+        {
+          "id": "r-split-then-taylor",
+          "summary": "先把含参变量 $x$ 拆出积分号，得一阶、二阶导数后在 $x=0$ 作二阶泰勒展开",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "$\\int_0^x(x-t)\\ln(3+t^2)\\,\\mathrm{d}t$",
+              "transformedState": "$x\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t-\\int_0^xt\\ln(3+t^2)\\,\\mathrm{d}t$",
+              "condition": "被积函数对 $t$ 连续，$x$ 对积分变量是常数，可拆成两个变限积分之差。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "$x\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t-\\int_0^xt\\ln(3+t^2)\\,\\mathrm{d}t$",
+              "transformedState": "$F'(x)=\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t$，$F''(x)=\\ln(3+x^2)$，$F(0)=F'(0)=0$",
+              "condition": "第一项的 $x$ 用乘积求导，两个积分项中有一项相抵消；$F(0)=0$ 由积分上下限相同得到。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.equiv_infinitesimal",
+              "state": "$F(x)$ 在 $x=0$ 附近",
+              "transformedState": "$F(x)\\sim\\dfrac12F''(0)x^2=\\dfrac12x^2\\ln3$，故原极限为 $\\dfrac{\\ln3}{2}$",
+              "condition": "$F''(0)=\\ln3\\neq0$，$F$ 在 0 处二阶可导，二阶泰勒主部即可；分母 $\\sin^2x\\sim x^2$。"
+            }
+          ],
+          "reason": "含参变量积分不能直接套变限求导，必须先拆出 $x$ 才能两次求导；再用二阶泰勒读主部，一步得到 $\\frac12\\ln3$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在 $x=0$ 的邻域内讨论，被积函数连续且 $\\ln3\\neq0$，极限存在。"
+        },
+        {
+          "id": "r-lhopital-twice",
+          "summary": "化为 $0/0$ 后用洛必达两次：先对分子分母各求一次导，再求一次导",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "分子拆开后 $F(0)=0$，分母 $\\sin^2 0=0$",
+              "transformedState": "$\\dfrac{F'(x)}{2\\sin x\\cos x}=\\dfrac{\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t}{\\sin2x}$",
+              "condition": "$x=0$ 处为 0/0，分子分母在去心邻域可导；分母导数 $\\sin2x$ 在去心邻域不为零。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.lhopital",
+              "state": "$\\dfrac{\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t}{\\sin2x}$",
+              "transformedState": "$\\dfrac{\\ln(3+x^2)}{2\\cos2x}$",
+              "condition": "第二次仍为 0/0：分子 $\\to0$，分母 $\\to0$；用变限求导与链式法则。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.lhopital",
+              "state": "$\\dfrac{\\ln(3+x^2)}{2\\cos2x}$",
+              "transformedState": "$\\to\\dfrac{\\ln3}{2}$",
+              "condition": "$x\\to0$ 时 $\\cos2x\\to1$，$\\ln(3+x^2)\\to\\ln3$，分子分母已连续，直接代值。"
+            }
+          ],
+          "reason": "完全走极限工具链：不展开泰勒，用两次洛必达把变限积分逐层剥掉，结论与主路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "每次使用洛必达前都要确认是 $0/0$ 型，且分母导数在去心邻域非零。"
+        },
+        {
+          "id": "r-inner-lhopital",
+          "summary": "误把分子当成 $\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t$，对整体直接用一次洛必达",
+          "steps": [
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.variable_limit_integral",
+              "state": "$\\int_0^x(x-t)\\ln(3+t^2)\\,\\mathrm{d}t$",
+              "transformedState": "误写为 $\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t$（把含参因子 $(x-t)$ 当成常数 $t$ 的权），得 $\\dfrac{\\ln(3+x^2)}{2x}$",
+              "condition": "错在积分变量是 $t$、$x$ 是参变量，$(x-t)$ 随 $x$ 变化，不能先对 $t$ 积掉就丢掉对 $x$ 的依赖。"
+            },
+            {
+              "scenarioId": "S.defint.variable_limit_derivative",
+              "methodId": "M.lhopital",
+              "state": "$\\dfrac{\\ln(3+x^2)}{2x}$",
+              "transformedState": "再次洛必达得 $\\dfrac{2x/(3+x^2)}{2}=\\dfrac{x}{3+x^2}\\to0$",
+              "condition": "此式在 $x\\to0^+$ 与 $x\\to0^-$ 分别趋于 $+\\infty$ 与 $-\\infty$，并不存在有限的 0 极限，说明化简前提已错。"
+            }
+          ],
+          "reason": "含参变量积分的 $x$ 同时出现在积分上限与权重 $(x-t)$ 中，直接套变限积分求导公式会漏掉 $-\\int_0^xt f\\mathrm{d}t$ 项，得到的是 $\\pm\\infty$ 型而非有限极限，答案错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "含参变量积分必须先拆出 $x$ 再求导：能用二阶泰勒读主部的走泰勒，需要逐步剥壳的走两次洛必达；不能把 $(x-t)$ 当作与 $x$ 无关的权",
+      "metadata": {
+        "motherId": "candidate.bankadv3.ecnu-a-3",
+        "trainingGoal": "掌握含参变量变限积分的拆项求导，并能用泰勒主部或两次洛必达求 0/0 极限",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大高数 A 第一大题第3题",
+          "reference": "华东师范大学 2023-2024 学年第一学期 高等数学 A 期末（A卷）",
+          "originalId": "ecnu-a-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "积分变量为 $t$，外部自变量为 $x$",
+          "被积函数 $\\ln(3+t^2)$ 在 $\\mathbb{R}$ 上连续且 $\\ln3\\neq0$",
+          "极限过程为 $x\\to0$，分子分母同时趋于 0"
+        ],
+        "allowedVariations": [
+          "把 $\\ln(3+t^2)$ 换成 $e^{t}$ 或 $\\cos t$",
+          "把分母换成 $x^2$ 或 $1-\\cos x$",
+          "把权重 $(x-t)$ 换成 $(x-t)^2$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-3",
+          "text": "求极限 $\\lim_{x \\to 0}\\frac{\\int_{0}^{x}(x-t)\\ln(3+t^{2})\\,\\mathrm{d}t}{\\sin^{2}x}$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "变限积分求导",
+          "notes": "高等数学 bankadv3；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "ecnu-a-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：令 $F(x)=\\int_0^x (x-t)\\ln(3+t^2)\\,\\mathrm{d}t=x\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t-\\int_0^xt\\ln(3+t^2)\\,\\mathrm{d}t$，由乘积求导得 $F'(x)=\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t$，$F''(x)=\\ln(3+x^2)$，且 $F(0)=F'(0)=0$。分子等价于 $\\frac12F''(0)x^2=\\frac12x^2\\ln3$，分母 $\\sin^2x\\sim x^2$，故原极限为 $\\frac12\\ln3$。另一条路线用两次洛必达：第一次得 $\\frac{\\int_0^x\\ln(3+t^2)\\mathrm{d}t}{2x}$，第二次得 $\\frac{\\ln(3+x^2)}{2}\\to\\frac{\\ln3}{2}$，与泰勒结论一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.variable_limit_integral",
+        "M.equiv_infinitesimal"
+      ],
+      "applicableMethodIds": [
+        "M.variable_limit_integral",
+        "M.equiv_infinitesimal",
+        "M.lhopital"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.variable_limit_integral"
+        },
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.lhopital"
+        },
+        {
+          "scenarioId": "S.defint.variable_limit_derivative",
+          "methodId": "M.equiv_infinitesimal"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.variable_limit_integral",
+        "M.lhopital",
+        "M.equiv_infinitesimal"
+      ],
+      "options": [
+        {
+          "id": "r-inner-lhopital",
+          "name": "误把分子当成 $\\int_0^x\\ln(3+t^2)\\,\\mathrm{d}t$，对整体直接用一次洛必达"
+        },
+        {
+          "id": "r-split-then-taylor",
+          "name": "先把含参变量 $x$ 拆出积分号，得一阶、二阶导数后在 $x=0$ 作二阶泰勒展开"
+        },
+        {
+          "id": "r-lhopital-twice",
+          "name": "化为 $0/0$ 后用洛必达两次：先对分子分母各求一次导，再求一次导"
+        }
+      ],
+      "questionKey": "c24578c86f19f10bf0829669b960691a7e71dc88ea8607088310aa29933dc835",
+      "faceKey": "a5eeae1dce9ee76ae68fc95f22e75ccf91332ef86eb66bdd83577b56b7d47479"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.ode.second_order_nonhomogeneous",
+      "question": "求微分方程 $x''+3x'+2x=e^{-2t}$ 的通解.",
+      "solution": "特征方程 $r^2+3r+2=0$，得 $r_1=-1$，$r_2=-2$，齐次通解 $x_h=C_1e^{-t}+C_2e^{-2t}$。因右端 $e^{-2t}$ 与特征根 $-2$ 重合（单根），设 $x_p=Ate^{-2t}$。求导：$x_p'=Ae^{-2t}(1-2t)$，$x_p''=Ae^{-2t}(4t-4)$。代入原方程：$x_p''+3x_p'+2x_p=Ae^{-2t}\\left[(4t-4)+3(1-2t)+2t\\right]=-Ae^{-2t}=e^{-2t}$，故 $A=-1$，$x_p=-te^{-2t}$。通解为 $x=C_1e^{-t}+C_2e^{-2t}-te^{-2t}$（$C_1,C_2$ 为任意常数）。",
+      "routes": [
+        {
+          "id": "r-characteristic-undetermined",
+          "summary": "先写特征方程求齐次通解，再按共振情形设 $x_p=Ate^{-2t}$ 并比较系数定 $A$",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "$x''+3x'+2x=e^{-2t}$",
+              "transformedState": "特征方程 $r^2+3r+2=0$，$r=-1,-2$，齐次通解 $x_h=C_1e^{-t}+C_2e^{-2t}$",
+              "condition": "常系数齐次部分直接按相异实根写通解，右端 $e^{-2t}$ 留待特解处理。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "右端 $e^{-2t}$，指数系数 $-2$ 恰为特征单根",
+              "transformedState": "共振，设特解 $x_p=Ate^{-2t}$（比通常的 $Ae^{-2t}$ 多乘一个 $t$）",
+              "condition": "只有指数系数与特征根重合时才升次；此处重根为一个，故乘 $t$ 一次而非 $t^2$。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "$x_p=Ate^{-2t}$",
+              "transformedState": "$x_p''+3x_p'+2x_p=-Ae^{-2t}$，由 $-A=1$ 得 $A=-1$，通解 $x=C_1e^{-t}+C_2e^{-2t}-te^{-2t}$",
+              "condition": "代入后 $t e^{-2t}$ 项恰好全部相消，只剩常数倍 $e^{-2t}$，比较系数即定 $A$。"
+            }
+          ],
+          "reason": "特征方程与待定系数是本题的通用流程：齐次部分给两个指数解，非齐次项落在单根上按规则升一次，比较系数一步定出 $A=-1$。",
+          "valid": true,
+          "preferred": true,
+          "condition": "方程右端为 $P_0(t)e^{-2t}$ 型，可用待定系数法；$e^{-2t}$ 对应的 $-2$ 是特征单根。"
+        },
+        {
+          "id": "r-operator-factorization",
+          "summary": "把左端分解为 $(D+1)(D+2)x$，令 $u=x'+2x$ 化为一阶线性方程逐层求解",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.characteristic_equation",
+              "state": "$x''+3x'+2x=e^{-2t}$",
+              "transformedState": "特征根 $-1,-2$，故算子分解 $(D+1)(D+2)x=e^{-2t}$",
+              "condition": "常系数算子可按特征根分解，$(D+1)(D+2)=D^2+3D+2$ 与原左端一致。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "令 $u=x'+2x$，方程化为 $u'+u=e^{-2t}$",
+              "transformedState": "积分因子 $e^{t}$，得 $(ue^{t})'=e^{-t}$，$u=Ce^{-t}-e^{-2t}$",
+              "condition": "一阶线性非齐次，用积分因子（常数变易）求解；非齐次项与齐次解 $e^{-t}$ 不同，无需共振升次。"
+            },
+            {
+              "scenarioId": "S.ode.linear_first_order",
+              "methodId": "M.constant_variation",
+              "state": "$x'+2x=Ce^{-t}-e^{-2t}$",
+              "transformedState": "积分因子 $e^{2t}$，$(xe^{2t})'=Ce^{t}-1$，得 $x=C_2e^{-2t}+Ce^{-t}-te^{-2t}$",
+              "condition": "第一次积分产生的常数 $C$ 在第二次积分中可并入 $C_2$，最终通解与主路线完全相同。"
+            }
+          ],
+          "reason": "把二阶方程按特征根拆成两个一阶线性方程，两次积分因子逐层求解，不需要记待定特解的形式，是结构上完全不同的路线。",
+          "valid": true,
+          "preferred": false,
+          "condition": "左端算子在实数域可分解为一次因子，两层的积分因子 $e^{t}$、$e^{2t}$ 均存在。"
+        },
+        {
+          "id": "r-ignore-resonance",
+          "summary": "忽略 $e^{-2t}$ 与特征根重合，直接设 $x_p=Ae^{-2t}$",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "右端 $e^{-2t}$，$-2$ 是特征根",
+              "transformedState": "仍设 $x_p=Ae^{-2t}$，代入左端得 $x_p''+3x_p'+2x_p=Ae^{-2t}(4-6+2)=0$，无法等于 $e^{-2t}$",
+              "condition": "错在 $e^{-2t}$ 本身就是齐次解，齐次算子作用在它上面恒为 0；此时必须把特解升次为 $Ate^{-2t}$。"
+            }
+          ],
+          "reason": "共振是本题唯一的技术难点：$e^{-2t}$ 已被齐次解占用，直接设 $Ae^{-2t}$ 代入恒得 0，方程 $0=e^{-2t}$ 无解，说明必须乘 $t$ 升次。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        },
+        {
+          "id": "r-double-t",
+          "summary": "知道要升次却把单根当重根，多乘一个 $t$ 设成 $x_p=At^2e^{-2t}$",
+          "steps": [
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "$-2$ 是特征方程的单根",
+              "transformedState": "误设 $x_p=At^2e^{-2t}$，代入左端得 $x_p''+3x_p'+2x_p=Ae^{-2t}\\left[(2-8t+4t^2)+(6t-6t^2)+2t^2\\right]=Ae^{-2t}(2-2t)$",
+              "condition": "多乘一个 $t$ 后残留 $te^{-2t}$ 项，与右端只剩 $e^{-2t}$ 不匹配，比较系数会得到 $A=0$ 或矛盾。"
+            },
+            {
+              "scenarioId": "S.ode.second_order_nonhomogeneous",
+              "methodId": "M.undetermined_coefficients",
+              "state": "$A(2-2t)e^{-2t}=e^{-2t}$",
+              "transformedState": "比较 $t$ 的系数得 $A=0$，再比较常数项得 $2A=1$，自相矛盾，说明特解形式设错",
+              "condition": "错在升次过度：共振只与特征根的重数有关，$-2$ 是单根，$t$ 只能乘一次。"
+            }
+          ],
+          "reason": "升次次数等于特征根的重数；本题 $-2$ 只出现一次，乘 $t^2$ 会多出 $te^{-2t}$ 项，比较系数必然矛盾，是共振问题里最常见的另一类错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "t",
+        "x"
+      ],
+      "comparisonCriterion": "先解特征方程确定齐次通解，再看右端指数系数是否为特征根：是单根则特解乘 $t$ 一次，然后用比较系数或算子分解求解",
+      "metadata": {
+        "motherId": "candidate.bankadv3.xjtu-2014-3",
+        "trainingGoal": "掌握二阶常系数非齐次方程在共振情形下的待定系数法，并区分单根与重根的升次次数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "西安交大高数下计算题第3题",
+          "reference": "西安交通大学彭康书院 高等数学（下）真题集 2014 年期末",
+          "originalId": "xjtu-2014-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "未知函数 $x$ 是 $t$ 的函数",
+          "左端系数 $3$、$2$ 为常数，右端为 $e^{-2t}$",
+          "特征根 $-1$、$-2$，与右端指数系数重合的是单根 $-2$"
+        ],
+        "allowedVariations": [
+          "把右端改为 $e^{-t}$（与另一单根共振）",
+          "把右端改为 $e^{-3t}$（不共振，特解为 $Ae^{-3t}$）",
+          "把左端改为 $x''+4x'+4x$ 使 $-2$ 成为重根"
+        ],
+        "originalRecord": {
+          "id": "xjtu-2014-3",
+          "text": "求微分方程 $x''+3x'+2x=e^{-2t}$ 的通解.",
+          "answer": "",
+          "source": "西安交通大学彭康书院 高等数学(下) 真题集",
+          "category": "微分方程",
+          "difficulty": "中",
+          "method": "二阶常系数非齐次线性方程",
+          "notes": "高等数学 bankadv3；西安交通大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "xjtu-2014-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：特征方程 $r^2+3r+2=0$ 得 $r=-1,-2$，齐次通解 $x_h=C_1e^{-t}+C_2e^{-2t}$。右端 $e^{-2t}$ 对应特征根 $-2$（单根），故设特解 $x_p=Ate^{-2t}$。计算 $x_p'=Ae^{-2t}(1-2t)$，$x_p''=Ae^{-2t}(4t-4)$，代入得 $x_p''+3x_p'+2x_p=Ae^{-2t}[(4t-4)+3(1-2t)+2t]=-Ae^{-2t}$，令其等于 $e^{-2t}$ 得 $A=-1$。故通解 $x=C_1e^{-t}+C_2e^{-2t}-te^{-2t}$。回代验证：取 $x_p=-te^{-2t}$，$x_p'+2x_p=-e^{-2t}$，$x_p''+3x_p'+2x_p=e^{-2t}$，与右端一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.characteristic_equation",
+        "M.undetermined_coefficients"
+      ],
+      "applicableMethodIds": [
+        "M.characteristic_equation",
+        "M.undetermined_coefficients",
+        "M.constant_variation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.ode.second_order_nonhomogeneous",
+          "methodId": "M.undetermined_coefficients"
+        },
+        {
+          "scenarioId": "S.ode.second_order_nonhomogeneous",
+          "methodId": "M.characteristic_equation"
+        },
+        {
+          "scenarioId": "S.ode.linear_first_order",
+          "methodId": "M.constant_variation"
+        },
+        {
+          "scenarioId": "S.ode.linear_first_order",
+          "methodId": "M.separation_of_variables"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.undetermined_coefficients",
+        "M.characteristic_equation",
+        "M.constant_variation",
+        "M.separation_of_variables"
+      ],
+      "options": [
+        {
+          "id": "r-ignore-resonance",
+          "name": "忽略 $e^{-2t}$ 与特征根重合，直接设 $x_p=Ae^{-2t}$"
+        },
+        {
+          "id": "r-double-t",
+          "name": "知道要升次却把单根当重根，多乘一个 $t$ 设成 $x_p=At^2e^{-2t}$"
+        },
+        {
+          "id": "r-characteristic-undetermined",
+          "name": "先写特征方程求齐次通解，再按共振情形设 $x_p=Ate^{-2t}$ 并比较系数定 $A$"
+        },
+        {
+          "id": "r-operator-factorization",
+          "name": "把左端分解为 $(D+1)(D+2)x$，令 $u=x'+2x$ 化为一阶线性方程逐层求解"
+        }
+      ],
+      "questionKey": "d22a8b36e7281d814d967b496a1623470ef464bfb45ca8b652c751281def44b8",
+      "faceKey": "d17775dea2db449635a1e341f8176699c8b3b484498180bd19ac937252c69ae2"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.improper_integral_calc",
+      "question": "求反常积分 $\\int_{1}^{+\\infty}\\dfrac{dx}{x\\sqrt{x-1}}$。",
+      "solution": "被积函数在 $x=1$ 处无界、上限为 $+\\infty$，按定义 $\\int_1^{+\\infty}\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}=\\lim_{\\varepsilon\\to0^+}\\lim_{R\\to+\\infty}\\int_{1+\\varepsilon}^{R}\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}$。令 $u=\\sqrt{x-1}$，则 $x=u^2+1$，$\\mathrm{d}x=2u\\,\\mathrm{d}u$，被积函数化为 $\\dfrac{2}{u^2+1}$，于是原积分 $=2\\int_0^{+\\infty}\\dfrac{\\mathrm{d}u}{u^2+1}=2\\cdot\\dfrac{\\pi}{2}=\\pi$，收敛且值为 $\\pi$。",
+      "routes": [
+        {
+          "id": "r-rationalize-root",
+          "summary": "凑微分识别出 $\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}=2\\,\\mathrm{d}(\\arctan\\sqrt{x-1})$，再用原函数按定义取两端极限",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "$\\int_1^{+\\infty}\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}$",
+              "transformedState": "$\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}=2\\,\\mathrm{d}\\left(\\arctan\\sqrt{x-1}\\right)$，即原函数为 $2\\arctan\\sqrt{x-1}$",
+              "condition": "验证：$\\dfrac{\\mathrm{d}}{\\mathrm{d}x}\\arctan\\sqrt{x-1}=\\dfrac{1}{1+(x-1)}\\cdot\\dfrac{1}{2\\sqrt{x-1}}=\\dfrac{1}{2x\\sqrt{x-1}}$，恰为被积函数的 $\\dfrac12$，故需乘 2。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "原函数 $2\\arctan\\sqrt{x-1}$",
+              "transformedState": "$=2\\lim_{\\varepsilon\\to0^+}\\lim_{R\\to+\\infty}\\left[\\arctan\\sqrt{x-1}\\right]_{1+\\varepsilon}^{R}=2\\left(\\dfrac{\\pi}{2}-0\\right)=\\pi$",
+              "condition": "按定义先让 $\\varepsilon\\to0^+$ 处理瑕点 $x=1$，再让 $R\\to+\\infty$；$\\arctan$ 有界，两端极限均有限，故收敛。"
+            }
+          ],
+          "reason": "被积式中恰好含 $\\arctan\\sqrt{x-1}$ 的导数因子，凑微分一步得到原函数，剩下的只是两端极限，是本题最短路径。",
+          "valid": true,
+          "preferred": true,
+          "condition": "按定义先取 $\\varepsilon\\to0^+$、再取 $R\\to+\\infty$；原函数在 $x=1$ 与无穷远都有有限极限。"
+        },
+        {
+          "id": "r-parts-rewrite",
+          "summary": "先把 $\\dfrac{1}{x\\sqrt{x-1}}$ 写成 $\\dfrac{1}{x}\\cdot\\dfrac{1}{\\sqrt{x-1}}$，用 $\\sqrt{x}=\\sqrt{(x-1)+1}$ 作分部与代数恒等变形",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.integration_by_parts",
+              "state": "$\\int\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}$",
+              "transformedState": "取 $u=\\dfrac1x$，$\\mathrm{d}v=\\dfrac{\\mathrm{d}x}{\\sqrt{x-1}}=2\\,\\mathrm{d}(\\sqrt{x-1})$，分部得 $-\\dfrac{2\\sqrt{x-1}}{x}\\Big|+\\int\\dfrac{2\\sqrt{x-1}}{x^2}\\,\\mathrm{d}x$",
+              "condition": "分部公式 $\\int u\\,\\mathrm{d}v=uv-\\int v\\,\\mathrm{d}u$ 中 $v=2\\sqrt{x-1}$ 在 $x>1$ 上可微；边界项与余项都需按反常积分单独取极限。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.partial_fraction",
+              "state": "$\\int\\dfrac{2\\sqrt{x-1}}{x^2}\\,\\mathrm{d}x$",
+              "transformedState": "令 $t=\\sqrt{x-1}$ 得 $\\int\\dfrac{4t^2}{(t^2+1)^2}\\,\\mathrm{d}t$，部分分式拆为 $4\\int\\left(\\dfrac{1}{t^2+1}-\\dfrac{1}{(t^2+1)^2}\\right)\\mathrm{d}t$",
+              "condition": "把余项再次去根号后是有理函数，分母 $(t^2+1)^2$ 无实根，只能拆成 $\\frac{1}{t^2+1}$ 与 $\\frac{1}{(t^2+1)^2}$ 两项，需用 $\\int\\frac{\\mathrm{d}t}{(t^2+1)^2}=\\frac{t}{2(t^2+1)}+\\frac12\\arctan t$。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "合并后的反常积分",
+              "transformedState": "边界项 $-\\dfrac{2\\sqrt{x-1}}{x}$ 在 $x\\to1^+$ 与 $x\\to+\\infty$ 均趋于 0；余项算得 $\\pi$，合计为 $\\pi$",
+              "condition": "分部后边界项两端极限均为 0（$x\\to1^+$ 时分子 $\\to0$，$x\\to+\\infty$ 时 $\\frac{2\\sqrt x}{x}\\to0$），余项与主路线同值，说明分部路线自洽。"
+            }
+          ],
+          "reason": "先分部把 $\\frac1{x\\sqrt{x-1}}$ 的代数次数错开，再对余项部分分式；计算明显更长，但不用一次性的 $\\sqrt{x-1}$ 代换，是一条打法不同的有效路线。",
+          "valid": true,
+          "preferred": false,
+          "condition": "分部与部分分式都要求 $x>1$（避开 $x=1$ 的瑕点），最后再对两个端点分别取极限。"
+        },
+        {
+          "id": "r-miss-two-factor",
+          "summary": "凑微分时漏掉系数 2，把被积式直接当成 $\\mathrm{d}(\\arctan\\sqrt{x-1})$，结果只剩 $\\dfrac{\\pi}{2}$",
+          "steps": [
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.first_substitution",
+              "state": "$\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}$",
+              "transformedState": "误写 $\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}=\\mathrm{d}\\left(\\arctan\\sqrt{x-1}\\right)$（漏掉因子 2）",
+              "condition": "错在 $\\dfrac{\\mathrm{d}}{\\mathrm{d}x}\\arctan\\sqrt{x-1}=\\dfrac{1}{2x\\sqrt{x-1}}$，需乘 2 才等于被积函数；差一个常数因子会让整个积分减半。"
+            },
+            {
+              "scenarioId": "S.defint.improper_integral_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "$\\int_1^{+\\infty}\\mathrm{d}\\left(\\arctan\\sqrt{x-1}\\right)$",
+              "transformedState": "$=\\dfrac{\\pi}{2}-0=\\dfrac{\\pi}{2}$",
+              "condition": "极限过程本身没算错，但被积式漏掉因子 2，结果与真值 $\\pi$ 相差一倍。"
+            }
+          ],
+          "reason": "凑微分的关键是核对系数：$\\arctan\\sqrt{x-1}$ 的导数是 $\\frac{1}{2x\\sqrt{x-1}}$，漏掉因子 2 是最常见的失误，答案会变成 $\\frac{\\pi}{2}$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "u",
+        "t"
+      ],
+      "comparisonCriterion": "先找齐奇点（$x=1$ 瑕点与 $x\\to+\\infty$），再用去根号代换或分部把两个端点都化成正常极限；不能因为原函数在瑕点连续就跳过瑕积分定义",
+      "metadata": {
+        "motherId": "candidate.bankadv3.ecnu-c1-3-4",
+        "trainingGoal": "掌握同时含瑕点与无穷限的反常积分计算：去根号代换合并两个奇点，并按定义取极限",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大高数 C（一）第三大题第4题",
+          "reference": "华东师范大学 2023-2024 学年第一学期 高等数学 C（一）期末（A卷）",
+          "originalId": "ecnu-c1-3-4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "积分下限为 $1$，上限为 $+\\infty$",
+          "$x=1$ 是被积函数的瑕点",
+          "被积函数在 $(1,+\\infty)$ 上为正且连续"
+        ],
+        "allowedVariations": [
+          "把 $\\sqrt{x-1}$ 换成 $\\sqrt[3]{x-1}$",
+          "把分母的 $x$ 换成 $x^2$",
+          "把下限改为 $2$，只保留无穷限奇点"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-3-4",
+          "text": "求反常积分 $\\int_{1}^{+\\infty}\\dfrac{dx}{x\\sqrt{x-1}}$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "反常积分计算",
+          "notes": "高等数学 bankadv3；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "ecnu-c1-3-4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：令 $u=\\sqrt{x-1}$，$x=u^2+1$，$dx=2u\\,du$，$x:1\\to+\\infty$ 对应 $u:0\\to+\\infty$，被积函数化为 $\\dfrac{2u}{(u^2+1)u}=\\dfrac{2}{u^2+1}$，故原积分 $=2\\int_0^{+\\infty}\\dfrac{du}{u^2+1}=2\\cdot\\dfrac{\\pi}{2}=\\pi$。交叉验证：原函数 $2\\arctan\\sqrt{x-1}$ 求导得 $\\dfrac{2}{\\sqrt{x-1}}\\cdot\\dfrac1{2\\sqrt{x-1}}\\cdot\\dfrac{1}{1+(x-1)}=\\dfrac1{x\\sqrt{x-1}}$，与被积函数一致；代入上下限 $2\\arctan(+\\infty)-2\\arctan0=\\pi$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.first_substitution",
+        "M.newton_leibniz"
+      ],
+      "applicableMethodIds": [
+        "M.first_substitution",
+        "M.newton_leibniz",
+        "M.integration_by_parts",
+        "M.partial_fraction"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.integration_by_parts"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.defint.improper_integral_calc",
+          "methodId": "M.partial_fraction"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.newton_leibniz",
+        "M.integration_by_parts",
+        "M.first_substitution",
+        "M.partial_fraction"
+      ],
+      "options": [
+        {
+          "id": "r-miss-two-factor",
+          "name": "凑微分时漏掉系数 2，把被积式直接当成 $\\mathrm{d}(\\arctan\\sqrt{x-1})$，结果只剩 $\\dfrac{\\pi}{2}$"
+        },
+        {
+          "id": "r-rationalize-root",
+          "name": "凑微分识别出 $\\dfrac{\\mathrm{d}x}{x\\sqrt{x-1}}=2\\,\\mathrm{d}(\\arctan\\sqrt{x-1})$，再用原函数按定义取两端极限"
+        },
+        {
+          "id": "r-parts-rewrite",
+          "name": "先把 $\\dfrac{1}{x\\sqrt{x-1}}$ 写成 $\\dfrac{1}{x}\\cdot\\dfrac{1}{\\sqrt{x-1}}$，用 $\\sqrt{x}=\\sqrt{(x-1)+1}$ 作分部与代数恒等变形"
+        }
+      ],
+      "questionKey": "62e8841e6285f956dff665a8dc05eb377e53838174920a7cd172b584595e717a",
+      "faceKey": "cefb16f5915d72e09b3194cb0be6331402ee5ed5890cd6d09fdca3407cb150fa"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.defint.newton_leibniz_calc",
+      "question": "求定积分 $I=\\int_{0}^{3}\\frac{\\sqrt{6-x}}{\\sqrt{6-x}+\\sqrt{3+x}}\\,\\mathrm{d}x$。",
+      "solution": "令 $x=3-t$，则 $\\mathrm{d}x=-\\mathrm{d}t$，$x:0\\to3$ 对应 $t:3\\to0$，故 $I=\\int_0^3\\dfrac{\\sqrt{3+t}}{\\sqrt{3+t}+\\sqrt{6-t}}\\,\\mathrm{d}t$。把此式与原式相加（两式积分变量同一，均记为 $x$）：$2I=\\int_0^3\\dfrac{\\sqrt{6-x}+\\sqrt{3+x}}{\\sqrt{6-x}+\\sqrt{3+x}}\\,\\mathrm{d}x=\\int_0^3 1\\,\\mathrm{d}x=3$，所以 $I=\\dfrac32$。",
+      "routes": [
+        {
+          "id": "r-symmetry-pairing",
+          "summary": "作区间反转代换 $x=3-t$ 得到互补式，与原式相加化为常数 1 的积分",
+          "steps": [
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.integration_by_substitution",
+              "state": "$I=\\int_0^3\\dfrac{\\sqrt{6-x}}{\\sqrt{6-x}+\\sqrt{3+x}}\\,\\mathrm{d}x$",
+              "transformedState": "$I=\\int_0^3\\dfrac{\\sqrt{3+t}}{\\sqrt{3+t}+\\sqrt{6-t}}\\,\\mathrm{d}t$",
+              "condition": "令 $x=3-t$，$\\mathrm{d}x=-\\mathrm{d}t$，上下限对调后负号抵消；这是恒等变形，不改变积分值。"
+            },
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "$I+I$ 的两个被积函数分母相同、分子互补",
+              "transformedState": "$2I=\\int_0^3\\dfrac{\\sqrt{6-x}+\\sqrt{3+x}}{\\sqrt{6-x}+\\sqrt{3+x}}\\,\\mathrm{d}x=\\int_0^3 1\\,\\mathrm{d}x=3$",
+              "condition": "两个定积分的积分区间与积分变量可统一为 $(0,3)$ 与 $x$，被积函数逐点相加为 1。"
+            },
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "$2I=3$",
+              "transformedState": "$I=\\dfrac32$",
+              "condition": "常数被积函数的原函数为 $x$，用牛顿-莱布尼茨公式得 $3-0=3$。"
+            }
+          ],
+          "reason": "分子 $\\sqrt{6-x}$ 与 $\\sqrt{3+x}$ 在区间反演下互换，配对相加后分母被约掉，是本题最短也最稳的路径。",
+          "valid": true,
+          "preferred": true,
+          "condition": "被积函数在 $[0,3]$ 上连续，分母 $\\sqrt{6-x}+\\sqrt{3+x}>0$，定积分可加。"
+        },
+        {
+          "id": "r-single-substitution",
+          "summary": "作单一代换 $u=\\sqrt{\\dfrac{3+x}{6-x}}$ 化为有理函数直接积分",
+          "steps": [
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.integration_by_substitution",
+              "state": "$I=\\int_0^3\\dfrac{\\sqrt{6-x}}{\\sqrt{6-x}+\\sqrt{3+x}}\\,\\mathrm{d}x$",
+              "transformedState": "令 $u=\\sqrt{\\dfrac{3+x}{6-x}}$，则 $x=\\dfrac{6u^2-3}{u^2+1}$，$\\mathrm{d}x=\\dfrac{18u}{(u^2+1)^2}\\,\\mathrm{d}u$，被积函数化为 $\\dfrac1{1+u}$，$x:0\\to3$ 对应 $u:\\dfrac{1}{\\sqrt2}\\to\\sqrt2$",
+              "condition": "在 $[0,3]$ 上 $\\dfrac{3+x}{6-x}$ 从 $\\dfrac12$ 单调增到 $2$，代换严格单调可逆，$\\mathrm{d}x$ 与上下限必须同步变换。"
+            },
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.partial_fraction",
+              "state": "$I=\\int_{\\frac{1}{\\sqrt2}}^{\\sqrt2}\\dfrac{18u}{(1+u)(u^2+1)^2}\\,\\mathrm{d}u$",
+              "transformedState": "部分分式分解：$\\dfrac{18u}{(1+u)(u^2+1)^2}=-\\dfrac92\\cdot\\dfrac{1}{1+u}+\\dfrac{\\frac92u-\\frac92}{u^2+1}+\\dfrac{9u+9}{(u^2+1)^2}$",
+              "condition": "分母 $(1+u)(u^2+1)^2$ 在 $u\\in[\\frac1{\\sqrt2},\\sqrt2]$ 上无零因子，分解唯一；$u=-1$ 处的留数给系数 $-\\dfrac92$。"
+            },
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "逐项求原函数后在上下限作差",
+              "transformedState": "$F(u)=-\\dfrac92\\ln(1+u)+\\dfrac94\\ln(u^2+1)+\\dfrac92\\cdot\\dfrac{u-1}{u^2+1}$，$F(\\sqrt2)-F(\\frac{1}{\\sqrt2})=\\dfrac32$",
+              "condition": "三项的原函数分别是 $-\\frac92\\ln(1+u)$、$\\frac94\\ln(u^2+1)-\\frac92\\arctan u$ 与 $\\frac92\\frac{u-1}{u^2+1}$，其中 $\\arctan u$ 项恰好相消；上下限均为有限值，可直接作差。"
+            }
+          ],
+          "reason": "换成单一比值变量后完全有理化，所有原函数都能初等写出，不借助对称配对也独立得到 $\\frac32$，只是计算量更大。",
+          "valid": true,
+          "preferred": false,
+          "condition": "上下限必须按代换后的真实值 $\\dfrac{1}{\\sqrt2}$ 与 $\\sqrt2$ 代入，不能沿用原来的 $0$ 与 $3$。"
+        },
+        {
+          "id": "r-split-root-difference",
+          "summary": "令 $t=\\sqrt{3+x}$ 去根号，随后误把 $\\sqrt{9-t^2}$ 拆成 $3-t$",
+          "steps": [
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.integration_by_substitution",
+              "state": "令 $t=\\sqrt{3+x}$，则 $x=t^2-3$，$\\mathrm{d}x=2t\\,\\mathrm{d}t$，被积函数化为 $\\dfrac{\\sqrt{9-t^2}}{\\sqrt{9-t^2}+t}$，$t:\\sqrt3\\to\\sqrt6$",
+              "transformedState": "误把 $\\sqrt{9-t^2}$ 拆成 $3-t$，于是 $I=\\int_{\\sqrt3}^{\\sqrt6}\\dfrac{2t(3-t)}{(3-t)+t}\\,\\mathrm{d}t=\\int_{\\sqrt3}^{\\sqrt6}\\dfrac{6t-2t^2}{3}\\,\\mathrm{d}t$",
+              "condition": "错在 $\\sqrt{a^2-b^2}\\neq a-b$：根号内的平方差不能拆成差，$\\sqrt{9-t^2}$ 与 $3-t$ 在 $t\\in[\\sqrt3,\\sqrt6]$ 上逐点不相等。"
+            },
+            {
+              "scenarioId": "S.defint.newton_leibniz_calc",
+              "methodId": "M.newton_leibniz",
+              "state": "$\\int_{\\sqrt3}^{\\sqrt6}\\dfrac{6t-2t^2}{3}\\,\\mathrm{d}t$",
+              "transformedState": "$=\\dfrac13\\left[3t^2-\\dfrac23t^3\\right]_{\\sqrt3}^{\\sqrt6}=\\dfrac13(9-4\\sqrt6+2\\sqrt3)$",
+              "condition": "算式本身能算出有限值，但已把被积函数换成了另一个函数，结果与真值 $\\dfrac32$ 不符，说明去根号后不能随意拆分。"
+            }
+          ],
+          "reason": "根号内的平方差被错误地拆成两个平方的差；这是去根号代换后最常见的失误，得到的 $\\frac13(9-4\\sqrt6+2\\sqrt3)$ 与原积分无关。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "t",
+        "u"
+      ],
+      "comparisonCriterion": "先看分子两个根式是否在区间反演下互换：能配对相加的走对称路线；否则才用整体比值代换化为有理式，不能把两个根式当成相等",
+      "metadata": {
+        "motherId": "candidate.bankadv3.ecnu-a-5",
+        "trainingGoal": "识别定积分中被积函数的互补对称结构，用区间反演配对求和，避免把两端根式误当相等",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大高数 A 第一大题第5题",
+          "reference": "华东师范大学 2023-2024 学年第一学期 高等数学 A 期末（A卷）",
+          "originalId": "ecnu-a-5"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "积分区间为 $[0,3]$，两端 $6-x$ 与 $3+x$ 的值互补",
+          "被积函数在闭区间上连续，无瑕点",
+          "被积函数满足 $f(x)+f(3-x)=1$"
+        ],
+        "allowedVariations": [
+          "把上限 $3$ 改为 $b$，被积函数改为 $\\frac{\\sqrt{b-x}}{\\sqrt{b-x}+\\sqrt{x}}$",
+          "把两个根式换成 $\\frac{a^{x}}{a^{x}+a^{b-x}}$ 型",
+          "把分母改成 $\\sqrt{6-x}+2\\sqrt{3+x}$（配对失效、只能走代换）"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-5",
+          "text": "求定积分 $I=\\int_{0}^{3}\\frac{\\sqrt{6-x}}{\\sqrt{6-x}+\\sqrt{3+x}}\\,\\mathrm{d}x$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "定积分",
+          "difficulty": "中",
+          "method": "牛顿-莱布尼茨公式计算",
+          "notes": "高等数学 bankadv3；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv3",
+        "originalId": "ecnu-a-5",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：令 $x=3-t$，则 $dx=-dt$，上下限互换后 $I=\\int_0^3\\dfrac{\\sqrt{3+t}}{\\sqrt{3+t}+\\sqrt{6-t}}\\,\\mathrm{d}t$。两式相加得 $2I=\\int_0^3 1\\,\\mathrm{d}t=3$，故 $I=\\dfrac32$。数值复核：取中点近似，$x=1.5$ 处被积函数为 $\\dfrac{\\sqrt{4.5}}{\\sqrt{4.5}+\\sqrt{4.5}}=\\dfrac12$，被积函数关于 $x=\\frac32$ 对称且互补（$f(x)+f(3-x)=1$），积分值必为区间长度的一半，与 $\\frac32$ 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.integration_by_substitution",
+        "M.newton_leibniz"
+      ],
+      "applicableMethodIds": [
+        "M.integration_by_substitution",
+        "M.newton_leibniz",
+        "M.partial_fraction"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.defint.newton_leibniz_calc",
+          "methodId": "M.newton_leibniz"
+        },
+        {
+          "scenarioId": "S.defint.newton_leibniz_calc",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.defint.newton_leibniz_calc",
+          "methodId": "M.integration_by_substitution"
+        },
+        {
+          "scenarioId": "S.defint.newton_leibniz_calc",
+          "methodId": "M.integration_by_parts"
+        },
+        {
+          "scenarioId": "S.defint.newton_leibniz_calc",
+          "methodId": "M.partial_fraction"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.newton_leibniz",
+        "M.first_substitution",
+        "M.integration_by_substitution",
+        "M.integration_by_parts",
+        "M.partial_fraction"
+      ],
+      "options": [
+        {
+          "id": "r-split-root-difference",
+          "name": "令 $t=\\sqrt{3+x}$ 去根号，随后误把 $\\sqrt{9-t^2}$ 拆成 $3-t$"
+        },
+        {
+          "id": "r-symmetry-pairing",
+          "name": "作区间反转代换 $x=3-t$ 得到互补式，与原式相加化为常数 1 的积分"
+        },
+        {
+          "id": "r-single-substitution",
+          "name": "作单一代换 $u=\\sqrt{\\dfrac{3+x}{6-x}}$ 化为有理函数直接积分"
+        }
+      ],
+      "questionKey": "53fa99ace6695710122c3c32b7c477d8beff93e89fe011d7949ab720af7785c7",
+      "faceKey": "0b2e29044b0558c5036afb4ea476bed8cd6f4d7d00e1d0dea3f3a5be862fef98"
+    }
+  ]
+}

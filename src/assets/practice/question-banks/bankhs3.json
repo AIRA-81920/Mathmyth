@@ -1,0 +1,2613 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankhs3",
+  "sourceSha256": "5bedc4ccd12793d6b741faa54acf8481d3666e73215933bdf8c31c77cc4feb2a",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.hs_func",
+        "name": "集合、不等式与函数"
+      },
+      {
+        "id": "B.hs_trig",
+        "name": "三角函数与解三角形"
+      },
+      {
+        "id": "B.hs_seq",
+        "name": "数列"
+      },
+      {
+        "id": "B.hs_deriv",
+        "name": "导数及其应用"
+      },
+      {
+        "id": "B.hs_geom",
+        "name": "立体几何与空间向量"
+      },
+      {
+        "id": "B.hs_analytic",
+        "name": "解析几何、平面向量与复数"
+      },
+      {
+        "id": "B.hs_prob",
+        "name": "概率统计与计数原理"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.hs_func.set_logic",
+        "name": "集合与常用逻辑用语",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_func.set_operation",
+          "S.hs_func.condition_judge",
+          "S.hs_func.quantifier_negation",
+          "S.hs_func.new_definition_set"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.inequality",
+        "name": "不等式与二次关系",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_func.inequality_solve",
+          "S.hs_func.quadratic_root_dist",
+          "S.hs_func.basic_inequality",
+          "S.hs_func.inequality_property"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.concept",
+        "name": "函数概念与表示",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_func.domain",
+          "S.hs_func.expression",
+          "S.hs_func.value_range",
+          "S.hs_func.piecewise",
+          "S.hs_func.abstract_function"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.properties",
+        "name": "函数性质与图象",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_func.parity_period",
+          "S.hs_func.monotonicity",
+          "S.hs_func.graph_transform",
+          "S.hs_func.symmetry"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.elementary",
+        "name": "指对幂与函数零点",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_func.exp_log_calc",
+          "S.hs_func.exp_log_compare",
+          "S.hs_func.exp_log_graph",
+          "S.hs_func.zero_point",
+          "S.hs_func.function_model"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_trig.identity",
+        "name": "三角恒等变换",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_trig.identity_eval",
+          "S.hs_trig.identity_transform",
+          "S.hs_trig.auxiliary_angle",
+          "S.hs_trig.angle_relation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.graph",
+        "name": "三角函数的图象与性质",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_trig.graph_property",
+          "S.hs_trig.graph_transform",
+          "S.hs_trig.omega_param",
+          "S.hs_trig.trig_equation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.triangle",
+        "name": "解三角形",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_trig.sine_cosine_rule",
+          "S.hs_trig.triangle_shape",
+          "S.hs_trig.area",
+          "S.hs_trig.triangle_extremum",
+          "S.hs_trig.multi_triangle"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.application",
+        "name": "三角应用与建模",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_trig.measurement",
+          "S.hs_trig.trig_model"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_seq.term",
+        "name": "通项与递推",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_seq.arithmetic_geometric",
+          "S.hs_seq.an_sn",
+          "S.hs_seq.recurrence",
+          "S.hs_seq.construct_seq"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.sum",
+        "name": "数列求和",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_seq.sum_formula",
+          "S.hs_seq.sum_telescoping",
+          "S.hs_seq.sum_mismatch"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.property",
+        "name": "数列性质与不等式",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_seq.property",
+          "S.hs_seq.inequality",
+          "S.hs_seq.induction",
+          "S.hs_seq.model"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_deriv.concept",
+        "name": "导数概念与运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_deriv.definition",
+          "S.hs_deriv.calc",
+          "S.hs_deriv.tangent",
+          "S.hs_deriv.geometric"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.behavior",
+        "name": "用导数研究函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_deriv.monotonicity",
+          "S.hs_deriv.extremum",
+          "S.hs_deriv.zero",
+          "S.hs_deriv.param_range"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.proof",
+        "name": "导数与不等式证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_deriv.ineq_proof",
+          "S.hs_deriv.ineq_two_var",
+          "S.hs_deriv.construct",
+          "S.hs_deriv.series_bound"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_geom.position",
+        "name": "空间位置关系与证明",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_geom.line_plane_parallel",
+          "S.hs_geom.line_plane_perp",
+          "S.hs_geom.special_point",
+          "S.hs_geom.existence"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.metric",
+        "name": "空间度量",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_geom.distance",
+          "S.hs_geom.angle",
+          "S.hs_geom.volume",
+          "S.hs_geom.sphere"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.vector",
+        "name": "空间向量法",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_geom.basis",
+          "S.hs_geom.coordinate",
+          "S.hs_geom.normal_vector"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.solid",
+        "name": "基本立体图形、截面与翻折",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_geom.solid_graph",
+          "S.hs_geom.section",
+          "S.hs_geom.combination"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_analytic.vector",
+        "name": "平面向量",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_analytic.vector_calc",
+          "S.hs_analytic.vector_product",
+          "S.hs_analytic.vector_parallel_perp",
+          "S.hs_analytic.vector_geometry"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.complex",
+        "name": "复数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_analytic.complex_calc",
+          "S.hs_analytic.complex_geometry",
+          "S.hs_analytic.complex_quadratic"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_circle",
+        "name": "直线与圆",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_analytic.line_equation",
+          "S.hs_analytic.circle_equation",
+          "S.hs_analytic.line_circle_position",
+          "S.hs_analytic.circle_circle",
+          "S.hs_analytic.locus"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.conic",
+        "name": "圆锥曲线",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_analytic.ellipse",
+          "S.hs_analytic.hyperbola",
+          "S.hs_analytic.parabola",
+          "S.hs_analytic.conic_equation",
+          "S.hs_analytic.conic_focal"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_conic",
+        "name": "直线与圆锥曲线综合",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_analytic.intersection",
+          "S.hs_analytic.fixed_point",
+          "S.hs_analytic.range_extremum",
+          "S.hs_analytic.existence"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_prob.counting",
+        "name": "计数原理",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_prob.counting_principle",
+          "S.hs_prob.permutation",
+          "S.hs_prob.combination",
+          "S.hs_prob.binomial"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.classical",
+        "name": "概率模型",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_prob.classical",
+          "S.hs_prob.independent",
+          "S.hs_prob.conditional",
+          "S.hs_prob.geometric"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.random_var",
+        "name": "随机变量与分布",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_prob.distribution",
+          "S.hs_prob.expectation",
+          "S.hs_prob.binomial_dist",
+          "S.hs_prob.normal"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.statistics",
+        "name": "统计与成对数据",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_prob.sampling",
+          "S.hs_prob.regression",
+          "S.hs_prob.contingency"
+        ],
+        "block_id": "B.hs_prob"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.hs_analytic.vector_calc",
+        "name": "向量线性运算与坐标运算",
+        "definition": "题面要求进行向量的加减、数乘、坐标运算，或由条件求某向量的表示。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_product",
+        "name": "数量积、夹角与投影",
+        "definition": "题面要求求数量积、夹角、投影或模长。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_parallel_perp",
+        "name": "共线与垂直的判定",
+        "definition": "题面要求判断或利用向量的共线、垂直关系，通常含参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_geometry",
+        "name": "向量与几何图形（重心、系数和、轨迹）",
+        "definition": "题面把向量与几何图形结合，要求求系数或位置关系。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_calc",
+        "name": "复数运算与化简",
+        "definition": "题面要求复数代数形式的四则运算、求模或化简。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_geometry",
+        "name": "复数的几何意义与模",
+        "definition": "题面要求用复数的几何意义（对应点、向量、模）解决问题。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_quadratic",
+        "name": "复数与实系数方程",
+        "definition": "题面涉及实系数一元二次方程的虚根、复数相等或复系数方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_equation",
+        "name": "直线方程与两直线位置关系",
+        "definition": "题面要求求直线方程、判断两直线位置关系或求参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_equation",
+        "name": "圆的方程",
+        "definition": "题面要求求圆的方程，或由方程表示圆求参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_circle_position",
+        "name": "直线与圆的位置关系（弦长与切线）",
+        "definition": "题面讨论直线与圆的位置关系，要求求弦长、切线方程或参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_circle",
+        "name": "圆与圆的位置关系",
+        "definition": "题面讨论两圆的位置关系，要求求公共弦、公切线或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.locus",
+        "name": "轨迹方程",
+        "definition": "题面要求求动点的轨迹方程，或判断轨迹类型。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.ellipse",
+        "name": "椭圆的定义与性质",
+        "definition": "题面围绕椭圆的定义、标准方程与几何性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.hyperbola",
+        "name": "双曲线的定义、渐近线与离心率",
+        "definition": "题面围绕双曲线的定义、标准方程、渐近线与离心率求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.parabola",
+        "name": "抛物线的定义、准线与焦点弦",
+        "definition": "题面围绕抛物线的定义、标准方程、焦点弦与准线求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_equation",
+        "name": "圆锥曲线标准方程的确定",
+        "definition": "题面要求根据条件求椭圆、双曲线或抛物线的标准方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_focal",
+        "name": "焦点三角形与焦半径",
+        "definition": "题面围绕焦点三角形、焦半径、焦点弦的性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.intersection",
+        "name": "联立与韦达定理（弦长与中点）",
+        "definition": "题面要求把直线与圆锥曲线联立，用韦达定理求弦长、中点或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.fixed_point",
+        "name": "定点与定值问题",
+        "definition": "题面在直线与圆锥曲线的运动中，要求证明某点或某值恒定，或求定点。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.range_extremum",
+        "name": "范围与最值问题",
+        "definition": "题面要求求圆锥曲线中某量（弦长、面积、斜率、距离）的范围或最值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.existence",
+        "name": "存在性与探究性问题",
+        "definition": "题面问是否存在某点、某直线或某斜率使条件成立，要求判断并求值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_deriv.definition",
+        "name": "导数定义与瞬时变化率",
+        "definition": "题面出现函数增量比、瞬时变化率或极限形式的式子，要求求导数值或识别导数定义。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.calc",
+        "name": "复合结构与幂指式的求导",
+        "definition": "题面给出具体函数（含复合、幂指、分式、乘积），要求求导函数或某点导数值。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.tangent",
+        "name": "切线方程（在点与过点）",
+        "definition": "题面要求求曲线在某点或过某点的切线方程，或由切线条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.geometric",
+        "name": "导数几何意义与函数、导函数图象互推",
+        "definition": "题面给出函数与导函数的图象之一，要求判断另一个、比较大小或求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.monotonicity",
+        "name": "单调区间与含参单调性讨论",
+        "definition": "题面要求求含参函数的单调区间，或由在某区间单调反求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.extremum",
+        "name": "极值与闭区间最值",
+        "definition": "题面要求求极值、闭区间上的最值，或由极值条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.zero",
+        "name": "零点个数与方程根的讨论",
+        "definition": "题面要求讨论方程根的个数或函数零点个数，通常含参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.param_range",
+        "name": "恒成立与存在性求参数范围",
+        "definition": "题面要求在恒成立或存在某点使条件成立的条件下求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_proof",
+        "name": "单变量不等式证明",
+        "definition": "题面要求证明一个含单变量的函数不等式，例如指数函数与一次式、对数与一次式的大小关系及其推广。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_two_var",
+        "name": "双变量不等式与极值点偏移",
+        "definition": "题面不等式涉及两个变量，或要求证明与极值点对称位置有关的结论。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.construct",
+        "name": "构造函数与同构变形",
+        "definition": "题面不等式或等式两边结构相似但变量不同，需要通过构造同一母函数来处理。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.series_bound",
+        "name": "导数造不等式再累加（数列型）",
+        "definition": "题面要求证明与正整数有关、且通项的界由导数给出的数列不等式。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_func.set_operation",
+        "name": "集合的基本运算与包含关系",
+        "definition": "题面给出用列举法、描述法或不等式区间表示的集合（常含参数），要求求交集、并集、补集、子集个数，或判断包含关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.condition_judge",
+        "name": "充分必要条件的判定",
+        "definition": "题面要求判断「p 是 q 的充分/必要/充要条件」，或由条件关系反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quantifier_negation",
+        "name": "全称量词与存在量词命题的否定",
+        "definition": "题面出现全称量词或存在量词，要求写否定、判真假，或把「恒成立/有解」转化为参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.new_definition_set",
+        "name": "新定义集合的代入检验",
+        "definition": "题面先给出一个新定义的集合运算或集合属性，要求按定义判断元素归属或求集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_solve",
+        "name": "一元二次、分式与绝对值不等式的求解",
+        "definition": "题面要求解一元二次、分式或含绝对值的不等式，解集常需写成区间或集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quadratic_root_dist",
+        "name": "一元二次方程根的分布",
+        "definition": "题面讨论一元二次方程根的正负、大小或是否落在某区间内，通常含参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.basic_inequality",
+        "name": "基本不等式求最值",
+        "definition": "题面在正数条件下求积的最大值或和的最小值，结构上能凑出定值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_property",
+        "name": "不等式性质与比较大小",
+        "definition": "题面要求比较两个代数式的大小，或由不等式的性质推断某个式子的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.domain",
+        "name": "求函数的定义域",
+        "definition": "题面给出含分母、偶次根式、对数或零次幂的函数式，要求求自变量的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.expression",
+        "name": "求函数解析式",
+        "definition": "题面给出函数类型或函数方程，要求求 f(x) 的解析式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.value_range",
+        "name": "求函数的值域",
+        "definition": "题面要求求函数值的取值范围，常含参数或限定区间。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.piecewise",
+        "name": "分段函数",
+        "definition": "题面给出分段函数，要求求值、解方程或不等式，或讨论分界点处的性质。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.abstract_function",
+        "name": "抽象函数与函数方程",
+        "definition": "题面只给抽象函数的若干等式或性质，要求判断奇偶性、单调性或求值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.parity_period",
+        "name": "奇偶性与周期性",
+        "definition": "题面讨论函数的奇偶性、周期性，或由奇偶与周期推值、求解析式、比较大小。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.monotonicity",
+        "name": "单调性的判定与比较",
+        "definition": "题面要求判断或证明单调性、求单调区间，或利用单调性比较大小、解不等式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.graph_transform",
+        "name": "图象变换与识图",
+        "definition": "题面要求由已知函数图象经平移、伸缩、翻折得到新图象，或由图象判断解析式与参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.symmetry",
+        "name": "对称性与图象对称",
+        "definition": "题面给出函数图象的对称轴、对称中心或两函数图象的对称关系，要求求参数、求解析式或求和。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_calc",
+        "name": "指数与对数式的运算",
+        "definition": "题面要求化简指数式、对数式或求值，含换底与指数对数互化。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_compare",
+        "name": "指对幂大小比较",
+        "definition": "题面要求比较幂、指数式、对数式的大小，通常底数或指数不同。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_graph",
+        "name": "指对函数图象与性质",
+        "definition": "题面给出指数或对数函数的图象，要求求底数范围、解不等式或判断图象位置关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.zero_point",
+        "name": "函数零点与零点个数",
+        "definition": "题面要求判断函数零点个数、所在区间，或由零点存在反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.function_model",
+        "name": "函数模型与建模应用",
+        "definition": "题面给出实际情境（成本、增长、温度等），要求建立函数模型并求最值或作预测。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_geom.line_plane_parallel",
+        "name": "线面与面面平行证明",
+        "definition": "题面要求证明直线与平面平行，或两个平面平行。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.line_plane_perp",
+        "name": "线面与面面垂直证明",
+        "definition": "题面要求证明直线与平面垂直，或两个平面垂直。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.special_point",
+        "name": "特殊点定位与共面论证",
+        "definition": "题面要求确定中点、重心、垂足等特殊点的位置，或证明某点落在某平面内。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.existence",
+        "name": "位置关系存在性探究",
+        "definition": "题面问是否存在某点或某平面使条件成立，要求判断并说明理由。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.distance",
+        "name": "点到平面与异面直线距离",
+        "definition": "题面要求求点到平面的距离、两异面直线间的距离或两平行平面间的距离。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.angle",
+        "name": "线线角、线面角与二面角",
+        "definition": "题面要求求异面直线所成角、直线与平面所成角或二面角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.volume",
+        "name": "体积与表面积计算",
+        "definition": "题面要求求多面体或旋转体的体积、表面积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.sphere",
+        "name": "外接球与内切球",
+        "definition": "题面给出多面体与球的接切关系，要求求球的半径、表面积或体积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.basis",
+        "name": "空间向量基本定理与基底表示",
+        "definition": "题面要求用一组空间基底表示向量，或判断四点共面、三向量共面。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.coordinate",
+        "name": "建系与坐标运算",
+        "definition": "题面要求建立空间直角坐标系，用坐标表示点与向量并作运算。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.normal_vector",
+        "name": "法向量求法与向量法判位置关系",
+        "definition": "题面要求求平面的法向量，并用法向量解决平行、垂直、角度、距离问题。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.solid_graph",
+        "name": "直观图、展开图与最短路径",
+        "definition": "题面涉及基本立体图形、直观图或展开图，要求还原图形、求面积或最短路径。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.section",
+        "name": "截面作法与截面图形",
+        "definition": "题面要求作出或判断空间几何体的截面，并求截面面积或截面与某面所成角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.combination",
+        "name": "组合体与翻折问题",
+        "definition": "题面涉及两个几何体的组合或平面图形翻折成空间图形，要求求体积、距离或角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_prob.counting_principle",
+        "name": "分类加法与分步乘法原理",
+        "definition": "题面要求完成一件事的方法数，需判断该用分类加法还是分步乘法。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.permutation",
+        "name": "排列与排列数",
+        "definition": "题面要求计数且元素顺序有关，如排队、排列、数字排列。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.combination",
+        "name": "组合、分组与分配",
+        "definition": "题面要求计数且只选不排，如选组、抽样、分组分配。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial",
+        "name": "二项式定理与系数",
+        "definition": "题面围绕二项展开式的通项、特定项系数、系数和或系数最大项。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.classical",
+        "name": "古典概型",
+        "definition": "题面要求求古典概型的概率，通常给出样本空间与事件。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.independent",
+        "name": "相互独立事件",
+        "definition": "题面涉及多个事件同时发生或相互独立，要求求概率。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.conditional",
+        "name": "条件概率、全概率与贝叶斯",
+        "definition": "题面给出条件概率、全概率或由结果反推来源的问题。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.geometric",
+        "name": "几何概型",
+        "definition": "题面求几何概型的概率，即长度、面积或体积之比。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.distribution",
+        "name": "离散型随机变量分布列",
+        "definition": "题面要求求离散型随机变量的分布列及其性质。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.expectation",
+        "name": "期望与方差",
+        "definition": "题面要求求期望、方差，或由期望反求参数、比较方案。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial_dist",
+        "name": "二项分布",
+        "definition": "题面是若干次独立重复试验，要求求恰好若干次成功的概率或分布。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.normal",
+        "name": "正态分布",
+        "definition": "题面涉及正态分布曲线、对称性求概率或三段标准差原则。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.sampling",
+        "name": "抽样方法与样本估计",
+        "definition": "题面要求选择抽样方法，或由样本估计总体的均值、方差、百分位数。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.regression",
+        "name": "一元线性回归",
+        "definition": "题面给出成对数据，要求求相关系数、回归方程并作预测。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.contingency",
+        "name": "列联表与独立性检验",
+        "definition": "题面给出列联表，要求判断两个分类变量是否相关。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_seq.arithmetic_geometric",
+        "name": "等差与等比数列基本量计算",
+        "definition": "题面给出等差或等比数列的部分基本量（首项、公差、公比、项数、前 n 项和），要求求其余量或判断数列类型。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.an_sn",
+        "name": "通项与前 n 项和的关系",
+        "definition": "题面给出前 n 项和的表达式，或给出含通项与前 n 项和的混合关系式，要求求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.recurrence",
+        "name": "递推数列求通项",
+        "definition": "题面给出相邻项的递推关系，要求求通项公式。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.construct_seq",
+        "name": "构造新数列（等差化与等比化）",
+        "definition": "题面要求在递推式两边作变形，构造出等差或等比数列后再求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_formula",
+        "name": "公式法、分组求和与并项求和",
+        "definition": "题面要求求前 n 项和，通项是等差、等比或可分组、可并项的结构。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_telescoping",
+        "name": "裂项相消求和",
+        "definition": "题面要求求和的通项可拆成两项之差，求和时中间项相消。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_mismatch",
+        "name": "错位相减求和",
+        "definition": "题面求和的通项是等差乘等比结构，需要乘公比后错位相减。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.property",
+        "name": "数列单调性、最值项与等差等比性质",
+        "definition": "题面要求判断数列单调性、求最大或最小项，或利用等差中项、等比中项等性质求值。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.inequality",
+        "name": "数列不等式与放缩",
+        "definition": "题面要求证明数列型不等式，或比较数列和与某常数、函数的大小。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.induction",
+        "name": "数学归纳法证明",
+        "definition": "题面要求用数学归纳法证明与正整数有关的等式、不等式或整除性命题。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.model",
+        "name": "数列建模应用",
+        "definition": "题面给出增长、分期付款、存款等实际情境，要求建立数列模型并求解。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_trig.identity_eval",
+        "name": "给值求值（同角关系与诱导公式）",
+        "definition": "题面给出某个角的三角函数值，要求求同角其他三角函数值，或经诱导公式化简后求值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.identity_transform",
+        "name": "三角恒等变换与化简证明",
+        "definition": "题面要求化简三角式、证明三角恒等式或求非特殊角的乘积型三角函数值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.auxiliary_angle",
+        "name": "辅助角公式与化一",
+        "definition": "题面出现正弦与余弦的线性组合，要求化为一个三角函数后求周期、最值、单调区间或值域。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.angle_relation",
+        "name": "角的拆分与凑角求值",
+        "definition": "题面给出两个角的三角函数值，要求求这两角的和、差或倍角的函数值，角之间有可凑配的关系。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_property",
+        "name": "三角函数的周期、单调、对称与最值",
+        "definition": "题面给出三角函数解析式，要求求周期、单调区间、对称轴或对称中心、最值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_transform",
+        "name": "三角函数图象变换与解析式确定",
+        "definition": "题面要求由正弦函数经平移伸缩得到目标图象，或由图象反求正弦型函数的解析式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.omega_param",
+        "name": "含参数频率与初相的性质讨论",
+        "definition": "题面中频率或初相含参数，且给定单调性、零点个数或最值条件，要求求参数取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_equation",
+        "name": "三角方程与三角不等式",
+        "definition": "题面要求解简单三角方程或三角不等式，或由方程在给定区间内解的个数求参数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.sine_cosine_rule",
+        "name": "正余弦定理求边角",
+        "definition": "题面给出三角形的边角条件，要求求未知边、未知角，或判断三角形解的个数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_shape",
+        "name": "三角形形状判断与边角互化",
+        "definition": "题面给出含边角混合的等式，要求判断三角形形状或证明某个边角恒等式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.area",
+        "name": "三角形面积与周长计算",
+        "definition": "题面要求求三角形面积、周长，或由面积反求边角。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_extremum",
+        "name": "解三角形中的最值与范围",
+        "definition": "题面在给定边角约束下，要求周长、面积或某边的最大值、最小值或取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.multi_triangle",
+        "name": "多三角形拼接（公共边与公共角）",
+        "definition": "题面图形由两个及以上三角形拼接而成，共边、共角或共线分点，要求求长度、角或面积。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.measurement",
+        "name": "实际测量与方位角问题",
+        "definition": "题面给出实际测量情境（仰角、俯角、方位角、河宽、塔高），要求求不可直接测量的距离或高度。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_model",
+        "name": "周期现象的三角函数建模",
+        "definition": "题面给出周期性实际现象（简谐运动、摩天轮、潮汐），要求用正弦型函数建模或求某时刻的值。",
+        "block_id": "B.hs_trig"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.set_operation",
+      "question": "已知集合 $A=\\{-1,0,1,2\\}$，$B=\\left\\{x\\mid x^{2}\\leq 1\\right\\}$，则 $A\\cap B=(\\quad)$\nA. $\\{-1,0,1\\}$\nB. $\\{0,1\\}$\nC. $\\{-1,1\\}$\nD. $\\{0,1,2\\}$",
+      "solution": "由 $x^{2}\\leq 1$ 得 $B=[-1,1]$，所以 $A\\cap B=\\{-1,0,1\\}$，选 A。",
+      "routes": [
+        {
+          "id": "r-solve-b",
+          "summary": "先解二次不等式得到 B，再把 A 的元素逐个代入取交集",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.set_operation",
+              "methodId": "M.hs_quadratic_inequality",
+              "state": "$x^{2}\\leq 1$",
+              "transformedState": "$B=[-1,1]$",
+              "condition": "两边开方取绝对值，端点取等号。"
+            },
+            {
+              "scenarioId": "S.hs_func.set_operation",
+              "methodId": "M.hs_set_operation",
+              "state": "$A\\cap[-1,1]$",
+              "transformedState": "$\\{-1,0,1\\}$",
+              "condition": "列举集合与闭区间求交，只保留同时属于两者的元素。"
+            }
+          ],
+          "reason": "先把集合 B 化成区间，再做交集，是本题最直接的路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-number-line",
+          "summary": "在数轴上标出 B 的区间，直接读出 A 中的元素",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.set_operation",
+              "methodId": "M.hs_number_shape",
+              "state": "数轴上 $B=[-1,1]$",
+              "transformedState": "$A$ 中落在该区间的点为 $-1,0,1$",
+              "condition": "$-1$ 与 $1$ 在区间内，$2$ 在区间外。"
+            }
+          ],
+          "reason": "数形结合能直观排除元素 $2$，结论与代数路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-lose-negative",
+          "summary": "解二次不等式时只取非负半轴，得到 $B=[0,1]$ 而误选 B",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.set_operation",
+              "methodId": "M.hs_quadratic_inequality",
+              "state": "$x^{2}\\leq 1\\Rightarrow 0\\leq x\\leq 1$",
+              "transformedState": "$A\\cap B=\\{0,1\\}$，选 B",
+              "condition": "开方时漏掉负半轴，把解集缩小为 $[0,1]$。"
+            }
+          ],
+          "reason": "$x^{2}\\leq 1$ 的解集是 $[-1,1]$ 而非 $[0,1]$，漏掉 $x=-1$ 导致结果错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先解出 B 的完整区间再取交集，不能只保留非负半轴",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:2010-2022_Math_II_MCQs_150",
+        "trainingGoal": "把二次不等式化成区间后与列举集合求交集",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2019 全国卷 第1题",
+          "reference": "rainewhk/gaokao 2019\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_150"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$A$ 与 $B$ 的集合内容不变",
+          "$A\\cap B$ 只保留同时属于 $A$ 与 $B$ 的元素"
+        ],
+        "allowedVariations": [
+          "改变 $A$ 的元素或二次不等式的系数",
+          "改问并集或补集的元素个数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_150",
+          "text": "1.已知集合 $A=\\{-1,0,1,2\\}, B=\\left\\{x \\mid x^{2} \\leq 1\\right\\}$, 则 $A \\cap B=(\\quad)$\nA. $\\{-1,0,1\\}$\nB. $\\{0,1\\}$\nC. $\\{-1,1\\}$\nD.\n\n$\\{0,1,2\\}$\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2019\\全国卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "集合的基本运算与包含关系",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:2010-2022_Math_II_MCQs_150",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "由 $x^{2}\\leq 1$ 解得 $-1\\leq x\\leq 1$，即 $B=[-1,1]$；$A$ 中落在该区间的元素为 $-1,0,1$，故 $A\\cap B=\\{-1,0,1\\}$，与所给答案 A 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_quadratic_inequality",
+        "M.hs_set_operation"
+      ],
+      "applicableMethodIds": [
+        "M.hs_quadratic_inequality",
+        "M.hs_set_operation",
+        "M.hs_number_shape"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.set_operation",
+          "methodId": "M.hs_set_operation"
+        },
+        {
+          "scenarioId": "S.hs_func.set_operation",
+          "methodId": "M.hs_quadratic_inequality"
+        },
+        {
+          "scenarioId": "S.hs_func.set_operation",
+          "methodId": "M.hs_classification"
+        },
+        {
+          "scenarioId": "S.hs_func.set_operation",
+          "methodId": "M.hs_number_shape"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_set_operation",
+        "M.hs_quadratic_inequality",
+        "M.hs_classification",
+        "M.hs_number_shape"
+      ],
+      "options": [
+        {
+          "id": "r-solve-b",
+          "name": "先解二次不等式得到 B，再把 A 的元素逐个代入取交集"
+        },
+        {
+          "id": "r-number-line",
+          "name": "在数轴上标出 B 的区间，直接读出 A 中的元素"
+        },
+        {
+          "id": "r-lose-negative",
+          "name": "解二次不等式时只取非负半轴，得到 $B=[0,1]$ 而误选 B"
+        }
+      ],
+      "questionKey": "99f4a15ebf2884148afb7453280117a35486203d824e98c5a62fe363529f284c",
+      "faceKey": "f577220b102b5f94174c7bb62010639454270b2345005460f8f3622e300607bc"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.parity_period",
+      "question": "设 $f(x)$ 是定义在 $\\mathbb{R}$ 上且周期为 $2$ 的偶函数，当 $2\\leq x\\leq 3$ 时，$f(x)=5-2x$，则 $f\\left(-\\frac{3}{4}\\right)=$（　）\nA. $-\\frac{1}{2}$　B. $-\\frac{1}{4}$　C. $\\frac{1}{4}$　D. $\\frac{1}{2}$",
+      "solution": "由偶函数得 $f\\left(-\\frac{3}{4}\\right)=f\\left(\\frac{3}{4}\\right)=f\\left(\\frac{11}{4}\\right)$，代入 $f(x)=5-2x$ 得 $-\\frac{1}{2}$，选 A。",
+      "routes": [
+        {
+          "id": "r-even-period",
+          "summary": "先用偶性去掉负号，再用周期把自变量移进 $[2,3]$ 求值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.parity_period",
+              "methodId": "M.hs_parity_period",
+              "state": "$f\\left(-\\frac{3}{4}\\right)$",
+              "transformedState": "$f\\left(\\frac{3}{4}\\right)=f\\left(\\frac{11}{4}\\right)$",
+              "condition": "偶函数满足 $f(-t)=f(t)$；周期 $2$ 使 $f(t)=f(t+2)$，把 $\\frac{3}{4}$ 移到 $\\frac{11}{4}\\in[2,3]$。"
+            },
+            {
+              "scenarioId": "S.hs_func.parity_period",
+              "methodId": "M.hs_parity_period",
+              "state": "$x=\\frac{11}{4}\\in[2,3]$",
+              "transformedState": "$f\\left(\\frac{11}{4}\\right)=5-2\\cdot\\frac{11}{4}=-\\frac{1}{2}$",
+              "condition": "自变量已落在给定区间，可直接用该段解析式。"
+            }
+          ],
+          "reason": "奇偶性与周期性各用一次，把自变量送进已知区间，步骤最简。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-axis-x1",
+          "summary": "由偶性与周期推出图象关于 $x=1$ 对称，再用对称点求值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.parity_period",
+              "methodId": "M.hs_symmetry",
+              "state": "$f(-t)=f(t)$ 且 $f(t+2)=f(t)$",
+              "transformedState": "图象关于直线 $x=1$ 对称，即 $f(1+t)=f(1-t)$",
+              "condition": "偶函数关于 $y$ 轴对称，再加周期 $2$，对称轴整体右移 $1$ 个单位。"
+            },
+            {
+              "scenarioId": "S.hs_func.parity_period",
+              "methodId": "M.hs_parity_period",
+              "state": "取 $1+t=-\\frac{3}{4}$，得 $t=-\\frac{7}{4}$",
+              "transformedState": "$f\\left(-\\frac{3}{4}\\right)=f\\left(\\frac{11}{4}\\right)=-\\frac{1}{2}$",
+              "condition": "对称点 $1-t=\\frac{11}{4}$ 落在 $[2,3]$，再用解析式求值。"
+            }
+          ],
+          "reason": "把偶性与周期性合成对称轴 $x=1$ 使用，是另一种正确视角，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-range",
+          "summary": "只平移一次得到 $\\frac{5}{4}$，却直接套用 $[2,3]$ 上的解析式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.parity_period",
+              "methodId": "M.hs_parity_period",
+              "state": "$f\\left(-\\frac{3}{4}\\right)=f\\left(\\frac{5}{4}\\right)$",
+              "transformedState": "代入 $f(x)=5-2x$ 得 $\\frac{5}{2}$",
+              "condition": "$\\frac{5}{4}$ 不在 $[2,3]$ 内，该段解析式在此不成立。"
+            }
+          ],
+          "reason": "平移次数不够，自变量仍落在区间外，套用解析式得到错误结果。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先把自变量平移进已知区间后再代值，避免在区间外使用该段解析式",
+      "metadata": {
+        "motherId": "candidate.bankhs3.ai2025:5:4",
+        "trainingGoal": "用偶性与周期性把任意自变量化归到已知区间求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2025 全国一卷 第5题",
+          "reference": "rainewhk/gaokao dataset/2025_math_1.json",
+          "originalId": "ai2025:5:4"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "函数为定义在 $\\mathbb{R}$ 上的偶函数",
+          "周期为 $2$ 且只在 $[2,3]$ 上给出解析式"
+        ],
+        "allowedVariations": [
+          "改变周期或已知区间",
+          "改变 $[2,3]$ 上的解析式"
+        ],
+        "originalRecord": {
+          "id": "ai2025:5:4",
+          "text": "5. 设 $f(x)$ 是定义在 $\\mathbb{R}$ 上且周期为 2 的偶函数， 当 $2\\le x \\le 3$ 时，$f(x) = 5 - 2x$，则 $f(-\\frac{3}{4})=$\n A. $-\\frac{1}{2}$ \\quad B. $-\\frac{1}{4}$ \\quad C. $\\frac{1}{4}$ \\quad D. $\\frac{1}{2}$",
+          "answer": "A",
+          "source": "ai-gaokao-2025 / dataset/2025_math_1.json",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "奇偶性与周期性",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "ai2025:5:4",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "偶函数给 $f\\left(-\\frac{3}{4}\\right)=f\\left(\\frac{3}{4}\\right)$；周期为 $2$ 把自变量平移到 $\\frac{3}{4}+2=\\frac{11}{4}\\in[2,3]$；代入 $f(x)=5-2x$ 得 $5-\\frac{11}{2}=-\\frac{1}{2}$，与答案 A 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_parity_period"
+      ],
+      "applicableMethodIds": [
+        "M.hs_parity_period",
+        "M.hs_symmetry"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.parity_period",
+          "methodId": "M.hs_parity_period"
+        },
+        {
+          "scenarioId": "S.hs_func.parity_period",
+          "methodId": "M.hs_symmetry"
+        },
+        {
+          "scenarioId": "S.hs_func.parity_period",
+          "methodId": "M.hs_monotone_def"
+        },
+        {
+          "scenarioId": "S.hs_func.parity_period",
+          "methodId": "M.hs_number_shape"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_parity_period",
+        "M.hs_symmetry",
+        "M.hs_monotone_def",
+        "M.hs_number_shape"
+      ],
+      "options": [
+        {
+          "id": "r-axis-x1",
+          "name": "由偶性与周期推出图象关于 $x=1$ 对称，再用对称点求值"
+        },
+        {
+          "id": "r-wrong-range",
+          "name": "只平移一次得到 $\\frac{5}{4}$，却直接套用 $[2,3]$ 上的解析式"
+        },
+        {
+          "id": "r-even-period",
+          "name": "先用偶性去掉负号，再用周期把自变量移进 $[2,3]$ 求值"
+        }
+      ],
+      "questionKey": "c4fd2ce211a691226a8e8dfe741911ead298c6c942f7a378b7d82e65ebe59274",
+      "faceKey": "74e145e6c7a49798940010b5059aee0ced6c6f172ec3fa736e831b7e62b363a7"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.piecewise",
+      "question": "已知函数 $f(x)=\\left\\{\\begin{array}{l}2^{x-1}-2,\\ x\\leq 1\\\\-\\log_2(x+1),\\ x>1\\end{array}\\right.$，且 $f(a)=-3$，则 $f(6-a)=(\\quad)$\nA. $-\\frac{7}{4}$\nB. $-\\frac{5}{4}$\nC. $-\\frac{3}{4}$\nD. $-\\frac{1}{4}$",
+      "solution": "右支 $-\\log_2(a+1)=-3$ 得 $a=7$，于是 $f(6-a)=f(-1)=2^{-2}-2=-\\frac{7}{4}$，选 A。",
+      "routes": [
+        {
+          "id": "r-classify",
+          "summary": "按 $a$ 的两段分类解方程，再回代求值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.piecewise",
+              "methodId": "M.hs_classification",
+              "state": "$a\\leq 1$ 时 $2^{a-1}-2=-3$",
+              "transformedState": "$2^{a-1}=-1$，无解",
+              "condition": "指数函数恒正，左支取值不小于 $-2$，不可能等于 $-3$。"
+            },
+            {
+              "scenarioId": "S.hs_func.piecewise",
+              "methodId": "M.hs_classification",
+              "state": "$a>1$ 时 $-\\log_2(a+1)=-3$",
+              "transformedState": "$a=7$",
+              "condition": "对右支解对数方程，$a=7$ 确实满足 $a>1$。"
+            },
+            {
+              "scenarioId": "S.hs_func.piecewise",
+              "methodId": "M.hs_piecewise",
+              "state": "$f(6-a)=f(-1)$",
+              "transformedState": "$f(-1)=2^{-2}-2=-\\frac{7}{4}$",
+              "condition": "$-1\\leq 1$，必须用左支解析式。"
+            }
+          ],
+          "reason": "分类讨论覆盖两支，再按 $6-a$ 的取值选支，逻辑完整。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-range-first",
+          "summary": "先用左支的值域排除 $a\\leq 1$，再解右支并回代",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.piecewise",
+              "methodId": "M.hs_number_shape",
+              "state": "左支 $2^{x-1}-2\\ (x\\leq 1)$ 的值域为 $(-2,-1]$",
+              "transformedState": "$-3$ 不在左支值域内，故 $a>1$",
+              "condition": "看图象走势确定左支取值范围，直接排除低支。"
+            },
+            {
+              "scenarioId": "S.hs_func.piecewise",
+              "methodId": "M.hs_piecewise",
+              "state": "$-\\log_2(a+1)=-3$",
+              "transformedState": "$a=7$，$f(-1)=2^{-2}-2=-\\frac{7}{4}$",
+              "condition": "解出 $a$ 后用 $6-a=-1$ 选左支求值。"
+            }
+          ],
+          "reason": "先用值域排除一支，能减少分类讨论，结论与分类路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-branch",
+          "summary": "算出 $a=7$ 后，把 $f(-1)$ 仍代入右支解析式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.piecewise",
+              "methodId": "M.hs_piecewise",
+              "state": "$a=7$，$6-a=-1$",
+              "transformedState": "仍用 $-\\log_2(x+1)$ 计算 $f(-1)$",
+              "condition": "$-1$ 不满足 $x>1$，右支解析式在此无定义。"
+            },
+            {
+              "scenarioId": "S.hs_func.piecewise",
+              "methodId": "M.hs_piecewise",
+              "state": "$-\\log_2(-1+1)$",
+              "transformedState": "$\\log_2 0$ 无意义，无法得值",
+              "condition": "代入选错分支导致对数的真数为零。"
+            }
+          ],
+          "reason": "求值时必须按 $6-a$ 的取值重新选支，不能沿用求 $a$ 时用到的那一支。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "a",
+        "x"
+      ],
+      "comparisonCriterion": "优先按自变量所在区间选支，求值与解方程要分别判断分支",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:2010-2022_Math_II_MCQs_55",
+        "trainingGoal": "由分段函数的函数值反求自变量，并正确换支求值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2015 全国卷 第10题",
+          "reference": "rainewhk/gaokao 2015\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_55"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "分段函数的两个分支及分界点不变",
+          "求值时以自变量的实际取值为准选支"
+        ],
+        "allowedVariations": [
+          "改变分段点或各支解析式",
+          "改由 $f(a)=m$ 反求 $a$ 的个数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_55",
+          "text": "10. (5 分) 已知函数 $f(x)=\\left\\{\\begin{array}{l}2^{x-1}-2, x \\leqslant 1 \\\\ -\\log _{2}(x+1), x>1\\end{array}\\right.$, 且 $f(a)=-3$, 则 $f(6-a$ )$=(\\quad)$\nA. $-\\frac{7}{4}$\nB. $-\\frac{5}{4}$\nC. $-\\frac{3}{4}$\nD. $-\\frac{1}{4}$\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2015\\全国卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "分段函数",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:2010-2022_Math_II_MCQs_55",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "若 $a\\leq 1$，则 $2^{a-1}-2=-3$ 即 $2^{a-1}=-1$，无解；若 $a>1$，则 $-\\log_2(a+1)=-3$，得 $a+1=8$，$a=7$。此时 $6-a=-1\\leq 1$，用左支：$f(-1)=2^{-2}-2=-\\frac{7}{4}$，与答案 A 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_classification",
+        "M.hs_piecewise"
+      ],
+      "applicableMethodIds": [
+        "M.hs_classification",
+        "M.hs_piecewise",
+        "M.hs_number_shape"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.piecewise",
+          "methodId": "M.hs_piecewise"
+        },
+        {
+          "scenarioId": "S.hs_func.piecewise",
+          "methodId": "M.hs_classification"
+        },
+        {
+          "scenarioId": "S.hs_func.piecewise",
+          "methodId": "M.hs_number_shape"
+        },
+        {
+          "scenarioId": "S.hs_func.piecewise",
+          "methodId": "M.hs_monotone_def"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_piecewise",
+        "M.hs_classification",
+        "M.hs_number_shape",
+        "M.hs_monotone_def"
+      ],
+      "options": [
+        {
+          "id": "r-range-first",
+          "name": "先用左支的值域排除 $a\\leq 1$，再解右支并回代"
+        },
+        {
+          "id": "r-wrong-branch",
+          "name": "算出 $a=7$ 后，把 $f(-1)$ 仍代入右支解析式"
+        },
+        {
+          "id": "r-classify",
+          "name": "按 $a$ 的两段分类解方程，再回代求值"
+        }
+      ],
+      "questionKey": "b8ac180703ae38692f0566051617da8e2a522c866ba23536e95eeba72871f856",
+      "faceKey": "e17df155bce1f918981d11249d0cfc65da88a948fe341fd18d2d6cbdee27f706"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.quantifier_negation",
+      "question": "已知命题 $p:\\exists x\\in\\mathbb{R},\\ \\sin x<1$；命题 $q:\\forall x\\in\\mathbb{R},\\ e^{|x|}\\geq 1$，则下列命题中为真命题的是（　）\nA. $p\\wedge q$\nB. $\\neg p\\wedge q$\nC. $p\\wedge\\neg q$\nD. $\\neg(p\\vee q)$",
+      "solution": "$p$ 真（取 $x=0$），$q$ 真（$e^{|x|}\\geq 1$），所以 $p\\wedge q$ 真，选 A。",
+      "routes": [
+        {
+          "id": "r-truth-table",
+          "summary": "分别判断 $p$、$q$ 的真假，再用合取真值表选答案",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.quantifier_negation",
+              "methodId": "M.hs_quantifier",
+              "state": "$p:\\exists x\\in\\mathbb{R},\\ \\sin x<1$",
+              "transformedState": "$p$ 为真",
+              "condition": "存在量词只需找到一个实例，例如 $x=0$ 时 $\\sin 0=0<1$。"
+            },
+            {
+              "scenarioId": "S.hs_func.quantifier_negation",
+              "methodId": "M.hs_quantifier",
+              "state": "$q:\\forall x\\in\\mathbb{R},\\ e^{|x|}\\geq 1$",
+              "transformedState": "$q$ 为真",
+              "condition": "全称量词要求对所有 $x$ 成立，由 $|x|\\geq 0$ 及指数函数单调性得证。"
+            },
+            {
+              "scenarioId": "S.hs_func.quantifier_negation",
+              "methodId": "M.hs_quantifier",
+              "state": "$p$ 真、$q$ 真",
+              "transformedState": "$p\\wedge q$ 真，选 A",
+              "condition": "合取只有两个命题都真时才为真。"
+            }
+          ],
+          "reason": "先定真假再套真值表，是最稳妥的做法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-exclude",
+          "summary": "由 $p$、$q$ 都为真，直接排除含否定的三个选项",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.quantifier_negation",
+              "methodId": "M.hs_quantifier",
+              "state": "$p$ 真，$q$ 真",
+              "transformedState": "$\\neg p$、$\\neg q$ 都假，B、C、D 均为假",
+              "condition": "含假命题的合取、析取按真值表必为假。"
+            }
+          ],
+          "reason": "用排除法同样只剩 A，说明判断方向明确。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-misread-forall",
+          "summary": "把存在量词 $p$ 误读成全称量词，因 $\\sin x$ 可取到 $1$ 而判 $p$ 假",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.quantifier_negation",
+              "methodId": "M.hs_quantifier",
+              "state": "$\\exists x,\\ \\sin x<1$ 被当成 $\\forall x,\\ \\sin x<1$",
+              "transformedState": "$x=\\frac{\\pi}{2}$ 时 $\\sin x=1$，判 $p$ 假，选 B",
+              "condition": "量词类型看错，存在量词不需要对所有 $x$ 成立。"
+            }
+          ],
+          "reason": "存在量词命题只要求有一个反例不成立即可为假，把量词读错导致结论相反。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先分清存在量词与全称量词，再按真值表判断联结命题",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:2010-2022_Math_II_MCQs_195",
+        "trainingGoal": "判断量词命题真假并用真值表确定联结命题",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2021 全国卷 第3题",
+          "reference": "rainewhk/gaokao 2021\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_195"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "存在量词与全称量词的含义不变",
+          "合取、析取与否定的真值规则不变"
+        ],
+        "allowedVariations": [
+          "更换量词或更换具体函数",
+          "改问命题的否定形式"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_195",
+          "text": "3.已知命题 $p: \\exists x \\in R, \\sin x<1$; 命题 $q: \\forall x \\in R, e^{|x|} \\geq 1$, 则下列命题中为真命题的是 ( )\nA. $p \\wedge q$\nB. $\\neg p \\wedge q$\nC. $p \\wedge \\neg q$\nD. $\\neg(p \\vee q)$\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2021\\全国卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "全称量词与存在量词命题的否定",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:2010-2022_Math_II_MCQs_195",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "$x=0$ 时 $\\sin 0=0<1$，故存在量词命题 $p$ 为真；又 $|x|\\geq 0$ 使 $e^{|x|}\\geq e^{0}=1$ 恒成立，故全称量词命题 $q$ 为真。于是 $p\\wedge q$ 为真，$\\neg p$、$\\neg q$ 均为假，B、C、D 都假，选 A。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_quantifier"
+      ],
+      "applicableMethodIds": [
+        "M.hs_quantifier"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.quantifier_negation",
+          "methodId": "M.hs_quantifier"
+        },
+        {
+          "scenarioId": "S.hs_func.quantifier_negation",
+          "methodId": "M.hs_quadratic_inequality"
+        },
+        {
+          "scenarioId": "S.hs_func.quantifier_negation",
+          "methodId": "M.hs_root_distribution"
+        },
+        {
+          "scenarioId": "S.hs_func.quantifier_negation",
+          "methodId": "M.hs_basic_inequality"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_quantifier",
+        "M.hs_quadratic_inequality",
+        "M.hs_root_distribution",
+        "M.hs_basic_inequality"
+      ],
+      "options": [
+        {
+          "id": "r-truth-table",
+          "name": "分别判断 $p$、$q$ 的真假，再用合取真值表选答案"
+        },
+        {
+          "id": "r-exclude",
+          "name": "由 $p$、$q$ 都为真，直接排除含否定的三个选项"
+        },
+        {
+          "id": "r-misread-forall",
+          "name": "把存在量词 $p$ 误读成全称量词，因 $\\sin x$ 可取到 $1$ 而判 $p$ 假"
+        }
+      ],
+      "questionKey": "9390bdf303c096a9f95a1ad402a85b4d806a0d69c484467184ecaf380d5f15e3",
+      "faceKey": "ae36318744710ef73701ec045fd40bad2028c04c107a07547b7f65b2d7801c2c"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.symmetry",
+      "question": "下列函数中，其图象与函数 $y=\\ln x$ 的图象关于直线 $x=1$ 对称的是（　）\nA. $y=\\ln(1-x)$\nB. $y=\\ln(2-x)$\nC. $y=\\ln(1+x)$\nD. $y=\\ln(2+x)$",
+      "solution": "对称点横坐标为 $2-x$、纵坐标不变，故所求为 $y=\\ln(2-x)$，选 B。",
+      "routes": [
+        {
+          "id": "r-map-point",
+          "summary": "用点关于直线的对称公式，把 $x$ 换成 $2-x$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.symmetry",
+              "methodId": "M.hs_symmetry",
+              "state": "点 $(x,\\ln x)$ 关于 $x=1$ 的对称点",
+              "transformedState": "$(2-x,\\ln x)$",
+              "condition": "关于竖直直线 $x=1$ 对称时，纵坐标不变，横坐标满足中点恰为 $1$。"
+            },
+            {
+              "scenarioId": "S.hs_func.symmetry",
+              "methodId": "M.hs_symmetry",
+              "state": "把原解析式中的 $x$ 替换为 $2-x$",
+              "transformedState": "$y=\\ln(2-x)$，选 B",
+              "condition": "新图象上点的横坐标记为 $x$，其对称点在原图象上，故原横坐标为 $2-x$。"
+            }
+          ],
+          "reason": "直接用对称点公式，一步得到解析式，最直接。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-transform",
+          "summary": "把关于 $x=1$ 的对称拆成先关于 $y$ 轴翻折再右移 $2$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.symmetry",
+              "methodId": "M.hs_graph_transform",
+              "state": "$y=\\ln x$",
+              "transformedState": "$y=\\ln(-x)$",
+              "condition": "关于 $y$ 轴翻折，用 $-x$ 替换 $x$。"
+            },
+            {
+              "scenarioId": "S.hs_func.symmetry",
+              "methodId": "M.hs_graph_transform",
+              "state": "$y=\\ln(-x)$ 向右平移 $2$ 个单位",
+              "transformedState": "$y=\\ln(-(x-2))=\\ln(2-x)$",
+              "condition": "右移 $2$ 个单位即在解析式中用 $x-2$ 替换 $x$。"
+            }
+          ],
+          "reason": "图象变换路线同样得到 $y=\\ln(2-x)$，可用来检验答案。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-shift",
+          "summary": "把关于 $x=1$ 的对称误当成向左平移 $2$ 个单位",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.symmetry",
+              "methodId": "M.hs_graph_transform",
+              "state": "$y=\\ln x$ 向左平移 $2$ 个单位",
+              "transformedState": "$y=\\ln(x+2)$，选 D",
+              "condition": "左移 $2$ 是在解析式中用 $x+2$ 替换 $x$，与关于 $x=1$ 对称不是同一变换。"
+            }
+          ],
+          "reason": "平移与轴对称是两种不同的图象变换，混淆后会得到错误选项 D。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先用对称点公式把横坐标映为 $2-x$，也可用翻折加平移检验",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:2010-2022_Math_II_MCQs_127",
+        "trainingGoal": "掌握关于竖直直线对称的解析式求法，区分对称与平移",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2018 全国卷 第7题",
+          "reference": "rainewhk/gaokao 2018\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_127"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "对称轴为直线 $x=1$",
+          "对称变换保持纵坐标不变"
+        ],
+        "allowedVariations": [
+          "改变对称轴的位置",
+          "把已知函数换成其他基本初等函数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_127",
+          "text": "7. (5 分) 下列函数中, 其图象与函数 $y=\\ln x$ 的图象关于直线 $\\mathrm{x}=1$ 对称的是 ( )\nA. $y=\\ln (1-x)$\nB. $y=\\ln (2-x)$\nC. $y=\\ln (1+x)$\nD. $y=\\ln (2+x)$\n",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2018\\全国卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "对称性与图象对称",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:2010-2022_Math_II_MCQs_127",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "点 $(x,\\ln x)$ 关于直线 $x=1$ 的对称点是 $(2-x,\\ln x)$，即把自变量换成 $2-x$，所求解析式为 $y=\\ln(2-x)$，与答案 B 一致。也可先关于 $y$ 轴翻折得 $y=\\ln(-x)$，再右移 $2$ 个单位得 $y=\\ln(2-x)$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_symmetry"
+      ],
+      "applicableMethodIds": [
+        "M.hs_symmetry",
+        "M.hs_graph_transform"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.symmetry",
+          "methodId": "M.hs_symmetry"
+        },
+        {
+          "scenarioId": "S.hs_func.symmetry",
+          "methodId": "M.hs_parity_period"
+        },
+        {
+          "scenarioId": "S.hs_func.symmetry",
+          "methodId": "M.hs_graph_transform"
+        },
+        {
+          "scenarioId": "S.hs_func.symmetry",
+          "methodId": "M.hs_number_shape"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_symmetry",
+        "M.hs_parity_period",
+        "M.hs_graph_transform",
+        "M.hs_number_shape"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-shift",
+          "name": "把关于 $x=1$ 的对称误当成向左平移 $2$ 个单位"
+        },
+        {
+          "id": "r-map-point",
+          "name": "用点关于直线的对称公式，把 $x$ 换成 $2-x$"
+        },
+        {
+          "id": "r-transform",
+          "name": "把关于 $x=1$ 的对称拆成先关于 $y$ 轴翻折再右移 $2$"
+        }
+      ],
+      "questionKey": "c2281e0a3b71254dc2aa4176f55ea33ae0fd57959f62b3cfa6bb7f4a7bae1359",
+      "faceKey": "b8a2c8cb22b9724c39dc0eae21f6c1eeb3918d2c8b2591e7873478a513ea35bd"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.abstract_function",
+      "question": "已知函数 $f(x),g(x)$ 的定义域均为 $\\mathbb{R}$，且 $f(x)+g(2-x)=5$，$g(x)-f(x-4)=7$。若 $y=g(x)$ 的图象关于直线 $x=2$ 对称，$g(2)=4$，则 $\\sum_{k=1}^{22}f(k)=(\\quad)$\nA. $-21$\nB. $-22$\nC. $-23$\nD. $-24$",
+      "solution": "由对称与两式联立得 $f(x)+f(x-2)=-2$，再求出 $f(1)=-1$、$f(2)=-3$，两组各 $5$ 对且每对和为 $-2$，总和 $-1-3-10-10=-24$，选 D。",
+      "routes": [
+        {
+          "id": "r-symmetry",
+          "summary": "用关于 $x=2$ 的对称关系消去 $g$，得到 $f$ 的递推，再赋值补算首两项",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_symmetry",
+              "state": "$y=g(x)$ 关于直线 $x=2$ 对称",
+              "transformedState": "$g(2-x)=g(x+2)$",
+              "condition": "轴对称的定义：到对称轴距离相等的两点函数值相等。"
+            },
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_symmetry",
+              "state": "$g(x)-f(x-4)=7$ 中把 $x$ 换成 $x+2$",
+              "transformedState": "$g(x+2)-f(x-2)=7$",
+              "condition": "平移自变量后可与 $g(2-x)=g(x+2)$ 衔接。"
+            },
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_assignment",
+              "state": "$f(x)+g(2-x)=5$ 与 $g(x+2)-f(x-2)=7$ 联立",
+              "transformedState": "$f(x)+f(x-2)=-2$，即 $f(x+2)+f(x)=-2$",
+              "condition": "用 $g(2-x)$ 替换 $g(x+2)$ 后消去 $g$。"
+            },
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_assignment",
+              "state": "赋值 $x=0$、$x=2$，并由中心对称求 $g(3)$",
+              "transformedState": "$f(0)=1$，$f(2)=-3$，$g(3)=6$，$f(1)=-1$",
+              "condition": "$f(0)+g(2)=5$；$f(2)=-2-f(0)$；$g(2-x)+g(x+4)=12$ 给出中心 $(3,6)$。"
+            }
+          ],
+          "reason": "对称关系把两个 $g$ 化掉，得到 $f$ 的递推式，是本题的核心路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-pairing",
+          "summary": "直接由递推式配对求和，再单独补算首两项",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_assignment",
+              "state": "$f(x+2)+f(x)=-2$",
+              "transformedState": "$f(3)+f(5)+\\ldots+f(21)=-10$，$f(4)+f(6)+\\ldots+f(22)=-10$",
+              "condition": "两组各 $5$ 对，每对和为 $-2$。"
+            },
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_assignment",
+              "state": "$f(0)=1$，$f(2)=-3$，$f(1)=-1$",
+              "transformedState": "总和 $-1-3-10-10=-24$，选 D",
+              "condition": "首两项 $f(1)$、$f(2)$ 不在配对范围内，需单独求值。"
+            }
+          ],
+          "reason": "配对求和思路直接，只需正确处理首两项即可，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-misuse-axis",
+          "summary": "误把关于 $x=2$ 的轴对称当成 $g(3)=g(2)$，导致 $f(1)$ 求错",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_symmetry",
+              "state": "$g$ 关于 $x=2$ 对称，误取 $g(3)=g(2)$",
+              "transformedState": "$g(3)=4$，于是 $f(1)=5-g(3)=1$",
+              "condition": "关于 $x=2$ 对称应得 $g(3)=g(1)$，不是 $g(3)=g(2)$。"
+            },
+            {
+              "scenarioId": "S.hs_func.abstract_function",
+              "methodId": "M.hs_assignment",
+              "state": "其余项仍按递推配对",
+              "transformedState": "$1-3-10-10=-22$，选 B",
+              "condition": "错误的第一步使结果偏大 $2$。"
+            }
+          ],
+          "reason": "对称轴 $x=2$ 上只有 $g(2)$ 对应的点，$g(3)$ 的对称点是 $g(1)$，误用会得到选项 B。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先用对称关系消去 $g$ 得到 $f$ 的递推，再单独补算不在配对中的首两项",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:2010-2022_Math_I_MCQs_208",
+        "trainingGoal": "在抽象函数中用对称与函数方程推出递推关系并求和",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2022 全国乙卷 第12题",
+          "reference": "rainewhk/gaokao 2022\\全国乙卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_208"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "两个函数方程在整个定义域上成立",
+          "$g$ 的图象关于直线 $x=2$ 对称"
+        ],
+        "allowedVariations": [
+          "改变对称轴或已知函数值",
+          "改变求和的项数与范围"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_208",
+          "text": "12. 已知函数 $f(x), g(x)$ 的定义域均为 $\\mathbf{R}$, 且 $f(x)+g(2-x)=5, g(x)-f(x-4)=7$. 若 $y=g(x)$ 的图像关于直线 $x=2$ 对称, $g(2)=4$ ， 则 $\\sum_{k=1}^{22} f(k)=()$\nA. -21\nB. -22\nC. -23\nD. -24\n",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2022\\全国乙卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "抽象函数与函数方程",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:2010-2022_Math_I_MCQs_208",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "由 $g$ 关于 $x=2$ 对称得 $g(2-x)=g(x+2)$，代入 $g(x)-f(x-4)=7$ 并令 $x\\to x+2$ 得 $g(x+2)-f(x-2)=7$，与 $f(x)+g(2-x)=5$ 联立消去 $g$，得 $f(x)+f(x-2)=-2$。故 $f(3),f(5),\\ldots,f(21)$ 与 $f(4),f(6),\\ldots,f(22)$ 各 5 对，各为 $-10$。由 $f(0)+g(2)=5$ 得 $f(0)=1$，进而 $f(2)=-2-f(0)=-3$。另一式给出 $g(2-x)+g(x+4)=12$，即 $g$ 关于点 $(3,6)$ 中心对称，故 $g(3)=6$，从而 $f(1)=5-g(3)=-1$。合计 $-1-3-10-10=-24$，与答案 D 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_symmetry",
+        "M.hs_assignment"
+      ],
+      "applicableMethodIds": [
+        "M.hs_symmetry",
+        "M.hs_assignment"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.abstract_function",
+          "methodId": "M.hs_assignment"
+        },
+        {
+          "scenarioId": "S.hs_func.abstract_function",
+          "methodId": "M.hs_monotone_def"
+        },
+        {
+          "scenarioId": "S.hs_func.abstract_function",
+          "methodId": "M.hs_parity_period"
+        },
+        {
+          "scenarioId": "S.hs_func.abstract_function",
+          "methodId": "M.hs_symmetry"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_assignment",
+        "M.hs_monotone_def",
+        "M.hs_parity_period",
+        "M.hs_symmetry"
+      ],
+      "options": [
+        {
+          "id": "r-misuse-axis",
+          "name": "误把关于 $x=2$ 的轴对称当成 $g(3)=g(2)$，导致 $f(1)$ 求错"
+        },
+        {
+          "id": "r-symmetry",
+          "name": "用关于 $x=2$ 的对称关系消去 $g$，得到 $f$ 的递推，再赋值补算首两项"
+        },
+        {
+          "id": "r-pairing",
+          "name": "直接由递推式配对求和，再单独补算首两项"
+        }
+      ],
+      "questionKey": "a7929c9a6108db19e3c75824b5ea0d8219e7b0bbd8046156645cf48d9a66400b",
+      "faceKey": "2eaa819f644860d41bc31f03725ed59a39fd4ff9fdcf4bf8aecc3f06874267e9"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.inequality_property",
+      "question": "若 $a>b$，则（　）\nA. $\\ln(a-b)>0$\nB. $3^a<3^b$\nC. $a^3-b^3>0$\nD. $|a|>|b|$",
+      "solution": "$y=x^3$ 单调递增，故 $a>b$ 时 $a^3>b^3$，即 $a^3-b^3>0$，选 C。",
+      "routes": [
+        {
+          "id": "r-monotone-cube",
+          "summary": "用 $y=x^3$ 在 $\\mathbb{R}$ 上单调递增，直接得到 C",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.inequality_property",
+              "methodId": "M.hs_inequality_compare",
+              "state": "$a>b$ 且 $y=x^3$ 在 $\\mathbb{R}$ 上递增",
+              "transformedState": "$a^3>b^3$，即 $a^3-b^3>0$",
+              "condition": "增函数保序，对任意实数都成立。"
+            }
+          ],
+          "reason": "用三次函数的单调性一步判定，是最短的路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-factor-diff",
+          "summary": "把 $a^3-b^3$ 因式分解，判断两个因子都为正",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.inequality_property",
+              "methodId": "M.hs_inequality_compare",
+              "state": "$a^3-b^3=(a-b)(a^2+ab+b^2)$",
+              "transformedState": "$a-b>0$，$a^2+ab+b^2>0$，故 $a^3-b^3>0$",
+              "condition": "$a^2+ab+b^2=\\left(a+\\frac{b}{2}\\right)^2+\\frac{3}{4}b^2\\geq 0$，等号只在 $a=b=0$ 成立，与 $a>b$ 矛盾，故严格为正。"
+            }
+          ],
+          "reason": "因式分解后逐因子定号，同样得到 C，可用于检验。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-one-example",
+          "summary": "只取 $a=2,b=1$ 一组正数验证，误认为 $|a|>|b|$ 恒成立",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.inequality_property",
+              "methodId": "M.hs_inequality_compare",
+              "state": "取 $a=2,b=1$",
+              "transformedState": "$|2|>|1|$，误选 D",
+              "condition": "一组正数满足 $|a|>|b|$ 不能说明对任意 $a>b$ 都成立。"
+            }
+          ],
+          "reason": "$a=1,b=-2$ 就满足 $a>b$ 但 $|a|<|b|$，单凭一组正数验证会漏掉反例。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "b"
+      ],
+      "comparisonCriterion": "优先用单调性证明恒成立，用反例排除其余选项，不能只验证一组数",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:2010-2022_Math_I_MCQs_141",
+        "trainingGoal": "利用函数单调性判断不等式恒成立，并用反例排除错误选项",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2019 全国卷 第6题",
+          "reference": "rainewhk/gaokao 2019\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_141"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$a>b$ 中的 $a,b$ 可为任意实数",
+          "$y=x^3$ 在 $\\mathbb{R}$ 上的单调性不变"
+        ],
+        "allowedVariations": [
+          "更换比较的函数（如 $2^x$、$\\ln x$）",
+          "改问不等式恒成立的反例"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_141",
+          "text": "6. 若 $a>b$, 则\nA. $\\ln (a-b)>0$\nB. $3^{a}<3^{b}$\nC. $a^{3}-b^{3}>0$\nD. $|a|>|b|$\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2019\\全国卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "不等式性质与比较大小",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:2010-2022_Math_I_MCQs_141",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "$y=x^3$ 在 $\\mathbb{R}$ 上单调递增，由 $a>b$ 得 $a^3>b^3$，即 $a^3-b^3>0$，C 正确。A 有反例 $a=2,b=1$ 时 $\\ln 1=0$；B 方向相反，$3^a>3^b$；D 有反例 $a=1,b=-2$ 时 $|a|<|b|$。与答案 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_inequality_compare"
+      ],
+      "applicableMethodIds": [
+        "M.hs_inequality_compare"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.inequality_property",
+          "methodId": "M.hs_inequality_compare"
+        },
+        {
+          "scenarioId": "S.hs_func.inequality_property",
+          "methodId": "M.hs_substitution"
+        },
+        {
+          "scenarioId": "S.hs_func.inequality_property",
+          "methodId": "M.hs_basic_inequality"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_inequality_compare",
+        "M.hs_substitution",
+        "M.hs_basic_inequality"
+      ],
+      "options": [
+        {
+          "id": "r-one-example",
+          "name": "只取 $a=2,b=1$ 一组正数验证，误认为 $|a|>|b|$ 恒成立"
+        },
+        {
+          "id": "r-monotone-cube",
+          "name": "用 $y=x^3$ 在 $\\mathbb{R}$ 上单调递增，直接得到 C"
+        },
+        {
+          "id": "r-factor-diff",
+          "name": "把 $a^3-b^3$ 因式分解，判断两个因子都为正"
+        }
+      ],
+      "questionKey": "b90ca23fcb68000923b30309d22bdd6d8eee5793423bb4c8db42c4e023048bec",
+      "faceKey": "521b53c716beb65459e92394406ceafa600623b21322eba11488cee064a491c7"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.zero_point",
+      "question": "当 $x\\in[0,2\\pi]$ 时，曲线 $y=\\sin x$ 与 $y=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$ 的交点个数为（　）\nA. 3\nB. 4\nC. 6\nD. 8",
+      "solution": "令 $\\sin x=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$，后者在 $[0,2\\pi]$ 内含 $3$ 个周期，每周期 $2$ 个交点，共 $6$ 个，选 C。",
+      "routes": [
+        {
+          "id": "r-graph",
+          "summary": "画出两函数图象，按每个周期数交点",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.zero_point",
+              "methodId": "M.hs_number_shape",
+              "state": "$y=\\sin x$ 与 $y=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$ 在 $[0,2\\pi]$ 上的图象",
+              "transformedState": "共 $6$ 个交点",
+              "condition": "$y=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$ 的周期为 $\\frac{2\\pi}{3}$，区间内共 $3$ 个周期，每个周期与 $y=\\sin x$ 相交 $2$ 次。"
+            }
+          ],
+          "reason": "数形结合按周期分段数交点，直观且不易漏算。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-zero-equation",
+          "summary": "把交点转化为方程 $\\sin x-2\\sin\\left(3x-\\frac{\\pi}{6}\\right)=0$ 的根，在区间内逐个求根",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.zero_point",
+              "methodId": "M.hs_zero_point",
+              "state": "$F(x)=\\sin x-2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$",
+              "transformedState": "$F(x)=0$ 在 $[0,2\\pi]$ 上有 $6$ 个根",
+              "condition": "在每个周期内 $F$ 变号两次，端点处不产生额外根。"
+            }
+          ],
+          "reason": "化为零点问题后逐周期求根，结论与图象法一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-square",
+          "summary": "把方程两边平方降次，误把增根也算作交点",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.zero_point",
+              "methodId": "M.hs_zero_point",
+              "state": "$\\sin x=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$ 两边平方",
+              "transformedState": "$\\sin^2 x=4\\sin^2\\left(3x-\\frac{\\pi}{6}\\right)$，数出 $8$ 个根，选 D",
+              "condition": "平方会引入不满足原方程的增根，根的个数不能直接沿用。"
+            }
+          ],
+          "reason": "平方不是同解变形，多出的根是增根，不能计入交点个数。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先按周期数交点或化为零点逐周期求根，避免平方引入增根",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:GAOKAO-Bench-2024_2024_Math_MCQs_28",
+        "trainingGoal": "把两曲线交点个数转化为方程根的个数并在给定区间内计数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2024 全国卷 第7题",
+          "reference": "rainewhk/gaokao 2024\\全国卷\\选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_28"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区间 $[0,2\\pi]$ 含两个端点",
+          "$y=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$ 的周期为 $\\frac{2\\pi}{3}$"
+        ],
+        "allowedVariations": [
+          "改变相位或振幅",
+          "改变考察区间"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_28",
+          "text": "7. 当 $x[0,2 \\pi]$ 时, 曲线 $y=\\sin x$ 与 $y=2 \\sin \\left(3 x-\\frac{\\pi}{6}\\right)$ 的交点个数为（）\nA. 3\nB. 4\nC. 6\nD. 8",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2024\\全国卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "函数零点与零点个数",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_28",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "交点个数等于 $\\sin x=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$ 在 $[0,2\\pi]$ 上根的个数。$y=2\\sin\\left(3x-\\frac{\\pi}{6}\\right)$ 的周期为 $\\frac{2\\pi}{3}$，在 $[0,2\\pi]$ 内恰有 $3$ 个完整周期，每个周期内与 $y=\\sin x$ 有 $2$ 个交点，共 $6$ 个。数值求解得到 $6$ 个根（约 $0.209,1.070,2.386,3.351,4.212,5.527$），与答案 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_number_shape"
+      ],
+      "applicableMethodIds": [
+        "M.hs_number_shape",
+        "M.hs_zero_point"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.zero_point",
+          "methodId": "M.hs_zero_point"
+        },
+        {
+          "scenarioId": "S.hs_func.zero_point",
+          "methodId": "M.hs_number_shape"
+        },
+        {
+          "scenarioId": "S.hs_func.zero_point",
+          "methodId": "M.hs_classification"
+        },
+        {
+          "scenarioId": "S.hs_func.zero_point",
+          "methodId": "M.hs_monotone_def"
+        },
+        {
+          "scenarioId": "S.hs_func.zero_point",
+          "methodId": "M.hs_root_distribution"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_zero_point",
+        "M.hs_number_shape",
+        "M.hs_classification",
+        "M.hs_monotone_def",
+        "M.hs_root_distribution"
+      ],
+      "options": [
+        {
+          "id": "r-zero-equation",
+          "name": "把交点转化为方程 $\\sin x-2\\sin\\left(3x-\\frac{\\pi}{6}\\right)=0$ 的根，在区间内逐个求根"
+        },
+        {
+          "id": "r-square",
+          "name": "把方程两边平方降次，误把增根也算作交点"
+        },
+        {
+          "id": "r-graph",
+          "name": "画出两函数图象，按每个周期数交点"
+        }
+      ],
+      "questionKey": "70c94a1fd6c4f42baa85271ee5536ebfa90bf2276158389486181c8c02a84e96",
+      "faceKey": "693739090dd9a5ef472f4f123efa49410e5d7061239d08fb7080ed588ca8c7fb"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_func.exp_log_calc",
+      "question": "青少年视力是社会普遍关注的问题，视力情况可借助视力表测量。通常用五分记录法和小数记录法记录视力数据，五分记录法的数据 $L$ 和小数记录法的数据 $V$ 满足 $L=5+\\lg V$。已知某同学视力的五分记录法数据为 $4.9$，则其视力的小数记录法的数据为（　）（$\\sqrt[10]{10}\\approx 1.259$）\nA. 1.5\nB. 1.2\nC. 0.8\nD. 0.6",
+      "solution": "$\\lg V=4.9-5=-0.1$，$V=10^{-0.1}=\\frac{1}{\\sqrt[10]{10}}\\approx 0.8$，选 C。",
+      "routes": [
+        {
+          "id": "r-log-exp",
+          "summary": "先移项求对数值，再用对数定义还原为指数式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.exp_log_calc",
+              "methodId": "M.hs_exp_log",
+              "state": "$4.9=5+\\lg V$",
+              "transformedState": "$\\lg V=-0.1$",
+              "condition": "移项后对数值为 $-0.1$，底数为 $10$。"
+            },
+            {
+              "scenarioId": "S.hs_func.exp_log_calc",
+              "methodId": "M.hs_exp_log",
+              "state": "$\\lg V=-0.1$",
+              "transformedState": "$V=10^{-\\frac{1}{10}}=\\frac{1}{\\sqrt[10]{10}}\\approx 0.8$，选 C",
+              "condition": "对数定义还原，并代入题给近似值。"
+            }
+          ],
+          "reason": "移项加还原指数式，是标准的对数方程解法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-substitution",
+          "summary": "把 $10^{\\frac{1}{10}}$ 换元为已知近似值再取倒数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.exp_log_calc",
+              "methodId": "M.hs_exp_log",
+              "state": "$\\lg V=-0.1=-\\frac{1}{10}$",
+              "transformedState": "$V=10^{-\\frac{1}{10}}$",
+              "condition": "先化指数形式，便于换元。"
+            },
+            {
+              "scenarioId": "S.hs_func.exp_log_calc",
+              "methodId": "M.hs_substitution",
+              "state": "令 $t=10^{\\frac{1}{10}}=\\sqrt[10]{10}\\approx 1.259$",
+              "transformedState": "$V=\\frac{1}{t}\\approx\\frac{1}{1.259}\\approx 0.8$",
+              "condition": "负指数即取倒数，直接用题给近似值。"
+            }
+          ],
+          "reason": "换元后计算更直观，结果与标准解法一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-lose-sign",
+          "summary": "把 $\\lg V=-0.1$ 的负号漏掉，误得 $V\\approx 1.2$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_func.exp_log_calc",
+              "methodId": "M.hs_exp_log",
+              "state": "$\\lg V=-0.1$",
+              "transformedState": "$V=10^{0.1}=\\sqrt[10]{10}\\approx 1.259\\approx 1.2$，选 B",
+              "condition": "指数取值把 $-0.1$ 当成 $0.1$，符号错误。"
+            }
+          ],
+          "reason": "对数方程的负号直接决定结果小于 $1$，漏掉负号会选到 B。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "L",
+        "V"
+      ],
+      "comparisonCriterion": "优先由对数式准确移项并保留符号，再把对数值还原为指数值",
+      "metadata": {
+        "motherId": "candidate.bankhs3.rw:2010-2022_Math_II_MCQs_189",
+        "trainingGoal": "由实际情境中的对数关系式解出未知数据",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2021 全国甲卷 第6题",
+          "reference": "rainewhk/gaokao 2021\\全国甲卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_189"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "五分记录法与小数的关系式 $L=5+\\lg V$ 不变",
+          "$\\sqrt[10]{10}\\approx 1.259$ 为给定近似值"
+        ],
+        "allowedVariations": [
+          "改变 $L$ 的取值",
+          "改由 $V$ 求 $L$"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_189",
+          "text": "6. 青少年视力是社会普遍关注的问题, 视力情况可借助视力表测量. 通常用五分记录法和小数记录法记录 视力数据, 五分记录法的数据 $L$ 和小数记录表的数据 $V$ 的满足 $L=5+\\lg V$. 已知某同学视力的五分记录法 的数据为 4.9 , 则其视力的小数记录法的数据为 $(\\quad) \\quad(\\sqrt[10]{10} \\approx 1.259)$\nA. 1.5\nB. 1.2\nC. 0.8\nD. 0.6\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2021\\全国甲卷\\选择题.jsonl",
+          "category": "集合、不等式与函数",
+          "difficulty": "中",
+          "method": "指数与对数式的运算",
+          "notes": "高中数学 bankhs3；原题来自公开题源。"
+        },
+        "bankId": "bankhs3",
+        "originalId": "rw:2010-2022_Math_II_MCQs_189",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "由 $4.9=5+\\lg V$ 得 $\\lg V=-0.1$，故 $V=10^{-0.1}=10^{-\\frac{1}{10}}=\\frac{1}{\\sqrt[10]{10}}\\approx\\frac{1}{1.259}\\approx 0.794\\approx 0.8$，与答案 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_exp_log"
+      ],
+      "applicableMethodIds": [
+        "M.hs_exp_log",
+        "M.hs_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_func.exp_log_calc",
+          "methodId": "M.hs_exp_log"
+        },
+        {
+          "scenarioId": "S.hs_func.exp_log_calc",
+          "methodId": "M.hs_substitution"
+        },
+        {
+          "scenarioId": "S.hs_func.exp_log_calc",
+          "methodId": "M.hs_number_shape"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_exp_log",
+        "M.hs_substitution",
+        "M.hs_number_shape"
+      ],
+      "options": [
+        {
+          "id": "r-log-exp",
+          "name": "先移项求对数值，再用对数定义还原为指数式"
+        },
+        {
+          "id": "r-substitution",
+          "name": "把 $10^{\\frac{1}{10}}$ 换元为已知近似值再取倒数"
+        },
+        {
+          "id": "r-lose-sign",
+          "name": "把 $\\lg V=-0.1$ 的负号漏掉，误得 $V\\approx 1.2$"
+        }
+      ],
+      "questionKey": "24104d712682801375809280c9d9703f07ab4c0fdda1951419d952a8d8d8cd83",
+      "faceKey": "108421b0a54d2a2a0a09c9ae540332570ea9fe458edfc777b96a6de5041526f4"
+    }
+  ]
+}

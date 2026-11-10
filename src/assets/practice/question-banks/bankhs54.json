@@ -1,0 +1,2948 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankhs54",
+  "sourceSha256": "129eeea7a1fbd8a212f8ea208205383146cd02b7f627f1ed67616bd115bbf047",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.hs_func",
+        "name": "集合、不等式与函数"
+      },
+      {
+        "id": "B.hs_trig",
+        "name": "三角函数与解三角形"
+      },
+      {
+        "id": "B.hs_seq",
+        "name": "数列"
+      },
+      {
+        "id": "B.hs_deriv",
+        "name": "导数及其应用"
+      },
+      {
+        "id": "B.hs_geom",
+        "name": "立体几何与空间向量"
+      },
+      {
+        "id": "B.hs_analytic",
+        "name": "解析几何、平面向量与复数"
+      },
+      {
+        "id": "B.hs_prob",
+        "name": "概率统计与计数原理"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.hs_func.set_logic",
+        "name": "集合与常用逻辑用语",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_func.set_operation",
+          "S.hs_func.condition_judge",
+          "S.hs_func.quantifier_negation",
+          "S.hs_func.new_definition_set"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.inequality",
+        "name": "不等式与二次关系",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_func.inequality_solve",
+          "S.hs_func.quadratic_root_dist",
+          "S.hs_func.basic_inequality",
+          "S.hs_func.inequality_property"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.concept",
+        "name": "函数概念与表示",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_func.domain",
+          "S.hs_func.expression",
+          "S.hs_func.value_range",
+          "S.hs_func.piecewise",
+          "S.hs_func.abstract_function"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.properties",
+        "name": "函数性质与图象",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_func.parity_period",
+          "S.hs_func.monotonicity",
+          "S.hs_func.graph_transform",
+          "S.hs_func.symmetry"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.elementary",
+        "name": "指对幂与函数零点",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_func.exp_log_calc",
+          "S.hs_func.exp_log_compare",
+          "S.hs_func.exp_log_graph",
+          "S.hs_func.zero_point",
+          "S.hs_func.function_model"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_trig.identity",
+        "name": "三角恒等变换",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_trig.identity_eval",
+          "S.hs_trig.identity_transform",
+          "S.hs_trig.auxiliary_angle",
+          "S.hs_trig.angle_relation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.graph",
+        "name": "三角函数的图象与性质",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_trig.graph_property",
+          "S.hs_trig.graph_transform",
+          "S.hs_trig.omega_param",
+          "S.hs_trig.trig_equation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.triangle",
+        "name": "解三角形",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_trig.sine_cosine_rule",
+          "S.hs_trig.triangle_shape",
+          "S.hs_trig.area",
+          "S.hs_trig.triangle_extremum",
+          "S.hs_trig.multi_triangle"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.application",
+        "name": "三角应用与建模",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_trig.measurement",
+          "S.hs_trig.trig_model"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_seq.term",
+        "name": "通项与递推",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_seq.arithmetic_geometric",
+          "S.hs_seq.an_sn",
+          "S.hs_seq.recurrence",
+          "S.hs_seq.construct_seq"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.sum",
+        "name": "数列求和",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_seq.sum_formula",
+          "S.hs_seq.sum_telescoping",
+          "S.hs_seq.sum_mismatch"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.property",
+        "name": "数列性质与不等式",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_seq.property",
+          "S.hs_seq.inequality",
+          "S.hs_seq.induction",
+          "S.hs_seq.model"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_deriv.concept",
+        "name": "导数概念与运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_deriv.definition",
+          "S.hs_deriv.calc",
+          "S.hs_deriv.tangent",
+          "S.hs_deriv.geometric"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.behavior",
+        "name": "用导数研究函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_deriv.monotonicity",
+          "S.hs_deriv.extremum",
+          "S.hs_deriv.zero",
+          "S.hs_deriv.param_range"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.proof",
+        "name": "导数与不等式证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_deriv.ineq_proof",
+          "S.hs_deriv.ineq_two_var",
+          "S.hs_deriv.construct",
+          "S.hs_deriv.series_bound"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_geom.position",
+        "name": "空间位置关系与证明",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_geom.line_plane_parallel",
+          "S.hs_geom.line_plane_perp",
+          "S.hs_geom.special_point",
+          "S.hs_geom.existence"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.metric",
+        "name": "空间度量",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_geom.distance",
+          "S.hs_geom.angle",
+          "S.hs_geom.volume",
+          "S.hs_geom.sphere"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.vector",
+        "name": "空间向量法",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_geom.basis",
+          "S.hs_geom.coordinate",
+          "S.hs_geom.normal_vector"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.solid",
+        "name": "基本立体图形、截面与翻折",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_geom.solid_graph",
+          "S.hs_geom.section",
+          "S.hs_geom.combination"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_analytic.vector",
+        "name": "平面向量",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_analytic.vector_calc",
+          "S.hs_analytic.vector_product",
+          "S.hs_analytic.vector_parallel_perp",
+          "S.hs_analytic.vector_geometry"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.complex",
+        "name": "复数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_analytic.complex_calc",
+          "S.hs_analytic.complex_geometry",
+          "S.hs_analytic.complex_quadratic"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_circle",
+        "name": "直线与圆",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_analytic.line_equation",
+          "S.hs_analytic.circle_equation",
+          "S.hs_analytic.line_circle_position",
+          "S.hs_analytic.circle_circle",
+          "S.hs_analytic.locus"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.conic",
+        "name": "圆锥曲线",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_analytic.ellipse",
+          "S.hs_analytic.hyperbola",
+          "S.hs_analytic.parabola",
+          "S.hs_analytic.conic_equation",
+          "S.hs_analytic.conic_focal"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_conic",
+        "name": "直线与圆锥曲线综合",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_analytic.intersection",
+          "S.hs_analytic.fixed_point",
+          "S.hs_analytic.range_extremum",
+          "S.hs_analytic.existence"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_prob.counting",
+        "name": "计数原理",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_prob.counting_principle",
+          "S.hs_prob.permutation",
+          "S.hs_prob.combination",
+          "S.hs_prob.binomial"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.classical",
+        "name": "概率模型",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_prob.classical",
+          "S.hs_prob.independent",
+          "S.hs_prob.conditional",
+          "S.hs_prob.geometric"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.random_var",
+        "name": "随机变量与分布",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_prob.distribution",
+          "S.hs_prob.expectation",
+          "S.hs_prob.binomial_dist",
+          "S.hs_prob.normal"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.statistics",
+        "name": "统计与成对数据",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_prob.sampling",
+          "S.hs_prob.regression",
+          "S.hs_prob.contingency"
+        ],
+        "block_id": "B.hs_prob"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.hs_analytic.vector_calc",
+        "name": "向量线性运算与坐标运算",
+        "definition": "题面要求进行向量的加减、数乘、坐标运算，或由条件求某向量的表示。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_product",
+        "name": "数量积、夹角与投影",
+        "definition": "题面要求求数量积、夹角、投影或模长。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_parallel_perp",
+        "name": "共线与垂直的判定",
+        "definition": "题面要求判断或利用向量的共线、垂直关系，通常含参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_geometry",
+        "name": "向量与几何图形（重心、系数和、轨迹）",
+        "definition": "题面把向量与几何图形结合，要求求系数或位置关系。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_calc",
+        "name": "复数运算与化简",
+        "definition": "题面要求复数代数形式的四则运算、求模或化简。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_geometry",
+        "name": "复数的几何意义与模",
+        "definition": "题面要求用复数的几何意义（对应点、向量、模）解决问题。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_quadratic",
+        "name": "复数与实系数方程",
+        "definition": "题面涉及实系数一元二次方程的虚根、复数相等或复系数方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_equation",
+        "name": "直线方程与两直线位置关系",
+        "definition": "题面要求求直线方程、判断两直线位置关系或求参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_equation",
+        "name": "圆的方程",
+        "definition": "题面要求求圆的方程，或由方程表示圆求参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_circle_position",
+        "name": "直线与圆的位置关系（弦长与切线）",
+        "definition": "题面讨论直线与圆的位置关系，要求求弦长、切线方程或参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_circle",
+        "name": "圆与圆的位置关系",
+        "definition": "题面讨论两圆的位置关系，要求求公共弦、公切线或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.locus",
+        "name": "轨迹方程",
+        "definition": "题面要求求动点的轨迹方程，或判断轨迹类型。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.ellipse",
+        "name": "椭圆的定义与性质",
+        "definition": "题面围绕椭圆的定义、标准方程与几何性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.hyperbola",
+        "name": "双曲线的定义、渐近线与离心率",
+        "definition": "题面围绕双曲线的定义、标准方程、渐近线与离心率求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.parabola",
+        "name": "抛物线的定义、准线与焦点弦",
+        "definition": "题面围绕抛物线的定义、标准方程、焦点弦与准线求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_equation",
+        "name": "圆锥曲线标准方程的确定",
+        "definition": "题面要求根据条件求椭圆、双曲线或抛物线的标准方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_focal",
+        "name": "焦点三角形与焦半径",
+        "definition": "题面围绕焦点三角形、焦半径、焦点弦的性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.intersection",
+        "name": "联立与韦达定理（弦长与中点）",
+        "definition": "题面要求把直线与圆锥曲线联立，用韦达定理求弦长、中点或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.fixed_point",
+        "name": "定点与定值问题",
+        "definition": "题面在直线与圆锥曲线的运动中，要求证明某点或某值恒定，或求定点。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.range_extremum",
+        "name": "范围与最值问题",
+        "definition": "题面要求求圆锥曲线中某量（弦长、面积、斜率、距离）的范围或最值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.existence",
+        "name": "存在性与探究性问题",
+        "definition": "题面问是否存在某点、某直线或某斜率使条件成立，要求判断并求值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_deriv.definition",
+        "name": "导数定义与瞬时变化率",
+        "definition": "题面出现函数增量比、瞬时变化率或极限形式的式子，要求求导数值或识别导数定义。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.calc",
+        "name": "复合结构与幂指式的求导",
+        "definition": "题面给出具体函数（含复合、幂指、分式、乘积），要求求导函数或某点导数值。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.tangent",
+        "name": "切线方程（在点与过点）",
+        "definition": "题面要求求曲线在某点或过某点的切线方程，或由切线条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.geometric",
+        "name": "导数几何意义与函数、导函数图象互推",
+        "definition": "题面给出函数与导函数的图象之一，要求判断另一个、比较大小或求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.monotonicity",
+        "name": "单调区间与含参单调性讨论",
+        "definition": "题面要求求含参函数的单调区间，或由在某区间单调反求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.extremum",
+        "name": "极值与闭区间最值",
+        "definition": "题面要求求极值、闭区间上的最值，或由极值条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.zero",
+        "name": "零点个数与方程根的讨论",
+        "definition": "题面要求讨论方程根的个数或函数零点个数，通常含参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.param_range",
+        "name": "恒成立与存在性求参数范围",
+        "definition": "题面要求在恒成立或存在某点使条件成立的条件下求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_proof",
+        "name": "单变量不等式证明",
+        "definition": "题面要求证明一个含单变量的函数不等式，例如指数函数与一次式、对数与一次式的大小关系及其推广。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_two_var",
+        "name": "双变量不等式与极值点偏移",
+        "definition": "题面不等式涉及两个变量，或要求证明与极值点对称位置有关的结论。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.construct",
+        "name": "构造函数与同构变形",
+        "definition": "题面不等式或等式两边结构相似但变量不同，需要通过构造同一母函数来处理。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.series_bound",
+        "name": "导数造不等式再累加（数列型）",
+        "definition": "题面要求证明与正整数有关、且通项的界由导数给出的数列不等式。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_func.set_operation",
+        "name": "集合的基本运算与包含关系",
+        "definition": "题面给出用列举法、描述法或不等式区间表示的集合（常含参数），要求求交集、并集、补集、子集个数，或判断包含关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.condition_judge",
+        "name": "充分必要条件的判定",
+        "definition": "题面要求判断「p 是 q 的充分/必要/充要条件」，或由条件关系反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quantifier_negation",
+        "name": "全称量词与存在量词命题的否定",
+        "definition": "题面出现全称量词或存在量词，要求写否定、判真假，或把「恒成立/有解」转化为参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.new_definition_set",
+        "name": "新定义集合的代入检验",
+        "definition": "题面先给出一个新定义的集合运算或集合属性，要求按定义判断元素归属或求集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_solve",
+        "name": "一元二次、分式与绝对值不等式的求解",
+        "definition": "题面要求解一元二次、分式或含绝对值的不等式，解集常需写成区间或集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quadratic_root_dist",
+        "name": "一元二次方程根的分布",
+        "definition": "题面讨论一元二次方程根的正负、大小或是否落在某区间内，通常含参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.basic_inequality",
+        "name": "基本不等式求最值",
+        "definition": "题面在正数条件下求积的最大值或和的最小值，结构上能凑出定值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_property",
+        "name": "不等式性质与比较大小",
+        "definition": "题面要求比较两个代数式的大小，或由不等式的性质推断某个式子的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.domain",
+        "name": "求函数的定义域",
+        "definition": "题面给出含分母、偶次根式、对数或零次幂的函数式，要求求自变量的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.expression",
+        "name": "求函数解析式",
+        "definition": "题面给出函数类型或函数方程，要求求 f(x) 的解析式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.value_range",
+        "name": "求函数的值域",
+        "definition": "题面要求求函数值的取值范围，常含参数或限定区间。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.piecewise",
+        "name": "分段函数",
+        "definition": "题面给出分段函数，要求求值、解方程或不等式，或讨论分界点处的性质。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.abstract_function",
+        "name": "抽象函数与函数方程",
+        "definition": "题面只给抽象函数的若干等式或性质，要求判断奇偶性、单调性或求值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.parity_period",
+        "name": "奇偶性与周期性",
+        "definition": "题面讨论函数的奇偶性、周期性，或由奇偶与周期推值、求解析式、比较大小。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.monotonicity",
+        "name": "单调性的判定与比较",
+        "definition": "题面要求判断或证明单调性、求单调区间，或利用单调性比较大小、解不等式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.graph_transform",
+        "name": "图象变换与识图",
+        "definition": "题面要求由已知函数图象经平移、伸缩、翻折得到新图象，或由图象判断解析式与参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.symmetry",
+        "name": "对称性与图象对称",
+        "definition": "题面给出函数图象的对称轴、对称中心或两函数图象的对称关系，要求求参数、求解析式或求和。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_calc",
+        "name": "指数与对数式的运算",
+        "definition": "题面要求化简指数式、对数式或求值，含换底与指数对数互化。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_compare",
+        "name": "指对幂大小比较",
+        "definition": "题面要求比较幂、指数式、对数式的大小，通常底数或指数不同。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_graph",
+        "name": "指对函数图象与性质",
+        "definition": "题面给出指数或对数函数的图象，要求求底数范围、解不等式或判断图象位置关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.zero_point",
+        "name": "函数零点与零点个数",
+        "definition": "题面要求判断函数零点个数、所在区间，或由零点存在反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.function_model",
+        "name": "函数模型与建模应用",
+        "definition": "题面给出实际情境（成本、增长、温度等），要求建立函数模型并求最值或作预测。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_geom.line_plane_parallel",
+        "name": "线面与面面平行证明",
+        "definition": "题面要求证明直线与平面平行，或两个平面平行。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.line_plane_perp",
+        "name": "线面与面面垂直证明",
+        "definition": "题面要求证明直线与平面垂直，或两个平面垂直。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.special_point",
+        "name": "特殊点定位与共面论证",
+        "definition": "题面要求确定中点、重心、垂足等特殊点的位置，或证明某点落在某平面内。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.existence",
+        "name": "位置关系存在性探究",
+        "definition": "题面问是否存在某点或某平面使条件成立，要求判断并说明理由。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.distance",
+        "name": "点到平面与异面直线距离",
+        "definition": "题面要求求点到平面的距离、两异面直线间的距离或两平行平面间的距离。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.angle",
+        "name": "线线角、线面角与二面角",
+        "definition": "题面要求求异面直线所成角、直线与平面所成角或二面角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.volume",
+        "name": "体积与表面积计算",
+        "definition": "题面要求求多面体或旋转体的体积、表面积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.sphere",
+        "name": "外接球与内切球",
+        "definition": "题面给出多面体与球的接切关系，要求求球的半径、表面积或体积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.basis",
+        "name": "空间向量基本定理与基底表示",
+        "definition": "题面要求用一组空间基底表示向量，或判断四点共面、三向量共面。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.coordinate",
+        "name": "建系与坐标运算",
+        "definition": "题面要求建立空间直角坐标系，用坐标表示点与向量并作运算。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.normal_vector",
+        "name": "法向量求法与向量法判位置关系",
+        "definition": "题面要求求平面的法向量，并用法向量解决平行、垂直、角度、距离问题。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.solid_graph",
+        "name": "直观图、展开图与最短路径",
+        "definition": "题面涉及基本立体图形、直观图或展开图，要求还原图形、求面积或最短路径。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.section",
+        "name": "截面作法与截面图形",
+        "definition": "题面要求作出或判断空间几何体的截面，并求截面面积或截面与某面所成角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.combination",
+        "name": "组合体与翻折问题",
+        "definition": "题面涉及两个几何体的组合或平面图形翻折成空间图形，要求求体积、距离或角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_prob.counting_principle",
+        "name": "分类加法与分步乘法原理",
+        "definition": "题面要求完成一件事的方法数，需判断该用分类加法还是分步乘法。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.permutation",
+        "name": "排列与排列数",
+        "definition": "题面要求计数且元素顺序有关，如排队、排列、数字排列。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.combination",
+        "name": "组合、分组与分配",
+        "definition": "题面要求计数且只选不排，如选组、抽样、分组分配。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial",
+        "name": "二项式定理与系数",
+        "definition": "题面围绕二项展开式的通项、特定项系数、系数和或系数最大项。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.classical",
+        "name": "古典概型",
+        "definition": "题面要求求古典概型的概率，通常给出样本空间与事件。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.independent",
+        "name": "相互独立事件",
+        "definition": "题面涉及多个事件同时发生或相互独立，要求求概率。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.conditional",
+        "name": "条件概率、全概率与贝叶斯",
+        "definition": "题面给出条件概率、全概率或由结果反推来源的问题。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.geometric",
+        "name": "几何概型",
+        "definition": "题面求几何概型的概率，即长度、面积或体积之比。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.distribution",
+        "name": "离散型随机变量分布列",
+        "definition": "题面要求求离散型随机变量的分布列及其性质。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.expectation",
+        "name": "期望与方差",
+        "definition": "题面要求求期望、方差，或由期望反求参数、比较方案。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial_dist",
+        "name": "二项分布",
+        "definition": "题面是若干次独立重复试验，要求求恰好若干次成功的概率或分布。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.normal",
+        "name": "正态分布",
+        "definition": "题面涉及正态分布曲线、对称性求概率或三段标准差原则。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.sampling",
+        "name": "抽样方法与样本估计",
+        "definition": "题面要求选择抽样方法，或由样本估计总体的均值、方差、百分位数。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.regression",
+        "name": "一元线性回归",
+        "definition": "题面给出成对数据，要求求相关系数、回归方程并作预测。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.contingency",
+        "name": "列联表与独立性检验",
+        "definition": "题面给出列联表，要求判断两个分类变量是否相关。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_seq.arithmetic_geometric",
+        "name": "等差与等比数列基本量计算",
+        "definition": "题面给出等差或等比数列的部分基本量（首项、公差、公比、项数、前 n 项和），要求求其余量或判断数列类型。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.an_sn",
+        "name": "通项与前 n 项和的关系",
+        "definition": "题面给出前 n 项和的表达式，或给出含通项与前 n 项和的混合关系式，要求求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.recurrence",
+        "name": "递推数列求通项",
+        "definition": "题面给出相邻项的递推关系，要求求通项公式。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.construct_seq",
+        "name": "构造新数列（等差化与等比化）",
+        "definition": "题面要求在递推式两边作变形，构造出等差或等比数列后再求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_formula",
+        "name": "公式法、分组求和与并项求和",
+        "definition": "题面要求求前 n 项和，通项是等差、等比或可分组、可并项的结构。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_telescoping",
+        "name": "裂项相消求和",
+        "definition": "题面要求求和的通项可拆成两项之差，求和时中间项相消。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_mismatch",
+        "name": "错位相减求和",
+        "definition": "题面求和的通项是等差乘等比结构，需要乘公比后错位相减。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.property",
+        "name": "数列单调性、最值项与等差等比性质",
+        "definition": "题面要求判断数列单调性、求最大或最小项，或利用等差中项、等比中项等性质求值。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.inequality",
+        "name": "数列不等式与放缩",
+        "definition": "题面要求证明数列型不等式，或比较数列和与某常数、函数的大小。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.induction",
+        "name": "数学归纳法证明",
+        "definition": "题面要求用数学归纳法证明与正整数有关的等式、不等式或整除性命题。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.model",
+        "name": "数列建模应用",
+        "definition": "题面给出增长、分期付款、存款等实际情境，要求建立数列模型并求解。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_trig.identity_eval",
+        "name": "给值求值（同角关系与诱导公式）",
+        "definition": "题面给出某个角的三角函数值，要求求同角其他三角函数值，或经诱导公式化简后求值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.identity_transform",
+        "name": "三角恒等变换与化简证明",
+        "definition": "题面要求化简三角式、证明三角恒等式或求非特殊角的乘积型三角函数值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.auxiliary_angle",
+        "name": "辅助角公式与化一",
+        "definition": "题面出现正弦与余弦的线性组合，要求化为一个三角函数后求周期、最值、单调区间或值域。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.angle_relation",
+        "name": "角的拆分与凑角求值",
+        "definition": "题面给出两个角的三角函数值，要求求这两角的和、差或倍角的函数值，角之间有可凑配的关系。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_property",
+        "name": "三角函数的周期、单调、对称与最值",
+        "definition": "题面给出三角函数解析式，要求求周期、单调区间、对称轴或对称中心、最值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_transform",
+        "name": "三角函数图象变换与解析式确定",
+        "definition": "题面要求由正弦函数经平移伸缩得到目标图象，或由图象反求正弦型函数的解析式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.omega_param",
+        "name": "含参数频率与初相的性质讨论",
+        "definition": "题面中频率或初相含参数，且给定单调性、零点个数或最值条件，要求求参数取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_equation",
+        "name": "三角方程与三角不等式",
+        "definition": "题面要求解简单三角方程或三角不等式，或由方程在给定区间内解的个数求参数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.sine_cosine_rule",
+        "name": "正余弦定理求边角",
+        "definition": "题面给出三角形的边角条件，要求求未知边、未知角，或判断三角形解的个数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_shape",
+        "name": "三角形形状判断与边角互化",
+        "definition": "题面给出含边角混合的等式，要求判断三角形形状或证明某个边角恒等式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.area",
+        "name": "三角形面积与周长计算",
+        "definition": "题面要求求三角形面积、周长，或由面积反求边角。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_extremum",
+        "name": "解三角形中的最值与范围",
+        "definition": "题面在给定边角约束下，要求周长、面积或某边的最大值、最小值或取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.multi_triangle",
+        "name": "多三角形拼接（公共边与公共角）",
+        "definition": "题面图形由两个及以上三角形拼接而成，共边、共角或共线分点，要求求长度、角或面积。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.measurement",
+        "name": "实际测量与方位角问题",
+        "definition": "题面给出实际测量情境（仰角、俯角、方位角、河宽、塔高），要求求不可直接测量的距离或高度。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_model",
+        "name": "周期现象的三角函数建模",
+        "definition": "题面给出周期性实际现象（简谐运动、摩天轮、潮汐），要求用正弦型函数建模或求某时刻的值。",
+        "block_id": "B.hs_trig"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.complex_calc",
+      "question": "下列各式的运算结果为纯虚数的是（ ）\nA. $i(1+i)^{2}$\nB. $i^{2}(1-i)$\nC. $(1+\\mathrm{i})^{2}$\nD. $i(1+i)$",
+      "solution": "逐项化简：$i(1+i)^{2}=i\\cdot2i=-2$，$i^{2}(1-i)=-1+i$，$(1+i)^{2}=2i$，$i(1+i)=-1+i$。只有 $(1+i)^{2}=2i$ 的实部为 $0$、虚部不为 $0$，是纯虚数，选 C。",
+      "routes": [
+        {
+          "id": "r-expand",
+          "summary": "用完全平方公式展开 $(1+i)^{2}$，再把四个选项都化成 $a+bi$ 比较",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$(1+i)^{2}$",
+              "transformedState": "$1+2i+i^{2}=2i$",
+              "condition": "$i^{2}=-1$，展开时必须保留中间项 $2i$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "四个选项的实部与虚部",
+              "transformedState": "A 为 $-2$，B 为 $-1+i$，C 为 $2i$，D 为 $-1+i$，只有 C 是纯虚数",
+              "condition": "纯虚数要求实部为 $0$ 且虚部不为 $0$。"
+            }
+          ],
+          "reason": "完全平方公式一步得到 $2i$，再逐项对比实部虚部，能同时排除其余三项。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-trig",
+          "summary": "把 $1+i$ 化为三角形式，用模相乘、辐角相加判断平方后的位置",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_trig",
+              "state": "$1+i$",
+              "transformedState": "$\\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
+              "condition": "模为 $\\sqrt2$，辐角为 $\\frac{\\pi}{4}$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_trig",
+              "state": "$(1+i)^{2}$",
+              "transformedState": "模变为 $2$，辐角变为 $\\frac{\\pi}{2}$，即 $2i$",
+              "condition": "复数乘方时模相乘、辐角相加，$2\\cos\\frac{\\pi}{2}=0$。"
+            }
+          ],
+          "reason": "三角形式直接说明平方后辐角为 $90^{\\circ}$，实部为 $0$，结论与展开法一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-i2-positive",
+          "summary": "把 $i^{2}$ 当作 $1$，由 $i^{2}(1-i)=1-i$ 误判为纯虚数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$i^{2}(1-i)$",
+              "transformedState": "误取 $i^{2}=1$，得 $1-i$，判为纯虚数",
+              "condition": "$i^{2}=-1$，不能当作 $1$。"
+            }
+          ],
+          "reason": "$i^{2}=-1$ 时 B 实为 $-1+i$，实部不为 $0$，这一步把虚数单位的平方记错。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "i"
+      ],
+      "comparisonCriterion": "优先把 $i^{2}$ 化为 $-1$ 并逐项合并实部虚部，避免把含 $i$ 的式子一律当作纯虚数",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_II_MCQs_89",
+        "trainingGoal": "识别纯虚数并按复数代数运算逐项化简",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2017 全国卷 第3题",
+          "reference": "rainewhk/gaokao 2017全国卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_89"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$i^{2}=-1$",
+          "纯虚数要求实部为 $0$ 且虚部不为 $0$"
+        ],
+        "allowedVariations": [
+          "改变各项的幂次或系数",
+          "改问结果为实数或求模长"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_89",
+          "text": "3. (5 分) 下列各式的运算结果为纯虚数的是（ ）\nA. $i(1+i)^{2}$\nB. $i^{2}(1-i)$\nC. $(1+\\mathrm{i})^{2}$\nD. $i(1+i)$\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2017\\全国卷\\选择题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "复数运算与化简",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_II_MCQs_89",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "逐项独立计算：A 中 $(1+i)^{2}=2i$，故 $i(1+i)^{2}=i\\cdot2i=-2$，是实数；B 中 $i^{2}=-1$，故 $i^{2}(1-i)=-1+i$，实部不为 0；C 中 $(1+i)^{2}=1+2i+i^{2}=2i$，实部为 0 且虚部为 2，是纯虚数；D 中 $i(1+i)=i+i^{2}=-1+i$，实部不为 0。只有 C 成立，与原答案 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_complex_calc"
+      ],
+      "applicableMethodIds": [
+        "M.hs_complex_calc",
+        "M.hs_complex_trig"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_calc"
+        },
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_geometry"
+        },
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_trig"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_complex_calc",
+        "M.hs_complex_geometry",
+        "M.hs_complex_trig"
+      ],
+      "options": [
+        {
+          "id": "r-i2-positive",
+          "name": "把 $i^{2}$ 当作 $1$，由 $i^{2}(1-i)=1-i$ 误判为纯虚数"
+        },
+        {
+          "id": "r-expand",
+          "name": "用完全平方公式展开 $(1+i)^{2}$，再把四个选项都化成 $a+bi$ 比较"
+        },
+        {
+          "id": "r-trig",
+          "name": "把 $1+i$ 化为三角形式，用模相乘、辐角相加判断平方后的位置"
+        }
+      ],
+      "questionKey": "683d284671274c76f0f24f9fe185bc69e6bde0ddc1b63cd9393624b7cda76918",
+      "faceKey": "2a3093c6d858e9ccaa55a8444c3f1e35973cf962b4cd53a600c22083e82ed47d"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.vector_product",
+      "question": "已知正方形 $ABCD$ 的边长为 $2$，$E$ 为 $CD$ 的中点，则 $\\overrightarrow{\\mathrm{AE}}\\cdot\\overrightarrow{\\mathrm{BD}}=$",
+      "solution": "$\\overrightarrow{AE}\\cdot\\overrightarrow{BD}=\\left(\\overrightarrow{AD}+\\frac{1}{2}\\overrightarrow{AB}\\right)\\cdot\\left(\\overrightarrow{AD}-\\overrightarrow{AB}\\right)=\\overrightarrow{AD}^{2}-\\frac{1}{2}\\overrightarrow{AB}^{2}=4-2=2$。",
+      "routes": [
+        {
+          "id": "r-decompose",
+          "summary": "以 $\\overrightarrow{AB}$、$\\overrightarrow{AD}$ 为基底表示 $\\overrightarrow{AE}$ 与 $\\overrightarrow{BD}$，再按分配律作数量积",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_vector_calc",
+              "state": "$\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=0$，$|\\overrightarrow{AB}|=|\\overrightarrow{AD}|=2$",
+              "transformedState": "$\\overrightarrow{AE}=\\overrightarrow{AD}+\\frac{1}{2}\\overrightarrow{AB}$，$\\overrightarrow{BD}=\\overrightarrow{AD}-\\overrightarrow{AB}$",
+              "condition": "$E$ 为 $CD$ 中点，用正交的两条边作基底表示两个向量。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_dot_product",
+              "state": "$\\left(\\overrightarrow{AD}+\\frac{1}{2}\\overrightarrow{AB}\\right)\\cdot\\left(\\overrightarrow{AD}-\\overrightarrow{AB}\\right)$",
+              "transformedState": "$\\overrightarrow{AD}^{2}-\\frac{1}{2}\\overrightarrow{AB}^{2}=4-2=2$",
+              "condition": "正交基底下交叉项 $\\overrightarrow{AD}\\cdot\\overrightarrow{AB}=0$。"
+            }
+          ],
+          "reason": "基底分解只用到垂直与边长，一步展开即得常数，计算最短。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-coordinate",
+          "summary": "建立坐标系写出四个顶点与中点的坐标，用坐标点积计算",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_vector_calc",
+              "state": "取 $A(0,0)$、$B(2,0)$、$C(2,2)$、$D(0,2)$",
+              "transformedState": "$E(1,2)$，$\\overrightarrow{AE}=(1,2)$",
+              "condition": "正方形边长 $2$，按逆时针次序建立直角坐标系。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_dot_product",
+              "state": "$\\overrightarrow{BD}$",
+              "transformedState": "$\\overrightarrow{BD}=(-2,2)$，$\\overrightarrow{AE}\\cdot\\overrightarrow{BD}=1\\times(-2)+2\\times2=2$",
+              "condition": "向量坐标由终点减起点得到。"
+            }
+          ],
+          "reason": "坐标法把数量积化为算术，结果与基底法一致，可作验算。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-bd-reversed",
+          "summary": "把 $\\overrightarrow{BD}$ 误写成 $\\overrightarrow{DB}$，方向取反导致点积变号",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_dot_product",
+              "state": "$\\overrightarrow{AE}=(1,2)$，$\\overrightarrow{BD}$ 误取为 $(2,-2)$",
+              "transformedState": "$1\\times2+2\\times(-2)=-2$，误答 $-2$",
+              "condition": "$\\overrightarrow{BD}$ 与 $\\overrightarrow{DB}$ 方向相反，点积会变号。"
+            }
+          ],
+          "reason": "$\\overrightarrow{BD}$ 是终点 $D$ 减起点 $B$，即 $(-2,2)$；取反后得到 $-2$，与正确答案同值反号。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "优先用 $\\overrightarrow{AB}$、$\\overrightarrow{AD}$ 作正交基底分解，注意 $\\overrightarrow{BD}$ 的方向",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_II_Fill-in-the-Blank_15",
+        "trainingGoal": "用基底或坐标计算正方形中的数量积",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2013 全国卷 第14题",
+          "reference": "rainewhk/gaokao 2013全国卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_15"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "正方形边长 $2$，$E$ 为 $CD$ 中点",
+          "$\\overrightarrow{AB}$ 与 $\\overrightarrow{AD}$ 垂直且模长相等"
+        ],
+        "allowedVariations": [
+          "改变 $E$ 在 $CD$ 上的位置",
+          "改求 $\\overrightarrow{AE}$ 与另一条对角线的数量积"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_Fill-in-the-Blank_15",
+          "text": "14. (4 分) 已知正方形 $A B C D$ 的边长为 $2, E$ 为 $C D$ 的中点, 则 $\\overrightarrow{\\mathrm{AE}} \\cdot \\overrightarrow{\\mathrm{BD}}=$\n",
+          "answer": "2\n",
+          "source": "rainewhk-gaokao / 2013\\全国卷\\填空题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "数量积、夹角与投影",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_15",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "以 $\\overrightarrow{AB}$、$\\overrightarrow{AD}$ 为基底，$\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=0$，两向量模长均为 $2$。$E$ 为 $CD$ 中点，故 $\\overrightarrow{AE}=\\overrightarrow{AD}+\\frac{1}{2}\\overrightarrow{AB}$，$\\overrightarrow{BD}=\\overrightarrow{AD}-\\overrightarrow{AB}$。点积为 $\\overrightarrow{AD}^{2}-\\frac{1}{2}\\overrightarrow{AB}^{2}=4-2=2$。坐标法复核：$A(0,0)$、$B(2,0)$、$D(0,2)$、$E(1,2)$，$\\overrightarrow{AE}=(1,2)$、$\\overrightarrow{BD}=(-2,2)$，点积 $=1\\times(-2)+2\\times2=2$，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_vector_calc",
+        "M.hs_dot_product"
+      ],
+      "applicableMethodIds": [
+        "M.hs_vector_calc",
+        "M.hs_dot_product"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.vector_product",
+          "methodId": "M.hs_dot_product"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_product",
+          "methodId": "M.hs_vector_relation"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_product",
+          "methodId": "M.hs_vector_calc"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_dot_product",
+        "M.hs_vector_relation",
+        "M.hs_vector_calc"
+      ],
+      "options": [
+        {
+          "id": "r-bd-reversed",
+          "name": "把 $\\overrightarrow{BD}$ 误写成 $\\overrightarrow{DB}$，方向取反导致点积变号"
+        },
+        {
+          "id": "r-decompose",
+          "name": "以 $\\overrightarrow{AB}$、$\\overrightarrow{AD}$ 为基底表示 $\\overrightarrow{AE}$ 与 $\\overrightarrow{BD}$，再按分配律作数量积"
+        },
+        {
+          "id": "r-coordinate",
+          "name": "建立坐标系写出四个顶点与中点的坐标，用坐标点积计算"
+        }
+      ],
+      "questionKey": "83a813f5574961228ba962f9b78aedec0ec15f1431a4b357df5830f28edd9eff",
+      "faceKey": "efcecd7f499d57924cb839a80a2c16382ebba4398eb5bdcebd64a9502b97cf23"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.vector_parallel_perp",
+      "question": "设向量 $\\vec{a}=(x,x+1)$，$\\vec{b}=(1,2)$，且 $\\vec{a}\\perp\\vec{b}$，则 $x=$",
+      "solution": "$\\vec{a}\\cdot\\vec{b}=x+2(x+1)=3x+2=0$，解得 $x=-\\frac{2}{3}$。",
+      "routes": [
+        {
+          "id": "r-dot-zero",
+          "summary": "直接用垂直的充要条件 $\\vec{a}\\cdot\\vec{b}=0$ 列方程求 $x$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "$\\vec{a}\\perp\\vec{b}$",
+              "transformedState": "$\\vec{a}\\cdot\\vec{b}=x+(x+1)\\times2=3x+2=0$",
+              "condition": "两向量垂直的充要条件是数量积为 $0$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_calc",
+              "state": "$3x+2=0$",
+              "transformedState": "$x=-\\frac{2}{3}$",
+              "condition": "一元一次方程直接移项求解。"
+            }
+          ],
+          "reason": "垂直条件与坐标对应最直接，一步列方程即得答案。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-slope",
+          "summary": "把两条向量的方向写成斜率，用斜率乘积为 $-1$ 表示垂直",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "$\\vec{a}$ 的斜率为 $\\frac{x+1}{x}$，$\\vec{b}$ 的斜率为 $2$",
+              "transformedState": "$\\frac{x+1}{x}\\cdot2=-1$，即 $2x+2=-x$，$x=-\\frac{2}{3}$",
+              "condition": "先排除 $x=0$：此时 $\\vec{a}=(0,1)$ 与 $\\vec{b}=(1,2)$ 的数量积为 $2$，并不垂直。"
+            }
+          ],
+          "reason": "斜率乘积 $-1$ 与数量积为零等价，结论一致，但要额外检查 $x=0$ 的情形。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-parallel-condition",
+          "summary": "误用平行的坐标条件，令交叉相乘之差为零",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "误列 $1\\cdot(x+1)-2x=0$",
+              "transformedState": "$x+1-2x=0$，$x=1$",
+              "condition": "交叉相减为零是平行条件，本题给的是垂直。"
+            }
+          ],
+          "reason": "把平行条件当成垂直条件，得到 $x=1$；回代数量积为 $5$，不为 $0$，故错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先用数量积为零判定垂直，不要与平行条件的交叉相乘混用",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_II_Fill-in-the-Blank_30",
+        "trainingGoal": "由垂直条件列数量积为零的方程求参数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2016 全国卷 第13题",
+          "reference": "rainewhk/gaokao 2016全国卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_30"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\vec{a}\\perp\\vec{b}$ 等价于 $\\vec{a}\\cdot\\vec{b}=0$",
+          "$\\vec{b}=(1,2)$ 保持不变"
+        ],
+        "allowedVariations": [
+          "改变 $\\vec{b}$ 的坐标",
+          "把条件改为平行并改求参数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_Fill-in-the-Blank_30",
+          "text": "13. (5 分) 设向量 $\\vec{a}=(x, x+1), \\vec{b}=(1,2)$, 且 $\\vec{a} \\perp \\vec{b}$, 则 $x=$\n",
+          "answer": "$-\\frac{2}{3}$\n",
+          "source": "rainewhk-gaokao / 2016\\全国卷\\填空题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "共线与垂直的判定",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_30",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "垂直的充要条件是数量积为 $0$：$\\vec{a}\\cdot\\vec{b}=x\\times1+(x+1)\\times2=3x+2$。令 $3x+2=0$ 得 $x=-\\frac{2}{3}$，与原答案一致。回代：$\\vec{a}=\\left(-\\frac{2}{3},\\frac{1}{3}\\right)$，$\\vec{a}\\cdot\\vec{b}=-\\frac{2}{3}+\\frac{2}{3}=0$，成立。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_vector_relation",
+        "M.hs_vector_calc"
+      ],
+      "applicableMethodIds": [
+        "M.hs_vector_relation",
+        "M.hs_vector_calc"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_vector_relation"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_vector_calc"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_dot_product"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_vector_relation",
+        "M.hs_vector_calc",
+        "M.hs_dot_product"
+      ],
+      "options": [
+        {
+          "id": "r-dot-zero",
+          "name": "直接用垂直的充要条件 $\\vec{a}\\cdot\\vec{b}=0$ 列方程求 $x$"
+        },
+        {
+          "id": "r-slope",
+          "name": "把两条向量的方向写成斜率，用斜率乘积为 $-1$ 表示垂直"
+        },
+        {
+          "id": "r-parallel-condition",
+          "name": "误用平行的坐标条件，令交叉相乘之差为零"
+        }
+      ],
+      "questionKey": "8a99df9e1241ac83bd6e6d355769891450038930bce741eaead0157c04989ba7",
+      "faceKey": "b8ba833e450c27ba77b1673fe3a01ce9dce4fe18edbb451dca42b71f8deb9219"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.line_circle_position",
+      "question": "过点 $A(4,1)$ 的圆 $C$ 与直线 $x-y=1$ 相切于点 $B(2,1)$，则圆 $C$ 的方程为",
+      "solution": "切线斜率为 $1$，半径 $CB$ 斜率为 $-1$，圆心在 $y=-x+3$ 上，设圆心 $(a,3-a)$；由 $|CA|=|CB|$ 解得 $a=3$，圆心 $(3,0)$，$r=\\sqrt{2}$，故圆为 $(x-3)^{2}+y^{2}=2$。",
+      "routes": [
+        {
+          "id": "r-center-line",
+          "summary": "由切线斜率定出半径所在直线，再用两点到圆心等距解出圆心与半径",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.line_circle_position",
+              "methodId": "M.hs_line_circle",
+              "state": "切线 $x-y=1$ 的斜率为 $1$，切点 $B(2,1)$",
+              "transformedState": "半径 $CB$ 的斜率为 $-1$，圆心在 $y=-x+3$ 上，记圆心 $(a,3-a)$",
+              "condition": "圆心在过切点且垂直于切线的直线上。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.line_circle_position",
+              "methodId": "M.hs_circle_equation",
+              "state": "$|CA|=|CB|$",
+              "transformedState": "$(4-a)^{2}+(a-2)^{2}=(2-a)^{2}+(a-2)^{2}$，得 $a=3$、圆心 $(3,0)$、$r=\\sqrt{2}$",
+              "condition": "$A$、$B$ 都在圆上，到圆心的距离都等于半径。"
+            }
+          ],
+          "reason": "垂直半径给出圆心的一个约束，等距给出第二个约束，两式联立直接定出圆。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-perp-bisector",
+          "summary": "先由 $A$、$B$ 在圆上得圆心在 $AB$ 的垂直平分线上，再用半径垂直于切线定位",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.line_circle_position",
+              "methodId": "M.hs_number_shape",
+              "state": "$A(4,1)$、$B(2,1)$，中点 $(3,1)$，$AB$ 水平",
+              "transformedState": "弦 $AB$ 的垂直平分线为 $x=3$，圆心横坐标为 $3$",
+              "condition": "圆上两点到圆心等距，圆心必在弦的垂直平分线上。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.line_circle_position",
+              "methodId": "M.hs_circle_equation",
+              "state": "圆心 $(3,b)$，$CB\\perp$ 切线",
+              "transformedState": "$b-1=-1\\times(3-2)=-1$，$b=0$，$r=|CB|=\\sqrt{2}$，圆 $(x-3)^{2}+y^{2}=2$",
+              "condition": "半径斜率为 $-1$ 且过切点 $B(2,1)$。"
+            }
+          ],
+          "reason": "垂直平分线把圆心限制为一条竖线，再用垂直半径求出纵坐标，几何意义清楚。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-tangent-point-center",
+          "summary": "把切点 $B$ 当作圆心，直接用 $A$ 到 $B$ 的距离作半径",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.line_circle_position",
+              "methodId": "M.hs_circle_equation",
+              "state": "误设圆心为 $B(2,1)$",
+              "transformedState": "$(x-2)^{2}+(y-1)^{2}=r^{2}$，代 $A(4,1)$ 得 $r^{2}=4$，误得 $(x-2)^{2}+(y-1)^{2}=4$",
+              "condition": "切点在圆上，不是圆心；圆心必须由垂直于切线的半径定出。"
+            }
+          ],
+          "reason": "该圆过 $A$ 也过 $B$，但 $B$ 处切线方向与所得圆不符，说明把切点当圆心的这一步失效。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x",
+        "y"
+      ],
+      "comparisonCriterion": "优先由切点处半径垂直于切线定出圆心所在直线，再用圆上两点等距求半径",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_I_Fill-in-the-Blank_2",
+        "trainingGoal": "由切点与圆上另一点确定圆心、半径和圆的方程",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2010 新课标卷 第15题",
+          "reference": "rainewhk/gaokao 2010新课标卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "圆心在过切点且垂直于切线的直线上",
+          "$A$、$B$ 都在圆上"
+        ],
+        "allowedVariations": [
+          "改变切点或圆上另一点的坐标",
+          "改求过切点的切线方程"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_Fill-in-the-Blank_2",
+          "text": "15. (5 分) 过点 $A(4,1)$ 的圆 $C$ 与直线 $x-y=1$ 相切于点 $B(2,1)$, 则圆 $C$ 的方程为\n",
+          "answer": "$(x-3)^{2}+y^{2}=2$\n",
+          "source": "rainewhk-gaokao / 2010\\新课标卷\\填空题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "直线与圆的位置关系（弦长与切线）",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "切线 $x-y=1$ 的斜率为 $1$，故半径 $CB$ 的斜率为 $-1$，圆心在过 $B$ 的直线 $y=-x+3$ 上，设圆心 $(a,3-a)$。$A$、$B$ 都在圆上，由 $|CA|=|CB|$ 得 $(4-a)^{2}+(a-2)^{2}=(2-a)^{2}+(a-2)^{2}$，即 $(4-a)^{2}=(2-a)^{2}$，解得 $a=3$，圆心 $(3,0)$，$r=|CB|=\\sqrt{(2-3)^{2}+(1-0)^{2}}=\\sqrt{2}$。故圆为 $(x-3)^{2}+y^{2}=2$，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_line_circle",
+        "M.hs_circle_equation"
+      ],
+      "applicableMethodIds": [
+        "M.hs_line_circle",
+        "M.hs_circle_equation",
+        "M.hs_number_shape"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.line_circle_position",
+          "methodId": "M.hs_line_circle"
+        },
+        {
+          "scenarioId": "S.hs_analytic.line_circle_position",
+          "methodId": "M.hs_circle_equation"
+        },
+        {
+          "scenarioId": "S.hs_analytic.line_circle_position",
+          "methodId": "M.hs_number_shape"
+        },
+        {
+          "scenarioId": "S.hs_analytic.line_circle_position",
+          "methodId": "M.hs_line_equation"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_line_circle",
+        "M.hs_circle_equation",
+        "M.hs_number_shape",
+        "M.hs_line_equation"
+      ],
+      "options": [
+        {
+          "id": "r-perp-bisector",
+          "name": "先由 $A$、$B$ 在圆上得圆心在 $AB$ 的垂直平分线上，再用半径垂直于切线定位"
+        },
+        {
+          "id": "r-tangent-point-center",
+          "name": "把切点 $B$ 当作圆心，直接用 $A$ 到 $B$ 的距离作半径"
+        },
+        {
+          "id": "r-center-line",
+          "name": "由切线斜率定出半径所在直线，再用两点到圆心等距解出圆心与半径"
+        }
+      ],
+      "questionKey": "1ccea7dbe89006475c93bff63ac5e38d9a4746398952d9ab2ae820e24b6930f1",
+      "faceKey": "2e0cda5234d9ed7e0b8c93e5b68a7911605406bb21951209214cf480142702dc"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.complex_calc",
+      "question": "复数 $\\frac{5i}{1-2i}=(\\quad)$\nA. $2-\\mathrm{i}$\nB. $1-2\\mathrm{i}$\nC. $-2+i$\nD. $-1+2i$",
+      "solution": "$\\frac{5i}{1-2i}=\\frac{5i(1+2i)}{(1-2i)(1+2i)}=\\frac{5i-10}{5}=-2+i$，选 C。",
+      "routes": [
+        {
+          "id": "r-rationalize",
+          "summary": "分子分母同乘分母的共轭 $1+2i$，把分母化为实数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$\\frac{5i}{1-2i}$",
+              "transformedState": "$\\frac{5i(1+2i)}{(1-2i)(1+2i)}=\\frac{5i(1+2i)}{5}$",
+              "condition": "分母 $1-2i$ 的共轭为 $1+2i$，$(1-2i)(1+2i)=1-4i^{2}=5$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$\\frac{5i+10i^{2}}{5}$",
+              "transformedState": "$\\frac{-10+5i}{5}=-2+i$，选 C",
+              "condition": "$i^{2}=-1$，实部与虚部分别除以 $5$。"
+            }
+          ],
+          "reason": "共轭有理化是复数除法的标准算法，分母化实后直接读出实部与虚部。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-reciprocal",
+          "summary": "先单独求分母的倒数，再乘以分子 $5i$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$\\frac{1}{1-2i}$",
+              "transformedState": "$\\frac{1+2i}{5}=\\frac{1}{5}+\\frac{2}{5}i$",
+              "condition": "倒数的分母同样用共轭有理化。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$5i\\left(\\frac{1}{5}+\\frac{2}{5}i\\right)$",
+              "transformedState": "$i+2i^{2}=-2+i$，选 C",
+              "condition": "分配律相乘后用 $i^{2}=-1$ 合并。"
+            }
+          ],
+          "reason": "把除法拆成“乘倒数”，与直接有理化等价，可作为验算路线。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-conjugate",
+          "summary": "误取共轭 $1-2i$ 做有理化，分母反而保留虚部",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "误用 $1-2i$ 同乘分子分母",
+              "transformedState": "$\\frac{5i(1-2i)}{1+4}=\\frac{10+5i}{5}=2+i$，与选项都不符",
+              "condition": "$1-2i$ 的共轭是 $1+2i$，取错共轭不能把分母化为实数。"
+            }
+          ],
+          "reason": "同乘 $1-2i$ 后分母仍含虚部，计算结果 $2+i$ 不在选项中，说明有理化因子取错。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "i"
+      ],
+      "comparisonCriterion": "优先用分母共轭做有理化，确认 $i^{2}=-1$ 后再合并实部虚部",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_II_MCQs_9",
+        "trainingGoal": "把复数的分母有理化并化简成 $a+bi$",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2011 新课标卷 第2题",
+          "reference": "rainewhk/gaokao 2011新课标卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_9"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "分母的共轭为 $1+2i$",
+          "$i^{2}=-1$"
+        ],
+        "allowedVariations": [
+          "改变分子系数或分母的一次项",
+          "改求该复数的模长"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_9",
+          "text": "2. (5 分) 复数 $\\frac{5 i}{1-2 i}=(\\quad)$\nA. $2-\\mathrm{i}$\nB. $1-2 \\mathrm{i}$\nC. $-2+i$\nD. $-1+2 i$\n",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2011\\新课标卷\\选择题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "复数运算与化简",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_II_MCQs_9",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "分母有理化：$\\frac{5i}{1-2i}=\\frac{5i(1+2i)}{(1-2i)(1+2i)}=\\frac{5i+10i^{2}}{1+4}=\\frac{-10+5i}{5}=-2+i$，与原答案 C 一致。回代检验：$(1-2i)(-2+i)=-2+i+4i-2i^{2}=-2+5i+2=5i$，成立。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_complex_calc"
+      ],
+      "applicableMethodIds": [
+        "M.hs_complex_calc"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_calc"
+        },
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_geometry"
+        },
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_trig"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_complex_calc",
+        "M.hs_complex_geometry",
+        "M.hs_complex_trig"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-conjugate",
+          "name": "误取共轭 $1-2i$ 做有理化，分母反而保留虚部"
+        },
+        {
+          "id": "r-rationalize",
+          "name": "分子分母同乘分母的共轭 $1+2i$，把分母化为实数"
+        },
+        {
+          "id": "r-reciprocal",
+          "name": "先单独求分母的倒数，再乘以分子 $5i$"
+        }
+      ],
+      "questionKey": "89f871ab2529f6306d0dfa33ab5cbcd79adde9a1d28324d1048dfe1b830649c2",
+      "faceKey": "4fab4b524ae9c08eace7eebf37075a1c624c9be056b50bb60028e82f3ce3642a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.hyperbola",
+      "question": "设双曲线 $C: \\frac{x^{2}}{a^{2}}-\\frac{y^{2}}{b^{2}}=1$（$a>0$，$b>0$）的左、右焦点分别为 $F_{1}$，$F_{2}$，离心率为 $\\sqrt{5}$。$P$ 是 $C$ 上一点，且 $F_{1}P\\perp F_{2}P$。若 $\\triangle PF_{1}F_{2}$ 的面积为 $4$，则 $a=(\\quad)$\nA. $1$\nB. $2$\nC. $4$\nD. $8$",
+      "solution": "由 $e=\\sqrt{5}$ 得 $c=\\sqrt{5}a$、$b^{2}=4a^{2}$。设 $m=|PF_{1}|$、$n=|PF_{2}|$，则 $mn=8$、$m^{2}+n^{2}=4c^{2}=20a^{2}$；由 $|m-n|=2a$ 得 $4a^{2}=20a^{2}-16$，解得 $a=1$，选 A。",
+      "routes": [
+        {
+          "id": "r-definition",
+          "summary": "用离心率换算出 $c$ 与 $b$，再用焦点三角形面积与双曲线定义联立求 $a$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_hyperbola",
+              "state": "$e=\\frac{c}{a}=\\sqrt{5}$",
+              "transformedState": "$c=\\sqrt{5}a$，$b^{2}=c^{2}-a^{2}=4a^{2}$",
+              "condition": "双曲线中 $c^{2}=a^{2}+b^{2}$，离心率 $e=\\frac{c}{a}$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "$S_{\\triangle PF_{1}F_{2}}=4$ 且 $F_{1}P\\perp F_{2}P$",
+              "transformedState": "$\\frac{1}{2}mn=4$，即 $mn=8$；$m^{2}+n^{2}=|F_{1}F_{2}|^{2}=4c^{2}=20a^{2}$",
+              "condition": "直角三角形的两条直角边是焦半径，斜边为 $|F_{1}F_{2}|=2c$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "$|m-n|=2a$（双曲线定义）",
+              "transformedState": "$4a^{2}=20a^{2}-16$，$a^{2}=1$，$a=1$",
+              "condition": "平方后代入 $m^{2}+n^{2}$ 与 $mn$，并取 $a>0$。"
+            }
+          ],
+          "reason": "离心率、面积、定义三条信息各用一个等式，联立后只剩 $a$，是最短的代数路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-coordinate",
+          "summary": "设 $P$ 的坐标，由两焦半径垂直与双曲线方程联立消元，再用面积定 $a$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_hyperbola",
+              "state": "设 $P(x_{0},y_{0})$，$F_{1}(-c,0)$、$F_{2}(c,0)$",
+              "transformedState": "$F_{1}P\\perp F_{2}P$ 给 $(x_{0}+c)(x_{0}-c)+y_{0}^{2}=0$，即 $x_{0}^{2}+y_{0}^{2}=c^{2}=5a^{2}$",
+              "condition": "两条焦半径对应向量的数量积为 $0$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_hyperbola",
+              "state": "联立 $\\frac{x_{0}^{2}}{a^{2}}-\\frac{y_{0}^{2}}{b^{2}}=1$ 与 $x_{0}^{2}+y_{0}^{2}=5a^{2}$",
+              "transformedState": "代入 $b^{2}=4a^{2}$ 消去 $x_{0}^{2}$，得 $5y_{0}^{2}=16a^{2}$，$y_{0}^{2}=\\frac{16a^{2}}{5}$",
+              "condition": "两条方程都是 $x_{0}^{2}$、$y_{0}^{2}$ 的一次式，直接消元即可。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_hyperbola",
+              "state": "$S=\\frac{1}{2}|F_{1}F_{2}|\\cdot|y_{0}|=c|y_{0}|=4$",
+              "transformedState": "$y_{0}^{2}=\\frac{16}{c^{2}}=\\frac{16}{5a^{2}}$，与 $\\frac{16a^{2}}{5}$ 比较得 $a^{4}=1$，$a=1$",
+              "condition": "底边为 $2c$，高为 $P$ 到 $x$ 轴的距离 $|y_{0}|$。"
+            }
+          ],
+          "reason": "坐标法把垂直条件与双曲线方程直接联立，不需要记住焦半径的和差式，结论与定义法一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-area-half",
+          "summary": "算焦点三角形面积时漏掉 $\\frac{1}{2}$，把 $mn$ 直接当作面积",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "面积记为 $mn=4$",
+              "transformedState": "由 $(m-n)^{2}=m^{2}+n^{2}-2mn$ 得 $4a^{2}=20a^{2}-8$，$a^{2}=\\frac{1}{2}$",
+              "condition": "直角三角形面积是 $\\frac{1}{2}mn$，不能省略 $\\frac{1}{2}$。"
+            }
+          ],
+          "reason": "漏乘 $\\frac{1}{2}$ 使 $mn$ 缩小一半，得到的 $a^{2}=\\frac{1}{2}$ 不在任何选项内。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "b"
+      ],
+      "comparisonCriterion": "优先用离心率与双曲线定义把焦半径化为 $a$ 的等式，注意焦点三角形面积要乘 $\\frac{1}{2}$",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_I_MCQs_163",
+        "trainingGoal": "综合离心率、焦半径垂直与焦点三角形面积求实半轴长",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2020 全国三卷 第11题",
+          "reference": "rainewhk/gaokao 2020全国三卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_163"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "离心率 $e=\\sqrt{5}$",
+          "$F_{1}P\\perp F_{2}P$，焦点三角形面积为 $4$"
+        ],
+        "allowedVariations": [
+          "改变离心率",
+          "改变焦点三角形的面积或直角所在顶点"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_163",
+          "text": "11. 设双曲线 $C: \\frac{x^{2}}{a^{2}}-\\frac{y^{2}}{b^{2}}=1 \\quad(a>0, b>0)$ 的左、右焦点分别为 $F_{1}, F_{2}$, 离心率为 $\\sqrt{5} . P$ 是 $C$ 上一点, 且 $F_{1} P \\perp F_{2} P$. 若 $\\triangle P F_{1} F_{2}$ 的面积为 4 , 则 $a=(\\quad)$\nA. 1\nB. 2\nC. 4\nD. 8\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2020\\全国三卷\\选择题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "双曲线的定义、渐近线与离心率",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_I_MCQs_163",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "由 $e=\\frac{c}{a}=\\sqrt{5}$ 得 $c=\\sqrt{5}a$，$b^{2}=c^{2}-a^{2}=4a^{2}$。设 $m=|PF_{1}|$、$n=|PF_{2}|$。$F_{1}P\\perp F_{2}P$ 使 $\\triangle PF_{1}F_{2}$ 为直角三角形，斜边 $|F_{1}F_{2}|=2c$，故 $m^{2}+n^{2}=4c^{2}=20a^{2}$；面积 $=4$ 给出 $\\frac{1}{2}mn=4$，即 $mn=8$。又由定义 $|m-n|=2a$，平方得 $4a^{2}=m^{2}+n^{2}-2mn=20a^{2}-16$，解得 $a^{2}=1$，$a=1$，与原答案 A 一致。坐标法复核：设 $P(x_{0},y_{0})$，垂直条件给 $x_{0}^{2}+y_{0}^{2}=5a^{2}$，联立双曲线方程消元得 $y_{0}^{2}=\\frac{16a^{2}}{5}$，再由 $S=c|y_{0}|=4$ 得 $y_{0}^{2}=\\frac{16}{5a^{2}}$，两式比较仍得 $a=1$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_hyperbola",
+        "M.hs_conic_def"
+      ],
+      "applicableMethodIds": [
+        "M.hs_hyperbola",
+        "M.hs_conic_def"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.hyperbola",
+          "methodId": "M.hs_hyperbola"
+        },
+        {
+          "scenarioId": "S.hs_analytic.hyperbola",
+          "methodId": "M.hs_conic_def"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_hyperbola",
+        "M.hs_conic_def"
+      ],
+      "options": [
+        {
+          "id": "r-definition",
+          "name": "用离心率换算出 $c$ 与 $b$，再用焦点三角形面积与双曲线定义联立求 $a$"
+        },
+        {
+          "id": "r-coordinate",
+          "name": "设 $P$ 的坐标，由两焦半径垂直与双曲线方程联立消元，再用面积定 $a$"
+        },
+        {
+          "id": "r-area-half",
+          "name": "算焦点三角形面积时漏掉 $\\frac{1}{2}$，把 $mn$ 直接当作面积"
+        }
+      ],
+      "questionKey": "60ebd912995c8d8c8f101715e929f9d69870fbcc6aced95322f67984a6cf48f5",
+      "faceKey": "d35c6c3a39b5d9b3639282956ea5f013cdd5d880fb9710b133ce53a9a02918e6"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.vector_parallel_perp",
+      "question": "已知向量 $\\vec{a}=(1,2)$，$\\vec{b}=(2,-2)$，$\\vec{c}=(1,\\lambda)$。若 $\\vec{c}\\parallel(2\\vec{a}+\\vec{b})$，则 $\\lambda=$",
+      "solution": "$2\\vec{a}+\\vec{b}=(4,2)$；由 $\\vec{c}\\parallel(2\\vec{a}+\\vec{b})$ 得 $\\frac{1}{4}=\\frac{\\lambda}{2}$，故 $\\lambda=\\frac{1}{2}$。",
+      "routes": [
+        {
+          "id": "r-proportional",
+          "summary": "先算 $2\\vec{a}+\\vec{b}$，再用平行向量的坐标成比例求 $\\lambda$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_calc",
+              "state": "$2\\vec{a}+\\vec{b}$",
+              "transformedState": "$2(1,2)+(2,-2)=(4,2)$",
+              "condition": "向量的数乘与加法按坐标逐分量进行。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "$\\vec{c}=(1,\\lambda)$ 与 $(4,2)$ 平行",
+              "transformedState": "$\\frac{1}{4}=\\frac{\\lambda}{2}$，$\\lambda=\\frac{1}{2}$",
+              "condition": "平行的两向量坐标成比例，且首坐标 $1\\neq0$，比例式有意义。"
+            }
+          ],
+          "reason": "先合成向量再列比例式，两步完成，计算量最小。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-cross",
+          "summary": "直接用平行条件的交叉相乘 $x_{1}y_{2}-x_{2}y_{1}=0$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_calc",
+              "state": "$2\\vec{a}+\\vec{b}=(4,2)$，$\\vec{c}=(1,\\lambda)$",
+              "transformedState": "$1\\times2-4\\lambda=0$",
+              "condition": "把两个向量的坐标代入交叉相乘式。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "$2-4\\lambda=0$",
+              "transformedState": "$\\lambda=\\frac{1}{2}$",
+              "condition": "平行充要条件成立即得唯一参数值。"
+            }
+          ],
+          "reason": "交叉相乘不必讨论分母，结论与比例法一致，是更稳妥的表达。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-perp-condition",
+          "summary": "把平行误当成垂直，令 $\\vec{c}$ 与 $2\\vec{a}+\\vec{b}$ 的数量积为零",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "误用 $\\vec{c}\\cdot(2\\vec{a}+\\vec{b})=0$",
+              "transformedState": "$1\\times4+2\\lambda=0$，$\\lambda=-2$",
+              "condition": "本题条件是平行，不是垂直。"
+            }
+          ],
+          "reason": "平行用坐标成比例，垂直才用数量积为零；$\\lambda=-2$ 与平行条件矛盾。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "b",
+        "c"
+      ],
+      "comparisonCriterion": "优先用平行条件的坐标交叉相乘，避免把平行与垂直的数量积条件混用",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_II_Fill-in-the-Blank_56",
+        "trainingGoal": "用坐标运算与平行条件求参数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2018 全国卷 第13题",
+          "reference": "rainewhk/gaokao 2018全国卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_56"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$2\\vec{a}+\\vec{b}=(4,2)$",
+          "平行判定用坐标交叉相乘"
+        ],
+        "allowedVariations": [
+          "改变 $\\vec{a}$、$\\vec{b}$ 的坐标",
+          "把条件改为垂直并改求参数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_Fill-in-the-Blank_56",
+          "text": "13. (5 分) 已知向量 $\\vec{a}=(1,2), \\vec{b}=(2,-2), \\vec{c}=(1, \\lambda)$. 若 $\\vec{c} / /(2 \\vec{a}+\\vec{b})$, 则 $\\lambda=$\n",
+          "answer": "$\\frac{1}{2}$.\n",
+          "source": "rainewhk-gaokao / 2018\\全国卷\\填空题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "共线与垂直的判定",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_II_Fill-in-the-Blank_56",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "先算 $2\\vec{a}+\\vec{b}=2(1,2)+(2,-2)=(4,2)$。$\\vec{c}=(1,\\lambda)$ 与之平行，由坐标成比例 $\\frac{1}{4}=\\frac{\\lambda}{2}$ 得 $\\lambda=\\frac{1}{2}$；用交叉相乘 $1\\times2-4\\lambda=0$ 复核也得到 $\\lambda=\\frac{1}{2}$，与原答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_vector_calc",
+        "M.hs_vector_relation"
+      ],
+      "applicableMethodIds": [
+        "M.hs_vector_calc",
+        "M.hs_vector_relation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_vector_relation"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_vector_calc"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_dot_product"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_vector_relation",
+        "M.hs_vector_calc",
+        "M.hs_dot_product"
+      ],
+      "options": [
+        {
+          "id": "r-proportional",
+          "name": "先算 $2\\vec{a}+\\vec{b}$，再用平行向量的坐标成比例求 $\\lambda$"
+        },
+        {
+          "id": "r-cross",
+          "name": "直接用平行条件的交叉相乘 $x_{1}y_{2}-x_{2}y_{1}=0$"
+        },
+        {
+          "id": "r-perp-condition",
+          "name": "把平行误当成垂直，令 $\\vec{c}$ 与 $2\\vec{a}+\\vec{b}$ 的数量积为零"
+        }
+      ],
+      "questionKey": "54f30e6bea2688469ab0a528da42cbc8e4905dc0f7fe452fbe172d367e18f732",
+      "faceKey": "b8e9489c0235c1b86da56e058e5c18c5cf781789136e39eb1025f5020ad96cc4"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.complex_calc",
+      "question": "$(1+i)(2+i)=(\\quad)$\nA. $1-\\mathrm{i}$\nB. $1+3i$\nC. $3+i$\nD. $3+3i$",
+      "solution": "$(1+i)(2+i)=2+i+2i+i^{2}=2+3i-1=1+3i$，选 B。",
+      "routes": [
+        {
+          "id": "r-expand",
+          "summary": "按多项式乘法逐项展开，再用 $i^{2}=-1$ 合并",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$(1+i)(2+i)$",
+              "transformedState": "$2+i+2i+i^{2}$",
+              "condition": "两个因式逐项相乘，四项都要保留。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$2+i+2i+i^{2}$",
+              "transformedState": "$i^{2}=-1$，合并得 $1+3i$，选 B",
+              "condition": "实部与实部、虚部与虚部分别合并。"
+            }
+          ],
+          "reason": "标准的多项式展开，步骤少且不易漏项。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-distribute",
+          "summary": "把第二个因式拆成 $2+i$ 两部分，分别乘第一个因式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$(1+i)\\cdot2+(1+i)\\cdot i$",
+              "transformedState": "$2+2i+i+i^{2}$",
+              "condition": "分配律把乘积拆成两组。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$2+3i-1$",
+              "transformedState": "$1+3i$，选 B",
+              "condition": "$i\\cdot i=i^{2}=-1$。"
+            }
+          ],
+          "reason": "分拆后每一项都是简单乘积，结论与整体展开一致，可作验算。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-i2-positive",
+          "summary": "把 $i^{2}$ 当作 $1$，展开后误得 $3+3i$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.complex_calc",
+              "methodId": "M.hs_complex_calc",
+              "state": "$2+i+2i+i^{2}$",
+              "transformedState": "误取 $i^{2}=1$，得 $3+3i$，误选 D",
+              "condition": "$i^{2}=-1$，不能当作 $1$。"
+            }
+          ],
+          "reason": "$i^{2}$ 记为 $1$ 会凭空多出常数 $2$，正确结果应为 $1+3i$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "i"
+      ],
+      "comparisonCriterion": "优先按分配律逐项展开并及时用 $i^{2}=-1$ 合并，避免把 $i^{2}$ 记成 $1$",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_II_MCQs_92",
+        "trainingGoal": "按分配律展开两个复数的乘积并化简",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2017 全国卷 第2题",
+          "reference": "rainewhk/gaokao 2017全国卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_92"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$i^{2}=-1$",
+          "乘积展开时四项都不能漏"
+        ],
+        "allowedVariations": [
+          "改变两个因式的常数项",
+          "改求两个复数的商"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_92",
+          "text": "2. $(5$ 分 $)(1+i)(2+i)=(\\quad)$\nA. $1-\\mathrm{i}$\nB. $1+3 i$\nC. $3+i$\nD. $3+3 i$\n",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2017\\全国卷\\选择题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "复数运算与化简",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_II_MCQs_92",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "按分配律逐项相乘：$(1+i)(2+i)=2+i+2i+i^{2}$；由 $i^{2}=-1$ 得 $2+3i-1=1+3i$，与原答案 B 一致。核对四个选项：只有 $1+3i$ 的实部为 $1$、虚部为 $3$，A、C、D 的实部或虚部都不相同。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_complex_calc"
+      ],
+      "applicableMethodIds": [
+        "M.hs_complex_calc"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_calc"
+        },
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_geometry"
+        },
+        {
+          "scenarioId": "S.hs_analytic.complex_calc",
+          "methodId": "M.hs_complex_trig"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_complex_calc",
+        "M.hs_complex_geometry",
+        "M.hs_complex_trig"
+      ],
+      "options": [
+        {
+          "id": "r-expand",
+          "name": "按多项式乘法逐项展开，再用 $i^{2}=-1$ 合并"
+        },
+        {
+          "id": "r-distribute",
+          "name": "把第二个因式拆成 $2+i$ 两部分，分别乘第一个因式"
+        },
+        {
+          "id": "r-i2-positive",
+          "name": "把 $i^{2}$ 当作 $1$，展开后误得 $3+3i$"
+        }
+      ],
+      "questionKey": "9021e43def246692765822be76e2425793ba6522af0e3c21a5abbe7131ee7d42",
+      "faceKey": "7a67ac9a65e5e29ecb0c7a79340a81c312d281472deb9bbb36217bf3bee0e065"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.hyperbola",
+      "question": "已知 $F_{1}, F_{2}$ 是双曲线 $C$ 的两个焦点，$P$ 为 $C$ 上一点，且 $\\angle F_{1}PF_{2}=60^{\\circ}$，$|PF_{1}|=3|PF_{2}|$，则 $C$ 的离心率为\nA. $\\frac{\\sqrt{7}}{2}$\nB. $\\frac{\\sqrt{13}}{2}$\nC. $\\sqrt{7}$\nD. $\\sqrt{13}$",
+      "solution": "由 $|PF_{1}|-|PF_{2}|=2a$ 与 $|PF_{1}|=3|PF_{2}|$ 得 $|PF_{2}|=a$、$|PF_{1}|=3a$；由余弦定理 $4c^{2}=9a^{2}+a^{2}-6a^{2}\\cdot\\frac{1}{2}=7a^{2}$，故 $e=\\frac{c}{a}=\\frac{\\sqrt{7}}{2}$，选 A。",
+      "routes": [
+        {
+          "id": "r-definition-cosine",
+          "summary": "用双曲线定义把两条焦半径化为 $a$，再用余弦定理求 $c$ 与 $a$ 的比",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "$|PF_{1}|=3|PF_{2}|$ 且 $|PF_{1}|-|PF_{2}|=2a$",
+              "transformedState": "$2|PF_{2}|=2a$，$|PF_{2}|=a$、$|PF_{1}|=3a$",
+              "condition": "$P$ 在双曲线上，两条焦半径之差为 $2a$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "$\\triangle PF_{1}F_{2}$ 中 $|F_{1}F_{2}|=2c$，$\\angle F_{1}PF_{2}=60^{\\circ}$",
+              "transformedState": "$4c^{2}=9a^{2}+a^{2}-2\\cdot3a\\cdot a\\cdot\\frac{1}{2}=7a^{2}$",
+              "condition": "余弦定理：斜边平方等于两腰平方和减两倍乘积乘夹角余弦。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_hyperbola",
+              "state": "$4c^{2}=7a^{2}$",
+              "transformedState": "$e^{2}=\\frac{7}{4}$，$e=\\frac{\\sqrt{7}}{2}$，选 A",
+              "condition": "离心率定义为 $e=\\frac{c}{a}$，双曲线中 $e>1$，取正根。"
+            }
+          ],
+          "reason": "定义把 $|PF_{2}|$ 与 $a$ 对齐，余弦定理直接给出 $c/a$，两条主线最短。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-ratio",
+          "summary": "先设 $|PF_{2}|=t$ 用余弦定理得 $c$ 与 $t$ 的关系，再由定义把 $t$ 换成 $a$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "设 $|PF_{2}|=t$、$|PF_{1}|=3t$",
+              "transformedState": "$3t-t=2a$，即 $a=t$",
+              "condition": "定义给出 $|PF_{1}|-|PF_{2}|=2a$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "$\\triangle PF_{1}F_{2}$ 中夹角 $60^{\\circ}$",
+              "transformedState": "$4c^{2}=9t^{2}+t^{2}-6t^{2}\\cdot\\frac{1}{2}=7t^{2}$，$c=\\frac{\\sqrt{7}}{2}t$",
+              "condition": "余弦定理两次交叉项为 $2\\cdot3t\\cdot t\\cdot\\frac{1}{2}=3t^{2}$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_hyperbola",
+              "state": "$e=\\frac{c}{a}$，且 $a=t$",
+              "transformedState": "$e=\\frac{\\frac{\\sqrt{7}}{2}t}{t}=\\frac{\\sqrt{7}}{2}$",
+              "condition": "$c$ 与 $a$ 用同一参数表示后，比值与 $t$ 无关。"
+            }
+          ],
+          "reason": "用参数 $t$ 推迟把焦半径换成 $a$，代数形式更统一，结论与定义法相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-ellipse-definition",
+          "summary": "把双曲线定义误用成椭圆的 $|PF_{1}|+|PF_{2}|=2a$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.hyperbola",
+              "methodId": "M.hs_conic_def",
+              "state": "$|PF_{1}|+|PF_{2}|=2a$，即 $4t=2a$",
+              "transformedState": "$t=\\frac{a}{2}$，代入 $4c^{2}=7t^{2}$ 得 $c^{2}=\\frac{7a^{2}}{16}$，$e=\\frac{\\sqrt{7}}{4}$",
+              "condition": "双曲线的焦半径关系是差的绝对值，和式属于椭圆定义。"
+            }
+          ],
+          "reason": "定义用错使 $a$ 与 $t$ 的换算错位，所得 $\\frac{\\sqrt{7}}{4}$ 不在选项中。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "c"
+      ],
+      "comparisonCriterion": "优先用双曲线定义把两条焦半径化为 $a$ 的倍数，再用余弦定理求 $e=\\frac{c}{a}$",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_I_MCQs_186",
+        "trainingGoal": "用双曲线定义与余弦定理求离心率",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2021 全国甲卷 第5题",
+          "reference": "rainewhk/gaokao 2021全国甲卷/选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_186"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$|PF_{1}|=3|PF_{2}|$",
+          "$\\angle F_{1}PF_{2}=60^{\\circ}$"
+        ],
+        "allowedVariations": [
+          "改变两条焦半径的比例",
+          "改变焦点三角形的夹角"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_186",
+          "text": "5. 已知 $F_{1}, F_{2}$ 是双曲线 $C$ 的两个焦点, $P$ 为 $C$ 上一点, 且 $\\angle F_{1} P F_{2}=60^{\\circ},\\left|P F_{1}\\right|=3\\left|P F_{2}\\right|$, 则 $C$ 的离心率为\nA. $\\frac{\\sqrt{7}}{2}$\nB. $\\frac{\\sqrt{13}}{2}$\nC. $\\sqrt{7}$\nD. $\\sqrt{13}$\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2021\\全国甲卷\\选择题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "双曲线的定义、渐近线与离心率",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_I_MCQs_186",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "由双曲线定义 $|PF_{1}|-|PF_{2}|=2a$，结合 $|PF_{1}|=3|PF_{2}|$ 得 $2|PF_{2}|=2a$，即 $|PF_{2}|=a$、$|PF_{1}|=3a$。在 $\\triangle PF_{1}F_{2}$ 中 $|F_{1}F_{2}|=2c$，由余弦定理 $4c^{2}=9a^{2}+a^{2}-2\\times3a\\times a\\times\\cos60^{\\circ}=10a^{2}-3a^{2}=7a^{2}$，故 $e^{2}=\\frac{c^{2}}{a^{2}}=\\frac{7}{4}$，$e=\\frac{\\sqrt{7}}{2}$，与原答案 A 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_conic_def",
+        "M.hs_hyperbola"
+      ],
+      "applicableMethodIds": [
+        "M.hs_conic_def",
+        "M.hs_hyperbola"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.hyperbola",
+          "methodId": "M.hs_hyperbola"
+        },
+        {
+          "scenarioId": "S.hs_analytic.hyperbola",
+          "methodId": "M.hs_conic_def"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_hyperbola",
+        "M.hs_conic_def"
+      ],
+      "options": [
+        {
+          "id": "r-definition-cosine",
+          "name": "用双曲线定义把两条焦半径化为 $a$，再用余弦定理求 $c$ 与 $a$ 的比"
+        },
+        {
+          "id": "r-ratio",
+          "name": "先设 $|PF_{2}|=t$ 用余弦定理得 $c$ 与 $t$ 的关系，再由定义把 $t$ 换成 $a$"
+        },
+        {
+          "id": "r-ellipse-definition",
+          "name": "把双曲线定义误用成椭圆的 $|PF_{1}|+|PF_{2}|=2a$"
+        }
+      ],
+      "questionKey": "039dc297b2a596d44c49d91b195902cbbd4d194f814519ca6f2b6a8247ba19c9",
+      "faceKey": "332cb96c56e929e3fe07b156c666038c068f3af142527255e68368ad1b0e9b8a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.vector_product",
+      "question": "已知两个单位向量 $\\vec{a}, \\vec{b}$ 的夹角为 $60^{\\circ}$，$\\vec{c}=t\\vec{a}+(1-t)\\vec{b}$。若 $\\vec{b}\\cdot\\vec{c}=0$，则 $t=$",
+      "solution": "$\\vec{b}\\cdot\\vec{c}=t\\vec{a}\\cdot\\vec{b}+(1-t)\\vec{b}^{2}=\\frac{t}{2}+1-t=0$，解得 $t=2$。",
+      "routes": [
+        {
+          "id": "r-dot-expand",
+          "summary": "先算 $\\vec{a}\\cdot\\vec{b}$ 与 $\\vec{b}^{2}$，再把 $\\vec{b}\\cdot\\vec{c}$ 按分配律展开",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_dot_product",
+              "state": "$\\vec{a}\\cdot\\vec{b}$ 与 $\\vec{b}^{2}$",
+              "transformedState": "$\\vec{a}\\cdot\\vec{b}=1\\times1\\times\\frac{1}{2}=\\frac{1}{2}$，$\\vec{b}^{2}=1$",
+              "condition": "$\\vec{a}$、$\\vec{b}$ 都是单位向量，夹角 $60^{\\circ}$。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_dot_product",
+              "state": "$\\vec{b}\\cdot\\vec{c}=t\\vec{a}\\cdot\\vec{b}+(1-t)\\vec{b}^{2}$",
+              "transformedState": "$\\frac{t}{2}+1-t=1-\\frac{t}{2}=0$，$t=2$",
+              "condition": "数量积对加法满足分配律，逐项代入后解一元一次方程。"
+            }
+          ],
+          "reason": "分配到两个已知数量积上，方程只含 $t$，是最直接的算法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-coordinate",
+          "summary": "取 $\\vec{b}=(1,0)$ 把向量坐标化，用坐标点积列方程",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_vector_calc",
+              "state": "取 $\\vec{b}=(1,0)$",
+              "transformedState": "$\\vec{a}=\\left(\\frac{1}{2},\\frac{\\sqrt{3}}{2}\\right)$",
+              "condition": "两向量都是单位向量且夹角 $60^{\\circ}$，可自由选取坐标系。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_vector_calc",
+              "state": "$\\vec{c}=t\\vec{a}+(1-t)\\vec{b}$",
+              "transformedState": "$\\left(1-\\frac{t}{2},\\frac{\\sqrt{3}t}{2}\\right)$",
+              "condition": "按坐标的数乘与加法合并。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_dot_product",
+              "state": "$\\vec{b}\\cdot\\vec{c}$，$\\vec{b}=(1,0)$",
+              "transformedState": "$1\\times\\left(1-\\frac{t}{2}\\right)+0=0$，$t=2$",
+              "condition": "与 $(1,0)$ 作点积只取第一分量。"
+            }
+          ],
+          "reason": "坐标法把向量条件化为一个分量方程，结论与分配律法一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-cos-negative",
+          "summary": "把 $60^{\\circ}$ 的余弦误取为 $-\\frac{1}{2}$，解得错误的 $t$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_product",
+              "methodId": "M.hs_dot_product",
+              "state": "误用 $\\vec{a}\\cdot\\vec{b}=-\\frac{1}{2}$",
+              "transformedState": "$-\\frac{t}{2}+1-t=0$，$t=\\frac{2}{3}$",
+              "condition": "夹角 $60^{\\circ}$ 的余弦是 $\\frac{1}{2}$，不是 $-\\frac{1}{2}$。"
+            }
+          ],
+          "reason": "余弦取负使两项同号相加，得到的 $t=\\frac{2}{3}$ 回代后点积不为零。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "t",
+        "a",
+        "b"
+      ],
+      "comparisonCriterion": "优先把 $\\vec{b}\\cdot\\vec{c}$ 分配到 $\\vec{a}\\cdot\\vec{b}$ 与 $\\vec{b}^{2}$，注意 $60^{\\circ}$ 的余弦为正",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_I_Fill-in-the-Blank_8",
+        "trainingGoal": "用数量积分配律把含参向量条件化为方程",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2013 全国卷 第13题",
+          "reference": "rainewhk/gaokao 2013全国卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_8"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\vec{a}$、$\\vec{b}$ 均为单位向量，夹角 $60^{\\circ}$",
+          "$\\vec{b}\\cdot\\vec{c}=0$"
+        ],
+        "allowedVariations": [
+          "改变两向量的夹角",
+          "改变 $\\vec{c}$ 的线性组合系数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_Fill-in-the-Blank_8",
+          "text": "13. (5 分) 已知两个单位向量 $\\vec{a}, \\vec{b}$ 的夹角为 $60^{\\circ}, \\vec{c}=t \\vec{a}+(1-t) \\vec{b}$. 若 $\\vec{b} \\cdot \\vec{c}=0$, 则 $t=$\n",
+          "answer": "2\n",
+          "source": "rainewhk-gaokao / 2013\\全国卷\\填空题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "数量积、夹角与投影",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_8",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "单位向量满足 $\\vec{a}\\cdot\\vec{b}=1\\times1\\times\\cos60^{\\circ}=\\frac{1}{2}$、$\\vec{b}^{2}=1$。由 $\\vec{b}\\cdot\\vec{c}=0$ 得 $t\\vec{a}\\cdot\\vec{b}+(1-t)\\vec{b}^{2}=0$，即 $\\frac{t}{2}+1-t=1-\\frac{t}{2}=0$，解得 $t=2$，与原答案一致。回代 $\\vec{c}=2\\vec{a}-\\vec{b}$，$\\vec{b}\\cdot\\vec{c}=2\\times\\frac{1}{2}-1=0$，成立。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_dot_product"
+      ],
+      "applicableMethodIds": [
+        "M.hs_dot_product",
+        "M.hs_vector_calc"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.vector_product",
+          "methodId": "M.hs_dot_product"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_product",
+          "methodId": "M.hs_vector_relation"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_product",
+          "methodId": "M.hs_vector_calc"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_dot_product",
+        "M.hs_vector_relation",
+        "M.hs_vector_calc"
+      ],
+      "options": [
+        {
+          "id": "r-dot-expand",
+          "name": "先算 $\\vec{a}\\cdot\\vec{b}$ 与 $\\vec{b}^{2}$，再把 $\\vec{b}\\cdot\\vec{c}$ 按分配律展开"
+        },
+        {
+          "id": "r-coordinate",
+          "name": "取 $\\vec{b}=(1,0)$ 把向量坐标化，用坐标点积列方程"
+        },
+        {
+          "id": "r-cos-negative",
+          "name": "把 $60^{\\circ}$ 的余弦误取为 $-\\frac{1}{2}$，解得错误的 $t$"
+        }
+      ],
+      "questionKey": "db07563a218519486e1ef6e51abac6035d5d8ca0173bbe018570f4a715d9c22a",
+      "faceKey": "feec38fd2325589b3c3f18d63748b7b2979bb17649ac1b1a5649da567108aed9"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_analytic.vector_parallel_perp",
+      "question": "已知向量 $\\vec{a}=(3,1)$，$\\vec{b}=(1,0)$，$\\vec{c}=\\vec{a}+k\\vec{b}$。若 $\\vec{a}\\perp\\vec{c}$，则 $k=$",
+      "solution": "$\\vec{c}=(3+k,1)$；由 $\\vec{a}\\perp\\vec{c}$ 得 $3(3+k)+1=0$，即 $3k+10=0$，$k=-\\frac{10}{3}$。",
+      "routes": [
+        {
+          "id": "r-dot-zero",
+          "summary": "先写出 $\\vec{c}$ 的坐标，再令 $\\vec{a}\\cdot\\vec{c}=0$ 求 $k$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_calc",
+              "state": "$\\vec{c}=\\vec{a}+k\\vec{b}$",
+              "transformedState": "$\\vec{c}=(3+k,1)$",
+              "condition": "$k\\vec{b}=k(1,0)=(k,0)$，与 $\\vec{a}$ 逐分量相加。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_dot_product",
+              "state": "$\\vec{a}\\perp\\vec{c}$",
+              "transformedState": "$\\vec{a}\\cdot\\vec{c}=3(3+k)+1=10+3k=0$，$k=-\\frac{10}{3}$",
+              "condition": "垂直的充要条件是数量积为 $0$。"
+            }
+          ],
+          "reason": "坐标合成与点积列方程两步完成，是最标准的解法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-slope",
+          "summary": "用两条向量方向的斜率乘积为 $-1$ 表示垂直",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "$\\vec{a}$ 的方向斜率为 $\\frac{1}{3}$，$\\vec{c}=(3+k,1)$ 的斜率为 $\\frac{1}{3+k}$",
+              "transformedState": "$\\frac{1}{3}\\cdot\\frac{1}{3+k}=-1$，即 $3+k=-\\frac{1}{3}$",
+              "condition": "需先排除 $3+k=0$：此时 $\\vec{c}=(0,1)$，与 $\\vec{a}$ 的数量积为 $1$，并不垂直。"
+            },
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_calc",
+              "state": "$3+k=-\\frac{1}{3}$",
+              "transformedState": "$k=-\\frac{10}{3}$",
+              "condition": "移项求解。"
+            }
+          ],
+          "reason": "斜率乘积 $-1$ 与数量积为零等价，结论一致，但要额外讨论竖直方向。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-parallel",
+          "summary": "误用平行的交叉相乘条件，得到 $k=0$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_analytic.vector_parallel_perp",
+              "methodId": "M.hs_vector_relation",
+              "state": "误列 $3\\times1-1\\times(3+k)=0$",
+              "transformedState": "$3-3-k=0$，$k=0$，误答 $0$",
+              "condition": "交叉相减为零是平行条件；本题给的是垂直。"
+            }
+          ],
+          "reason": "把平行条件当作垂直条件，$k=0$ 时 $\\vec{c}=(3,1)=\\vec{a}$ 与 $\\vec{a}$ 平行，并不垂直。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "k",
+        "a",
+        "b",
+        "c"
+      ],
+      "comparisonCriterion": "优先写出 $\\vec{c}$ 的坐标并用数量积为零判定垂直，避免与平行条件混用",
+      "metadata": {
+        "motherId": "candidate.bankhs54.rw:2010-2022_Math_I_Fill-in-the-Blank_71",
+        "trainingGoal": "由垂直条件列数量积方程求参数 $k$",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2021 全国甲卷 第14题",
+          "reference": "rainewhk/gaokao 2021全国甲卷/填空题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_71"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\vec{a}=(3,1)$，$\\vec{b}=(1,0)$",
+          "$\\vec{a}\\perp\\vec{c}$ 等价于 $\\vec{a}\\cdot\\vec{c}=0$"
+        ],
+        "allowedVariations": [
+          "改变 $\\vec{b}$ 的坐标",
+          "把条件改为平行并改求参数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_Fill-in-the-Blank_71",
+          "text": "14. 已知向量 $\\vec{a}=(3,1), \\vec{b}=(1,0), \\vec{c}=\\vec{a}+k \\vec{b}$. 若 $\\vec{a} \\perp \\vec{c}$, 则 $k=$\n",
+          "answer": "$-\\frac{10}{3}$.\n",
+          "source": "rainewhk-gaokao / 2021\\全国甲卷\\填空题.jsonl",
+          "category": "解析几何、平面向量与复数",
+          "difficulty": "中",
+          "method": "共线与垂直的判定",
+          "notes": "高中数学 bankhs54；原题来自公开题源。"
+        },
+        "bankId": "bankhs54",
+        "originalId": "rw:2010-2022_Math_I_Fill-in-the-Blank_71",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "先算 $\\vec{c}=\\vec{a}+k\\vec{b}=(3+k,1)$。$\\vec{a}\\perp\\vec{c}$ 等价于 $\\vec{a}\\cdot\\vec{c}=0$，即 $3(3+k)+1=3k+10=0$，解得 $k=-\\frac{10}{3}$，与原答案一致。回代 $\\vec{c}=\\left(-\\frac{1}{3},1\\right)$，$\\vec{a}\\cdot\\vec{c}=-1+1=0$，成立。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_vector_calc",
+        "M.hs_dot_product"
+      ],
+      "applicableMethodIds": [
+        "M.hs_vector_calc",
+        "M.hs_dot_product",
+        "M.hs_vector_relation"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_vector_relation"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_vector_calc"
+        },
+        {
+          "scenarioId": "S.hs_analytic.vector_parallel_perp",
+          "methodId": "M.hs_dot_product"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_vector_relation",
+        "M.hs_vector_calc",
+        "M.hs_dot_product"
+      ],
+      "options": [
+        {
+          "id": "r-parallel",
+          "name": "误用平行的交叉相乘条件，得到 $k=0$"
+        },
+        {
+          "id": "r-dot-zero",
+          "name": "先写出 $\\vec{c}$ 的坐标，再令 $\\vec{a}\\cdot\\vec{c}=0$ 求 $k$"
+        },
+        {
+          "id": "r-slope",
+          "name": "用两条向量方向的斜率乘积为 $-1$ 表示垂直"
+        }
+      ],
+      "questionKey": "b0872e0f8da7e31c3797eb5d4c4c2d1df3a10cb9a2dbccdaf012e0e4a5d359e6",
+      "faceKey": "0d68b98fa753e9cb879372d3406684bf4c18175b3bab85b6e418326f94f0103b"
+    }
+  ]
+}

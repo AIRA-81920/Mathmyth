@@ -24,10 +24,12 @@ function formulas(text) {
   }
   return blocks;
 }
-export async function readActiveSkeleton() {
-  const dir = resolve(root, 'src/assets/skeleton');
+// 按学科读取骨架。高数保持原目录；高中数学读 skeleton-hs，两个目录互不覆盖。
+export async function readSkeleton(subject = 'advanced') {
+  const dir = resolve(root, subject === 'high_school' ? 'src/assets/skeleton-hs' : 'src/assets/skeleton');
   return createSkeleton(Object.fromEntries(await Promise.all((await readdir(dir)).filter((name) => name.endsWith('.json')).map(async (name) => [name, JSON.parse(await readFile(resolve(dir, name), 'utf8'))]))));
 }
+export async function readActiveSkeleton() { return readSkeleton('advanced'); }
 export async function compileReviewedBank({ bankId, originalRecords, reviews, skeleton, existingBanks = [] }) {
   if (!/^[a-z][a-z0-9_-]{1,48}$/.test(bankId)) throw new Error('bankId must be a stable lowercase namespace, e.g. bank402.');
   const source = new Map(), checked = new Map(), audit = [], questions = [];
@@ -112,7 +114,7 @@ async function atomicWrite(path, content) {
   await mkdir(dirname(path), { recursive: true });
   const temp = `${path}.tmp`; await writeFile(temp, content); await rename(temp, path);
 }
-export async function compileBankFiles({ bankId, sourcePath, reviewDirectory }) {
+export async function compileBankFiles({ bankId, sourcePath, reviewDirectory, subject = 'advanced' }) {
   const sourceBytes = await readFile(sourcePath);
   const originalRecords = sourceBytes.toString('utf8').replace(/^\uFEFF/, '').trim().split(/\r?\n/).map((line, i) => {
     try { return JSON.parse(line); } catch { throw new Error(`Invalid original JSONL at line ${i + 1}.`); }
@@ -120,7 +122,7 @@ export async function compileBankFiles({ bankId, sourcePath, reviewDirectory }) 
   const reviewFiles = (await readdir(reviewDirectory)).filter((name) => /^review-.*\.json$/.test(name)).sort();
   if (!reviewFiles.length) throw new Error('No review-*.json files found.');
   const reviews = (await Promise.all(reviewFiles.map(async (name) => JSON.parse(await readFile(resolve(reviewDirectory, name), 'utf8'))))).flat();
-  const skeleton = await readActiveSkeleton();
+  const skeleton = await readSkeleton(subject);
   const bankDir = resolve(root, 'src/assets/practice/question-banks');
   let existingBanks = [];
   try { existingBanks = await Promise.all((await readdir(bankDir)).filter((name) => name.endsWith('.json') && name !== `${bankId}.json`).map(async (name) => JSON.parse(await readFile(resolve(bankDir, name), 'utf8')))); }
@@ -175,5 +177,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const args = process.argv.slice(2), option = (key, fallback) => { const index = args.indexOf(key); return index < 0 ? fallback : args[index + 1]; };
   await compileBankFiles({ bankId: option('--bank-id', 'bank402'),
     sourcePath: resolve(root, option('--source', '../高数题库-402道/question-bank.jsonl')),
-    reviewDirectory: resolve(root, option('--reviews', 'src/assets/practice/bank402')) });
+    reviewDirectory: resolve(root, option('--reviews', 'src/assets/practice/bank402')),
+    subject: option('--subject', 'advanced') });
 }

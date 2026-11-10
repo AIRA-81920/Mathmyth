@@ -1,0 +1,3254 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankadv2",
+  "sourceSha256": "b8ef07f6f8335451213f40973a7392cbb3dba1129bb92c32870faccaa29f2409",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.limit",
+        "name": "极限"
+      },
+      {
+        "id": "B.deriv",
+        "name": "导数与微分"
+      },
+      {
+        "id": "B.mvt",
+        "name": "微分中值定理与导数的应用"
+      },
+      {
+        "id": "B.indefint",
+        "name": "不定积分"
+      },
+      {
+        "id": "B.defint",
+        "name": "定积分"
+      },
+      {
+        "id": "B.ode",
+        "name": "微分方程"
+      },
+      {
+        "id": "B.vecalg",
+        "name": "向量代数与空间解析几何"
+      },
+      {
+        "id": "B.multivar",
+        "name": "多元函数微分法及其应用"
+      },
+      {
+        "id": "B.multiint",
+        "name": "重积分"
+      },
+      {
+        "id": "B.line_surface",
+        "name": "曲线积分与曲面积分"
+      },
+      {
+        "id": "B.series",
+        "name": "无穷级数"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.limit.indeterminate",
+        "name": "未定式极限",
+        "order": 1,
+        "scenario_ids": [
+          "S.limit.0over0",
+          "S.limit.inf_over_inf",
+          "S.limit.zero_times_inf",
+          "S.limit.inf_minus_inf",
+          "S.limit.one_to_inf",
+          "S.limit.power_indeterminate",
+          "S.limit.growth_balance"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.sequence",
+        "name": "数列与含参极限",
+        "order": 2,
+        "scenario_ids": [
+          "S.limit.recurrence_sequence",
+          "S.limit.n_term_sum",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.infinitesimal",
+        "name": "无穷小的比较",
+        "order": 3,
+        "scenario_ids": [
+          "S.limit.infinitesimal_order",
+          "S.limit.bounded_times_zero"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.continuity",
+        "name": "连续性与间断点",
+        "order": 4,
+        "scenario_ids": [
+          "S.limit.piecewise_continuity",
+          "S.limit.discontinuity_classification",
+          "S.limit.function_sequence_limit"
+        ],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.limit.epsilon",
+        "name": "极限的严格证明",
+        "order": 5,
+        "scenario_ids": [],
+        "block_id": "B.limit"
+      },
+      {
+        "id": "G.deriv.rules",
+        "name": "求导方法",
+        "order": 1,
+        "scenario_ids": [
+          "S.deriv.composite_derivative",
+          "S.deriv.implicit_derivative",
+          "S.deriv.parametric_derivative",
+          "S.deriv.power_exponential",
+          "S.deriv.inverse",
+          "S.deriv.basic_definition"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.differentiability",
+        "name": "可导性与抽象函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.deriv.piecewise_differentiability",
+          "S.deriv.abstract_function"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.higher",
+        "name": "高阶导数",
+        "order": 3,
+        "scenario_ids": [
+          "S.deriv.higher_order"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.deriv.application",
+        "name": "导数的应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.deriv.differential_approx",
+          "S.deriv.tangent_normal"
+        ],
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "G.mvt.mean_value",
+        "name": "中值定理证明题",
+        "order": 1,
+        "scenario_ids": [
+          "S.mvt.rolle_equality",
+          "S.mvt.lagrange_cauchy_equality",
+          "S.mvt.identity_proof"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.inequality_root",
+        "name": "不等式与方程根",
+        "order": 2,
+        "scenario_ids": [
+          "S.mvt.inequality_proof",
+          "S.mvt.equation_root"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.behavior",
+        "name": "函数性态分析",
+        "order": 3,
+        "scenario_ids": [
+          "S.mvt.monotonicity_extremum",
+          "S.mvt.concavity_inflection",
+          "S.mvt.asymptote",
+          "S.mvt.curvature",
+          "S.mvt.function_graphing"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.mvt.extremum_app",
+        "name": "最值应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.mvt.max_min_application"
+        ],
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "G.indefint.basic_substitution",
+        "name": "基本与换元",
+        "order": 1,
+        "scenario_ids": [
+          "S.indefint.basic_formula",
+          "S.indefint.first_substitution",
+          "S.indefint.sqrt_integrand"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_type",
+        "name": "分类积分技巧",
+        "order": 2,
+        "scenario_ids": [
+          "S.indefint.rational_function",
+          "S.indefint.trig_rational"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.by_parts",
+        "name": "分部积分",
+        "order": 3,
+        "scenario_ids": [
+          "S.indefint.by_parts_product",
+          "S.indefint.by_parts_log_inverse"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.indefint.recurrence",
+        "name": "递推型",
+        "order": 4,
+        "scenario_ids": [
+          "S.indefint.recurrence"
+        ],
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "G.defint.calculation",
+        "name": "定积分的计算",
+        "order": 1,
+        "scenario_ids": [
+          "S.defint.newton_leibniz_calc",
+          "S.defint.symmetry_interval",
+          "S.defint.variable_limit_derivative",
+          "S.defint.piecewise_absolute"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.improper",
+        "name": "反常积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.defint.improper_integral_calc",
+          "S.defint.improper_convergence"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.proof",
+        "name": "定积分的证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.defint.integral_inequality"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.element_method",
+        "name": "微元法应用",
+        "order": 4,
+        "scenario_ids": [
+          "S.defint.plane_area",
+          "S.defint.solid_volume",
+          "S.defint.arc_length_surface",
+          "S.defint.physics_application"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.defint.riemann",
+        "name": "n 项和化定积分",
+        "order": 5,
+        "scenario_ids": [
+          "S.defint.riemann_sum_limit"
+        ],
+        "block_id": "B.defint"
+      },
+      {
+        "id": "G.ode.first_order",
+        "name": "一阶方程",
+        "order": 1,
+        "scenario_ids": [
+          "S.ode.separable",
+          "S.ode.homogeneous_first_order",
+          "S.ode.linear_first_order",
+          "S.ode.bernoulli"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.higher_order",
+        "name": "高阶方程",
+        "order": 2,
+        "scenario_ids": [
+          "S.ode.reducible_higher_order",
+          "S.ode.second_order_homogeneous",
+          "S.ode.second_order_nonhomogeneous"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.ode.reverse_apply",
+        "name": "反求与应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.ode.reverse_from_solution",
+          "S.ode.modeling"
+        ],
+        "block_id": "B.ode"
+      },
+      {
+        "id": "G.vecalg.vector",
+        "name": "向量运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.vecalg.vector_product"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.plane_line",
+        "name": "平面与直线",
+        "order": 2,
+        "scenario_ids": [
+          "S.vecalg.plane_equation",
+          "S.vecalg.line_equation",
+          "S.vecalg.position_relation",
+          "S.vecalg.distance_angle"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.surface",
+        "name": "曲面",
+        "order": 3,
+        "scenario_ids": [
+          "S.vecalg.surface_of_revolution",
+          "S.vecalg.cylinder_cone"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.vecalg.projection",
+        "name": "曲线投影",
+        "order": 4,
+        "scenario_ids": [
+          "S.vecalg.curve_projection"
+        ],
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "G.multivar.limit_continuity",
+        "name": "多元极限与连续",
+        "order": 1,
+        "scenario_ids": [
+          "S.multivar.binary_limit",
+          "S.multivar.continuity"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.derivative",
+        "name": "偏导与全微分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multivar.partial_derivative",
+          "S.multivar.composite_derivative",
+          "S.multivar.implicit_derivative",
+          "S.multivar.total_differential",
+          "S.multivar.directional_gradient"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.geometry",
+        "name": "几何应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multivar.space_curve_tangent",
+          "S.multivar.surface_tangent"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multivar.extremum",
+        "name": "极值与最值",
+        "order": 4,
+        "scenario_ids": [
+          "S.multivar.unconditional_extremum",
+          "S.multivar.conditional_extremum",
+          "S.multivar.closed_region_extremum"
+        ],
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "G.multiint.double",
+        "name": "二重积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.multiint.double_cartesian",
+          "S.multiint.change_order",
+          "S.multiint.polar",
+          "S.multiint.symmetry_simplify"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.triple",
+        "name": "三重积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.multiint.triple_cartesian",
+          "S.multiint.cylindrical",
+          "S.multiint.spherical"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.multiint.application",
+        "name": "重积分的应用",
+        "order": 3,
+        "scenario_ids": [
+          "S.multiint.geometric_application",
+          "S.multiint.physical_application"
+        ],
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "G.line_surface.curve",
+        "name": "曲线积分",
+        "order": 1,
+        "scenario_ids": [
+          "S.line_surface.curve_integral_first_kind",
+          "S.line_surface.curve_integral_second_kind",
+          "S.line_surface.green_theorem",
+          "S.line_surface.path_independence"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.surface",
+        "name": "曲面积分",
+        "order": 2,
+        "scenario_ids": [
+          "S.line_surface.surface_integral_first_kind",
+          "S.line_surface.surface_integral_second_kind",
+          "S.line_surface.gauss_theorem",
+          "S.line_surface.stokes_theorem"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.line_surface.field",
+        "name": "场论",
+        "order": 3,
+        "scenario_ids": [
+          "S.line_surface.divergence_curl"
+        ],
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "G.series.constant",
+        "name": "常数项级数敛散性",
+        "order": 1,
+        "scenario_ids": [
+          "S.series.positive_term_test",
+          "S.series.alternating_series",
+          "S.series.absolute_conditional"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.power",
+        "name": "幂级数",
+        "order": 2,
+        "scenario_ids": [
+          "S.series.power_series_radius",
+          "S.series.summation_function",
+          "S.series.power_series_expansion",
+          "S.series.termwise_operation"
+        ],
+        "block_id": "B.series"
+      },
+      {
+        "id": "G.series.fourier",
+        "name": "傅里叶级数",
+        "order": 3,
+        "scenario_ids": [
+          "S.series.fourier_series"
+        ],
+        "block_id": "B.series"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.defint.newton_leibniz_calc",
+        "name": "牛顿-莱布尼茨公式计算",
+        "definition": "被积函数在积分区间上连续（或分段连续）且能求出原函数，直接用牛顿-莱布尼茨公式 ∫_a^b f(x)dx = F(b) − F(a) 算出定积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.symmetry_interval",
+        "name": "对称区间奇偶简化",
+        "definition": "积分区间关于原点对称（形如 [−a,a]），被积函数具有奇偶性或可拆成奇、偶部分之和，利用奇函数积分为零、偶函数化为半区间两倍来简化计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.variable_limit_derivative",
+        "name": "变限积分求导",
+        "definition": "出现积分上限或下限含变量 x 的积分函数（形如 ∫_a^x f(t)dt、∫_x^b f(t)dt 或 ∫_{g(x)}^{h(x)} f(t)dt），需求其导数或求含此结构的极限。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.piecewise_absolute",
+        "name": "分段函数与含绝对值的定积分",
+        "definition": "被积函数是分段定义的函数，或含绝对值、取整、max/min 等结构，需先确定分界点或零点，利用积分对区间的可加性拆分区间，逐段去绝对值后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.riemann_sum_limit",
+        "name": "用定积分定义求 n 项和极限",
+        "definition": "极限是 n→∞ 的 n 项和，且能整理成 (1/n)Σ f(k/n)（或一般分点形式的黎曼和），识别为某函数在区间上的定积分后求出。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_integral_calc",
+        "name": "反常积分计算",
+        "definition": "积分区间无限（∫_a^{+∞}、∫_{−∞}^b）或 integrand 在区间内无界（形成瑕点），先按定积分计算再用取极限求出反常积分的值。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.improper_convergence",
+        "name": "反常积分敛散性判断",
+        "definition": "不求出（或求不出）反常积分的具体值，只判断它收敛还是发散，通常用比较判别法，或直接算出含参极限来判断。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.integral_inequality",
+        "name": "定积分等式与不等式的证明",
+        "definition": "题目要求证明一个含定积分的等式或不等式（常含“存在 ξ”的中值形式，或需估计积分值），需用变限积分、积分中值定理或放缩法处理。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.plane_area",
+        "name": "平面图形面积",
+        "definition": "求由曲线、直线所围平面图形的面积，用微元法建立面积积分（直角坐标下 ∫(上 − 下)dx 或 ∫(右 − 左)dy，必要时用极坐标）并计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.solid_volume",
+        "name": "旋转体体积",
+        "definition": "求平面图形绕坐标轴（或某条直线）旋转所得旋转体的体积，用微元法（圆盘法/垫圈法，或柱壳法）建立体积积分后计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.arc_length_surface",
+        "name": "弧长与旋转曲面面积",
+        "definition": "求平面曲线段的弧长，或该曲线段绕坐标轴旋转所得旋转曲面的面积，用微元法建立弧微元 ds = √(1 + y'²)dx（或参数式、极坐标形式）与曲面面积微元后积分。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.defint.physics_application",
+        "name": "物理应用（功/压力/形心等）",
+        "definition": "用微元法把物理量（变力做功、液体侧压力、平面薄片的形心/质心、转动惯量、引力等）表示为定积分再计算。",
+        "block_id": "B.defint"
+      },
+      {
+        "id": "S.deriv.composite_derivative",
+        "name": "复合函数求导",
+        "definition": "求导对象是由基本初等函数逐层套叠而成的显式复合函数，需求其一阶导数表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.implicit_derivative",
+        "name": "隐函数求导",
+        "definition": "函数关系由一个含 x、y 的方程 F(x,y)=0 隐含给出，需对方程两边求导以得到 dy/dx。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.parametric_derivative",
+        "name": "参数方程求导",
+        "definition": "函数由参数式 x=x(t)、y=y(t) 给出，需求 dy/dx 或二阶导数。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.power_exponential",
+        "name": "幂指函数 / 连乘式求导",
+        "definition": "底与指数都含自变量的幂指函数，或由多个因子连乘、连除、开方构成的式子求导。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.higher_order",
+        "name": "高阶导数",
+        "definition": "求函数的二阶及以上导数，或求其 n 阶导数的一般表达式。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.piecewise_differentiability",
+        "name": "分段函数分界点可导性",
+        "definition": "分段函数在分段点处的可导性判断，需用左右导数或导数定义处理。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.abstract_function",
+        "name": "用导数定义处理抽象函数",
+        "definition": "函数无显式表达式（仅给出函数方程或极限条件），需用导数定义求某点导数或函数值。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.differential_approx",
+        "name": "微分与近似计算",
+        "definition": "求函数的微分 dy=f'(x)dx，或用微分（线性近似）对函数值作近似计算与误差估计。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.tangent_normal",
+        "name": "切线与法线方程",
+        "definition": "已知曲线（显式、隐式或参数式）及某点，求该点处的切线或法线方程。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.basic_definition",
+        "name": "基本函数的定义法求导",
+        "definition": "从增量差商推导常数、幂、指数、对数、三角函数的导数，而不是识别内外层套叠。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.deriv.inverse",
+        "name": "反函数求导",
+        "definition": "已知y是某函数的反函数，求导前要确定一一对应的分支与非零导数条件。",
+        "block_id": "B.deriv"
+      },
+      {
+        "id": "S.indefint.basic_formula",
+        "name": "直接套基本积分公式",
+        "definition": "被积函数是基本初等函数的线性组合，或可经简单恒等变形化为基本形式，用基本积分公式表与积分线性性质即可直接求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.first_substitution",
+        "name": "可凑微分的复合结构",
+        "definition": "被积函数中一部分恰是另一部分（中间变量 u=φ(x)）的导数或相差常数倍，可把 φ'(x)dx 整体凑成 d(φ(x))，再按基本公式积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.sqrt_integrand",
+        "name": "含根式的积分（三角代换/根式代换）",
+        "definition": "被积函数含 √(a²-x²)、√(x²±a²)、√(ax+b) 等根式，需用三角代换或根式整体代换消去根号后再积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.trig_rational",
+        "name": "三角函数有理式积分",
+        "definition": "被积函数是由 sin x、cos x（或 tan x、sec x 等可化归者）经加减乘除、乘方构成的有理式 R(sin x, cos x)。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.rational_function",
+        "name": "有理函数积分",
+        "definition": "被积函数是两个多项式之商 P(x)/Q(x)，通过整式除法与部分分式分解化为简单分式后逐项积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_product",
+        "name": "乘积型分部积分",
+        "definition": "被积函数是两类不同函数的乘积（幂×指数、幂×三角、指数×三角等），可用分部积分逐步降次或形成循环来求出原函数。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.by_parts_log_inverse",
+        "name": "含对数/反三角函数的分部积分",
+        "definition": "被积函数含 ln x、arcsin x、arctan x 等对数或反三角函数，或其与别的函数相乘，需把对数/反三角设为 u 做分部积分。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.indefint.recurrence",
+        "name": "递推型积分",
+        "definition": "积分不能一次算出，需通过分部积分或恒等变形建立 I_n 与 I_{n-1}（或 I_{n-2}）的递推关系，或用'循环'技巧把重现的原积分解出，如 ∫sec³x dx。",
+        "block_id": "B.indefint"
+      },
+      {
+        "id": "S.limit.0over0",
+        "name": "0/0 型未定式",
+        "definition": "分式或可化为分式的极限中，自变量趋近时分子与分母同时趋于 0，无法直接代入得出确定值。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_over_inf",
+        "name": "∞/∞ 型未定式",
+        "definition": "分式极限中，分子与分母在趋近（多为 x→∞ 或 n→∞）时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.zero_times_inf",
+        "name": "0·∞ 型未定式",
+        "definition": "乘积型极限中，一个因式趋于 0、另一个因式趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.inf_minus_inf",
+        "name": "∞−∞ 型未定式",
+        "definition": "差结构极限中，两个部分在趋近时同时趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.one_to_inf",
+        "name": "1^∞ 型未定式",
+        "definition": "幂指函数极限中，底数趋于 1、指数趋于无穷大。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.power_indeterminate",
+        "name": "0^0 / ∞^0 型未定式",
+        "definition": "幂指函数极限中，底数与指数的极限分别为 0 和 0，或 ∞ 和 0。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.recurrence_sequence",
+        "name": "数列递推式极限",
+        "definition": "由递推关系 x_{n+1}=f(x_n) 定义的数列，求其极限。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.n_term_sum",
+        "name": "和式与连乘的数列极限",
+        "definition": "通项含求和、连乘，或固定项数的幂和开 n 次根等结构，需在 n→∞ 时求极限。先辨认项数是否随 n 变化，再观察能否用恒等式、整体估计、对数或黎曼和化归。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.infinitesimal_order",
+        "name": "无穷小阶的比较",
+        "definition": "判断同一极限过程中两个无穷小的阶的高低，或求使某式为 k 阶无穷小的参数。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.piecewise_continuity",
+        "name": "分段函数分界点极限与连续性",
+        "definition": "对分段函数在分界点处讨论极限是否存在以及函数是否连续。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.discontinuity_classification",
+        "name": "间断点判别与分类",
+        "definition": "找出函数的间断点，并根据左右极限的存在情况判定其类型（可去、跳跃、无穷、振荡）。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.function_sequence_limit",
+        "name": "含参极限定义的函数",
+        "definition": "先固定 x，对 n 或 t 求极限，得到关于 x 的函数；按幂或指数的变化分区并单算边界，再讨论连续性、间断点或连续条件求参。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.bounded_times_zero",
+        "name": "有界量乘无穷小",
+        "definition": "一个因子趋于零，另一个因子只有统一的有界性，也能证明乘积趋零。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.limit.growth_balance",
+        "name": "无穷远增长项的相消",
+        "definition": "表达式在无穷远包含多个可能相消的增长项；先比较并合并主项，再求剩余部分的极限。有未知系数时，不预先假定各项都趋于无穷。",
+        "block_id": "B.limit"
+      },
+      {
+        "id": "S.line_surface.curve_integral_first_kind",
+        "name": "第一类曲线积分（对弧长）",
+        "definition": "沿一条平面或空间曲线 L 对弧长 ds 的积分 ∫_L f(x,y)ds，积分值与曲线方向无关，常用于计算曲线质量、弧长加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.curve_integral_second_kind",
+        "name": "第二类曲线积分（对坐标，直接计算）",
+        "definition": "沿有向曲线 L 对坐标的积分 ∫_L P(x,y)dx+Q(x,y)dy（空间情形再加 R dz），积分值随曲线方向反向而变号，常用于计算变力做功、环流。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.green_theorem",
+        "name": "格林公式（封闭曲线）",
+        "definition": "对平面封闭曲线 L 上的第二类曲线积分，用格林公式化为其围成区域 D 上的二重积分计算；曲线不封闭时可通过补线化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.path_independence",
+        "name": "曲线积分与路径无关",
+        "definition": "判断第二类曲线积分是否只依赖起点与终点，并在无关时用势函数或改走最简路径求值。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_first_kind",
+        "name": "第一类曲面积分（对面积）",
+        "definition": "沿曲面 Σ 对面积 dS 的积分 ∬_Σ f(x,y,z)dS，积分值与曲面所取的侧无关，常用于计算曲面质量、面积加权平均等。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.surface_integral_second_kind",
+        "name": "第二类曲面积分（对坐标，直接投影）",
+        "definition": "沿有向曲面 Σ 对坐标的曲面积分 ∬_Σ P dydz + Q dzdx + R dxdy，积分值随曲面所取的侧反向而变号，常用于计算流量。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.gauss_theorem",
+        "name": "高斯公式",
+        "definition": "对闭曲面 Σ 上的第二类曲面积分，用高斯公式化为其围成空间区域 Ω 上的三重积分计算；曲面不封闭时可补面化为封闭。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.stokes_theorem",
+        "name": "斯托克斯公式",
+        "definition": "对空间闭曲线 Γ 上的第二类曲线积分，用斯托克斯公式化为以 Γ 为边界的曲面 Σ 上的第二类曲面积分（旋度的通量）计算。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.line_surface.divergence_curl",
+        "name": "散度与旋度",
+        "definition": "计算向量场的散度与旋度，并据此判断场的有源性、有旋性以及是否为保守场（有势场）。",
+        "block_id": "B.line_surface"
+      },
+      {
+        "id": "S.multiint.double_cartesian",
+        "name": "二重积分（直角坐标，X 型/Y 型区域）",
+        "definition": "在直角坐标系下把二重积分化为关于 x、y 的累次积分（先对一个变量积分、再对另一个变量积分），并按区域是 X 型还是 Y 型确定积分限。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.change_order",
+        "name": "交换积分次序",
+        "definition": "当给定的累次积分内层无法直接积出，或另一积分次序明显更省算时，依据积分区域把原累次积分改写成相反次序的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.polar",
+        "name": "极坐标计算二重积分",
+        "definition": "当二重积分的区域为圆、扇形、环形，或被积函数含 x²+y² 时，令 x=rcosθ、y=rsinθ、dσ=r dr dθ，把二重积分化为关于 r、θ 的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.symmetry_simplify",
+        "name": "利用对称性简化",
+        "definition": "当积分区域关于某坐标轴、坐标面或原点对称且被积函数对相应变量有奇偶性时，判断哪些部分积分为 0、哪些可化为对称部分的两倍，从而化简积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.triple_cartesian",
+        "name": "三重积分（直角坐标，投影法/截面法）",
+        "definition": "在直角坐标系下计算三重积分：投影法（先一后二）先对一个变量积分、再在投影域上作二重积分；截面法（先二后一）先在截面上作二重积分、再对第三个变量积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.cylindrical",
+        "name": "柱坐标计算三重积分",
+        "definition": "当空间立体在 xOy 面上的投影为圆/环形、边界含圆柱面时，令 x=rcosθ、y=rsinθ、z=z，体积元 dV=r dr dθ dz，把三重积分化为柱坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.spherical",
+        "name": "球坐标计算三重积分",
+        "definition": "当空间立体为球体、球壳或锥面与球面所围时，令 x=ρsinφcosθ、y=ρsinφsinθ、z=ρcosφ，体积元 dV=ρ²sinφ dρ dφ dθ，把三重积分化为球坐标下的累次积分。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.geometric_application",
+        "name": "几何应用（体积等）",
+        "definition": "用重积分求立体的体积等几何量：体积 = ∭_Ω dV，或由上下曲面的二重积分 ∬_D [z₂(x,y)−z₁(x,y)]dσ 表示。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multiint.physical_application",
+        "name": "物理应用（质量/质心/转动惯量）",
+        "definition": "用重积分计算非均匀物体的质量（∭ρ dV）、质心坐标、转动惯量（如 ∭(x²+y²)ρ dV）等物理量，关键是写出正确的密度微元。",
+        "block_id": "B.multiint"
+      },
+      {
+        "id": "S.multivar.binary_limit",
+        "name": "二元函数极限",
+        "definition": "求二元函数在某点（通常是原点）的二重极限，需判断极限是否存在并求出极限值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.continuity",
+        "name": "二元函数连续性",
+        "definition": "判断二元函数在某点是否连续（该点极限存在且等于函数值），或确定参数使函数在该点连续。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.partial_derivative",
+        "name": "显式偏导数计算",
+        "definition": "对显式给出的多元函数，直接计算其一阶或高阶偏导数（在某点或一般点）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.composite_derivative",
+        "name": "多元复合函数求导",
+        "definition": "求由若干多元函数复合而成的函数（中间变量为多元函数）的偏导数或全导数。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.implicit_derivative",
+        "name": "隐函数求导（单方程/方程组）",
+        "definition": "由方程 F(x,y,z)=0 或方程组确定的隐函数，求其偏导数或全微分。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.total_differential",
+        "name": "全微分与可微性判定",
+        "definition": "求函数的全微分 dz，或判定函数在某点是否可微、确定参数使其可微。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.directional_gradient",
+        "name": "方向导数与梯度",
+        "definition": "求函数在某点沿指定方向的方向导数、梯度，或利用它们求最大变化率及其方向。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.space_curve_tangent",
+        "name": "空间曲线的切线与法平面",
+        "definition": "求空间曲线在某点处的切向量、切线方程与法平面方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.surface_tangent",
+        "name": "曲面的切平面与法线",
+        "definition": "求曲面在某点处的法向量、切平面方程与法线方程。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.unconditional_extremum",
+        "name": "无条件极值",
+        "definition": "求多元函数（无附加约束）的极值点与极值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.conditional_extremum",
+        "name": "条件极值",
+        "definition": "在等式约束条件下求目标函数的极值（条件极值）。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.multivar.closed_region_extremum",
+        "name": "有界闭域上的最值",
+        "definition": "求连续函数在有界闭区域上的最大值与最小值。",
+        "block_id": "B.multivar"
+      },
+      {
+        "id": "S.mvt.rolle_equality",
+        "name": "证明含中值的等式（罗尔型）",
+        "definition": "证明在给定区间内至少存在一点 ξ，使某个含 f'(ξ) 的等式成立，且该等式可整理为“某函数在 ξ 处导数为零”的形式，其端点函数值（原函数或辅助函数）相等。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.lagrange_cauchy_equality",
+        "name": "证明含中值的等式（拉格朗日/柯西型）",
+        "definition": "证明存在中值点 ξ，使等式中出现函数值之差与导数（或两个函数导数之比）的对应关系，不能直接化为单一函数导数为零的罗尔型。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.inequality_proof",
+        "name": "证明不等式",
+        "definition": "要求证明某个关于变量的不等式在给定区间或条件下恒成立。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.equation_root",
+        "name": "方程根的存在性与唯一性",
+        "definition": "判断或证明方程在给定区间内根的存在性、唯一性及根的个数，含参数时需讨论根的个数随参数的变化。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.identity_proof",
+        "name": "证明恒等式",
+        "definition": "证明两个表达式在给定区间上恒相等，即对区间内一切 x 都有 f(x)≡g(x)。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.monotonicity_extremum",
+        "name": "单调性与极值",
+        "definition": "研究函数在区间上的增减性，并求其局部极值点与极值。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.max_min_application",
+        "name": "最值及其应用",
+        "definition": "求函数在给定区间上的最大值与最小值，或建立实际问题的目标函数并求其最优解。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.concavity_inflection",
+        "name": "凹凸性与拐点",
+        "definition": "研究曲线弯曲方向（凹凸性）随自变量变化的规律，并求凹凸区间的分界点（拐点）。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.asymptote",
+        "name": "渐近线",
+        "definition": "求曲线的铅直、水平与斜渐近线，刻画曲线在间断点附近及无穷远处的走向。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.curvature",
+        "name": "曲率",
+        "definition": "计算曲线在某点处的曲率与曲率半径，必要时求曲率最大（最小）的点或曲率圆。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.mvt.function_graphing",
+        "name": "函数作图",
+        "definition": "综合运用单调性、极值、凹凸性、拐点与渐近线等导数信息，描绘函数的完整图像。",
+        "block_id": "B.mvt"
+      },
+      {
+        "id": "S.ode.separable",
+        "name": "可分离变量方程",
+        "definition": "一阶方程能整理成 dy/dx=f(x)g(y)（或 M(x)N(y)dx+P(x)Q(y)dy=0）的形式，使含 x 与含 y 的因子可分别移到等号两侧后各自积分。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.homogeneous_first_order",
+        "name": "一阶齐次方程",
+        "definition": "形如 dy/dx=φ(y/x)（即 x、y 的零次齐次结构）的一阶方程，经换元 u=y/x 化为可分离变量方程求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.linear_first_order",
+        "name": "一阶线性方程",
+        "definition": "关于未知函数 y 及其一阶导数均为一次的方程，标准形为 y'+P(x)y=Q(x)。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.bernoulli",
+        "name": "伯努利方程",
+        "definition": "形如 y'+P(x)y=Q(x)y^n（n≠0、1）的非线性一阶方程，经换元 z=y^{1−n} 化为关于 z 的一阶线性方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reducible_higher_order",
+        "name": "可降阶的高阶方程",
+        "definition": "二阶及以上、因缺少自变量或未知函数（y''=f(x) 型、缺 y 型、缺 x 型三类）而可用代换把阶数降为一阶的方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_homogeneous",
+        "name": "二阶常系数齐次线性方程",
+        "definition": "形如 y''+py'+qy=0（p、q 为常数）的二阶线性齐次方程，由特征方程 r²+pr+q=0 的根类型直接写出通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.second_order_nonhomogeneous",
+        "name": "二阶常系数非齐次线性方程",
+        "definition": "形如 y''+py'+qy=f(x)（p、q 为常数，f(x)≠0）的方程，用待定系数法求特解并与齐次通解叠加得通解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.reverse_from_solution",
+        "name": "已知通解反求方程",
+        "definition": "已知含若干独立任意常数的通解表达式，要求消去这些常数，反求它所满足的微分方程。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.ode.modeling",
+        "name": "微分方程建模应用（几何/物理）",
+        "definition": "由几何条件（切线斜率、面积、弧长等）或物理规律（变化率与当前量成正比等）列出微分方程（常含初值），再用相应解法求解。",
+        "block_id": "B.ode"
+      },
+      {
+        "id": "S.series.positive_term_test",
+        "name": "正项级数敛散性判别（比较、比值、根值）",
+        "definition": "通项满足 u_n ≥ 0 的级数，需判断 Σu_n 是否收敛；通常借助比较判别法（含极限比较）或比值、根值判别法，必要时结合部分和的有界性。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.alternating_series",
+        "name": "交错级数（莱布尼茨判别法）",
+        "definition": "形如 Σ(−1)^{n−1}u_n（u_n > 0）的交错级数，用莱布尼茨判别法在 u_n 单调递减且趋于 0 时判断其收敛，并可估计余项。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.absolute_conditional",
+        "name": "任意项级数绝对/条件收敛",
+        "definition": "通项符号不定的任意项级数 Σu_n，先考察绝对值级数 Σ|u_n|：若收敛则为绝对收敛；若 Σ|u_n| 发散而 Σu_n 本身收敛，则为条件收敛。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_radius",
+        "name": "幂级数收敛半径与收敛域",
+        "definition": "形如 Σ a_n(x − x_0)^n 的幂级数（常取 x_0 = 0），求其收敛半径 R 与收敛域，并单独判定端点 x = x_0 ± R 处的敛散。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.summation_function",
+        "name": "幂级数求和函数",
+        "definition": "在收敛域内求幂级数 Σa_n x^n 的和函数 S(x)，通常借逐项求导或逐项积分把级数化为可求和的几何级数或已知展开式。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.power_series_expansion",
+        "name": "函数展开成幂级数",
+        "definition": "把给定函数 f(x) 在指定点展开为幂级数（泰勒/麦克劳林级数），给出展开式与收敛域；以间接法（借基本展开式作代换、四则、逐项运算）为主，直接法（逐阶求导）为辅。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.termwise_operation",
+        "name": "逐项求导/逐项积分的应用",
+        "definition": "在幂级数的收敛区间内对级数逐项求导或逐项积分（收敛半径不变），用以化简系数、由已知展开式推出新函数的展开式，或把数项级数求和问题转化为幂级数求和。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.series.fourier_series",
+        "name": "傅里叶级数展开",
+        "definition": "把周期为 2π（或 2l）的周期函数，或在 [−π,π]、[0,π]、[−l,l] 上定义的函数经周期延拓或奇偶延拓后，展开为傅里叶级数（三角级数），并用狄利克雷收敛定理确定和函数。",
+        "block_id": "B.series"
+      },
+      {
+        "id": "S.vecalg.vector_product",
+        "name": "向量运算（数量积/向量积/混合积）",
+        "definition": "题目直接围绕向量本身，要求计算数量积、向量积或混合积，并据此求向量的模、夹角、投影、面积、体积或判定共线、共面。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.plane_equation",
+        "name": "求平面方程",
+        "definition": "题目要求在空间中确定一个平面，所给条件是足以刻画该平面的点、方向或位置关系，最终要写成平面的一般式或点法式方程。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.line_equation",
+        "name": "求直线方程",
+        "definition": "题目要求确定空间中的一条直线，条件多表现为过一点、有方向向量，或与已知直线/平面平行垂直、过两平面交线，最终写成对称式、参数式或两平面联立式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.position_relation",
+        "name": "点、线、面位置关系判定",
+        "definition": "已知两个或多个点、直线、平面，要求判定它们之间的平行、垂直、相交、重合、异面等位置关系，或求使某种关系成立的参数取值。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.distance_angle",
+        "name": "距离与夹角计算",
+        "definition": "题目要求计算两个几何对象之间的距离（点到线面、异面直线、平行平面等）或夹角（线线、线面、面面、向量间），最终给出一个数值或反三角表达式。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.surface_of_revolution",
+        "name": "旋转曲面方程",
+        "definition": "母线（通常是某坐标面内的曲线）绕某一坐标轴旋转，要求写出旋转所成曲面的方程；或反过来由曲面方程判别它是否为旋转曲面并指出旋转轴。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.cylinder_cone",
+        "name": "柱面与锥面的识别",
+        "definition": "给出一个曲面方程，要求判别它是柱面还是锥面，并指出母线的方向或锥面的顶点；这类方程的特征是缺变量（柱面）或关于三个变量齐次（锥面）。",
+        "block_id": "B.vecalg"
+      },
+      {
+        "id": "S.vecalg.curve_projection",
+        "name": "空间曲线在坐标面上的投影",
+        "definition": "空间曲线由两个曲面方程联立给出，要求把它投影到某个坐标面上，通常通过消去目标坐标面之外的变量得到投影柱面，再与目标坐标面联立。",
+        "block_id": "B.vecalg"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.mvt.equation_root",
+      "question": "判断方程 $e^{-\\frac{x}{2}}=|x-1|$ 在区间 $[-2,2]$ 中共有几个实根，并简要证明你的结论。",
+      "solution": "按 $x=1$ 分段。当 $x\\in[-2,1]$ 时原方程化为 $e^{-x/2}=1-x$，记 $h(x)=e^{-x/2}+x-1$：$h(-2)=e-3<0$，$h(1)=e^{-1/2}>0$，故至少有一根；又 $h'(x)=1-\\frac12e^{-x/2}$ 在 $[-2,-2\\ln2)$ 上为负、在 $(-2\\ln2,1]$ 上为正，且 $h(-2\\ln2)=1-2\\ln2<0$，所以该支只有 $x=0$ 这一根。当 $x\\in(1,2]$ 时原方程化为 $e^{-x/2}=x-1$，记 $k(x)=e^{-x/2}-x+1$：$k'(x)=-\\frac12e^{-x/2}-1<0$ 严格递减，且 $k(1)=e^{-1/2}>0$，$k(2)=e^{-1}-1<0$，故恰有一根。综上，方程在 $[-2,2]$ 上共有 2 个实根。",
+      "routes": [
+        {
+          "id": "r-piecewise-monotone",
+          "summary": "按 $x=1$ 分段去绝对值，零点存在定理定存在、导数定单调与唯一",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.equation_root",
+              "methodId": "M.zero_point_theorem",
+              "state": "以 $x=1$ 分段去绝对值",
+              "transformedState": "在 $[-2,1]$ 上 $h(x)=e^{-x/2}+x-1$，$h(-2)<0$，$h(1)>0$；在 $(1,2]$ 上 $k(x)=e^{-x/2}-x+1$，$k(1)>0$，$k(2)<0$，两支各至少有一根",
+              "condition": "$h$、$k$ 在对应闭区间上连续，零点存在定理适用"
+            },
+            {
+              "scenarioId": "S.mvt.equation_root",
+              "methodId": "M.monotonicity_analysis",
+              "state": "判断两支的单调性",
+              "transformedState": "$h'(x)=1-\\frac12e^{-x/2}$ 在 $[-2,-2\\ln2)$ 为负、在 $(-2\\ln2,1]$ 为正，且 $h(-2\\ln2)=1-2\\ln2<0$，故 $[-2,1]$ 支只有 $x=0$；$k'(x)=-\\frac12e^{-x/2}-1<0$ 恒成立，$(1,2]$ 支恰有一根，合计 2 根",
+              "condition": "$h$ 的驻点 $x=-2\\ln2$ 必须单独讨论，不能断言 $h$ 在 $[-2,1]$ 上单调"
+            }
+          ],
+          "reason": "分段去绝对值后先证存在，再用导数符号控制每支根的个数，是方程根问题的标准框架。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-rolle-uniqueness",
+          "summary": "零点存在定理找变号区间，再用罗尔定理排除某支出现两个根",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.equation_root",
+              "methodId": "M.zero_point_theorem",
+              "state": "各支找函数值异号的点",
+              "transformedState": "$h(-2)<0$，$h(1)>0$；$k(1)>0$，$k(2)<0$，每支至少有一根",
+              "condition": "$h$、$k$ 在对应闭区间上连续"
+            },
+            {
+              "scenarioId": "S.mvt.equation_root",
+              "methodId": "M.rolle_theorem",
+              "state": "反设某支有两个根",
+              "transformedState": "若 $(-2\\ln2,1]$ 内有两个根，罗尔定理给出使 $h'=0$ 的点 $\\eta$，但 $h'=0$ 只有 $x=-2\\ln2$，且 $h(-2\\ln2)=1-2\\ln2<0$，两根端点不可能同时为零，矛盾；$k'<0$ 恒成立，$(1,2]$ 内也至多一根",
+              "condition": "罗尔定理要求两根之间存在导数零点；先减后增的最小值点为负是矛盾的关键"
+            }
+          ],
+          "reason": "把“某支有两个根”转化为导数零点，与单调性路线机制不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-ignore-abs",
+          "summary": "直接对含绝对值的函数求导，误判导数恒负",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.equation_root",
+              "methodId": "M.monotonicity_analysis",
+              "state": "对 $f(x)=e^{-x/2}-|x-1|$ 直接求导",
+              "transformedState": "误写 $f'(x)=-\\frac12e^{-x/2}-1<0$，断定 $f$ 在 $[-2,2]$ 上严格递减",
+              "condition": "错因：$x<1$ 时 $|x-1|=1-x$，导数为 $-1$，正确导数应是 $-\\frac12e^{-x/2}+1$，在 $x<-2\\ln2$ 处为正"
+            },
+            {
+              "scenarioId": "S.mvt.equation_root",
+              "methodId": "M.zero_point_theorem",
+              "state": "由 $f(0)=0$ 断言唯一根",
+              "transformedState": "得出方程只有 1 个实根 $x=0$",
+              "condition": "单调性判断错误，漏掉 $(1,2)$ 内由 $e^{-x/2}=x-1$ 确定的那一根"
+            }
+          ],
+          "reason": "含绝对值函数在分段点两侧导数不同，整体求导会把两段符号判断错，导致漏根。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "去绝对值必须分成 $x\\le1$ 与 $x>1$ 两支；$h(x)=e^{-x/2}+x-1$ 在 $[-2,1]$ 上先减后增（驻点 $x=-2\\ln2$），不能整体断言单调；两支各恰一根，共 2 根。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.fudan-b-5-1",
+        "trainingGoal": "识别含绝对值的方程根问题，分段后结合零点存在定理与单调性/罗尔定理确定根的个数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第五大题第1题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-5-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区间固定为 $[-2,2]$",
+          "$e^{-x/2}>0$，$|x-1|\\ge0$"
+        ],
+        "allowedVariations": [
+          "把右端换成 $|x-2|$",
+          "把指数换成 $e^{-x}$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-5-1",
+          "text": "判断方程 $e^{-\\frac{x}{2}}=|x-1|$ 在区间 $[-2,2]$ 中共有几个实根，并简要证明你的结论。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "微分中值定理与导数的应用",
+          "difficulty": "中",
+          "method": "方程根的存在性与唯一性",
+          "notes": "高等数学 bankadv2；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "fudan-b-5-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：在 $x\\le1$ 上记 $h(x)=e^{-x/2}+x-1$，$h(-2)=e-3<0$，$h(-2\\ln2)=1-2\\ln2<0$，$h(0)=0$，$h(1)=e^{-1/2}>0$，且 $h'(x)=1-\\frac12e^{-x/2}$ 在 $(-2\\ln2,1]$ 为正、在 $(-2,-2\\ln2)$ 为负，故该支只有根 $x=0$；在 $x>1$ 上记 $k(x)=e^{-x/2}-x+1$，$k'(x)=-\\frac12e^{-x/2}-1<0$，$k(1)=e^{-1/2}>0>k(2)=e^{-1}-1$，故该支恰有一根。合计 2 个实根，其中 $x=0$ 可直接代入验证。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove",
+        "decide_property"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.zero_point_theorem",
+        "M.monotonicity_analysis"
+      ],
+      "applicableMethodIds": [
+        "M.zero_point_theorem",
+        "M.monotonicity_analysis",
+        "M.rolle_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.mvt.equation_root",
+          "methodId": "M.zero_point_theorem"
+        },
+        {
+          "scenarioId": "S.mvt.equation_root",
+          "methodId": "M.monotonicity_analysis"
+        },
+        {
+          "scenarioId": "S.mvt.equation_root",
+          "methodId": "M.rolle_theorem"
+        },
+        {
+          "scenarioId": "S.mvt.equation_root",
+          "methodId": "M.construct_auxiliary_function"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.zero_point_theorem",
+        "M.monotonicity_analysis",
+        "M.rolle_theorem",
+        "M.construct_auxiliary_function"
+      ],
+      "options": [
+        {
+          "id": "r-rolle-uniqueness",
+          "name": "零点存在定理找变号区间，再用罗尔定理排除某支出现两个根"
+        },
+        {
+          "id": "r-ignore-abs",
+          "name": "直接对含绝对值的函数求导，误判导数恒负"
+        },
+        {
+          "id": "r-piecewise-monotone",
+          "name": "按 $x=1$ 分段去绝对值，零点存在定理定存在、导数定单调与唯一"
+        }
+      ],
+      "questionKey": "5bbcb9124bfb38d91184b312b7a6bafbce6ca037e2bb9160591c4b364eff91e1",
+      "faceKey": "62bfa538805ef262a526325410d8204bddec4a83c31c9bda640500333c44d0cf"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.indefint.basic_formula",
+      "question": "求 $\\int(2^{x}+3^{x})^{2}\\,dx$。",
+      "solution": "先展开平方：$(2^x+3^x)^2=4^x+2\\cdot6^x+9^x$。再用 $\\int a^x\\,dx=\\frac{a^x}{\\ln a}+C$（$a>0,a\\ne1$）逐项积分，得 $\\int(2^x+3^x)^2dx=\\frac{4^x}{\\ln4}+2\\frac{6^x}{\\ln6}+\\frac{9^x}{\\ln9}+C=\\frac{2^{2x}}{2\\ln2}+2\\frac{6^x}{\\ln6}+\\frac{3^{2x}}{2\\ln3}+C$。",
+      "routes": [
+        {
+          "id": "r-expand-formula",
+          "summary": "先展开平方成三个指数项，再逐项套基本积分公式",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "被积函数是二项和的平方",
+              "transformedState": "$(2^x+3^x)^2=4^x+2\\cdot6^x+9^x$",
+              "condition": "先用完全平方公式展开，得到基本初等函数的线性组合"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "三项均为 $a^x$ 型",
+              "transformedState": "$\\int 4^x dx=\\frac{4^x}{\\ln4}$，$\\int 6^x dx=\\frac{6^x}{\\ln6}$，$\\int 9^x dx=\\frac{9^x}{\\ln9}$，相加得 $\\frac{4^x}{\\ln4}+2\\frac{6^x}{\\ln6}+\\frac{9^x}{\\ln9}+C$",
+              "condition": "每项都用 $\\int a^x dx=\\frac{a^x}{\\ln a}+C$，不要漏写常数 $C$"
+            }
+          ],
+          "reason": "展开后每项都能直接查基本积分表，是最直接的路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-substitute",
+          "summary": "把 $4^x$ 与 $9^x$ 分别令 $u=2^x$、$v=3^x$ 换元积分",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.first_substitution",
+              "state": "对 $4^x=2^{2x}$ 换元",
+              "transformedState": "令 $u=2^x$，$du=2^x\\ln2\\,dx$，$dx=\\frac{du}{u\\ln2}$，于是 $\\int2^{2x}dx=\\int\\frac{u^2}{u\\ln2}du=\\frac{u^2}{2\\ln2}+C_1=\\frac{4^x}{2\\ln2}+C_1$",
+              "condition": "$u=2^x>0$，可反解 $dx=\\frac{du}{u\\ln2}$"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.first_substitution",
+              "state": "对 $9^x=3^{2x}$ 同样换元，交叉项直接套公式",
+              "transformedState": "$\\int9^x dx=\\frac{9^x}{2\\ln3}+C_2$，$\\int2\\cdot6^x dx=2\\frac{6^x}{\\ln6}+C_3$，合并得 $\\frac{4^x}{2\\ln2}+2\\frac{6^x}{\\ln6}+\\frac{9^x}{2\\ln3}+C$",
+              "condition": "三个指数函数各自换元，结果与展开法一致"
+            }
+          ],
+          "reason": "把底数为平方的指数项显式换元，绕开公式表中底的平方形式，结论与主路线相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-miss-cross",
+          "summary": "展开平方时漏掉交叉项 $2\\cdot6^x$",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "展开平方",
+              "transformedState": "误写 $(2^x+3^x)^2=4^x+9^x$，丢掉交叉项 $2\\cdot2^x3^x=2\\cdot6^x$",
+              "condition": "错因：$(a+b)^2=a^2+2ab+b^2$，交叉项不能省略"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "逐项积分",
+              "transformedState": "得 $\\frac{4^x}{\\ln4}+\\frac{9^x}{\\ln9}+C$；求导只得 $4^x+9^x$，与原被积函数相差 $2\\cdot6^x$",
+              "condition": "积分后求导回代即可发现漏项"
+            }
+          ],
+          "reason": "完全平方展开漏交叉项是最常见错误，回代求导立刻暴露少了一项。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "平方必须先展开成 $4^x+2\\cdot6^x+9^x$ 三项；指数函数积分的分母是底数的自然对数，换元法与展开法结果必须一致。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.fudan-b-3-2",
+        "trainingGoal": "掌握二项和平方展开后逐项套用指数函数积分公式，并会用求导回代检验",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第三大题第2题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-3-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "被积函数只含 $2^x$ 与 $3^x$",
+          "积分结果需带任意常数 $C$"
+        ],
+        "allowedVariations": [
+          "把底数改为 $2^x$ 与 $5^x$",
+          "把平方改为立方"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-3-2",
+          "text": "求 $\\int(2^{x}+3^{x})^{2}\\,dx$。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "不定积分",
+          "difficulty": "中",
+          "method": "直接套基本积分公式",
+          "notes": "高等数学 bankadv2；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "fudan-b-3-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：展开得 $(2^x+3^x)^2=4^x+2\\cdot6^x+9^x$，逐项积分得 $\\frac{4^x}{\\ln4}+2\\frac{6^x}{\\ln6}+\\frac{9^x}{\\ln9}+C=\\frac{2^{2x}}{2\\ln2}+2\\frac{6^x}{\\ln6}+\\frac{3^{2x}}{2\\ln3}+C$。求导回代：各项导数分别为 $4^x$、$2\\cdot6^x$、$9^x$，和等于原被积函数，答案正确。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.basic_integral_formula"
+      ],
+      "applicableMethodIds": [
+        "M.basic_integral_formula",
+        "M.first_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.indefint.basic_formula",
+          "methodId": "M.basic_integral_formula"
+        },
+        {
+          "scenarioId": "S.indefint.basic_formula",
+          "methodId": "M.first_substitution"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.basic_integral_formula",
+        "M.first_substitution"
+      ],
+      "options": [
+        {
+          "id": "r-expand-formula",
+          "name": "先展开平方成三个指数项，再逐项套基本积分公式"
+        },
+        {
+          "id": "r-substitute",
+          "name": "把 $4^x$ 与 $9^x$ 分别令 $u=2^x$、$v=3^x$ 换元积分"
+        },
+        {
+          "id": "r-miss-cross",
+          "name": "展开平方时漏掉交叉项 $2\\cdot6^x$"
+        }
+      ],
+      "questionKey": "12559afd0c488de55c670496c9d68d9708ed5113607f44275b34c9b8805c0901",
+      "faceKey": "674d51ed87e5318695f879d7e9e116b24f8a85ca1d25977749a0a2d14009d6e0"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.mvt.function_graphing",
+      "question": "已知函数 $y=\\dfrac{x^{3}}{(x-1)^{2}}$，求：\n(1) 函数的增减区间及极值；\n(2) 函数的凹凸区间及拐点；\n(3) 函数图形的渐近线。",
+      "solution": "定义域为 $x\\ne1$。求导得 $y'=\\frac{x^2(x-3)}{(x-1)^3}$，列表可知：$(-\\infty,1)$ 上 $y'>0$ 递增，$(1,3)$ 上 $y'<0$ 递减，$(3,+\\infty)$ 上 $y'>0$ 递增，故 $x=3$ 为极小值点，极小值 $y(3)=\\frac{27}{4}$；$x=0$ 处 $y'=0$ 但两侧不变号，不是极值点。再求 $y''=\\frac{6x}{(x-1)^4}$：$x<0$ 时 $y''<0$，曲线为凸弧（开口向下）；$0<x<1$ 与 $x>1$ 时 $y''>0$，曲线为凹弧（开口向上）；拐点为 $(0,0)$。作多项式除法：$y=x+2+\\frac{3}{x-1}+\\frac{1}{(x-1)^2}$，当 $x\\to\\pm\\infty$ 时余项趋于 0，故斜渐近线为 $y=x+2$；又 $x\\to1$ 时 $y\\to+\\infty$，故垂直渐近线为 $x=1$，无水平渐近线。",
+      "routes": [
+        {
+          "id": "r-derivative-table",
+          "summary": "直接用商法则求一阶、二阶导数并列表，再求渐近线",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.monotonicity_analysis",
+              "state": "求一阶导数",
+              "transformedState": "$y'=\\frac{3x^2(x-1)^2-2x^3(x-1)}{(x-1)^4}=\\frac{x^2(x-3)}{(x-1)^3}$",
+              "condition": "定义域 $x\\ne1$；$x=0$ 是二重零点，不变号"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.monotonicity_analysis",
+              "state": "列一阶导数符号表",
+              "transformedState": "$(-\\infty,1)$ 增，$(1,3)$ 减，$(3,+\\infty)$ 增；极小值 $y(3)=\\frac{27}{4}$，$x=0$ 不是极值点",
+              "condition": "$x=1$ 处函数无定义，不能作为极值点或端点"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.concavity_test",
+              "state": "求二阶导数",
+              "transformedState": "$y''=\\frac{6x}{(x-1)^4}$：$x<0$ 为凸弧，$0<x<1$ 与 $x>1$ 为凹弧，拐点 $(0,0)$",
+              "condition": "分母 $(x-1)^4>0$，二阶导符号只由分子 $6x$ 决定"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.find_asymptote",
+              "state": "求渐近线",
+              "transformedState": "作除法 $y=x+2+\\frac{3}{x-1}+\\frac{1}{(x-1)^2}$，得斜渐近线 $y=x+2$；$x\\to1$ 时 $y\\to+\\infty$，得垂直渐近线 $x=1$",
+              "condition": "$x\\to\\pm\\infty$ 时余项趋于 0；无水平渐近线"
+            }
+          ],
+          "reason": "按“一阶导定骨架、二阶导定弯曲、极限定边界”的标准作图顺序推进。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-division",
+          "summary": "先做多项式除法拆成整式部分与真分式，再由图性判据逐项推进",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.monotonicity_analysis",
+              "state": "先作代数拆项",
+              "transformedState": "$y=x+2+\\frac{3}{x-1}+\\frac{1}{(x-1)^2}$，于是 $y'=1-\\frac{3}{(x-1)^2}-\\frac{2}{(x-1)^3}=\\frac{x^2(x-3)}{(x-1)^3}$",
+              "condition": "拆项是恒等变形，定义域仍为 $x\\ne1$"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.monotonicity_analysis",
+              "state": "由拆项式的导数符号定增减与极值",
+              "transformedState": "$(-\\infty,1)$ 增、$(1,3)$ 减、$(3,+\\infty)$ 增；极小值 $y(3)=\\frac{27}{4}$",
+              "condition": "拆项后每项求导更简单，避免了商法则展开"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.concavity_test",
+              "state": "对拆项式求二阶导",
+              "transformedState": "$y''=\\frac{6}{(x-1)^3}+\\frac{6}{(x-1)^4}=\\frac{6x}{(x-1)^4}$，凹凸区间与拐点 $(0,0)$ 同主路线",
+              "condition": "拆项式的二阶导可直接逐项求，符号分析更直观"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.find_asymptote",
+              "state": "拆项式直接读出渐近线",
+              "transformedState": "$\\frac{3}{x-1}+\\frac{1}{(x-1)^2}\\to0$（$x\\to\\pm\\infty$），得斜渐近线 $y=x+2$；$x\\to1$ 时 $y\\to+\\infty$，得垂直渐近线 $x=1$",
+              "condition": "整式部分 $x+2$ 给出斜渐近线，真分式部分给出垂直渐近线"
+            }
+          ],
+          "reason": "多项式除法把函数拆成整式加真分式，斜率与截距一眼可见，与直接套商法则的机制不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-asymptote-b",
+          "summary": "斜渐近线只算斜率 $k$，漏算截距 $b$",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.monotonicity_analysis",
+              "state": "求导定增减与极值",
+              "transformedState": "$y'=\\frac{x^2(x-3)}{(x-1)^3}$，$(-\\infty,1)$ 增、$(1,3)$ 减、$(3,+\\infty)$ 增，极小值 $y(3)=\\frac{27}{4}$",
+              "condition": "极值部分计算正确"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.concavity_test",
+              "state": "求二阶导定凹凸与拐点",
+              "transformedState": "$y''=\\frac{6x}{(x-1)^4}$，凸弧、凹弧区间正确，拐点 $(0,0)$",
+              "condition": "凹凸部分计算正确"
+            },
+            {
+              "scenarioId": "S.mvt.function_graphing",
+              "methodId": "M.find_asymptote",
+              "state": "只算斜率 $k=\\lim\\frac{y}{x}=1$",
+              "transformedState": "误写斜渐近线为 $y=x$，漏掉截距 $b=\\lim_{x\\to\\infty}(y-x)=2$",
+              "condition": "错因：斜渐近线是 $y=kx+b$，必须再算 $b$；本题 $b=2$"
+            }
+          ],
+          "reason": "斜渐近线只求斜率不求截距是作图题的常见错误，会把 $y=x+2$ 写成 $y=x$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 2
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "先用一阶导与二阶导确定增减、极值、凹凸与拐点，再用多项式除法求斜渐近线的 $k$ 与 $b$；$x=0$ 处导数变零但不变号，不算极值。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.fudan-b-8-1",
+        "trainingGoal": "综合运用一阶导、二阶导与极限完成函数作图，并正确求出斜渐近线",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第八大题第1题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-8-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "定义域为 $x\\ne1$",
+          "分子为三次、分母为二次，故只可能有垂直与斜渐近线"
+        ],
+        "allowedVariations": [
+          "把分子改为 $x^3+1$",
+          "把分母改为 $(x-2)^2$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-8-1",
+          "text": "已知函数 $y=\\dfrac{x^{3}}{(x-1)^{2}}$，求：\n(1) 函数的增减区间及极值；\n(2) 函数的凹凸区间及拐点；\n(3) 函数图形的渐近线。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "微分中值定理与导数的应用",
+          "difficulty": "中",
+          "method": "函数作图",
+          "notes": "高等数学 bankadv2；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "fudan-b-8-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：定义域 $x\\ne1$。$y'=\\frac{x^2(x-3)}{(x-1)^3}$，故 $(-\\infty,1)$ 增、$(1,3)$ 减、$(3,+\\infty)$ 增，极小值 $y(3)=\\frac{27}{4}$；$x=0$ 是驻点但 $y'$ 不变号，不是极值点。$y''=\\frac{6x}{(x-1)^4}$，故 $x<0$ 为凸弧、$0<x<1$ 与 $x>1$ 为凹弧，拐点 $(0,0)$。作除法得 $y=x+2+\\frac{3}{x-1}+\\frac{1}{(x-1)^2}$，故斜渐近线 $y=x+2$，垂直渐近线 $x=1$，无水平渐近线。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.monotonicity_analysis",
+        "M.concavity_test",
+        "M.find_asymptote"
+      ],
+      "applicableMethodIds": [
+        "M.monotonicity_analysis",
+        "M.concavity_test",
+        "M.find_asymptote"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.mvt.function_graphing",
+          "methodId": "M.monotonicity_analysis"
+        },
+        {
+          "scenarioId": "S.mvt.function_graphing",
+          "methodId": "M.concavity_test"
+        },
+        {
+          "scenarioId": "S.mvt.function_graphing",
+          "methodId": "M.find_asymptote"
+        },
+        {
+          "scenarioId": "S.mvt.function_graphing",
+          "methodId": "M.lhopital"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.monotonicity_analysis",
+        "M.concavity_test",
+        "M.find_asymptote",
+        "M.lhopital"
+      ],
+      "options": [
+        {
+          "id": "r-asymptote-b",
+          "name": "斜渐近线只算斜率 $k$，漏算截距 $b$"
+        },
+        {
+          "id": "r-derivative-table",
+          "name": "直接用商法则求一阶、二阶导数并列表，再求渐近线"
+        },
+        {
+          "id": "r-division",
+          "name": "先做多项式除法拆成整式部分与真分式，再由图性判据逐项推进"
+        }
+      ],
+      "questionKey": "fe46054fdf67fcf61e80ea50029d29cb80498d00859fc31715ff5dd943763f4e",
+      "faceKey": "18242b33b66ec628a82056187ddd443ce169ae74911259f2ddea84b38e8b9eff"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.indefint.recurrence",
+      "question": "设 $I_{n}=\\int_{0}^{\\frac{\\pi}{2}}x^{n}\\sin x\\,dx$，这里 $n$ 为非负整数，求 $I_{n}$ 的递推公式，并求 $I_{2}$，$I_{3}$。",
+      "solution": "对 $I_n$ 分部积分，取 $u=x^n$，$dv=\\sin x\\,dx$，则边界项 $x^n\\cos x$ 在 $x=0$ 与 $x=\\frac{\\pi}{2}$ 处均为 0，得 $I_n=n\\int_0^{\\frac{\\pi}{2}}x^{n-1}\\cos x\\,dx$（$n\\ge1$）。再对右端分部，取 $u=x^{n-1}$，$dv=\\cos x\\,dx$，得 $\\int_0^{\\frac{\\pi}{2}}x^{n-1}\\cos x\\,dx=\\left(\\frac{\\pi}{2}\\right)^{n-1}-(n-1)I_{n-2}$。于是 $I_n=n\\left(\\frac{\\pi}{2}\\right)^{n-1}-n(n-1)I_{n-2}$（$n\\ge2$）。又 $I_0=\\int_0^{\\frac{\\pi}{2}}\\sin x\\,dx=1$，$I_1=\\int_0^{\\frac{\\pi}{2}}x\\sin x\\,dx=1$，故 $I_2=2\\cdot\\frac{\\pi}{2}-2\\cdot1\\cdot1=\\pi-2$，$I_3=3\\left(\\frac{\\pi}{2}\\right)^2-3\\cdot2\\cdot1=\\frac{3\\pi^2}{4}-6$。",
+      "routes": [
+        {
+          "id": "r-two-parts",
+          "summary": "两次分部积分（先降幂再转 $\\cos ）$建立二阶递推，再代初值",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.integration_by_parts",
+              "state": "对 $x^n\\sin x$ 分部，取 $u=x^n$，$dv=\\sin x\\,dx$",
+              "transformedState": "$I_n=n\\int_0^{\\frac{\\pi}{2}}x^{n-1}\\cos x\\,dx$（$n\\ge1$，两个边界项均为 0）",
+              "condition": "$n\\ge1$ 时 $x^n\\cos x$ 在 $x=0$ 处为 0，在 $x=\\frac{\\pi}{2}$ 处也为 0"
+            },
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.integration_by_parts",
+              "state": "对 $\\int_0^{\\frac{\\pi}{2}}x^{n-1}\\cos x\\,dx$ 再分部，取 $u=x^{n-1}$，$dv=\\cos x\\,dx$",
+              "transformedState": "$I_n=n\\left(\\frac{\\pi}{2}\\right)^{n-1}-n(n-1)I_{n-2}$（$n\\ge2$）",
+              "condition": "$n\\ge2$ 时才能把 $\\int_0^{\\frac{\\pi}{2}}x^{n-2}\\sin x\\,dx$ 认成 $I_{n-2}$"
+            },
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.reduction_formula",
+              "state": "由初值 $I_0=1$、$I_1=1$ 递推",
+              "transformedState": "$I_2=2\\cdot\\frac{\\pi}{2}-2\\cdot1\\cdot1=\\pi-2$；$I_3=3\\left(\\frac{\\pi}{2}\\right)^2-3\\cdot2\\cdot1=\\frac{3\\pi^2}{4}-6$",
+              "condition": "递推基石 $I_0=\\int_0^{\\frac{\\pi}{2}}\\sin x\\,dx=1$，$I_1=\\int_0^{\\frac{\\pi}{2}}x\\sin x\\,dx=1$"
+            }
+          ],
+          "reason": "两次分部把幂次每次降一，恰好形成 $I_n$ 与 $I_{n-2}$ 的二阶递推，是递推型积分的标准做法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-parameter",
+          "summary": "引入含参积分 $F(a)$ 作为生成函数，对其恒等式求导得到同一递推",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.integration_by_parts",
+              "state": "引入含参积分",
+              "transformedState": "$F(a)=\\int_0^{\\frac{\\pi}{2}}e^{ax}\\sin x\\,dx=\\frac{a e^{a\\pi/2}+1}{a^2+1}$（由两次分部或积分表得到）",
+              "condition": "$a$ 为实数，$F$ 在 $a=0$ 附近任意阶可导，且 $I_n=F^{(n)}(0)$"
+            },
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.reduction_formula",
+              "state": "对恒等式 $(a^2+1)F(a)=a e^{a\\pi/2}+1$ 求 $n$ 阶导并取 $a=0$",
+              "transformedState": "由莱布尼茨公式得 $I_n+n(n-1)I_{n-2}=n\\left(\\frac{\\pi}{2}\\right)^{n-1}$（$n\\ge2$）",
+              "condition": "$(a^2+1)$ 只有 0、1、2 阶导数在 $a=0$ 处非零，其余项自动消失"
+            },
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.reduction_formula",
+              "state": "代 $n=2,3$ 并与主路线核对",
+              "transformedState": "$I_2=\\pi-2$，$I_3=\\frac{3\\pi^2}{4}-6$，与两次分部法完全一致",
+              "condition": "$I_0=F(0)=1$，$I_1=F'(0)=1$ 与直接计算相符"
+            }
+          ],
+          "reason": "把 $x^n$ 看成参数积分的 $n$ 阶导数，用生成函数求导得到递推，机制与逐次分部不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-order",
+          "summary": "分部时取 $u=\\sin x$、$dv=x^n dx$，两次分部互相抵消",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.integration_by_parts",
+              "state": "取 $u=\\sin x$，$dv=x^n dx$",
+              "transformedState": "$I_n=\\left[\\frac{x^{n+1}}{n+1}\\sin x\\right]_0^{\\frac{\\pi}{2}}-\\frac{1}{n+1}\\int_0^{\\frac{\\pi}{2}}x^{n+1}\\cos x\\,dx$",
+              "condition": "这一步本身合法，但幂次被升高而不是降低"
+            },
+            {
+              "scenarioId": "S.indefint.recurrence",
+              "methodId": "M.integration_by_parts",
+              "state": "对 $\\int x^{n+1}\\cos x\\,dx$ 继续同方向分部",
+              "transformedState": "代回后得到恒等式 $I_n=I_n$，即 $0=0$，推不出任何递推关系",
+              "condition": "错因：把三角函数取作 $u$ 时降幂方向反了，两次分部互相抵消，得不到 $I_n$ 与 $I_{n-2}$ 的关系"
+            }
+          ],
+          "reason": "分部积分选 $u$ 的方向决定幂次升降，选错方向会得到恒等式而非递推。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "n"
+      ],
+      "comparisonCriterion": "分部积分必须取 $u=x^n$ 逐次降幂；递推只对 $n\\ge2$ 成立，$I_0$、$I_1$ 要单独算作基石。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.ecnu-c1-8-1",
+        "trainingGoal": "掌握幂乘三角型积分的两次分部与二阶递推，并正确代入初值求具体项",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第八大题第1题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-8-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$n$ 为非负整数",
+          "积分区间固定为 $[0,\\frac{\\pi}{2}]$"
+        ],
+        "allowedVariations": [
+          "把 $\\sin x$ 换成 $\\cos x$",
+          "把上限改为 $\\pi$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-8-1",
+          "text": "设 $I_{n}=\\int_{0}^{\\frac{\\pi}{2}}x^{n}\\sin x\\,dx$，这里 $n$ 为非负整数，求 $I_{n}$ 的递推公式，并求 $I_{2}$，$I_{3}$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "不定积分",
+          "difficulty": "中",
+          "method": "递推型积分",
+          "notes": "高等数学 bankadv2；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "ecnu-c1-8-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：对 $x^n\\sin x$ 分部（$u=x^n$，$dv=\\sin x\\,dx$）得 $I_n=n\\int_0^{\\pi/2}x^{n-1}\\cos x\\,dx$；再对该积分分部（$u=x^{n-1}$，$dv=\\cos x\\,dx$）得 $I_n=n\\left(\\frac{\\pi}{2}\\right)^{n-1}-n(n-1)I_{n-2}$（$n\\ge2$）。由 $I_0=1$、$I_1=1$ 得 $I_2=2\\cdot\\frac{\\pi}{2}-2=\\pi-2$，$I_3=3\\left(\\frac{\\pi}{2}\\right)^2-6=\\frac{3\\pi^2}{4}-6$。用直接分部求 $I_2$、$I_3$ 交叉验证，结果一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.integration_by_parts",
+        "M.reduction_formula"
+      ],
+      "applicableMethodIds": [
+        "M.integration_by_parts",
+        "M.reduction_formula"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.indefint.recurrence",
+          "methodId": "M.reduction_formula"
+        },
+        {
+          "scenarioId": "S.indefint.recurrence",
+          "methodId": "M.integration_by_parts"
+        },
+        {
+          "scenarioId": "S.indefint.recurrence",
+          "methodId": "M.trig_rational_integral"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.reduction_formula",
+        "M.integration_by_parts",
+        "M.trig_rational_integral"
+      ],
+      "options": [
+        {
+          "id": "r-parameter",
+          "name": "引入含参积分 $F(a)$ 作为生成函数，对其恒等式求导得到同一递推"
+        },
+        {
+          "id": "r-wrong-order",
+          "name": "分部时取 $u=\\sin x$、$dv=x^n dx$，两次分部互相抵消"
+        },
+        {
+          "id": "r-two-parts",
+          "name": "两次分部积分（先降幂再转 $\\cos ）$建立二阶递推，再代初值"
+        }
+      ],
+      "questionKey": "947f20518e7455ebd6235411dbc139a18c0c4b19a31cb375c57dcdc71c69ddca",
+      "faceKey": "f4f96959979434acbcf050f5a2ab2dbb5e32a52c6549ed68d0142d59afc3e792"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.mvt.max_min_application",
+      "question": "已知 $f(x)=3x^{2}+kx^{-3}\\ (k>0)$，当 $x>0$ 时，总有 $f(x)\\geq 20$ 成立，则参数 $k$ 的最小取值是（　）。\nA. 32；\nB. 64；\nC. 72；\nD. 96。",
+      "solution": "在 $x>0$ 上求 $f$ 的最小值。$f'(x)=6x-\\frac{3k}{x^4}$，令 $f'=0$ 得唯一驻点 $x_0=\\left(\\frac{k}{2}\\right)^{1/5}$；又 $f''(x)=6+\\frac{12k}{x^5}>0$，且 $x\\to0^+$、$x\\to+\\infty$ 时 $f\\to+\\infty$，故 $x_0$ 是全局极小点。代入得 $f(x_0)=3\\left(\\frac{k}{2}\\right)^{2/5}+k\\left(\\frac{k}{2}\\right)^{-3/5}=5\\left(\\frac{k}{2}\\right)^{2/5}$。由恒成立条件 $f(x_0)\\ge20$，得 $\\left(\\frac{k}{2}\\right)^{2/5}\\ge4$，即 $\\frac{k}{2}\\ge4^{5/2}=32$，$k\\ge64$。当 $k=64$ 时最小值恰为 20，故 $k$ 的最小取值为 64，选 B。",
+      "routes": [
+        {
+          "id": "r-min-value",
+          "summary": "对 $f$ 求导找全局极小点，代入极小值后解不等式",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.monotonicity_analysis",
+              "state": "在 $x>0$ 上求 $f$ 的最小值",
+              "transformedState": "$f'(x)=6x-\\frac{3k}{x^4}$，唯一驻点 $x_0=\\left(\\frac{k}{2}\\right)^{1/5}$；$f''(x)=6+\\frac{12k}{x^5}>0$，为全局极小点",
+              "condition": "$k>0$；$x\\to0^+$ 与 $x\\to+\\infty$ 时 $f\\to+\\infty$，故最小值在内部驻点取得"
+            },
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.monotonicity_analysis",
+              "state": "把驻点代入求极小值",
+              "transformedState": "$f(x_0)=3\\left(\\frac{k}{2}\\right)^{2/5}+k\\left(\\frac{k}{2}\\right)^{-3/5}=5\\left(\\frac{k}{2}\\right)^{2/5}$",
+              "condition": "合并时用 $2^{3/5}=2\\cdot2^{-2/5}$，两项系数相加为 $3+2=5$"
+            },
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.model_objective_function",
+              "state": "由恒成立条件解 $k$",
+              "transformedState": "$5\\left(\\frac{k}{2}\\right)^{2/5}\\ge20\\Rightarrow\\left(\\frac{k}{2}\\right)^{2/5}\\ge4\\Rightarrow\\frac{k}{2}\\ge4^{5/2}=32\\Rightarrow k\\ge64$，最小值为 64，选 B",
+              "condition": "$4^{5/2}=(2^2)^{5/2}=2^5=32$，开方与乘方次序不能颠倒"
+            }
+          ],
+          "reason": "恒成立转化为最小值不小于 20，先求极小值再解参数不等式，是最直接的路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-separate-parameter",
+          "summary": "把 $f(x)\\ge20$ 分离参数为 $k\\ge g(x)$，求 $g$ 的最大值",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "分离参数并构造右端函数",
+              "transformedState": "$f(x)\\ge20\\Leftrightarrow k\\ge g(x)=20x^3-3x^5$ 对一切 $x>0$ 成立，等价于 $k\\ge\\max_{x>0}g(x)$",
+              "condition": "$x>0$ 时可在不等式两边同乘 $x^3$，不等号方向不变"
+            },
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.monotonicity_analysis",
+              "state": "求 $g$ 在 $x>0$ 上的最大值",
+              "transformedState": "$g'(x)=60x^2-15x^4=15x^2(4-x^2)$，$x=2$ 为极大值点，$g(2)=160-96=64$",
+              "condition": "$g(0)=0$，$x\\to+\\infty$ 时 $g\\to-\\infty$，故最大值在 $x=2$ 取得"
+            },
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.model_objective_function",
+              "state": "由最大值得 $k$ 的最小值",
+              "transformedState": "$k\\ge64$，最小值为 64，选 B；此时 $x=2$，$f(2)=12+8=20$ 取等",
+              "condition": "恒成立要求 $k$ 不小于 $g$ 的最大值，等号可达到"
+            }
+          ],
+          "reason": "把参数分离出来，把恒成立问题转成求另一函数的最大值，思路与直接求 $f$ 的最小值不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-power-error",
+          "summary": "极小值求对，但把 $4^{5/2}$ 算成 16 导致 $k$ 减半",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.monotonicity_analysis",
+              "state": "求导得极小点与极小值",
+              "transformedState": "$x_0=\\left(\\frac{k}{2}\\right)^{1/5}$，$f(x_0)=5\\left(\\frac{k}{2}\\right)^{2/5}$",
+              "condition": "极值计算本身正确"
+            },
+            {
+              "scenarioId": "S.mvt.max_min_application",
+              "methodId": "M.model_objective_function",
+              "state": "解 $\\left(\\frac{k}{2}\\right)^{2/5}\\ge4$",
+              "transformedState": "误算 $4^{5/2}=16$，得 $\\frac{k}{2}\\ge16$，即 $k\\ge32$，误选 A",
+              "condition": "错因：$4^{5/2}=(2^2)^{5/2}=2^5=32$，指数律算错使答案减半"
+            }
+          ],
+          "reason": "根式指数不等式一步算错就会把 64 误写成 32，是最典型的失分点。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "k"
+      ],
+      "comparisonCriterion": "恒成立问题先化成最值问题：求 $f$ 的最小值时极小点为 $x=\\left(\\frac{k}{2}\\right)^{1/5}$，最小值为 $5\\left(\\frac{k}{2}\\right)^{2/5}$；解指数不等式时 $4^{5/2}=32$。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.fudan-b-1-2",
+        "trainingGoal": "把恒成立条件转化为最值条件，正确求出含参函数的最小值并解指数不等式",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第一大题第2题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-1-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$k>0$",
+          "$x>0$",
+          "不等式对一切 $x>0$ 恒成立"
+        ],
+        "allowedVariations": [
+          "把常数 20 改为 25",
+          "把 $3x^2$ 改为 $2x^2$"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-1-2",
+          "text": "已知 $f(x)=3x^{2}+kx^{-3}\\ (k>0)$，当 $x>0$ 时，总有 $f(x)\\geq 20$ 成立，则参数 $k$ 的最小取值是 $[\\ ]$。\nA. 32；\nB. 64；\nC. 72；\nD. 96。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "微分中值定理与导数的应用",
+          "difficulty": "中",
+          "method": "最值及其应用",
+          "notes": "高等数学 bankadv2；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "fudan-b-1-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：$f'(x)=6x-\\frac{3k}{x^4}$，唯一驻点 $x_0=\\left(\\frac{k}{2}\\right)^{1/5}$；$f''(x)=6+\\frac{12k}{x^5}>0$，故 $x_0$ 为全局极小点。$f(x_0)=3\\left(\\frac{k}{2}\\right)^{2/5}+k\\left(\\frac{k}{2}\\right)^{-3/5}=5\\left(\\frac{k}{2}\\right)^{2/5}$。令 $5\\left(\\frac{k}{2}\\right)^{2/5}\\ge20$，得 $\\frac{k}{2}\\ge 4^{5/2}=32$，即 $k\\ge64$；取 $k=64$ 时 $x=2$，$f(2)=12+8=20$，故最小值为 64，选 B。另用分离参数法 $k\\ge20x^3-3x^5$ 求右端最大值，同样得 64。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.monotonicity_analysis",
+        "M.model_objective_function"
+      ],
+      "applicableMethodIds": [
+        "M.monotonicity_analysis",
+        "M.model_objective_function",
+        "M.construct_auxiliary_function"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.mvt.max_min_application",
+          "methodId": "M.monotonicity_analysis"
+        },
+        {
+          "scenarioId": "S.mvt.max_min_application",
+          "methodId": "M.construct_auxiliary_function"
+        },
+        {
+          "scenarioId": "S.mvt.max_min_application",
+          "methodId": "M.model_objective_function"
+        },
+        {
+          "scenarioId": "S.mvt.max_min_application",
+          "methodId": "M.complete_square"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.monotonicity_analysis",
+        "M.construct_auxiliary_function",
+        "M.model_objective_function",
+        "M.complete_square"
+      ],
+      "options": [
+        {
+          "id": "r-separate-parameter",
+          "name": "把 $f(x)\\ge20$ 分离参数为 $k\\ge g(x)$，求 $g$ 的最大值"
+        },
+        {
+          "id": "r-power-error",
+          "name": "极小值求对，但把 $4^{5/2}$ 算成 16 导致 $k$ 减半"
+        },
+        {
+          "id": "r-min-value",
+          "name": "对 $f$ 求导找全局极小点，代入极小值后解不等式"
+        }
+      ],
+      "questionKey": "7fafb24512406c0a7402069d3eb52d4f35ec7f029bbe38efdee25bc7f044844f",
+      "faceKey": "552ef0da9aaff83eb011f36c3116f7b05c6d88a23a8afe8467db148de5de79d4"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.mvt.rolle_equality",
+      "question": "已知函数 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 中可导，且 $f(0)=1,\\ f(1)=\\frac{1}{2}$。证明：存在 $\\xi\\in(0,1)$，使得 $f'(\\xi)+f^{2}(\\xi)=0$。",
+      "solution": "把结论改写为 $(1/f)'=1$。若 $f$ 在 $[0,1]$ 上无零点，令 $F(x)=\\frac{1}{f(x)}-x$，则 $F(0)=\\frac{1}{f(0)}-0=1$，$F(1)=\\frac{1}{f(1)}-1=1$，$F$ 在 $[0,1]$ 连续、在 $(0,1)$ 可导，由罗尔定理存在 $\\xi\\in(0,1)$ 使 $F'(\\xi)=-\\frac{f'(\\xi)+f^2(\\xi)}{f^2(\\xi)}=0$，从而 $f'(\\xi)+f^2(\\xi)=0$。若 $f$ 在 $(0,1)$ 内有零点，则用反证法：设 $P(x)=f'(x)+f^2(x)$ 在 $(0,1)$ 上恒不为零，由 $P$ 连续知 $P$ 恒正或恒负。当 $P>0$ 时，在 $f>0$ 的区间上 $(1/f)'=-f'/f^2<1$；若 $f$ 有最小零点 $c$，在 $[0,c)$ 上积分得 $1/f(t)<1+t$，令 $t\\to c^-$ 时左端趋于 $+\\infty$ 而右端有界，矛盾；若 $f$ 无零点，对 $[0,1]$ 积分得 $1/f(1)-1/f(0)<1$，即 $1<1$，矛盾。当 $P<0$ 时，$(1/f)'=-f'/f^2>1$；取 $f$ 的最大零点 $c$（无零点时直接积分），在 $(c,1]$ 上积分并令 $t\\to c^+$，或直接得 $1>1$，同样矛盾。故 $P$ 必有零点 $\\xi$，即 $f'(\\xi)+f^2(\\xi)=0$。",
+      "routes": [
+        {
+          "id": "r-construct-reciprocal",
+          "summary": "构造 $F(x)=\\frac{1}{f(x)}-x$，用端点等值加罗尔定理",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "把 $f'+f^2=0$ 改写成 $(1/f)'=1$，构造辅助函数",
+              "transformedState": "$F(x)=\\frac{1}{f(x)}-x$，$F'(x)=-\\frac{f'(x)+f^2(x)}{f^2(x)}$；$F(0)=\\frac{1}{f(0)}=1$，$F(1)=\\frac{1}{f(1)}-1=2-1=1$",
+              "condition": "需 $f(x)\\ne0$（$x\\in[0,1]$）才能定义 $F$；若 $f$ 有零点则改走反证路线"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.rolle_theorem",
+              "state": "$F$ 在 $[0,1]$ 连续、$(0,1)$ 可导",
+              "transformedState": "存在 $\\xi\\in(0,1)$ 使 $F'(\\xi)=0$，即 $-\\frac{f'(\\xi)+f^2(\\xi)}{f^2(\\xi)}=0$，故 $f'(\\xi)+f^2(\\xi)=0$",
+              "condition": "罗尔定理，端点值 $F(0)=F(1)=1$"
+            }
+          ],
+          "reason": "把所证等式认成 $(1/f)'=1$ 的零点问题，辅助函数构造一步到位，是最标准的做法。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-contradiction",
+          "summary": "反设 $f'+f^2$ 恒不为零，按恒正/恒负两种情形用 $(1/f)'$ 的积分比较导出矛盾",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "反设 $P(x)=f'(x)+f^2(x)$ 在 $(0,1)$ 上无零点",
+              "transformedState": "由 $P$ 连续知 $P$ 恒正或恒负；在 $f>0$ 处 $(1/f)'=-f'/f^2$，故 $P>0$ 时 $(1/f)'<1$，$P<0$ 时 $(1/f)'>1$",
+              "condition": "只需在 $f$ 保持正号的区间上作比较，避开 $f=0$ 的点"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "$P>0$ 情形取 $f$ 的最小零点 $c$（或无零点）",
+              "transformedState": "在 $[0,c)$ 上 $1/f(t)>1$ 且 $(1/f)'<1$，积分得 $1/f(t)<1+t$；令 $t\\to c^-$ 左端趋于 $+\\infty$，与右端有界矛盾；无零点时 $1/f(1)-1/f(0)<1$ 即 $1<1$",
+              "condition": "利用 $1/f(0)=1$，$1/f(1)=2$，区间长度为 1"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "$P<0$ 情形取 $f$ 的最大零点 $c$（或无零点）",
+              "transformedState": "在 $(c,1]$ 上 $(1/f)'>1$，积分得 $2-1/f(t)>1-t$，令 $t\\to c^+$ 左端趋于 $-\\infty$ 与右端有限矛盾；无零点时 $1>1$",
+              "condition": "最大零点右侧 $f>0$，$1/f(c^+)\\to+\\infty$"
+            }
+          ],
+          "reason": "不构造分式辅助函数，改为反证加积分比较，绕开了“$f$ 是否有零点”的讨论，机制与罗尔路线不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-sign",
+          "summary": "辅助函数取 $1/f+x$，符号写反且端点不等仍套罗尔",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "构造 $F(x)=\\frac{1}{f(x)}+x$",
+              "transformedState": "$F'(x)=1-\\frac{f'(x)}{f^2(x)}=\\frac{f^2(x)-f'(x)}{f^2(x)}$，令 $F'=0$ 只能得 $f'=f^2$",
+              "condition": "错因：$(1/f)'=-f'/f^2$，符号取反只能推出 $f'=f^2$，与所证 $f'=-f^2$ 相反"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.rolle_theorem",
+              "state": "套用罗尔定理",
+              "transformedState": "又 $F(0)=1$、$F(1)=3$，端点并不相等，却仍断言存在 $\\xi$ 使 $f'(\\xi)+f^2(\\xi)=0$",
+              "condition": "双重错误：辅助函数符号错，且端点不等时罗尔定理根本不适用"
+            }
+          ],
+          "reason": "把 $(1/f)'$ 的符号记反，再用不满足端点条件的罗尔定理，是这类构造题的典型错法。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "所证式应认成 $(1/f)'=1$：$F=1/f-x$ 两端都等于 1，罗尔定理一步可得；符号取错会变成 $f'=f^2$。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.ecnu-a-10",
+        "trainingGoal": "把含 $f'$ 与 $f^2$ 的等式整理成辅助函数导数零点，掌握罗尔型证明的构造方法",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数A 第二题第10题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "originalId": "ecnu-a-10"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "区间为 $[0,1]$",
+          "$f(0)=1$，$f(1)=\\frac12$",
+          "$f$ 在 $[0,1]$ 连续、$(0,1)$ 可导"
+        ],
+        "allowedVariations": [
+          "把端点值改为 $f(0)=1$、$f(1)=\\frac13$",
+          "把所证式改为 $f'(\\xi)+2f^2(\\xi)=0$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-10",
+          "text": "已知函数 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 中可导，且 $f(0)=1,\\ f(1)=\\frac{1}{2}$。证明：存在 $\\xi\\in(0,1)$，使得 $f'(\\xi)+f^{2}(\\xi)=0$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "微分中值定理与导数的应用",
+          "difficulty": "中",
+          "method": "证明含中值的等式（罗尔型）",
+          "notes": "高等数学 bankadv2；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "ecnu-a-10",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：所证式等价于 $(1/f)'=1$，故取 $F(x)=\\frac{1}{f(x)}-x$（在 $f$ 不为零的区间上），有 $F(0)=\\frac{1}{f(0)}=1$，$F(1)=\\frac{1}{f(1)}-1=1$，由罗尔定理存在 $\\xi$ 使 $F'(\\xi)=-\\frac{f'(\\xi)+f^2(\\xi)}{f^2(\\xi)}=0$，即得结论。若 $f$ 在 $(0,1)$ 内有零点，则改用反证：设 $P=f'+f^2$ 恒不为零，则 $P$ 恒正或恒负；$P>0$ 时在 $f>0$ 段 $(1/f)'<1$，取最小零点 $c$ 令 $t\\to c^-$ 得 $1/f\\to+\\infty$ 与 $1+t$ 有界的矛盾（无零点时由 $1/f(1)-1/f(0)<1$ 得 $1<1$）；$P<0$ 时同理取最大零点 $c$ 令 $t\\to c^+$ 得矛盾（无零点时得 $1>1$）。故必有 $\\xi$ 使 $P(\\xi)=0$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.construct_auxiliary_function",
+        "M.rolle_theorem"
+      ],
+      "applicableMethodIds": [
+        "M.construct_auxiliary_function",
+        "M.rolle_theorem"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.mvt.rolle_equality",
+          "methodId": "M.rolle_theorem"
+        },
+        {
+          "scenarioId": "S.mvt.rolle_equality",
+          "methodId": "M.construct_auxiliary_function"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.rolle_theorem",
+        "M.construct_auxiliary_function"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-sign",
+          "name": "辅助函数取 $1/f+x$，符号写反且端点不等仍套罗尔"
+        },
+        {
+          "id": "r-construct-reciprocal",
+          "name": "构造 $F(x)=\\frac{1}{f(x)}-x$，用端点等值加罗尔定理"
+        },
+        {
+          "id": "r-contradiction",
+          "name": "反设 $f'+f^2$ 恒不为零，按恒正/恒负两种情形用 $(1/f)'$ 的积分比较导出矛盾"
+        }
+      ],
+      "questionKey": "b00656d3d78e4975299588c889e69d1607600435e0276f9b52225241e1cebb92",
+      "faceKey": "1d6ea6188428a8e6697874e6ca48421b7b533289c7881d6b834a7e0f9177e765"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.indefint.by_parts_product",
+      "question": "已知 $f(x)$ 的原函数为 $\\frac{\\sin x}{x}$，求 $\\int_{0}^{\\frac{\\pi}{2}}xf'(2x)\\,\\mathrm{d}x$。",
+      "solution": "记 $F(x)=\\frac{\\sin x}{x}$，由题意 $F'=f$。先求 $f$ 的表达式：$f(x)=F'(x)=\\frac{x\\cos x-\\sin x}{x^2}$，故 $f(\\pi)=-\\frac1\\pi$；又 $F(\\pi)=0$，$F(0)=\\lim_{x\\to0}\\frac{\\sin x}{x}=1$。令 $t=2x$，则 $x=\\frac t2$，$dx=\\frac{dt}{2}$，原积分 $=\\frac14\\int_0^\\pi t f'(t)\\,dt$。对右端分部：$\\int_0^\\pi t f'(t)\\,dt=[t f(t)]_0^\\pi-\\int_0^\\pi f(t)\\,dt=\\pi f(\\pi)-\\left(F(\\pi)-F(0)\\right)=-1-(0-1)=0$。故原积分 $=0$。",
+      "routes": [
+        {
+          "id": "r-sub-then-parts",
+          "summary": "先令 $t=2x$ 换元，再对 $t f'(t)$ 分部积分并用 $f=F'$ 求值",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.integration_by_parts",
+              "state": "先换元 $t=2x$",
+              "transformedState": "$x=\\frac t2$，$dx=\\frac{dt}{2}$，原积分 $=\\frac14\\int_0^\\pi t f'(t)\\,dt$",
+              "condition": "上限 $x=\\frac\\pi2$ 对应 $t=\\pi$，下限 $x=0$ 对应 $t=0$"
+            },
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.integration_by_parts",
+              "state": "对 $\\int t f'(t)\\,dt$ 分部",
+              "transformedState": "$\\frac14\\left([t f(t)]_0^\\pi-\\int_0^\\pi f(t)\\,dt\\right)=\\frac14\\left(\\pi f(\\pi)-(F(\\pi)-F(0))\\right)$",
+              "condition": "取 $u=t$，$dv=f'(t)\\,dt$，则 $v=f(t)$"
+            },
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.reduction_formula",
+              "state": "由 $f=F'$ 求出各值并整理",
+              "transformedState": "$f(\\pi)=\\frac{\\pi\\cos\\pi-\\sin\\pi}{\\pi^2}=-\\frac1\\pi$，$F(\\pi)=0$，$F(0)=1$，故原积分 $=\\frac14(-1-(0-1))=0$",
+              "condition": "$F(0)$ 是 $\\frac{\\sin x}{x}$ 的可去间断点处的极限值"
+            }
+          ],
+          "reason": "先换元把 $2x$ 化掉，再分部把 $f'$ 转成 $f$，最后用已知原函数求值，这是最稳妥的顺序。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-direct-parts",
+          "summary": "不换元，直接对 $x f'(2x)$ 分部，注意反微分带因子 $\\frac12$",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.integration_by_parts",
+              "state": "取 $u=x$，$dv=f'(2x)\\,dx$",
+              "transformedState": "$v=\\frac12f(2x)$，原积分 $=\\left[\\frac{x}{2}f(2x)\\right]_0^{\\frac\\pi2}-\\frac12\\int_0^{\\frac\\pi2}f(2x)\\,dx$",
+              "condition": "$f'(2x)\\,dx=\\frac12d[f(2x)]$，因子 $\\frac12$ 不能漏"
+            },
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.integration_by_parts",
+              "state": "第二项用原函数求值",
+              "transformedState": "$\\frac{\\pi}{4}f(\\pi)-\\frac14[F(2x)]_0^{\\frac\\pi2}=\\frac{\\pi}{4}\\left(-\\frac1\\pi\\right)-\\frac14(F(\\pi)-F(0))$",
+              "condition": "$\\int f(2x)\\,dx=\\frac12F(2x)$，上下限分别代入 $2x=\\pi$ 与 $2x=0$"
+            },
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.reduction_formula",
+              "state": "代入数值",
+              "transformedState": "$-\\frac14-\\frac14(0-1)=-\\frac14+\\frac14=0$",
+              "condition": "$f(\\pi)=-\\frac1\\pi$，$F(\\pi)=0$，$F(0)=1$"
+            }
+          ],
+          "reason": "直接在原变量上分部，不做换元，只需小心链式因子 $\\frac12$，计算量与主路线不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-mix-F-f",
+          "summary": "换元与分部都对，但求值时把 $f(\\pi)$ 当成 $F(\\pi)=0$",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.integration_by_parts",
+              "state": "换元 $t=2x$ 并分部",
+              "transformedState": "原积分 $=\\frac14\\left(\\pi f(\\pi)-(F(\\pi)-F(0))\\right)$",
+              "condition": "到这里的式子正确"
+            },
+            {
+              "scenarioId": "S.indefint.by_parts_product",
+              "methodId": "M.reduction_formula",
+              "state": "求 $f(\\pi)$ 时误用原函数值",
+              "transformedState": "误取 $f(\\pi)=F(\\pi)=0$，得 $\\frac14(0-(0-1))=\\frac14$",
+              "condition": "错因：$f=F'$，$f(\\pi)=\\frac{\\pi\\cos\\pi-\\sin\\pi}{\\pi^2}=-\\frac1\\pi$；$F(\\pi)=0$ 是原函数值，不能与 $f(\\pi)$ 混用"
+            }
+          ],
+          "reason": "“已知原函数”题最常见的混淆：把 $F$ 的端点值当成 $f$ 的函数值，边界项就算错。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "t"
+      ],
+      "comparisonCriterion": "先明确 $f=F'$ 并求出 $f(\\pi)=-\\frac1\\pi$、$F(0)=1$、$F(\\pi)=0$；分部时 $f'(2x)dx=\\frac12d[f(2x)]$，因子 $\\frac12$ 必须保留。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.ecnu-a-8",
+        "trainingGoal": "掌握已知原函数时用分部积分求定积分，正确区分 $f$ 与原函数 $F$ 的取值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数A 第一题第8题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "originalId": "ecnu-a-8"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f$ 的原函数为 $\\frac{\\sin x}{x}$，即 $f=(\\frac{\\sin x}{x})'$",
+          "积分区间为 $[0,\\frac{\\pi}{2}]$"
+        ],
+        "allowedVariations": [
+          "把 $f'(2x)$ 改为 $f'(3x)$",
+          "把原函数改为 $\\frac{\\cos x}{x}$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-a-8",
+          "text": "已知 $f(x)$ 的原函数为 $\\frac{\\sin x}{x}$，求 $\\int_{0}^{\\frac{\\pi}{2}}xf'(2x)\\,\\mathrm{d}x$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学A期末（A卷）",
+          "category": "不定积分",
+          "difficulty": "中",
+          "method": "乘积型分部积分",
+          "notes": "高等数学 bankadv2；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "ecnu-a-8",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：记 $F(x)=\\frac{\\sin x}{x}$，则 $f=F'$，$f(x)=\\frac{x\\cos x-\\sin x}{x^2}$，$f(\\pi)=-\\frac1\\pi$，$F(\\pi)=0$，$F(0)=\\lim_{x\\to0}\\frac{\\sin x}{x}=1$。令 $t=2x$，原积分 $=\\frac14\\int_0^\\pi t f'(t)\\,dt=\\frac14\\left([t f(t)]_0^\\pi-\\int_0^\\pi f(t)\\,dt\\right)=\\frac14\\left(\\pi\\cdot(-\\frac1\\pi)-(F(\\pi)-F(0))\\right)=\\frac14(-1-(0-1))=0$。用不换元直接分部的路线复核，同样得 0。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.integration_by_parts",
+        "M.reduction_formula"
+      ],
+      "applicableMethodIds": [
+        "M.integration_by_parts",
+        "M.reduction_formula"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.indefint.by_parts_product",
+          "methodId": "M.integration_by_parts"
+        },
+        {
+          "scenarioId": "S.indefint.by_parts_product",
+          "methodId": "M.reduction_formula"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.integration_by_parts",
+        "M.reduction_formula"
+      ],
+      "options": [
+        {
+          "id": "r-sub-then-parts",
+          "name": "先令 $t=2x$ 换元，再对 $t f'(t)$ 分部积分并用 $f=F'$ 求值"
+        },
+        {
+          "id": "r-direct-parts",
+          "name": "不换元，直接对 $x f'(2x)$ 分部，注意反微分带因子 $\\frac12$"
+        },
+        {
+          "id": "r-mix-F-f",
+          "name": "换元与分部都对，但求值时把 $f(\\pi)$ 当成 $F(\\pi)=0$"
+        }
+      ],
+      "questionKey": "a82d2a921cb7a124d4443a28338b22c386fe64d2d39527749cdb89d296d149ca",
+      "faceKey": "57a3e49da0c4ee8f28ba4db75123e887f01cb7fc960548bb03ce764e58948554"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.indefint.first_substitution",
+      "question": "求不定积分 $\\int\\dfrac{x^{5}}{\\sqrt{1-x^{6}}}\\,dx$。",
+      "solution": "注意到 $d(1-x^6)=-6x^5dx$，故 $x^5dx=-\\frac16d(1-x^6)$。令 $u=1-x^6$，原积分化为 $-\\frac16\\int\\frac{du}{\\sqrt u}=-\\frac16\\cdot2\\sqrt u+C=-\\frac13\\sqrt{1-x^6}+C$。求导验证：$\\left(-\\frac13\\sqrt{1-x^6}\\right)'=\\frac{x^5}{\\sqrt{1-x^6}}$，结果正确。",
+      "routes": [
+        {
+          "id": "r-first-substitution",
+          "summary": "把 $x^5dx$ 凑成 $d(1-x^6)$ 的常数倍，再套幂函数积分公式",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.first_substitution",
+              "methodId": "M.first_substitution",
+              "state": "识别内层 $1-x^6$ 及其导数",
+              "transformedState": "$d(1-x^6)=-6x^5dx$，故 $x^5dx=-\\frac16d(1-x^6)$",
+              "condition": "$|x|<1$ 使根式有定义；只需凑微分，不必显式解出 $x$"
+            },
+            {
+              "scenarioId": "S.indefint.first_substitution",
+              "methodId": "M.first_substitution",
+              "state": "令 $u=1-x^6$ 并积分",
+              "transformedState": "$-\\frac16\\int u^{-1/2}du=-\\frac16\\cdot2u^{1/2}+C=-\\frac13\\sqrt{1-x^6}+C$",
+              "condition": "$\\int u^{-1/2}du=2\\sqrt u$，负号与 $\\frac16$ 必须保留"
+            }
+          ],
+          "reason": "内层导数因子现成，凑微分后一步查表，是本题最短路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-sqrt-substitution",
+          "summary": "整体令 $t=\\sqrt{1-x^6}$，先平方再换元",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.first_substitution",
+              "methodId": "M.integration_by_substitution",
+              "state": "令 $t=\\sqrt{1-x^6}$",
+              "transformedState": "$t^2=1-x^6$，微分得 $2t\\,dt=-6x^5dx$，即 $x^5dx=-\\frac t3dt$",
+              "condition": "$t>0$，根式取正支；$|x|<1$"
+            },
+            {
+              "scenarioId": "S.indefint.first_substitution",
+              "methodId": "M.integration_by_substitution",
+              "state": "代入消去根式",
+              "transformedState": "$\\int\\frac{-t/3\\,dt}{t}=-\\frac13\\int dt=-\\frac t3+C=-\\frac13\\sqrt{1-x^6}+C$",
+              "condition": "回代 $t=\\sqrt{1-x^6}$，结果与凑微分法一致"
+            }
+          ],
+          "reason": "把整个根式设为新变量，先平方消根号再积分，机制与直接凑微分不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-miss-sign",
+          "summary": "令 $u=1-x^6$ 时漏掉微分中的负号",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.first_substitution",
+              "methodId": "M.first_substitution",
+              "state": "令 $u=1-x^6$",
+              "transformedState": "误写 $du=6x^5dx$，于是 $x^5dx=\\frac16du$",
+              "condition": "错因：$(1-x^6)'=-6x^5$，负号在凑微分时丢失"
+            },
+            {
+              "scenarioId": "S.indefint.first_substitution",
+              "methodId": "M.first_substitution",
+              "state": "按错误微分积分",
+              "transformedState": "得 $\\frac16\\cdot2\\sqrt u+C=+\\frac13\\sqrt{1-x^6}+C$",
+              "condition": "求导得 $-\\frac{x^5}{\\sqrt{1-x^6}}$，与原被积函数符号相反"
+            }
+          ],
+          "reason": "复合内层导数的负号是凑微分最常见的失分点，符号一错整题不成立。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "关键是 $d(1-x^6)=-6x^5dx$ 的负号；凑微分与整体根式换元都应得到 $-\\frac13\\sqrt{1-x^6}+C$。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.ecnu-c1-3-1",
+        "trainingGoal": "识别 $x^{6}$ 与 $x^{5}$ 的微分配对，用凑微分或根式换元求复合根式积分",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第三大题第1题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-3-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "被积函数含 $\\sqrt{1-x^6}$，定义域为 $|x|<1$",
+          "分子 $x^5$ 是内层导数的 $-\\frac16$ 倍"
+        ],
+        "allowedVariations": [
+          "把根号内改为 $1+x^6$",
+          "把分子改为 $x^{11}$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-3-1",
+          "text": "求不定积分 $\\int\\dfrac{x^{5}}{\\sqrt{1-x^{6}}}\\,dx$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "不定积分",
+          "difficulty": "中",
+          "method": "可凑微分的复合结构",
+          "notes": "高等数学 bankadv2；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "ecnu-c1-3-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：令 $u=1-x^6$，$du=-6x^5dx$，故原积分 $=-\\frac16\\int u^{-1/2}du=-\\frac16\\cdot2\\sqrt u+C=-\\frac13\\sqrt{1-x^6}+C$。求导回代：$\\left(-\\frac13\\sqrt{1-x^6}\\right)'=-\\frac13\\cdot\\frac{-6x^5}{2\\sqrt{1-x^6}}=\\frac{x^5}{\\sqrt{1-x^6}}$，与原被积函数一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.first_substitution"
+      ],
+      "applicableMethodIds": [
+        "M.first_substitution",
+        "M.integration_by_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.indefint.first_substitution",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.indefint.first_substitution",
+          "methodId": "M.integration_by_substitution"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.first_substitution",
+        "M.integration_by_substitution"
+      ],
+      "options": [
+        {
+          "id": "r-first-substitution",
+          "name": "把 $x^5dx$ 凑成 $d(1-x^6)$ 的常数倍，再套幂函数积分公式"
+        },
+        {
+          "id": "r-sqrt-substitution",
+          "name": "整体令 $t=\\sqrt{1-x^6}$，先平方再换元"
+        },
+        {
+          "id": "r-miss-sign",
+          "name": "令 $u=1-x^6$ 时漏掉微分中的负号"
+        }
+      ],
+      "questionKey": "4254fd4bd867c25134c21fa6257ec7a4ac1d4476784910f7796c160a1ab34158",
+      "faceKey": "ada79933c1e6f4c4b750a34fd7c9cc68d5fe66f55462724325ce79c8f4c71908"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.indefint.sqrt_integrand",
+      "question": "求不定积分 $\\int\\dfrac{\\sqrt{a^{2}-x^{2}}}{x^{4}}\\,dx$。",
+      "solution": "设 $a>0$，$0<|x|<a$。令 $x=a\\sin\\theta$，则 $dx=a\\cos\\theta\\,d\\theta$，$\\sqrt{a^2-x^2}=a\\cos\\theta$，被积式化为 $\\frac{a\\cos\\theta}{a^4\\sin^4\\theta}\\cdot a\\cos\\theta\\,d\\theta=\\frac1{a^2}\\cot^2\\theta\\csc^2\\theta\\,d\\theta$。因 $d(\\cot\\theta)=-\\csc^2\\theta\\,d\\theta$，故积分为 $-\\frac1{a^2}\\cdot\\frac{\\cot^3\\theta}{3}+C$。回代 $\\cot\\theta=\\frac{\\sqrt{a^2-x^2}}{x}$，得 $-\\frac{(a^2-x^2)^{3/2}}{3a^2x^3}+C$。求导验证：导数恰为 $\\frac{\\sqrt{a^2-x^2}}{x^4}$。",
+      "routes": [
+        {
+          "id": "r-trig-substitution",
+          "summary": "令 $x=a\\sin\\theta$，化为 $\\cot^2\\theta\\csc^2\\theta$ 后用 $d\\cot\\theta=-\\csc^2\\theta d\\theta$ 积分",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "三角代换 $x=a\\sin\\theta$",
+              "transformedState": "$dx=a\\cos\\theta\\,d\\theta$，$\\sqrt{a^2-x^2}=a\\cos\\theta$，被积式 $=\\frac1{a^2}\\cot^2\\theta\\csc^2\\theta\\,d\\theta$",
+              "condition": "设 $a>0$，$\\theta\\in(-\\frac\\pi2,0)\\cup(0,\\frac\\pi2)$ 保证 $\\cos\\theta>0$、$\\sin\\theta\\ne0$"
+            },
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "对 $\\theta$ 积分",
+              "transformedState": "$-\\frac1{a^2}\\cdot\\frac{\\cot^3\\theta}{3}+C$",
+              "condition": "符号来自 $d(\\cot\\theta)=-\\csc^2\\theta\\,d\\theta$，不能写成 $+\\frac{\\cot^3\\theta}{3}$"
+            },
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "回代 $\\theta$",
+              "transformedState": "$\\cot\\theta=\\frac{\\sqrt{a^2-x^2}}{x}$，故原积分 $=-\\frac{(a^2-x^2)^{3/2}}{3a^2x^3}+C$",
+              "condition": "$x\\ne0$；$\\cot\\theta$ 的符号与 $x$ 的符号一致，平方后不影响结果"
+            }
+          ],
+          "reason": "根式 $\\sqrt{a^2-x^2}$ 的标准三角代换，把根号与分母一起化成 $\\cot$、$\\csc$ 的幂。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-reciprocal-substitution",
+          "summary": "倒代换 $x=\\frac at$，把根式化为 $\\sqrt{t^2-1}$ 后积分",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "倒代换 $x=\\frac at$（即 $t=\\frac ax$）",
+              "transformedState": "$dx=-\\frac{a}{t^2}dt$，$\\sqrt{a^2-x^2}=\\frac{a\\sqrt{t^2-1}}{t}$，被积式 $=-\\frac{t}{a^2}\\sqrt{t^2-1}\\,dt$",
+              "condition": "取 $x>0$，则 $t>1$，$\\sqrt{t^2-1}$ 取正支"
+            },
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "对 $t$ 积分",
+              "transformedState": "$-\\frac1{a^2}\\cdot\\frac{(t^2-1)^{3/2}}{3}+C$",
+              "condition": "$d[(t^2-1)^{3/2}]=3t\\sqrt{t^2-1}\\,dt$"
+            },
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "回代 $t=\\frac ax$",
+              "transformedState": "$(t^2-1)^{3/2}=\\frac{(a^2-x^2)^{3/2}}{x^3}$（$x>0$），故原积分 $=-\\frac{(a^2-x^2)^{3/2}}{3a^2x^3}+C$",
+              "condition": "$x>0$ 时 $x^3>0$，开方与回代同号"
+            }
+          ],
+          "reason": "倒代换把分母的高次幂转成分子的幂，根式变成 $\\sqrt{t^2-1}$，与三角代换是两条不同的消根号路径。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-cot-sign",
+          "summary": "三角代换后把 $\\int\\cot^2\\theta\\csc^2\\theta d\\theta$ 积成 $+\\frac{\\cot^3\\theta}{3}$",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "三角代换 $x=a\\sin\\theta$",
+              "transformedState": "被积式 $=\\frac1{a^2}\\cot^2\\theta\\csc^2\\theta\\,d\\theta$",
+              "condition": "代换这一步正确"
+            },
+            {
+              "scenarioId": "S.indefint.sqrt_integrand",
+              "methodId": "M.integration_by_substitution",
+              "state": "对 $\\theta$ 积分时符号取反",
+              "transformedState": "误写 $\\int\\cot^2\\theta\\csc^2\\theta\\,d\\theta=+\\frac{\\cot^3\\theta}{3}$，回代得 $+\\frac{(a^2-x^2)^{3/2}}{3a^2x^3}+C$",
+              "condition": "错因：$d(\\cot\\theta)=-\\csc^2\\theta\\,d\\theta$，积分应为 $-\\frac{\\cot^3\\theta}{3}$；求导可立即发现符号相反"
+            }
+          ],
+          "reason": "把 $d\\cot\\theta$ 的负号丢掉是三角代换积分最常见的错误，结果导数与原式反号。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "a",
+        "x"
+      ],
+      "comparisonCriterion": "含 $\\sqrt{a^2-x^2}$ 时优先三角代换 $x=a\\sin\\theta$；积分 $\\cot^2\\theta\\csc^2\\theta$ 必须带负号，倒代换可作为独立校验。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.ecnu-c1-3-3",
+        "trainingGoal": "掌握含二次根式的三角代换与倒代换，正确回代并保持积分符号",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第三大题第3题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-3-3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "设 $a>0$",
+          "定义域 $0<|x|<a$",
+          "根式 $\\sqrt{a^2-x^2}$ 取正支"
+        ],
+        "allowedVariations": [
+          "把分母 $x^4$ 改为 $x^2$",
+          "把分子根式改为 $\\sqrt{x^2-a^2}$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-3-3",
+          "text": "求不定积分 $\\int\\dfrac{\\sqrt{a^{2}-x^{2}}}{x^{4}}\\,dx$。",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "不定积分",
+          "difficulty": "中",
+          "method": "含根式的积分（三角代换/根式代换）",
+          "notes": "高等数学 bankadv2；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "ecnu-c1-3-3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解（设 $a>0$）：令 $x=a\\sin\\theta$，得被积式 $=\\frac1{a^2}\\cot^2\\theta\\csc^2\\theta\\,d\\theta$，积分得 $-\\frac{\\cot^3\\theta}{3a^2}+C$；回代 $\\cot\\theta=\\frac{\\sqrt{a^2-x^2}}{x}$ 得 $-\\frac{(a^2-x^2)^{3/2}}{3a^2x^3}+C$。求导回代：结果为 $\\frac{\\sqrt{a^2-x^2}}{x^4}$，与原被积函数一致。另用倒代换 $x=\\frac at$ 复核，结果相同。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.integration_by_substitution"
+      ],
+      "applicableMethodIds": [
+        "M.integration_by_substitution"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.indefint.sqrt_integrand",
+          "methodId": "M.integration_by_substitution"
+        },
+        {
+          "scenarioId": "S.indefint.sqrt_integrand",
+          "methodId": "M.first_substitution"
+        },
+        {
+          "scenarioId": "S.indefint.sqrt_integrand",
+          "methodId": "M.rationalization"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.integration_by_substitution",
+        "M.first_substitution",
+        "M.rationalization"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-cot-sign",
+          "name": "三角代换后把 $\\int\\cot^2\\theta\\csc^2\\theta d\\theta$ 积成 $+\\frac{\\cot^3\\theta}{3}$"
+        },
+        {
+          "id": "r-trig-substitution",
+          "name": "令 $x=a\\sin\\theta$，化为 $\\cot^2\\theta\\csc^2\\theta$ 后用 $d\\cot\\theta=-\\csc^2\\theta d\\theta$ 积分"
+        },
+        {
+          "id": "r-reciprocal-substitution",
+          "name": "倒代换 $x=\\frac at$，把根式化为 $\\sqrt{t^2-1}$ 后积分"
+        }
+      ],
+      "questionKey": "74364ae2542276bfcccf06d9231df3d69806f0a1fb8affee2f0e523d1bbf00c8",
+      "faceKey": "d64fbb619856afab0a1c952aad576742b0c3c909a461545837f9751f8b60663c"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.indefint.basic_formula",
+      "question": "求函数 $f(x)$ 使得 $f(0)=0$ 且 $f'(\\ln x)=\\begin{cases}1, & 0<x\\leq 1,\\\\ x, & x>1.\\end{cases}$",
+      "solution": "令 $t=\\ln x$，则 $x=e^t$，且 $0<x\\le1\\Leftrightarrow t\\le0$，$x>1\\Leftrightarrow t>0$。于是 $f'(t)=\\begin{cases}1, & t\\le0,\\\\ e^t, & t>0.\\end{cases}$ 分段积分得 $f(t)=t+C_1$（$t\\le0$），$f(t)=e^t+C_2$（$t>0$）。由 $f(0)=0$ 得 $C_1=0$；由 $f$ 在 $t=0$ 连续得 $e^0+C_2=0$，即 $C_2=-1$。回代 $t=\\ln x$：当 $x\\le0$ 时 $f(x)=x$，当 $x>0$ 时 $f(x)=e^x-1$。此时 $f'(0^-)=1=f'(0^+)$，与原条件相容。",
+      "routes": [
+        {
+          "id": "r-sub-then-constants",
+          "summary": "换元 $t=\\ln x$ 得 $f'(t)$，分段积分后用 $f(0)=0$ 与连接点连续性定两个常数",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.first_substitution",
+              "state": "令 $t=\\ln x$，$x=e^t$",
+              "transformedState": "$0<x\\le1\\Leftrightarrow t\\le0$，$x>1\\Leftrightarrow t>0$，故 $f'(t)=\\begin{cases}1, & t\\le0,\\\\ e^t, & t>0.\\end{cases}$",
+              "condition": "$t=\\ln x$ 是 $\\mathbb R$ 到 $(0,+\\infty)$ 的一一对应，可整体改写自变量"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "分段积分",
+              "transformedState": "$f(t)=t+C_1$（$t\\le0$），$f(t)=e^t+C_2$（$t>0$）",
+              "condition": "两段内分别用 $\\int1\\,dt=t$ 与 $\\int e^t dt=e^t$，每段各带一个常数"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "用 $f(0)=0$ 与连续性定常数",
+              "transformedState": "$C_1=0$；$e^0+C_2=0$ 得 $C_2=-1$；故 $f(x)=x$（$x\\le0$），$f(x)=e^x-1$（$x>0$）",
+              "condition": "可导必连续，分段点 $t=0$ 处必须函数连续；左支常数由 $f(0)=0$ 定，右支常数由连接点定"
+            }
+          ],
+          "reason": "先把自变量统一到 $t$，再分段积分并用连续性连接两段，是分段导数反求函数的完整流程。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-definite-integral",
+          "summary": "由 $f(0)=0$ 直接写 $f(x)=\\int_0^x f'(s)ds$，用变上限积分逐段求值",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.first_substitution",
+              "state": "换元得 $f'(s)$ 的分段表达式",
+              "transformedState": "$f'(s)=1$（$s\\le0$），$f'(s)=e^s$（$s>0$）",
+              "condition": "$s=\\ln x$ 的对应关系与主路线相同"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "用牛顿-莱布尼茨公式写出 $f$",
+              "transformedState": "$x\\le0$ 时 $f(x)=\\int_0^x1\\,ds=x$；$x>0$ 时 $f(x)=\\int_0^x e^s\\,ds=e^x-1$",
+              "condition": "变上限积分在分段点连续，不需要待定常数，也不会漏掉 $e^x-1$ 中的 $-1$"
+            }
+          ],
+          "reason": "用定积分表示原函数，端点条件 $f(0)=0$ 自动满足，机制与“积分后定常数”不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-ignore-continuity",
+          "summary": "分段积分后只由 $f(0)=0$ 定左支常数，忽略连接点连续性",
+          "steps": [
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.first_substitution",
+              "state": "换元得 $f'(t)$ 的分段式",
+              "transformedState": "$f'(t)=1$（$t\\le0$），$f'(t)=e^t$（$t>0$）",
+              "condition": "换元这一步正确"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "分段积分但只定一个常数",
+              "transformedState": "取 $f(t)=t$（$t\\le0$），$f(t)=e^t$（$t>0$），右支常数误取 0",
+              "condition": "错因：$f$ 在 $t=0$ 连续要求 $e^0+C_2=0$，只靠 $f(0)=0$ 只能定左支常数"
+            },
+            {
+              "scenarioId": "S.indefint.basic_formula",
+              "methodId": "M.basic_integral_formula",
+              "state": "回代 $t=\\ln x$",
+              "transformedState": "得 $f(x)=x$（$x\\le0$），$f(x)=e^x$（$x>0$），但 $f(0^+)=1\\ne f(0)=0$，不连续",
+              "condition": "右支常数漏减 1，所得函数不满足可导（连续）前提"
+            }
+          ],
+          "reason": "分段积分后忘记用连接点连续性定右支常数，是分段函数反求最常见的错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "t"
+      ],
+      "comparisonCriterion": "先换元 $t=\\ln x$ 统一自变量，再分段积分；两个常数分别由 $f(0)=0$ 和分段点连续性确定，右支必须写成 $e^x-1$。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.ecnu-c1-3-2",
+        "trainingGoal": "掌握分段导数的反求原函数：换元统一自变量、分段积分、用端点值与连续性定常数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "华东师大 高数C（一）第三大题第2题",
+          "reference": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "originalId": "ecnu-c1-3-2"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f(0)=0$",
+          "$f'(\\ln x)$ 在 $x=1$ 两侧分段",
+          "分段点处 $f$ 必须连续"
+        ],
+        "allowedVariations": [
+          "把第二段改为 $x^2$",
+          "把分段点改为 $x=e$"
+        ],
+        "originalRecord": {
+          "id": "ecnu-c1-3-2",
+          "text": "求函数 $f(x)$ 使得 $f(0)=0$ 且 $f'(\\ln x)=\\begin{cases}1, & 0<x\\leq 1,\\\\ x, & x>1.\\end{cases}$",
+          "answer": "",
+          "source": "华东师范大学 2023-2024学年第一学期 高等数学C（一）期末（A卷）",
+          "category": "不定积分",
+          "difficulty": "中",
+          "method": "直接套基本积分公式",
+          "notes": "高等数学 bankadv2；华东师范大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "ecnu-c1-3-2",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：令 $t=\\ln x$，则 $x=e^t$，条件 $0<x\\le1$ 对应 $t\\le0$，$x>1$ 对应 $t>0$，故 $f'(t)=1$（$t\\le0$），$f'(t)=e^t$（$t>0$）。分段积分得 $f(t)=t+C_1$（$t\\le0$），$f(t)=e^t+C_2$（$t>0$）。由 $f(0)=0$ 得 $C_1=0$；在 $t=0$ 处连续要求 $1+C_2=0$，故 $C_2=-1$。回代得 $f(x)=x$（$x\\le0$），$f(x)=e^x-1$（$x>0$）。又 $f'(0^-)=1=f'(0^+)$，分段点可导，条件相容。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.first_substitution",
+        "M.basic_integral_formula"
+      ],
+      "applicableMethodIds": [
+        "M.first_substitution",
+        "M.basic_integral_formula"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.indefint.basic_formula",
+          "methodId": "M.basic_integral_formula"
+        },
+        {
+          "scenarioId": "S.indefint.basic_formula",
+          "methodId": "M.first_substitution"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.basic_integral_formula",
+        "M.first_substitution"
+      ],
+      "options": [
+        {
+          "id": "r-ignore-continuity",
+          "name": "分段积分后只由 $f(0)=0$ 定左支常数，忽略连接点连续性"
+        },
+        {
+          "id": "r-sub-then-constants",
+          "name": "换元 $t=\\ln x$ 得 $f'(t)$，分段积分后用 $f(0)=0$ 与连接点连续性定两个常数"
+        },
+        {
+          "id": "r-definite-integral",
+          "name": "由 $f(0)=0$ 直接写 $f(x)=\\int_0^x f'(s)ds$，用变上限积分逐段求值"
+        }
+      ],
+      "questionKey": "dd9038a1894dcc91fd1cf5677ca6ee039eeb3353d1d073edd6df36318654bfb2",
+      "faceKey": "3b13207b228cbd2754de11bbd3c9765dd7fefce062adbac82eb5a3286f6e911a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.mvt.rolle_equality",
+      "question": "设函数 $f(x)$ 和 $g(x)$ 在 $[a,b]$ 上存在二阶导数，且 $g''(x)\\neq 0$，$f(a)=f(b)=g(a)=g(b)=0$，证明：\n(1) 在开区间 $(a,b)$ 内，$g(x)\\neq 0$；\n(2) 在开区间 $(a,b)$ 内至少存在一点 $\\xi$，使得 $\\dfrac{f(\\xi)}{g(\\xi)}=\\dfrac{f''(\\xi)}{g''(\\xi)}$。",
+      "solution": "(1) 反证：若存在 $c\\in(a,b)$ 使 $g(c)=0$，则 $g$ 在 $[a,c]$ 与 $[c,b]$ 上各满足罗尔定理条件，存在 $\\xi_1\\in(a,c)$、$\\xi_2\\in(c,b)$ 使 $g'(\\xi_1)=g'(\\xi_2)=0$；再对 $g'$ 在 $[\\xi_1,\\xi_2]$ 上用罗尔定理，得 $\\eta$ 使 $g''(\\eta)=0$，与 $g''\\ne0$ 矛盾。故 $g(x)\\ne0$（$x\\in(a,b)$）。(2) 令 $W(x)=f(x)g'(x)-g(x)f'(x)$，由 $f(a)=g(a)=f(b)=g(b)=0$ 得 $W(a)=W(b)=0$，且 $W'=f g''-g f''$。对 $W$ 在 $[a,b]$ 上用罗尔定理，存在 $\\xi\\in(a,b)$ 使 $W'(\\xi)=f(\\xi)g''(\\xi)-g(\\xi)f''(\\xi)=0$。由 (1) $g(\\xi)\\ne0$，又 $g''(\\xi)\\ne0$，两边同除 $g(\\xi)g''(\\xi)$ 即得 $\\frac{f(\\xi)}{g(\\xi)}=\\frac{f''(\\xi)}{g''(\\xi)}$。",
+      "routes": [
+        {
+          "id": "r-wronskian",
+          "summary": "先两次罗尔证 $g$ 无零点，再构造 $W=fg'-gf'$ 用罗尔定理",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.rolle_theorem",
+              "state": "反证 $g$ 在 $(a,b)$ 内有零点 $c$",
+              "transformedState": "由 $g(a)=g(c)=g(b)=0$，在 $[a,c]$、$[c,b]$ 上分别得 $g'(\\xi_1)=g'(\\xi_2)=0$；再对 $g'$ 用罗尔定理得 $g''(\\eta)=0$，矛盾，故 $g(x)\\ne0$",
+              "condition": "需 $g$ 二阶可导，罗尔定理可连续使用两次"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "构造 $W(x)=f(x)g'(x)-g(x)f'(x)$",
+              "transformedState": "$W(a)=0$，$W(b)=0$，且 $W'(x)=f(x)g''(x)-g(x)f''(x)$",
+              "condition": "$f$、$g$ 二阶可导，$W$ 在 $[a,b]$ 连续、$(a,b)$ 可导"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.rolle_theorem",
+              "state": "对 $W$ 用罗尔定理",
+              "transformedState": "存在 $\\xi\\in(a,b)$ 使 $W'(\\xi)=f(\\xi)g''(\\xi)-g(\\xi)f''(\\xi)=0$，结合 (1) 得 $\\frac{f(\\xi)}{g(\\xi)}=\\frac{f''(\\xi)}{g''(\\xi)}$",
+              "condition": "$g(\\xi)\\ne0$ 且 $g''(\\xi)\\ne0$ 才能作商"
+            }
+          ],
+          "reason": "把待证式看成 $W'=0$，$W$ 的端点为零正好满足罗尔定理，是本题的标准构造。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-contradiction-monotone",
+          "summary": "构造 $K=f'g-fg'$（即 $-W$），不直接引用罗尔，而用反证加严格单调导出 $K'$ 必有零点",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.rolle_theorem",
+              "state": "先用分区间罗尔证 $g(x)\\ne0$",
+              "transformedState": "三个零点 $a,c,b$ 迫使 $g''$ 有零点，与 $g''\\ne0$ 矛盾",
+              "condition": "同主路线的 (1)"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "构造 $K(x)=f'(x)g(x)-f(x)g'(x)$",
+              "transformedState": "$K(a)=K(b)=0$，$K'(x)=f''(x)g(x)-f(x)g''(x)$",
+              "condition": "$K$ 与 $W$ 反号，$K'$ 与 $W'$ 也反号"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "反设 $K'$ 在 $(a,b)$ 恒不为零",
+              "transformedState": "由 $K'$ 连续知它恒正或恒负，$K$ 严格单调，不可能 $K(a)=K(b)=0$，矛盾；故存在 $\\xi$ 使 $K'(\\xi)=0$，即 $\\frac{f(\\xi)}{g(\\xi)}=\\frac{f''(\\xi)}{g''(\\xi)}$",
+              "condition": "严格单调函数不能取两次相同的值；$g$、$g''$ 非零由 (1) 与题设保证"
+            }
+          ],
+          "reason": "用反证与严格单调代替直接对 $K$ 套罗尔定理，绕开“辅助函数端点值”的检查，机制与罗尔路线不同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-role-on-phi",
+          "summary": "直接对待证式的分子 $\\varphi=fg''-gf''$ 套罗尔定理",
+          "steps": [
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.construct_auxiliary_function",
+              "state": "构造 $\\varphi(x)=f(x)g''(x)-g(x)f''(x)$",
+              "transformedState": "$\\varphi(a)=\\varphi(b)=0$，恰好是所证等式的分子",
+              "condition": "误以为端点值相等就能直接推出内部有零点"
+            },
+            {
+              "scenarioId": "S.mvt.rolle_equality",
+              "methodId": "M.rolle_theorem",
+              "state": "对 $\\varphi$ 用罗尔定理",
+              "transformedState": "只得到 $\\varphi'(\\eta)=f'g''+fg'''-g'f''-gf'''=0$，含三阶导数，与要证的 $\\varphi(\\xi)=0$ 无关",
+              "condition": "错因：罗尔定理只保证导数有零点；应构造 $W$ 使 $W'=\\varphi$，再对 $W$ 用罗尔定理"
+            }
+          ],
+          "reason": "把“分子端点为零”误当成“分子内部有零点”，这是构造辅助函数时最典型的方向性错误。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "x",
+        "a",
+        "b"
+      ],
+      "comparisonCriterion": "待证式分子是 $f g''-g f''$，应把它看成 $W=fg'-gf'$ 的导数；直接对分子套罗尔只会得到三阶导数的零点。",
+      "metadata": {
+        "motherId": "candidate.bankadv2.fudan-b-9-1",
+        "trainingGoal": "掌握用两次罗尔定理证明函数无零点，以及构造 Wronskian 型辅助函数证明含二阶导数的中值等式",
+        "source": {
+          "kind": "dataset_import",
+          "label": "复旦大学 高数B 第九大题第1题",
+          "reference": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "originalId": "fudan-b-9-1"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f$、$g$ 在 $[a,b]$ 上存在二阶导数",
+          "$g''(x)\\ne0$",
+          "$f(a)=f(b)=g(a)=g(b)=0$"
+        ],
+        "allowedVariations": [
+          "把端点值改为 $f(a)=f(b)=0$、$g(a)=g(b)=1$",
+          "把结论改为 $\\frac{f(\\xi)}{g(\\xi)}=\\frac{f''(\\xi)}{g''(\\xi)}$ 之外的三阶形式"
+        ],
+        "originalRecord": {
+          "id": "fudan-b-9-1",
+          "text": "设函数 $f(x)$ 和 $g(x)$ 在 $[a,b]$ 上存在二阶导数，且 $g''(x)\\neq 0$，$f(a)=f(b)=g(a)=g(b)=0$，证明：\n(1) 在开区间 $(a,b)$ 内，$g(x)\\neq 0$；\n(2) 在开区间 $(a,b)$ 内至少存在一点 $\\xi$，使得 $\\dfrac{f(\\xi)}{g(\\xi)}=\\dfrac{f''(\\xi)}{g''(\\xi)}$。",
+          "answer": "",
+          "source": "复旦大学 2011-2012学年第一学期 高等数学B期末（A卷）",
+          "category": "微分中值定理与导数的应用",
+          "difficulty": "中",
+          "method": "证明含中值的等式（罗尔型）",
+          "notes": "高等数学 bankadv2；复旦大学；原题来自公开高校期末卷，原卷未附答案。"
+        },
+        "bankId": "bankadv2",
+        "originalId": "fudan-b-9-1",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "missing_solved",
+          "reasoning": "独立求解：(1) 若 $g(c)=0$（$c\\in(a,b)$），则 $g(a)=g(c)=g(b)=0$，在 $[a,c]$、$[c,b]$ 上分别用罗尔定理得 $g'(\\xi_1)=g'(\\xi_2)=0$，再对 $g'$ 在 $[\\xi_1,\\xi_2]$ 上用罗尔定理得 $g''(\\eta)=0$，与 $g''\\ne0$ 矛盾，故 $g(x)\\ne0$。(2) 令 $W(x)=f(x)g'(x)-g(x)f'(x)$，则 $W(a)=W(b)=0$，且 $W'(x)=f(x)g''(x)-g(x)f''(x)$；由罗尔定理存在 $\\xi$ 使 $W'(\\xi)=0$，即 $f(\\xi)g''(\\xi)=g(\\xi)f''(\\xi)$，再由 (1) 与 $g''\\ne0$ 得 $\\frac{f(\\xi)}{g(\\xi)}=\\frac{f''(\\xi)}{g''(\\xi)}$。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "prove"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.rolle_theorem",
+        "M.construct_auxiliary_function"
+      ],
+      "applicableMethodIds": [
+        "M.rolle_theorem",
+        "M.construct_auxiliary_function"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.mvt.rolle_equality",
+          "methodId": "M.rolle_theorem"
+        },
+        {
+          "scenarioId": "S.mvt.rolle_equality",
+          "methodId": "M.construct_auxiliary_function"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.rolle_theorem",
+        "M.construct_auxiliary_function"
+      ],
+      "options": [
+        {
+          "id": "r-wronskian",
+          "name": "先两次罗尔证 $g$ 无零点，再构造 $W=fg'-gf'$ 用罗尔定理"
+        },
+        {
+          "id": "r-contradiction-monotone",
+          "name": "构造 $K=f'g-fg'$（即 $-W$），不直接引用罗尔，而用反证加严格单调导出 $K'$ 必有零点"
+        },
+        {
+          "id": "r-role-on-phi",
+          "name": "直接对待证式的分子 $\\varphi=fg''-gf''$ 套罗尔定理"
+        }
+      ],
+      "questionKey": "ba6d9fee0229191dafcc15c01bb554405567fa08e1b92746b8e852798c2df198",
+      "faceKey": "c1a52435ec17155db38a6e7311da20db7e856a5a5ad5746b3f5e98360ac82855"
+    }
+  ]
+}

@@ -64,8 +64,13 @@ test('four-question selection prioritizes an unused fourth item and retains prog
   const second = await prepareLocalRound(target, skeleton, 'multi', history);
   assert.equal(first.length, 3); assert.equal(second.length, 3);
   assert.ok(second.some((q) => q.metadata.source.originalId === 13));
-  assert.deepEqual(second.map((q) => q.metadata.complexity), [1, 2, 4]);
-  assert.equal(second.filter((q) => !q.metadata.repeated).length, 1);
+  // bankadv 补题后同一情景题池变大，第二轮的第四道母题仍应被优先带入；
+  // 新增的转写题没有 complexity 字段，因此只校验第四道题自身的进阶标记。
+  assert.ok(second.some((q) => q.metadata.complexity === 4));
+  // repeated 标记必须与第一轮真实做过的题一致，不依赖题池大小。
+  const firstKeys = new Set(first.map((q) => q.questionKey));
+  assert.equal(second.filter((q) => !q.metadata.repeated).length,
+    second.filter((q) => !firstKeys.has(q.questionKey)).length);
   const visible = await localTargets(skeleton);
   assert.equal(visible.filter((t) => t.scenarioId === target.scenarioId).length, 1);
 });

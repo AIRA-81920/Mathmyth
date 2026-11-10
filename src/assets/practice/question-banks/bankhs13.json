@@ -1,0 +1,2628 @@
+{
+  "schema": "mathmyth-question-bank/v1",
+  "bankId": "bankhs13",
+  "sourceSha256": "9244bb83cd29ca08dc3c591f6964bdb6f5cc6257ebd39467f7d28d3bbc07806a",
+  "taxonomy": {
+    "blocks": [
+      {
+        "id": "B.hs_func",
+        "name": "集合、不等式与函数"
+      },
+      {
+        "id": "B.hs_trig",
+        "name": "三角函数与解三角形"
+      },
+      {
+        "id": "B.hs_seq",
+        "name": "数列"
+      },
+      {
+        "id": "B.hs_deriv",
+        "name": "导数及其应用"
+      },
+      {
+        "id": "B.hs_geom",
+        "name": "立体几何与空间向量"
+      },
+      {
+        "id": "B.hs_analytic",
+        "name": "解析几何、平面向量与复数"
+      },
+      {
+        "id": "B.hs_prob",
+        "name": "概率统计与计数原理"
+      }
+    ],
+    "groups": [
+      {
+        "id": "G.hs_func.set_logic",
+        "name": "集合与常用逻辑用语",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_func.set_operation",
+          "S.hs_func.condition_judge",
+          "S.hs_func.quantifier_negation",
+          "S.hs_func.new_definition_set"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.inequality",
+        "name": "不等式与二次关系",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_func.inequality_solve",
+          "S.hs_func.quadratic_root_dist",
+          "S.hs_func.basic_inequality",
+          "S.hs_func.inequality_property"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.concept",
+        "name": "函数概念与表示",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_func.domain",
+          "S.hs_func.expression",
+          "S.hs_func.value_range",
+          "S.hs_func.piecewise",
+          "S.hs_func.abstract_function"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.properties",
+        "name": "函数性质与图象",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_func.parity_period",
+          "S.hs_func.monotonicity",
+          "S.hs_func.graph_transform",
+          "S.hs_func.symmetry"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_func.elementary",
+        "name": "指对幂与函数零点",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_func.exp_log_calc",
+          "S.hs_func.exp_log_compare",
+          "S.hs_func.exp_log_graph",
+          "S.hs_func.zero_point",
+          "S.hs_func.function_model"
+        ],
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "G.hs_trig.identity",
+        "name": "三角恒等变换",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_trig.identity_eval",
+          "S.hs_trig.identity_transform",
+          "S.hs_trig.auxiliary_angle",
+          "S.hs_trig.angle_relation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.graph",
+        "name": "三角函数的图象与性质",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_trig.graph_property",
+          "S.hs_trig.graph_transform",
+          "S.hs_trig.omega_param",
+          "S.hs_trig.trig_equation"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.triangle",
+        "name": "解三角形",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_trig.sine_cosine_rule",
+          "S.hs_trig.triangle_shape",
+          "S.hs_trig.area",
+          "S.hs_trig.triangle_extremum",
+          "S.hs_trig.multi_triangle"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_trig.application",
+        "name": "三角应用与建模",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_trig.measurement",
+          "S.hs_trig.trig_model"
+        ],
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "G.hs_seq.term",
+        "name": "通项与递推",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_seq.arithmetic_geometric",
+          "S.hs_seq.an_sn",
+          "S.hs_seq.recurrence",
+          "S.hs_seq.construct_seq"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.sum",
+        "name": "数列求和",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_seq.sum_formula",
+          "S.hs_seq.sum_telescoping",
+          "S.hs_seq.sum_mismatch"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_seq.property",
+        "name": "数列性质与不等式",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_seq.property",
+          "S.hs_seq.inequality",
+          "S.hs_seq.induction",
+          "S.hs_seq.model"
+        ],
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "G.hs_deriv.concept",
+        "name": "导数概念与运算",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_deriv.definition",
+          "S.hs_deriv.calc",
+          "S.hs_deriv.tangent",
+          "S.hs_deriv.geometric"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.behavior",
+        "name": "用导数研究函数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_deriv.monotonicity",
+          "S.hs_deriv.extremum",
+          "S.hs_deriv.zero",
+          "S.hs_deriv.param_range"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_deriv.proof",
+        "name": "导数与不等式证明",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_deriv.ineq_proof",
+          "S.hs_deriv.ineq_two_var",
+          "S.hs_deriv.construct",
+          "S.hs_deriv.series_bound"
+        ],
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "G.hs_geom.position",
+        "name": "空间位置关系与证明",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_geom.line_plane_parallel",
+          "S.hs_geom.line_plane_perp",
+          "S.hs_geom.special_point",
+          "S.hs_geom.existence"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.metric",
+        "name": "空间度量",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_geom.distance",
+          "S.hs_geom.angle",
+          "S.hs_geom.volume",
+          "S.hs_geom.sphere"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.vector",
+        "name": "空间向量法",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_geom.basis",
+          "S.hs_geom.coordinate",
+          "S.hs_geom.normal_vector"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_geom.solid",
+        "name": "基本立体图形、截面与翻折",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_geom.solid_graph",
+          "S.hs_geom.section",
+          "S.hs_geom.combination"
+        ],
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "G.hs_analytic.vector",
+        "name": "平面向量",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_analytic.vector_calc",
+          "S.hs_analytic.vector_product",
+          "S.hs_analytic.vector_parallel_perp",
+          "S.hs_analytic.vector_geometry"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.complex",
+        "name": "复数",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_analytic.complex_calc",
+          "S.hs_analytic.complex_geometry",
+          "S.hs_analytic.complex_quadratic"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_circle",
+        "name": "直线与圆",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_analytic.line_equation",
+          "S.hs_analytic.circle_equation",
+          "S.hs_analytic.line_circle_position",
+          "S.hs_analytic.circle_circle",
+          "S.hs_analytic.locus"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.conic",
+        "name": "圆锥曲线",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_analytic.ellipse",
+          "S.hs_analytic.hyperbola",
+          "S.hs_analytic.parabola",
+          "S.hs_analytic.conic_equation",
+          "S.hs_analytic.conic_focal"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_analytic.line_conic",
+        "name": "直线与圆锥曲线综合",
+        "order": 5,
+        "scenario_ids": [
+          "S.hs_analytic.intersection",
+          "S.hs_analytic.fixed_point",
+          "S.hs_analytic.range_extremum",
+          "S.hs_analytic.existence"
+        ],
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "G.hs_prob.counting",
+        "name": "计数原理",
+        "order": 1,
+        "scenario_ids": [
+          "S.hs_prob.counting_principle",
+          "S.hs_prob.permutation",
+          "S.hs_prob.combination",
+          "S.hs_prob.binomial"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.classical",
+        "name": "概率模型",
+        "order": 2,
+        "scenario_ids": [
+          "S.hs_prob.classical",
+          "S.hs_prob.independent",
+          "S.hs_prob.conditional",
+          "S.hs_prob.geometric"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.random_var",
+        "name": "随机变量与分布",
+        "order": 3,
+        "scenario_ids": [
+          "S.hs_prob.distribution",
+          "S.hs_prob.expectation",
+          "S.hs_prob.binomial_dist",
+          "S.hs_prob.normal"
+        ],
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "G.hs_prob.statistics",
+        "name": "统计与成对数据",
+        "order": 4,
+        "scenario_ids": [
+          "S.hs_prob.sampling",
+          "S.hs_prob.regression",
+          "S.hs_prob.contingency"
+        ],
+        "block_id": "B.hs_prob"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "S.hs_analytic.vector_calc",
+        "name": "向量线性运算与坐标运算",
+        "definition": "题面要求进行向量的加减、数乘、坐标运算，或由条件求某向量的表示。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_product",
+        "name": "数量积、夹角与投影",
+        "definition": "题面要求求数量积、夹角、投影或模长。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_parallel_perp",
+        "name": "共线与垂直的判定",
+        "definition": "题面要求判断或利用向量的共线、垂直关系，通常含参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.vector_geometry",
+        "name": "向量与几何图形（重心、系数和、轨迹）",
+        "definition": "题面把向量与几何图形结合，要求求系数或位置关系。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_calc",
+        "name": "复数运算与化简",
+        "definition": "题面要求复数代数形式的四则运算、求模或化简。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_geometry",
+        "name": "复数的几何意义与模",
+        "definition": "题面要求用复数的几何意义（对应点、向量、模）解决问题。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.complex_quadratic",
+        "name": "复数与实系数方程",
+        "definition": "题面涉及实系数一元二次方程的虚根、复数相等或复系数方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_equation",
+        "name": "直线方程与两直线位置关系",
+        "definition": "题面要求求直线方程、判断两直线位置关系或求参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_equation",
+        "name": "圆的方程",
+        "definition": "题面要求求圆的方程，或由方程表示圆求参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.line_circle_position",
+        "name": "直线与圆的位置关系（弦长与切线）",
+        "definition": "题面讨论直线与圆的位置关系，要求求弦长、切线方程或参数范围。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.circle_circle",
+        "name": "圆与圆的位置关系",
+        "definition": "题面讨论两圆的位置关系，要求求公共弦、公切线或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.locus",
+        "name": "轨迹方程",
+        "definition": "题面要求求动点的轨迹方程，或判断轨迹类型。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.ellipse",
+        "name": "椭圆的定义与性质",
+        "definition": "题面围绕椭圆的定义、标准方程与几何性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.hyperbola",
+        "name": "双曲线的定义、渐近线与离心率",
+        "definition": "题面围绕双曲线的定义、标准方程、渐近线与离心率求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.parabola",
+        "name": "抛物线的定义、准线与焦点弦",
+        "definition": "题面围绕抛物线的定义、标准方程、焦点弦与准线求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_equation",
+        "name": "圆锥曲线标准方程的确定",
+        "definition": "题面要求根据条件求椭圆、双曲线或抛物线的标准方程。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.conic_focal",
+        "name": "焦点三角形与焦半径",
+        "definition": "题面围绕焦点三角形、焦半径、焦点弦的性质求解。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.intersection",
+        "name": "联立与韦达定理（弦长与中点）",
+        "definition": "题面要求把直线与圆锥曲线联立，用韦达定理求弦长、中点或参数。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.fixed_point",
+        "name": "定点与定值问题",
+        "definition": "题面在直线与圆锥曲线的运动中，要求证明某点或某值恒定，或求定点。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.range_extremum",
+        "name": "范围与最值问题",
+        "definition": "题面要求求圆锥曲线中某量（弦长、面积、斜率、距离）的范围或最值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_analytic.existence",
+        "name": "存在性与探究性问题",
+        "definition": "题面问是否存在某点、某直线或某斜率使条件成立，要求判断并求值。",
+        "block_id": "B.hs_analytic"
+      },
+      {
+        "id": "S.hs_deriv.definition",
+        "name": "导数定义与瞬时变化率",
+        "definition": "题面出现函数增量比、瞬时变化率或极限形式的式子，要求求导数值或识别导数定义。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.calc",
+        "name": "复合结构与幂指式的求导",
+        "definition": "题面给出具体函数（含复合、幂指、分式、乘积），要求求导函数或某点导数值。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.tangent",
+        "name": "切线方程（在点与过点）",
+        "definition": "题面要求求曲线在某点或过某点的切线方程，或由切线条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.geometric",
+        "name": "导数几何意义与函数、导函数图象互推",
+        "definition": "题面给出函数与导函数的图象之一，要求判断另一个、比较大小或求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.monotonicity",
+        "name": "单调区间与含参单调性讨论",
+        "definition": "题面要求求含参函数的单调区间，或由在某区间单调反求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.extremum",
+        "name": "极值与闭区间最值",
+        "definition": "题面要求求极值、闭区间上的最值，或由极值条件反求参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.zero",
+        "name": "零点个数与方程根的讨论",
+        "definition": "题面要求讨论方程根的个数或函数零点个数，通常含参数。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.param_range",
+        "name": "恒成立与存在性求参数范围",
+        "definition": "题面要求在恒成立或存在某点使条件成立的条件下求参数范围。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_proof",
+        "name": "单变量不等式证明",
+        "definition": "题面要求证明一个含单变量的函数不等式，例如指数函数与一次式、对数与一次式的大小关系及其推广。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.ineq_two_var",
+        "name": "双变量不等式与极值点偏移",
+        "definition": "题面不等式涉及两个变量，或要求证明与极值点对称位置有关的结论。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.construct",
+        "name": "构造函数与同构变形",
+        "definition": "题面不等式或等式两边结构相似但变量不同，需要通过构造同一母函数来处理。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_deriv.series_bound",
+        "name": "导数造不等式再累加（数列型）",
+        "definition": "题面要求证明与正整数有关、且通项的界由导数给出的数列不等式。",
+        "block_id": "B.hs_deriv"
+      },
+      {
+        "id": "S.hs_func.set_operation",
+        "name": "集合的基本运算与包含关系",
+        "definition": "题面给出用列举法、描述法或不等式区间表示的集合（常含参数），要求求交集、并集、补集、子集个数，或判断包含关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.condition_judge",
+        "name": "充分必要条件的判定",
+        "definition": "题面要求判断「p 是 q 的充分/必要/充要条件」，或由条件关系反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quantifier_negation",
+        "name": "全称量词与存在量词命题的否定",
+        "definition": "题面出现全称量词或存在量词，要求写否定、判真假，或把「恒成立/有解」转化为参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.new_definition_set",
+        "name": "新定义集合的代入检验",
+        "definition": "题面先给出一个新定义的集合运算或集合属性，要求按定义判断元素归属或求集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_solve",
+        "name": "一元二次、分式与绝对值不等式的求解",
+        "definition": "题面要求解一元二次、分式或含绝对值的不等式，解集常需写成区间或集合。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.quadratic_root_dist",
+        "name": "一元二次方程根的分布",
+        "definition": "题面讨论一元二次方程根的正负、大小或是否落在某区间内，通常含参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.basic_inequality",
+        "name": "基本不等式求最值",
+        "definition": "题面在正数条件下求积的最大值或和的最小值，结构上能凑出定值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.inequality_property",
+        "name": "不等式性质与比较大小",
+        "definition": "题面要求比较两个代数式的大小，或由不等式的性质推断某个式子的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.domain",
+        "name": "求函数的定义域",
+        "definition": "题面给出含分母、偶次根式、对数或零次幂的函数式，要求求自变量的取值范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.expression",
+        "name": "求函数解析式",
+        "definition": "题面给出函数类型或函数方程，要求求 f(x) 的解析式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.value_range",
+        "name": "求函数的值域",
+        "definition": "题面要求求函数值的取值范围，常含参数或限定区间。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.piecewise",
+        "name": "分段函数",
+        "definition": "题面给出分段函数，要求求值、解方程或不等式，或讨论分界点处的性质。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.abstract_function",
+        "name": "抽象函数与函数方程",
+        "definition": "题面只给抽象函数的若干等式或性质，要求判断奇偶性、单调性或求值。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.parity_period",
+        "name": "奇偶性与周期性",
+        "definition": "题面讨论函数的奇偶性、周期性，或由奇偶与周期推值、求解析式、比较大小。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.monotonicity",
+        "name": "单调性的判定与比较",
+        "definition": "题面要求判断或证明单调性、求单调区间，或利用单调性比较大小、解不等式。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.graph_transform",
+        "name": "图象变换与识图",
+        "definition": "题面要求由已知函数图象经平移、伸缩、翻折得到新图象，或由图象判断解析式与参数。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.symmetry",
+        "name": "对称性与图象对称",
+        "definition": "题面给出函数图象的对称轴、对称中心或两函数图象的对称关系，要求求参数、求解析式或求和。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_calc",
+        "name": "指数与对数式的运算",
+        "definition": "题面要求化简指数式、对数式或求值，含换底与指数对数互化。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_compare",
+        "name": "指对幂大小比较",
+        "definition": "题面要求比较幂、指数式、对数式的大小，通常底数或指数不同。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.exp_log_graph",
+        "name": "指对函数图象与性质",
+        "definition": "题面给出指数或对数函数的图象，要求求底数范围、解不等式或判断图象位置关系。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.zero_point",
+        "name": "函数零点与零点个数",
+        "definition": "题面要求判断函数零点个数、所在区间，或由零点存在反求参数范围。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_func.function_model",
+        "name": "函数模型与建模应用",
+        "definition": "题面给出实际情境（成本、增长、温度等），要求建立函数模型并求最值或作预测。",
+        "block_id": "B.hs_func"
+      },
+      {
+        "id": "S.hs_geom.line_plane_parallel",
+        "name": "线面与面面平行证明",
+        "definition": "题面要求证明直线与平面平行，或两个平面平行。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.line_plane_perp",
+        "name": "线面与面面垂直证明",
+        "definition": "题面要求证明直线与平面垂直，或两个平面垂直。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.special_point",
+        "name": "特殊点定位与共面论证",
+        "definition": "题面要求确定中点、重心、垂足等特殊点的位置，或证明某点落在某平面内。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.existence",
+        "name": "位置关系存在性探究",
+        "definition": "题面问是否存在某点或某平面使条件成立，要求判断并说明理由。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.distance",
+        "name": "点到平面与异面直线距离",
+        "definition": "题面要求求点到平面的距离、两异面直线间的距离或两平行平面间的距离。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.angle",
+        "name": "线线角、线面角与二面角",
+        "definition": "题面要求求异面直线所成角、直线与平面所成角或二面角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.volume",
+        "name": "体积与表面积计算",
+        "definition": "题面要求求多面体或旋转体的体积、表面积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.sphere",
+        "name": "外接球与内切球",
+        "definition": "题面给出多面体与球的接切关系，要求求球的半径、表面积或体积。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.basis",
+        "name": "空间向量基本定理与基底表示",
+        "definition": "题面要求用一组空间基底表示向量，或判断四点共面、三向量共面。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.coordinate",
+        "name": "建系与坐标运算",
+        "definition": "题面要求建立空间直角坐标系，用坐标表示点与向量并作运算。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.normal_vector",
+        "name": "法向量求法与向量法判位置关系",
+        "definition": "题面要求求平面的法向量，并用法向量解决平行、垂直、角度、距离问题。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.solid_graph",
+        "name": "直观图、展开图与最短路径",
+        "definition": "题面涉及基本立体图形、直观图或展开图，要求还原图形、求面积或最短路径。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.section",
+        "name": "截面作法与截面图形",
+        "definition": "题面要求作出或判断空间几何体的截面，并求截面面积或截面与某面所成角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_geom.combination",
+        "name": "组合体与翻折问题",
+        "definition": "题面涉及两个几何体的组合或平面图形翻折成空间图形，要求求体积、距离或角。",
+        "block_id": "B.hs_geom"
+      },
+      {
+        "id": "S.hs_prob.counting_principle",
+        "name": "分类加法与分步乘法原理",
+        "definition": "题面要求完成一件事的方法数，需判断该用分类加法还是分步乘法。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.permutation",
+        "name": "排列与排列数",
+        "definition": "题面要求计数且元素顺序有关，如排队、排列、数字排列。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.combination",
+        "name": "组合、分组与分配",
+        "definition": "题面要求计数且只选不排，如选组、抽样、分组分配。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial",
+        "name": "二项式定理与系数",
+        "definition": "题面围绕二项展开式的通项、特定项系数、系数和或系数最大项。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.classical",
+        "name": "古典概型",
+        "definition": "题面要求求古典概型的概率，通常给出样本空间与事件。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.independent",
+        "name": "相互独立事件",
+        "definition": "题面涉及多个事件同时发生或相互独立，要求求概率。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.conditional",
+        "name": "条件概率、全概率与贝叶斯",
+        "definition": "题面给出条件概率、全概率或由结果反推来源的问题。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.geometric",
+        "name": "几何概型",
+        "definition": "题面求几何概型的概率，即长度、面积或体积之比。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.distribution",
+        "name": "离散型随机变量分布列",
+        "definition": "题面要求求离散型随机变量的分布列及其性质。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.expectation",
+        "name": "期望与方差",
+        "definition": "题面要求求期望、方差，或由期望反求参数、比较方案。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.binomial_dist",
+        "name": "二项分布",
+        "definition": "题面是若干次独立重复试验，要求求恰好若干次成功的概率或分布。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.normal",
+        "name": "正态分布",
+        "definition": "题面涉及正态分布曲线、对称性求概率或三段标准差原则。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.sampling",
+        "name": "抽样方法与样本估计",
+        "definition": "题面要求选择抽样方法，或由样本估计总体的均值、方差、百分位数。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.regression",
+        "name": "一元线性回归",
+        "definition": "题面给出成对数据，要求求相关系数、回归方程并作预测。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_prob.contingency",
+        "name": "列联表与独立性检验",
+        "definition": "题面给出列联表，要求判断两个分类变量是否相关。",
+        "block_id": "B.hs_prob"
+      },
+      {
+        "id": "S.hs_seq.arithmetic_geometric",
+        "name": "等差与等比数列基本量计算",
+        "definition": "题面给出等差或等比数列的部分基本量（首项、公差、公比、项数、前 n 项和），要求求其余量或判断数列类型。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.an_sn",
+        "name": "通项与前 n 项和的关系",
+        "definition": "题面给出前 n 项和的表达式，或给出含通项与前 n 项和的混合关系式，要求求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.recurrence",
+        "name": "递推数列求通项",
+        "definition": "题面给出相邻项的递推关系，要求求通项公式。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.construct_seq",
+        "name": "构造新数列（等差化与等比化）",
+        "definition": "题面要求在递推式两边作变形，构造出等差或等比数列后再求通项。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_formula",
+        "name": "公式法、分组求和与并项求和",
+        "definition": "题面要求求前 n 项和，通项是等差、等比或可分组、可并项的结构。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_telescoping",
+        "name": "裂项相消求和",
+        "definition": "题面要求求和的通项可拆成两项之差，求和时中间项相消。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.sum_mismatch",
+        "name": "错位相减求和",
+        "definition": "题面求和的通项是等差乘等比结构，需要乘公比后错位相减。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.property",
+        "name": "数列单调性、最值项与等差等比性质",
+        "definition": "题面要求判断数列单调性、求最大或最小项，或利用等差中项、等比中项等性质求值。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.inequality",
+        "name": "数列不等式与放缩",
+        "definition": "题面要求证明数列型不等式，或比较数列和与某常数、函数的大小。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.induction",
+        "name": "数学归纳法证明",
+        "definition": "题面要求用数学归纳法证明与正整数有关的等式、不等式或整除性命题。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_seq.model",
+        "name": "数列建模应用",
+        "definition": "题面给出增长、分期付款、存款等实际情境，要求建立数列模型并求解。",
+        "block_id": "B.hs_seq"
+      },
+      {
+        "id": "S.hs_trig.identity_eval",
+        "name": "给值求值（同角关系与诱导公式）",
+        "definition": "题面给出某个角的三角函数值，要求求同角其他三角函数值，或经诱导公式化简后求值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.identity_transform",
+        "name": "三角恒等变换与化简证明",
+        "definition": "题面要求化简三角式、证明三角恒等式或求非特殊角的乘积型三角函数值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.auxiliary_angle",
+        "name": "辅助角公式与化一",
+        "definition": "题面出现正弦与余弦的线性组合，要求化为一个三角函数后求周期、最值、单调区间或值域。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.angle_relation",
+        "name": "角的拆分与凑角求值",
+        "definition": "题面给出两个角的三角函数值，要求求这两角的和、差或倍角的函数值，角之间有可凑配的关系。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_property",
+        "name": "三角函数的周期、单调、对称与最值",
+        "definition": "题面给出三角函数解析式，要求求周期、单调区间、对称轴或对称中心、最值。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.graph_transform",
+        "name": "三角函数图象变换与解析式确定",
+        "definition": "题面要求由正弦函数经平移伸缩得到目标图象，或由图象反求正弦型函数的解析式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.omega_param",
+        "name": "含参数频率与初相的性质讨论",
+        "definition": "题面中频率或初相含参数，且给定单调性、零点个数或最值条件，要求求参数取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_equation",
+        "name": "三角方程与三角不等式",
+        "definition": "题面要求解简单三角方程或三角不等式，或由方程在给定区间内解的个数求参数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.sine_cosine_rule",
+        "name": "正余弦定理求边角",
+        "definition": "题面给出三角形的边角条件，要求求未知边、未知角，或判断三角形解的个数。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_shape",
+        "name": "三角形形状判断与边角互化",
+        "definition": "题面给出含边角混合的等式，要求判断三角形形状或证明某个边角恒等式。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.area",
+        "name": "三角形面积与周长计算",
+        "definition": "题面要求求三角形面积、周长，或由面积反求边角。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.triangle_extremum",
+        "name": "解三角形中的最值与范围",
+        "definition": "题面在给定边角约束下，要求周长、面积或某边的最大值、最小值或取值范围。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.multi_triangle",
+        "name": "多三角形拼接（公共边与公共角）",
+        "definition": "题面图形由两个及以上三角形拼接而成，共边、共角或共线分点，要求求长度、角或面积。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.measurement",
+        "name": "实际测量与方位角问题",
+        "definition": "题面给出实际测量情境（仰角、俯角、方位角、河宽、塔高），要求求不可直接测量的距离或高度。",
+        "block_id": "B.hs_trig"
+      },
+      {
+        "id": "S.hs_trig.trig_model",
+        "name": "周期现象的三角函数建模",
+        "definition": "题面给出周期性实际现象（简谐运动、摩天轮、潮汐），要求用正弦型函数建模或求某时刻的值。",
+        "block_id": "B.hs_trig"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.tangent",
+      "question": "已知曲线 $y=a \\mathrm{e}^{x}+x \\ln x$ 在点 $(1, a e)$ 处的切线方程为 $y=2 x+b$, 则 ( )\nA. $a=e, b=-1$\nB. $a=e, b=1$\nC. $a=e^{-1}, b=1$\nD. $a=e^{-1}, b=-1$",
+      "solution": "$y'=a\\mathrm{e}^{x}+\\ln x+1$，由切线斜率 $k=2$ 得 $y'(1)=a\\mathrm{e}+1=2$，故 $a=\\mathrm{e}^{-1}$；切点为 $(1,1)$，代入 $y=2x+b$ 得 $b=-1$，选 D。",
+      "routes": [
+        {
+          "id": "r-derivative-then-params",
+          "summary": "先逐项求导，用切线斜率定 $a$，再用切点纵坐标定 $b$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$y=a\\mathrm{e}^{x}+x\\ln x$",
+              "transformedState": "$y'=a\\mathrm{e}^{x}+\\ln x+1$（$x>0$）",
+              "condition": "逐项求导：$(a\\mathrm{e}^{x})'=a\\mathrm{e}^{x}$，$(x\\ln x)'=\\ln x+1$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$y'(1)=a\\mathrm{e}+1$",
+              "transformedState": "$a\\mathrm{e}+1=2$，即 $a=\\mathrm{e}^{-1}$",
+              "condition": "切点横坐标 $x=1$ 处的导数值等于切线斜率 $k=2$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "切点 $(1,a\\mathrm{e})=(1,1)$",
+              "transformedState": "$2+b=1$，即 $b=-1$，选 D",
+              "condition": "切点同时在曲线与切线上，把纵坐标代入 $y=2x+b$ 求截距。"
+            }
+          ],
+          "reason": "求导与斜率定参、切点定截距分工清楚，计算最短。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-tangency-condition",
+          "summary": "构造曲线与切线的差函数，用在点处函数值与导数值都为 $0$ 定参数",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$g(x)=a\\mathrm{e}^{x}+x\\ln x-2x-b$",
+              "transformedState": "在 $x=1$ 处相切需 $g(1)=0$ 且 $g'(1)=0$",
+              "condition": "切点处曲线与切线的函数值、导数值都相等，等价于差函数在该点取零且导数为零。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$g'(1)=a\\mathrm{e}+1-2$，$g(1)=a\\mathrm{e}-2-b$",
+              "transformedState": "$g'(1)=0$ 得 $a=\\mathrm{e}^{-1}$；再由 $g(1)=0$ 得 $b=a\\mathrm{e}-2=-1$，选 D",
+              "condition": "先用导数相等定 $a$，再把 $a\\mathrm{e}=1$ 代入函数值相等定 $b$。"
+            }
+          ],
+          "reason": "用相切的两个等式统一表述，思路与切线定义一致，结论相同。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-intercept-misread",
+          "summary": "把切点纵坐标直接当成切线方程的截距 $b$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$y'=a\\mathrm{e}^{x}+\\ln x+1$，$y'(1)=a\\mathrm{e}+1$",
+              "transformedState": "$a\\mathrm{e}+1=2$，即 $a=\\mathrm{e}^{-1}$",
+              "condition": "这一步正确：切线斜率等于切点处导数值。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$a=\\mathrm{e}^{-1}$ 时切点为 $(1,1)$",
+              "transformedState": "误取 $b=1$，选 C",
+              "condition": "$y=2x+b$ 在 $x=1$ 处取值 $2+b$，与切点纵坐标 $1$ 不相等，截距并不是切点纵坐标。"
+            }
+          ],
+          "reason": "截距与切点纵坐标是两个不同的量，只有 $2+b=1$ 才成立，故 $b=-1$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "a",
+        "b",
+        "x"
+      ],
+      "comparisonCriterion": "优先按“导数值定斜率、斜率定参数，切点定截距”的顺序求参数，避免把切点纵坐标当成截距",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:2010-2022_Math_II_MCQs_156",
+        "trainingGoal": "由切线斜率与切点反求曲线表达式中的参数",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2019 全国卷 第7题",
+          "reference": "rainewhk-gaokao 2019\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_156"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "切点横坐标 $x=1$ 处的切线斜率等于 $y'(1)$",
+          "切点同时在曲线与切线上"
+        ],
+        "allowedVariations": [
+          "改变切点横坐标或切线斜率",
+          "把 $x\\ln x$ 换成其他含对数项的表达式"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_156",
+          "text": "7. 已知曲线 $y=a \\mathrm{e}^{x}+x \\ln x$ 在点 $(1, a e)$ 处的切线方程为 $y=2 x+b$, 则 ( )\nA. $a=e, b=-1$\nB. $a=e, b=1$\nC. $a=e^{-1}, b=1$\nD. $a=e^{-1}, b=-1$\n",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2019\\全国卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "切线方程（在点与过点）",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:2010-2022_Math_II_MCQs_156",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立求导：$y'=a\\mathrm{e}^{x}+\\ln x+1$，其中 $(a\\mathrm{e}^{x})'=a\\mathrm{e}^{x}$，$(x\\ln x)'=\\ln x+1$。切点横坐标为 $x=1$，切线 $y=2x+b$ 的斜率 $k=2$，故 $y'(1)=a\\mathrm{e}+1=2$，得 $a\\mathrm{e}=1$，$a=\\mathrm{e}^{-1}$。此时切点纵坐标 $a\\mathrm{e}=1$，切线过 $(1,1)$，代入得 $2+b=1$，$b=-1$。结果 $a=\\mathrm{e}^{-1}, b=-1$，与答案 D 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_tangent"
+      ],
+      "applicableMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_tangent"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_tangent"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_derivative_rules"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_implicit_derivative"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_parametric_derivative"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_tangent",
+        "M.hs_derivative_rules",
+        "M.hs_implicit_derivative",
+        "M.hs_parametric_derivative"
+      ],
+      "options": [
+        {
+          "id": "r-derivative-then-params",
+          "name": "先逐项求导，用切线斜率定 $a$，再用切点纵坐标定 $b$"
+        },
+        {
+          "id": "r-tangency-condition",
+          "name": "构造曲线与切线的差函数，用在点处函数值与导数值都为 $0$ 定参数"
+        },
+        {
+          "id": "r-intercept-misread",
+          "name": "把切点纵坐标直接当成切线方程的截距 $b$"
+        }
+      ],
+      "questionKey": "e4a73d6883b93577c5c45c6f877d5ef02aa4177c778f9fc47f215763025ea15c",
+      "faceKey": "a27d94d8051d7a49c865ee27be1d8484dd7da088644ac557842adc0ef84f62c0"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.param_range",
+      "question": "设函数 $f(x)=2^{x(x-a)}$ 在区间 $(0,1)$ 上单调递减, 则 $a$ 的取值范围是 $()$\nA. $(-\\infty,-2]$\nB. $[-2,0)$\nC. $(0,2]$\nD. $[2,+\\infty)$",
+      "solution": "$f'(x)=2^{x(x-a)}\\ln2\\,(2x-a)$，因 $2^{x(x-a)}\\ln2>0$，$f'$ 的符号由 $2x-a$ 决定；在 $(0,1)$ 上递减需 $2x-a\\le0$ 恒成立，即 $a\\ge2$，故取值范围 $[2,+\\infty)$，选 D。",
+      "routes": [
+        {
+          "id": "r-composite-sign",
+          "summary": "算出复合函数的导数，确定符号来源，再把单调性要求转成恒成立求上确界",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_always_true",
+              "state": "$f(x)=2^{u}$，内层 $u=x^{2}-ax$",
+              "transformedState": "$f'(x)=2^{u}\\ln2\\,(2x-a)$，且 $2^{u}\\ln2>0$",
+              "condition": "外层 $2^{u}$ 关于 $u$ 单调递增，所以 $f'$ 的符号与 $u'=2x-a$ 的符号相同。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_always_true",
+              "state": "$2x-a\\le0$ 对一切 $x\\in(0,1)$ 成立",
+              "transformedState": "$a\\ge\\sup_{x\\in(0,1)}2x=2$，即 $a\\in[2,+\\infty)$，选 D",
+              "condition": "恒成立只需 $a$ 不小于 $2x$ 的上确界；$a=2$ 时 $f'=0$ 只在 $x=1$ 处，新区间内仍递减，等号可保留。"
+            }
+          ],
+          "reason": "直接由导数符号定出恒成立条件，一步化为参数范围，是最短的路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-parabola-axis",
+          "summary": "配方看出内层二次函数的对称轴，用减区间覆盖 $(0,1)$ 求 $a$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_extremum",
+              "state": "$u=x^{2}-ax=\\left(x-\\frac{a}{2}\\right)^{2}-\\frac{a^{2}}{4}$",
+              "transformedState": "开口向上的抛物线，$u'=2x-a$，对称轴 $x=\\frac{a}{2}$，减区间为 $\\left(-\\infty,\\frac{a}{2}\\right]$",
+              "condition": "配方读出对称轴，抛物线在对称轴左侧递减。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_extremum",
+              "state": "$(0,1)\\subseteq\\left(-\\infty,\\frac{a}{2}\\right]$",
+              "transformedState": "$\\frac{a}{2}\\ge1$，即 $a\\ge2$，选 D",
+              "condition": "$u$ 在 $(0,1)$ 上递减要求整个区间落在减区间内，端点 $x=1$ 不在区间内，故等号可以取。"
+            }
+          ],
+          "reason": "用二次函数的对称轴代替导数符号表，结论一致且便于检查端点。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-strict-inequality",
+          "summary": "把递减理解成导数处处严格小于零，因而漏掉 $a=2$ 这个端点",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_always_true",
+              "state": "$f'(x)=2^{u}\\ln2\\,(2x-a)$，$2^{u}\\ln2>0$",
+              "transformedState": "$u'=2x-a<0$ 对 $x\\in(0,1)$ 恒成立，即 $a>2x$ 对一切 $x\\in(0,1)$ 成立",
+              "condition": "把区间上递减误解成导数必须处处严格小于零。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_always_true",
+              "state": "$x$ 可取任意接近 $1$ 的值",
+              "transformedState": "误得 $a>2$，写成 $(2,+\\infty)$，漏掉端点 $2$",
+              "condition": "$x=1$ 不在 $(0,1)$ 内，$a=2$ 时 $f'$ 仅在 $x=1$ 处为零，区间内仍严格递减，等号应当保留。"
+            }
+          ],
+          "reason": "开区间的单调性只要求区间内导数非正，端点处导数为零不影响单调性，故 $a=2$ 必须包含。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "a",
+        "x"
+      ],
+      "comparisonCriterion": "优先由导数符号确定恒成立条件，并注意开区间端点处导数为零仍可递减",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:GAOKAO-Bench-2023_2023_Math_MCQs_36",
+        "trainingGoal": "由复合函数的单调性反求参数范围，正确处理区间端点",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2023 全国卷 第4题",
+          "reference": "rainewhk-gaokao 2023\\全国卷\\选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_36"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$2^{u}$ 关于 $u$ 单调递增，不改变内层函数的增减方向",
+          "区间 $(0,1)$ 不包含端点 $x=1$"
+        ],
+        "allowedVariations": [
+          "改变指数函数的底数",
+          "改变区间端点或改问单调递增时的参数范围"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_36",
+          "text": "4. 设函数 $f(x)=2^{x(x-a)}$ 在区间 $(0,1)$ 上单调递减, 则 $a$ 的取值范围是 $()$\nA. $(-\\infty,-2]$\nB. $[-2,0)$\nC. $(0,2]$\nD. $[2,+\\infty)$",
+          "answer": "[\"D\"]",
+          "source": "rainewhk-gaokao / 2023\\全国卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "恒成立与存在性求参数范围",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_36",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$f'(x)=2^{x(x-a)}\\ln 2\\,(2x-a)$，其中 $2^{x(x-a)}\\ln 2>0$，故 $f'$ 的符号完全由 $2x-a$ 决定。要使 $f$ 在 $(0,1)$ 上递减，需对一切 $x\\in(0,1)$ 有 $2x-a\\le0$，即 $a\\ge2x$；$2x$ 在 $(0,1)$ 上的上确界是 $2$（在 $x=1$ 处取到，但端点不在区间内），故 $a\\ge2$。检验 $a=2$：$f'(x)=2^{x^{2}-2x}\\ln2\\,(2x-2)$，仅在 $x=1$ 处为 $0$，区间内恒负，确实严格递减。故范围为 $[2,+\\infty)$，与答案 D 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_always_true"
+      ],
+      "applicableMethodIds": [
+        "M.hs_always_true",
+        "M.hs_extremum"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_separate_param"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_always_true"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_construct_function"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_extremum"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_lhopital"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_separate_param",
+        "M.hs_always_true",
+        "M.hs_construct_function",
+        "M.hs_extremum",
+        "M.hs_lhopital"
+      ],
+      "options": [
+        {
+          "id": "r-parabola-axis",
+          "name": "配方看出内层二次函数的对称轴，用减区间覆盖 $(0,1)$ 求 $a$"
+        },
+        {
+          "id": "r-strict-inequality",
+          "name": "把递减理解成导数处处严格小于零，因而漏掉 $a=2$ 这个端点"
+        },
+        {
+          "id": "r-composite-sign",
+          "name": "算出复合函数的导数，确定符号来源，再把单调性要求转成恒成立求上确界"
+        }
+      ],
+      "questionKey": "eb720219db969003d0df19da657ef6310a51b257cc3337117a22d43da8cc90a2",
+      "faceKey": "6f2d932bdd195d4fe214b0b5f2d0ea14e33fa02c6675912622f4845feb90d59e"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.extremum",
+      "question": "若 $x=-2$ 是函数 $f(x)=\\left(x^{2}+a x-1\\right) e^{x-1}$ 的极值点, 则 $f(x)$ 的极小值为 $(\\quad)$\nA. -1\nB. $-2 e^{-3}$\nC. $5 \\mathrm{e}^{-3}$\nD. 1",
+      "solution": "$f'(x)=\\left[x^{2}+(a+2)x+a-1\\right]\\mathrm{e}^{x-1}$；由 $f'(-2)=0$ 得 $a=-1$，此时 $f'(x)=(x+2)(x-1)\\mathrm{e}^{x-1}$，$x<-2$ 或 $x>1$ 时 $f'>0$（递增），$-2<x<1$ 时 $f'<0$（递减），故 $x=1$ 为极小值点，$f(1)=-1$，选 A。",
+      "routes": [
+        {
+          "id": "r-derive-sign-table",
+          "summary": "先求导并合并同类项，由极值点求 $a$，再按因式分解的符号表判定极小值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$f(x)=(x^{2}+ax-1)\\mathrm{e}^{x-1}$",
+              "transformedState": "$f'(x)=\\left[x^{2}+(a+2)x+a-1\\right]\\mathrm{e}^{x-1}$",
+              "condition": "乘积法则求导后合并同类项；$\\mathrm{e}^{x-1}>0$ 恒成立，不影响导数零点。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$f'(-2)=0$",
+              "transformedState": "$4-2(a+2)+a-1=0$，即 $-a-1=0$，$a=-1$",
+              "condition": "可导函数在极值点处导数为零。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_monotone_deriv",
+              "state": "$f'(x)=(x^{2}+x-2)\\mathrm{e}^{x-1}=(x+2)(x-1)\\mathrm{e}^{x-1}$",
+              "transformedState": "$x<-2$ 或 $x>1$ 时 $f'>0$；$-2<x<1$ 时 $f'<0$",
+              "condition": "因式分解后按根分段定号，$\\mathrm{e}^{x-1}>0$ 不改变符号。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$x=-2$ 处左增右减，$x=1$ 处左减右增",
+              "transformedState": "极小值点为 $x=1$，$f(1)=(1-1-1)\\mathrm{e}^{0}=-1$，选 A",
+              "condition": "极小值点处导数由负变正，即左减右增。"
+            }
+          ],
+          "reason": "求导、定参、定号、取值四步完整，符号判断清楚，最稳妥。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-vieta-roots",
+          "summary": "用导数二次因式的两根关系确定另一极值点，再由开口方向判极小",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_derivative_rules",
+              "state": "导数中的二次因式 $x^{2}+(a+2)x+a-1$",
+              "transformedState": "两根为 $-2$ 与 $x_{2}$，由韦达定理 $x_{2}=\\frac{a-1}{-2}$",
+              "condition": "$\\mathrm{e}^{x-1}>0$，导数零点与二次因式的零点完全一致。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$f'(-2)=0$",
+              "transformedState": "$-a-1=0$，$a=-1$，另一根 $x_{2}=\\frac{-2}{-2}=1$",
+              "condition": "先由极值点条件求 $a$，再用两根之积求另一根。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_monotone_deriv",
+              "state": "二次因式 $x^{2}+x-2$ 开口向上",
+              "transformedState": "两根之间 $f'<0$（递减），故 $-2$ 是极大值点、$1$ 是极小值点，$f(1)=-1$，选 A",
+              "condition": "开口向上的二次式在两根之间取负，对应函数递减。"
+            }
+          ],
+          "reason": "用根与系数的关系定位另一极值点，省去逐段讨论，结论与符号表路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-max-as-min",
+          "summary": "已知 $x=-2$ 是极值点就直接把它当成极小值点求值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$a=-1$ 时 $f(-2)=(4-2a-1)\\mathrm{e}^{-3}=5\\mathrm{e}^{-3}$",
+              "transformedState": "误把 $x=-2$ 当作极小值点，得极小值 $5\\mathrm{e}^{-3}$，选 C",
+              "condition": "未判断两侧符号：$x<-2$ 时 $f'>0$、$-2<x<1$ 时 $f'<0$，$x=-2$ 是极大值点。"
+            }
+          ],
+          "reason": "极值点只说明导数为零，必须看左右符号才能分清极大与极小；$5\\mathrm{e}^{-3}$ 是极大值。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "x"
+      ],
+      "comparisonCriterion": "优先在求出 $a$ 后用导数符号表区分极大与极小，不能把已知极值点默认成极小值点",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:2010-2022_Math_I_MCQs_97",
+        "trainingGoal": "由极值点条件求参数并区分极大值与极小值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2017 全国卷 第11题",
+          "reference": "rainewhk-gaokao 2017\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_97"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$\\mathrm{e}^{x-1}>0$ 不改变导数符号",
+          "极值点处导数必须为零"
+        ],
+        "allowedVariations": [
+          "改变已知极值点的位置",
+          "改变二次因式或指数函数的形式"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_97",
+          "text": "11. (5 分) 若 $x=-2$ 是函数 $f(x)=\\left(x^{2}+a x-1\\right) e^{x-1}$ 的极值点, 则 $f(x)$ 的极 小值为 $(\\quad)$\nA. -1\nB. $-2 e^{-3}$\nC. $5 \\mathrm{e}^{-3}$\nD. 1\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2017\\全国卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "极值与闭区间最值",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:2010-2022_Math_I_MCQs_97",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立求导：$f'(x)=(2x+a)\\mathrm{e}^{x-1}+(x^{2}+ax-1)\\mathrm{e}^{x-1}=\\left[x^{2}+(a+2)x+a-1\\right]\\mathrm{e}^{x-1}$。$x=-2$ 是极值点，故 $f'(-2)=4-2(a+2)+a-1=-a-1=0$，得 $a=-1$。回代得 $f'(x)=(x^{2}+x-2)\\mathrm{e}^{x-1}=(x+2)(x-1)\\mathrm{e}^{x-1}$，而 $\\mathrm{e}^{x-1}>0$：$x<-2$ 时两因式均负、积为正，$-2<x<1$ 时为负，$x>1$ 时为正，所以 $f$ 在 $x=-2$ 处极大、在 $x=1$ 处极小。$f(1)=(1-1-1)\\mathrm{e}^{0}=-1$，与答案 A 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_extremum",
+        "M.hs_monotone_deriv"
+      ],
+      "applicableMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_extremum",
+        "M.hs_monotone_deriv"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_extremum"
+        },
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_monotone_deriv"
+        },
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_derivative_rules"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_extremum",
+        "M.hs_monotone_deriv",
+        "M.hs_derivative_rules"
+      ],
+      "options": [
+        {
+          "id": "r-derive-sign-table",
+          "name": "先求导并合并同类项，由极值点求 $a$，再按因式分解的符号表判定极小值"
+        },
+        {
+          "id": "r-vieta-roots",
+          "name": "用导数二次因式的两根关系确定另一极值点，再由开口方向判极小"
+        },
+        {
+          "id": "r-max-as-min",
+          "name": "已知 $x=-2$ 是极值点就直接把它当成极小值点求值"
+        }
+      ],
+      "questionKey": "cc450e60dccab399932118af5f2eec9d58e002fd972e6bbb0e2b8c1965be8c31",
+      "faceKey": "ee1fd5952061a5cfb21dc8b387a89d3dfb30007ef26cb4ad9deb23476f975b2a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.tangent",
+      "question": "曲线 $y=x^{3}-2 x+1$ 在点 $(1,0)$ 处的切线方程为（　）\nA. $y=x-1$\nB. $y=-x+1$\nC. $y=2 x-2$\nD. $y=-2 x+2$",
+      "solution": "$y'=3x^{2}-2$，$k=y'(1)=1$；切点为 $(1,0)$，切线 $y-0=1\\cdot(x-1)$，即 $y=x-1$，选 A。",
+      "routes": [
+        {
+          "id": "r-derive-point-slope",
+          "summary": "求导得斜率，再用点斜式写出切线",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$y=x^{3}-2x+1$",
+              "transformedState": "$y'=3x^{2}-2$",
+              "condition": "幂函数逐项求导：$(x^{3})'=3x^{2}$，$(-2x)'=-2$，常数项导数为 $0$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$y'(1)$",
+              "transformedState": "$=3-2=1$，切线斜率 $k=1$",
+              "condition": "导数在切点横坐标处的值就是切线斜率。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "点斜式 $y-0=1\\cdot(x-1)$",
+              "transformedState": "$y=x-1$，选 A",
+              "condition": "切点 $(1,0)$ 已给出，直接代入点斜式，不必另设切点。"
+            }
+          ],
+          "reason": "标准三步：求导、代点得斜率、点斜式，最短且不易出错。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-screen-options",
+          "summary": "先由斜率筛掉三个选项，再验证剩下的一条是否过切点",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$y'=3x^{2}-2$，$k=y'(1)=1$；切点 $(1,0)$",
+              "transformedState": "A 斜率 $1$、B 斜率 $-1$、C 斜率 $2$、D 斜率 $-2$，只有 A 与 $k$ 相符",
+              "condition": "切线斜率必等于 $y'(1)$，可先用斜率排除。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$y=x-1$ 在 $x=1$ 处的取值",
+              "transformedState": "$y=0$，过切点 $(1,0)$，与所求切线一致，选 A",
+              "condition": "斜率与过点都对时，切线唯一，故 A 正确。"
+            }
+          ],
+          "reason": "用选项回代筛选，斜率与切点双重验证，结论与标准路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-secant-slope",
+          "summary": "用割线斜率代替切线斜率",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$f(0)=1$，$f(1)=0$",
+              "transformedState": "割线斜率 $\\frac{0-1}{1-0}=-1$，被当成切线斜率",
+              "condition": "取另一点 $(0,1)$ 与切点连线算割线，而不是求导。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$k=-1$，过 $(1,0)$",
+              "transformedState": "$y=-x+1$，误选 B",
+              "condition": "切线斜率应为 $y'(1)=1$，割线斜率与切线斜率一般不相等。"
+            }
+          ],
+          "reason": "割线描述两点之间的平均变化，切线斜率必须用导数，本题 $y'(1)=1$ 而不是 $-1$。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先求导得斜率后用点斜式，避免用两点割线斜率冒充切线斜率",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:2010-2022_Math_II_MCQs_3",
+        "trainingGoal": "用导数求三次曲线在给定点的切线方程",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2010 新课标卷 第4题",
+          "reference": "rainewhk-gaokao 2010\\新课标卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_II_MCQs_3"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "点 $(1,0)$ 在曲线上",
+          "切线斜率等于切点处的导数值"
+        ],
+        "allowedVariations": [
+          "改变切点横坐标或曲线系数",
+          "改求过某点（该点不在曲线上）的切线"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_II_MCQs_3",
+          "text": "4. (5 分) 曲线 $y=x^{3}-2 x+1$ 在点 $(1,0)$ 处的切线方程为（ $)$\nA. $y=x-1$\nB. $y=-x+1$\nC. $y=2 x-2$\nD. $y=-2 x+2$\n",
+          "answer": "[\"A\"]",
+          "source": "rainewhk-gaokao / 2010\\新课标卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "切线方程（在点与过点）",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:2010-2022_Math_II_MCQs_3",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "先确认 $(1,0)$ 在曲线上：$1-2+1=0$。求导 $y'=3x^{2}-2$，故 $y'(1)=3-2=1$，切线斜率 $k=1$。由点斜式 $y-0=1\\cdot(x-1)$ 得 $y=x-1$，与答案 A 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_tangent"
+      ],
+      "applicableMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_tangent"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_tangent"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_derivative_rules"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_implicit_derivative"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_parametric_derivative"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_tangent",
+        "M.hs_derivative_rules",
+        "M.hs_implicit_derivative",
+        "M.hs_parametric_derivative"
+      ],
+      "options": [
+        {
+          "id": "r-secant-slope",
+          "name": "用割线斜率代替切线斜率"
+        },
+        {
+          "id": "r-derive-point-slope",
+          "name": "求导得斜率，再用点斜式写出切线"
+        },
+        {
+          "id": "r-screen-options",
+          "name": "先由斜率筛掉三个选项，再验证剩下的一条是否过切点"
+        }
+      ],
+      "questionKey": "05ee1ff79707f76f2dedee2551048f46e392398d81e8ff63b2d066b13f615c2b",
+      "faceKey": "2d580ad912fa1e44d956ad702aea0d1495326eddad92f7052f7929a9d152df58"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.param_range",
+      "question": "已知函数 $f(x)=a \\mathrm{e}^x-\\ln x$ 在区间 $(1,2)$ 上单调递增，则 $a$ 的最小值为 $()$.\nA. $e^2$\nB. e\nC. $\\mathrm{e}^{-1}$\nD. $\\mathrm{e}^{-2}$",
+      "solution": "$f'(x)=a\\mathrm{e}^{x}-\\frac{1}{x}$，递增需在 $(1,2)$ 上 $a\\mathrm{e}^{x}-\\frac{1}{x}\\ge0$，即 $a\\ge\\frac{1}{x\\mathrm{e}^{x}}$ 恒成立；$h(x)=\\frac{1}{x\\mathrm{e}^{x}}$ 递减且上确界为 $\\mathrm{e}^{-1}$，故 $a\\ge\\mathrm{e}^{-1}$，最小值为 $\\mathrm{e}^{-1}$，选 C。",
+      "routes": [
+        {
+          "id": "r-separate-param",
+          "summary": "求导后分离参数，用辅助函数的上确界定最小值",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_separate_param",
+              "state": "$f'(x)=a\\mathrm{e}^{x}-\\frac{1}{x}$",
+              "transformedState": "$a\\mathrm{e}^{x}-\\frac{1}{x}\\ge0$，即 $a\\ge\\frac{1}{x\\mathrm{e}^{x}}$（先排除 $a\\le0$，否则区间内 $f'<0$）",
+              "condition": "$x\\in(1,2)$ 时 $x\\mathrm{e}^{x}>0$，可以两边同除而不改变不等号方向。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_separate_param",
+              "state": "$h(x)=\\frac{1}{x\\mathrm{e}^{x}}$",
+              "transformedState": "$h'(x)=-\\frac{x+1}{x^{2}\\mathrm{e}^{x}}<0$，$h$ 在 $(1,2)$ 上递减，$\\sup h=\\lim_{x\\to1^{+}}h(x)=\\mathrm{e}^{-1}$",
+              "condition": "$x>0$ 时 $x+1>0$、$\\mathrm{e}^{x}>0$，故 $h'<0$；开区间上的上确界由左端点极限给出。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_always_true",
+              "state": "$a\\ge h(x)$ 在 $(1,2)$ 上恒成立",
+              "transformedState": "$a\\ge\\mathrm{e}^{-1}$，最小值为 $\\mathrm{e}^{-1}$，选 C",
+              "condition": "恒成立只需 $a$ 不小于 $h$ 的上确界；$a=\\mathrm{e}^{-1}$ 时区间内 $f'>0$ 仍成立。"
+            }
+          ],
+          "reason": "分离参数后只需研究一个不含 $a$ 的函数，上确界直接给出最小值，是最短路线。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-auxiliary-function",
+          "summary": "把不等式化成 $g(x)=x\\mathrm{e}^{x}$ 的单调性问题，用端点的下确界回推 $a$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_always_true",
+              "state": "$a\\ge\\frac{1}{x\\mathrm{e}^{x}}$ 在 $(1,2)$ 上恒成立",
+              "transformedState": "只需考察 $g(x)=x\\mathrm{e}^{x}$ 在 $(1,2)$ 上的下确界",
+              "condition": "分母 $g(x)$ 越大则 $\\frac{1}{g(x)}$ 越小，$a$ 必须覆盖最大的 $\\frac{1}{g(x)}$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_construct_function",
+              "state": "$g'(x)=(x+1)\\mathrm{e}^{x}$",
+              "transformedState": "$(1,2)$ 上 $g'>0$，$g$ 单调递增，$\\inf g=g(1)=\\mathrm{e}$",
+              "condition": "$x>0$ 时 $x+1>0$、$\\mathrm{e}^{x}>0$，故 $g$ 为增函数，$\\frac{1}{g}$ 为减函数。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_separate_param",
+              "state": "$x\\to1^{+}$ 时 $\\frac{1}{g(x)}\\to\\mathrm{e}^{-1}$",
+              "transformedState": "$a\\ge\\mathrm{e}^{-1}$；$a=\\mathrm{e}^{-1}$ 时 $f'(x)=\\mathrm{e}^{x-1}-\\frac{1}{x}>0$，最小值为 $\\mathrm{e}^{-1}$，选 C",
+              "condition": "下确界可由区间左端逼近，端点本身不在开区间内，但 $a=\\mathrm{e}^{-1}$ 已满足恒成立。"
+            }
+          ],
+          "reason": "把参数不等式转成辅助函数的增减与端点值，结论与分离参数路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-invert-inequality",
+          "summary": "分离参数时把 $a\\ge\\frac{1}{x\\mathrm{e}^{x}}$ 错写成 $a\\ge x\\mathrm{e}^{x}$",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_separate_param",
+              "state": "$f'(x)=a\\mathrm{e}^{x}-\\frac{1}{x}$",
+              "transformedState": "递增需 $a\\mathrm{e}^{x}\\ge\\frac{1}{x}$",
+              "condition": "导数非负这一步正确。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.param_range",
+              "methodId": "M.hs_separate_param",
+              "state": "两边同除以 $\\mathrm{e}^{x}$",
+              "transformedState": "误得 $a\\ge x\\mathrm{e}^{x}$，由 $g(1)=\\mathrm{e}$ 得 $a\\ge\\mathrm{e}$，误选 B",
+              "condition": "$\\frac{1}{x}\\div\\mathrm{e}^{x}=\\frac{1}{x\\mathrm{e}^{x}}$，不是 $x\\mathrm{e}^{x}$；取倒数时不等号方向也弄反了。"
+            }
+          ],
+          "reason": "分离参数时除法的对象与不等号方向都必须正确，否则会得到 $\\mathrm{e}$ 这样的错误下界。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 1
+        }
+      ],
+      "variables": [
+        "a",
+        "x"
+      ],
+      "comparisonCriterion": "优先分离参数后研究辅助函数的上确界，避免在除法与取倒数时弄错不等号方向",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:GAOKAO-Bench-2023_2023_Math_MCQs_46",
+        "trainingGoal": "用分离参数与恒成立求参数的最小值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2023 新高考卷 第6题",
+          "reference": "rainewhk-gaokao 2023\\新高考卷\\选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_46"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f'\\ge0$ 需在 $(1,2)$ 上恒成立",
+          "开区间上的上确界由端点极限取得"
+        ],
+        "allowedVariations": [
+          "改变区间或改问参数的最大值",
+          "把 $\\ln x$ 换成其他对数型项"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_46",
+          "text": "6. 已知函数 $f(x)=a \\mathrm{e}^x-\\ln x$ 在区间 $(1,2)$ 上单调递增，则 $a$ 的最小值为 $()$.\nA. $e^2$\nB. e\nC. $\\mathrm{e}^{-1}$\nD. $\\mathrm{e}^{-2}$",
+          "answer": "[\"C\"]",
+          "source": "rainewhk-gaokao / 2023\\新高考卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "恒成立与存在性求参数范围",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:GAOKAO-Bench-2023_2023_Math_MCQs_46",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立推导：$f'(x)=a\\mathrm{e}^{x}-\\frac{1}{x}$。若 $a\\le0$，在 $(1,2)$ 上 $f'<0$，不可能递增，故 $a>0$。递增需 $a\\mathrm{e}^{x}\\ge\\frac{1}{x}$，即 $a\\ge\\frac{1}{x\\mathrm{e}^{x}}$ 对 $x\\in(1,2)$ 恒成立。$h(x)=\\frac{1}{x\\mathrm{e}^{x}}$，$h'(x)=-\\frac{x+1}{x^{2}\\mathrm{e}^{x}}<0$，故 $h$ 在 $(1,2)$ 上递减，上确界为 $\\lim_{x\\to1^{+}}h(x)=\\mathrm{e}^{-1}$，于是 $a\\ge\\mathrm{e}^{-1}$。检验 $a=\\mathrm{e}^{-1}$：$f'(x)=\\mathrm{e}^{x-1}-\\frac{1}{x}$，$x\\in(1,2)$ 时 $\\mathrm{e}^{x-1}>1>\\frac{1}{x}$，区间内 $f'>0$，成立。故最小值为 $\\mathrm{e}^{-1}$，与答案 C 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_separate_param",
+        "M.hs_always_true"
+      ],
+      "applicableMethodIds": [
+        "M.hs_separate_param",
+        "M.hs_always_true",
+        "M.hs_construct_function"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_separate_param"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_always_true"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_construct_function"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_extremum"
+        },
+        {
+          "scenarioId": "S.hs_deriv.param_range",
+          "methodId": "M.hs_lhopital"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_separate_param",
+        "M.hs_always_true",
+        "M.hs_construct_function",
+        "M.hs_extremum",
+        "M.hs_lhopital"
+      ],
+      "options": [
+        {
+          "id": "r-invert-inequality",
+          "name": "分离参数时把 $a\\ge\\frac{1}{x\\mathrm{e}^{x}}$ 错写成 $a\\ge x\\mathrm{e}^{x}$"
+        },
+        {
+          "id": "r-separate-param",
+          "name": "求导后分离参数，用辅助函数的上确界定最小值"
+        },
+        {
+          "id": "r-auxiliary-function",
+          "name": "把不等式化成 $g(x)=x\\mathrm{e}^{x}$ 的单调性问题，用端点的下确界回推 $a$"
+        }
+      ],
+      "questionKey": "da6cbb5a1c424e89cc354268796fc27f62c808477870c49f97b15754a65e6603",
+      "faceKey": "50edd2b849bf79e00fbecc0449a9f7e1b1c070d2a53f369af7cc8e9dfc417d7f"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.extremum",
+      "question": "设函数 $f(x)=(x-1)^{2}(x-4)$, 则 ( )\nA. $x=3$ 是 $f(x)$ 的极小值点\nB. 当 $0<x<1$ 时, $f(x)<f\\left(x^{2}\\right)$\nC. 当 $1<x<2$ 时, $-4<f(2 x-1)<0$\nD. 当 $-1<x<0$ 时, $f(2-x)>f(x)$",
+      "solution": "$f'(x)=3(x-1)(x-3)$，故 $f$ 在 $(-\\infty,1)$、$(3,+\\infty)$ 上递增，在 $(1,3)$ 上递减：A 正确，$x=3$ 为极小值点；B 错误，$0<x<1$ 时 $x^{2}<x$ 且同在递增区间内，得 $f(x^{2})<f(x)$；C 正确，$1<x<2$ 时 $1<2x-1<3$，由递减得 $-4=f(3)<f(2x-1)<f(1)=0$；D 正确，$f(2-x)-f(x)=2(x-1)^{2}(1-x)>0$。故选 ACD。",
+      "routes": [
+        {
+          "id": "r-sign-table-all-options",
+          "summary": "求导得符号表，逐项把自变量区间映射到单调区间，最后作差验证 D",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$f(x)=(x-1)^{2}(x-4)$",
+              "transformedState": "$f'(x)=2(x-1)(x-4)+(x-1)^{2}=3(x-1)(x-3)$，零点 $x=1,3$",
+              "condition": "乘积法则求导后提取公因式 $(x-1)$，得 $f'=3(x-1)(x-3)$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_monotone_deriv",
+              "state": "$f'(x)=3(x-1)(x-3)$ 的符号",
+              "transformedState": "$x\\in(-\\infty,1)\\cup(3,+\\infty)$ 时 $f'>0$（递增）；$x\\in(1,3)$ 时 $f'<0$（递减）",
+              "condition": "开口向上的二次式在两根之外为正、两根之间为负。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "A：$x=3$；B：$0<x<1$；C：$1<x<2$",
+              "transformedState": "A 正确：$x=3$ 处左减右增，是极小值点；B 错误：$x^{2}<x$ 且 $f$ 在 $(0,1)$ 上递增，应 $f(x)>f(x^{2})$；C 正确：$1<2x-1<3$，$f$ 在 $(1,3)$ 递减且 $f(1)=0$、$f(3)=-4$，故 $-4<f(2x-1)<0$",
+              "condition": "先确定每个选项的自变量落在哪个单调区间，再按该区间内的增减定不等号方向。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$f(2-x)-f(x)$",
+              "transformedState": "$(1-x)^{2}(-2-x)-(x-1)^{2}(x-4)=2(x-1)^{2}(1-x)>0$，D 正确，选 ACD",
+              "condition": "作差后提取公因式 $(x-1)^{2}$；$-1<x<0$ 时 $1-x>0$，故差为正。"
+            }
+          ],
+          "reason": "一张符号表同时解决 A、B、C，D 用函数值作差补足，条理最清楚。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-shift-variable",
+          "summary": "令 $t=x-1$ 化简为 $t^{2}(t-3)$，按 $t$ 的单调性逐项比较",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_derivative_rules",
+              "state": "令 $t=x-1$，则 $f=t^{2}(t-3)$",
+              "transformedState": "$f'(t)=3t^{2}-6t=3t(t-2)$，零点 $t=0,2$ 对应 $x=1,3$",
+              "condition": "$t$ 与 $x$ 只差一个平移，单调性与极值位置随之平移。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_monotone_deriv",
+              "state": "$f'(t)=3t(t-2)$ 的符号",
+              "transformedState": "$t<0$ 或 $t>2$ 时 $f'>0$；$0<t<2$ 时 $f'<0$，故 $x=3$（即 $t=2$）是极小值点，A 正确",
+              "condition": "开口向上的二次式在两根之外为正，$t=2$ 处由减转增。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "B：$0<x<1$ 对应 $t\\in(-1,0)$；C：$1<x<2$ 对应 $t\\in(0,2)$",
+              "transformedState": "B 中 $x^{2}-1<(x-1)$ 且两者都在 $t<0$ 的递增段，得 $f(x^{2})<f(x)$，B 错误；C 中 $t$ 在 $(0,2)$ 的递减段，$f(0)=0$、$f(2)=-4$，得 $-4<f(2x-1)<0$，C 正确",
+              "condition": "换元后自变量的大小关系只在同一个单调段上才能直接比较函数值。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "D：$-1<x<0$ 时 $t=x-1\\in(-2,-1)$，而 $f(2-x)$ 对应 $t'=1-x=-t$",
+              "transformedState": "$f(-t)-f(t)=t^{2}(-t-3)-t^{2}(t-3)=-2t^{3}>0$（$t<0$），D 正确，选 ACD",
+              "condition": "$f=t^{2}(t-3)$ 中 $t^{2}$ 部分为偶函数，作差只剩 $-2t^{3}$；$t\\in(-2,-1)$ 时 $-2t^{3}>0$。"
+            }
+          ],
+          "reason": "换元后表达式更短，D 的作差只剩下一个三次项，结论与符号表路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-reverse-sign",
+          "summary": "把导数在 $x<1$ 的正负判错，导致 B 的不等号方向反过来",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_monotone_deriv",
+              "state": "$f'(x)=3(x-1)(x-3)$",
+              "transformedState": "误判 $x\\in(-\\infty,1)$ 时 $f'<0$（把两个负因式的积当成负），认为 $f$ 在 $(-\\infty,1)$ 上递减",
+              "condition": "$x<1$ 时 $x-1<0$ 且 $x-3<0$，两负相乘为正，$f$ 在该段实际递增。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$0<x<1$ 时 $x^{2}<x$",
+              "transformedState": "在误判的递减区间上得 $f(x^{2})>f(x)$，判 B 正确，误选 ABCD",
+              "condition": "单调方向判错后，自变量越大函数值越小的结论也随之反转。"
+            }
+          ],
+          "reason": "两个负因式相乘为正，$f$ 在 $(-\\infty,1)$ 上递增，故 $x^{2}<x$ 应得 $f(x^{2})<f(x)$，B 是错误选项。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先由导数符号表确定各段单调性后再比较函数值，不能先凭因式正负猜增减",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:GAOKAO-Bench-2024_2024_Math_MCQs_31",
+        "trainingGoal": "用导数符号表判断极值点与单调性，并在同一单调段内比较函数值",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2024 全国卷 第10题",
+          "reference": "rainewhk-gaokao 2024\\全国卷\\选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_31"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f'(x)=3(x-1)(x-3)$ 的零点与符号不变",
+          "比较函数值必须先确定两个自变量所在的单调区间"
+        ],
+        "allowedVariations": [
+          "改变 $(x-4)$ 这个一次因式",
+          "改变各选项中的比较区间"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_31",
+          "text": "10. 设函数 $f(x)=(x-1)^{2}(x-4)$, 则 ( )\nA. $x=3$ 是 $f(x)$ 的极小值点\nB. 当 $0<x<1$ 时, $f(x)<f\\left(x^{2}\\right)$\nC. 当 $1<x<2$ 时, $-4<f(2 x-1)<0$\nD. 当 $-1<x<0$ 时, $f(2-x)>f(x)$",
+          "answer": "[\"ACD\"]",
+          "source": "rainewhk-gaokao / 2024\\全国卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "极值与闭区间最值",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_31",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立求导：$f'(x)=2(x-1)(x-4)+(x-1)^{2}=(x-1)\\left[2(x-4)+(x-1)\\right]=3(x-1)(x-3)$，零点 $x=1,3$。开口向上，故 $(-\\infty,1)$、$(3,+\\infty)$ 上 $f'>0$（递增），$(1,3)$ 上 $f'<0$（递减），$x=3$ 为极小值点，A 正确。$0<x<1$ 时 $x^{2}<x$，两者都在递增区间 $(0,1)$ 内，故 $f(x^{2})<f(x)$，B 错误。$1<x<2$ 时 $1<2x-1<3$，$f$ 在 $(1,3)$ 递减且 $f(1)=0$、$f(3)=4\\cdot(-1)=-4$，故 $-4<f(2x-1)<0$，C 正确。$-1<x<0$ 时 $f(2-x)-f(x)=(1-x)^{2}(-2-x)-(x-1)^{2}(x-4)=(x-1)^{2}(2-2x)>0$，D 正确。综上选 ACD，与答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_monotone_deriv",
+        "M.hs_extremum"
+      ],
+      "applicableMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_monotone_deriv",
+        "M.hs_extremum"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_extremum"
+        },
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_monotone_deriv"
+        },
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_derivative_rules"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_extremum",
+        "M.hs_monotone_deriv",
+        "M.hs_derivative_rules"
+      ],
+      "options": [
+        {
+          "id": "r-shift-variable",
+          "name": "令 $t=x-1$ 化简为 $t^{2}(t-3)$，按 $t$ 的单调性逐项比较"
+        },
+        {
+          "id": "r-reverse-sign",
+          "name": "把导数在 $x<1$ 的正负判错，导致 B 的不等号方向反过来"
+        },
+        {
+          "id": "r-sign-table-all-options",
+          "name": "求导得符号表，逐项把自变量区间映射到单调区间，最后作差验证 D"
+        }
+      ],
+      "questionKey": "f4c7049cbe748ceaf7a86d8211151ac4b9192e9639d9a8c16326fd633248c4c5",
+      "faceKey": "979abf58403a3758f5543da4e9d6533385d6399c76775aade3169d1e3faba5d0"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.tangent",
+      "question": "函数 $f(x)=x^{4}-2 x^{3}$ 的图像在点 $(1, f(1))$ 处的切线方程为 ()\nA. $y=-2 x-1$\nB. $y=-2 x+1$\nC. $y=2 x-3$\nD. $y=2 x+1$",
+      "solution": "$f(1)=1-2=-1$，$f'(x)=4x^{3}-6x^{2}$，$f'(1)=4-6=-2$；切线 $y+1=-2(x-1)$，即 $y=-2x+1$，选 B。",
+      "routes": [
+        {
+          "id": "r-derive-point-slope",
+          "summary": "先算切点纵坐标、再算导数值，最后写点斜式",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$f(x)=x^{4}-2x^{3}$",
+              "transformedState": "$f'(x)=4x^{3}-6x^{2}$",
+              "condition": "幂函数求导：$(x^{4})'=4x^{3}$，$(-2x^{3})'=-6x^{2}$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$f(1)$ 与 $f'(1)$",
+              "transformedState": "$f(1)=1-2=-1$，$f'(1)=4-6=-2$，切点 $(1,-1)$，斜率 $k=-2$",
+              "condition": "切点纵坐标由原函数算，切线斜率由导函数算，两者不能混用。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "点斜式 $y-(-1)=-2(x-1)$",
+              "transformedState": "$y=-2x+1$，选 B",
+              "condition": "切点 $(1,-1)$ 在曲线上，直接代入点斜式。"
+            }
+          ],
+          "reason": "三步求值与代点，过程最短，符号也最不容易错。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-screen-options",
+          "summary": "先用切点筛掉两个选项，再用导数值筛掉剩下的一个",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$f(1)=-1$，切点 $(1,-1)$",
+              "transformedState": "代入 $x=1$：A 得 $-3$、B 得 $-1$、C 得 $-1$、D 得 $3$，排除 A、D",
+              "condition": "切线必须经过切点，可先代入切点横坐标检验各选项。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$f'(x)=4x^{3}-6x^{2}$，$f'(1)=-2$",
+              "transformedState": "B 的斜率 $-2$ 与 $f'(1)$ 一致，C 的斜率 $2$ 不符，选 B",
+              "condition": "切线斜率必须等于切点处导数值。"
+            }
+          ],
+          "reason": "用选项回代做双重筛选，斜率与过点都验证，结论与标准路线一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-wrong-power-rule",
+          "summary": "把 $(2x^{3})'$ 误算成 $2x^{2}$，导致斜率算错",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$f(x)=x^{4}-2x^{3}$",
+              "transformedState": "$f'(x)=4x^{3}-2x^{2}$（把 $(2x^{3})'$ 误当成 $2x^{2}$）",
+              "condition": "幂函数求导要降一次幂并乘原指数：$(2x^{3})'=6x^{2}$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.tangent",
+              "methodId": "M.hs_tangent",
+              "state": "$f'(1)=4-2=2$，$f(1)=-1$",
+              "transformedState": "$y+1=2(x-1)$，即 $y=2x-3$，误选 C",
+              "condition": "斜率算错，切线方程整体随之改变。"
+            }
+          ],
+          "reason": "求导漏乘指数会让斜率由 $-2$ 变成 $2$，正好落入选项 C 的陷阱。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "x"
+      ],
+      "comparisonCriterion": "优先分别算清 $f(1)$ 与 $f'(1)$ 再写点斜式，避免把幂函数求导的系数算错",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:2010-2022_Math_I_MCQs_168",
+        "trainingGoal": "求四次曲线在给定点处的切线方程",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2020 全国卷 第6题",
+          "reference": "rainewhk-gaokao 2020\\全国卷\\选择题.jsonl",
+          "originalId": "rw:2010-2022_Math_I_MCQs_168"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f(1)=-1$，$f'(1)=-2$",
+          "切线必须经过切点 $(1,-1)$"
+        ],
+        "allowedVariations": [
+          "改变切点横坐标",
+          "改变多项式次数或各项系数"
+        ],
+        "originalRecord": {
+          "id": "rw:2010-2022_Math_I_MCQs_168",
+          "text": "6. 函数 $f(x)=x^{4}-2 x^{3}$ 的图像在点 $(1, f(1))$ 处的切线方程为 ()\nA. $y=-2 x-1$\nB. $y=-2 x+1$\nC. $y=2 x-3$\nD. $y=2 x+1$\n",
+          "answer": "[\"B\"]",
+          "source": "rainewhk-gaokao / 2020\\全国卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "切线方程（在点与过点）",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:2010-2022_Math_I_MCQs_168",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立计算：$f(1)=1-2=-1$，切点为 $(1,-1)$；$f'(x)=4x^{3}-6x^{2}$，故 $f'(1)=4-6=-2$，切线斜率 $k=-2$。由点斜式 $y-(-1)=-2(x-1)$ 得 $y=-2x+1$，与答案 B 一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_tangent"
+      ],
+      "applicableMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_tangent"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_tangent"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_derivative_rules"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_implicit_derivative"
+        },
+        {
+          "scenarioId": "S.hs_deriv.tangent",
+          "methodId": "M.hs_parametric_derivative"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_tangent",
+        "M.hs_derivative_rules",
+        "M.hs_implicit_derivative",
+        "M.hs_parametric_derivative"
+      ],
+      "options": [
+        {
+          "id": "r-wrong-power-rule",
+          "name": "把 $(2x^{3})'$ 误算成 $2x^{2}$，导致斜率算错"
+        },
+        {
+          "id": "r-derive-point-slope",
+          "name": "先算切点纵坐标、再算导数值，最后写点斜式"
+        },
+        {
+          "id": "r-screen-options",
+          "name": "先用切点筛掉两个选项，再用导数值筛掉剩下的一个"
+        }
+      ],
+      "questionKey": "56202cce5d4110d6ca26bb18c2a04fc6e33d904df21e9c73fe632994f308d437",
+      "faceKey": "758c3931080e9e47a675cd5cb29675b41f8188f4cb33c4f8fb7309bc3661585a"
+    },
+    {
+      "format": "route-v1",
+      "entranceScenarioId": "S.hs_deriv.extremum",
+      "question": "设函数 $f(x)=2 x^{3}-3 a x^{2}+1$, 则 ( )\nA. 当 $a>1$ 时， $f(x)$ 有三个零点\nB. 当 $a<0$ 时, $x=0$ 是 $f(x)$ 的极大值点\nC. 存在 $a, b$, 使得 $\\mathrm{x}=\\mathrm{b}$ 为曲线 $y=f(x)$ 的对称轴\nD. 存在 $a$, 使得点 $(1, f(1))$ 为曲线 $y=f(x)$ 的对称中心",
+      "solution": "$f'(x)=6x(x-a)$，$f''(x)=12x-6a$。A：$a>1$ 时 $f(0)=1>0$、$f(a)=1-a^{3}<0$，三个单调段各有一个零点，共 3 个，正确；B：$a<0$ 时 $f'$ 在 $(a,0)$ 为负、$(0,+\\infty)$ 为正，$x=0$ 是极小值点，错误；C：若 $f(x)=f(2b-x)$，两边 $x^{3}$ 系数为 $2$ 与 $-2$，矛盾，不存在对称轴，错误；D：$f''(x)=0$ 得 $x=\\frac{a}{2}$，取 $a=2$ 时对称中心为 $(1,f(1))$，正确。故选 AD。",
+      "routes": [
+        {
+          "id": "r-derivative-full-analysis",
+          "summary": "求一阶、二阶导数，按 $a$ 的符号讨论，逐项验证零点、极值与对称性",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$f(x)=2x^{3}-3ax^{2}+1$",
+              "transformedState": "$f'(x)=6x^{2}-6ax=6x(x-a)$，$f''(x)=12x-6a$",
+              "condition": "逐项求导后求二阶导，$f''$ 的零点用于定位拐点（对称中心）。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_monotone_deriv",
+              "state": "$a>1$ 时 $f'=6x(x-a)$ 的符号",
+              "transformedState": "$(-\\infty,0)\\cup(a,+\\infty)$ 上 $f'>0$（递增）；$(0,a)$ 上 $f'<0$（递减）",
+              "condition": "两根 $0$ 与 $a$（$a>1$）之外为正、之内为负。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$f(0)=1$，$f(a)=1-a^{3}$",
+              "transformedState": "$a>1$ 时极大值 $1>0$、极小值 $1-a^{3}<0$，配合 $x\\to\\mp\\infty$ 时 $f\\to\\mp\\infty$，三段各一零点，共 3 个，A 正确",
+              "condition": "每个单调段两端函数值异号时，由零点存在定理恰有一个零点。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_monotone_deriv",
+              "state": "$a<0$ 时 $f'=6x(x-a)$ 的符号",
+              "transformedState": "$(a,0)$ 上 $f'<0$、$(0,+\\infty)$ 上 $f'>0$，$x=0$ 处先减后增，是极小值点，B 错误",
+              "condition": "$a<0$ 时两根顺序为 $a<0$；先减后增的转折点才是极小值点。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "C 设对称轴 $x=b$；D 取对称中心 $(1,f(1))$",
+              "transformedState": "C 需 $f(x)=f(2b-x)$ 恒成立，但两边 $x^{3}$ 系数为 $2$ 与 $-2$，矛盾，C 错误；D 由 $f''(x)=0$ 得 $x=\\frac{a}{2}$，令 $\\frac{a}{2}=1$ 得 $a=2$，D 正确。故选 AD",
+              "condition": "三次函数必有唯一对称中心（拐点），但不可能关于竖直直线对称。"
+            }
+          ],
+          "reason": "一阶导管单调与极值、二阶导管对称中心，两条线索正好覆盖四个选项。",
+          "valid": true,
+          "preferred": true,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-second-derivative",
+          "summary": "用二阶导判别极值类型并定位对称中心，再用极值符号数零点",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_derivative_rules",
+              "state": "$f'(x)=6x(x-a)$，极值点候选 $x=0,a$",
+              "transformedState": "$f''(x)=12x-6a$",
+              "condition": "先求一阶导的零点，再求二阶导判断类型。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$a<0$ 时 $f''(0)=-6a$",
+              "transformedState": "$f'(0)=0$ 且 $f''(0)>0$，故 $x=0$ 是极小值点，B 错误",
+              "condition": "一阶导为零、二阶导为正时该点是极小值点。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$f''(x)=12x-6a=0$",
+              "transformedState": "$x=\\frac{a}{2}$ 为拐点横坐标，即对称中心横坐标；令 $\\frac{a}{2}=1$ 得 $a=2$，D 正确",
+              "condition": "三次函数的对称中心就是它的拐点。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$a>1$ 时 $f(0)=1$，$f(a)=1-a^{3}$",
+              "transformedState": "极大值 $>0$、极小值 $<0$，两端又趋于 $\\mp\\infty$，三段各一零点，A 正确",
+              "condition": "极大值与极小值异号是三次函数有三个零点的判据。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "C：假设 $x=b$ 是对称轴",
+              "transformedState": "则 $f(b+t)=f(b-t)$ 对一切 $t$ 成立，而 $t^{3}$ 项系数为 $2$ 与 $-2$，不可能，C 错误。故选 AD",
+              "condition": "轴对称要求展开式中 $t$ 的奇次项抵消，但三次项符号相反。"
+            }
+          ],
+          "reason": "用二阶导直接判定极值类型与对称中心，避免逐段列表，结论一致。",
+          "valid": true,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。"
+        },
+        {
+          "id": "r-axis-confusion",
+          "summary": "把中心对称误当成轴对称，从而判 C 正确",
+          "steps": [
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "$f(x)=2x^{3}-3ax^{2}+1$",
+              "transformedState": "误认为三次函数一定存在对称轴 $x=b$，判 C 正确",
+              "condition": "三次函数的对称性是中心对称（关于拐点），不是轴对称；$f(x)=f(2b-x)$ 要求两边 $x^{3}$ 系数相同，实际为 $2$ 与 $-2$。"
+            },
+            {
+              "scenarioId": "S.hs_deriv.extremum",
+              "methodId": "M.hs_extremum",
+              "state": "A、B、D 按导数分析",
+              "transformedState": "A 正确、B 错误、D 正确，加上误判的 C，误选 ACD",
+              "condition": "只有 C 一项判断失误，其余结论正确。"
+            }
+          ],
+          "reason": "对称中心用 $f(x)+f(2m-x)=2n$ 描述，对称轴用 $f(x)=f(2b-x)$ 描述，本题只满足前者。",
+          "valid": false,
+          "preferred": false,
+          "condition": "在题目给出的条件下进行。",
+          "failedStep": 0
+        }
+      ],
+      "variables": [
+        "a",
+        "b",
+        "x"
+      ],
+      "comparisonCriterion": "优先用一阶导数定单调与极值、二阶导数定对称中心，避免把中心对称误当成轴对称",
+      "metadata": {
+        "motherId": "candidate.bankhs13.rw:GAOKAO-Bench-2024_2024_Math_MCQs_42",
+        "trainingGoal": "用导数与二阶导判断三次函数的零点个数、极值点与对称性",
+        "source": {
+          "kind": "dataset_import",
+          "label": "2024 全国卷 第11题",
+          "reference": "rainewhk-gaokao 2024\\全国卷\\选择题.jsonl",
+          "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_42"
+        },
+        "reviewStatus": "worked_example_checked",
+        "contentVersion": 1,
+        "invariants": [
+          "$f'(x)=6x(x-a)$ 的两根为 $0$ 与 $a$",
+          "三次函数只存在对称中心，不存在对称轴"
+        ],
+        "allowedVariations": [
+          "改变三次项系数",
+          "改问零点之和或极值之和"
+        ],
+        "originalRecord": {
+          "id": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_42",
+          "text": "11. 设函数 $f(x)=2 x^{3}-3 a x^{2}+1$, 则 ( )\nA. 当 $a>1$ 时， $f(x)$ 有三个零点\nB. 当 $a<0$ 时, $x=0$ 是 $f(x)$ 的极大值点\nC. 存在 $a, b$, 使得 $\\mathrm{x}=\\mathrm{b}$ 为曲线 $y=f(x)$ 的对称轴\nD. 存在 $a$, 使得点 $(1, f(1))$ 为曲线 $y=f(x)$ 的对称中心",
+          "answer": "[\"AD\"]",
+          "source": "rainewhk-gaokao / 2024\\全国卷\\选择题.jsonl",
+          "category": "导数及其应用",
+          "difficulty": "中",
+          "method": "恒成立与存在性求参数范围",
+          "notes": "高中数学 bankhs13；原题来自公开题源。"
+        },
+        "bankId": "bankhs13",
+        "originalId": "rw:GAOKAO-Bench-2024_2024_Math_MCQs_42",
+        "userApprovedClassic": false,
+        "answerAudit": {
+          "originalAnswerPreserved": true,
+          "originalAnswerVerdict": "retained",
+          "reasoning": "独立求导：$f'(x)=6x^{2}-6ax=6x(x-a)$，$f''(x)=12x-6a$。A：$a>1$ 时两根为 $0<a$，$(-\\infty,0)$、$(a,+\\infty)$ 上 $f'>0$，$(0,a)$ 上 $f'<0$，故 $f(0)=1>0$ 是极大值、$f(a)=1-a^{3}<0$ 是极小值；又 $x\\to-\\infty$ 时 $f\\to-\\infty$、$x\\to+\\infty$ 时 $f\\to+\\infty$，三个单调段各恰有一个零点，共 3 个，A 正确。B：$a<0$ 时两根为 $a<0$，$(a,0)$ 上 $f'<0$、$(0,+\\infty)$ 上 $f'>0$，$x=0$ 处先减后增，是极小值点，B 错误。C：若 $x=b$ 为对称轴则 $f(x)=f(2b-x)$ 恒成立，但两边 $x^{3}$ 系数为 $2$ 与 $-2$，矛盾，C 错误。D：三次函数必有对称中心，横坐标为 $f''(x)=0$ 的解 $x=\\frac{a}{2}$；令 $\\frac{a}{2}=1$ 得 $a=2$，此时对称中心为 $(1,f(1))$，D 正确。故选 AD，与答案一致。",
+          "validationScope": "Worked review with separate structural checks; not a formal mathematical proof certificate."
+        }
+      },
+      "task": [
+        "compute"
+      ],
+      "overlays": [],
+      "classificationReview": {
+        "status": "inferred",
+        "needsReview": true,
+        "basis": "按题面文字给出的加工建议，不能视为已审核分类。",
+        "overlaysComplete": false
+      },
+      "selectionMode": "single",
+      "coreMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_monotone_deriv",
+        "M.hs_extremum"
+      ],
+      "applicableMethodIds": [
+        "M.hs_derivative_rules",
+        "M.hs_monotone_deriv",
+        "M.hs_extremum"
+      ],
+      "allowedEdges": [
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_extremum"
+        },
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_monotone_deriv"
+        },
+        {
+          "scenarioId": "S.hs_deriv.extremum",
+          "methodId": "M.hs_derivative_rules"
+        }
+      ],
+      "candidateMethodIds": [
+        "M.hs_extremum",
+        "M.hs_monotone_deriv",
+        "M.hs_derivative_rules"
+      ],
+      "options": [
+        {
+          "id": "r-axis-confusion",
+          "name": "把中心对称误当成轴对称，从而判 C 正确"
+        },
+        {
+          "id": "r-derivative-full-analysis",
+          "name": "求一阶、二阶导数，按 $a$ 的符号讨论，逐项验证零点、极值与对称性"
+        },
+        {
+          "id": "r-second-derivative",
+          "name": "用二阶导判别极值类型并定位对称中心，再用极值符号数零点"
+        }
+      ],
+      "questionKey": "f27a080415b978598b7ae54789f8d572531dd3ccd3425191edda26d1dbed04ff",
+      "faceKey": "7492accdbd4c812eaf78a93059c3a2bf82628cca35876315c36827766e9486be"
+    }
+  ]
+}
