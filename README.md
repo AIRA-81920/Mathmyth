@@ -55,7 +55,7 @@
 
 | 平台 | 文件 | 说明 |
 |---|---|---|
-| 手机 | `artifacts/Mathmyth-v4.2.3-release.apk` | Android 7 及以上，正式签名 |
+| 手机 | `artifacts/Mathmyth-v4.3.1-release.apk` | Android 7 及以上，正式签名 |
 | 电脑 | `artifacts/desktop/Mathmyth-v4.2.3-Setup.exe` | Windows x64 安装包，未做正式签名 |
 
 **从 3.1.0 升级的注意**：早期发布的 APK 是调试签名，安卓不允许直接覆盖安装。请先「设置 → 数据 → 导出到文件」
@@ -80,7 +80,7 @@ npm ci
 npm run dev        # http://127.0.0.1:5197
 npm run build
 npm run preview    # http://127.0.0.1:4197
-npm test           # 475 项自动测试（4.2.3 验证记录）
+npm test           # 481 项自动测试（4.3.1 验证记录）
 ```
 
 打包两端：
@@ -91,7 +91,7 @@ npm run desktop:build     # Windows x64 NSIS
 ```
 
 无交互构建两端正式包：
-`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-package.ps1 -Target all -Version 4.2.3 -NoPrompt -Release`
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-package.ps1 -Target all -Version 4.3.1 -NoPrompt -Release`
 
 打包脚本会显示当前版本与 Android versionCode，换版本会自动 +1，保证能覆盖安装。
 签名材料（`android/keystore*`、`keystore.properties`）与产物（`artifacts/`、`dist/`）都不进仓库。
@@ -138,6 +138,11 @@ npm run desktop:build     # Windows x64 NSIS
 <details>
 <summary><b>开发日志</b>（近期节点，完整记录见 docs/）</summary>
 
+- **4.3.1**：练习卡一题一槽（只展开最新一张，旧卡折成一行，可随时展开）；同一回答同一思路再点
+  「试一道类似题」会定位到已有卡，卡内可直接「再练一道 / 再选一道」；本对话出过的题不再重复出现。
+  新增页面级错误兜底（可导出备份）、会话图片内存减半与已打开会话上限、公网 http 地址明文提示；
+  足迹滚动不再每停手一次就整库保存；「试一道类似题」先查思路索引，没有匹配时不再加载整本题库。
+- **4.3.0**：接入高数 bankadv 题库（257 道）与高中数学题库（500 道），两科本地题池独立加载。
 - **4.2.3**：AI 现场出题不再被入库校验误拒（草稿按契约只给一条正确路线，"必须带错误路线"只适用于人工库题）；
   本题路径的依据匹配支持空白与全角差异、重复连线自动去重、单条并列解法失败不再拖垮整题；后台归位加总期限、
   队列优先处理当前会话，并提供队列诊断页。

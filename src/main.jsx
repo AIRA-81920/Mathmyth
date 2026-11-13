@@ -1,6 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './app/App.jsx'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 import 'katex/dist/katex.min.css'
 import './styles/tokens.css'
 import './styles/app.css'
@@ -84,6 +85,8 @@ import('./core/ui/perfProbe.js').then(({ installPerfProbe }) => installPerfProbe
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary scope="应用">
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>,
 )

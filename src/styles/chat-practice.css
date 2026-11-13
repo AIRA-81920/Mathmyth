@@ -12,3 +12,26 @@
 .chat-practice-hints, .chat-practice-summary { margin-top: 16px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; }
 .chat-practice-summary p { margin: 8px 0; font-size: 13px; line-height: 1.7; }
 .chat-practice-card button { max-width: 100%; white-space: normal; }
+
+/* 折叠后的练习卡：只占一行，点一下展开；新的练习卡出现时旧卡自动收成这样。 */
+.chat-practice-card.is-collapsed { padding: 0; border: 0; }
+.chat-practice-collapsed { display: flex; align-items: baseline; gap: 8px; width: 100%; padding: 10px 12px;
+  border: 1px solid var(--border); border-radius: var(--radius-card); background: transparent;
+  text-align: left; font: inherit; color: var(--text); cursor: pointer; }
+.chat-practice-collapsed:hover { border-color: var(--text); }
+.chat-practice-collapsed-origin { flex-shrink: 0; font-size: 12px; opacity: .75; }
+.chat-practice-collapsed-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+.chat-practice-collapsed-state { flex-shrink: 0; font-size: 12px; opacity: .7; }
+.chat-practice-collapsed-open { flex-shrink: 0; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+.chat-practice-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.chat-practice-collapse { font-size: 12px; }
+
+/* 重复点击同一思路时，短暂标出被定位到的那张卡。 */
+.chat-practice-card.is-focused { animation: chat-practice-focus 1.6s ease-out; }
+@keyframes chat-practice-focus {
+  0% { box-shadow: 0 0 0 2px var(--text); }
+  100% { box-shadow: 0 0 0 2px transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-practice-card.is-focused { animation: none; outline: 2px solid var(--text); outline-offset: 2px; }
+}

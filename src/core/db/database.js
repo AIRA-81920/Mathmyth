@@ -98,6 +98,9 @@ export async function deleteConversation(id, includeLearning) {
 }
 export const loadActivePractice = (subject = getActiveSubject()) => rpc('loadActivePractice', subject);
 export const loadPracticeItem = (id) => rpc('loadPracticeItem', id);
+// 重复点击同一思路时定位已有卡；出题时排除本对话已出过的题。
+export const findExistingChatPractice = (options) => rpc('findExistingChatPractice', options);
+export const listChatPracticeQuestionKeys = (conversationId) => rpc('listChatPracticeQuestionKeys', conversationId);
 export const listPracticeHistory = (options = {}) => rpc('listPracticeHistory', { ...options, subject: options.subject ?? getActiveSubject() });
 export const loadPracticeUsage = (subject = getActiveSubject()) => rpc('loadPracticeUsage', subject);
 export const searchConversations = (query, subject = getActiveSubject()) => rpc('searchConversations', query, subject);

@@ -220,6 +220,20 @@ export const useAppStore = create((set, get) => ({
   streamingCount: 0,
 
   startRelatedPractice: (options) => startRelatedPractice(useAppStore, options),
+  // 卡内的「再练一道 / 再选一道」：从这张练习本身继续找题。
+  // forceNew 跳过"同思路已有卡就定位"的检查，因为这里就是用户主动要求换一道。
+  startRelatedFromItem: async (itemId, { ai = false } = {}) => {
+    const result = await startRelatedPractice(useAppStore, { sourceItemId: itemId, forceNew: true, ai });
+    if (result?.ok && !result.existing && result.messageId) {
+      set({ questionFocus: { conversationId: result.conversationId, messageId: result.messageId, nonce: globalThis.crypto.randomUUID() } });
+    }
+    return result;
+  },
+  // 重复点击同一思路时，把界面滚到已有那张卡并高亮。
+  focusMessage: (conversationId, messageId) => {
+    if (!conversationId || !messageId) return;
+    set({ activeArea: 'ask', questionFocus: { conversationId, messageId, nonce: globalThis.crypto.randomUUID() } });
+  },
   // 导入/导出/清库期间也收下草稿：只丢在内存里，等操作结束后再随会话一起落库，
   // 否则用户在操作期间打的字会被静默吞掉。
   setChatDraft: (conversationId, text) => {
@@ -575,7 +589,9 @@ export const useAppStore = create((set, get) => ({
         const { loadSkeleton } = await import('../core/skeleton/load.js');
         const { pickChatPractice } = await import('../core/chat/practice.js');
         const [skeleton, trail, usage] = await Promise.all([loadSkeleton(), database.loadTrail(), database.loadPracticeUsage()]);
-        const selection = await pickChatPractice({ config, conversation: { ...conversation, messages: history }, text, skeleton, trail, usage, signal: request.controller.signal });
+        // 本对话已经出过的题不再重复出现（题库入口也要排除，而不只是排序降权）。
+        const usedKeys = await database.listChatPracticeQuestionKeys(currentId);
+        const selection = await pickChatPractice({ config, conversation: { ...conversation, messages: history }, text, skeleton, trail, usage, usedKeys, signal: request.controller.signal });
         if (request.controller.signal.aborted || activeRequests.get(currentId) !== request || get().dataOperation || get().learnerId !== learnerId) return message;
         if (selection.clarification) { updateAnswer(() => ({ content: selection.clarification, status: 'complete' })); return message; }
         await get().flushStorage();

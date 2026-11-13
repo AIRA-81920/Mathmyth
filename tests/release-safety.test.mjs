@@ -76,11 +76,16 @@ for (const fail of [true, false]) test(`method discussion ${fail ? 'failed save 
 });
 
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
-test('30 continuous trail scroll changes produce one durable save after idle', async t => {
+test('30 continuous trail scroll changes write nothing until leaving the trail', async t => {
   const { state, db } = await boot(t, { flushDelay: 5 });
+  state().setActiveArea('trail'); await pause(20);
   db.saves.length = 0;
   for (let index = 1; index <= 30; index++) { state().setTrailScroll(index * 10, state().trailEpoch); await pause(10); }
   await pause(650);
+  // 浏览足迹期间不再整库保存；位置只在离开这一页时落盘一次。
+  assert.equal(db.saves.length, 0);
+  state().setActiveArea('ask');
+  await pause(40);
   assert.equal(db.saves.length, 1);
   assert.equal(db.saves[0].preferences.trailScroll, 300);
 });

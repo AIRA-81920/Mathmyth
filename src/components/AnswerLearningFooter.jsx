@@ -44,7 +44,11 @@ export default function AnswerLearningFooter({ result, skeleton, disabled = fals
         answerId: result.answerId, userMessageId: result.messageId, ...choice, relation: 'similar', ai,
       });
       if (epoch.current !== owner) return;
-      if (!resultOfPractice?.ok) {
+      if (resultOfPractice?.existing) {
+        // 同一条回答、同一条思路已经有一张没做完的卡：滚回去，不再新建。
+        useAppStore.getState().focusMessage(resultOfPractice.conversationId, resultOfPractice.messageId);
+        setPicking(false);
+      } else if (!resultOfPractice?.ok) {
         setError(resultOfPractice?.error || '这次练习没有准备完成。');
         setOfferOther(Boolean(resultOfPractice?.canSelectPractice));
         if (resultOfPractice?.canGenerate && !ai) setFallback(choice);

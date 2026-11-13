@@ -11,6 +11,7 @@ import Method from '../pages/Method.jsx'
 import Scenario from '../pages/Scenario.jsx'
 import HistoryDrawer from './HistoryDrawer.jsx'
 import AppTour, { tourDone, resetTour } from '../components/AppTour.jsx'
+import ErrorBoundary from '../components/ErrorBoundary.jsx'
 import { usePracticeStore } from '../store/practiceStore.js'
 import useAreaSwipe from './useAreaSwipe.js'
 import { applyLightTemperature } from '../core/ui/lightTemperature.js'
@@ -326,7 +327,9 @@ function MainShell({ onSettings }) {
           <div ref={trackRef} className="area-swipe-track">
             {areas.map(({ id, Component }) => <section key={id} className="area-swipe-page" data-area={id} aria-hidden={id !== activeArea || undefined}
               ref={(node) => { if (node) node.inert = id !== activeArea }}>
-              <Component active={id === activeArea} onMethod={id === 'trail' ? openMethod : undefined} onScenario={id === 'trail' ? openScenario : undefined} />
+              <ErrorBoundary scope={areas.find((area) => area.id === id)?.label} onRetry={() => setActiveArea(id)}>
+                <Component active={id === activeArea} onMethod={id === 'trail' ? openMethod : undefined} onScenario={id === 'trail' ? openScenario : undefined} />
+              </ErrorBoundary>
             </section>)}
           </div>
         </main>
@@ -454,8 +457,8 @@ export default function App() {
             <button type="button" className="button button-secondary" onClick={openSettings}>设置与数据恢复</button>
           </div>
         </main>
-      ) : route === 'onboarding' ? <Onboarding /> : (route === 'main' || leaving) ? <MainShell onSettings={startSettingsMorph} /> : null}
-      {(route === 'settings' || morphing) && <div className="settings-layer" ref={settingsLayerRef} style={morphing ? { opacity: 0 } : undefined}><Settings onClose={requestCloseSettings} /></div>}
+      ) : route === 'onboarding' ? <ErrorBoundary scope="首次设置"><Onboarding /></ErrorBoundary> : (route === 'main' || leaving) ? <MainShell onSettings={startSettingsMorph} /> : null}
+      {(route === 'settings' || morphing) && <div className="settings-layer" ref={settingsLayerRef} style={morphing ? { opacity: 0 } : undefined}><ErrorBoundary scope="设置"><Settings onClose={requestCloseSettings} /></ErrorBoundary></div>}
       {tourOpen && <AppTour onDone={() => setTourOpen(false)} />}
       {exitError && createPortal(<section className="confirm-dialog storage-close-error" role="alert">
         <p>{exitError}</p>

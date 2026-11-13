@@ -152,3 +152,29 @@ test('人工核对的清单可复现，调用方改不动它的核验结果', as
     assert.equal(await isInstalledReviewedQuestion(changed), false);
   }
 });
+
+test('思路索引命中的题库题能真正建成练习（不是只返回一个摘要）', async () => {
+  const targets = await localTargets(skeleton);
+  const source = targets.flatMap((target) => (target.questions ?? []).map((question) => ({ target, question })))
+    .find(({ question }) => question.metadata?.bankId && question.routes?.some((route) => route.valid && route.steps?.length));
+  assert.ok(source, '题库里必须有带官方标识的题');
+  const route = source.question.routes.find((item) => item.valid && item.steps.length);
+  // 把作者题全部排除，强制走索引里的题库题，才能验证索引返回的 target 是可建练习的。
+  const authoredKeys = relatedPracticeTargets.flatMap((target) => (target.questions ?? []).map((question) => question.questionKey));
+  const result = await findRelatedPractice({ sourceRoute: { steps: route.steps }, sourceQuestion: source.question.question,
+    skeleton, excludeQuestionKeys: authoredKeys });
+  assert.ok(result.question, result.reason);
+  assert.ok(result.question.metadata.bankId, '应当命中题库题');
+  const SQL = await initSqlJs(), schemaSql = await readFile(new URL('../src/core/db/schema.sql', import.meta.url), 'utf8');
+  const engine = new DatabaseEngine({ SQL, schemaSql, storage: { load: async () => null, commit: async (_bytes, revision) => revision + 1 } });
+  await engine.initializeDatabase();
+  try {
+    await engine.saveChanges({ conversations: [{ id: 'indexed-chat', title: '索引题', createdAt: '2026-11-13T00:00:00Z',
+      updatedAt: '2026-11-13T00:00:00Z', messages: [{ id: 'indexed-card', role: 'assistant', content: '准备练习', createdAt: '2026-11-13T00:00:00Z' }] }] });
+    const run = await engine.createPracticeRun({ scenarioId: result.target.scenarioId, methodId: result.target.methodId,
+      items: [result.question], localPrepared: true, preparedTarget: result.target,
+      chat: { conversationId: 'indexed-chat', messageId: 'indexed-card' } });
+    assert.equal(run.items.length, 1);
+    assert.equal(run.items[0].question.questionKey, result.question.questionKey);
+  } finally { engine.close(); }
+});

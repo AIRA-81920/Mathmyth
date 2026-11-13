@@ -1,0 +1,15 @@
+/* 渲染出错时的兜底页：只占当前区域，不覆盖其它页面。 */
+.error-fallback {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+  padding: 32px 24px;
+}
+
+.error-fallback h2 { font-size: 18px; font-weight: 600; }
+.error-fallback p { font-size: 13px; line-height: 1.8; opacity: .8; }
+.error-fallback-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.error-fallback-status { font-size: 12px; }

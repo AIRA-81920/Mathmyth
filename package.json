@@ -1,7 +1,7 @@
 {
   "name": "mathmyth-frontend",
   "private": true,
-  "version": "4.3.0",
+  "version": "4.3.1",
   "type": "module",
   "main": "electron/main.cjs",
   "overrides": {
@@ -9,12 +9,14 @@
   },
   "scripts": {
     "predev": "node scripts/copy-pdf-assets.mjs",
-    "prebuild": "node scripts/copy-pdf-assets.mjs",
+    "prebuild": "node scripts/copy-pdf-assets.mjs && node scripts/build-related-index.mjs",
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
+    "pretest": "node scripts/build-related-index.mjs",
     "test": "node --test tests/*.test.mjs",
     "bank:build": "node scripts/compile-question-bank.mjs",
+    "bank:related": "node scripts/build-related-index.mjs",
     "knowledge:build": "node scripts/compile-knowledge.mjs",
     "android:sync": "npm run build && cap sync android",
     "android:build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-android.ps1",

@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import { providers, validateModelConfig } from '../core/config/providers';
+import { providers, validateModelConfig, isPublicCleartextAddress } from '../core/config/providers';
 import { listModels as requestModelList, testConnection as requestConnectionTest } from '../core/ai/client';
 import { useAppStore } from '../store/appStore';
 
@@ -41,6 +41,8 @@ export default function ModelForm({ onStart, startDisabled = false }) {
   }, [modelConfig.providerId, modelConfig.apiBase]);
 
   const provider = providers.find((item) => item.id === modelConfig.providerId);
+  // 公网 http 地址会让 Key 明文传输；只提示，不阻止保存，避免卡住已有配置。
+  const cleartext = modelConfig.providerId === 'custom' && isPublicCleartextAddress(modelConfig.apiBase);
   let imageHint = '图片能力请按所填模型确认';
   if (modelConfig.model === provider?.defaultModel && provider?.defaultModel) {
     imageHint = provider.imageHint
@@ -154,6 +156,7 @@ export default function ModelForm({ onStart, startDisabled = false }) {
             onChange={(event) => updateConfig({ apiBase: event.target.value })}
           />
           {errors.apiBase && <p className="field-error" id={`${id}-apiBase-error`}>{errors.apiBase}</p>}
+          {cleartext && <p className="field-hint field-warning" role="note">这个地址没有加密（http://），你的 API Key 会以明文发送。只在你信任这个地址时使用。</p>}
         </div>
       )}
 

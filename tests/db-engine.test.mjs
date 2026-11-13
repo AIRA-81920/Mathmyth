@@ -67,7 +67,9 @@ test('file backup physically removes current and rotated API keys without changi
     const target = createEngine(); await target.initializeDatabase();
     const candidate = await target.prepareImport(bytes), restored = await target.commitImport(candidate.token);
     assert.equal(restored.modelConfig.apiKey, ''); assert.equal(restored.conversations.length, 1);
-    assert.deepEqual(target.loadConversation('conversation-one').messages[0].image.bytes, imageBytes); target.close();
+    assert.equal(target.loadConversation('conversation-one').messages[0].image.bytes, undefined);
+    assert.match(target.loadConversation('conversation-one').messages[0].image.dataUrl, /^data:image\/png;base64,/);
+    assert.deepEqual(target.loadImage('image-one').bytes, imageBytes); target.close();
   } finally { engine.close(); }
 });
 test('multiple attachments and document bytes survive backup; pin and rename persist without loading history', async () => {
@@ -88,7 +90,8 @@ test('version-three backups migrate to attachments schema without losing convers
   });
   const candidate=await engine.prepareImport(bytes);await engine.commitImport(candidate.token);
   assert.equal(engine.db.exec('PRAGMA user_version')[0].values[0][0],SCHEMA_VERSION);
-  assert.deepEqual(engine.loadConversation('conversation-one').messages[0].image.bytes,imageBytes);engine.close();
+  assert.equal(engine.loadConversation('conversation-one').messages[0].image.bytes, undefined);
+  assert.deepEqual(engine.loadImage('image-one').bytes, imageBytes); engine.close();
 });
 test('chat deletion offers preserved detached learning or removal of its own learning evidence', async () => {
   const {engine} = await populated();
@@ -143,8 +146,10 @@ test('settings, stable message order, image bytes and public metadata round-trip
   assert.deepEqual(loaded.messages.map((entry) => entry.id), ['conversation-one-user', 'conversation-one-answer', 'recheck']);
   assert.equal(loaded.messages[0].imageCorrected, true);
   assert.equal(loaded.messages[2].recheckOf, 'conversation-one-answer');
-  assert.deepEqual(loaded.messages[0].image.bytes, imageBytes);
+  // 会话加载只给显示用的 dataUrl；原始字节按需通过 loadImage 读取。
+  assert.equal(loaded.messages[0].image.bytes, undefined);
   assert.match(loaded.messages[0].image.dataUrl, /^data:image\/png;base64,/);
+  assert.deepEqual(restart.loadImage(image.id).bytes, imageBytes);
   assert.equal(loaded.firstImageId, image.id);
   const db = new SQL.Database(await restart.exportDatabase());
   assert.equal(db.exec('SELECT count(*) FROM image')[0].values[0][0], 1);

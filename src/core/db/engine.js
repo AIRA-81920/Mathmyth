@@ -36,12 +36,23 @@ function exportBytes(db) {
   return bytes;
 }
 
-function encodeImage(row) {
+// 把 BLOB 转成 base64 文本：界面显示用这个。
+// 加载会话时只保留这一份，不再同时把原始字节也塞进消息对象（内存约减半）。
+function blobBase64(blob) {
   const chunks = [];
-  for (let offset = 0; offset < row.blob.length; offset += 0x8000) {
-    chunks.push(String.fromCharCode(...row.blob.subarray(offset, offset + 0x8000)));
+  for (let offset = 0; offset < blob.length; offset += 0x8000) {
+    chunks.push(String.fromCharCode(...blob.subarray(offset, offset + 0x8000)));
   }
-  return { id: row.id, name: row.name, mime: row.mime, bytes: row.blob, dataUrl: `data:${row.mime};base64,${btoa(chunks.join(''))}` };
+  return btoa(chunks.join(''));
+}
+
+function encodeImage(row) {
+  return { id: row.id, name: row.name, mime: row.mime, bytes: row.blob, dataUrl: `data:${row.mime};base64,${blobBase64(row.blob)}` };
+}
+
+// 只读视图：会话里显示图片只需要 dataUrl，原始字节仍留在数据库里。
+function encodeImageView(row) {
+  return { id: row.id, name: row.name, mime: row.mime, dataUrl: `data:${row.mime};base64,${blobBase64(row.blob)}` };
 }
 
 function setSetting(db, key, value) {
@@ -288,6 +299,8 @@ export class DatabaseEngine {
   appendPracticeItems(runId, items, status) { return practice.appendPracticeItems(this, runId, items, status); }
   loadActivePractice(subject) { return practice.loadActivePractice(this, subject); }
   loadPracticeItem(id) { return practice.loadPracticeItem(this, id); }
+  findExistingChatPractice(options) { return practice.findExistingChatPractice(this, options); }
+  listChatPracticeQuestionKeys(conversationId) { return practice.listChatPracticeQuestionKeys(this, conversationId); }
   listPracticeHistory(options) { return practice.listPracticeHistory(this, options); }
   loadPracticeUsage(subject) { return practice.loadPracticeUsage(this, subject); }
   gradePracticeItem(runId, itemId, attempt) { return practice.gradePracticeItem(this, runId, itemId, attempt); }
@@ -304,6 +317,13 @@ export class DatabaseEngine {
     const row = rows(this.ensureOpen(), 'SELECT id,name,mime,blob FROM image WHERE id = ?', [id])[0];
     if (!row) throw new DatabaseError('这张图片已不存在，请重新选择。', 'image_not_found');
     return encodeImage(row);
+  }
+
+  // 会话渲染用：不返回 bytes，避免同一张图在内存里存两份。
+  loadImageView(id) {
+    const row = rows(this.ensureOpen(), 'SELECT id,name,mime,blob FROM image WHERE id = ?', [id])[0];
+    if (!row) throw new DatabaseError('这张图片已不存在，请重新选择。', 'image_not_found');
+    return encodeImageView(row);
   }
 
   loadDocument(id) {
@@ -376,8 +396,8 @@ export class DatabaseEngine {
       WHERE a.message_id IN (SELECT id FROM message WHERE conversation_id=?) ORDER BY a.message_id, a.seq`, [id])) {
       const list = attachmentsByMessage.get(row.message_id) ?? [];
       if (row.image_ref) {
-        if (!images.has(row.image_ref)) images.set(row.image_ref, { ...this.loadImage(row.image_ref), kind: 'image' });
-        list.push(images.get(row.image_ref));
+        if (!images.has(row.image_ref)) images.set(row.image_ref, this.loadImageView(row.image_ref));
+        list.push({ ...images.get(row.image_ref), kind: 'image' });
       } else if (row.document_ref) {
         list.push({ id: row.document_ref, kind: 'document', name: row.document_name, mime: row.document_mime, bytes: row.document_blob, text: row.document_text });
       } else list.push(this.loadDocument(row.document_ref)); // 引用损坏时保持原来的报错
@@ -399,7 +419,7 @@ export class DatabaseEngine {
       if (row.recheck_of !== null) item.recheckOf = row.recheck_of;
       if (row.image_corrected) item.imageCorrected = true;
       if (row.image_ref) {
-        if (!images.has(row.image_ref)) images.set(row.image_ref, this.loadImage(row.image_ref));
+        if (!images.has(row.image_ref)) images.set(row.image_ref, this.loadImageView(row.image_ref));
         item.image = images.get(row.image_ref);
       }
       const owned = attachmentsByMessage.get(row.id);

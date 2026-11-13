@@ -83,7 +83,9 @@ export default function useQuestionScroll({ flowRef, contentRef, currentId, user
     if (!ready || !active || focus?.conversationId !== currentId) return;
     const tick = requestAnimationFrame(() => {
       const flow = flowRef.current;
-      const target = nodes().find(node => node.dataset.userMessageId === focus.messageId);
+      // 先找用户消息（原有逻辑），找不到再按任意消息 id 找：练习卡定位走的是后者。
+      const target = nodes().find(node => node.dataset.userMessageId === focus.messageId)
+        ?? contentRef.current?.querySelector(`[data-message-id="${focus.messageId}"]`);
       if (!flow || !target) return;
       flow.scrollTop = Math.max(0, questionOffset(flow, target));
       updateNavigation();

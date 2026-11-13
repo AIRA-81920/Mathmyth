@@ -129,9 +129,11 @@ export function attachPersistence(store, database, { flushDelay = 80, streamingF
       && state.preferences.trailScroll !== previous.preferences.trailScroll
       && Object.keys(state.preferences).every(key => key === 'trailScroll' || state.preferences[key] === previous.preferences[key]);
     if (scrollOnly) {
+      // 只滚足迹不写库：浏览期间不再每停手 500ms 导出整库。
+      // 最终位置在离开足迹页、切到后台、关闭应用或任何一次真实 flush 时一起落盘。
       scrollDirty = true;
       clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => { if (stageScroll()) schedule({ urgent: true }); }, 500);
+      scrollTimer = undefined;
     }
     if (state.modelConfig !== previous.modelConfig || state.onboarded !== previous.onboarded || (state.preferences !== previous.preferences && !scrollOnly)) {
       stageScroll();
@@ -238,6 +240,35 @@ export function attachPersistence(store, database, { flushDelay = 80, streamingF
     });
   }
 
+  // 内存里的会话上限：最多保留 4 个已加载会话（含刚打开的这个）。
+  // 只回收"干净"的普通会话——没有待保存改动、没有流式回答、不是方法讨论。
+  // 被回收的会话只留摘要，重新点开时会走原来的 loaded:false 读取路径。
+  const MAX_LOADED_CONVERSATIONS = 4;
+  function evictLoadedConversations(keepId) {
+    const state = store.getState();
+    const candidates = state.conversations.filter((entry) => entry.id !== keepId
+      && entry.loaded !== false && !entry.ephemeral && !entry.methodId
+      && !dirty.has(entry.id)
+      && !(entry.messages ?? []).some((message) => message.status === 'streaming'));
+    const keepOthers = MAX_LOADED_CONVERSATIONS - 1;
+    const excess = candidates.length - keepOthers;
+    if (excess <= 0) return;
+    const doomed = new Set(candidates
+      .slice()
+      .sort((a, b) => String(a.updatedAt ?? '').localeCompare(String(b.updatedAt ?? '')))
+      .slice(0, excess)
+      .map((entry) => entry.id));
+    silence(() => store.setState((current) => ({ conversations: current.conversations.map((entry) => doomed.has(entry.id) ? {
+      ...entry,
+      messages: [],
+      revisionPaths: {},
+      revisionViewOnly: false,
+      loaded: false,
+      // 历史列表在 loaded:false 时用 messageCount 判断"有没有内容"，必须保留。
+      messageCount: entry.messageCount ?? (entry.messages ?? []).filter((message) => !message.superseded).length,
+    } : entry) })));
+  }
+
   function loadConversation(id) {
     const selected = store.getState().conversations.find((conversation) => conversation.id === id);
     if (!selected || selected.loaded !== false) return Promise.resolve(selected);
@@ -257,6 +288,7 @@ export function attachPersistence(store, database, { flushDelay = 80, streamingF
           conversations: state.conversations.map((entry) => entry.id === id && entry.loaded === false ? { ...conversation, title: entry.title, titleStatus: entry.titleStatus ?? conversation.titleStatus, pinned: entry.pinned, loaded: true } : entry),
           ...(state.currentConversationId === id ? { conversationLoading: false } : {}),
         })));
+        evictLoadedConversations(id);
         return conversation;
       } catch (error) {
         if (fence !== generation || disposed) return null;

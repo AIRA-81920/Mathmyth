@@ -131,3 +131,19 @@ export function validateModelConfig(config = {}) {
 
   return { valid: Object.keys(errors).length === 0, errors };
 }
+
+// 只有"公网 + http"才需要提醒 Key 会明文传输。
+// 本地模型（localhost / 127.x）和内网地址（10/8、172.16/12、192.168/16、*.local、IPv6 私网）不打扰。
+export function isPublicCleartextAddress(value) {
+  const raw = String(value ?? '').trim();
+  if (!/^http:\/\//i.test(raw)) return false;
+  let host;
+  try { host = new URL(raw).hostname.toLowerCase(); } catch { return false; }
+  const bare = host.replace(/^\[/, '').replace(/\]$/, '');
+  if (!bare) return false;
+  if (bare === 'localhost' || bare === '::1' || bare.endsWith('.local')) return false;
+  if (/^127\./.test(bare) || /^10\./.test(bare) || /^192\.168\./.test(bare)) return false;
+  if (/^172\.(1[6-9]|2\d|3[01])\./.test(bare)) return false;
+  if (/^(fc|fd)[0-9a-f]{0,2}:/i.test(bare) || /^fe[89ab][0-9a-f]?:/i.test(bare)) return false;
+  return true;
+}

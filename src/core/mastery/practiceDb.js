@@ -193,6 +193,36 @@ export function loadPracticeItem(engine, id) {
     review: reviewForItem(db, id) };
 }
 
+// 同一对话里是否已经有"这条回答、这条思路"的练习卡。
+// 重复点击「试一道类似题」时先查这里：有就不新建，直接定位到原来那张卡。
+export function findExistingChatPractice(engine, { conversationId, answerId, questionIndex = 1, pathIndex = 0 } = {}) {
+  if (!conversationId || !answerId) return null;
+  const list = rows(engine.ensureOpen(), `SELECT cp.item_id, cp.message_id, i.question, r.finished_at
+    FROM chat_practice cp JOIN practice_item i ON i.id=cp.item_id JOIN practice_run r ON r.id=cp.run_id
+    WHERE cp.conversation_id=? ORDER BY cp.created_at DESC`, [conversationId]);
+  for (const row of list) {
+    let question;
+    try { question = JSON.parse(row.question); } catch { continue; }
+    const provenance = question?.metadata?.learning?.provenance;
+    if (!provenance || provenance.answerId !== answerId) continue;
+    if ((provenance.questionIndex ?? 1) !== questionIndex || (provenance.pathIndex ?? 0) !== pathIndex) continue;
+    return { itemId: row.item_id, messageId: row.message_id, finished: Boolean(row.finished_at) };
+  }
+  return null;
+}
+
+// 这个对话里已经出过的题号。找新题时统一排除，避免同一个对话反复出现同一道题。
+export function listChatPracticeQuestionKeys(engine, conversationId) {
+  if (!conversationId) return [];
+  const list = rows(engine.ensureOpen(), `SELECT i.question FROM chat_practice cp
+    JOIN practice_item i ON i.id=cp.item_id WHERE cp.conversation_id=?`, [conversationId]);
+  const keys = [];
+  for (const row of list) {
+    try { const question = JSON.parse(row.question); if (question?.questionKey) keys.push(question.questionKey); } catch { /* 坏行跳过，不影响其它题 */ }
+  }
+  return keys;
+}
+
 export function listPracticeHistory(engine, { limit = 60, offset = 0, subject = 'advanced' } = {}) {
   const db = engine.ensureOpen();
   const take = Math.min(100, Math.max(1, Number.isFinite(limit) ? Math.floor(limit) : 60));

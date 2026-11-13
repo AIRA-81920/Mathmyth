@@ -9,11 +9,17 @@ import { reviewedMathMarkdown } from '../core/practice/reviewedMath.js';
 import { nextHintLevel, practiceEvidenceSummary, targetExecutionComplete } from '../core/learning/practiceSummary.js';
 import '../styles/chat-practice.css';
 
-export default function ChatPracticeCard({ itemId, onWrite }) {
+export default function ChatPracticeCard({ itemId, onWrite, onAnother, isLatest = true, highlighted = false }) {
   const state = useChatPracticeStore(), item = state.items[itemId], busy = state.busy[itemId];
   const dataOperation = useAppStore(s => s.dataOperation), learnerId = useAppStore(s => s.learnerId);
   const [selected, setSelected] = useState([]), [expanded, setExpanded] = useState(false), [showHints, setShowHints] = useState(true);
   const [relatedError, setRelatedError] = useState('');
+  // 一题一槽：只有最新一张默认展开；新的练习卡出现时，旧卡自动折成一行。
+  const [open, setOpen] = useState(Boolean(isLatest));
+  const [anotherBusy, setAnotherBusy] = useState(false), [anotherError, setAnotherError] = useState(''), [anotherCanAi, setAnotherCanAi] = useState(false);
+  useEffect(() => { if (!isLatest) setOpen(false); }, [isLatest]);
+  // 被定位到的那张卡要自动展开，否则用户只看到一行摘要，以为没反应。
+  useEffect(() => { if (highlighted) setOpen(true); }, [highlighted]);
   useEffect(() => { if (item) setSelected(item.answer?.selectedIds ?? []); }, [item?.id, item?.answer?.selectedIds?.join('|')]);
   useEffect(() => {
     setExpanded(false); setRelatedError(''); setShowHints(true);
@@ -24,6 +30,34 @@ export default function ChatPracticeCard({ itemId, onWrite }) {
   if (!item) return <p className="muted" role="status">{state.errors[itemId] || '正在读取题库练习…'}</p>;
   const q = item.question, learning = q.metadata?.learning, multi = q.selectionMode === 'multi';
   const disabled = Boolean(busy || dataOperation), finished = Boolean(item.finishedAt);
+  // 来源标题：三条入口出来的卡不再都叫"试一道类似题"。
+  const origin = learning?.reviewId ? '接着上次练习'
+    : q.metadata?.reviewStatus === 'model_unverified' ? '试一道类似题'
+      : learning?.provenance ? '试一道类似题' : '题库练习';
+  const draftText = state.drafts[itemId] ?? item.answer?.draft;
+  const cardState = finished ? '已结束' : item.answer?.outcome ? '已作答' : draftText ? '有草稿' : '未作答';
+  const plainQuestion = String(q.question ?? '').replace(/\$\$?[^$]*\$\$?/g, ' ')
+    .replace(/\\[a-zA-Z]+/g, ' ').replace(/[{}]/g, ' ').replace(/[#>*_`\\]/g, ' ').replace(/\s+/g, ' ').trim();
+  async function another(ai = false) {
+    if (!onAnother || anotherBusy || disabled) return;
+    setAnotherBusy(true); setAnotherError(''); setAnotherCanAi(false);
+    try {
+      const result = await onAnother(itemId, ai);
+      if (result?.existing) return;
+      if (!result?.ok) { setAnotherError(result?.error || '暂时没有可换的练习。'); setAnotherCanAi(Boolean(result?.canGenerate)); }
+    } finally { setAnotherBusy(false); }
+  }
+  if (!open) {
+    return <section className={'chat-practice-card is-collapsed' + (highlighted ? ' is-focused' : '')} data-practice-item={itemId} aria-label="聊天随练题">
+      <button type="button" className="chat-practice-collapsed" aria-expanded="false" aria-label="展开这道练习" onClick={() => setOpen(true)}>
+        <span className="chat-practice-collapsed-origin">{origin}</span>
+        <span className="chat-practice-collapsed-text">{plainQuestion.slice(0, 46) || '这道练习'}</span>
+        <span className="chat-practice-collapsed-state">{cardState}</span>
+        <span className="chat-practice-collapsed-open">展开</span>
+      </button>
+      {anotherError && <p className="muted field-hint" role="status">{anotherError}</p>}
+    </section>;
+  }
   // 只有一条路线时"选路线"没有意义（AI 草稿就是这样）：直接进写关键步骤。
   const routeBased = (q.routes?.length ?? 0) > 1;
   const routesVisible = routeBased && (!learning || item.answer?.routeOptionsRevealed || item.answer?.mode === 'selection');
@@ -36,8 +70,8 @@ export default function ChatPracticeCard({ itemId, onWrite }) {
     if (!item.answer?.revealed && !await state.reveal(itemId)) return;
     setExpanded(true);
   }
-  return <section className="chat-practice-card" data-practice-item={itemId} aria-label="聊天随练题">
-    <p className="chat-practice-caption muted">{learning?.reviewId ? '接着上次练习' : '试一道类似题'}{finished ? ' · 已结束' : ''}</p>
+  return <section className={'chat-practice-card' + (highlighted ? ' is-focused' : '')} data-practice-item={itemId} aria-label="聊天随练题">
+    <p className="chat-practice-caption muted"><span>{origin}{finished ? ' · 已结束' : ''}</span><button type="button" className="practice-text-button chat-practice-collapse" onClick={() => setOpen(false)}>收起</button></p>
     <MathMarkdown>{q.metadata?.bankId ? reviewedMathMarkdown(q.question) : q.question}</MathMarkdown>
     {learning?.changedCondition && !learning?.reviewId && <p className="muted field-hint">{learning.changedCondition}</p>}
     {q.metadata?.reviewStatus === 'model_unverified' && <p className="muted field-hint">AI 变式草稿，尚未人工核对；本题作答不计入掌握度。</p>}
@@ -71,7 +105,10 @@ export default function ChatPracticeCard({ itemId, onWrite }) {
       <button type="button" className="practice-text-button" disabled={disabled} aria-expanded={expanded} onClick={toggleAnswer}>{expanded ? '收起解答' : '查看解答'}</button>
       {(item.source?.sourceMessageId || learning?.provenance?.sourceItemId) && <button type="button" className="practice-text-button" disabled={disabled} onClick={async () => { if (!await state.openSource(itemId)) setRelatedError('原题对话已不可用；本题记录仍保留。'); }}>回看来源</button>}
       {!finished && <button type="button" className="practice-text-button" disabled={disabled} onClick={() => state.finish(itemId)}>先到这里</button>}
+      {onAnother && <button type="button" className="practice-text-button" disabled={disabled || anotherBusy} onClick={() => another()}>{anotherBusy ? '正在找题…' : finished ? '再练一道' : '再选一道'}</button>}
+      {onAnother && <button type="button" className="practice-text-button" disabled={disabled} onClick={() => useAppStore.getState().setActiveArea('practice')}>换个方向</button>}
     </div>
+    {anotherError && <p className="muted field-hint" role="status">{anotherError}{anotherCanAi && <button type="button" className="practice-text-button" disabled={disabled || anotherBusy} onClick={() => another(true)}>让 AI 编一道（不计掌握度）</button>}</p>}
     {expanded && <><RouteReview question={q} selectedIds={item.answer?.selectedIds} revealed /><MathMarkdown>{q.solution}</MathMarkdown></>}
     {finished && <div className="chat-practice-summary" role="status"><strong>这次练习</strong><p>{summary.done}</p><p className="muted">{summary.pending}</p>
       {learning?.reviewId && (!['right', 'wrong'].includes(item.answer?.outcome) || item.answer?.disputed) && <p className="muted field-hint">这次还没有得到可用的检验结果，原复习安排仍保留，可在练习中继续。</p>}

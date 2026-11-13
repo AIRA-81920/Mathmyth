@@ -2,6 +2,7 @@ import { localTargets } from './bank.js';
 import { prepareRouteQuestion } from './routes.js';
 import { streamAnswer } from '../ai/client.js';
 import { createQuestionExtractor } from './draftStream.js';
+import { getActiveSubject } from '../config/subject.js';
 
 const VERSION = 'related-match-v1';
 // 只剩"同一条思路"这一种关系。结构族白名单（4 个族、195 行解析器）已删除：
@@ -85,27 +86,77 @@ function learningFor(question, route, context, relation, skeleton, match) {
 
 /** 本地同链练习：一次模型请求都不发。sourceRoute 必须指定一条已选路线。
  * 硬条件只有一个——有序情景与方法连线逐项一致；难度、条件、题型都不做推断。 */
+// 思路索引按学科分开，只在第一次点"试一道类似题"时加载一次。
+const indexCache = new Map();
+async function loadRelatedIndex() {
+  const key = getActiveSubject() === 'high_school' ? 'hs' : 'advanced';
+  if (!indexCache.has(key)) {
+    const loading = (key === 'hs'
+      ? import('../../assets/practice/related-index-hs.js')
+      : import('../../assets/practice/related-index.js')
+    ).catch((error) => { indexCache.delete(key); throw error; });
+    indexCache.set(key, loading);
+  }
+  return indexCache.get(key);
+}
+
 export async function findRelatedPractice({ sourceRoute, sourceQuestion, sourceAnswer = '', skeleton,
   relation = 'similar', usage = [], excludeQuestionKeys = [] }) {
   const context = sourceContext({ sourceRoute, sourceQuestion, sourceAnswer, skeleton, relation });
   if (context.reason) return context;
-  const [authored, installed] = await Promise.all([
-    import('../../assets/practice/related-bank.js'), localTargets(skeleton),
-  ]);
-  const authoredSet = new Set();
-  for (const target of authored.relatedPracticeTargets) for (const raw of target.questions ?? []) if (raw?.metadata?.motherId) authoredSet.add(raw.metadata.motherId);
-  const pool = [...authored.relatedPracticeTargets, ...installed];
-  const exclusions = new Set(excludeQuestionKeys), used = usageOf(usage), candidates = [];
-  const seen = new Set();
-  for (const target of pool) for (const raw of target.questions ?? []) {
-    if (raw?.metadata?.reviewStatus !== 'worked_example_checked') continue;
-    const route = matchingRoute(raw, context.route.signature, skeleton); if (!route) continue;
-    const question = await prepareRouteQuestion(raw, skeleton);
-    if (exclusions.has(question.questionKey) || seen.has(question.questionKey)) continue;
+  const exclusions = new Set(excludeQuestionKeys), used = usageOf(usage), candidates = [], seen = new Set();
+  const add = (target, question, route, authored) => {
+    if (exclusions.has(question.questionKey) || seen.has(question.questionKey)) return;
     seen.add(question.questionKey);
-    const candidateRoute = question.routes.find(item => item.id === route.id);
-    candidates.push({ target, question, route: candidateRoute, authored: authoredSet.has(raw.metadata.motherId) ? 0 : 1,
+    candidates.push({ target, question, route: question.routes.find(item => item.id === route.id), authored,
       usage: used.get(question.questionKey) ?? { count: 0, last: '' } });
+  };
+  // 作者题的四个结构很小（12.8KB），始终随包加载。
+  const authored = await import('../../assets/practice/related-bank.js');
+  for (const target of authored.relatedPracticeTargets) for (const raw of target.questions ?? []) {
+    if (raw?.metadata?.reviewStatus !== 'worked_example_checked') continue;
+    try {
+      const route = matchingRoute(raw, context.route.signature, skeleton); if (!route) continue;
+      add(target, await prepareRouteQuestion(raw, skeleton), route, 0);
+    } catch { /* 单条数据异常不影响其它候选 */ }
+  }
+  // 题库题：先查签名索引；索引里没有就结束，不再加载整本题库。
+  let index = null;
+  try { index = await loadRelatedIndex(); } catch { index = null; }
+  if (index) {
+    const hits = index.entries[context.route.signature] ?? [];
+    const banks = new Map();
+    for (const [targetIndex, motherId, bankId] of hits) {
+      const meta = index.targets[targetIndex];
+      if (!meta) continue;
+      let raw;
+      if (bankId) {
+        if (!banks.has(bankId)) {
+          const loader = index.loadBank[bankId];
+          if (!loader) continue;
+          try { const module = await loader(); banks.set(bankId, module.default ?? module); } catch { banks.set(bankId, null); }
+        }
+        const bank = banks.get(bankId);
+        raw = (bank?.questions ?? []).find((question) => question.metadata?.motherId === motherId);
+      } else raw = index.authored[motherId];
+      if (!raw) continue;
+      try {
+        const question = await prepareRouteQuestion(raw, skeleton);
+        const route = matchingRoute(question, context.route.signature, skeleton); if (!route) continue;
+        // 命中的那一道题就是本次要用的 target：Worker 只需要这一道题的完整数据。
+        add({ ...meta, localReady: true, questionCount: 1, questions: [raw] }, question, route, 1);
+      } catch { /* 索引里残留的坏数据跳过，不影响其它候选 */ }
+    }
+  } else {
+    // 索引加载失败（例如旧安装包）时退回整库路径，保证功能不消失。
+    const installed = await localTargets(skeleton);
+    for (const target of installed) for (const raw of target.questions ?? []) {
+      if (raw?.metadata?.reviewStatus !== 'worked_example_checked') continue;
+      try {
+        const route = matchingRoute(raw, context.route.signature, skeleton); if (!route) continue;
+        add(target, await prepareRouteQuestion(raw, skeleton), route, 1);
+      } catch { /* 同上 */ }
+    }
   }
   // 用得最少的优先，其次最近没做的，再次作者题，最后按 motherId 稳定排序。
   candidates.sort((a, b) => a.usage.count - b.usage.count || a.usage.last.localeCompare(b.usage.last)

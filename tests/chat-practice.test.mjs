@@ -119,3 +119,26 @@ test('version 8 migrates without changing messages and rejects linking a card to
   await assert.rejects(migrated.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: [questions[0]], localPrepared: true, preparedTarget: target, chat: { conversationId: 'chat', messageId: 'source' } }));
   migrated.close();
 });
+
+test('同一个对话能列出已出过的题，并按"回答+题号+解法"定位已有练习卡', async () => {
+  const db = await setup();
+  try {
+    const traced = structuredClone(questions[0]);
+    traced.metadata.learning = { ...(traced.metadata.learning ?? {}),
+      provenance: { answerId: 'answer', questionIndex: 1, pathIndex: 0, sourceItemId: null } };
+    const run = await db.createPracticeRun({ scenarioId: target.scenarioId, methodId: target.methodId, items: [traced],
+      localPrepared: true, preparedTarget: { ...target, questions: [traced] },
+      chat: { conversationId: 'chat', messageId: 'card', sourceMessageId: 'source' } });
+    // 本对话出过的题会被列出来，用于后续找题时排除。
+    assert.deepEqual(db.listChatPracticeQuestionKeys('chat'), [traced.questionKey]);
+    assert.deepEqual(db.listChatPracticeQuestionKeys('other'), []);
+    // 同一回答、同一题号、同一条解法：定位到原来那张卡，而不是再建一张。
+    const found = db.findExistingChatPractice({ conversationId: 'chat', answerId: 'answer', questionIndex: 1, pathIndex: 0 });
+    assert.equal(found.itemId, run.items[0].id);
+    assert.equal(found.messageId, 'card');
+    assert.equal(found.finished, false);
+    // 换一条解法或换一条回答时不应误命中。
+    assert.equal(db.findExistingChatPractice({ conversationId: 'chat', answerId: 'answer', questionIndex: 1, pathIndex: 1 }), null);
+    assert.equal(db.findExistingChatPractice({ conversationId: 'chat', answerId: 'other', questionIndex: 1, pathIndex: 0 }), null);
+  } finally { db.close(); }
+});

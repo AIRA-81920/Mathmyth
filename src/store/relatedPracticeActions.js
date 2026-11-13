@@ -28,6 +28,22 @@ export async function startRelatedPractice(store, options = {}, dependencies = {
     const skeleton = dependencies.skeleton ?? await (await import('../core/skeleton/load.js')).loadSkeleton();
     const matching = dependencies.matching ?? await import('../core/practice/related.js');
     if (!current()) return failure('操作已取消。');
+    // 同一回答、同一思路已经有未结束的练习卡：不新建，交给界面滚回去。
+    // 已结束的卡不挡路，允许再出一道；forceNew 用于卡内的"再练一道/再选一道"。
+    let excludeQuestionKeys = [];
+    if (!options.reviewId) {
+      try {
+        if (!options.forceNew && !options.sourceItemId && options.answerId) {
+          const existing = await database.findExistingChatPractice({ conversationId: originalConversationId,
+            answerId: options.answerId, questionIndex: options.questionIndex ?? 1, pathIndex: options.pathIndex ?? 0 });
+          if (existing && !existing.finished) {
+            return { ok: true, existing: true, itemId: existing.itemId, messageId: existing.messageId, conversationId: originalConversationId };
+          }
+        }
+        // 本对话出过的题统一排除：同一个对话里不再重复出现同一道题。
+        excludeQuestionKeys = await database.listChatPracticeQuestionKeys(originalConversationId);
+      } catch { /* 查询失败不阻断出题，最坏只会多一次重复候选 */ }
+    }
     if (options.reviewId) {
       const reviews = await database.listPracticeReviews();
       const review = reviews.find(entry => entry.id === options.reviewId && entry.sourceItemId === options.sourceItemId && entry.status === 'pending');
@@ -78,7 +94,7 @@ export async function startRelatedPractice(store, options = {}, dependencies = {
     if (!current()) return failure('操作已取消。');
     const argumentsForMatch = { sourceRoute, sourceQuestion, sourceAnswer, skeleton,
       relation: options.relation ?? 'similar', usage,
-      excludeQuestionKeys: sourceItem ? [sourceItem.question.questionKey] : [] };
+      excludeQuestionKeys: [...excludeQuestionKeys, ...(sourceItem ? [sourceItem.question.questionKey] : [])] };
     // AI 出题要边流边显示题面，所以占位消息必须在发请求之前就存在。
     // 复习入口（reviewId）会另开新对话，那条路不预建，保持原样。
     if (options.ai && !options.reviewId) {
@@ -163,7 +179,7 @@ export async function startRelatedPractice(store, options = {}, dependencies = {
       ? { ...entry, messages: entry.messages.map(message => message.id === placeholderId
         ? { ...message, content: question.question, status: 'complete', practiceItemId: run.items[0].id, pendingDetail: '' } : message) } : entry) }));
     await store.getState().flushStorage();
-    return { ok: true, itemId: run.items[0].id, conversationId: destinationId };
+    return { ok: true, itemId: run.items[0].id, messageId: placeholderId, conversationId: destinationId };
   } catch (error) {
     if (linkedItemId && current()) return { ok: true, itemId: linkedItemId, conversationId: destinationId };
     if (placeholderId && current()) store.setState(state => ({ conversations: state.conversations.map(entry => entry.id === destinationId

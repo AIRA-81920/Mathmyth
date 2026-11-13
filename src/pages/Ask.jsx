@@ -86,6 +86,15 @@ function Ask({ active = true }) {
   const composerText = writing ? writing.text : draft
   const canSubmit = editing ? Boolean(editingMessage && (editing.text.trim() || editingMessage.image || editingMessage.attachments?.length)) : answering ? Boolean(answering.text.trim()) : Boolean(draft.trim() || attachments.length)
   const busy = messages.some((message) => message.status === 'streaming') || practiceBusy
+  // 一题一槽：同一对话里只有最新一张练习卡默认展开。
+  const latestPracticeMessageId = [...messages].reverse().find((message) => message.practiceItemId)?.id
+  const [highlightId, setHighlightId] = useState('')
+  useEffect(() => {
+    if (!questionFocus?.messageId) return
+    setHighlightId(questionFocus.messageId)
+    const timer = setTimeout(() => setHighlightId(''), 1600)
+    return () => clearTimeout(timer)
+  }, [questionFocus?.messageId, questionFocus?.nonce])
   const blocked = Boolean(conversationLoading || conversation?.loaded === false || dataOperation)
   // 出题分流：措辞像出题时，在输入框上方给一个「用题库」的显式入口；
   // 直接发送则交给模型随手出题（不再由关键词劫持）。
@@ -429,6 +438,7 @@ function Ask({ active = true }) {
           const versionIndex = versions.findIndex(item => item.id === message.id)
           const switchVersion = (offset) => { if (selectMessageRevision(versions[versionIndex + offset]?.id)) { setMenu(null); setEditing(null); setAnswering(null) } }
           return <Fragment key={message.id}><article className={`message message-${message.role}`} aria-label={message.role === 'user' ? '你的消息' : '助手的消息'}
+            data-message-id={message.id}
             data-user-message-id={message.role === 'user' ? message.id : undefined}
             aria-busy={message.status === 'streaming' || undefined} tabIndex={message.role === 'user' ? 0 : undefined}
             aria-haspopup={message.role === 'user' ? 'menu' : undefined}
@@ -448,7 +458,9 @@ function Ask({ active = true }) {
             {(message.attachments ?? (message.image ? [{ ...message.image, kind: 'image' }] : [])).map((attachment) => attachment.kind === 'image'
               ? <img key={attachment.id} className="message-image" src={attachment.dataUrl} alt="题目原图" loading="lazy" decoding="async" />
               : <div key={attachment.id} className="message-document"><FileText size={20} /><span>{attachment.name}</span></div>)}
-            {message.practiceItemId ? <ChatPracticeCard itemId={message.practiceItemId} onWrite={(id) => { const practice = useChatPracticeStore.getState(); setEditing(null); setPickerOpen(false); setAnswering({ id, text: practice.drafts[id] ?? practice.items[id]?.answer?.draft ?? practice.items[id]?.answer?.steps ?? '' }) }} />
+            {message.practiceItemId ? <ChatPracticeCard itemId={message.practiceItemId} isLatest={message.id === latestPracticeMessageId} highlighted={highlightId === message.id}
+              onAnother={(id, ai) => useAppStore.getState().startRelatedFromItem(id, { ai })}
+              onWrite={(id) => { const practice = useChatPracticeStore.getState(); setEditing(null); setPickerOpen(false); setAnswering({ id, text: practice.drafts[id] ?? practice.items[id]?.answer?.draft ?? practice.items[id]?.answer?.steps ?? '' }) }} />
               : message.partial
                 // 题面还在流里（JSON 未收尾）：纯文本显示，半截 $…$ 不进 KaTeX
                 ? <p className="message-partial">{message.content}{message.pendingDetail && <span className="muted field-hint"> · {message.pendingDetail}</span>}</p>
