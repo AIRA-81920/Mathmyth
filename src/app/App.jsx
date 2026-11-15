@@ -440,8 +440,10 @@ export default function App() {
       if (drawer) drawer.style.borderRightColor = ''
     }
   }, [morphing, openSettings])
-  // 返回：单拍。设置页淡出并向右让 24px，露出下面已经就位的主界面；动画结束才切路由，
-  // 所以中间不会出现一帧空白。
+  // 返回：把进来那一段倒着放一遍，两趟的时长、曲线、方向一一对应。
+  // 进来 = 抽屉内容淡出(0–130) + 台面从左边扫过来(0–260) + 设置内容从右 12px 淡入(140–300)
+  // 出去 = 设置内容顺着 12px 淡出(0–160) + 台面收回左侧(40–300)，露出下面已经就位的主界面
+  // 两趟都是 300ms；动画结束才切路由，所以中间不会出现一帧空白。
   const [leaving, setLeaving] = useState(false)
   const requestCloseSettings = useCallback(() => {
     if (leaving) return
@@ -449,11 +451,20 @@ export default function App() {
     if (!layer || prefersReducedMotion()) { closeSettings(); return }
     setLeaving(true)
     requestAnimationFrame(() => {
-      const animation = layer.animate(
-        [{ opacity: 1, transform: 'translateX(0px)' }, { opacity: 0, transform: 'translateX(24px)' }],
-        { duration: 180, easing: DRAWER_EASING, fill: 'both' })
-      animation.finished.catch(() => {}).then(() => {
-        animation.cancel()
+      const content = layer.querySelector('.settings-page') ?? layer
+      const fade = content.animate(
+        [{ opacity: 1, transform: 'translateX(0px)' }, { opacity: 0, transform: 'translateX(12px)' }],
+        { duration: 160, easing: 'ease-in', fill: 'both' })
+      // 用 inset 裁切把台面往右收（左缘推进），这是进来时"台面从左扫进来"的逆动作；
+      // 位移会把整页挪走，revealed 的是右侧，方向就和进来反了。
+      const retract = layer.animate(
+        [{ clipPath: 'inset(0 0 0 0%)' }, { clipPath: 'inset(0 0 0 100%)' }],
+        { duration: 260, delay: 40, easing: DRAWER_EASING, fill: 'both' })
+      retract.finished.catch(() => {}).then(() => {
+        // 两个动画都收干净，下一次进来才不会带着上一次的内联样式
+        fade.cancel()
+        retract.cancel()
+        layer.style.clipPath = ''
         layer.style.opacity = ''
         layer.style.transform = ''
         setLeaving(false)

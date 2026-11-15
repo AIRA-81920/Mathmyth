@@ -1,5 +1,6 @@
 import { streamAnswer } from './client.js';
 import { auxiliaryRequest } from './auxiliary.js';
+import { answerRequest } from './answerThinking.js';
 import { locationScenarios } from '../knowledge/index.js';
 import { validateQuestionRoutes } from '../chat/questionRoutes.js';
 import { recordLocationFailure } from '../queue/diagnostics.js';
@@ -85,10 +86,19 @@ function locationRoutes(routes, encounters, source, skeleton) {
 const instruction = `你是 Mathmyth 的后台归位助手。只依据已完成题面和公开解答，记录这轮明确使用或解释过的知识；不要把所有理论可用的方法都当成用户见过的。不要修改解答，不评价学生掌握度，不编造骨架 ID。仅返回要求的合法 JSON，换模型也使用相同格式。`;
 // D7：后台归位只吃文本。source 里若还残留旧备份写入的 imageId，必须剥掉——
 // 它既不该出现在给模型的 JSON 里，也不再有对应的图片输入。
+// 整理本题路径一律不思考：这一步只是"把题归位"，不需要推理链，而开着思考会把它拖到
+// 几分钟（任务 45 秒就超时，然后被当成失败重试），用户看到的就是"一直整理中"。
+// 关思考用的字段与前台"思考模式关闭"完全相同——同一张已验证的协议表，不另造一套。
+function quietRequest(config) {
+  const base = auxiliaryRequest(config);
+  const off = answerRequest(base.config, 'disabled');
+  return { ...base, config: off.config, parameters: { ...base.parameters, ...off.parameters } };
+}
+
 function request(config, content, systemPrompt, signal) {
   const { imageId, ...source } = content.source;
   const text = JSON.stringify({ ...content, source });
-  return streamAnswer({ ...auxiliaryRequest(config), messages: [{ role: 'user', content: text }], systemPrompt, signal });
+  return streamAnswer({ ...quietRequest(config), messages: [{ role: 'user', content: text }], systemPrompt, signal });
 }
 
 export async function locateBlocks({ config, source, skeleton, signal }) {

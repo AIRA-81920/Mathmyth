@@ -62,7 +62,12 @@ const STEPS = [
     note: '这张图只是看看效果，不会跟着这道题发出去。',
     // 面板是这一步打开的，看完就该收：它长在答案下面，不收会盖住第 4 步要点的
     // 「在足迹中定位」（4.3.2 实机反馈：第二步没收，第三步就整块被挡住）。
-    leave: () => dismiss('#attachment-panel.is-open [aria-label="关闭附件面板"]'),
+    leave: () => {
+      dismiss('#attachment-panel.is-open [aria-label="关闭附件面板"]');
+      // 这张图只是演示，别留着：它会把输入框撑高一层，第 4 步的目标被顶到看不见的地方，
+      // 用户在第四步就卡住了（4.3.2 实机反馈）。附件自己的"移除"按钮就是正解。
+      document.querySelectorAll('.composer-attachments [aria-label^="移除"]').forEach((node) => node.click());
+    },
     done: () => Boolean(document.querySelector('#attachment-panel.is-open')),
   },
   {
@@ -183,7 +188,8 @@ export default function AppTour({ onDone, startAt = 0 }) {
   // "已滚过哪一步"放进 ref：轮询和订阅回调里读到的必须是最新值。
   const indexRef = useRef(startAt);
   indexRef.current = index;
-  const scrolledRef = useRef(-1);
+  // 每一步最多滚 3 次：一次可能落在"页面还在长高"的中间态，滚完目标仍在遮挡里。
+  const scrollTriesRef = useRef({ index: -1, count: 0 });
   const calloutRef = useRef(null);
   const [calloutHeight, setCalloutHeight] = useState(200);
   // 目标迟迟不出现（模型慢、断线、这题没命中路径）时，得让人知道"可以跳过"，
@@ -209,9 +215,15 @@ export default function AppTour({ onDone, startAt = 0 }) {
     const element = targetOf(STEPS[indexRef.current]);
     const box = boxOf(element);
     if (!box) { setRect(null); return; }
-    const outside = box.y < 8 || box.y + box.h > window.innerHeight - 8;
-    if (outside && scrolledRef.current !== indexRef.current) {
-      scrolledRef.current = indexRef.current;
+    // 输入框是常驻在底部的：目标落在它后面等于看不见，所以可用区要把它减掉。
+    const composer = document.querySelector('.composer');
+    const composerHeight = composer ? composer.getBoundingClientRect().height : 0;
+    const usableBottom = window.innerHeight - Math.min(composerHeight, window.innerHeight * .5) - 12;
+    const outside = box.y < 64 || box.y + box.h > usableBottom;
+    const tries = scrollTriesRef.current;
+    if (tries.index !== indexRef.current) { tries.index = indexRef.current; tries.count = 0; }
+    if (outside && tries.count < 3) {
+      tries.count += 1;
       element.scrollIntoView({ block: 'center', behavior: 'auto' });
     }
     // 位置没变就保持同一个对象：每帧都造一个新 rect 会让气泡每帧重排一次。
@@ -232,7 +244,7 @@ export default function AppTour({ onDone, startAt = 0 }) {
     };
   }, [measure]);
 
-  useEffect(() => { scrolledRef.current = -1; }, [index]);
+  useEffect(() => { scrollTriesRef.current = { index: -1, count: 0 }; }, [index]);
   useEffect(() => { if (calloutRef.current) setCalloutHeight(calloutRef.current.offsetHeight || 200); }, [index, rect]);
   useEffect(() => {
     setStalled(false);

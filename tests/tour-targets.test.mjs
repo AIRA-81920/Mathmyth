@@ -168,7 +168,9 @@ test('气泡不许盖住这一步的目标，浮层留下的一律自己收', as
   }
   // 附件面板由第 2 步打开，交给它自己的关闭按钮收掉；不点目标按钮。
   const attach = blocks.find((entry) => entry.includes("id: 'attach'"));
-  assert.match(attach, /leave: \(\) => dismiss\('#attachment-panel\.is-open \[aria-label="关闭附件面板"\]'\)/);
+  assert.match(attach, /dismiss\('#attachment-panel\.is-open \[aria-label="关闭附件面板"\]'\)/);
+  // 演示用的附件必须一起撤掉：它会把输入框撑高，第 4 步的目标被顶到看不见
+  assert.match(attach, /document\.querySelectorAll\('\.composer-attachments \[aria-label\^="移除"\]'\)\.forEach/);
   assert.match(ask, /aria-label="关闭附件面板"/);
   assert.match(ask, /<AnimatedDisclosure open=\{pickerOpen\} id="attachment-panel"/);
   // 全程只跑一次收尾：推进和跳过都要清。
