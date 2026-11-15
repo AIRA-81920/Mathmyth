@@ -34,6 +34,13 @@ const state = () => useAppStore.getState();
 const messages = () => state().conversations.find((one) => one.id === state().currentConversationId)?.messages ?? [];
 const userCount = () => messages().filter((message) => message.role === 'user').length;
 
+// 收掉"上一步自己打开的东西"。只点它自己的关闭按钮，绝不替用户点这一步的目标：
+// 推进仍然只靠事件（done），这里清的是引导自己制造的展开态。
+const dismiss = (selector) => {
+  const node = document.querySelector(selector);
+  if (node instanceof HTMLElement) node.click();
+};
+
 // 每一步只做一件事：指着一个真实控件说一句话，等用户真的做。
 // kind='action' 没有"下一步"按钮——事件到了才走；kind='note' 只是旁注，
 // 用户看完点"继续"，不逼他做任何动作。
@@ -45,17 +52,22 @@ const STEPS = [
     note: '思考模式已经打开了，它会多想一会儿。这期间退出，这次回答就没了。',
     // 从设置里重看引导时没有预置题面，这一步的说法要换。
     plain: { body: '先发一道你自己的题，我们边走边看。', note: '答题期间退出，这次回答就没了。' },
+    waiting: '还没发出去。看看输入框下面那行提示，再点一次发送。',
     done: (base) => userCount() > base.users || state().streamingCount > 0,
   },
   {
     id: 'attach', kind: 'action', target: 'button[aria-label="添加附件"]',
     title: '趁它还在想，看看图怎么进来',
     body: '点这个 ＋：最近图片、拍照、相册、文件都在这儿。选中图片后还能点一下裁切。',
-    note: '这张图只是看看效果，不会跟着这道题发出去。简单的题不必开思考，左下角就能关。',
+    note: '这张图只是看看效果，不会跟着这道题发出去。',
+    // 面板是这一步打开的，看完就该收：它长在答案下面，不收会盖住第 4 步要点的
+    // 「在足迹中定位」（4.3.2 实机反馈：第二步没收，第三步就整块被挡住）。
+    leave: () => dismiss('#attachment-panel.is-open [aria-label="关闭附件面板"]'),
     done: () => Boolean(document.querySelector('#attachment-panel.is-open')),
   },
   {
-    id: 'routes', kind: 'action', target: '.answer-learning .question-route-toggle',
+    // 气泡放上方：点开之后路径卡片是往下长的，气泡压在下方正好盖住第 4 步的按钮。
+    id: 'routes', kind: 'action', target: '.answer-learning .question-route-toggle', place: 'above',
     title: '答案下面这一条，是这道题的路径',
     body: '它把题归进一个情景，再往下串方法。点开看看。',
     waiting: '它还在写。写完这里就会出现「查看本题路径」，到时候再点。',
@@ -75,7 +87,7 @@ const STEPS = [
   {
     id: 'trail-reverse', kind: 'note', target: '.trail-row.trail-title',
     title: '反过来也走得通',
-    body: '情景按住不放能看它的定义；点一个方法，能看到它讲的是什么、还会出现在哪些情景里；方法页里那个小窗可以直接就地问。',
+    body: '按住这个情景不放，能看它的定义；点它一下展开，往下就是这道题用到的方法，方法还会出现在别的情景里。',
   },
   {
     id: 'practice', kind: 'action', target: '#tab-practice',
@@ -98,15 +110,16 @@ const STEPS = [
     id: 'settings', kind: 'action', target: '.drawer-settings',
     title: '设置也在里面',
     body: '点「设置」进去，最后几件事都在那。',
+    waiting: '抽屉被关掉了。点左上角那三条杠，抽屉就回来了。',
     done: () => state().route === 'settings',
   },
   {
-    id: 'subject', kind: 'note', target: '[aria-labelledby$="-subject"]',
+    id: 'subject', kind: 'note', target: '[aria-labelledby$="-subject"] .settings-group-title',
     title: '教材换了就在这里换',
     body: '换学科，知识骨架、题库和讲解口吻会一起换；两个学科的数据分开存，不会混。',
   },
   {
-    id: 'version', kind: 'action', target: '.settings-about-summary',
+    id: 'version', kind: 'action', target: '.settings-about-summary', place: 'above',
     title: '检查和更新都藏在这里',
     body: '点开「版本」，能看到当前版本，也能检查更新。',
     done: () => Boolean(document.querySelector('.settings-about .fold.is-open')),
@@ -115,6 +128,7 @@ const STEPS = [
     id: 'update', kind: 'note', target: '.settings-about-details button',
     title: '有新版本会给你下载地址',
     body: '「检查更新」拿到新版本后，这里会多出一行下载入口。',
+    waiting: '「版本」又收起来了。先点一下它，把这一栏展开。',
   },
   {
     id: 'temperature', kind: 'action', target: '[data-theme-value="light"]',
@@ -127,10 +141,32 @@ const STEPS = [
 
 const PAD = 8;
 const CALLOUT_WIDTH = 300;
+const CALLOUT_GAP = 12;
 
 function targetOf(step) {
   if (!step?.target) return null;
   return document.querySelector(step.target);
+}
+
+const clamp = (value, min, max) => Math.min(Math.max(value, min), Math.max(min, max));
+
+// 气泡绝不许压在它正指的那个控件上：.tour-callout 是 pointer-events: auto，
+// 压上去就等于把那一步的按钮吃掉（第 3 步是最典型的：卡片往下长，气泡默认也在下方）。
+// 先按每步声明的方向放，放不下就换另一边，两边都压着目标时选压得少的。
+function placeCallout(ring, height, viewport, prefer) {
+  const maxLeft = Math.max(12, viewport.width - CALLOUT_WIDTH - 12);
+  const maxTop = Math.max(12, viewport.height - height - 12);
+  if (!ring) return { left: clamp(viewport.width / 2 - CALLOUT_WIDTH / 2, 12, maxLeft), top: clamp(viewport.height / 2 - height / 2, 12, maxTop) };
+  const left = clamp(ring.left + ring.width / 2 - CALLOUT_WIDTH / 2, 12, maxLeft);
+  const below = { left, top: clamp(ring.top + ring.height + CALLOUT_GAP, 12, maxTop) };
+  const above = { left, top: clamp(ring.top - height - CALLOUT_GAP, 12, maxTop) };
+  const covers = (spot) => spot.left < ring.left + ring.width && spot.left + CALLOUT_WIDTH > ring.left
+    && spot.top < ring.top + ring.height && spot.top + height > ring.top;
+  const order = prefer === 'above' ? [above, below] : [below, above];
+  const fits = order.find((spot) => !covers(spot));
+  if (fits) return fits;
+  const overlap = (spot) => Math.max(0, Math.min(spot.top + height, ring.top + ring.height) - Math.max(spot.top, ring.top));
+  return overlap(above) <= overlap(below) ? above : below;
 }
 
 function boxOf(element) {
@@ -212,11 +248,15 @@ export default function AppTour({ onDone, startAt = 0 }) {
   const finish = useCallback((status) => {
     if (finishedRef.current) return;
     finishedRef.current = true;
+    try { STEPS[indexRef.current]?.leave?.(); } catch { /* 收尾失败不该拦住结束 */ }
     markTour(status);
     clearPendingGuide();
     const guidedId = guidedIdRef.current;
     const wasGuided = guidedRef.current;
     state().setGuidedComposer(null);
+    // 预置题的文本留在输入框里的话，引导结束它就成了"用户自己写了一半的草稿"，
+    // 一不小心会被当成他的问题发出去。锁一解开就一起清掉。
+    if (guidedId) state().setChatDraft(guidedId, '');
     onDoneRef.current?.();
     if (!wasGuided || !guidedId) return;
     // 引导是"真实使用"：这道题的会话、本题路径和练习卡都真写进了库，
@@ -245,8 +285,9 @@ export default function AppTour({ onDone, startAt = 0 }) {
     const now = Date.now();
     if (now - advanceGuard.current < 240) return;
     advanceGuard.current = now;
-    if (indexRef.current >= STEPS.length - 1) finish('done');
-    else setIndex(indexRef.current + 1);
+    if (indexRef.current >= STEPS.length - 1) { finish('done'); return; }
+    try { STEPS[indexRef.current]?.leave?.(); } catch { /* 同上：收拾失败也继续 */ }
+    setIndex(indexRef.current + 1);
   }, [finish]);
 
   // 事件驱动：不是"用户点了下一步"，而是"真实状态满足了才走"。
@@ -281,14 +322,7 @@ export default function AppTour({ onDone, startAt = 0 }) {
     ? step.waiting + (stalled ? ' 一直没出来的话，可以先跳过这一步。' : '')
     : (plain?.body ?? step.body);
   const noteText = plain?.note ?? step.note;
-  let placement = { left: viewport.width / 2 - CALLOUT_WIDTH / 2, top: viewport.height / 2 - calloutHeight / 2 };
-  if (ring) {
-    const below = ring.top + ring.height + 12;
-    const above = ring.top - calloutHeight - 12;
-    const top = below + calloutHeight < viewport.height - 12 || above < 12 ? below : above;
-    const left = Math.min(Math.max(12, ring.left + ring.width / 2 - CALLOUT_WIDTH / 2), viewport.width - CALLOUT_WIDTH - 12);
-    placement = { left, top: Math.min(Math.max(12, top), viewport.height - calloutHeight - 12) };
-  }
+  const placement = placeCallout(ring, calloutHeight, viewport, step.place);
 
   // 四块边条围出那个洞：洞里的控件是真的能点的，其余地方照样挡住误点。
   // 整块遮罩会连用户该点的东西一起吞掉——这正是旧引导"只能看、不能做"的根因。

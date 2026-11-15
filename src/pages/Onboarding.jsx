@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ModelForm from '../components/ModelForm';
 import ThemeSettings from '../components/ThemeSettings.jsx';
 import { SUBJECTS } from '../core/config/subject.js';
-import { pickTourQuestion, writePendingGuide } from '../core/onboarding/questionPool.js';
+import { primeTour } from '../store/tourActions.js';
 import { useAppStore } from '../store/appStore';
 
 export default function Onboarding() {
@@ -19,13 +19,8 @@ export default function Onboarding() {
     const result = completeOnboarding();
     if (!result?.valid) return;
     // 进来就是真实使用：预置一道我们指定的题（用户改不了，只需点发送），
-    // 并默认打开思考模式——这题本来就值得多想一会儿。
-    const store = useAppStore.getState();
-    store.setAnswerThinking('enabled');
-    const question = pickTourQuestion(subject).question;
-    store.setGuidedComposer(question, store.currentConversationId);
-    // 记一份"引导进行中"：中途被刷新或回收，下次进来还能接着走。
-    writePendingGuide(question);
+    // 默认打开思考模式，并落到主界面的全新会话里。首启与"重看引导"共用这套开场。
+    primeTour();
   }
 
   return (

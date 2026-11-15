@@ -11,6 +11,7 @@ import Method from '../pages/Method.jsx'
 import Scenario from '../pages/Scenario.jsx'
 import HistoryDrawer from './HistoryDrawer.jsx'
 import AppTour, { tourDone, resetTour } from '../components/AppTour.jsx'
+import { primeTour } from '../store/tourActions.js'
 import { readPendingGuide } from '../core/onboarding/questionPool.js'
 import ErrorBoundary from '../components/ErrorBoundary.jsx'
 import { usePracticeStore } from '../store/practiceStore.js'
@@ -375,7 +376,12 @@ export default function App() {
       const state = useAppStore.getState()
       const conversation = state.conversations.find((entry) => entry.id === state.currentConversationId)
       const sent = (conversation?.messages ?? []).some((message) => message.role === 'user' && message.content === pending.question)
-      if (!sent && !state.guidedComposer) state.setGuidedComposer(pending.question, state.currentConversationId)
+      if (!sent) {
+        // 还没发出去：上次可能停在练习或足迹页，而第 1、2 步的目标都在问答区。
+        state.setActiveArea('ask')
+        state.setAnswerThinking('enabled')
+        if (!state.guidedComposer) state.setGuidedComposer(pending.question, state.currentConversationId)
+      }
       // 已经发过了，就从"看附件"接着走（那一步在不在回答中都成立）。
       setTourStart(sent ? 1 : 0)
     }
@@ -383,7 +389,9 @@ export default function App() {
     return () => clearTimeout(timer)
   }, [route, onboarded, storageInitialized, guidedComposer])
   useEffect(() => {
-    const replay = () => { resetTour(); setTourOpen(true) }
+    // 重看引导和首启走同一套开场：新会话 + 预置示例题 + 问答区。
+    // 少了这一步，重看时输入框是空的，用户还得自己想一道题才能开始。
+    const replay = () => { resetTour(); primeTour(); setTourStart(0); setTourOpen(true) }
     window.addEventListener('mathmyth:tour', replay)
     return () => window.removeEventListener('mathmyth:tour', replay)
   }, [])
