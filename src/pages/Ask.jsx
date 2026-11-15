@@ -525,7 +525,7 @@ function Ask({ active = true }) {
           else if (answering) { useChatPracticeStore.getState().setDraft(answering.id, text); setAnswering({ ...answering, text }) }
           else updateDraft(text)
         }}
-          onFocus={() => setPickerOpen(false)}
+          onPointerDown={() => setPickerOpen(false)}
           rows={1} aria-label={editing ? '修改题目' : answering ? '你的关键步骤' : '输入题目'} placeholder={editing ? '修改内容后发送…' : answering ? '写下关键变形和使用条件…' : '输入题目…'} disabled={blocked || practiceBusy} readOnly={lockedComposer}
           onPaste={(event) => {
             const file = [...(event.clipboardData?.files ?? [])][0]

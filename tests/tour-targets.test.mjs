@@ -141,6 +141,15 @@ test('回答期间允许准备下一问：附件与思考开关不再被 busy �
   assert.match(ask, /\{busy \? <button key="stop"/);
 });
 
+test('附件面板只因用户动手才关闭，不因输入框拿到焦点就收起', async () => {
+  const ask = await read('../src/pages/Ask.jsx');
+  // 系统权限弹窗回来时 WebView 可能把焦点还给输入框：按 focus 关面板会把刚打开的
+  // 图片面板收掉（4.3.2 实机反馈：同意权限后面板自己没了）。改成真实按下的动作。
+  assert.equal(ask.includes('onFocus={() => setPickerOpen(false)}'), false, '不许按 focus 关附件面板');
+  assert.match(ask, /onPointerDown=\{\(\) => setPickerOpen\(false\)\}/);
+  assert.match(ask, /aria-label="关闭附件面板"/);
+});
+
 test('主题控件只有一份实现，首启与设置共用', async () => {
   const settings = await read('../src/pages/Settings.jsx');
   const onboarding = await read('../src/pages/Onboarding.jsx');
@@ -168,13 +177,22 @@ test('气泡不许盖住这一步的目标，浮层留下的一律自己收', as
   }
   // 附件面板由第 2 步打开，交给它自己的关闭按钮收掉；不点目标按钮。
   const attach = blocks.find((entry) => entry.includes("id: 'attach'"));
-  assert.match(attach, /dismiss\('#attachment-panel\.is-open \[aria-label="关闭附件面板"\]'\)/);
-  // 演示用的附件必须一起撤掉：它会把输入框撑高，第 4 步的目标被顶到看不见
+  // 面板不在这步收：用户刚点开就没了会莫名其妙（首启还要过一道系统相册权限）
   assert.match(attach, /document\.querySelectorAll\('\.composer-attachments \[aria-label\^="移除"\]'\)\.forEach/);
+  assert.equal(attach.includes('关闭附件面板'), false, '第 2 步不要收面板');
+  // 演示用的附件必须撤掉：它会把输入框撑高，第 4 步的目标被顶到看不见；
+  // 面板留到第 3 步收尾再关，那时它才真的碍事。
+  const routes = blocks.find((entry) => entry.includes("id: 'routes'"));
+  assert.match(routes, /leave: \(\) => dismiss\('#attachment-panel\.is-open \[aria-label="关闭附件面板"\]'\)/);
   assert.match(ask, /aria-label="关闭附件面板"/);
   assert.match(ask, /<AnimatedDisclosure open=\{pickerOpen\} id="attachment-panel"/);
   // 全程只跑一次收尾：推进和跳过都要清。
   assert.match(tour, /STEPS\[indexRef\.current\]\?\.leave\?\.\(\)/, '推进与跳过都要收掉上一步的浮层');
+  // 第 7 步不再要求用户点顶部标签：进场就由引导切到练习，只做旁注。
+  const practice = blocks.find((entry) => entry.includes("id: 'practice'"));
+  assert.match(practice, /kind: 'note'/, '练习这一步不该再让用户去点标签');
+  assert.match(practice, /enter: \(\) => state\(\)\.setActiveArea\('practice'\)/);
+  assert.match(tour, /STEPS\[index\]\?\.enter\?\.\(\)/, '要有进场钩子来代劳切页');
   // 用户能自己关掉的东西没了，要给一句"怎么找回来"，不能干等。
   assert.match(tour, /waiting: '抽屉被关掉了/);
   assert.match(tour, /waiting: '「版本」又收起来了/);

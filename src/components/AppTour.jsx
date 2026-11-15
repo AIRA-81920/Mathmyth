@@ -62,10 +62,9 @@ const STEPS = [
     note: '这张图只是看看效果，不会跟着这道题发出去。',
     // 面板是这一步打开的，看完就该收：它长在答案下面，不收会盖住第 4 步要点的
     // 「在足迹中定位」（4.3.2 实机反馈：第二步没收，第三步就整块被挡住）。
+    // 只清演示附件，面板先留着：用户刚点开就被收掉会莫名其妙（尤其首次还要过一道
+    // 系统相册权限，弹窗回来一看面板没了）。面板在下一步收尾时再关。
     leave: () => {
-      dismiss('#attachment-panel.is-open [aria-label="关闭附件面板"]');
-      // 这张图只是演示，别留着：它会把输入框撑高一层，第 4 步的目标被顶到看不见的地方，
-      // 用户在第四步就卡住了（4.3.2 实机反馈）。附件自己的"移除"按钮就是正解。
       document.querySelectorAll('.composer-attachments [aria-label^="移除"]').forEach((node) => node.click());
     },
     done: () => Boolean(document.querySelector('#attachment-panel.is-open')),
@@ -76,6 +75,8 @@ const STEPS = [
     title: '答案下面这一条，是这道题的路径',
     body: '它把题归进一个情景，再往下串方法。点开看看。',
     waiting: '它还在写。写完这里就会出现「查看本题路径」，到时候再点。',
+    // 面板留到这一步收尾：附件面板占着屏幕下半部分，第 4 步的「在足迹中定位」会被它压住。
+    leave: () => dismiss('#attachment-panel.is-open [aria-label="关闭附件面板"]'),
     done: () => Boolean(document.querySelector('.answer-learning .question-route-toggle[aria-expanded="true"]')),
   },
   {
@@ -95,10 +96,12 @@ const STEPS = [
     body: '按住这个情景不放，能看它的定义；点它一下展开，往下就是这道题用到的方法，方法还会出现在别的情景里。',
   },
   {
-    id: 'practice', kind: 'action', target: '#tab-practice',
-    title: '换到练习看看',
-    body: '点顶部的「练习」。同一道题的思路，在这里变成题。',
-    done: () => state().activeArea === 'practice',
+    // 这一步由引导代劳切页：第 6 步刚让用户长按看过情景，再让他去点顶部标签是多一步，
+    // 而且顶部标签在遮罩洞里很难点准（4.3.2 实机反馈）。所以进来就切过去，只做旁注。
+    id: 'practice', kind: 'note', target: '#tab-practice',
+    title: '练习在这里，已经给你切过来了',
+    body: '同一道题的思路，在练习页会变成题：先挑一条走得通的链，再动手算。',
+    enter: () => state().setActiveArea('practice'),
   },
   {
     id: 'practice-note', kind: 'note', block: true,
@@ -217,7 +220,9 @@ export default function AppTour({ onDone, startAt = 0 }) {
     if (!box) { setRect(null); return; }
     // 输入框是常驻在底部的：目标落在它后面等于看不见，所以可用区要把它减掉。
     const composer = document.querySelector('.composer');
-    const composerHeight = composer ? composer.getBoundingClientRect().height : 0;
+    const panel = document.querySelector('#attachment-panel.is-open');
+    const composerHeight = (composer ? composer.getBoundingClientRect().height : 0)
+      + (panel ? panel.getBoundingClientRect().height : 0);
     const usableBottom = window.innerHeight - Math.min(composerHeight, window.innerHeight * .5) - 12;
     const outside = box.y < 64 || box.y + box.h > usableBottom;
     const tries = scrollTriesRef.current;
@@ -245,6 +250,11 @@ export default function AppTour({ onDone, startAt = 0 }) {
   }, [measure]);
 
   useEffect(() => { scrollTriesRef.current = { index: -1, count: 0 }; }, [index]);
+  // 进场钩子：把"切页面"这类事情由引导代劳，用户不必自己点到标签。
+  // 只改界面状态，不伪造点击，也不替用户完成任何需要他理解的动作。
+  useEffect(() => {
+    try { STEPS[index]?.enter?.(); } catch { /* 切页失败不该拦住引导 */ }
+  }, [index]);
   useEffect(() => { if (calloutRef.current) setCalloutHeight(calloutRef.current.offsetHeight || 200); }, [index, rect]);
   useEffect(() => {
     setStalled(false);
