@@ -56,7 +56,6 @@
 .attachment-panel { animation: none !important; }
 .attachment-disclosure .attachment-panel { transform: translateY(12px); transition: transform 200ms ease; }
 .attachment-disclosure.is-open .attachment-panel { transform: translateY(0); }
-.trail-return { flex-shrink: 0; align-self: flex-start; padding: 10px 22px; color: var(--text-muted); border: 0; background: transparent; font-size: 12px; }
 .trail-node.is-route-target > .trail-row-actions { border-radius: 6px; background: var(--surface-muted); box-shadow: inset 2px 0 var(--text-faint); }
 :root[data-theme='dark'] .message-user { background: #303030; border: 1px solid #494949; }
 :root[data-theme='dark'] .composer { background: #141414; border-color: #454545; }

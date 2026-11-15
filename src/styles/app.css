@@ -303,8 +303,11 @@ select.field-control { appearance: none; padding-right: 38px; background-image: 
 .storage-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .storage-close-error.confirm-dialog { position: fixed; top: calc(16px + env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); z-index: 100; width: calc(100% - 32px); }
 .trail-outline, .trail-children { list-style: none; margin: 0; padding: 0; }
-.trail-outline { overflow-y: auto; padding: 16px 14px 24px 24px; scrollbar-width: thin; }
-/* 回到题目竖排在左边那条空着的缩进带里：不再占掉一行高度，也不把树往右挤。 */
+.trail-outline { overflow-y: auto; padding: 16px 14px 24px 30px; scrollbar-width: thin; }
+/* 回到题目竖排在左边那条空着的缩进带里：不再占掉一行高度，也不把树往右挤。
+   它的盒子宽度（min-width: 30px）必须 ≤ .trail-outline 的左内边距（30px），
+   否则就会压到行首那个三角上——question-routes.css 里曾经有一条 padding: 10px 22px
+   的重复定义把盒子撑到 56px，实机上"回到题目"和三角就是这样糊在一起的。 */
 .trail-page { position: relative; }
 .trail-return { position: absolute; left: 0; top: 6px; z-index: 2; writing-mode: vertical-rl; text-orientation: upright;
   letter-spacing: 1px; font-size: 12px; line-height: 1.1; padding: 12px 7px; border: 0; border-radius: 8px; min-width: 30px;
