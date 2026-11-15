@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import ModelForm from '../components/ModelForm';
+import ThemeSettings from '../components/ThemeSettings.jsx';
 import { SUBJECTS } from '../core/config/subject.js';
+import { pickTourQuestion, writePendingGuide } from '../core/onboarding/questionPool.js';
 import { useAppStore } from '../store/appStore';
 
 export default function Onboarding() {
@@ -14,7 +16,16 @@ export default function Onboarding() {
     if (!subject) return;
     // 先落学科偏好，再完成模型配置检查；两步成功后一起进入主界面。
     setSubject(subject);
-    completeOnboarding();
+    const result = completeOnboarding();
+    if (!result?.valid) return;
+    // 进来就是真实使用：预置一道我们指定的题（用户改不了，只需点发送），
+    // 并默认打开思考模式——这题本来就值得多想一会儿。
+    const store = useAppStore.getState();
+    store.setAnswerThinking('enabled');
+    const question = pickTourQuestion(subject).question;
+    store.setGuidedComposer(question, store.currentConversationId);
+    // 记一份"引导进行中"：中途被刷新或回收，下次进来还能接着走。
+    writePendingGuide(question);
   }
 
   return (
@@ -24,6 +35,12 @@ export default function Onboarding() {
           <h1 className="page-title">先选你在学的数学</h1>
           <p className="page-subtitle muted">高中数学与高等数学的对话、练习和学习记录分开保存，之后可在设置里切换。</p>
         </header>
+
+        <section className="onboarding-theme" aria-labelledby="onboarding-theme-title">
+          <h2 className="onboarding-section-title" id="onboarding-theme-title">主题</h2>
+          {/* 和设置页共用同一份控件：浅色是纸色，按住「浅色」可以调色温。 */}
+          <ThemeSettings />
+        </section>
 
         <section className="onboarding-subject" aria-labelledby="onboarding-subject-title">
           <h2 className="onboarding-section-title" id="onboarding-subject-title">学科</h2>

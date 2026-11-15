@@ -352,12 +352,31 @@ export class DatabaseEngine {
     });
   }
 
-  deleteConversation(id, includeLearning = false) {
+  // deep=true 只给首次引导用：那一次"使用"要连根拔掉，连它练出来的证据和
+  // 掌握度都不许留在库里。普通删除会话仍然只清"没有证据了"的掌握度。
+  deleteConversation(id, includeLearning = false, deep = false) {
     return this.transaction((db) => {
       if (!rows(db,'SELECT id FROM conversation WHERE id=?',[id]).length) throw new DatabaseError('这个会话已不存在。','conversation_not_found');
       // The store aborts generation during this data operation; leave no run
       // falsely marked as still generating after its request has been stopped.
       db.run("UPDATE practice_run SET generation_status='failed' WHERE generation_status='preparing'");
+      // 引导里的随练题没有 conversation_id，只能顺着 chat_practice 摸过去。
+      // 先记下它们牵连到的证据目标，删完之后再按"还有没有证据"收掌握度。
+      const practiceIds = deep
+        ? rows(db, 'SELECT item_id FROM chat_practice WHERE message_id IN (SELECT id FROM message WHERE conversation_id=?)', [id]).map((row) => row.item_id)
+        : [];
+      const touched = deep
+        ? rows(db, `SELECT DISTINCT target_type, target_id FROM (
+            SELECT 'scenario' AS target_type, scenario_id AS target_id FROM encounter
+              WHERE scenario_id IS NOT NULL AND (conversation_id=?${practiceIds.length ? ` OR practice_item_id IN (${practiceIds.map(() => '?').join(',')})` : ''})
+            UNION
+            SELECT 'method' AS target_type, method_id AS target_id FROM encounter
+              WHERE method_id IS NOT NULL AND (conversation_id=?${practiceIds.length ? ` OR practice_item_id IN (${practiceIds.map(() => '?').join(',')})` : ''})
+          )`, practiceIds.length ? [id, ...practiceIds, id, ...practiceIds] : [id, id])
+        : [];
+      if (deep && practiceIds.length) {
+        db.run(`DELETE FROM encounter WHERE practice_item_id IN (${practiceIds.map(() => '?').join(',')})`, practiceIds);
+      }
       if (includeLearning) practice.deleteChatPracticeRecords(db, id);
       if (!includeLearning) {
         const source = jobs.sourceQuestion(db, rows(db, "SELECT * FROM message WHERE conversation_id=? AND role='user' ORDER BY seq LIMIT 1", [id])[0]) || '图片题目';
@@ -374,6 +393,15 @@ export class DatabaseEngine {
         // shared by other conversations/runs must survive deleting one chat.
         db.run(`DELETE FROM mastery WHERE success_count=0 AND NOT EXISTS(SELECT 1 FROM encounter e WHERE e.learner_id=mastery.learner_id
           AND ((mastery.target_type='scenario' AND e.scenario_id=mastery.target_id) OR (mastery.target_type='method' AND e.method_id=mastery.target_id)))`);
+      }
+      if (deep) {
+        // 这一次引导碰过的目标：只要已经没有任何证据，掌握度整行删掉，
+        // 不看 success_count —— 否则"引导里做对一道"就会把掌握度留成真的。
+        for (const target of touched) {
+          db.run(`DELETE FROM mastery WHERE target_type=? AND target_id=? AND NOT EXISTS(SELECT 1 FROM encounter e
+            WHERE e.learner_id=mastery.learner_id AND ((?='scenario' AND e.scenario_id=mastery.target_id) OR (?='method' AND e.method_id=mastery.target_id)))`,
+            [target.target_type, target.target_id, target.target_type, target.target_type]);
+        }
       }
       db.run('DELETE FROM image WHERE id NOT IN(SELECT image_ref FROM message WHERE image_ref IS NOT NULL) AND id NOT IN(SELECT image_ref FROM message_attachment WHERE image_ref IS NOT NULL) AND id NOT IN(SELECT image_ref FROM starred_question_image)');
       db.run('DELETE FROM document WHERE id NOT IN(SELECT document_ref FROM message_attachment WHERE document_ref IS NOT NULL)');

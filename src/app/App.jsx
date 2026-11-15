@@ -11,6 +11,7 @@ import Method from '../pages/Method.jsx'
 import Scenario from '../pages/Scenario.jsx'
 import HistoryDrawer from './HistoryDrawer.jsx'
 import AppTour, { tourDone, resetTour } from '../components/AppTour.jsx'
+import { readPendingGuide } from '../core/onboarding/questionPool.js'
 import ErrorBoundary from '../components/ErrorBoundary.jsx'
 import { usePracticeStore } from '../store/practiceStore.js'
 import useAreaSwipe from './useAreaSwipe.js'
@@ -359,14 +360,28 @@ export default function App() {
   const openSettings = useAppStore((state) => state.openSettings)
   const closeSettings = useAppStore((state) => state.closeSettings)
   const onboarded = useAppStore((state) => state.onboarded)
-  // 引导只在"首启一次"出现：跑完/跳过都写标记；设置页可以随时重看。
+  // 引导 = 首启那一次真实使用：只有刚配好模型、输入框里已经预置了题的人才会自动进入。
+  // 已经配置好的老用户，升级后不再被推一遍；想看随时能在设置里重看。
+  const guidedComposer = useAppStore((state) => state.guidedComposer)
   const [tourOpen, setTourOpen] = useState(false)
+  // 被打断的引导会从断点接着走：题已经发出去过，就不再让人重发。
+  const [tourStart, setTourStart] = useState(0)
 
   useEffect(() => {
     if (route !== 'main' || !onboarded || !storageInitialized || tourDone()) return
+    const pending = readPendingGuide()
+    if (!pending && !guidedComposer) return
+    if (pending) {
+      const state = useAppStore.getState()
+      const conversation = state.conversations.find((entry) => entry.id === state.currentConversationId)
+      const sent = (conversation?.messages ?? []).some((message) => message.role === 'user' && message.content === pending.question)
+      if (!sent && !state.guidedComposer) state.setGuidedComposer(pending.question, state.currentConversationId)
+      // 已经发过了，就从"看附件"接着走（那一步在不在回答中都成立）。
+      setTourStart(sent ? 1 : 0)
+    }
     const timer = setTimeout(() => setTourOpen(true), 600)
     return () => clearTimeout(timer)
-  }, [route, onboarded, storageInitialized])
+  }, [route, onboarded, storageInitialized, guidedComposer])
   useEffect(() => {
     const replay = () => { resetTour(); setTourOpen(true) }
     window.addEventListener('mathmyth:tour', replay)
@@ -459,7 +474,7 @@ export default function App() {
         </main>
       ) : route === 'onboarding' ? <ErrorBoundary scope="首次设置"><Onboarding /></ErrorBoundary> : (route === 'main' || leaving) ? <MainShell onSettings={startSettingsMorph} /> : null}
       {(route === 'settings' || morphing) && <div className="settings-layer" ref={settingsLayerRef} style={morphing ? { opacity: 0 } : undefined}><ErrorBoundary scope="设置"><Settings onClose={requestCloseSettings} /></ErrorBoundary></div>}
-      {tourOpen && <AppTour onDone={() => setTourOpen(false)} />}
+      {tourOpen && <AppTour startAt={tourStart} onDone={() => setTourOpen(false)} />}
       {exitError && createPortal(<section className="confirm-dialog storage-close-error" role="alert">
         <p>{exitError}</p>
         <div className="dialog-actions"><button type="button" className="button button-secondary" onClick={() => useAppStore.getState().prepareForExit().catch(() => {})}>重试保存</button></div>

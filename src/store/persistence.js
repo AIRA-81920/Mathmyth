@@ -362,14 +362,14 @@ export function attachPersistence(store, database, { flushDelay = 80, streamingF
         if (entry && latest) markDirty(latest, entry.ids, entry.fallback);
       } catch (error) { throw reportError(error); }
     },
-    deleteConversation: async (id, includeLearning) => {
+    deleteConversation: async (id, includeLearning, deep) => {
       if (replacing) throw storageFailure();
       replacing = true;
       store.setState({ dataOperation: 'deleting' });
       try {
         abortRequests(id);
         await flush();
-        await enqueue(() => database.deleteConversation(id, includeLearning));
+        await enqueue(() => database.deleteConversation(id, includeLearning, deep));
         dirty.delete(id); loads.delete(id);
         silence(() => {
           store.setState((state) => ({ conversations: state.conversations.filter((entry) => entry.id !== id) }));

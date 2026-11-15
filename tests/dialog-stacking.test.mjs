@@ -4,6 +4,9 @@ import { readFileSync } from 'node:fs';
 
 const css = readFileSync(new URL('../src/styles/app.css', import.meta.url), 'utf8');
 const settings = readFileSync(new URL('../src/pages/Settings.jsx', import.meta.url), 'utf8');
+// 主题控件从设置页抽成了独立组件（首启页与设置页共用同一份实现），
+// 所以"指示线怎么量"要在这个文件里看。
+const theme = readFileSync(new URL('../src/components/ThemeSettings.jsx', import.meta.url), 'utf8');
 
 function blockZIndex(selector) {
   const start = css.indexOf(selector + ' {');
@@ -27,8 +30,9 @@ test('主题指示线用 width 定长，不许用 scaleX', () => {
   // 1px 宽的元素加 scaleX(26) 时布局算 78 设备像素、屏幕画 104（合成层按 4/3 拉伸），
   // 右边整整多出一截。这是"横线偏几像素"的真身。
   // 注释里会解释这件事，比对前先去掉行注释，只检查真正的代码。
-  const code = settings.replace(/\/\/[^\n]*/g, '');
+  const code = theme.replace(/\/\/[^\n]*/g, '');
   assert.ok(!/scaleX\(/.test(code), '指示线不能再靠 scaleX 定长');
-  assert.ok(/indicator\.style\.width/.test(settings), '指示线应当直接写 width');
-  assert.ok(/measureInk/.test(settings), '指示线长度应当按字形墨迹量');
+  assert.ok(/indicator\.style\.width/.test(theme), '指示线应当直接写 width');
+  assert.ok(/measureInk/.test(theme), '指示线长度应当按字形墨迹量');
+  assert.ok(/ThemeSettings/.test(settings), '设置页应当还在用这份主题控件');
 });

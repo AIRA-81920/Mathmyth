@@ -227,6 +227,8 @@ svg { flex-shrink: 0; }
 .onboarding-header { margin-bottom: 30px; }
 /* 首启学科选择：两张整行卡片，选中后加粗并加深边框。 */
 .onboarding-subject { margin-bottom: 30px; }
+/* 首启页的主题选择：和设置页同一份控件，只是外面多一层间距。 */
+.onboarding-theme { margin-bottom: 30px; }
 .onboarding-section-title { font-size: 14px; font-weight: 600; margin: 0 0 10px; }
 .onboarding-model-header { margin-top: 4px; }
 .onboarding-subject-options { display: grid; gap: 10px; }
@@ -463,38 +465,31 @@ select.field-control { appearance: none; padding-right: 38px; background-image: 
   .composer { max-width: 760px; }
 }
 
-/* ---- 新手引导（聚光 + 气泡） --------------------------------------------- */
-/* 一层遮罩吞掉误点，聚光圈与气泡都在它上面：不用给单个控件调层级，
-   也就不会再出现"被设置页盖住"那类问题。 */
-/* 引导里的"足迹示例"：只展示，不写入任何数据 */
-.tour-demo { position: fixed; left: 12px; right: 12px; top: 96px; z-index: 90; padding: 14px 16px;
-  background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-card); }
-.tour-demo-tag { margin: 0 0 10px; font-size: 11.5px; color: var(--muted); letter-spacing: .04em; }
-.tour-demo-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; font-size: 13px; }
-.tour-demo-row span { padding: 3px 8px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-muted); }
-.tour-demo-note { margin: 0; font-size: 12px; color: var(--muted); }
-
-/* 题面还在流里时用纯文本：半截 LaTeX 不能交给 KaTeX */
-.message-partial { margin: 0; white-space: pre-wrap; word-break: break-word; }
-.tour-root { position: fixed; inset: 0; z-index: 90; }
-.tour-blocker { position: absolute; inset: 0; }
-.tour-ring { position: absolute; border-radius: 14px; pointer-events: none; border: 2px solid var(--ink);
-  box-shadow: 0 0 0 9999px rgba(18, 16, 12, 0.55); }
-/* 颜色全部走主题变量：浅色/深色下气泡都读得清，不会出现"白字写在米色卡上"。 */
-.tour-callout { position: absolute; z-index: 91; width: 320px; max-width: calc(100vw - 24px);
-  padding: 14px 16px 12px; background: var(--surface); color: var(--ink);
-  border: 1px solid var(--border); border-radius: 14px;
-  box-shadow: 0 18px 40px rgba(10, 8, 6, 0.28); }
-.tour-progress { margin: 0 0 6px; font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
-.tour-callout h2 { margin: 0 0 6px; font-size: 15px; line-height: 1.4; color: var(--ink); }
-.tour-body { margin: 0 0 6px; font-size: 13px; line-height: 1.6; color: var(--ink); opacity: .88; }
-.tour-note { margin: 0; font-size: 12px; line-height: 1.55; color: var(--muted); }
+/* ---- 新手引导（聚光 + 气泡） ---------------------------------------------
+   洞是"留"出来的：四块边条围住目标，目标本身可点。
+   整块遮罩会把用户该点的控件一起吞掉，那正是旧引导只能看不能做的原因。 */
+/* 根节点本身必须让点击穿过去：它是全屏 fixed，如果不让，洞里的控件照样点不到
+   ——遮罩留了洞也白留。真正挡点击的只有那几条边条。 */
+.tour-root { position: fixed; inset: 0; z-index: 90; pointer-events: none; }
+.tour-mask { position: fixed; background: var(--tour-scrim); pointer-events: auto; }
+/* 描边与光晕都走主题变量：浅色是纸面压深，深色是提亮，两边都读得清。 */
+.tour-ring { position: fixed; border-radius: 14px; pointer-events: none;
+  border: 2px solid var(--tour-ring); box-shadow: 0 0 0 4px var(--tour-halo); }
+.tour-callout { position: fixed; z-index: 91; width: 300px; max-width: calc(100vw - 24px);
+  padding: 14px 16px 12px; background: var(--surface-elevated); color: var(--text);
+  border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--tour-shadow); pointer-events: auto; }
+.tour-progress { margin: 0 0 6px; font-size: 11.5px; letter-spacing: .04em; color: var(--text-muted); }
+.tour-callout h2 { margin: 0 0 6px; font-size: 15px; line-height: 1.4; color: var(--text); }
+.tour-body { margin: 0 0 6px; font-size: 13px; line-height: 1.6; color: var(--text); opacity: .9; }
+.tour-note { margin: 0; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
 .tour-actions { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+/* 左"跳过"、右"继续/等待"：和旧气泡同一位置关系，用户不用重新学。 */
 .tour-actions .practice-text-button { margin-right: auto; }
-.tour-nav { display: flex; gap: 6px; }
-.tour-nav .button { padding: 6px 14px; font-size: 12.5px; }
+.tour-waiting { font-size: 12px; }
+.tour-actions .button { padding: 6px 14px; font-size: 12.5px; }
 @media (prefers-reduced-motion: no-preference) {
-  .tour-ring { transition: left .18s var(--ease), top .18s var(--ease), width .18s var(--ease), height .18s var(--ease); }
+  .tour-ring { transition: left .18s var(--motion-ease), top .18s var(--motion-ease),
+    width .18s var(--motion-ease), height .18s var(--motion-ease); }
 }
 
 

@@ -107,6 +107,29 @@ test('chat deletion offers preserved detached learning or removal of its own lea
   const candidate = await engine.prepareImport(await engine.exportDatabase()); await engine.commitImport(candidate.token); engine.close();
 });
 
+test('首次引导的收尾连掌握度一起删，普通删除仍然保留别的会话练出来的掌握度', async () => {
+  const make = async () => {
+    const { engine } = await populated();
+    const claim = await engine.claimNextJob();
+    await engine.completeJob(claim, [{ scenario_id: 'S.limit.0over0', method_id: 'M.lhopital', is_main: true }]);
+    // 引导里"做对过"的结果：成功次数已经累起来，普通删除会把它留下。
+    await engine.transaction((db) => db.run(`INSERT INTO mastery(id,learner_id,target_type,target_id,state,success_count,faces,updated_at)
+      VALUES('m-guided',(SELECT id FROM learner LIMIT 1),'method','M.lhopital','mastered',5,'{"faces":[]}','2026-10-09')
+      ON CONFLICT(learner_id,target_type,target_id) DO UPDATE SET success_count=5, state='mastered'`));
+    return engine;
+  };
+  const deep = await make();
+  await deep.deleteConversation('conversation-one', true, true);
+  assert.equal(deep.db.exec('SELECT count(*) FROM mastery')[0].values[0][0], 0, '引导的收尾必须把掌握度带走');
+  assert.equal(deep.db.exec('SELECT count(*) FROM encounter')[0].values[0][0], 0);
+  deep.close();
+
+  const normal = await make();
+  await normal.deleteConversation('conversation-one', true);
+  assert.equal(normal.db.exec('SELECT count(*) FROM mastery')[0].values[0][0], 1, '普通删除不该动已经练出成绩的掌握度');
+  normal.close();
+});
+
 test('fresh real SQLite has all specified tables, learner identity and no empty-history entries', async () => {
   const storage = new MemoryStorage();
   const engine = createEngine(storage);

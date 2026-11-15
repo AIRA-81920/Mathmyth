@@ -91,8 +91,8 @@ export const requestMessageQuestionClassification = (id) => rpc('requestMessageQ
 export const createPracticeRun = (input) => rpc('createPracticeRun', input);
 export const appendPracticeItems = (run, items, status) => rpcAt(run.generation, 'appendPracticeItems', run.id, items, status);
 export const updateConversation = (id, patch) => rpc('updateConversation', id, patch);
-export async function deleteConversation(id, includeLearning) {
-  const result = await rpc('deleteConversation', id, includeLearning);
+export async function deleteConversation(id, includeLearning, deep) {
+  const result = await rpc('deleteConversation', id, includeLearning, deep);
   knownImages.clear();
   return result;
 }

@@ -11,6 +11,12 @@
   --text-faint: #858585;
   --border: rgb(28 28 28 / 12%);
   --scrim: rgb(0 0 0 / 24%);
+  /* 新手引导的聚光：纸面上只压一层暖灰，深色下才需要压黑。
+     引导有两套外观（纸色 / 深色），差别就落在这四个值上。 */
+  --tour-scrim: rgb(28 28 28 / 10%);
+  --tour-ring: rgb(28 28 28 / 60%);
+  --tour-halo: rgb(28 28 28 / 8%);
+  --tour-shadow: 0 18px 40px rgb(28 20 8 / 14%);
   --danger: #b42323;
   --g0: #1c1c1c;
   --g1: #666666;
@@ -48,6 +54,10 @@
     --text-faint: #888888;
     --border: rgb(229 229 229 / 13%);
     --scrim: rgb(0 0 0 / 45%);
+    --tour-scrim: rgb(0 0 0 / 62%);
+    --tour-ring: rgb(229 229 229 / 70%);
+    --tour-halo: rgb(229 229 229 / 10%);
+    --tour-shadow: 0 18px 40px rgb(0 0 0 / 55%);
     --danger: #f08080;
     --g0: #e5e5e5;
     --g1: #aaaaaa;
@@ -66,6 +76,10 @@
   --text-faint: #888888;
   --border: rgb(229 229 229 / 13%);
   --scrim: rgb(0 0 0 / 45%);
+  --tour-scrim: rgb(0 0 0 / 62%);
+  --tour-ring: rgb(229 229 229 / 70%);
+  --tour-halo: rgb(229 229 229 / 10%);
+  --tour-shadow: 0 18px 40px rgb(0 0 0 / 55%);
   --danger: #f08080;
   --g0: #e5e5e5;
   --g1: #aaaaaa;

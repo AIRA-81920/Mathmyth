@@ -45,6 +45,10 @@ function Ask({ active = true }) {
   // 学科切换后，用于知识点对照的骨架索引需要整体重读。
   const subjectEpoch = useAppStore((state) => state.subjectEpoch)
   const [draft, setDraft] = useState('')
+  // 首次引导：输入框里的题是我们预置的，用户只能点发送、改不了。
+  // 锁只对"那一场会话"生效，切到别的会话不会连带锁住。
+  const guidedComposer = useAppStore((state) => state.guidedComposer)
+  const lockedComposer = Boolean(guidedComposer && guidedComposer.conversationId === currentId)
   const updateDraft = (text) => { setDraft(text); useAppStore.getState().setChatDraft(currentId, text) }
   const [menu, setMenu] = useState(null)
   const [editing, setEditing] = useState(null)
@@ -123,7 +127,8 @@ function Ask({ active = true }) {
   useEffect(() => onRestoredPhoto((result) => restoredHandler.current?.(result)), [])
 
   useLayoutEffect(() => {
-    setDraft(useAppStore.getState().chatDrafts[currentId] ?? '')
+    const store = useAppStore.getState()
+    setDraft(store.guidedComposer?.conversationId === currentId ? store.guidedComposer.text : (store.chatDrafts[currentId] ?? ''))
     setMenu(null)
     setEditing(null)
     setAnswering(null)
@@ -249,6 +254,9 @@ function Ask({ active = true }) {
       ...(explicitBank ? { useBank: true } : {}),
       ...(finalAttachments.length ? { attachments: finalAttachments.map(submissionAttachment) } : {}),
     })
+    // 题已经发出去了，预置的那道题就该解锁：否则下次回到这个会话，
+    // 输入框里还挂着同一道题，看起来像"它又要我问一遍"。
+    if (lockedComposer) useAppStore.getState().setGuidedComposer(null)
     updateDraft('')
     setAttachments([])
     setPickerOpen(false)
@@ -506,7 +514,7 @@ function Ask({ active = true }) {
         </div>}
         <div className="composer-row">
         <span className="attachment-action">
-          <button className="icon-button" type="button" disabled={busy || blocked || Boolean(writing)} aria-label="添加附件" aria-expanded={pickerOpen} aria-controls="attachment-panel"
+          <button className="icon-button" type="button" disabled={blocked || Boolean(writing)} aria-label="添加附件" aria-expanded={pickerOpen} aria-controls="attachment-panel"
             onPointerDown={(event) => event.preventDefault()} onClick={openPicker}>
             <Plus className={`attachment-plus${pickerOpen ? ' is-open' : ''}`} size={20} strokeWidth={1.6} aria-hidden="true" />
           </button>
@@ -518,7 +526,7 @@ function Ask({ active = true }) {
           else updateDraft(text)
         }}
           onFocus={() => setPickerOpen(false)}
-          rows={1} aria-label={editing ? '修改题目' : answering ? '你的关键步骤' : '输入题目'} placeholder={editing ? '修改内容后发送…' : answering ? '写下关键变形和使用条件…' : '输入题目…'} disabled={blocked || practiceBusy}
+          rows={1} aria-label={editing ? '修改题目' : answering ? '你的关键步骤' : '输入题目'} placeholder={editing ? '修改内容后发送…' : answering ? '写下关键变形和使用条件…' : '输入题目…'} disabled={blocked || practiceBusy} readOnly={lockedComposer}
           onPaste={(event) => {
             const file = [...(event.clipboardData?.files ?? [])][0]
             if (file) { event.preventDefault(); if (!writing) chooseFile(file) }
@@ -533,7 +541,7 @@ function Ask({ active = true }) {
         </div>
         <div className="composer-footer">
           {!answering && <div className="composer-tools"><ThinkingSwitch checked={thinkingOn}
-            disabled={!thinking.switchable || busy || blocked}
+            disabled={!thinking.switchable || blocked}
             description={thinking.switchable ? '控制下一次问答的思考模式；可点击或左右拨动' : thinking.reason}
             status={thinking.switchable ? '' : thinking.defaultOn ? '固定开启' : '不可切换'}
             onChange={enabled => setAnswerThinking(enabled ? 'enabled' : 'disabled')} /></div>}

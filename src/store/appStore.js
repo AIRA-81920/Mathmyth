@@ -206,6 +206,9 @@ export const useAppStore = create((set, get) => ({
   conversations: [],
   currentConversationId: null,
   chatDrafts: {},
+  // 首次引导预置的题面：只活在这次引导里，不进库、不跟备份走。
+  // 带 conversationId 是必须的——用户切到别的会话时，那个输入框不该被锁住。
+  guidedComposer: null,
   conversationLoading: false,
   onboarded: false,
   learnerId: null,
@@ -238,6 +241,14 @@ export const useAppStore = create((set, get) => ({
   // 否则用户在操作期间打的字会被静默吞掉。
   setChatDraft: (conversationId, text) => {
     if (conversationId) set(state => ({ chatDrafts: { ...state.chatDrafts, [conversationId]: text } }));
+  },
+  // 首次引导：输入框里放一道我们指定、用户改不了的题，他只需要点发送。
+  // 传空值就是解锁（发送成功后清掉，避免下次进来还挂着同一道题）。
+  setGuidedComposer: (text, conversationId) => {
+    const value = typeof text === 'string' && text.trim()
+      ? { text, conversationId: conversationId ?? get().currentConversationId }
+      : null;
+    set({ guidedComposer: value });
   },
 
   setTheme: (theme) => {
@@ -445,9 +456,9 @@ export const useAppStore = create((set, get) => ({
     if (persistence) return persistence.updateConversation(id, safe);
     set((state) => ({ conversations: state.conversations.map((entry) => entry.id === id ? { ...entry, ...safe } : entry) }));
   },
-  deleteConversation: async (id, includeLearning) => {
+  deleteConversation: async (id, includeLearning, deep) => {
     if (get().dataOperation) return;
-    if (persistence) return persistence.deleteConversation(id, includeLearning);
+    if (persistence) return persistence.deleteConversation(id, includeLearning, deep);
     abortAllRequests(id);
     set((state) => ({ conversations: state.conversations.filter((entry) => entry.id !== id) }));
     if (get().currentConversationId === id) get().newConversation();
