@@ -80,13 +80,14 @@ npm ci
 npm run dev        # http://127.0.0.1:5197
 npm run build
 npm run preview    # http://127.0.0.1:4197
-npm test           # 487 项自动测试（4.3.2 验证记录）
+npm test           # 488 项自动测试（4.3.2 验证记录）
 ```
 
 打包两端：
 
 ```powershell
 npm run android:build     # 项目内自带 SDK 36 / JDK 21
+npm run android:emulator  # 起安卓模拟器（显卡渲染）并装一个包：有多个 debug 包会让你选，一个都没有就现打
 npm run desktop:build     # Windows x64 NSIS
 ```
 

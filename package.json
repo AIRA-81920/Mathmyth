@@ -20,6 +20,7 @@
     "knowledge:build": "node scripts/compile-knowledge.mjs",
     "android:sync": "npm run build && cap sync android",
     "android:build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-android.ps1",
+    "android:emulator": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/android-emulator.ps1",
     "predesktop:build": "node scripts/copy-pdf-assets.mjs",
     "desktop:build": "node scripts/build-desktop.mjs",
     "desktop:run": "electron .",
