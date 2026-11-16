@@ -421,6 +421,13 @@ export const useAppStore = create((set, get) => ({
   setDrawerOpen: (drawerOpen) => set({ drawerOpen: Boolean(drawerOpen) }),
   setActiveArea: (activeArea) => {
     if (!['ask', 'practice', 'trail'].includes(activeArea)) return;
+    // 情景页与方法页是盖在主界面之上的：route 不是 main 时 App 只渲染那一页，分页容器
+    // 整个不在。只改 activeArea 会变成"切了但看不见"——实机反馈：引导第 6 步长按打开过
+    // 情景，第 7 步说要切到练习，画面却还停在情景页。所以切分页前先退回主界面。
+    for (let depth = 0; depth < 8 && ['scenario', 'method'].includes(get().route); depth += 1) {
+      if (get().route === 'scenario') get().closeScenario();
+      else get().closeMethod();
+    }
     set({ activeArea, drawerOpen: false });
   },
 
