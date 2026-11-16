@@ -55,8 +55,8 @@
 
 | 平台 | 文件 | 说明 |
 |---|---|---|
-| 手机 | `artifacts/Mathmyth-v4.3.2-release.apk` | Android 7 及以上，正式签名 |
-| 电脑 | `artifacts/desktop/Mathmyth-v4.2.3-Setup.exe` | Windows x64 安装包，未做正式签名 |
+| 手机 | `artifacts/Mathmyth-v4.3.3-release.apk` | Android 7 及以上，正式签名 |
+| 电脑 | `artifacts/desktop/Mathmyth-v4.3.3-Setup.exe` | Windows x64 安装包，未做正式签名 |
 
 **从 3.1.0 升级的注意**：早期发布的 APK 是调试签名，安卓不允许直接覆盖安装。请先「设置 → 数据 → 导出到文件」
 保存备份，卸载旧版后再装这个包，装好后打开「设置 → 数据 → 导入」。从 4.2.1 起，以后升级可以直接覆盖安装。
@@ -80,7 +80,7 @@ npm ci
 npm run dev        # http://127.0.0.1:5197
 npm run build
 npm run preview    # http://127.0.0.1:4197
-npm test           # 488 项自动测试（4.3.2 验证记录）
+npm test           # 493 项自动测试（4.3.3 验证记录）
 ```
 
 打包两端：
@@ -92,7 +92,7 @@ npm run desktop:build     # Windows x64 NSIS
 ```
 
 无交互构建两端正式包：
-`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-package.ps1 -Target all -Version 4.3.2 -NoPrompt -Release`
+`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-package.ps1 -Target all -Version 4.3.3 -NoPrompt -Release`
 
 打包脚本会显示当前版本与 Android versionCode，换版本会自动 +1，保证能覆盖安装。
 签名材料（`android/keystore*`、`keystore.properties`）与产物（`artifacts/`、`dist/`）都不进仓库。
@@ -139,6 +139,8 @@ npm run desktop:build     # Windows x64 NSIS
 <details>
 <summary><b>开发日志</b>（近期节点，完整记录见 docs/）</summary>
 
+- **4.3.3**：高中数学的本题路径与足迹恢复：知识关系与具体结构按学科分开编译，高中数学从零补上 27 条关系、
+  15 个具体结构；「回到题目」不再压住足迹行首的三角；数学校验同时核对两科 64 个结构例子。
 - **4.3.2**：新手引导改成「带着做一遍」：输入框预置一道示例题，点发送后依次引出附件、本题路径、
   足迹、练习、对话抽屉、设置、学科、检查更新与色温；引导那次会话连同随练题在结尾连根删除，掌握度不留痕。
   色温控件合并成一份实现，首启与设置共用。
