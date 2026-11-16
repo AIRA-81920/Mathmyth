@@ -80,7 +80,7 @@ npm ci
 npm run dev        # http://127.0.0.1:5197
 npm run build
 npm run preview    # http://127.0.0.1:4197
-npm test           # 493 项自动测试（4.3.3 验证记录）
+npm test           # 496 项自动测试（4.3.3 验证记录）
 ```
 
 打包两端：
