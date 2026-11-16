@@ -285,7 +285,7 @@ export class DatabaseEngine {
   loadQuestionRoutes(conversationId) { return jobs.loadQuestionRoutes(this, conversationId); }
   loadAnswerQuestionRoutes(conversationId) { return jobs.loadAnswerQuestionRoutes(this, conversationId); }
   retryQuestionRoutes(messageId) { return jobs.retryQuestionRoutes(this, messageId); }
-  loadPatternProgress() { return loadPatternProgress(this); }
+  loadPatternProgress(subject) { return loadPatternProgress(this, subject); }
   listPersonalNotes() { return personalNotes.listPersonalNotes(this); }
   savePersonalNote(input) { return personalNotes.savePersonalNote(this, input); }
   deletePersonalNote(id) { return personalNotes.deletePersonalNote(this, id); }

@@ -1,0 +1,366 @@
+{
+  "schema": "mathmyth-knowledge-relations/v1",
+  "relations": [
+    {
+      "id": "K.hs_func.domain_to_inequality",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_domain"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_func.inequality_solve"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "含分式、偶次根式或对数的复合解析式",
+      "conditions": [
+        "每条限制独立成立",
+        "分母不为零",
+        "偶次根号内非负",
+        "对数真数为正"
+      ],
+      "operation": "把每条限制写成不等式（组），再取交集",
+      "output": "一组一元二次、分式或绝对值不等式的解集",
+      "boundary": "定义域是各限制的交集而不是并集；换元后的新变量范围必须回到原变量再写。",
+      "evidence": [
+        "S.hs_func.domain",
+        "人教A版 必修第一册 §3.1 函数的概念及其表示"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_func.set_to_inequality",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_set_operation"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_func.inequality_solve"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "用描述法给出的 A∩B、A∪B 或补集",
+      "conditions": [
+        "集合由不等式刻画",
+        "需要比较端点大小"
+      ],
+      "operation": "先把每个集合化成区间或解集，再求交、并、补",
+      "output": "用区间或集合表示的运算结果",
+      "boundary": "端点是否取到取决于原不等式严格性；空集与全集要单独交代。",
+      "evidence": [
+        "S.hs_func.set_operation",
+        "人教A版 必修第一册 §1.3 集合的基本运算"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_func.inequality_to_set",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_quadratic_inequality"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_func.set_operation"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "一元二次不等式 ax²+bx+c>0 或 <0",
+      "conditions": [
+        "先把二次项系数化为正",
+        "按判别式与根的情况分三类"
+      ],
+      "operation": "求根、看开口方向，写\"大于取两边、小于取中间\"的解集",
+      "output": "一个区间或两个区间的并",
+      "boundary": "a<0 时结论方向要换；判别式<0 时解集是全体实数或空集，不是两个区间。",
+      "evidence": [
+        "S.hs_func.inequality_solve",
+        "人教A版 必修第一册 §2.3 二次函数与一元二次方程、不等式"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_func.zero_to_root_dist",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_zero_point"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_func.quadratic_root_dist"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "零点个数或零点所在的区间问题",
+      "conditions": [
+        "函数在讨论区间上连续",
+        "需判断根与给定区间的相对位置"
+      ],
+      "operation": "把零点问题转成方程根的分布：端点值符号与对称轴位置",
+      "output": "参数的取值范围",
+      "boundary": "只有连续性才保证变号即有零点；重根不变号，不能靠端点符号排除。",
+      "evidence": [
+        "S.hs_func.zero_point",
+        "人教A版 必修第一册 §4.5 函数的应用（二）"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_func.basic_inequality_to_range",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_basic_inequality"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_func.value_range"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "求 x+1/x、ax+b/x 这类结构的最值或值域",
+      "conditions": [
+        "各项为正（或用绝对值改造）",
+        "等号条件能取到"
+      ],
+      "operation": "用基本不等式求下界，再验证等号成立条件",
+      "output": "最小值与取得最值的条件",
+      "boundary": "等号取不到时只能给下界不能称最小值；出现负项要先变号再套用。",
+      "evidence": [
+        "S.hs_func.basic_inequality",
+        "人教A版 必修第一册 §2.2 基本不等式"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_deriv.rules_to_monotone",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_derivative_rules"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_deriv.monotonicity"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "给出 f(x) 的解析式",
+      "conditions": [
+        "f 在讨论区间上可导"
+      ],
+      "operation": "求 f′(x)，解 f′(x)>0 与 f′(x)<0",
+      "output": "单调递增区间与递减区间",
+      "boundary": "f′(x)≥0 只是\"不减\"的充分条件；f′(x₀)=0 不代表 x₀ 是极值点（如 x³ 在 0）。",
+      "evidence": [
+        "S.hs_deriv.calc",
+        "人教A版 选择性必修第二册 §5.3 导数在研究函数中的应用"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_deriv.monotone_to_extremum",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_monotone_deriv"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_deriv.extremum"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "已经得到单调区间",
+      "conditions": [
+        "导数在该点两侧变号"
+      ],
+      "operation": "在单调性改变处取极值，再与端点函数值比较得闭区间最值",
+      "output": "极值点与闭区间上的最值",
+      "boundary": "极值点必须由变号判定；闭区间最值还要比较端点，不能只报极值。",
+      "evidence": [
+        "S.hs_deriv.monotonicity",
+        "人教A版 选择性必修第二册 §5.3 导数在研究函数中的应用"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_deriv.separate_param",
+      "type": "applies_to",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_separate_param"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_deriv.param_range"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "含参不等式恒成立或存在性问题",
+      "conditions": [
+        "参数可以单独移到一侧",
+        "另一侧函数的最值存在"
+      ],
+      "operation": "分离参数，求另一侧函数的最值，再比较大小",
+      "output": "参数的取值范围",
+      "boundary": "分离时若除以符号不定的式子要分类；端点取不取到必须回到原不等式验证。",
+      "evidence": [
+        "S.hs_deriv.param_range",
+        "人教A版 选择性必修第二册 §5.3 导数在研究函数中的应用"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_deriv.construct_function",
+      "type": "applies_to",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_construct_function"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_deriv.ineq_proof"
+      },
+      "task": [
+        "prove"
+      ],
+      "inputState": "需要证明的单变量不等式 f(x)>g(x)",
+      "conditions": [
+        "可构造差函数 h=f−g",
+        "h 的单调性或最值可求"
+      ],
+      "operation": "作差构造函数，用导数判断 h 的单调性并求最值",
+      "output": "h 的最小值≥0（或最大值≤0）",
+      "boundary": "构造必须与原不等式等价；等号成立条件要单独验证，不能只算单调性。",
+      "evidence": [
+        "S.hs_deriv.ineq_proof",
+        "人教A版 选择性必修第二册 §5.3 导数在研究函数中的应用"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_seq.an_sn_to_construct",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_an_sn"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_seq.construct_seq"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "已知 S_n，或已知 S_n 与 a_n 的关系式",
+      "conditions": [
+        "n≥2 时 a_n=S_n−S_{n−1}"
+      ],
+      "operation": "作差得递推式，再构造等差或等比数列求通项",
+      "output": "通项公式 a_n",
+      "boundary": "n=1 必须单独验证；只写递推式而漏验首项会得到错误通项。",
+      "evidence": [
+        "S.hs_seq.an_sn",
+        "人教A版 选择性必修第二册 §4.3 等比数列"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_seq.mismatch_to_sum",
+      "type": "applies_to",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_mismatch"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_seq.sum_mismatch"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "等差×等比的通项求和",
+      "conditions": [
+        "通项可写成 a_n·b_n 且一个是等差一个是等比"
+      ],
+      "operation": "乘公比后错位相减，化为等比求和",
+      "output": "前 n 项和 S_n 的闭式",
+      "boundary": "公比为 1 时不能错位相减；减完要检查末项与符号，别把项数算错。",
+      "evidence": [
+        "S.hs_seq.sum_mismatch",
+        "人教A版 选择性必修第二册 §4.4 数学归纳法（配套数列求和方法）"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_trig.aux_to_global",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_auxiliary_angle"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_trig.graph_property"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "a sin x + b cos x 形式的表达式",
+      "conditions": [
+        "a、b 为常数",
+        "需要研究周期、单调性或最值"
+      ],
+      "operation": "化一为 √(a²+b²) sin(x+φ)，再读振幅、周期、单调区间与最值",
+      "output": "振幅、最小正周期、单调区间与最值",
+      "boundary": "φ 的象限由 (a,b) 共同决定；只用 tan φ=b/a 会丢象限，周期也可能被误判。",
+      "evidence": [
+        "S.hs_trig.auxiliary_angle",
+        "人教A版 必修第一册 §5.5 三角恒等变换"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_trig.sine_to_area",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_sine_rule"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_trig.area"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "已知部分边与角（两边夹角，或两角一边）",
+      "conditions": [
+        "三角形的基本量已确定"
+      ],
+      "operation": "先用正弦定理定出所需边角，再用 S=½ab sinC 求面积",
+      "output": "三角形面积（或周长）",
+      "boundary": "已知两边及其中一边的对角时可能有两解，面积也会有两个值，不能只报一个。",
+      "evidence": [
+        "S.hs_trig.sine_cosine_rule",
+        "人教A版 必修第二册 §6.4 平面向量的应用（正弦定理、余弦定理）"
+      ],
+      "review": "verified"
+    }
+  ]
+}

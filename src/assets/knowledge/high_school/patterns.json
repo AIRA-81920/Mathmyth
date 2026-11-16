@@ -1,0 +1,274 @@
+{
+  "schema": "mathmyth-knowledge-patterns/v1",
+  "patterns": [
+    {
+      "id": "P.hs_func.inequality.sign_rule",
+      "name": "二次不等式的图象定号",
+      "scenarioIds": [
+        "S.hs_func.inequality_solve"
+      ],
+      "methodIds": [
+        "M.hs_quadratic_inequality"
+      ],
+      "shape": "二次项系数化正 → 求根 → 看开口 → 大于取两边、小于取中间",
+      "signals": [
+        "出现 ax²+bx+c 与不等号连用",
+        "解集要求用区间或集合表示",
+        "含参数时需要讨论判别式"
+      ],
+      "why": "二次函数的符号只由开口方向与两根决定，算根之后符号分布完全确定，不需要逐点试。",
+      "firstStep": "先把二次项系数化为正，再算判别式判断有没有实根。",
+      "conditions": [
+        "不等式一侧为零",
+        "二次项系数不为零（为零时退化为一次不等式）"
+      ],
+      "examples": [
+        {
+          "statement": "解不等式 x²−4x+3>0。",
+          "solution": "因式分解得 (x−1)(x−3)>0，开口向上，故解集为 (−∞,1)∪(3,+∞)。",
+          "source": "人教A版 必修第一册 §2.3 例 1"
+        }
+      ],
+      "variants": [
+        "二次项系数为负，先两边乘 −1 并翻转不等号",
+        "判别式等于零时解集是挖去一个点或空集"
+      ],
+      "counterexample": {
+        "statement": "把 x²−4x+3>0 的解集写成 (1,3)。",
+        "reason": "开口向上时\"大于零\"取两根之外，写成两根之间正是\"小于零\"的答案，方向反了。"
+      },
+      "nextScenarioIds": [
+        "S.hs_func.set_operation",
+        "S.hs_func.quadratic_root_dist"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "sign_chart",
+        "case": "quadratic_inequality"
+      }
+    },
+    {
+      "id": "P.hs_func.domain.three_limits",
+      "name": "定义域的三类硬限制",
+      "scenarioIds": [
+        "S.hs_func.domain"
+      ],
+      "methodIds": [
+        "M.hs_domain"
+      ],
+      "shape": "分式看分母、偶次根看被开方式、对数看真数，三类限制取交集",
+      "signals": [
+        "题目问\"求定义域\"或\"函数有意义\"",
+        "解析式里同时出现根式与分式或对数"
+      ],
+      "why": "每个运算各自的合法条件只与局部结构有关，把局部条件写成不等式再取交集，就是整体定义域。",
+      "firstStep": "逐项列出\"这里为什么不能取\"，把每条写成不等式，不要先合并再判断。",
+      "conditions": [
+        "解析式是有限次四则与初等函数复合",
+        "没有需要对参数分类的结构"
+      ],
+      "examples": [
+        {
+          "statement": "求 f(x)=√(x−1)+1/(x−3) 的定义域。",
+          "solution": "根号内非负给 x≥1，分母非零给 x≠3，取交集得 [1,3)∪(3,+∞)。",
+          "source": "人教A版 必修第一册 §3.1 习题"
+        }
+      ],
+      "variants": [
+        "对数真数为正且底数不为 1",
+        "偶次根在分母上时要求被开方式严格大于零"
+      ],
+      "counterexample": {
+        "statement": "根号在分母上时写 x≥1。",
+        "reason": "作为分母必须整体不为零，偶次根在分母上要求被开方式 >0，取等号会让分母为零。"
+      },
+      "nextScenarioIds": [
+        "S.hs_func.inequality_solve"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "domain_restrictions",
+        "case": "mixed_expression"
+      }
+    },
+    {
+      "id": "P.hs_deriv.monotone.sign_table",
+      "name": "求导后列表判断单调区间",
+      "scenarioIds": [
+        "S.hs_deriv.monotonicity"
+      ],
+      "methodIds": [
+        "M.hs_monotone_deriv"
+      ],
+      "shape": "求 f′(x) → 解 f′=0 → 列表看符号变化 → 写单调区间",
+      "signals": [
+        "题目要求单调区间或含参单调性讨论",
+        "f(x) 由多项式、指数、对数、三角复合而成"
+      ],
+      "why": "导数的符号直接决定增减，把零点按大小排序后在每个区间判一次符号即可，无需逐点比较函数值。",
+      "firstStep": "先求导并把 f′(x) 因式分解，找出所有可能的变号点。",
+      "conditions": [
+        "f 在讨论区间上可导",
+        "变号点都在讨论区间内或已说明在区间外"
+      ],
+      "examples": [
+        {
+          "statement": "求 f(x)=x³−3x 的单调区间。",
+          "solution": "f′(x)=3(x−1)(x+1)，符号在 −1 与 1 处变号，故增区间 (−∞,−1)、(1,+∞)，减区间 (−1,1)。",
+          "source": "人教A版 选择性必修第二册 §5.3 例 2"
+        }
+      ],
+      "variants": [
+        "含参时按 f′=0 是否有解、解是否落在区间内分类",
+        "定义域受限（如含对数）时区间要与之取交"
+      ],
+      "counterexample": {
+        "statement": "由 f′(0)=0 直接说 x=0 是极大值点。",
+        "reason": "导数为零只是候选点；f(x)=x³ 在 0 处导数为零但两侧都增，不是极值点，必须看符号是否变号。"
+      },
+      "nextScenarioIds": [
+        "S.hs_deriv.extremum",
+        "S.hs_deriv.param_range"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "sign_table",
+        "case": "cubic_polynomial"
+      }
+    },
+    {
+      "id": "P.hs_deriv.param.separate",
+      "name": "恒成立问题参变分离求最值",
+      "scenarioIds": [
+        "S.hs_deriv.param_range"
+      ],
+      "methodIds": [
+        "M.hs_separate_param"
+      ],
+      "shape": "把参数单独移到一侧 → 求另一侧函数的最值 → 比较得范围",
+      "signals": [
+        "题目出现\"恒成立\"\"存在 x 使\"并要求参数范围",
+        "参数以一次形式出现，可与 x 分离"
+      ],
+      "why": "恒成立等价于参数与函数最值的大小关系，分离后只需算一个不含参的最值，避免带着参数讨论单调性。",
+      "firstStep": "先判断能不能把参数整理成 a≥g(x) 或 a≤g(x) 的形式，并注意除式符号。",
+      "conditions": [
+        "参数能完全分离到一侧",
+        "分离后另一侧在定义域上的最值存在"
+      ],
+      "examples": [
+        {
+          "statement": "若 x²−2x+a>0 对一切 x∈[0,3] 恒成立，求 a 的范围。",
+          "solution": "分离得 a>−x²+2x，右侧在 [0,3] 上最大值为 1（x=1 取到），故 a>1。",
+          "source": "人教A版 选择性必修第二册 §5.3 习题"
+        }
+      ],
+      "variants": [
+        "存在性问题把\"≥ 最小值\"改成\"≥ 最小值存在\"，方向相反",
+        "分离时除式符号不定则先分区间讨论"
+      ],
+      "counterexample": {
+        "statement": "分离后把 a>g(x) 恒成立写成 a>g(0)。",
+        "reason": "恒成立要对定义域内所有点成立，必须取 g 在该区间上的最大值，只代一个端点会漏掉更大的值。"
+      },
+      "nextScenarioIds": [
+        "S.hs_deriv.ineq_proof"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "extremum_comparison",
+        "case": "single_parameter_separation"
+      }
+    },
+    {
+      "id": "P.hs_seq.sum.telescoping",
+      "name": "裂项相消求和",
+      "scenarioIds": [
+        "S.hs_seq.sum_telescoping"
+      ],
+      "methodIds": [
+        "M.hs_telescoping"
+      ],
+      "shape": "把通项拆成两个相邻结构的差 → 逐项相消 → 只留首尾",
+      "signals": [
+        "通项是分式且分母为两个整数式之积",
+        "分母可因式分解成相隔常数的因式"
+      ],
+      "why": "拆成 b_n−b_{n+1} 后中间项两两抵消，求和只剩首尾两项，避免逐项相加。",
+      "firstStep": "先对通项做部分分式分解，确认拆分后的系数与符号。",
+      "conditions": [
+        "分母因式之差为常数",
+        "拆分系数前后一致"
+      ],
+      "examples": [
+        {
+          "statement": "求数列 a_n=1/[n(n+1)] 的前 n 项和。",
+          "solution": "a_n=1/n−1/(n+1)，相消得 S_n=1−1/(n+1)=n/(n+1)。",
+          "source": "人教A版 选择性必修第二册 §4.4 习题"
+        }
+      ],
+      "variants": [
+        "分母因式相差 2 时要在前面补 1/2",
+        "裂项后从第 2 项开始相消时要单独检查首项"
+      ],
+      "counterexample": {
+        "statement": "把 1/[n(n+2)] 直接写成 1/n−1/(n+2)。",
+        "reason": "两者相减为 2/[n(n+2)]，比原式多一个因子 2，必须补系数 1/2 才等价。"
+      },
+      "nextScenarioIds": [
+        "S.hs_seq.inequality"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "partial_fraction",
+        "case": "consecutive_factors"
+      }
+    },
+    {
+      "id": "P.hs_trig.aux.one_wave",
+      "name": "辅助角化一研究性质",
+      "scenarioIds": [
+        "S.hs_trig.auxiliary_angle"
+      ],
+      "methodIds": [
+        "M.hs_auxiliary_angle"
+      ],
+      "shape": "a sin x + b cos x → √(a²+b²) sin(x+φ)，再读周期、单调、最值",
+      "signals": [
+        "表达式是同一个角的 sin 与 cos 的一次组合",
+        "题目问周期、最值或单调区间"
+      ],
+      "why": "化一后整个表达式只有一个正弦函数，振幅与相位都显式给出，性质可以直接读出。",
+      "firstStep": "先提出 √(a²+b²)，再把剩下的系数配成某个角的余弦与正弦。",
+      "conditions": [
+        "a、b 为常数且不全为零",
+        "两函数是同一个角"
+      ],
+      "examples": [
+        {
+          "statement": "求 f(x)=sin x+√3 cos x 的最大值与最小正周期。",
+          "solution": "化一得 2 sin(x+π/3)，最大值 2，最小正周期 2π。",
+          "source": "人教A版 必修第一册 §5.5 例 4"
+        }
+      ],
+      "variants": [
+        "表达式带整体的倍角（如 2x）时化成 sin(2x+φ)，周期随之减半",
+        "含参数时要按振幅与相位的取值范围讨论"
+      ],
+      "counterexample": {
+        "statement": "把 sin x+√3cos x 化成 √3 sin(x+π/6) 并称振幅为 √3。",
+        "reason": "振幅是 √(1²+3)=2，相位也由 (a,b)=(1,√3) 决定，写成另一个角会让周期与最值一起错。"
+      },
+      "nextScenarioIds": [
+        "S.hs_trig.graph_property",
+        "S.hs_trig.trig_equation"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "phase_amplitude",
+        "case": "sin_cos_combination"
+      }
+    }
+  ],
+  "questionLinks": []
+}

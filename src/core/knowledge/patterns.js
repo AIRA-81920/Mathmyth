@@ -1,39 +1,47 @@
-import data from '../../assets/knowledge/patterns.json' with { type: 'json' };
+import { patternsForSkeleton, questionLinksForQuestion } from './data.js';
 import { createPatternIndex, matchingPatternLinks } from './patternSchema.js';
 
+// 缓存按骨架对象分开：每个学科一套骨架、一套具体结构，互不串味。
 const indexes = new WeakMap();
+const sourceOf = (skeleton) => patternsForSkeleton(skeleton);
 function index(skeleton) {
-  if (!indexes.has(skeleton)) indexes.set(skeleton, createPatternIndex(skeleton, data));
+  if (!indexes.has(skeleton)) indexes.set(skeleton, createPatternIndex(skeleton, sourceOf(skeleton)));
   return indexes.get(skeleton);
 }
 
 export function patternsForScenario(skeleton, id) {
-  return data.patterns.some((pattern) => pattern.scenarioIds.includes(id)) ? index(skeleton).byScenario.get(id) ?? [] : [];
+  return sourceOf(skeleton).patterns.some((pattern) => pattern.scenarioIds.includes(id)) ? index(skeleton).byScenario.get(id) ?? [] : [];
 }
 export function patternsForMethod(skeleton, id) {
-  return data.patterns.some((pattern) => pattern.methodIds.includes(id)) ? index(skeleton).byMethod.get(id) ?? [] : [];
+  return sourceOf(skeleton).patterns.some((pattern) => pattern.methodIds.includes(id)) ? index(skeleton).byMethod.get(id) ?? [] : [];
 }
-export function reviewedPatternLinks(question) {
-  return matchingPatternLinks(question, data.questionLinks);
+// 题目步骤关联也是按学科的：高中那份现在没有链接，就是"没有已核对的具体结构进度"，
+// 不是报错，也不该拿高数的链接去匹配高中的题。
+// 没显式给链接（或给了空表）时，按母题 id 反查它属于哪个学科的那份表：
+// 调用方不用知道学科，也不会把高数的步骤快照套到高中的题上。
+const linksFor = (question, links) => (links?.length ? links : questionLinksForQuestion(question));
+
+export function reviewedPatternLinks(question, links) {
+  return matchingPatternLinks(question, linksFor(question, links));
 }
 
-export function validPatternEvidence(question, evidence, executedEdges, studentSteps) {
+export function validPatternEvidence(question, evidence, executedEdges, studentSteps, links) {
   if (!Array.isArray(evidence) || !Array.isArray(executedEdges) || typeof studentSteps !== 'string') return [];
-  const links = reviewedPatternLinks(question);
+  const matchedLinks = reviewedPatternLinks(question, links);
   return evidence.filter((entry) => entry && typeof entry.studentExcerpt === 'string' && entry.studentExcerpt.trim()
     && studentSteps.includes(entry.studentExcerpt) && typeof entry.explanation === 'string' && entry.explanation.trim()
-    && links.some((link) => link.patternId === entry.patternId && link.routeId === entry.routeId && link.stepIndex === entry.stepIndex
+    && matchedLinks.some((link) => link.patternId === entry.patternId && link.routeId === entry.routeId && link.stepIndex === entry.stepIndex
       && executedEdges.some((edge) => edge && edge.scenarioId === link.scenarioId && edge.methodId === link.methodId
         && typeof edge.studentExcerpt === 'string' && studentSteps.includes(edge.studentExcerpt))));
 }
 
 // Progress is evidence at a specific pattern/method, never inherited from broad mastery.
-export function summarizePatternProgress(records, links = data.questionLinks) {
+export function summarizePatternProgress(records, links = []) {
   const summary = new Map();
   for (const record of records) {
     const question = record.question, answer = record.answer;
     if (!answer) continue;
-    const matched = matchingPatternLinks(question, links);
+    const matched = matchingPatternLinks(question, linksFor(question, links));
     if (!matched.length) continue;
     const attempts = [...(answer.attemptHistory ?? [])];
     if (!attempts.length && answer.mode) attempts.push(answer);

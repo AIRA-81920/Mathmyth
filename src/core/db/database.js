@@ -70,7 +70,7 @@ export const queueStats = () => rpc('queueStats');
 export const loadQuestionRoutes = (conversationId) => rpc('loadQuestionRoutes', conversationId);
 export const loadAnswerQuestionRoutes = (conversationId) => rpc('loadAnswerQuestionRoutes', conversationId);
 export const retryQuestionRoutes = (messageId) => rpc('retryQuestionRoutes', messageId);
-export const loadPatternProgress = () => rpc('loadPatternProgress');
+export const loadPatternProgress = (subject) => rpc('loadPatternProgress', subject);
 export const listPersonalNotes = () => rpc('listPersonalNotes');
 export const savePersonalNote = (input) => rpc('savePersonalNote', input);
 export const deletePersonalNote = (id) => rpc('deletePersonalNote', id);

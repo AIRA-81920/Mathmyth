@@ -14,7 +14,7 @@ import { assessSteps } from '../src/core/ai/practice.js';
 const read = (path) => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const directory = new URL('../src/assets/skeleton/', import.meta.url);
 const skeleton = createSkeleton(Object.fromEntries(readdirSync(directory).filter((name) => name.endsWith('.json')).map((name) => [name, read(`../src/assets/skeleton/${name}`)])));
-const source = read('../../knowledge/patterns.json'), runtime = read('../src/assets/knowledge/patterns.json');
+const source = read('../../knowledge/patterns.json'), runtime = read('../src/assets/knowledge/advanced/patterns.json');
 const banks = [read('../src/assets/practice/question-banks/bank402.json'), read('../src/assets/practice/question-banks/bank2027a.json')];
 const questions = banks.flatMap((bank) => bank.questions);
 const question = questions.find((q) => q.metadata.motherId === 'candidate.bank402.30');

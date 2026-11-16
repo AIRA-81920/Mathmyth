@@ -4,6 +4,7 @@ import { applyPractice } from './state.js';
 import { assessSelection } from './selection.js';
 import { isRouteQuestion, entranceMethodIds } from '../practice/routes.js';
 import { validPatternEvidence } from '../knowledge/patterns.js';
+import { questionLinksForQuestion } from '../knowledge/data.js';
 import { isInstalledReviewedQuestion } from '../practice/reviewedIdentity.js';
 import { fingerprintQuestion } from './fingerprint.js';
 import { normalizeSubject, subjectForNodeId } from '../config/subject.js';
@@ -302,7 +303,7 @@ export function gradePracticeItem(engine, runId, itemId, attempt) {
       || assessment.methodIds.some((id) => !assessment.executedEdges.some((edge) => edge.methodId === id))))) throw invalid();
   }
   const patternEvidence = assessment.patternEvidence ?? [];
-  if (!Array.isArray(patternEvidence) || validPatternEvidence(item.question, patternEvidence, assessment.executedEdges ?? [], attempt.steps ?? '').length !== patternEvidence.length) throw invalid();
+  if (!Array.isArray(patternEvidence) || validPatternEvidence(item.question, patternEvidence, assessment.executedEdges ?? [], attempt.steps ?? '', questionLinksForQuestion(item.question)).length !== patternEvidence.length) throw invalid();
   return engine.transaction((db) => {
     const revealed = Boolean(item.answer?.revealed);
     const assisted = Boolean(item.answer?.assisted || item.answer?.hintLevel

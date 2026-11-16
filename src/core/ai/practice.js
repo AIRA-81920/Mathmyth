@@ -2,6 +2,7 @@ import { streamAnswer } from './client.js';
 import { completeJsonItems } from './partialJson.js';
 import { isRouteQuestion, prepareRouteQuestion, routeQuestionError } from '../practice/routes.js';
 import { reviewedPatternLinks, validPatternEvidence, patternsForScenario } from '../knowledge/patterns.js';
+import { questionLinksForSkeleton } from '../knowledge/data.js';
 import { getActiveSubject, subjectName } from '../config/subject.js';
 export { assessSelection } from '../mastery/selection.js';
 
@@ -76,7 +77,7 @@ export async function generatePractice({ config, skeleton, scenarioId, methodId,
 export async function assessSteps({ config, question, steps, skeleton, signal, learningContext }) {
   if (!nonempty(steps)) return { outcome: 'uncertain', feedback: '先写下你打算怎么做。', methodIds: [] };
   const routeBased = isRouteQuestion(question);
-  const patternLinks = reviewedPatternLinks(question);
+  const patternLinks = reviewedPatternLinks(question, questionLinksForSkeleton(skeleton));
   const patternContext = patternLinks.map((link) => {
     const pattern = patternsForScenario(skeleton, link.scenarioId).find((entry) => entry.id === link.patternId);
     return { pattern_id: link.patternId, route_id: link.routeId, step_index: link.stepIndex,
@@ -132,7 +133,7 @@ ${patternContext.length ? 'available_patterns列出本题已核对的具体结�
   const patternEvidence = validPatternEvidence(question, (Array.isArray(output.pattern_evidence) ? output.pattern_evidence : []).filter((entry) => entry && typeof entry === 'object').map((entry) => ({
     patternId: entry.pattern_id, routeId: entry.route_id, stepIndex: entry.step_index,
     studentExcerpt: entry.student_excerpt, explanation: entry.explanation,
-  })), executedEdges, steps);
+  })), executedEdges, steps, patternLinks);
   if (routeBased && output.outcome !== 'uncertain' && !methodIds.length && !mathematicalEvidence.length)
     throw routeQuestionError('模型没有给出数学判断的具体依据，请重试。');
   const outcome = output.scope === 'result' && output.outcome === 'right' ? 'uncertain' : output.outcome;

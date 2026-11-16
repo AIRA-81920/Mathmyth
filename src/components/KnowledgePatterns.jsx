@@ -5,14 +5,14 @@ import { loadPatternProgress, onDatabaseChange } from '../core/db/database.js';
 import { knowledgeMarkdown } from '../core/skeleton/content.js';
 import { readKnowledgeView, saveKnowledgeView } from '../core/skeleton/viewState.js';
 
-function useProgress() {
+function useProgress(subject) {
   const [state, setState] = useState({ items: [], failed: false });
   useEffect(() => {
     let live = true, request = 0;
     async function refresh() {
       const current = ++request;
       try {
-        const items = await loadPatternProgress();
+        const items = await loadPatternProgress(subject);
         if (live && current === request) setState({ items, failed: false });
       } catch { if (live && current === request) setState({ items: [], failed: true }); }
     }
@@ -21,13 +21,13 @@ function useProgress() {
       if (['gradePracticeItem', 'revealPracticeItem', 'deleteConversation', 'clearDatabase', 'commitImport'].includes(event.method)) refresh();
     });
     return () => { live = false; unsubscribe(); };
-  }, []);
+  }, [subject]);
   return state;
 }
 
 export default function KnowledgePatterns({ patterns, skeleton, viewKey, viewEpoch, methodId, onScenario, onMethod }) {
   const [openIds, setOpenIds] = useState(() => readKnowledgeView(viewKey, viewEpoch).patternOpenIds ?? []);
-  const progress = useProgress();
+  const progress = useProgress(skeleton?.subject);
   function toggle(id) {
     const next = openIds.includes(id) ? openIds.filter((value) => value !== id) : [...openIds, id];
     setOpenIds(next); saveKnowledgeView(viewKey, viewEpoch, { patternOpenIds: next });

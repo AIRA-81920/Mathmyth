@@ -14,7 +14,13 @@ export function loadSkeleton(subject = getActiveSubject()) {
   const key = subject === 'high_school' ? 'high_school' : 'advanced';
   if (!caches.has(key)) {
     caches.set(key, Promise.all(Object.entries(loaders[key]).map(async ([path, read]) => [path, await read()]))
-      .then((entries) => createSkeleton(Object.fromEntries(entries)))
+      .then((entries) => {
+        const skeleton = createSkeleton(Object.fromEntries(entries));
+        // 学科挂在骨架实例上：知识关系/具体结构都按"这套骨架属于哪个学科"取数据，
+        // 不再依赖某个全局变量在什么时刻被设置。
+        skeleton.subject = key;
+        return skeleton;
+      })
       .catch((error) => { caches.delete(key); throw error; }));
   }
   return caches.get(key);
