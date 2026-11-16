@@ -108,6 +108,45 @@ export async function locateBlocks({ config, source, skeleton, signal }) {
   catch (error) { recordLocationFailure({ phase: 'blocks', text, error, apiKey: config.apiKey }); throw error; }
 }
 
+// 长度上限把 JSON 截断时，encounters 往往已经写完整了。整份作废要再花两次模型调用，
+// 所以这里只救回"已经出现过的情景→方法配对"存进足迹，路径留空，面板会给用户重试入口。
+function closedArray(text, key) {
+  const at = text.indexOf('"' + key + '"');
+  if (at < 0) return null;
+  const start = text.indexOf('[', at);
+  if (start < 0) return null;
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let index = start; index < text.length; index += 1) {
+    const char = text[index];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (char === '\\') escaped = true;
+      else if (char === '"') inString = false;
+      continue;
+    }
+    if (char === '"') inString = true;
+    else if (char === '[') depth += 1;
+    else if (char === ']') {
+      depth -= 1;
+      if (!depth) return text.slice(start, index + 1);
+    }
+  }
+  return null;
+}
+
+function salvageEncounters(error, skeleton, blockIds, candidates) {
+  if (error?.code !== 'truncated' || typeof error?.partialText !== 'string') return null;
+  const raw = closedArray(error.partialText, 'encounters');
+  if (!raw) return null;
+  try {
+    const encounters = parseEncounters(JSON.stringify({ encounters: JSON.parse(raw) }), skeleton, blockIds,
+      new Set(candidates.map((scenario) => scenario.id)));
+    return { encounters, routes: [] };
+  } catch { return null; }
+}
+
 export async function locateEdges({ config, source, skeleton, blockIds, signal }) {
   if (!blockIds.length) return [];
   const candidates = locationScenarios(skeleton, blockIds);
@@ -116,7 +155,15 @@ export async function locateEdges({ config, source, skeleton, blockIds, signal }
     methods: scenario.methods.map((edge) => ({ ...edge, name: skeleton.methodById.get(edge.method_id).name,
       one_liner: skeleton.methodById.get(edge.method_id).one_liner })),
   }));
-  const text = await request(config, { source, scenarios }, `${instruction}\n返回实际接触的所有情景→方法连线。候选可跨章节；依据实际操作、结构和条件归位，不依据方法首次出现的章节。method_id只能用该情景列出的方法；实际操作无对应节点时只记录情景、method_id为null且is_main=false，不硬套相近名字。保留变形后出现的新情景。存在方法连线时，恰选一条实际主要思路为is_main=true；无方法时没有主线。\n按题目返回routes。必须区分“连续步骤”和“并列解法”：paths数组里的每一项是一种独立完整解法；只有同一种解法内部，前一步的结果成为后一步的输入，才按先后顺序写入该path.steps。不能把回答中先介绍方法甲、再介绍方法乙的文字顺序当成步骤依赖。若因式分解和洛必达各自都能直接解决同一个0/0情景，它们是并列方法，不存在0/0→0/0的路径；可分别放入独立paths，不能串接。若先由含参极限得到分段函数，再检查连续性，才构成跨情景的链。只引用encounters中已有配对，不创建步骤名。question_index仅是独立题目的序号，不能给同一题的不同解法另编题号。user_message_id使用source.userMessageId；追问沿用source.questionMessages或source.context里原题的messageId和题号。追问确实补充或修正路线时，返回该题更新后的完整paths；不要只返回一个片段让程序拼接。每步evidence逐字摘录当前source.answer或context中的公开解答，且必须能支持对应步骤，不输出阐释。格式：{"encounters":[{"scenario_id":"S.xxx","method_id":"M.xxx","is_main":true}],"routes":[{"user_message_id":"用户消息ID","question_index":1,"paths":[{"steps":[{"scenario_id":"S.xxx","method_id":"M.xxx","evidence":"公开解答原文"}]}]}]}。一次多图通常按独立题分组，明确同题续图才合并。无匹配时两个数组为空。`, signal);
+  let text;
+  try {
+    text = await request(config, { source, scenarios }, `${instruction}\n返回实际接触的所有情景→方法连线。候选可跨章节；依据实际操作、结构和条件归位，不依据方法首次出现的章节。method_id只能用该情景列出的方法；实际操作无对应节点时只记录情景、method_id为null且is_main=false，不硬套相近名字。保留变形后出现的新情景。存在方法连线时，恰选一条实际主要思路为is_main=true；无方法时没有主线。\n按题目返回routes。必须区分“连续步骤”和“并列解法”：paths数组里的每一项是一种独立完整解法；只有同一种解法内部，前一步的结果成为后一步的输入，才按先后顺序写入该path.steps。不能把回答中先介绍方法甲、再介绍方法乙的文字顺序当成步骤依赖。若因式分解和洛必达各自都能直接解决同一个0/0情景，它们是并列方法，不存在0/0→0/0的路径；可分别放入独立paths，不能串接。若先由含参极限得到分段函数，再检查连续性，才构成跨情景的链。只引用encounters中已有配对，不创建步骤名。question_index仅是独立题目的序号，不能给同一题的不同解法另编题号。user_message_id使用source.userMessageId；追问沿用source.questionMessages或source.context里原题的messageId和题号。追问确实补充或修正路线时，返回该题更新后的完整paths；不要只返回一个片段让程序拼接。每步evidence逐字摘录当前source.answer或context中的公开解答，且必须能支持对应步骤，不输出阐释。格式：{"encounters":[{"scenario_id":"S.xxx","method_id":"M.xxx","is_main":true}],"routes":[{"user_message_id":"用户消息ID","question_index":1,"paths":[{"steps":[{"scenario_id":"S.xxx","method_id":"M.xxx","evidence":"公开解答原文"}]}]}]}。一次多图通常按独立题分组，明确同题续图才合并。无匹配时两个数组为空。\n篇幅要求：encounters 最多 8 条；每题 paths 最多 3 条；每个 path 的 steps 最多 6 步；每步 evidence 只摘最短可用片段（不超过 30 字，且必须是解答原文里的连续片段），不要整段复制解答——输出过长会被长度上限截断，整份归位结果就作废。`, signal);
+  } catch (error) {
+    const salvaged = salvageEncounters(error, skeleton, blockIds, candidates);
+    if (salvaged) return salvaged;
+    recordLocationFailure({ phase: 'edges', text: error?.partialText ?? '', error, apiKey: config.apiKey });
+    throw error;
+  }
   try {
     const encounters = parseEncounters(text, skeleton, blockIds, new Set(candidates.map(s=>s.id)));
     return { encounters, routes: locationRoutes(json(text).routes, encounters, source, skeleton) };

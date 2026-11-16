@@ -29,6 +29,13 @@ function checkFinish(reason) {
   if (reason && reason !== 'stop') throw new AiRequestError('模型未正常完成回答，请重试。', 'incomplete_response');
 }
 
+// 截断或中断时把已经收到的正文挂在错误上：后台归位可以据此保留部分结果，
+// 而不是把这次模型调用整个白花掉（截断的 JSON 通常前段是完整的）。
+function withPartial(error, text) {
+  if (text) error.partialText = text;
+  return error;
+}
+
 function ensureAnswer(answer) {
   if (!answer.trim()) throw new AiRequestError('模型没有返回正文，请检查模型设置后重试。', 'empty_answer');
   return answer;
@@ -89,7 +96,7 @@ async function readAnswer(result, signal, onDelta = () => {}, onReasoning = () =
     throwIfAborted(signal);
     if (typeof choice?.message?.reasoning_content === 'string') onReasoning(choice.message.reasoning_content);
     onDelta(answer);
-    checkFinish(choice?.finish_reason);
+    try { checkFinish(choice?.finish_reason); } catch (error) { throw withPartial(error, answer); }
     return answer;
   }
 
@@ -121,7 +128,7 @@ async function readAnswer(result, signal, onDelta = () => {}, onReasoning = () =
         answer += delta;
         onDelta(delta);
       }
-      checkFinish(choice?.finish_reason);
+      try { checkFinish(choice?.finish_reason); } catch (error) { throw withPartial(error, answer); }
       if (choice?.finish_reason === 'stop') {
         complete = true;
         return false;
@@ -130,7 +137,7 @@ async function readAnswer(result, signal, onDelta = () => {}, onReasoning = () =
   });
   throwIfAborted(signal);
   ensureAnswer(answer);
-  if (!complete) throw new AiRequestError('回答在完成前中断了，请重试。', 'incomplete_response');
+  if (!complete) throw withPartial(new AiRequestError('回答在完成前中断了，请重试。', 'incomplete_response'), answer);
   return answer;
 }
 

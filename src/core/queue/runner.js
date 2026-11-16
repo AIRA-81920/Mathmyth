@@ -69,7 +69,14 @@ export function startQueue({ store, database, getSkeleton, blocks = locateBlocks
       record(claim ? 'pump:claimed' : 'pump:no-claim',
         claim ? 'jobId=' + claim.id + ' phase=' + claim.payload?.phase + ' attempts=' + claim.attempts : 'claimNextJob 返回 null');
       if (!claim) return;
-      deadline = setTimeout(() => controller.abort(new AiRequestError('本题路径整理超时。', 'location_timeout')), jobTimeoutMs);
+      // 每阶段各给一份预算：blocks 与 edges 是两次独立的模型调用，共用一个 45 秒时
+      // 第二步只剩残羹。实机上"整理很久然后失败"多半就是第二步被第一步吃光了时间。
+      // 重试时 phase 已是 edges，第一次起表就直接覆盖连线阶段。
+      const armDeadline = () => {
+        clearTimeout(deadline);
+        deadline = setTimeout(() => controller.abort(new AiRequestError('本题路径整理超时。', 'location_timeout')), jobTimeoutMs);
+      };
+      armDeadline();
       const skeleton = await waitWithSignal(getSkeleton(), controller.signal);
       if (stopped || owner !== session || !usable()) throw new DOMException('Aborted', 'AbortError');
       if (owner !== session || controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
@@ -81,6 +88,7 @@ export function startQueue({ store, database, getSkeleton, blocks = locateBlocks
         if (owner !== session || controller.signal.aborted) throw new DOMException('Aborted', 'AbortError');
         await database.checkpointJob(claim, blockIds, Array.isArray(location) ? undefined : location);
         record('pump:checkpoint', 'jobId=' + claim.id + ' blockIds=' + JSON.stringify(blockIds));
+        armDeadline();
       }
       if (foregroundBusy()) throw new DOMException('Aborted', 'AbortError');
       const entries = claim.payload.classificationOnly ? [] : await waitWithSignal(edges({ config, source: claim.payload.source, skeleton, blockIds, signal: controller.signal }), controller.signal);
