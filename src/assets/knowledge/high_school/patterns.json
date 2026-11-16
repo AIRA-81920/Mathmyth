@@ -43,8 +43,15 @@
       ],
       "review": "derivation_checked",
       "verification": {
-        "kind": "sign_chart",
-        "case": "quadratic_inequality"
+        "kind": "quadratic_sign",
+        "polynomial": "x**2-4*x+3",
+        "positive": [
+          -1,
+          4
+        ],
+        "negative": [
+          2
+        ]
       }
     },
     {
@@ -87,8 +94,15 @@
       ],
       "review": "derivation_checked",
       "verification": {
-        "kind": "domain_restrictions",
-        "case": "mixed_expression"
+        "kind": "undefined_at",
+        "function": "sqrt(x-1)+1/(x-3)",
+        "excluded": [
+          3
+        ],
+        "included": [
+          2,
+          5
+        ]
       }
     },
     {
@@ -132,8 +146,13 @@
       ],
       "review": "derivation_checked",
       "verification": {
-        "kind": "sign_table",
-        "case": "cubic_polynomial"
+        "kind": "derivative_sign",
+        "function": "x**3-3*x",
+        "signs": {
+          "0": -1,
+          "2": 1,
+          "-2": 1
+        }
       }
     },
     {
@@ -176,8 +195,12 @@
       ],
       "review": "derivation_checked",
       "verification": {
-        "kind": "extremum_comparison",
-        "case": "single_parameter_separation"
+        "kind": "value",
+        "function": "-x**2+2*x",
+        "point": {
+          "x": 1
+        },
+        "result": "1"
       }
     },
     {
@@ -220,8 +243,9 @@
       ],
       "review": "derivation_checked",
       "verification": {
-        "kind": "partial_fraction",
-        "case": "consecutive_factors"
+        "kind": "telescoping",
+        "term": "1/(n*(n+1))",
+        "partial": "n/(n+1)"
       }
     },
     {
@@ -265,8 +289,426 @@
       ],
       "review": "derivation_checked",
       "verification": {
-        "kind": "phase_amplitude",
-        "case": "sin_cos_combination"
+        "kind": "identity",
+        "lhs": "sin(x)+sqrt(3)*cos(x)",
+        "rhs": "2*sin(x+pi/3)"
+      }
+    },
+    {
+      "id": "P.hs_geom.normal.solve",
+      "name": "两向量定平面法向量",
+      "scenarioIds": [
+        "S.hs_geom.normal_vector"
+      ],
+      "methodIds": [
+        "M.hs_normal_vector"
+      ],
+      "shape": "$\\vec n\\cdot\\overrightarrow{AB}=0,\\ \\vec n\\cdot\\overrightarrow{AC}=0$",
+      "signals": [
+        "要把二面角或线面角算成具体数值，而题目里已有平面内两条不共线的棱。",
+        "图形是正方体、长方体、直棱柱这类好建系的立体。"
+      ],
+      "why": "法向量垂直于平面内所有向量，用两个数量积为零的方程就能把它定到只差一个非零倍数。",
+      "firstStep": "先在目标平面内取两个不共线的方向向量（优先取坐标简单的棱）。",
+      "conditions": [
+        "两个方向向量不共线。",
+        "解出的 $\\vec n$ 必须非零；最后取一组整数解方便计算。"
+      ],
+      "examples": [
+        {
+          "statement": "正方体 $ABCD-A_1B_1C_1D_1$ 棱长为 1，求平面 $A_1BD$ 的一个法向量。",
+          "solution": "取 $A(0,0,0),B(1,0,0),D(0,1,0),A_1(0,0,1)$，则 $\\overrightarrow{BD}=(-1,1,0)$，$\\overrightarrow{BA_1}=(-1,0,1)$。设 $\\vec n=(x,y,z)$，由 $\\vec n\\cdot\\overrightarrow{BD}=0$ 得 $x=y$，由 $\\vec n\\cdot\\overrightarrow{BA_1}=0$ 得 $x=z$，取 $\\vec n=(1,1,1)$。",
+          "source": "人教A版 选择性必修第一册 §1.4 例 2"
+        }
+      ],
+      "variants": [
+        "平面过原点且方向向量带零分量时可直接看出法向量。",
+        "含参数平面把参数留在方程里，解出一族法向量再代参数。"
+      ],
+      "counterexample": {
+        "statement": "只用一个方向向量与 $\\vec n$ 垂直就宣布 $\\vec n$ 是平面法向量。",
+        "reason": "那只保证 $\\vec n$ 垂直于平面内的一条线；那条线摆动方向时仍满足，$\\vec n$ 可能仍斜穿平面，必须与平面内两条不共线向量都垂直。"
+      },
+      "nextScenarioIds": [
+        "S.hs_geom.angle",
+        "S.hs_geom.distance"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "1*(-1)+1*1+1*0 + 1*(-1)+1*0+1*1",
+        "rhs": "0"
+      }
+    },
+    {
+      "id": "P.hs_geom.angle.vector_formula",
+      "name": "向量法统一求三类空间角",
+      "scenarioIds": [
+        "S.hs_geom.angle"
+      ],
+      "methodIds": [
+        "M.hs_space_vector_metric"
+      ],
+      "shape": "$\\cos\\langle\\vec a,\\vec b\\rangle=\\dfrac{\\vec a\\cdot\\vec b}{\\lvert\\vec a\\rvert\\lvert\\vec b\\rvert}$",
+      "signals": [
+        "求线线角、线面角或二面角，图形可建系或方向向量已知。",
+        "题目给的立体图形有大量直角信息。"
+      ],
+      "why": "三类角都能化归成两个向量的夹角：线线角取绝对值，线面角用 $\\sin$，二面角再按图形定锐钝。",
+      "firstStep": "先写清每个方向向量与法向量，再判断这属于三类角里的哪一类。",
+      "conditions": [
+        "建系合法（三条坐标轴两两垂直）。",
+        "法向量非零；夹角公式给出的是 $[0,\\pi]$ 上的角。"
+      ],
+      "examples": [
+        {
+          "statement": "正方体 $ABCD-A_1B_1C_1D_1$ 中，求 $A_1B$ 与平面 $ABCD$ 所成的角。",
+          "solution": "取 $\\overrightarrow{A_1B}=(1,0,-1)$，平面 $ABCD$ 的法向量 $\\vec n=(0,0,1)$。线面角满足 $\\sin\\theta=\\dfrac{\\lvert 1\\cdot0+0\\cdot0+(-1)\\cdot1\\rvert}{\\sqrt2\\cdot1}=\\dfrac{\\sqrt2}{2}$，故 $\\theta=45^\\circ$。",
+          "source": "人教A版 选择性必修第一册 §1.4 习题"
+        }
+      ],
+      "variants": [
+        "二面角常需在图形上判断锐钝，向量只给绝对值余弦。",
+        "异面直线所成角取绝对值后不得超过 $90^\\circ$。"
+      ],
+      "counterexample": {
+        "statement": "直接写 $\\cos\\theta=\\dfrac{\\sqrt2}{2}$ 就宣称线面角是 $45^\\circ$。",
+        "reason": "线面角与向量夹角是互余关系，必须用 $\\sin$。角度恰好是 $45^\\circ$ 时两种写法数值相同，会掩盖这个错误，换成别的角立刻算错。"
+      },
+      "nextScenarioIds": [
+        "S.hs_geom.distance"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "(1*0+0*0+(-1)*1)**2",
+        "rhs": "Rational(1,2)*2*1"
+      }
+    },
+    {
+      "id": "P.hs_geom.distance.equal_volume",
+      "name": "等体积法反解点面距离",
+      "scenarioIds": [
+        "S.hs_geom.distance"
+      ],
+      "methodIds": [
+        "M.hs_equal_volume"
+      ],
+      "shape": "$V=\\dfrac13 S_1h_1=\\dfrac13 S_2h_2$",
+      "signals": [
+        "求点到平面的距离，而垂足位置不好定、直接作垂线困难。",
+        "图形里有一个容易算体积的三棱锥。"
+      ],
+      "why": "同一个三棱锥换一个顶点作底，体积不变；用容易算的一组体积去反解难求的那个高。",
+      "firstStep": "先挑一组\"底面积与高都容易算\"的顶点组合，把体积算出来。",
+      "conditions": [
+        "两次计算针对同一个几何体。",
+        "换底后另一组底面积与高都能算；所求距离作为高出现在方程里。"
+      ],
+      "examples": [
+        {
+          "statement": "三棱锥 $P-ABC$ 中 $PA\\perp$ 平面 $ABC$，$PA=2$，$AB\\perp AC$，$AB=AC=1$，求 $B$ 到平面 $PAC$ 的距离。",
+          "solution": "$V_{P-ABC}=\\dfrac13\\cdot\\dfrac12\\cdot1\\cdot1\\cdot2=\\dfrac13$，而 $V_{B-PAC}=\\dfrac13\\cdot S_{\\triangle PAC}\\cdot h$，其中 $S_{\\triangle PAC}=\\dfrac12\\cdot1\\cdot2=1$，故 $h=1$。",
+          "source": "人教A版 必修第二册 §8.3 习题"
+        }
+      ],
+      "variants": [
+        "异面直线距离可借平行平面转成点面距离后再用等体积。",
+        "求内切球半径时用 $V=\\dfrac13rS_{\\text{表}}$ 是同一思想的整体用法。"
+      ],
+      "counterexample": {
+        "statement": "把两个不同三棱锥的体积写成相等。",
+        "reason": "等体积法成立的前提是同一个几何体换底；换成两个不同几何体体积一般不相等，反解出的高没有意义。"
+      },
+      "nextScenarioIds": [
+        "S.hs_geom.volume"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "Rational(1,3)*Rational(1,2)*1*1*2",
+        "rhs": "Rational(1,3)*(Rational(1,2)*1*2)*1"
+      }
+    },
+    {
+      "id": "P.hs_analytic.line_circle.chord",
+      "name": "圆心距定位置关系与弦长",
+      "scenarioIds": [
+        "S.hs_analytic.line_circle_position"
+      ],
+      "methodIds": [
+        "M.hs_line_circle"
+      ],
+      "shape": "$d=\\dfrac{\\lvert Ax_0+By_0+C\\rvert}{\\sqrt{A^2+B^2}}$，弦长 $=2\\sqrt{r^2-d^2}$",
+      "signals": [
+        "直线与圆相交求弦长，或判断位置关系、求切线。",
+        "圆与直线都给了方程。"
+      ],
+      "why": "圆心到直线的距离把几何关系变成一次比较，弦长又能由垂径定理直接得到，不必解交点。",
+      "firstStep": "先把圆化成标准式读出圆心与半径，把直线化成一般式。",
+      "conditions": [
+        "直线已写成一般式，圆能读出圆心半径。",
+        "比较对象是圆心距 $d$ 与半径 $r$。"
+      ],
+      "examples": [
+        {
+          "statement": "判断直线 $x-2y+5=0$ 与圆 $x^2+y^2=5$ 的位置关系。",
+          "solution": "圆心 $(0,0)$，$r=\\sqrt5$，$d=\\dfrac{\\lvert5\\rvert}{\\sqrt{1+4}}=\\sqrt5=r$，故相切。",
+          "source": "人教A版 选择性必修第一册 §2.5 例 1"
+        }
+      ],
+      "variants": [
+        "圆与圆用圆心距与半径和、差比较。",
+        "过定点的切线要分斜率存在与不存在两种情况。"
+      ],
+      "counterexample": {
+        "statement": "直线写成 $2x-4y+10=0$ 时直接用分子 $10$ 与半径比较。",
+        "reason": "距离公式分母要取 $\\sqrt{A^2+B^2}$，系数同比放大时 $d$ 不变；若漏掉归一或漏开方，$d$ 会被放大，把相切误判成相离。"
+      },
+      "nextScenarioIds": [
+        "S.hs_analytic.circle_circle"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "distance_point_line",
+        "point": "(0,0)",
+        "line": "x-2*y+5",
+        "result": "sqrt(5)"
+      }
+    },
+    {
+      "id": "P.hs_analytic.vieta.chord_midpoint",
+      "name": "联立后用韦达处理弦长与中点",
+      "scenarioIds": [
+        "S.hs_analytic.intersection"
+      ],
+      "methodIds": [
+        "M.hs_vieta"
+      ],
+      "shape": "$x_1+x_2=-\\dfrac ba,\\ x_1x_2=\\dfrac ca$，$\\lvert AB\\rvert=\\sqrt{1+k^2}\\,\\lvert x_1-x_2\\rvert$",
+      "signals": [
+        "直线与圆锥曲线交于两点，问弦长、中点或与两点相关的量。",
+        "题目不宜直接解出两个交点坐标。"
+      ],
+      "why": "弦长与中点只依赖两根的和与积，用韦达就能绕开求根。",
+      "firstStep": "先联立消元得到一元二次方程，并检查 $\\Delta>0$ 保证真的有两个交点。",
+      "conditions": [
+        "判别式大于零（两交点存在）。",
+        "二次项系数不为零；斜率不存在时另算。"
+      ],
+      "examples": [
+        {
+          "statement": "直线 $y=x+1$ 与椭圆 $\\dfrac{x^2}{4}+y^2=1$ 相交于 $A,B$，求 $\\lvert AB\\rvert$。",
+          "solution": "联立得 $5x^2+8x=0$，$x_1+x_2=-\\dfrac85$，$x_1x_2=0$，$\\lvert x_1-x_2\\rvert=\\sqrt{\\left(-\\frac85\\right)^2}=\\dfrac85$，故 $\\lvert AB\\rvert=\\sqrt{1+1}\\cdot\\dfrac85=\\dfrac{8\\sqrt2}{5}$。",
+          "source": "人教A版 选择性必修第一册 §3.1 习题"
+        }
+      ],
+      "variants": [
+        "中点坐标用 $\\dfrac{x_1+x_2}{2}$ 直接得到。",
+        "焦点弦结合圆锥曲线定义往往比韦达更快。"
+      ],
+      "counterexample": {
+        "statement": "不检查 $\\Delta>0$，直接把韦达结果代入求参数范围。",
+        "reason": "没有两个交点时 $x_1,x_2$ 并不存在，得到的范围会把\"无交点\"的参数也算进去，答案被放大。"
+      },
+      "nextScenarioIds": [
+        "S.hs_analytic.range_extremum",
+        "S.hs_analytic.fixed_point"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "symmetric_roots",
+        "quadratic": "5*x**2+8*x",
+        "sum": "-8/5",
+        "product": "0"
+      }
+    },
+    {
+      "id": "P.hs_analytic.locus.definition",
+      "name": "把几何条件逐句坐标化成轨迹方程",
+      "scenarioIds": [
+        "S.hs_analytic.locus"
+      ],
+      "methodIds": [
+        "M.hs_locus"
+      ],
+      "shape": "$\\sqrt{(x-c)^2+y^2}+\\sqrt{(x+c)^2+y^2}=2a$",
+      "signals": [
+        "求动点轨迹方程，条件以距离、垂直、比值的形式给出。",
+        "题目没有直接给出曲线类型。"
+      ],
+      "why": "轨迹条件本质是一个等量关系，坐标化之后就是方程，不必先猜是什么曲线。",
+      "firstStep": "先把条件逐句翻译成含 $x,y$ 的等式，再判断它属于哪种曲线。",
+      "conditions": [
+        "动点到已知点的距离能用坐标表示。",
+        "限制条件（如分母非零、线段内部）也要一并翻译。"
+      ],
+      "examples": [
+        {
+          "statement": "动点 $P$ 到 $A(1,0)$ 的距离与到直线 $x=4$ 的距离之比为 $\\dfrac12$，求轨迹方程。",
+          "solution": "由 $\\dfrac{\\sqrt{(x-1)^2+y^2}}{\\lvert x-4\\rvert}=\\dfrac12$ 平方整理，得 $\\dfrac{(x-2)^2}{4}+\\dfrac{y^2}{3}=1$（$x\\ne4$）。",
+          "source": "人教A版 选择性必修第一册 §3.1 例 2"
+        }
+      ],
+      "variants": [
+        "相关点法：把已知曲线上的点用所求点表示后代入。",
+        "参数法：先写参数方程再消参。"
+      ],
+      "counterexample": {
+        "statement": "平方整理后把方程整体当作轨迹，不再回看原条件。",
+        "reason": "平方会引入增解（如原式分母为零的位置），轨迹也可能是曲线的一段；不回代会把不属于条件的点算进轨迹。"
+      },
+      "nextScenarioIds": [
+        "S.hs_analytic.ellipse",
+        "S.hs_analytic.conic_equation"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "identity",
+        "lhs": "4*((2-1)**2+0**2)",
+        "rhs": "(2-4)**2"
+      }
+    },
+    {
+      "id": "P.hs_prob.classical.counting",
+      "name": "古典概型按同一口径数样本点",
+      "scenarioIds": [
+        "S.hs_prob.classical"
+      ],
+      "methodIds": [
+        "M.hs_classical"
+      ],
+      "shape": "$P(A)=\\dfrac{m}{n}$",
+      "signals": [
+        "样本点太多无法列举，但每个样本点等可能。",
+        "题目出现\"任取\"\"随机抽取\"等表述。"
+      ],
+      "why": "等可能时概率等于计数之比，关键是分子分母按同一标准数。",
+      "firstStep": "先明确一次试验是什么，再决定\"是否计顺序\"，分子分母统一。",
+      "conditions": [
+        "样本点等可能。",
+        "分子分母的计数口径一致。"
+      ],
+      "examples": [
+        {
+          "statement": "袋中有 2 个红球、3 个白球，任取 2 个，求都是红球的概率。",
+          "solution": "不计顺序：$n=\\binom52=10$，$m=\\binom22=1$，$P=\\dfrac1{10}$。",
+          "source": "人教A版 必修第二册 §10.1 例 3"
+        }
+      ],
+      "variants": [
+        "有放回抽样样本点仍然等可能，但分母要按有放回计数。",
+        "计顺序时分子分母都乘上排列数，比值不变。"
+      ],
+      "counterexample": {
+        "statement": "分子用组合数 $\\binom22$、分母用排列数 $A_5^2$。",
+        "reason": "分子分母口径不一致，等于把\"不计顺序的事件\"除以\"计顺序的样本空间\"，概率被系统性地算小。"
+      },
+      "nextScenarioIds": [
+        "S.hs_prob.distribution",
+        "S.hs_prob.conditional"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "probability_sum",
+        "probabilities": [
+          "1/10",
+          "9/10"
+        ]
+      }
+    },
+    {
+      "id": "P.hs_prob.distribution.table",
+      "name": "列全取值再逐个算概率",
+      "scenarioIds": [
+        "S.hs_prob.distribution"
+      ],
+      "methodIds": [
+        "M.hs_distribution"
+      ],
+      "shape": "$\\sum_i p_i=1$",
+      "signals": [
+        "题目要求写出分布列或求概率分布。",
+        "随机变量的取值可以按题意列举。"
+      ],
+      "why": "随机变量由取值与对应概率完全决定，列全取值再逐个算概率即可，最后用概率和为 1 检验。",
+      "firstStep": "先把随机变量所有可能取值列全，做到不缺不重。",
+      "conditions": [
+        "取值互斥且完备。",
+        "每个概率都能由题设条件算出。"
+      ],
+      "examples": [
+        {
+          "statement": "掷两枚硬币，$X$ 表示正面个数，求 $X$ 的分布列。",
+          "solution": "$P(X=0)=\\dfrac14$，$P(X=1)=\\dfrac12$，$P(X=2)=\\dfrac14$，和为 1。",
+          "source": "人教A版 选择性必修第三册 §7.2 例 1"
+        }
+      ],
+      "variants": [
+        "超几何分布与二项分布要先判定模型，再写分布列。"
+      ],
+      "counterexample": {
+        "statement": "少算一个取值，然后把概率改到和为 1。",
+        "reason": "概率和等于 1 是必要条件不是修正手段；改动概率会让分布列与题设不符，后续期望方差全部错。"
+      },
+      "nextScenarioIds": [
+        "S.hs_prob.expectation"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "probability_sum",
+        "probabilities": [
+          "1/4",
+          "1/2",
+          "1/4"
+        ]
+      }
+    },
+    {
+      "id": "P.hs_prob.binomial.identify",
+      "name": "先验独立与等概率再套二项分布",
+      "scenarioIds": [
+        "S.hs_prob.binomial_dist"
+      ],
+      "methodIds": [
+        "M.hs_binomial_dist"
+      ],
+      "shape": "$P(X=k)=\\binom nk p^k(1-p)^{n-k}$，$E(X)=np$",
+      "signals": [
+        "题目问 n 次试验中成功的次数。",
+        "每次结果只有两种，且提到\"独立重复\"。"
+      ],
+      "why": "独立与每次概率相同同时成立时，成功次数只由 $n$ 与 $p$ 决定，可以直接用公式。",
+      "firstStep": "先检查\"各次独立\"与\"每次概率相同\"是否真的成立，特别注意是放回还是不放回。",
+      "conditions": [
+        "各次试验相互独立。",
+        "每次成功概率相同且不变。"
+      ],
+      "examples": [
+        {
+          "statement": "某人投篮命中率 0.8，独立投 5 次，$X$ 为命中次数，求 $E(X)$。",
+          "solution": "$X\\sim B(5,0.8)$，$E(X)=np=4$。",
+          "source": "人教A版 选择性必修第三册 §7.4 例 2"
+        }
+      ],
+      "variants": [
+        "不放回抽样改用超几何分布。",
+        "$n$ 很大、$p$ 很小时可用泊松近似（拓展）。"
+      ],
+      "counterexample": {
+        "statement": "从一批产品中不放回抽取若干件，仍按二项分布算。",
+        "reason": "不放回时各次试验不独立、概率也在变，二项分布的方差$np(1-p)$会被低估，概率也算错。"
+      },
+      "nextScenarioIds": [
+        "S.hs_prob.expectation",
+        "S.hs_prob.normal"
+      ],
+      "review": "derivation_checked",
+      "verification": {
+        "kind": "binomial_moments",
+        "n": 5,
+        "p": "4/5",
+        "mean": "4"
       }
     }
   ],

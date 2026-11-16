@@ -18,6 +18,7 @@
     "bank:build": "node scripts/compile-question-bank.mjs",
     "bank:related": "node scripts/build-related-index.mjs",
     "knowledge:build": "node scripts/compile-knowledge.mjs",
+    "knowledge:check": "python scripts/check-knowledge-pattern-math.py",
     "android:sync": "npm run build && cap sync android",
     "android:build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-android.ps1",
     "android:emulator": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/android-emulator.ps1",

@@ -361,6 +361,393 @@
         "人教A版 必修第二册 §6.4 平面向量的应用（正弦定理、余弦定理）"
       ],
       "review": "verified"
+    },
+    {
+      "id": "K.hs_geom.coordinate_to_metric",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_coordinate_system"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_geom.angle"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "有共点且两两垂直的三条棱的立体图形（正方体、长方体、直棱柱、正棱锥等）",
+      "conditions": [
+        "原点与三条坐标轴已选定",
+        "所有关键点都能写出坐标"
+      ],
+      "operation": "写点坐标 → 求方向向量与平面法向量 → 代入夹角公式",
+      "output": "线线角、线面角、二面角的余弦值或正切值",
+      "boundary": "线面角用 $\\sin\\theta=\\lvert\\cos\\langle\\vec a,\\vec n\\rangle\\rvert$，其余用余弦；二面角是锐是钝要按图形判断，公式只给绝对值。",
+      "evidence": [
+        "S.hs_geom.coordinate",
+        "人教A版 选择性必修第一册 §1.4 空间向量的应用"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_geom.normal_to_angle",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_normal_vector"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_geom.angle"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "需要在某个平面上用法向量",
+      "conditions": [
+        "平面内能找到两个不共线向量"
+      ],
+      "operation": "设 $\\vec n=(x,y,z)$，令它与平面内两个不共线向量的数量积都为零，解出一组非零整数解",
+      "output": "该平面的一个法向量",
+      "boundary": "法向量不唯一，任意非零解都可以；解出的向量不能与平面内任一向量平行，否则取错了。",
+      "evidence": [
+        "S.hs_geom.normal_vector",
+        "人教A版 选择性必修第一册 §1.4 空间向量的应用"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_geom.auxiliary_to_parallel",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_auxiliary_line"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_geom.line_plane_parallel"
+      },
+      "task": [
+        "prove"
+      ],
+      "inputState": "图中没有现成的平行关系可用",
+      "conditions": [
+        "存在中点、比例点或可作平行线/中位线的位置"
+      ],
+      "operation": "取中点连中位线、按比例分点或作平行线，造出目标平面内的一条直线",
+      "output": "目标平面内与已知直线平行的一条直线",
+      "boundary": "造出的直线必须既在目标平面内、又与已知直线平行，两者缺一不能得线面平行；结论只能说明线面平行，不能反推线线平行。",
+      "evidence": [
+        "S.hs_geom.line_plane_parallel",
+        "人教A版 必修第二册 §8.5 空间直线、平面的平行"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_geom.equal_volume",
+      "type": "applies_to",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_equal_volume"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_geom.distance"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "三棱锥的所求高（点面距离）不易直接作垂线求出",
+      "conditions": [
+        "同一三棱锥可以换一个顶点作底",
+        "另一组底面积与高都容易算"
+      ],
+      "operation": "用容易的一组算体积，再以所求距离为高反解",
+      "output": "点到平面的距离（或异面直线距离中的高）",
+      "boundary": "体积相等只能在同一个几何体的不同底面之间用；底面积与高必须对应同一组顶点，换底后所求量不能同时出现在两边。",
+      "evidence": [
+        "S.hs_geom.distance",
+        "人教A版 必修第二册 §8.3 简单几何体的表面积与体积"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_geom.vector_metric_angle",
+      "type": "applies_to",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_space_vector_metric"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_geom.angle"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "要求线线角、线面角或二面角",
+      "conditions": [
+        "图形可建系，或能直接用方向向量与法向量表示"
+      ],
+      "operation": "用方向向量、法向量的夹角公式统一处理三类角",
+      "output": "三类角的余弦/正切值",
+      "boundary": "向量夹角范围是 $[0,\\pi]$，几何角的范围不同（线线角与线面角不超过 $90^\\circ$）；不做范围修正会把钝角当锐角。",
+      "evidence": [
+        "S.hs_geom.angle",
+        "人教A版 选择性必修第一册 §1.4 空间向量的应用"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_analytic.line_to_circle",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_line_equation"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_analytic.line_circle_position"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "已知直线与圆的方程，问位置关系、弦长或切线",
+      "conditions": [
+        "直线与圆都写成一般式或标准式",
+        "圆心与半径可读"
+      ],
+      "operation": "算圆心到直线的距离 $d$，与半径 $r$ 比较；弦长用 $2\\sqrt{r^2-d^2}$",
+      "output": "位置关系判定、弦长或切线方程",
+      "boundary": "比较 $d$ 与 $r$ 时要先化成一般式，否则距离公式的分母用错；过定点的切线要分斜率存在与不存在两种情况。",
+      "evidence": [
+        "S.hs_analytic.circle_equation",
+        "人教A版 选择性必修第一册 §2.5 直线与圆、圆与圆的位置关系"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_analytic.circle_to_locus",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_circle_equation"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_analytic.locus"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "动点满足与定点/定圆有关的几何条件",
+      "conditions": [
+        "条件可写成含 $x,y$ 的方程",
+        "需要给出轨迹的范围或说明图形"
+      ],
+      "operation": "把几何条件代数化，整理成圆的方程，再回读圆心半径与限制",
+      "output": "轨迹方程及其图形说明",
+      "boundary": "代数化过程可能引入增解（如平方），要回到几何条件剔除；轨迹可能只是圆的一部分（弧、去掉点）。",
+      "evidence": [
+        "S.hs_analytic.circle_equation",
+        "人教A版 选择性必修第一册 §2.4 圆的方程"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_analytic.vieta_to_range",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_vieta"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_analytic.range_extremum"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "直线与圆锥曲线交于两点，要求参数范围或最值",
+      "conditions": [
+        "联立后得到一元二次方程",
+        "判别式大于零（两交点）已单独讨论"
+      ],
+      "operation": "用 $x_1+x_2,\\;x_1x_2$ 表示目标量，化为单参数函数再求范围",
+      "output": "参数的取值范围或目标量的最值",
+      "boundary": "必须先保证 $\\Delta>0$ 与两交点存在，再把韦达代入；直接求范围会漏掉判别式约束。",
+      "evidence": [
+        "S.hs_analytic.intersection",
+        "人教A版 选择性必修第一册 §3.3 抛物线"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_analytic.def_to_focal",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_conic_def"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_analytic.conic_focal"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "题目给出到焦点/准线的距离条件",
+      "conditions": [
+        "能识别是哪种圆锥曲线，并写出其定义式"
+      ],
+      "operation": "用定义把焦半径或焦点弦长直接写成距离之和/差",
+      "output": "焦半径、焦点弦长或焦点三角形的周长",
+      "boundary": "椭圆用和、双曲线用差的绝对值、抛物线用到准线的距离；双曲线要判断点在哪个分支上。",
+      "evidence": [
+        "S.hs_analytic.conic_equation",
+        "人教A版 选择性必修第一册 §3.2 双曲线"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_analytic.fixed_value",
+      "type": "applies_to",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_fixed_value"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_analytic.fixed_point"
+      },
+      "task": [
+        "prove"
+      ],
+      "inputState": "题目要求证明直线过定点或某量为定值",
+      "conditions": [
+        "目标量可写成含参数的表达式",
+        "参数的次数有限（通常一次）"
+      ],
+      "operation": "设而不求：把参数整理成关于参数的一次式等于零，令各系数为零解出定点",
+      "output": "定点坐标或定值",
+      "boundary": "只有当等式对任意参数成立时才能令系数为零；参数有取值范围时定点可能取不到，要回代检验。",
+      "evidence": [
+        "S.hs_analytic.fixed_point",
+        "人教A版 选择性必修第一册 §3.3 抛物线"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_prob.counting_to_classical",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_counting_principle"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_prob.classical"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "古典概型中样本点较多，无法一一列举",
+      "conditions": [
+        "每个样本点等可能",
+        "样本空间与所求事件都能用排列组合数清点"
+      ],
+      "operation": "用加法/乘法原理与排列组合数出 $n$ 与 $m$，再算 $P=m/n$",
+      "output": "事件概率",
+      "boundary": "只有等可能才能用古典概型；分子分母必须按同一标准计数（是否计顺序要统一）。",
+      "evidence": [
+        "S.hs_prob.counting_principle",
+        "人教A版 必修第二册 §10.1 随机事件与概率"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_prob.classical_to_distribution",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_classical"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_prob.distribution"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "需要写出离散型随机变量的分布列",
+      "conditions": [
+        "随机变量的所有取值已列全",
+        "每个取值的概率可算"
+      ],
+      "operation": "逐个算概率并检查概率和为 1，列成表",
+      "output": "分布列",
+      "boundary": "取值要列全且互斥，概率和必须为 1；它是检验不是结论，不能为了凑 1 改概率。",
+      "evidence": [
+        "S.hs_prob.classical",
+        "人教A版 选择性必修第三册 §7.2 离散型随机变量及其分布列"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_prob.distribution_to_expectation",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_distribution"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_prob.expectation"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "已有离散型随机变量的分布列",
+      "conditions": [
+        "分布列合法（概率和为 1）"
+      ],
+      "operation": "按定义算 $E(X)=\\sum x_ip_i$ 与 $D(X)=\\sum (x_i-E(X))^2p_i$",
+      "output": "期望与方差",
+      "boundary": "必须先有合法分布列；用 $E(X^2)-[E(X)]^2$ 计算方差时代入要仔细，符号与平方最容易错。",
+      "evidence": [
+        "S.hs_prob.distribution",
+        "人教A版 选择性必修第三册 §7.3 离散型随机变量的数字特征"
+      ],
+      "review": "verified"
+    },
+    {
+      "id": "K.hs_prob.binomial_to_expectation",
+      "type": "continues_into",
+      "from": {
+        "kind": "method",
+        "id": "M.hs_binomial_dist"
+      },
+      "to": {
+        "kind": "scenario",
+        "id": "S.hs_prob.expectation"
+      },
+      "task": [
+        "compute"
+      ],
+      "inputState": "随机变量是 $n$ 次独立重复试验中成功的次数",
+      "conditions": [
+        "每次试验只有两个结果且概率不变",
+        "各次试验相互独立"
+      ],
+      "operation": "判定 $X\\sim B(n,p)$，直接用 $E(X)=np,\\;D(X)=np(1-p)$",
+      "output": "期望与方差",
+      "boundary": "抽样若不还原就不独立，不能直接当二项分布；只看\"次数\"而不检查独立与等概率是最常见的错。",
+      "evidence": [
+        "S.hs_prob.binomial_dist",
+        "人教A版 选择性必修第三册 §7.4 二项分布与超几何分布"
+      ],
+      "review": "verified"
     }
   ]
 }
